@@ -1,0 +1,2799 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VisualStudioProject
+	ProjectType="Visual C++"
+	Version="9.00"
+	Name="StillDesign.PhysX.Net"
+	ProjectGUID="{9E50593F-DB72-44D1-8A1D-2AE73214383E}"
+	RootNamespace="PhysX.Net"
+	TargetFrameworkVersion="131072"
+	>
+	<Platforms>
+		<Platform
+			Name="Win32"
+		/>
+	</Platforms>
+	<ToolFiles>
+	</ToolFiles>
+	<Configurations>
+		<Configuration
+			Name="Debug XNA|Win32"
+			OutputDirectory="bin\$(ConfigurationName)"
+			IntermediateDirectory="bin\$(ConfigurationName)\Intermediate"
+			ConfigurationType="2"
+			ManagedExtensions="1"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				AdditionalIncludeDirectories="&quot;C:\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Cooking\include&quot;;&quot;C:\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Foundation\include&quot;;&quot;C:\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\NxCharacter\include&quot;;&quot;C:\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Physics\include&quot;;&quot;C:\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Physics\include\cloth&quot;;&quot;C:\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Physics\include\fluids&quot;;&quot;C:\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Physics\include\softbody&quot;;&quot;C:\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\PhysXLoader\include&quot;;&quot;C:\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2&quot;"
+				PreprocessorDefinitions="_DEBUG;GRAPHICS_XNA2;WIN32"
+				RuntimeLibrary="3"
+				UsePrecompiledHeader="1"
+				WarningLevel="3"
+				DebugInformationFormat="3"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="NxCharacter.lib NxCooking.lib PhysXLoader.lib"
+				AdditionalLibraryDirectories="&quot;C:\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\lib\Win32&quot;"
+				GenerateDebugInformation="true"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
+				TargetMachine="1"
+				KeyFile="C:\Data\Development\stillDesign\Keys\PublicPrivateKeyFile.snk"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
+			Name="Release XNA|Win32"
+			OutputDirectory="bin\$(ConfigurationName)"
+			IntermediateDirectory="bin\$(ConfigurationName)\Intermediate"
+			ConfigurationType="2"
+			ManagedExtensions="1"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				PreprocessorDefinitions="GRAPHICS_XNA2;WIN32"
+				RuntimeLibrary="2"
+				UsePrecompiledHeader="1"
+				GenerateXMLDocumentationFiles="true"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="NxCharacter.lib NxCooking.lib NxExtensions.lib PhysXLoader.lib"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
+				TargetMachine="1"
+				KeyFile="C:\Data\Development\stillDesign\Keys\PublicPrivateKeyFile.snk"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
+			Name="Debug MDX|Win32"
+			OutputDirectory="bin\$(ConfigurationName)"
+			IntermediateDirectory="bin\$(ConfigurationName)\Intermediate"
+			ConfigurationType="2"
+			ManagedExtensions="1"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				AdditionalIncludeDirectories="&quot;C:\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Cooking\include&quot;;&quot;C:\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Foundation\include&quot;;&quot;C:\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\NxCharacter\include&quot;;&quot;C:\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Physics\include&quot;;&quot;C:\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Physics\include\cloth&quot;;&quot;C:\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Physics\include\fluids&quot;;&quot;C:\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Physics\include\softbody&quot;;&quot;C:\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\PhysXLoader\include&quot;;&quot;C:\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2&quot;"
+				PreprocessorDefinitions="_DEBUG;GRAPHICS_MDX;WIN32"
+				RuntimeLibrary="3"
+				UsePrecompiledHeader="1"
+				WarningLevel="3"
+				DebugInformationFormat="3"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="NxCharacter.lib NxCooking.lib PhysXLoader.lib"
+				AdditionalLibraryDirectories="&quot;C:\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\lib\Win32&quot;"
+				GenerateDebugInformation="true"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
+				TargetMachine="1"
+				KeyFile="C:\Data\Development\stillDesign\Keys\PublicPrivateKeyFile.snk"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
+			Name="Release MDX|Win32"
+			OutputDirectory="bin\$(ConfigurationName)"
+			IntermediateDirectory="bin\$(ConfigurationName)\Intermediate"
+			ConfigurationType="2"
+			ManagedExtensions="1"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				PreprocessorDefinitions="GRAPHICS_MDX;WIN32"
+				RuntimeLibrary="2"
+				UsePrecompiledHeader="1"
+				GenerateXMLDocumentationFiles="true"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="NxCharacter.lib NxCooking.lib NxExtensions.lib PhysXLoader.lib"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
+				TargetMachine="1"
+				KeyFile="C:\Data\Development\stillDesign\Keys\PublicPrivateKeyFile.snk"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
+			Name="Debug SlimDX|Win32"
+			OutputDirectory="bin\$(ConfigurationName)"
+			IntermediateDirectory="bin\$(ConfigurationName)\Intermediate"
+			ConfigurationType="2"
+			ManagedExtensions="1"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				AdditionalIncludeDirectories="&quot;C:\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Cooking\include&quot;;&quot;C:\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Foundation\include&quot;;&quot;C:\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\NxCharacter\include&quot;;&quot;C:\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Physics\include&quot;;&quot;C:\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Physics\include\cloth&quot;;&quot;C:\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Physics\include\fluids&quot;;&quot;C:\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Physics\include\softbody&quot;;&quot;C:\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\PhysXLoader\include&quot;;&quot;C:\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2&quot;"
+				PreprocessorDefinitions="_DEBUG;GRAPHICS_SLIMDX;WIN32"
+				RuntimeLibrary="3"
+				UsePrecompiledHeader="1"
+				WarningLevel="3"
+				DebugInformationFormat="3"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="NxCharacter.lib NxCooking.lib PhysXLoader.lib"
+				AdditionalLibraryDirectories="&quot;C:\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\lib\Win32&quot;"
+				GenerateDebugInformation="true"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
+				TargetMachine="1"
+				KeyFile="C:\Data\Development\stillDesign\Keys\PublicPrivateKeyFile.snk"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
+			Name="Release SlimDX|Win32"
+			OutputDirectory="$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="2"
+			ManagedExtensions="1"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				PreprocessorDefinitions="GRAPHICS_SLIMDX;WIN32"
+				RuntimeLibrary="2"
+				UsePrecompiledHeader="1"
+				GenerateXMLDocumentationFiles="true"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="NxCharacter.lib NxCooking.lib NxExtensions.lib PhysXLoader.lib"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
+				TargetMachine="1"
+				KeyFile="C:\Data\Development\stillDesign\Keys\PublicPrivateKeyFile.snk"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+	</Configurations>
+	<References>
+		<AssemblyReference
+			RelativePath="System.dll"
+			AssemblyName="System, Version=2.0.0.0, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL"
+			MinFrameworkVersion="131072"
+		/>
+	</References>
+	<Files>
+		<Filter
+			Name="Source Files"
+			Filter="cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx"
+			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
+			>
+			<File
+				RelativePath=".\PhysX.Net\Active Transform.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Actor Description Base.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Actor Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Actor Group Pair.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Actor.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\AssemblyInfo.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Body Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Bounds.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Box Controller Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Box Controller.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Box Force Field Shape Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Box Force Field Shape.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Box Shape Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Box Shape.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Box.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Capsule Controller Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Capsule Controller.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Capsule Force Field Shape Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Capsule Force Field Shape.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Capsule Shape Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Capsule Shape.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Capsule.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\CCD Skeleton.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Cloth Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Cloth Mesh Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Cloth Mesh.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Cloth.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Compartment Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Compartment.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Constraint Dominance.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Controller Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Controller Hit Report.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Controller Hit.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Controller Manager.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Controller Move Result.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Controller.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Convex Force Field Shape Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Convex Force Field Shape.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Convex Mesh Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Convex Mesh.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Convex Shape Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Convex Shape.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Cooking Parameters.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Cooking.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Core Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Core.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Cylindrical Joint Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Cylindrical Joint.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\D6 Joint Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\D6 Joint.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Debug Renderable.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Dependency.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Descriptor Validity.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Distance Joint Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Distance Joint.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Element Collection.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Error Report.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Fixed Joint Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Fixed Joint.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Fluid Description Base.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Fluid Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Fluid Emitter Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Fluid Emitter.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Fluid Packet Data.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Fluid Packet.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Fluid User Notify.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Fluid.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Force Field Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Force Field Kernel.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Force Field Linear Kernel Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Force Field Linear Kernel.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Force Field Shape Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Force Field Shape Group Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Force Field Shape Group.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Force Field Shape.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Force Field.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Foundation.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Functions.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Groups Mask.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Height Field Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Height Field Sample.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Height Field Shape Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Height Field Shape.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Height Field.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Integrals.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Joint Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Joint Drive Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Joint Limit Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Joint Limit Pair Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Joint Limit Plane.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Joint Limit Soft Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Joint Limit Soft Pair Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Joint.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Material Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Material.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Math.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Memory Reader Stream.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Memory Writer Stream.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Mesh Data.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Motor Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_Asc2Bin.cpp"
+				>
+				<FileConfiguration
+					Name="Debug XNA|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						DisableSpecificWarnings="6385"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug MDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug SlimDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_ColladaExport.cpp"
+				>
+				<FileConfiguration
+					Name="Debug XNA|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						DisableSpecificWarnings="6385"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug MDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug SlimDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_ColladaImport.cpp"
+				>
+				<FileConfiguration
+					Name="Debug XNA|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						DisableSpecificWarnings="6385"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug MDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug SlimDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_cooking.cpp"
+				>
+				<FileConfiguration
+					Name="Debug XNA|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						DisableSpecificWarnings="6385"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug MDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug SlimDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_customcopy.cpp"
+				>
+				<FileConfiguration
+					Name="Debug XNA|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						DisableSpecificWarnings="6385"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug MDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug SlimDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_File.cpp"
+				>
+				<FileConfiguration
+					Name="Debug XNA|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						DisableSpecificWarnings="6385"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug MDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug SlimDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_Geometry.cpp"
+				>
+				<FileConfiguration
+					Name="Debug XNA|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						DisableSpecificWarnings="6385"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug MDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug SlimDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_GraphicsMesh.cpp"
+				>
+				<FileConfiguration
+					Name="Debug XNA|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						DisableSpecificWarnings="6385"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug MDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug SlimDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_helper.cpp"
+				>
+				<FileConfiguration
+					Name="Debug XNA|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						DisableSpecificWarnings="6385"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug MDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug SlimDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_hull.cpp"
+				>
+				<FileConfiguration
+					Name="Debug XNA|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						DisableSpecificWarnings="6385"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug MDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug SlimDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_PhysicsExport.cpp"
+				>
+				<FileConfiguration
+					Name="Debug XNA|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						DisableSpecificWarnings="6385"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug MDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug SlimDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_PhysicsInstantiator.cpp"
+				>
+				<FileConfiguration
+					Name="Debug XNA|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						DisableSpecificWarnings="6385"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug MDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug SlimDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_ScaledCopy.cpp"
+				>
+				<FileConfiguration
+					Name="Debug XNA|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						DisableSpecificWarnings="6385"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug MDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug SlimDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_schema.cpp"
+				>
+				<FileConfiguration
+					Name="Debug XNA|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						DisableSpecificWarnings="6385"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug MDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug SlimDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_SchemaStream.cpp"
+				>
+				<FileConfiguration
+					Name="Debug XNA|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						DisableSpecificWarnings="6385"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug MDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug SlimDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_Streaming.cpp"
+				>
+				<FileConfiguration
+					Name="Debug XNA|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						DisableSpecificWarnings="6385"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug MDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug SlimDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_string.cpp"
+				>
+				<FileConfiguration
+					Name="Debug XNA|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						DisableSpecificWarnings="6385"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug MDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug SlimDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_tinystr.cpp"
+				>
+				<FileConfiguration
+					Name="Debug XNA|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						DisableSpecificWarnings="6385"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug MDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug SlimDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_tinyxml.cpp"
+				>
+				<FileConfiguration
+					Name="Debug XNA|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						DisableSpecificWarnings="6385"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug MDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug SlimDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_tinyxmlerror.cpp"
+				>
+				<FileConfiguration
+					Name="Debug XNA|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						DisableSpecificWarnings="6385"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug MDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug SlimDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_tinyxmlparser.cpp"
+				>
+				<FileConfiguration
+					Name="Debug XNA|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						DisableSpecificWarnings="6385"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug MDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug SlimDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Object Cache.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Pair Flag.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Particle Data.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Particle Id Data.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Particle Update Data.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Physics Stream.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Plane Shape Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Plane Shape.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Point In Plane Joint Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Point In Plane Joint.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Point On Line Joint Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Point On Line Joint.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Prismatic Joint Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Prismatic Joint.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Pulley Joint Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Pulley Joint.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Ray.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Raycast Hit.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Raycast Reporting.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Remote Debugger Event Listener.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Remote Debugger.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Resources.rc"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Revolute Joint Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Revolute Joint.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Scene Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Scene Limits.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Scene Statistics.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Scene Timing Information.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Scene.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Segment.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Shape Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Shape.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Simple Triangle Mesh.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Soft Body Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Soft Body Mesh Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Soft Body Mesh.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Soft Body Split Pair Data.cpp"
+				>
+				<FileConfiguration
+					Name="Debug XNA|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\$(InputName)1.obj"
+						XMLDocumentationFileName="$(IntDir)\$(InputName)1.xdc"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release XNA|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\$(InputName)1.obj"
+						XMLDocumentationFileName="$(IntDir)\$(InputName)1.xdc"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug MDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\$(InputName)1.obj"
+						XMLDocumentationFileName="$(IntDir)\$(InputName)1.xdc"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release MDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\$(InputName)1.obj"
+						XMLDocumentationFileName="$(IntDir)\$(InputName)1.xdc"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug SlimDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\$(InputName)1.obj"
+						XMLDocumentationFileName="$(IntDir)\$(InputName)1.xdc"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release SlimDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\$(InputName)1.obj"
+						XMLDocumentationFileName="$(IntDir)\$(InputName)1.xdc"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Soft Body Split Pair.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Soft Body.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Sphere Force Field Shape Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Sphere Force Field Shape.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Sphere Shape Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Sphere Shape.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Sphere.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Spherical Joint Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Spherical Joint.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Spring Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\stdafx.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Sweep Cache.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Sweep Query Hit.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Tire Function Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Triangle Mesh Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Triangle Mesh Shape Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Triangle Mesh Shape.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Triangle Mesh.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Triangle.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\User Actor Pair Filtering.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\User Contact Modify.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\User Contact Report.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\User Entity Report.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\User Memory Reader Stream.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\User Memory Writer Stream.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\User Notify.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\User Output Stream.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\User Trigger Report.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\User Wheel Contact Modify.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Utilities Library.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Utilities.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Wheel Contact Data.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Wheel Shape Description.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Wheel Shape.cpp"
+				>
+			</File>
+			<Filter
+				Name="Utilities"
+				>
+				<File
+					RelativePath=".\PhysX.Net\Physics Collection.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Utilities User Notify.cpp"
+					>
+				</File>
+			</Filter>
+		</Filter>
+		<Filter
+			Name="Header Files"
+			Filter="h;hpp;hxx;hm;inl;inc;xsd"
+			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
+			>
+			<File
+				RelativePath=".\PhysX.Net\Active Transform.h"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\CCD Skeleton.h"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Constraint Dominance.h"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Debug Renderable.h"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Dependency.h"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Descriptor Validity.h"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Element Collection.h"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Enums.h"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Foundation.h"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Functions.h"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Groups Mask.h"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\IDisposable.h"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Integrals.h"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\List.h"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Math.h"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Object Cache.h"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Pair Flag.h"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Physics Collection.h"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Physics Parameters.h"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\resource.h"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Soft Body Split Pair Data.h"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\stdafx.h"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Sweep Cache.h"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Sweep Query Hit.h"
+				>
+			</File>
+			<Filter
+				Name="Actor"
+				>
+				<File
+					RelativePath=".\PhysX.Net\Actor Description Base.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Actor Description.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Actor Group Pair.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Actor.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Body"
+				>
+				<File
+					RelativePath=".\PhysX.Net\Body Description.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Shapes"
+				>
+				<File
+					RelativePath=".\PhysX.Net\Base Shape.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Shape Description.h"
+					>
+				</File>
+				<Filter
+					Name="Box"
+					>
+					<File
+						RelativePath=".\PhysX.Net\Box Shape Description.h"
+						>
+					</File>
+					<File
+						RelativePath=".\PhysX.Net\Box Shape.h"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="Sphere"
+					>
+					<File
+						RelativePath=".\PhysX.Net\Sphere Shape Description.h"
+						>
+					</File>
+					<File
+						RelativePath=".\PhysX.Net\Sphere Shape.h"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="Capsule"
+					>
+					<File
+						RelativePath=".\PhysX.Net\Capsule Shape Description.h"
+						>
+					</File>
+					<File
+						RelativePath=".\PhysX.Net\Capsule Shape.h"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="Triangle Mesh"
+					>
+					<File
+						RelativePath=".\PhysX.Net\Triangle Mesh Shape Description.h"
+						>
+					</File>
+					<File
+						RelativePath=".\PhysX.Net\Triangle Mesh Shape.h"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="Heightfield"
+					>
+					<File
+						RelativePath=".\PhysX.Net\Height Field Shape Description.h"
+						>
+					</File>
+					<File
+						RelativePath=".\PhysX.Net\Height Field Shape.h"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="Wheel"
+					>
+					<File
+						RelativePath=".\PhysX.Net\Tire Function Description.h"
+						>
+					</File>
+					<File
+						RelativePath=".\PhysX.Net\Wheel Contact Data.h"
+						>
+					</File>
+					<File
+						RelativePath=".\PhysX.Net\Wheel Shape Description.h"
+						>
+					</File>
+					<File
+						RelativePath=".\PhysX.Net\Wheel Shape.h"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="Plane"
+					>
+					<File
+						RelativePath=".\PhysX.Net\Plane Shape Description.h"
+						>
+					</File>
+					<File
+						RelativePath=".\PhysX.Net\Plane Shape.h"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="Convex"
+					>
+					<File
+						RelativePath=".\PhysX.Net\Convex Shape Description.h"
+						>
+					</File>
+					<File
+						RelativePath=".\PhysX.Net\Convex Shape.h"
+						>
+					</File>
+				</Filter>
+			</Filter>
+			<Filter
+				Name="Controller"
+				>
+				<File
+					RelativePath=".\PhysX.Net\Box Controller Description.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Box Controller.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Capsule Controller Description.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Capsule Controller.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Controller Description.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Controller Enums.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Controller Hit Report.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Controller Hit.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Controller Manager.h"
+					>
+					<FileConfiguration
+						Name="Debug XNA|Win32"
+						>
+						<Tool
+							Name="VCCustomBuildTool"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Controller Move Result.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Controller.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Force Field"
+				>
+				<File
+					RelativePath=".\PhysX.Net\Force Field Description.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Force Field Kernel.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Force Field Linear Kernel Description.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Force Field Linear Kernel.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Force Field Shape Description.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Force Field Shape Group Description.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Force Field Shape Group.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Force Field Shape.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Force Field.h"
+					>
+				</File>
+				<Filter
+					Name="Box"
+					>
+					<File
+						RelativePath=".\PhysX.Net\Box Force Field Shape Description.h"
+						>
+					</File>
+					<File
+						RelativePath=".\PhysX.Net\Box Force Field Shape.h"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="Sphere"
+					>
+					<File
+						RelativePath=".\PhysX.Net\Sphere Force Field Shape Description.h"
+						>
+					</File>
+					<File
+						RelativePath=".\PhysX.Net\Sphere Force Field Shape.h"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="Capsule"
+					>
+					<File
+						RelativePath=".\PhysX.Net\Capsule Force Field Shape Description.h"
+						>
+					</File>
+					<File
+						RelativePath=".\PhysX.Net\Capsule Force Field Shape.h"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="Convex"
+					>
+					<File
+						RelativePath=".\PhysX.Net\Convex Force Field Shape Description.h"
+						>
+					</File>
+					<File
+						RelativePath=".\PhysX.Net\Convex Force Field Shape.h"
+						>
+					</File>
+				</Filter>
+			</Filter>
+			<Filter
+				Name="Joints"
+				>
+				<File
+					RelativePath=".\PhysX.Net\Cylindrical Joint Description.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Cylindrical Joint.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\D6 Joint Description.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\D6 Joint.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Distance Joint Description.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Distance Joint.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Fixed Joint Description.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Fixed Joint.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Joint Description.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Joint Drive Description.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Joint Enums.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Joint Limit Description.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Joint Limit Pair Description.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Joint Limit Plane.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Joint Limit Soft Description.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Joint Limit Soft Pair Description.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Joint.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Motor Description.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Point In Plane Joint Description.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Point In Plane Joint.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Point On Line Joint Description.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Point On Line Joint.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Prismatic Joint Description.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Prismatic Joint.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Pulley Joint Description.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Pulley Joint.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Revolute Joint Description.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Revolute Joint.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Spherical Joint Description.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Spherical Joint.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Spring Description.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Fluids"
+				>
+				<File
+					RelativePath=".\PhysX.Net\Fluid Description Base.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Fluid Description.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Fluid Emitter Description.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Fluid Emitter.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Fluid Enums.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Fluid Packet Data.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Fluid Packet.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Fluid.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Particle Data.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Particle Id Data.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Particle Update Data.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Materials"
+				>
+				<File
+					RelativePath=".\PhysX.Net\Material Description.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Material Enums.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Material.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Heightfield"
+				>
+				<File
+					RelativePath=".\PhysX.Net\Height Field Description.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Height Field Sample.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Height Field.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Cloth"
+				>
+				<File
+					RelativePath=".\PhysX.Net\Cloth Description.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Cloth Mesh Description.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Cloth Mesh.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Cloth.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Convex Mesh"
+				>
+				<File
+					RelativePath=".\PhysX.Net\Convex Mesh Description.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Convex Mesh.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Compartment"
+				>
+				<File
+					RelativePath=".\PhysX.Net\Compartment Description.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Compartment.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Core"
+				>
+				<File
+					RelativePath=".\PhysX.Net\Core Description.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Core.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Cooking"
+				>
+				<File
+					RelativePath=".\PhysX.Net\Cooking Parameters.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Cooking.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Streams"
+				>
+				<File
+					RelativePath=".\PhysX.Net\Memory Reader Stream.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Memory Writer Stream.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Physics Stream.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Utilities"
+				>
+				<File
+					RelativePath=".\PhysX.Net\Error Report.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Parameter Description.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Physics Collection.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Utilities Library.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Utilities User Notify.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Utilities.h"
+					>
+				</File>
+				<Filter
+					Name="NXU"
+					>
+					<File
+						RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_Asc2Bin.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_ColladaExport.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_ColladaImport.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_cooking.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_customcopy.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_File.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_Geometry.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_GraphicsMesh.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_helper.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_hull.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_PhysicsExport.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_PhysicsInstantiator.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_ScaledCopy.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_schema.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_SchemaStream.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_SchemaTypes.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_Streaming.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_string.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_tinystr.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_tinyxml.h"
+						>
+					</File>
+				</Filter>
+			</Filter>
+			<Filter
+				Name="SoftBody"
+				>
+				<File
+					RelativePath=".\PhysX.Net\Soft Body Description.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Soft Body Mesh Description.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Soft Body Mesh.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Soft Body Split Pair Data.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Soft Body Split Pair.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Soft Body.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Rays"
+				>
+				<File
+					RelativePath=".\PhysX.Net\Ray.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Raycast Hit.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Raycast Reporting.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Scene"
+				>
+				<File
+					RelativePath=".\PhysX.Net\Scene Description.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Scene Limits.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Scene Statistics.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Scene Timing Information.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Scene.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Reports"
+				>
+				<File
+					RelativePath=".\PhysX.Net\Fluid User Notify.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\User Actor Pair Filtering.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\User Contact Modify.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\User Contact Report.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\User Entity Report.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\User Memory Reader Stream.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\User Memory Writer Stream.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\User Notify.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\User Output Stream.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\User Trigger Report.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\User Wheel Contact Modify.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Remote Debugger"
+				>
+				<File
+					RelativePath=".\PhysX.Net\Remote Debugger Event Listener.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Remote Debugger Values.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Remote Debugger.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Basic Shapes"
+				>
+				<File
+					RelativePath=".\PhysX.Net\Bounds.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Box.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Capsule.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Segment.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Sphere.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Triangle.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Triangle Mesh"
+				>
+				<File
+					RelativePath=".\PhysX.Net\Mesh Data.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Simple Triangle Mesh.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Triangle Mesh Description.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Triangle Mesh.h"
+					>
+				</File>
+			</Filter>
+		</Filter>
+		<File
+			RelativePath=".\Changelog.txt"
+			>
+		</File>
+		<File
+			RelativePath=".\TODO.txt"
+			>
+		</File>
+	</Files>
+	<Globals>
+	</Globals>
+</VisualStudioProject>
