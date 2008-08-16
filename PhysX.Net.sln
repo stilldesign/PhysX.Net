@@ -1,0 +1,96 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StillDesign.PhysX.Net", "PhysX.Net\PhysX.Net.vcproj", "{9E50593F-DB72-44D1-8A1D-2AE73214383E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing", "Testing\Testing.csproj", "{D99B7D55-3CA8-4066-BCC2-5574A8566F17}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug MDX|Any CPU = Debug MDX|Any CPU
+		Debug MDX|Mixed Platforms = Debug MDX|Mixed Platforms
+		Debug MDX|Win32 = Debug MDX|Win32
+		Debug SlimDX|Any CPU = Debug SlimDX|Any CPU
+		Debug SlimDX|Mixed Platforms = Debug SlimDX|Mixed Platforms
+		Debug SlimDX|Win32 = Debug SlimDX|Win32
+		Debug XNA|Any CPU = Debug XNA|Any CPU
+		Debug XNA|Mixed Platforms = Debug XNA|Mixed Platforms
+		Debug XNA|Win32 = Debug XNA|Win32
+		Release MDX|Any CPU = Release MDX|Any CPU
+		Release MDX|Mixed Platforms = Release MDX|Mixed Platforms
+		Release MDX|Win32 = Release MDX|Win32
+		Release SlimDX|Any CPU = Release SlimDX|Any CPU
+		Release SlimDX|Mixed Platforms = Release SlimDX|Mixed Platforms
+		Release SlimDX|Win32 = Release SlimDX|Win32
+		Release XNA|Any CPU = Release XNA|Any CPU
+		Release XNA|Mixed Platforms = Release XNA|Mixed Platforms
+		Release XNA|Win32 = Release XNA|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Debug MDX|Any CPU.ActiveCfg = Debug MDX|Win32
+		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Debug MDX|Any CPU.Build.0 = Debug MDX|Win32
+		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Debug MDX|Mixed Platforms.ActiveCfg = Debug MDX|Win32
+		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Debug MDX|Mixed Platforms.Build.0 = Debug MDX|Win32
+		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Debug MDX|Win32.ActiveCfg = Debug MDX|Win32
+		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Debug MDX|Win32.Build.0 = Debug MDX|Win32
+		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Debug SlimDX|Any CPU.ActiveCfg = Debug SlimDX|Win32
+		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Debug SlimDX|Any CPU.Build.0 = Debug SlimDX|Win32
+		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Debug SlimDX|Mixed Platforms.ActiveCfg = Debug SlimDX|Win32
+		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Debug SlimDX|Mixed Platforms.Build.0 = Debug SlimDX|Win32
+		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Debug SlimDX|Win32.ActiveCfg = Debug SlimDX|Win32
+		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Debug SlimDX|Win32.Build.0 = Debug SlimDX|Win32
+		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Debug XNA|Any CPU.ActiveCfg = Debug XNA|Win32
+		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Debug XNA|Any CPU.Build.0 = Debug XNA|Win32
+		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Debug XNA|Mixed Platforms.ActiveCfg = Debug XNA|Win32
+		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Debug XNA|Mixed Platforms.Build.0 = Debug XNA|Win32
+		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Debug XNA|Win32.ActiveCfg = Release XNA|Win32
+		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Debug XNA|Win32.Build.0 = Release XNA|Win32
+		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Release MDX|Any CPU.ActiveCfg = Release MDX|Win32
+		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Release MDX|Any CPU.Build.0 = Release MDX|Win32
+		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Release MDX|Mixed Platforms.ActiveCfg = Release MDX|Win32
+		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Release MDX|Mixed Platforms.Build.0 = Release MDX|Win32
+		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Release MDX|Win32.ActiveCfg = Release MDX|Win32
+		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Release MDX|Win32.Build.0 = Release MDX|Win32
+		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Release SlimDX|Any CPU.ActiveCfg = Release SlimDX|Win32
+		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Release SlimDX|Any CPU.Build.0 = Release SlimDX|Win32
+		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Release SlimDX|Mixed Platforms.ActiveCfg = Release SlimDX|Win32
+		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Release SlimDX|Mixed Platforms.Build.0 = Release SlimDX|Win32
+		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Release SlimDX|Win32.ActiveCfg = Release SlimDX|Win32
+		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Release SlimDX|Win32.Build.0 = Release SlimDX|Win32
+		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Release XNA|Any CPU.ActiveCfg = Release XNA|Win32
+		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Release XNA|Any CPU.Build.0 = Release XNA|Win32
+		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Release XNA|Mixed Platforms.ActiveCfg = Release XNA|Win32
+		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Release XNA|Mixed Platforms.Build.0 = Release XNA|Win32
+		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Release XNA|Win32.ActiveCfg = Release XNA|Win32
+		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Release XNA|Win32.Build.0 = Release XNA|Win32
+		{D99B7D55-3CA8-4066-BCC2-5574A8566F17}.Debug MDX|Any CPU.ActiveCfg = Debug XNA|Any CPU
+		{D99B7D55-3CA8-4066-BCC2-5574A8566F17}.Debug MDX|Mixed Platforms.ActiveCfg = Debug XNA|Any CPU
+		{D99B7D55-3CA8-4066-BCC2-5574A8566F17}.Debug MDX|Mixed Platforms.Build.0 = Debug XNA|Any CPU
+		{D99B7D55-3CA8-4066-BCC2-5574A8566F17}.Debug MDX|Win32.ActiveCfg = Debug XNA|Any CPU
+		{D99B7D55-3CA8-4066-BCC2-5574A8566F17}.Debug SlimDX|Any CPU.ActiveCfg = Debug SlimDX|Any CPU
+		{D99B7D55-3CA8-4066-BCC2-5574A8566F17}.Debug SlimDX|Mixed Platforms.ActiveCfg = Debug SlimDX|Any CPU
+		{D99B7D55-3CA8-4066-BCC2-5574A8566F17}.Debug SlimDX|Mixed Platforms.Build.0 = Debug SlimDX|Any CPU
+		{D99B7D55-3CA8-4066-BCC2-5574A8566F17}.Debug SlimDX|Win32.ActiveCfg = Debug SlimDX|Any CPU
+		{D99B7D55-3CA8-4066-BCC2-5574A8566F17}.Debug XNA|Any CPU.ActiveCfg = Debug XNA|Any CPU
+		{D99B7D55-3CA8-4066-BCC2-5574A8566F17}.Debug XNA|Any CPU.Build.0 = Debug XNA|Any CPU
+		{D99B7D55-3CA8-4066-BCC2-5574A8566F17}.Debug XNA|Mixed Platforms.ActiveCfg = Debug XNA|Any CPU
+		{D99B7D55-3CA8-4066-BCC2-5574A8566F17}.Debug XNA|Mixed Platforms.Build.0 = Debug XNA|Any CPU
+		{D99B7D55-3CA8-4066-BCC2-5574A8566F17}.Debug XNA|Win32.ActiveCfg = Debug XNA|Any CPU
+		{D99B7D55-3CA8-4066-BCC2-5574A8566F17}.Release MDX|Any CPU.ActiveCfg = Release XNA|Any CPU
+		{D99B7D55-3CA8-4066-BCC2-5574A8566F17}.Release MDX|Mixed Platforms.ActiveCfg = Release XNA|Any CPU
+		{D99B7D55-3CA8-4066-BCC2-5574A8566F17}.Release MDX|Mixed Platforms.Build.0 = Release XNA|Any CPU
+		{D99B7D55-3CA8-4066-BCC2-5574A8566F17}.Release MDX|Win32.ActiveCfg = Release XNA|Any CPU
+		{D99B7D55-3CA8-4066-BCC2-5574A8566F17}.Release SlimDX|Any CPU.ActiveCfg = Release SlimDX|Any CPU
+		{D99B7D55-3CA8-4066-BCC2-5574A8566F17}.Release SlimDX|Mixed Platforms.ActiveCfg = Release SlimDX|Any CPU
+		{D99B7D55-3CA8-4066-BCC2-5574A8566F17}.Release SlimDX|Mixed Platforms.Build.0 = Release SlimDX|Any CPU
+		{D99B7D55-3CA8-4066-BCC2-5574A8566F17}.Release SlimDX|Win32.ActiveCfg = Release SlimDX|Any CPU
+		{D99B7D55-3CA8-4066-BCC2-5574A8566F17}.Release XNA|Any CPU.ActiveCfg = Release XNA|Any CPU
+		{D99B7D55-3CA8-4066-BCC2-5574A8566F17}.Release XNA|Any CPU.Build.0 = Release XNA|Any CPU
+		{D99B7D55-3CA8-4066-BCC2-5574A8566F17}.Release XNA|Mixed Platforms.ActiveCfg = Release XNA|Any CPU
+		{D99B7D55-3CA8-4066-BCC2-5574A8566F17}.Release XNA|Mixed Platforms.Build.0 = Release XNA|Any CPU
+		{D99B7D55-3CA8-4066-BCC2-5574A8566F17}.Release XNA|Win32.ActiveCfg = Release XNA|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

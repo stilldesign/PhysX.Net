@@ -1,0 +1,1416 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FxCopProject Version="1.36" Name="My FxCop Project">
+ <ProjectOptions>
+  <SharedProject>True</SharedProject>
+  <Stylesheet Apply="False">c:\program files\microsoft fxcop 1.36\Xml\FxCopReport.xsl</Stylesheet>
+  <SaveMessages>
+   <Project Status="Active, Excluded" NewOnly="False" />
+   <Report Status="Active" NewOnly="False" />
+  </SaveMessages>
+  <ProjectFile Compress="True" DefaultTargetCheck="True" DefaultRuleCheck="True" SaveByRuleGroup="" Deterministic="True" />
+  <EnableMultithreadedLoad>True</EnableMultithreadedLoad>
+  <EnableMultithreadedAnalysis>True</EnableMultithreadedAnalysis>
+  <SourceLookup>True</SourceLookup>
+  <AnalysisExceptionsThreshold>10</AnalysisExceptionsThreshold>
+  <RuleExceptionsThreshold>1</RuleExceptionsThreshold>
+  <Spelling Locale="en-US" />
+  <OverrideRuleVisibilities>False</OverrideRuleVisibilities>
+  <CustomDictionaries SearchFxCopDir="True" SearchUserProfile="True" SearchProjectDir="True" />
+  <SearchGlobalAssemblyCache>False</SearchGlobalAssemblyCache>
+  <DeadlockDetectionTimeout>120</DeadlockDetectionTimeout>
+  <IgnoreGeneratedCode>False</IgnoreGeneratedCode>
+ </ProjectOptions>
+ <Targets>
+  <Target Name="$(ProjectDir)/../Common Library/Common Library/bin/Debug XNA/Common Library.dll" Analyze="True" AnalyzeAllChildren="True" />
+  <Target Name="$(ProjectDir)/PhysX.Net/bin/Debug XNA/PhysX.Net.dll" Analyze="True" AnalyzeAllChildren="True" />
+ </Targets>
+ <Rules>
+  <RuleFiles>
+   <RuleFile Name="$(FxCopDir)\Rules\DesignRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\GlobalizationRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\InteroperabilityRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\MobilityRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\NamingRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\PerformanceRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\PortabilityRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\SecurityRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\UsageRules.dll" Enabled="True" AllRulesEnabled="True" />
+  </RuleFiles>
+  <Groups />
+  <Settings />
+ </Rules>
+ <FxCopReport Version="1.36">
+  <Namespaces>
+   <Namespace Name="stillDesign">
+    <Messages>
+     <Message Id="still" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Created="2008-05-07 23:37:23Z">
+      <Issue Name="Namespace">
+       <Item>still</Item>
+       <Item>stillDesign</Item>
+       <Item>Still</Item>
+      </Issue>
+     </Message>
+    </Messages>
+   </Namespace>
+  </Namespaces>
+  <Targets>
+   <Target Name="$(ProjectDir)/../Common Library/Common Library/bin/Debug XNA/Common Library.dll">
+    <Modules>
+     <Module Name="common library.dll">
+      <Namespaces>
+       <Namespace Name="stillDesign">
+        <Types>
+         <Type Name="AxisAngle">
+          <Messages>
+           <Message TypeName="OverrideEqualsAndOperatorEqualsOnValueTypes" Category="Microsoft.Performance" CheckId="CA1815" Created="2008-05-07 23:37:23Z">
+            <Issue Name="Equals">
+             <Item>'AxisAngle'</Item>
+            </Issue>
+            <Issue Name="op_Equality">
+             <Item>'AxisAngle'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#ToString()">
+            <Messages>
+             <Message Id="System.String.Format(System.String,System.Object[])" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2008-05-07 23:37:23Z">
+              <Issue>
+               <Item>'string.Format(string, params object[])'</Item>
+               <Item>'AxisAngle.ToString()'</Item>
+               <Item>'string.Format(IFormatProvider, string, params object[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#X">
+            <Messages>
+             <Message Id="X" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-05-07 23:37:23Z">
+              <Issue Name="MemberMoreMeaningfulName">
+               <Item>'AxisAngle.X'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Y">
+            <Messages>
+             <Message Id="Y" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-05-07 23:37:23Z">
+              <Issue Name="MemberMoreMeaningfulName">
+               <Item>'AxisAngle.Y'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Z">
+            <Messages>
+             <Message Id="Z" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-05-07 23:37:23Z">
+              <Issue Name="MemberMoreMeaningfulName">
+               <Item>'AxisAngle.Z'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="BaseDictionary`2">
+          <Members>
+           <Member Name="#onAdd" Kind="Event">
+            <Messages>
+             <Message TypeName="DeclareEventHandlersCorrectly" Category="Microsoft.Design" CheckId="CA1009" Created="2008-05-07 23:37:23Z">
+              <Issue Name="Second">
+               <Item>'EventHandlerItem&lt;KeyValuePair&lt;TKey, TValue&gt;&gt;'</Item>
+              </Issue>
+             </Message>
+             <Message Id="on" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Created="2008-05-07 23:37:23Z">
+              <Issue Name="Member">
+               <Item>on</Item>
+               <Item>'BaseDictionary&lt;TKey, TValue&gt;.onAdd'</Item>
+               <Item>On</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="IdentifiersShouldHaveCorrectSuffix" Category="Microsoft.Naming" CheckId="CA1710" Created="2008-05-07 23:37:23Z">
+              <Issue>
+               <Item>'EventHandlerItem&lt;KeyValuePair&lt;TKey, TValue&gt;&gt;'</Item>
+               <Item>EventHandler</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#onRemove" Kind="Event">
+            <Messages>
+             <Message TypeName="DeclareEventHandlersCorrectly" Category="Microsoft.Design" CheckId="CA1009" Created="2008-05-07 23:37:23Z">
+              <Issue Name="Second">
+               <Item>'EventHandlerItem&lt;KeyValuePair&lt;TKey, TValue&gt;&gt;'</Item>
+              </Issue>
+             </Message>
+             <Message Id="on" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Created="2008-05-07 23:37:23Z">
+              <Issue Name="Member">
+               <Item>on</Item>
+               <Item>'BaseDictionary&lt;TKey, TValue&gt;.onRemove'</Item>
+               <Item>On</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="IdentifiersShouldHaveCorrectSuffix" Category="Microsoft.Naming" CheckId="CA1710" Created="2008-05-07 23:37:23Z">
+              <Issue>
+               <Item>'EventHandlerItem&lt;KeyValuePair&lt;TKey, TValue&gt;&gt;'</Item>
+               <Item>EventHandler</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="BaseQueue`1">
+          <Messages>
+           <Message TypeName="IdentifiersShouldHaveCorrectSuffix" Category="Microsoft.Naming" CheckId="CA1710" Created="2008-05-07 23:37:23Z">
+            <Issue>
+             <Item>'BaseQueue&lt;T&gt;'</Item>
+             <Item>Collection</Item>
+            </Issue>
+           </Message>
+           <Message TypeName="IdentifiersShouldNotHaveIncorrectSuffix" Category="Microsoft.Naming" CheckId="CA1711" Created="2008-05-07 23:37:23Z">
+            <Issue Name="TypeNoAlternate">
+             <Item>'BaseQueue&lt;T&gt;'</Item>
+             <Item>Queue</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#System.Collections.ICollection.IsSynchronized">
+            <Accessors>
+             <Accessor Name="#System.Collections.ICollection.get_IsSynchronized()">
+              <Messages>
+               <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Created="2008-05-07 23:37:23Z">
+                <Issue>
+                 <Item>'BaseQueue&lt;T&gt;'</Item>
+                 <Item>'ICollection.IsSynchronized.get()'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+           <Member Name="#System.Collections.ICollection.SyncRoot">
+            <Accessors>
+             <Accessor Name="#System.Collections.ICollection.get_SyncRoot()">
+              <Messages>
+               <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Created="2008-05-07 23:37:23Z">
+                <Issue>
+                 <Item>'BaseQueue&lt;T&gt;'</Item>
+                 <Item>'ICollection.SyncRoot.get()'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="BaseStack`1">
+          <Messages>
+           <Message TypeName="IdentifiersShouldHaveCorrectSuffix" Category="Microsoft.Naming" CheckId="CA1710" Created="2008-05-07 23:37:23Z">
+            <Issue>
+             <Item>'BaseStack&lt;T&gt;'</Item>
+             <Item>Collection</Item>
+            </Issue>
+           </Message>
+           <Message TypeName="IdentifiersShouldNotHaveIncorrectSuffix" Category="Microsoft.Naming" CheckId="CA1711" Created="2008-05-07 23:37:23Z">
+            <Issue Name="TypeNoAlternate">
+             <Item>'BaseStack&lt;T&gt;'</Item>
+             <Item>Stack</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#System.Collections.ICollection.IsSynchronized">
+            <Accessors>
+             <Accessor Name="#System.Collections.ICollection.get_IsSynchronized()">
+              <Messages>
+               <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Created="2008-05-07 23:37:23Z">
+                <Issue>
+                 <Item>'BaseStack&lt;T&gt;'</Item>
+                 <Item>'ICollection.IsSynchronized.get()'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+           <Member Name="#System.Collections.ICollection.SyncRoot">
+            <Accessors>
+             <Accessor Name="#System.Collections.ICollection.get_SyncRoot()">
+              <Messages>
+               <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Created="2008-05-07 23:37:23Z">
+                <Issue>
+                 <Item>'BaseStack&lt;T&gt;'</Item>
+                 <Item>'ICollection.SyncRoot.get()'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="Functions">
+          <Members>
+           <Member Name="#Int32ToARGBColor(System.Int32)">
+            <Messages>
+             <Message Id="ARGB" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Created="2008-05-07 23:37:23Z">
+              <Issue Name="Member">
+               <Item>ARGB</Item>
+               <Item>'Functions.Int32ToARGBColor(int)'</Item>
+               <Item>Argb</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Permutation(System.Int32)">
+            <Messages>
+             <Message Id="k" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-05-07 23:37:23Z">
+              <Issue Name="MemberParameterMoreMeaningfulName">
+               <Item>'Functions.Permutation(int)'</Item>
+               <Item>'k'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#PermutationAddition(System.Int32)">
+            <Messages>
+             <Message Id="k" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-05-07 23:37:23Z">
+              <Issue Name="MemberParameterMoreMeaningfulName">
+               <Item>'Functions.PermutationAddition(int)'</Item>
+               <Item>'k'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#PointLength(System.Drawing.Point,System.Drawing.Point)">
+            <Messages>
+             <Message Id="p" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-05-07 23:37:23Z">
+              <Issue Name="MemberParameter">
+               <Item>'Functions.PointLength(Point, Point)'</Item>
+               <Item>p</Item>
+               <Item>'p1'</Item>
+              </Issue>
+              <Issue Name="MemberParameter">
+               <Item>'Functions.PointLength(Point, Point)'</Item>
+               <Item>p</Item>
+               <Item>'p2'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#ReverseString(System.String)">
+            <Messages>
+             <Message Id="str" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-05-07 23:50:35Z">
+              <Issue Name="MemberParameter">
+               <Item>'Functions.ReverseString(string)'</Item>
+               <Item>str</Item>
+               <Item>'str'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#StringEmptyComparison(System.String)">
+            <Messages>
+             <Message TypeName="TestForEmptyStringsUsingStringLength" Category="Microsoft.Performance" CheckId="CA1820" Created="2008-05-07 23:37:23Z">
+              <Issue Name="IsNullOrEmpty">
+               <Item>'string.operator ==(string, string)'</Item>
+               <Item>'Functions.StringEmptyComparison(string)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#VerticiesOfRectangle(System.Drawing.Rectangle)">
+            <Messages>
+             <Message Id="Verticies" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-05-07 23:37:23Z">
+              <Issue Name="Member">
+               <Item>Verticies</Item>
+               <Item>'Functions.VerticiesOfRectangle(Rectangle)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="INameNotifiable">
+          <Messages>
+           <Message Id="Notifiable" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-05-07 23:37:23Z">
+            <Issue Name="Type">
+             <Item>Notifiable</Item>
+             <Item>'INameNotifiable'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#onNameChanged" Kind="Event">
+            <Messages>
+             <Message Id="on" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Created="2008-05-07 23:37:23Z">
+              <Issue Name="Member">
+               <Item>on</Item>
+               <Item>'INameNotifiable.onNameChanged'</Item>
+               <Item>On</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="INotifiable`1">
+          <Messages>
+           <Message Id="Notifiable" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-05-07 23:37:23Z">
+            <Issue Name="Type">
+             <Item>Notifiable</Item>
+             <Item>'INotifiable&lt;T&gt;'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#onAdd" Kind="Event">
+            <Messages>
+             <Message TypeName="DeclareEventHandlersCorrectly" Category="Microsoft.Design" CheckId="CA1009" Created="2008-05-07 23:37:23Z">
+              <Issue Name="Second">
+               <Item>'EventHandlerItem&lt;T&gt;'</Item>
+              </Issue>
+             </Message>
+             <Message Id="on" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Created="2008-05-07 23:37:23Z">
+              <Issue Name="Member">
+               <Item>on</Item>
+               <Item>'INotifiable&lt;T&gt;.onAdd'</Item>
+               <Item>On</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="IdentifiersShouldHaveCorrectSuffix" Category="Microsoft.Naming" CheckId="CA1710" Created="2008-05-07 23:37:23Z">
+              <Issue>
+               <Item>'EventHandlerItem&lt;T&gt;'</Item>
+               <Item>EventHandler</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#onRemove" Kind="Event">
+            <Messages>
+             <Message TypeName="DeclareEventHandlersCorrectly" Category="Microsoft.Design" CheckId="CA1009" Created="2008-05-07 23:37:23Z">
+              <Issue Name="Second">
+               <Item>'EventHandlerItem&lt;T&gt;'</Item>
+              </Issue>
+             </Message>
+             <Message Id="on" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Created="2008-05-07 23:37:23Z">
+              <Issue Name="Member">
+               <Item>on</Item>
+               <Item>'INotifiable&lt;T&gt;.onRemove'</Item>
+               <Item>On</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="IdentifiersShouldHaveCorrectSuffix" Category="Microsoft.Naming" CheckId="CA1710" Created="2008-05-07 23:37:23Z">
+              <Issue>
+               <Item>'EventHandlerItem&lt;T&gt;'</Item>
+               <Item>EventHandler</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="LineIntersectionResult">
+          <Messages>
+           <Message TypeName="OverrideEqualsAndOperatorEqualsOnValueTypes" Category="Microsoft.Performance" CheckId="CA1815" Created="2008-05-07 23:37:23Z">
+            <Issue Name="Equals">
+             <Item>'LineIntersectionResult'</Item>
+            </Issue>
+            <Issue Name="op_Equality">
+             <Item>'LineIntersectionResult'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+         </Type>
+         <Type Name="List`2">
+          <Messages>
+           <Message Id="R" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-05-07 23:37:23Z" FixCategory="NonBreaking">
+            <Issue Name="TypeTypeParameterMoreMeaningfulName">
+             <Item>'List&lt;T, R&gt;'</Item>
+             <Item>'R'</Item>
+            </Issue>
+           </Message>
+           <Message Id="T" TypeName="IdentifiersShouldHaveCorrectPrefix" Category="Microsoft.Naming" CheckId="CA1715" Created="2008-05-07 23:37:23Z" FixCategory="NonBreaking">
+            <Issue Name="TypeTypeParameter">
+             <Item>'List&lt;T, R&gt;'</Item>
+             <Item>'R'</Item>
+            </Issue>
+           </Message>
+           <Message TypeName="IdentifiersShouldHaveCorrectSuffix" Category="Microsoft.Naming" CheckId="CA1710" Created="2008-05-07 23:37:23Z">
+            <Issue>
+             <Item>'List&lt;T, R&gt;'</Item>
+             <Item>Collection</Item>
+            </Issue>
+           </Message>
+          </Messages>
+         </Type>
+         <Type Name="ListEx`1">
+          <Messages>
+           <Message TypeName="IdentifiersShouldHaveCorrectSuffix" Category="Microsoft.Naming" CheckId="CA1710" Created="2008-05-07 23:37:23Z">
+            <Issue>
+             <Item>'ListEx&lt;T&gt;'</Item>
+             <Item>Collection</Item>
+            </Issue>
+           </Message>
+           <Message TypeName="IdentifiersShouldNotHaveIncorrectSuffix" Category="Microsoft.Naming" CheckId="CA1711" Created="2008-05-07 23:37:23Z">
+            <Issue Name="TypeNewerVersion">
+             <Item>Ex</Item>
+             <Item>'ListEx&lt;T&gt;'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#ConvertAll`1(System.Converter`2&lt;!0,!!0&gt;)">
+            <Messages>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Created="2008-05-07 23:37:23Z">
+              <Issue>
+               <Item>'List&lt;TOutput&gt;'</Item>
+               <Item>'ListEx&lt;T&gt;.ConvertAll&lt;TOutput&gt;(Converter&lt;T, TOutput&gt;)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#CopyTo(System.Collections.Generic.List`1&lt;!0&gt;)">
+            <Messages>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Created="2008-05-07 23:37:23Z">
+              <Issue>
+               <Item>'List&lt;T&gt;'</Item>
+               <Item>'ListEx&lt;T&gt;.CopyTo(List&lt;T&gt;)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetRange(System.Int32,System.Int32)">
+            <Messages>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Created="2008-05-07 23:37:23Z">
+              <Issue>
+               <Item>'List&lt;T&gt;'</Item>
+               <Item>'ListEx&lt;T&gt;.GetRange(int, int)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#IsSyncronized">
+            <Messages>
+             <Message Id="Syncronized" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-05-07 23:37:23Z">
+              <Issue Name="Member">
+               <Item>Syncronized</Item>
+               <Item>'ListEx&lt;T&gt;.IsSyncronized'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="ListNotifiable`1">
+          <Messages>
+           <Message Id="Notifiable" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-05-07 23:37:23Z">
+            <Issue Name="Type">
+             <Item>Notifiable</Item>
+             <Item>'ListNotifiable&lt;T&gt;'</Item>
+            </Issue>
+           </Message>
+           <Message TypeName="IdentifiersShouldHaveCorrectSuffix" Category="Microsoft.Naming" CheckId="CA1710" Created="2008-05-07 23:37:23Z">
+            <Issue>
+             <Item>'ListNotifiable&lt;T&gt;'</Item>
+             <Item>Collection</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#RaiseAdd(!0)">
+            <Messages>
+             <Message TypeName="UseEventsWhereAppropriate" Category="Microsoft.Design" CheckId="CA1030" Created="2008-05-07 23:37:23Z">
+              <Issue>
+               <Item>'ListNotifiable&lt;T&gt;.RaiseAdd(T)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#RaiseRemove(!0)">
+            <Messages>
+             <Message TypeName="UseEventsWhereAppropriate" Category="Microsoft.Design" CheckId="CA1030" Created="2008-05-07 23:37:23Z">
+              <Issue>
+               <Item>'ListNotifiable&lt;T&gt;.RaiseRemove(T)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#onAdd" Kind="Event">
+            <Messages>
+             <Message TypeName="IdentifiersShouldHaveCorrectSuffix" Category="Microsoft.Naming" CheckId="CA1710" Created="2008-05-07 23:37:23Z">
+              <Issue>
+               <Item>'EventHandlerItem&lt;T&gt;'</Item>
+               <Item>EventHandler</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#onRemove" Kind="Event">
+            <Messages>
+             <Message TypeName="IdentifiersShouldHaveCorrectSuffix" Category="Microsoft.Naming" CheckId="CA1710" Created="2008-05-07 23:37:23Z">
+              <Issue>
+               <Item>'EventHandlerItem&lt;T&gt;'</Item>
+               <Item>EventHandler</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="ListNotifiable`2">
+          <Messages>
+           <Message Id="Notifiable" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-05-07 23:37:23Z">
+            <Issue Name="Type">
+             <Item>Notifiable</Item>
+             <Item>'ListNotifiable&lt;T, R&gt;'</Item>
+            </Issue>
+           </Message>
+           <Message Id="R" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-05-07 23:37:23Z" FixCategory="NonBreaking">
+            <Issue Name="TypeTypeParameterMoreMeaningfulName">
+             <Item>'ListNotifiable&lt;T, R&gt;'</Item>
+             <Item>'R'</Item>
+            </Issue>
+           </Message>
+           <Message Id="T" TypeName="IdentifiersShouldHaveCorrectPrefix" Category="Microsoft.Naming" CheckId="CA1715" Created="2008-05-07 23:37:23Z" FixCategory="NonBreaking">
+            <Issue Name="TypeTypeParameter">
+             <Item>'ListNotifiable&lt;T, R&gt;'</Item>
+             <Item>'R'</Item>
+            </Issue>
+           </Message>
+           <Message TypeName="IdentifiersShouldHaveCorrectSuffix" Category="Microsoft.Naming" CheckId="CA1710" Created="2008-05-07 23:37:23Z">
+            <Issue>
+             <Item>'ListNotifiable&lt;T, R&gt;'</Item>
+             <Item>Collection</Item>
+            </Issue>
+           </Message>
+          </Messages>
+         </Type>
+         <Type Name="ListOfNamedObjects`1">
+          <Messages>
+           <Message TypeName="IdentifiersShouldHaveCorrectSuffix" Category="Microsoft.Naming" CheckId="CA1710" Created="2008-05-07 23:37:23Z">
+            <Issue>
+             <Item>'ListOfNamedObjects&lt;T&gt;'</Item>
+             <Item>Collection</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#item_onNameChanged(System.Object,System.EventArgs)">
+            <Messages>
+             <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-05-07 23:37:23Z">
+              <Issue Name="TooGeneric">
+               <Item>'ListOfNamedObjects&lt;T&gt;.item_onNameChanged(object, EventArgs)'</Item>
+               <Item>'Exception'</Item>
+              </Issue>
+              <Issue Name="TooGeneric">
+               <Item>'ListOfNamedObjects&lt;T&gt;.item_onNameChanged(object, EventArgs)'</Item>
+               <Item>'Exception'</Item>
+              </Issue>
+              <Issue Name="TooGeneric">
+               <Item>'ListOfNamedObjects&lt;T&gt;.item_onNameChanged(object, EventArgs)'</Item>
+               <Item>'Exception'</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="TestForEmptyStringsUsingStringLength" Category="Microsoft.Performance" CheckId="CA1820" Created="2008-05-07 23:37:23Z">
+              <Issue Name="IsNullOrEmpty">
+               <Item>'string.operator ==(string, string)'</Item>
+               <Item>'ListOfNamedObjects&lt;T&gt;.item_onNameChanged(object, EventArgs)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#ValidName(!0)">
+            <Messages>
+             <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-05-07 23:37:23Z">
+              <Issue Name="TooGeneric">
+               <Item>'ListOfNamedObjects&lt;T&gt;.ValidName(T)'</Item>
+               <Item>'Exception'</Item>
+              </Issue>
+              <Issue Name="TooGeneric">
+               <Item>'ListOfNamedObjects&lt;T&gt;.ValidName(T)'</Item>
+               <Item>'Exception'</Item>
+              </Issue>
+              <Issue Name="TooGeneric">
+               <Item>'ListOfNamedObjects&lt;T&gt;.ValidName(T)'</Item>
+               <Item>'Exception'</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="TestForEmptyStringsUsingStringLength" Category="Microsoft.Performance" CheckId="CA1820" Created="2008-05-07 23:37:23Z">
+              <Issue Name="IsNullOrEmpty">
+               <Item>'string.operator ==(string, string)'</Item>
+               <Item>'ListOfNamedObjects&lt;T&gt;.ValidName(T)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="ListOfNamedObjects`2">
+          <Messages>
+           <Message Id="R" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-05-07 23:37:23Z" FixCategory="NonBreaking">
+            <Issue Name="TypeTypeParameterMoreMeaningfulName">
+             <Item>'ListOfNamedObjects&lt;T, R&gt;'</Item>
+             <Item>'R'</Item>
+            </Issue>
+           </Message>
+           <Message Id="T" TypeName="IdentifiersShouldHaveCorrectPrefix" Category="Microsoft.Naming" CheckId="CA1715" Created="2008-05-07 23:37:23Z" FixCategory="NonBreaking">
+            <Issue Name="TypeTypeParameter">
+             <Item>'ListOfNamedObjects&lt;T, R&gt;'</Item>
+             <Item>'R'</Item>
+            </Issue>
+           </Message>
+           <Message TypeName="IdentifiersShouldHaveCorrectSuffix" Category="Microsoft.Naming" CheckId="CA1710" Created="2008-05-07 23:37:23Z">
+            <Issue>
+             <Item>'ListOfNamedObjects&lt;T, R&gt;'</Item>
+             <Item>Collection</Item>
+            </Issue>
+           </Message>
+          </Messages>
+         </Type>
+         <Type Name="Mathematics">
+          <Members>
+           <Member Name="#AngleBetween(Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)">
+            <Messages>
+             <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-05-07 23:37:23Z">
+              <Issue Name="TooGeneric">
+               <Item>'Mathematics.AngleBetween(Vector2, Vector2)'</Item>
+               <Item>'Exception'</Item>
+              </Issue>
+              <Issue Name="TooGeneric">
+               <Item>'Mathematics.AngleBetween(Vector2, Vector2)'</Item>
+               <Item>'Exception'</Item>
+              </Issue>
+             </Message>
+             <Message Id="a" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-05-07 23:37:23Z">
+              <Issue Name="MemberParameterMoreMeaningfulName">
+               <Item>'Mathematics.AngleBetween(Vector2, Vector2)'</Item>
+               <Item>'a'</Item>
+              </Issue>
+             </Message>
+             <Message Id="b" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-05-07 23:37:23Z">
+              <Issue Name="MemberParameterMoreMeaningfulName">
+               <Item>'Mathematics.AngleBetween(Vector2, Vector2)'</Item>
+               <Item>'b'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#AngleBetween(Microsoft.Xna.Framework.Vector3,Microsoft.Xna.Framework.Vector3)">
+            <Messages>
+             <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-05-07 23:37:23Z">
+              <Issue Name="TooGeneric">
+               <Item>'Mathematics.AngleBetween(Vector3, Vector3)'</Item>
+               <Item>'Exception'</Item>
+              </Issue>
+              <Issue Name="TooGeneric">
+               <Item>'Mathematics.AngleBetween(Vector3, Vector3)'</Item>
+               <Item>'Exception'</Item>
+              </Issue>
+             </Message>
+             <Message Id="a" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-05-07 23:37:23Z">
+              <Issue Name="MemberParameterMoreMeaningfulName">
+               <Item>'Mathematics.AngleBetween(Vector3, Vector3)'</Item>
+               <Item>'a'</Item>
+              </Issue>
+             </Message>
+             <Message Id="b" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-05-07 23:37:23Z">
+              <Issue Name="MemberParameterMoreMeaningfulName">
+               <Item>'Mathematics.AngleBetween(Vector3, Vector3)'</Item>
+               <Item>'b'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#BezierPoint(Microsoft.Xna.Framework.Vector2[],System.Single)">
+            <Messages>
+             <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-05-07 23:37:23Z">
+              <Issue Name="TooGeneric">
+               <Item>'Mathematics.BezierPoint(Vector2[], float)'</Item>
+               <Item>'Exception'</Item>
+              </Issue>
+              <Issue Name="TooGeneric">
+               <Item>'Mathematics.BezierPoint(Vector2[], float)'</Item>
+               <Item>'Exception'</Item>
+              </Issue>
+             </Message>
+             <Message Id="t" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-05-07 23:37:23Z">
+              <Issue Name="MemberParameterMoreMeaningfulName">
+               <Item>'Mathematics.BezierPoint(Vector2[], float)'</Item>
+               <Item>'t'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#BezierPoint(Microsoft.Xna.Framework.Vector3[],System.Single)">
+            <Messages>
+             <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-05-07 23:37:23Z">
+              <Issue Name="TooGeneric">
+               <Item>'Mathematics.BezierPoint(Vector3[], float)'</Item>
+               <Item>'Exception'</Item>
+              </Issue>
+              <Issue Name="TooGeneric">
+               <Item>'Mathematics.BezierPoint(Vector3[], float)'</Item>
+               <Item>'Exception'</Item>
+              </Issue>
+             </Message>
+             <Message Id="t" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-05-07 23:37:23Z">
+              <Issue Name="MemberParameterMoreMeaningfulName">
+               <Item>'Mathematics.BezierPoint(Vector3[], float)'</Item>
+               <Item>'t'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#ComputeTriangleNormal(Microsoft.Xna.Framework.Vector3,Microsoft.Xna.Framework.Vector3,Microsoft.Xna.Framework.Vector3)">
+            <Messages>
+             <Message Id="v" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-05-07 23:37:23Z">
+              <Issue Name="MemberParameter">
+               <Item>'Mathematics.ComputeTriangleNormal(Vector3, Vector3, Vector3)'</Item>
+               <Item>v</Item>
+               <Item>'v1'</Item>
+              </Issue>
+              <Issue Name="MemberParameter">
+               <Item>'Mathematics.ComputeTriangleNormal(Vector3, Vector3, Vector3)'</Item>
+               <Item>v</Item>
+               <Item>'v2'</Item>
+              </Issue>
+              <Issue Name="MemberParameter">
+               <Item>'Mathematics.ComputeTriangleNormal(Vector3, Vector3, Vector3)'</Item>
+               <Item>v</Item>
+               <Item>'v3'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#DivideVector3(Microsoft.Xna.Framework.Vector3,Microsoft.Xna.Framework.Vector3)">
+            <Messages>
+             <Message Id="a" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-05-07 23:37:23Z">
+              <Issue Name="MemberParameterMoreMeaningfulName">
+               <Item>'Mathematics.DivideVector3(Vector3, Vector3)'</Item>
+               <Item>'a'</Item>
+              </Issue>
+             </Message>
+             <Message Id="b" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-05-07 23:37:23Z">
+              <Issue Name="MemberParameterMoreMeaningfulName">
+               <Item>'Mathematics.DivideVector3(Vector3, Vector3)'</Item>
+               <Item>'b'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#E">
+            <Messages>
+             <Message Id="E" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-05-07 23:37:23Z">
+              <Issue Name="MemberMoreMeaningfulName">
+               <Item>'Mathematics.E'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#IsPointInTriangle(Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)">
+            <Messages>
+             <Message Id="A" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Created="2008-05-07 23:37:23Z">
+              <Issue Name="MemberParameter">
+               <Item>'Mathematics.IsPointInTriangle(Vector2, Vector2, Vector2, Vector2)'</Item>
+               <Item>A</Item>
+               <Item>'A'</Item>
+               <Item>a</Item>
+              </Issue>
+             </Message>
+             <Message Id="B" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Created="2008-05-07 23:37:23Z">
+              <Issue Name="MemberParameter">
+               <Item>'Mathematics.IsPointInTriangle(Vector2, Vector2, Vector2, Vector2)'</Item>
+               <Item>B</Item>
+               <Item>'B'</Item>
+               <Item>b</Item>
+              </Issue>
+             </Message>
+             <Message Id="C" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Created="2008-05-07 23:37:23Z">
+              <Issue Name="MemberParameter">
+               <Item>'Mathematics.IsPointInTriangle(Vector2, Vector2, Vector2, Vector2)'</Item>
+               <Item>C</Item>
+               <Item>'C'</Item>
+               <Item>c</Item>
+              </Issue>
+             </Message>
+             <Message Id="P" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Created="2008-05-07 23:37:23Z">
+              <Issue Name="MemberParameter">
+               <Item>'Mathematics.IsPointInTriangle(Vector2, Vector2, Vector2, Vector2)'</Item>
+               <Item>P</Item>
+               <Item>'P'</Item>
+               <Item>p</Item>
+              </Issue>
+             </Message>
+             <Message Id="A" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-05-07 23:37:23Z">
+              <Issue Name="MemberParameterMoreMeaningfulName">
+               <Item>'Mathematics.IsPointInTriangle(Vector2, Vector2, Vector2, Vector2)'</Item>
+               <Item>'A'</Item>
+              </Issue>
+             </Message>
+             <Message Id="B" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-05-07 23:37:23Z">
+              <Issue Name="MemberParameterMoreMeaningfulName">
+               <Item>'Mathematics.IsPointInTriangle(Vector2, Vector2, Vector2, Vector2)'</Item>
+               <Item>'B'</Item>
+              </Issue>
+             </Message>
+             <Message Id="C" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-05-07 23:37:23Z">
+              <Issue Name="MemberParameterMoreMeaningfulName">
+               <Item>'Mathematics.IsPointInTriangle(Vector2, Vector2, Vector2, Vector2)'</Item>
+               <Item>'C'</Item>
+              </Issue>
+             </Message>
+             <Message Id="P" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-05-07 23:37:23Z">
+              <Issue Name="MemberParameterMoreMeaningfulName">
+               <Item>'Mathematics.IsPointInTriangle(Vector2, Vector2, Vector2, Vector2)'</Item>
+               <Item>'P'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Max(System.Single[])">
+            <Messages>
+             <Message Id="vals" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-05-07 23:37:23Z">
+              <Issue Name="MemberParameter">
+               <Item>'Mathematics.Max(params float[])'</Item>
+               <Item>vals</Item>
+               <Item>'vals'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Min(System.Single[])">
+            <Messages>
+             <Message Id="vals" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-05-07 23:37:23Z">
+              <Issue Name="MemberParameter">
+               <Item>'Mathematics.Min(params float[])'</Item>
+               <Item>vals</Item>
+               <Item>'vals'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#MultiplyQuaternion(Microsoft.Xna.Framework.Quaternion,System.Single)">
+            <Messages>
+             <Message Id="q" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-05-07 23:37:23Z">
+              <Issue Name="MemberParameterMoreMeaningfulName">
+               <Item>'Mathematics.MultiplyQuaternion(Quaternion, float)'</Item>
+               <Item>'q'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#MultiplyVector3(Microsoft.Xna.Framework.Vector3,Microsoft.Xna.Framework.Vector3)">
+            <Messages>
+             <Message Id="a" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-05-07 23:37:23Z">
+              <Issue Name="MemberParameterMoreMeaningfulName">
+               <Item>'Mathematics.MultiplyVector3(Vector3, Vector3)'</Item>
+               <Item>'a'</Item>
+              </Issue>
+             </Message>
+             <Message Id="b" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-05-07 23:37:23Z">
+              <Issue Name="MemberParameterMoreMeaningfulName">
+               <Item>'Mathematics.MultiplyVector3(Vector3, Vector3)'</Item>
+               <Item>'b'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#PI2f">
+            <Messages>
+             <Message Id="f" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Created="2008-05-07 23:37:23Z">
+              <Issue Name="Member">
+               <Item>f</Item>
+               <Item>'Mathematics.PI2f'</Item>
+               <Item>F</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#PIhf">
+            <Messages>
+             <Message Id="Ihf" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-05-07 23:37:23Z">
+              <Issue Name="Member">
+               <Item>Ihf</Item>
+               <Item>'Mathematics.PIhf'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#PlaneIntersection(Microsoft.Xna.Framework.Plane,Microsoft.Xna.Framework.Plane,Microsoft.Xna.Framework.Plane)">
+            <Messages>
+             <Message Id="A" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Created="2008-05-07 23:37:23Z">
+              <Issue Name="MemberParameter">
+               <Item>'Mathematics.PlaneIntersection(Plane, Plane, Plane)'</Item>
+               <Item>A</Item>
+               <Item>'A'</Item>
+               <Item>a</Item>
+              </Issue>
+             </Message>
+             <Message Id="B" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Created="2008-05-07 23:37:23Z">
+              <Issue Name="MemberParameter">
+               <Item>'Mathematics.PlaneIntersection(Plane, Plane, Plane)'</Item>
+               <Item>B</Item>
+               <Item>'B'</Item>
+               <Item>b</Item>
+              </Issue>
+             </Message>
+             <Message Id="C" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Created="2008-05-07 23:37:23Z">
+              <Issue Name="MemberParameter">
+               <Item>'Mathematics.PlaneIntersection(Plane, Plane, Plane)'</Item>
+               <Item>C</Item>
+               <Item>'C'</Item>
+               <Item>c</Item>
+              </Issue>
+             </Message>
+             <Message Id="A" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-05-07 23:37:23Z">
+              <Issue Name="MemberParameterMoreMeaningfulName">
+               <Item>'Mathematics.PlaneIntersection(Plane, Plane, Plane)'</Item>
+               <Item>'A'</Item>
+              </Issue>
+             </Message>
+             <Message Id="B" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-05-07 23:37:23Z">
+              <Issue Name="MemberParameterMoreMeaningfulName">
+               <Item>'Mathematics.PlaneIntersection(Plane, Plane, Plane)'</Item>
+               <Item>'B'</Item>
+              </Issue>
+             </Message>
+             <Message Id="C" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-05-07 23:37:23Z">
+              <Issue Name="MemberParameterMoreMeaningfulName">
+               <Item>'Mathematics.PlaneIntersection(Plane, Plane, Plane)'</Item>
+               <Item>'C'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#RandomFloat()">
+            <Messages>
+             <Message Id="float" TypeName="IdentifiersShouldNotContainTypeNames" Category="Microsoft.Naming" CheckId="CA1720" Created="2008-05-07 23:37:23Z">
+              <Issue Name="LanguageSpecificMember">
+               <Item>Float</Item>
+               <Item>'Mathematics.RandomFloat()'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#RandomFloat(System.Single)">
+            <Messages>
+             <Message Id="float" TypeName="IdentifiersShouldNotContainTypeNames" Category="Microsoft.Naming" CheckId="CA1720" Created="2008-05-07 23:37:23Z">
+              <Issue Name="LanguageSpecificMember">
+               <Item>Float</Item>
+               <Item>'Mathematics.RandomFloat(float)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#RandomFloat(System.Single,System.Single)">
+            <Messages>
+             <Message Id="float" TypeName="IdentifiersShouldNotContainTypeNames" Category="Microsoft.Naming" CheckId="CA1720" Created="2008-05-07 23:37:23Z">
+              <Issue Name="LanguageSpecificMember">
+               <Item>Float</Item>
+               <Item>'Mathematics.RandomFloat(float, float)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="Naming">
+          <Members>
+           <Member Name="#NameFromSchema(System.Collections.Generic.IEnumerable`1&lt;System.String&gt;,System.String,System.Boolean)">
+            <Messages>
+             <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-05-07 23:37:23Z">
+              <Issue Name="TooGeneric">
+               <Item>'Naming.NameFromSchema(IEnumerable&lt;string&gt;, string, bool)'</Item>
+               <Item>'Exception'</Item>
+              </Issue>
+              <Issue Name="TooGeneric">
+               <Item>'Naming.NameFromSchema(IEnumerable&lt;string&gt;, string, bool)'</Item>
+               <Item>'Exception'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.Convert.ToInt32(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2008-05-07 23:37:23Z">
+              <Issue>
+               <Item>'Convert.ToInt32(string)'</Item>
+               <Item>'Naming.NameFromSchema(IEnumerable&lt;string&gt;, string, bool)'</Item>
+               <Item>'Convert.ToInt32(string, IFormatProvider)'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.Convert.ToString(System.Int32)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2008-05-07 23:37:23Z">
+              <Issue>
+               <Item>'Convert.ToString(int)'</Item>
+               <Item>'Naming.NameFromSchema(IEnumerable&lt;string&gt;, string, bool)'</Item>
+               <Item>'Convert.ToString(int, IFormatProvider)'</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="TestForEmptyStringsUsingStringLength" Category="Microsoft.Performance" CheckId="CA1820" Created="2008-05-07 23:37:23Z">
+              <Issue Name="IsNullOrEmpty">
+               <Item>'string.operator ==(string, string)'</Item>
+               <Item>'Naming.NameFromSchema(IEnumerable&lt;string&gt;, string, bool)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#NameFromSchema`1(System.Collections.Generic.IEnumerable`1&lt;!!0&gt;,System.String,System.Boolean)">
+            <Messages>
+             <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-05-07 23:37:23Z">
+              <Issue Name="TooGeneric">
+               <Item>'Naming.NameFromSchema&lt;T&gt;(IEnumerable&lt;T&gt;, string, bool)'</Item>
+               <Item>'Exception'</Item>
+              </Issue>
+              <Issue Name="TooGeneric">
+               <Item>'Naming.NameFromSchema&lt;T&gt;(IEnumerable&lt;T&gt;, string, bool)'</Item>
+               <Item>'Exception'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.Convert.ToInt32(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2008-05-07 23:37:23Z">
+              <Issue>
+               <Item>'Convert.ToInt32(string)'</Item>
+               <Item>'Naming.NameFromSchema&lt;T&gt;(IEnumerable&lt;T&gt;, string, bool)'</Item>
+               <Item>'Convert.ToInt32(string, IFormatProvider)'</Item>
+              </Issue>
+             </Message>
+             <Message Id="System.Convert.ToString(System.Int32)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2008-05-07 23:37:23Z">
+              <Issue>
+               <Item>'Convert.ToString(int)'</Item>
+               <Item>'Naming.NameFromSchema&lt;T&gt;(IEnumerable&lt;T&gt;, string, bool)'</Item>
+               <Item>'Convert.ToString(int, IFormatProvider)'</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="TestForEmptyStringsUsingStringLength" Category="Microsoft.Performance" CheckId="CA1820" Created="2008-05-07 23:37:23Z">
+              <Issue Name="IsNullOrEmpty">
+               <Item>'string.operator ==(string, string)'</Item>
+               <Item>'Naming.NameFromSchema&lt;T&gt;(IEnumerable&lt;T&gt;, string, bool)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="PitchYaw">
+          <Messages>
+           <Message TypeName="OverrideEqualsAndOperatorEqualsOnValueTypes" Category="Microsoft.Performance" CheckId="CA1815" Created="2008-05-07 23:37:23Z">
+            <Issue Name="Equals">
+             <Item>'PitchYaw'</Item>
+            </Issue>
+            <Issue Name="op_Equality">
+             <Item>'PitchYaw'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+         </Type>
+         <Type Name="QueryPerfCounter">
+          <Messages>
+           <Message Id="Perf" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-05-07 23:37:23Z">
+            <Issue Name="Type">
+             <Item>Perf</Item>
+             <Item>'QueryPerfCounter'</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#DurationTicks(System.Int32)">
+            <Messages>
+             <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-05-07 23:37:23Z">
+              <Issue Name="TooGeneric">
+               <Item>'QueryPerfCounter.DurationTicks(int)'</Item>
+               <Item>'Exception'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#QueryPerformanceCounter(System.Int64&amp;)">
+            <Messages>
+             <Message TypeName="MarkBooleanPInvokeArgumentsWithMarshalAs" Category="Microsoft.Interoperability" CheckId="CA1414" Created="2008-05-07 23:37:23Z">
+              <Issue Name="Return">
+               <Item>'QueryPerfCounter.QueryPerformanceCounter(out long)'</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Created="2008-05-07 23:37:23Z">
+              <Issue>
+               <Item>'QueryPerfCounter.QueryPerformanceCounter(out long)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#QueryPerformanceFrequency(System.Int64&amp;)">
+            <Messages>
+             <Message TypeName="MarkBooleanPInvokeArgumentsWithMarshalAs" Category="Microsoft.Interoperability" CheckId="CA1414" Created="2008-05-07 23:37:23Z">
+              <Issue Name="Return">
+               <Item>'QueryPerfCounter.QueryPerformanceFrequency(out long)'</Item>
+              </Issue>
+             </Message>
+             <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Created="2008-05-07 23:37:23Z">
+              <Issue>
+               <Item>'QueryPerfCounter.QueryPerformanceFrequency(out long)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="ReadOnlyList`1">
+          <Messages>
+           <Message TypeName="IdentifiersShouldHaveCorrectSuffix" Category="Microsoft.Naming" CheckId="CA1710" Created="2008-05-07 23:37:23Z">
+            <Issue>
+             <Item>'ReadOnlyList&lt;T&gt;'</Item>
+             <Item>Collection</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#.ctor(stillDesign.ListEx`1&lt;!0&gt;)">
+            <Messages>
+             <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-05-07 23:37:23Z">
+              <Issue Name="TooGeneric">
+               <Item>'ReadOnlyList&lt;T&gt;.ReadOnlyList(ListEx&lt;T&gt;)'</Item>
+               <Item>'Exception'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#ConvertAll`1(System.Converter`2&lt;!0,!!0&gt;)">
+            <Messages>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Created="2008-05-07 23:37:23Z">
+              <Issue>
+               <Item>'List&lt;TOutput&gt;'</Item>
+               <Item>'ReadOnlyList&lt;T&gt;.ConvertAll&lt;TOutput&gt;(Converter&lt;T, TOutput&gt;)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#GetRange(System.Int32,System.Int32)">
+            <Messages>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Created="2008-05-07 23:37:23Z">
+              <Issue>
+               <Item>'List&lt;T&gt;'</Item>
+               <Item>'ReadOnlyList&lt;T&gt;.GetRange(int, int)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#IsSyncronized">
+            <Messages>
+             <Message Id="Syncronized" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-05-07 23:37:23Z">
+              <Issue Name="Member">
+               <Item>Syncronized</Item>
+               <Item>'ReadOnlyList&lt;T&gt;.IsSyncronized'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#SetCollection(stillDesign.ListEx`1&lt;!0&gt;)">
+            <Messages>
+             <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-05-07 23:37:23Z">
+              <Issue Name="TooGeneric">
+               <Item>'ReadOnlyList&lt;T&gt;.SetCollection(ListEx&lt;T&gt;)'</Item>
+               <Item>'Exception'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="ReadOnlyListNotifiable`1">
+          <Messages>
+           <Message Id="Notifiable" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Created="2008-05-07 23:37:23Z">
+            <Issue Name="Type">
+             <Item>Notifiable</Item>
+             <Item>'ReadOnlyListNotifiable&lt;T&gt;'</Item>
+            </Issue>
+           </Message>
+           <Message TypeName="IdentifiersShouldDifferByMoreThanCase" Category="Microsoft.Naming" CheckId="CA1708" Created="2008-05-07 23:37:23Z">
+            <Issue Name="Member">
+             <Item>'OnAdd'</Item>
+             <Item>onAdd</Item>
+            </Issue>
+            <Issue Name="Member">
+             <Item>'OnRemove'</Item>
+             <Item>onRemove</Item>
+            </Issue>
+           </Message>
+           <Message TypeName="IdentifiersShouldHaveCorrectSuffix" Category="Microsoft.Naming" CheckId="CA1710" Created="2008-05-07 23:37:23Z">
+            <Issue>
+             <Item>'ReadOnlyListNotifiable&lt;T&gt;'</Item>
+             <Item>Collection</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#RaiseAdded(!0)">
+            <Messages>
+             <Message TypeName="UseEventsWhereAppropriate" Category="Microsoft.Design" CheckId="CA1030" Created="2008-05-07 23:37:23Z">
+              <Issue>
+               <Item>'ReadOnlyListNotifiable&lt;T&gt;.RaiseAdded(T)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#RaiseRemoved(!0)">
+            <Messages>
+             <Message TypeName="UseEventsWhereAppropriate" Category="Microsoft.Design" CheckId="CA1030" Created="2008-05-07 23:37:23Z">
+              <Issue>
+               <Item>'ReadOnlyListNotifiable&lt;T&gt;.RaiseRemoved(T)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#SetCollection(stillDesign.ListEx`1&lt;!0&gt;)">
+            <Messages>
+             <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-05-07 23:37:23Z">
+              <Issue Name="TooGeneric">
+               <Item>'ReadOnlyListNotifiable&lt;T&gt;.SetCollection(ListEx&lt;T&gt;)'</Item>
+               <Item>'Exception'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#onAdd" Kind="Event">
+            <Messages>
+             <Message TypeName="IdentifiersShouldHaveCorrectSuffix" Category="Microsoft.Naming" CheckId="CA1710" Created="2008-05-07 23:37:23Z">
+              <Issue>
+               <Item>'EventHandlerItem&lt;T&gt;'</Item>
+               <Item>EventHandler</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#onRemove" Kind="Event">
+            <Messages>
+             <Message TypeName="IdentifiersShouldHaveCorrectSuffix" Category="Microsoft.Naming" CheckId="CA1710" Created="2008-05-07 23:37:23Z">
+              <Issue>
+               <Item>'EventHandlerItem&lt;T&gt;'</Item>
+               <Item>EventHandler</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="ReadOnlyListOfNamedObjects`1">
+          <Messages>
+           <Message TypeName="IdentifiersShouldHaveCorrectSuffix" Category="Microsoft.Naming" CheckId="CA1710" Created="2008-05-07 23:37:23Z">
+            <Issue>
+             <Item>'ReadOnlyListOfNamedObjects&lt;T&gt;'</Item>
+             <Item>Collection</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#SetCollection(stillDesign.ListEx`1&lt;!0&gt;)">
+            <Messages>
+             <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2008-05-07 23:37:23Z">
+              <Issue Name="TooGeneric">
+               <Item>'ReadOnlyListOfNamedObjects&lt;T&gt;.SetCollection(ListEx&lt;T&gt;)'</Item>
+               <Item>'Exception'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="Reflection">
+          <Messages>
+           <Message TypeName="TypeNamesShouldNotMatchNamespaces" Category="Microsoft.Naming" CheckId="CA1724" Created="2008-05-07 23:37:23Z">
+            <Issue Name="System">
+             <Item>'Reflection'</Item>
+             <Item>System.Reflection</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#FindVariableReferences(System.Object,System.Object)">
+            <Messages>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Created="2008-05-07 23:37:23Z">
+              <Issue>
+               <Item>'List&lt;Type&gt;'</Item>
+               <Item>'Reflection.FindVariableReferences(object, object)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+      </Namespaces>
+     </Module>
+    </Modules>
+   </Target>
+  </Targets>
+  <Rules>
+   <Rule TypeName="DeclareEventHandlersCorrectly" Category="Microsoft.Design" CheckId="CA1009">
+    <Resolution Name="Second">Declare the second parameter of {0} as an EventArgs, or an instance of a type that extends EventArgs, named 'e'.</Resolution>
+   </Rule>
+   <Rule TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002">
+    <Resolution Name="Default">Change {0} in {1} to use Collection&lt;T&gt;, ReadOnlyCollection&lt;T&gt; or KeyedCollection&lt;K,V&gt;</Resolution>
+   </Rule>
+   <Rule TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201">
+    <Resolution Name="Reserved">{0} creates an exception of type {1}, an exception type that is reserved by the runtime and should never be raised by managed code. If this exception instance might be thrown, use a different exception type.</Resolution>
+    <Resolution Name="TooGeneric">{0} creates an exception of type {1}, an exception type that is not sufficiently specific and should never be raised by user code. If this exception instance might be thrown, use a different exception type.</Resolution>
+   </Rule>
+   <Rule TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709">
+    <Resolution Name="Member">Correct the casing of '{0}' in member name {1} by changing it to '{2}'.</Resolution>
+    <Resolution Name="MemberAbbreviation">Correct the casing of '{0}' in member name {1} by changing it to '{2}'. '{2}' is an abbreviation and therefore is not subject to acronym casing guidelines.</Resolution>
+    <Resolution Name="MemberParameter">In member {0}, correct the casing of '{1}' in parameter name {2} by changing it to '{3}'.</Resolution>
+    <Resolution Name="MemberParameterAbbreviation">In member {0}, correct the casing of '{1}' in parameter name {2} by changing it to '{3}'. '{3}' is an abbreviation and therefore is not subject to acronym casing guidelines.</Resolution>
+    <Resolution Name="Namespace">Correct the casing of '{0}' in namespace name '{1}' by changing it to '{2}'.</Resolution>
+    <Resolution Name="Type">Correct the casing of '{0}' in type name {1} by changing it to '{2}'.</Resolution>
+   </Rule>
+   <Rule TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704">
+    <Resolution Name="Member">Correct the spelling of '{0}' in member name {1} or remove it entirely if it represents any sort of Hungarian notation.</Resolution>
+    <Resolution Name="MemberMoreMeaningfulName">Consider providing a more meaningful name than member name {0}.</Resolution>
+    <Resolution Name="MemberParameter">In method {0}, correct the spelling of '{1}' in parameter name {2} or remove it entirely if it represents any sort of Hungarian notation.</Resolution>
+    <Resolution Name="MemberParameterMoreMeaningfulName">In method {0}, consider providing a more meaningful name than parameter name {1}.</Resolution>
+    <Resolution Name="Type">Correct the spelling of '{0}' in type name {1}.</Resolution>
+    <Resolution Name="TypeTypeParameterMoreMeaningfulName">On type {0}, consider providing a more meaningful name than generic type parameter name {1}.</Resolution>
+   </Rule>
+   <Rule TypeName="IdentifiersShouldDifferByMoreThanCase" Category="Microsoft.Naming" CheckId="CA1708">
+    <Resolution Name="Member">Change member names {0} and '{1}' so that they differ by more than case.</Resolution>
+   </Rule>
+   <Rule TypeName="IdentifiersShouldHaveCorrectPrefix" Category="Microsoft.Naming" CheckId="CA1715">
+    <Resolution Name="TypeTypeParameter">On type {0}, prefix generic type parameter name {1} with 'T'.</Resolution>
+   </Rule>
+   <Rule TypeName="IdentifiersShouldHaveCorrectSuffix" Category="Microsoft.Naming" CheckId="CA1710">
+    <Resolution Name="Default">Rename {0} to end in '{1}'.</Resolution>
+   </Rule>
+   <Rule TypeName="IdentifiersShouldNotContainTypeNames" Category="Microsoft.Naming" CheckId="CA1720">
+    <Resolution Name="LanguageIndependentMemberParameter">In member {0}, consider replacing the data type identifier '{1}' in parameter name {2} with a more generic term, such as 'value'.</Resolution>
+    <Resolution Name="LanguageSpecificMember">Consider replacing the language-specific data type identifier '{0}' in member name {1} with either a language-independent equivalent or a more generic term, such as 'value'.</Resolution>
+    <Resolution Name="LanguageSpecificMemberParameter">In member {0}, consider replacing the language-specific data type identifier '{1}' in parameter name {2} with a more generic term, such as 'value'.</Resolution>
+   </Rule>
+   <Rule TypeName="IdentifiersShouldNotHaveIncorrectSuffix" Category="Microsoft.Naming" CheckId="CA1711">
+    <Resolution Name="TypeNewerVersion">Either replace the suffix '{0}' in type name {1} with the suggested numeric alternate '2' or provide a more meaningful suffix that distinguishes it from the type it replaces.</Resolution>
+    <Resolution Name="TypeNoAlternate">Rename type name {0} so that it does not end in '{1}'.</Resolution>
+   </Rule>
+   <Rule TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033">
+    <Resolution Name="Default">Make {0} sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of {1} and is visible to derived classes.</Resolution>
+   </Rule>
+   <Rule TypeName="MarkBooleanPInvokeArgumentsWithMarshalAs" Category="Microsoft.Interoperability" CheckId="CA1414">
+    <Resolution Name="Return">Add the MarshalAsAttribute to the return type of P/Invoke {0}. If the corresponding unmanaged return type is a 4-byte Win32 'BOOL', use MarshalAs(UnmanagedType.Bool). For a 1-byte C++ 'bool', use MarshalAs(UnmanagedType.U1).</Resolution>
+   </Rule>
+   <Rule TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060">
+    <Resolution Name="Default">Because it is a P/Invoke method, {0} should be defined in a class named NativeMethods, SafeNativeMethods, or UnsafeNativeMethods.</Resolution>
+   </Rule>
+   <Rule TypeName="OverrideEqualsAndOperatorEqualsOnValueTypes" Category="Microsoft.Performance" CheckId="CA1815">
+    <Resolution Name="Equals">{0} should override Equals.</Resolution>
+    <Resolution Name="op_Equality">{0} should override the equality (==) and inequality (!=) operators.</Resolution>
+   </Rule>
+   <Rule TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305">
+    <Resolution Name="Default">Because the behavior of {0} could vary based on the current user's locale settings, replace this call in {1} with a call to {2}. If the result of {2} will be displayed to the user, specify 'CultureInfo.CurrentCulture' as the 'IFormatProvider' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify 'CultureInfo.InvariantCulture'.</Resolution>
+   </Rule>
+   <Rule TypeName="TestForEmptyStringsUsingStringLength" Category="Microsoft.Performance" CheckId="CA1820">
+    <Resolution Name="IsNullOrEmpty">Replace the call to {0} in {1} with a call to 'String.IsNullOrEmpty'.</Resolution>
+   </Rule>
+   <Rule TypeName="TypeNamesShouldNotMatchNamespaces" Category="Microsoft.Naming" CheckId="CA1724">
+    <Resolution Name="System">The type name {0} conflicts in whole or in part with the namespace name '{1}' defined in the .NET Framework. Rename the type to eliminate the conflict.</Resolution>
+   </Rule>
+   <Rule TypeName="UseEventsWhereAppropriate" Category="Microsoft.Design" CheckId="CA1030">
+    <Resolution Name="Default">Consider making {0} an event.</Resolution>
+   </Rule>
+  </Rules>
+ </FxCopReport>
+</FxCopProject>
