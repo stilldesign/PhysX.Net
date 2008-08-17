@@ -19,9 +19,16 @@
 #elif GRAPHICS_XNA2
 	#using <C:\Program Files\Microsoft XNA\XNA Game Studio\v2.0\References\Windows\x86\Microsoft.Xna.Framework.dll>
 	#if _DEBUG
-		#using <C:\Data\Development\Common Library\Common Library\bin\Debug XNA\StillDesign.CommonLibrary.dll>
+		#using <C:\Data\Development\Common Library\Common Library\bin\Debug XNA 2.0\StillDesign.CommonLibrary.dll>
 	#else
-		#using <C:\Data\Development\Common Library\Common Library\bin\Release XNA\StillDesign.CommonLibrary.dll>
+		#using <C:\Data\Development\Common Library\Common Library\bin\Release XNA 2.0\StillDesign.CommonLibrary.dll>
+	#endif
+#elif GRAPHICS_XNA3
+	#using <C:\Program Files\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.dll>
+	#if _DEBUG
+		#using <C:\Data\Development\Common Library\Common Library\bin\Debug XNA 3.0\StillDesign.CommonLibrary.dll>
+	#else
+		#using <C:\Data\Development\Common Library\Common Library\bin\Release XNA 3.0\StillDesign.CommonLibrary.dll>
 	#endif
 #elif GRAPHICS_SLIMDX
 	#using <C:\Program Files\SlimDX (June 2008)\SlimDX.dll>
@@ -38,6 +45,9 @@
 #define UsingFrameworkNamespace using namespace Microsoft::DirectX;
 #define UsingGraphicsNamespace using namespace Microsoft::DirectX::Direct3D;
 #elif GRAPHICS_XNA2
+#define UsingFrameworkNamespace using namespace Microsoft::Xna::Framework;
+#define UsingGraphicsNamespace using namespace Microsoft::Xna::Framework::Graphics;
+#elif GRAPHICS_XNA3
 #define UsingFrameworkNamespace using namespace Microsoft::Xna::Framework;
 #define UsingGraphicsNamespace using namespace Microsoft::Xna::Framework::Graphics;
 #elif GRAPHICS_SLIMDX

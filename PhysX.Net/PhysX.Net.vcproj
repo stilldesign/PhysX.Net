@@ -20,7 +20,7 @@
 	</ToolFiles>
 	<Configurations>
 		<Configuration
-			Name="Debug XNA|Win32"
+			Name="Debug XNA 2.0|Win32"
 			OutputDirectory="bin\$(ConfigurationName)"
 			IntermediateDirectory="bin\$(ConfigurationName)\Intermediate"
 			ConfigurationType="2"
@@ -93,7 +93,7 @@
 			/>
 		</Configuration>
 		<Configuration
-			Name="Release XNA|Win32"
+			Name="Release XNA 2.0|Win32"
 			OutputDirectory="bin\$(ConfigurationName)"
 			IntermediateDirectory="bin\$(ConfigurationName)\Intermediate"
 			ConfigurationType="2"
@@ -399,6 +399,147 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				PreprocessorDefinitions="GRAPHICS_SLIMDX;WIN32"
+				RuntimeLibrary="2"
+				UsePrecompiledHeader="1"
+				GenerateXMLDocumentationFiles="true"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="NxCharacter.lib NxCooking.lib NxExtensions.lib PhysXLoader.lib"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
+				TargetMachine="1"
+				KeyFile="C:\Data\Development\stillDesign\Keys\PublicPrivateKeyFile.snk"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
+			Name="Debug XNA 3.0|Win32"
+			OutputDirectory="$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="2"
+			ManagedExtensions="1"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				AdditionalIncludeDirectories="&quot;C:\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Cooking\include&quot;;&quot;C:\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Foundation\include&quot;;&quot;C:\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\NxCharacter\include&quot;;&quot;C:\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Physics\include&quot;;&quot;C:\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Physics\include\cloth&quot;;&quot;C:\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Physics\include\fluids&quot;;&quot;C:\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\Physics\include\softbody&quot;;&quot;C:\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\PhysXLoader\include&quot;;&quot;C:\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2&quot;"
+				PreprocessorDefinitions="_DEBUG;GRAPHICS_XNA3;WIN32"
+				RuntimeLibrary="3"
+				UsePrecompiledHeader="1"
+				WarningLevel="3"
+				DebugInformationFormat="3"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="NxCharacter.lib NxCooking.lib PhysXLoader.lib"
+				AdditionalLibraryDirectories="&quot;C:\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\lib\Win32&quot;"
+				GenerateDebugInformation="true"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
+				TargetMachine="1"
+				KeyFile="C:\Data\Development\stillDesign\Keys\PublicPrivateKeyFile.snk"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
+			Name="Release XNA 3.0|Win32"
+			OutputDirectory="$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="2"
+			ManagedExtensions="1"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				PreprocessorDefinitions="GRAPHICS_XNA3;WIN32"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="1"
 				GenerateXMLDocumentationFiles="true"
@@ -857,615 +998,6 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_Asc2Bin.cpp"
-				>
-				<FileConfiguration
-					Name="Debug XNA|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-						DisableSpecificWarnings="6385"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug MDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug SlimDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_ColladaExport.cpp"
-				>
-				<FileConfiguration
-					Name="Debug XNA|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-						DisableSpecificWarnings="6385"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug MDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug SlimDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_ColladaImport.cpp"
-				>
-				<FileConfiguration
-					Name="Debug XNA|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-						DisableSpecificWarnings="6385"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug MDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug SlimDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_cooking.cpp"
-				>
-				<FileConfiguration
-					Name="Debug XNA|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-						DisableSpecificWarnings="6385"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug MDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug SlimDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_customcopy.cpp"
-				>
-				<FileConfiguration
-					Name="Debug XNA|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-						DisableSpecificWarnings="6385"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug MDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug SlimDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_File.cpp"
-				>
-				<FileConfiguration
-					Name="Debug XNA|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-						DisableSpecificWarnings="6385"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug MDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug SlimDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_Geometry.cpp"
-				>
-				<FileConfiguration
-					Name="Debug XNA|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-						DisableSpecificWarnings="6385"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug MDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug SlimDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_GraphicsMesh.cpp"
-				>
-				<FileConfiguration
-					Name="Debug XNA|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-						DisableSpecificWarnings="6385"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug MDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug SlimDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_helper.cpp"
-				>
-				<FileConfiguration
-					Name="Debug XNA|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-						DisableSpecificWarnings="6385"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug MDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug SlimDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_hull.cpp"
-				>
-				<FileConfiguration
-					Name="Debug XNA|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-						DisableSpecificWarnings="6385"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug MDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug SlimDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_PhysicsExport.cpp"
-				>
-				<FileConfiguration
-					Name="Debug XNA|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-						DisableSpecificWarnings="6385"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug MDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug SlimDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_PhysicsInstantiator.cpp"
-				>
-				<FileConfiguration
-					Name="Debug XNA|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-						DisableSpecificWarnings="6385"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug MDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug SlimDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_ScaledCopy.cpp"
-				>
-				<FileConfiguration
-					Name="Debug XNA|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-						DisableSpecificWarnings="6385"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug MDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug SlimDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_schema.cpp"
-				>
-				<FileConfiguration
-					Name="Debug XNA|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-						DisableSpecificWarnings="6385"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug MDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug SlimDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_SchemaStream.cpp"
-				>
-				<FileConfiguration
-					Name="Debug XNA|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-						DisableSpecificWarnings="6385"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug MDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug SlimDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_Streaming.cpp"
-				>
-				<FileConfiguration
-					Name="Debug XNA|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-						DisableSpecificWarnings="6385"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug MDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug SlimDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_string.cpp"
-				>
-				<FileConfiguration
-					Name="Debug XNA|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-						DisableSpecificWarnings="6385"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug MDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug SlimDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_tinystr.cpp"
-				>
-				<FileConfiguration
-					Name="Debug XNA|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-						DisableSpecificWarnings="6385"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug MDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug SlimDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_tinyxml.cpp"
-				>
-				<FileConfiguration
-					Name="Debug XNA|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-						DisableSpecificWarnings="6385"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug MDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug SlimDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_tinyxmlerror.cpp"
-				>
-				<FileConfiguration
-					Name="Debug XNA|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-						DisableSpecificWarnings="6385"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug MDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug SlimDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_tinyxmlparser.cpp"
-				>
-				<FileConfiguration
-					Name="Debug XNA|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-						DisableSpecificWarnings="6385"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug MDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug SlimDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
 				RelativePath=".\PhysX.Net\Object Cache.cpp"
 				>
 			</File>
@@ -1613,7 +1145,7 @@
 				RelativePath=".\PhysX.Net\Soft Body Split Pair Data.cpp"
 				>
 				<FileConfiguration
-					Name="Debug XNA|Win32"
+					Name="Debug XNA 2.0|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1622,7 +1154,7 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release XNA|Win32"
+					Name="Release XNA 2.0|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1659,6 +1191,24 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Release SlimDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\$(InputName)1.obj"
+						XMLDocumentationFileName="$(IntDir)\$(InputName)1.xdc"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug XNA 3.0|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\$(InputName)1.obj"
+						XMLDocumentationFileName="$(IntDir)\$(InputName)1.xdc"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release XNA 3.0|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1813,6 +1363,262 @@
 				<File
 					RelativePath=".\PhysX.Net\Utilities User Notify.cpp"
 					>
+				</File>
+			</Filter>
+			<Filter
+				Name="NXU"
+				>
+				<File
+					RelativePath=".\PhysX.Net\NxuStream2\NXU_Asc2Bin.cpp"
+					>
+					<FileConfiguration
+						Name="Debug XNA 2.0|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\NxuStream2\NXU_ColladaExport.cpp"
+					>
+					<FileConfiguration
+						Name="Debug XNA 2.0|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\NxuStream2\NXU_ColladaImport.cpp"
+					>
+					<FileConfiguration
+						Name="Debug XNA 2.0|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\NxuStream2\NXU_cooking.cpp"
+					>
+					<FileConfiguration
+						Name="Debug XNA 2.0|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\NxuStream2\NXU_customcopy.cpp"
+					>
+					<FileConfiguration
+						Name="Debug XNA 2.0|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\NxuStream2\NXU_File.cpp"
+					>
+					<FileConfiguration
+						Name="Debug XNA 2.0|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\NxuStream2\NXU_Geometry.cpp"
+					>
+					<FileConfiguration
+						Name="Debug XNA 2.0|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\NxuStream2\NXU_GraphicsMesh.cpp"
+					>
+					<FileConfiguration
+						Name="Debug XNA 2.0|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\NxuStream2\NXU_helper.cpp"
+					>
+					<FileConfiguration
+						Name="Debug XNA 2.0|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\NxuStream2\NXU_hull.cpp"
+					>
+					<FileConfiguration
+						Name="Debug XNA 2.0|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\NxuStream2\NXU_PhysicsExport.cpp"
+					>
+					<FileConfiguration
+						Name="Debug XNA 2.0|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\NxuStream2\NXU_PhysicsInstantiator.cpp"
+					>
+					<FileConfiguration
+						Name="Debug XNA 2.0|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\NxuStream2\NXU_ScaledCopy.cpp"
+					>
+					<FileConfiguration
+						Name="Debug XNA 2.0|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\NxuStream2\NXU_schema.cpp"
+					>
+					<FileConfiguration
+						Name="Debug XNA 2.0|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\NxuStream2\NXU_SchemaStream.cpp"
+					>
+					<FileConfiguration
+						Name="Debug XNA 2.0|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\NxuStream2\NXU_Streaming.cpp"
+					>
+					<FileConfiguration
+						Name="Debug XNA 2.0|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\NxuStream2\NXU_string.cpp"
+					>
+					<FileConfiguration
+						Name="Debug XNA 2.0|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\NxuStream2\NXU_tinystr.cpp"
+					>
+					<FileConfiguration
+						Name="Debug XNA 2.0|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\NxuStream2\NXU_tinyxml.cpp"
+					>
+					<FileConfiguration
+						Name="Debug XNA 2.0|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\NxuStream2\NXU_tinyxmlerror.cpp"
+					>
+					<FileConfiguration
+						Name="Debug XNA 2.0|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\NxuStream2\NXU_tinyxmlparser.cpp"
+					>
+					<FileConfiguration
+						Name="Debug XNA 2.0|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							UsePrecompiledHeader="0"
+						/>
+					</FileConfiguration>
 				</File>
 			</Filter>
 		</Filter>
@@ -2100,7 +1906,14 @@
 					RelativePath=".\PhysX.Net\Controller Manager.h"
 					>
 					<FileConfiguration
-						Name="Debug XNA|Win32"
+						Name="Debug XNA 2.0|Win32"
+						>
+						<Tool
+							Name="VCCustomBuildTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug XNA 3.0|Win32"
 						>
 						<Tool
 							Name="VCCustomBuildTool"
@@ -2526,86 +2339,6 @@
 				<Filter
 					Name="NXU"
 					>
-					<File
-						RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_Asc2Bin.h"
-						>
-					</File>
-					<File
-						RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_ColladaExport.h"
-						>
-					</File>
-					<File
-						RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_ColladaImport.h"
-						>
-					</File>
-					<File
-						RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_cooking.h"
-						>
-					</File>
-					<File
-						RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_customcopy.h"
-						>
-					</File>
-					<File
-						RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_File.h"
-						>
-					</File>
-					<File
-						RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_Geometry.h"
-						>
-					</File>
-					<File
-						RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_GraphicsMesh.h"
-						>
-					</File>
-					<File
-						RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_helper.h"
-						>
-					</File>
-					<File
-						RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_hull.h"
-						>
-					</File>
-					<File
-						RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_PhysicsExport.h"
-						>
-					</File>
-					<File
-						RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_PhysicsInstantiator.h"
-						>
-					</File>
-					<File
-						RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_ScaledCopy.h"
-						>
-					</File>
-					<File
-						RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_schema.h"
-						>
-					</File>
-					<File
-						RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_SchemaStream.h"
-						>
-					</File>
-					<File
-						RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_SchemaTypes.h"
-						>
-					</File>
-					<File
-						RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_Streaming.h"
-						>
-					</File>
-					<File
-						RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_string.h"
-						>
-					</File>
-					<File
-						RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_tinystr.h"
-						>
-					</File>
-					<File
-						RelativePath="..\..\..\..\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Tools\NxuStream2\NXU_tinyxml.h"
-						>
-					</File>
 				</Filter>
 			</Filter>
 			<Filter
@@ -2621,10 +2354,6 @@
 				</File>
 				<File
 					RelativePath=".\PhysX.Net\Soft Body Mesh.h"
-					>
-				</File>
-				<File
-					RelativePath=".\Soft Body Split Pair Data.h"
 					>
 				</File>
 				<File
@@ -2788,13 +2517,93 @@
 					>
 				</File>
 			</Filter>
+			<Filter
+				Name="NXU"
+				>
+				<File
+					RelativePath=".\PhysX.Net\NxuStream2\NXU_Asc2Bin.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\NxuStream2\NXU_ColladaExport.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\NxuStream2\NXU_ColladaImport.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\NxuStream2\NXU_cooking.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\NxuStream2\NXU_customcopy.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\NxuStream2\NXU_File.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\NxuStream2\NXU_Geometry.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\NxuStream2\NXU_GraphicsMesh.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\NxuStream2\NXU_helper.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\NxuStream2\NXU_hull.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\NxuStream2\NXU_PhysicsExport.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\NxuStream2\NXU_PhysicsInstantiator.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\NxuStream2\NXU_ScaledCopy.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\NxuStream2\NXU_schema.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\NxuStream2\NXU_SchemaStream.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\NxuStream2\NXU_SchemaTypes.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\NxuStream2\NXU_Streaming.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\NxuStream2\NXU_string.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\NxuStream2\NXU_tinystr.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\NxuStream2\NXU_tinyxml.h"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<File
 			RelativePath=".\Changelog.txt"
-			>
-		</File>
-		<File
-			RelativePath=".\TODO.txt"
 			>
 		</File>
 	</Files>
