@@ -1,0 +1,2 @@
+C:\Data\Development\PhysX.Net\Demo 1\Engine\Content\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Data\Development\PhysX.Net\PhysX.Net Samples\Engine\Content\obj\x86\Debug\ResolveAssemblyReference.cache
