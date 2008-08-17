@@ -21,8 +21,7 @@ RevoluteJoint::RevoluteJoint( NxRevoluteJoint* revoluteJoint ) : Joint( revolute
 
 void RevoluteJoint::LoadFromDescription( RevoluteJointDescription^ description )
 {
-	if( description == nullptr )
-		throw gcnew ArgumentNullException( "description" );
+	ThrowIfDescriptionIsNullOrInvalid( description, "description" );
 	
 	this->UnmanagedPointer->loadFromDesc( *description->UnmanagedPointer );
 	
@@ -31,7 +30,8 @@ void RevoluteJoint::LoadFromDescription( RevoluteJointDescription^ description )
 RevoluteJointDescription^ RevoluteJoint::SaveToDescription()
 {
 	RevoluteJointDescription^ desc = gcnew RevoluteJointDescription();
-		this->UnmanagedPointer->saveToDesc( *desc->UnmanagedPointer );
+
+	this->UnmanagedPointer->saveToDesc( *desc->UnmanagedPointer );
 	
 	Joint::SaveToDescription( desc );
 	

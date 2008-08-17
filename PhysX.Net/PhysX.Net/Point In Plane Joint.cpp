@@ -13,6 +13,8 @@ PointInPlaneJoint::PointInPlaneJoint( NxPointInPlaneJoint* pointInPlaneJoint ) :
 
 void PointInPlaneJoint::LoadFromDescription( PointInPlaneJointDescription^ description )
 {
+	ThrowIfDescriptionIsNullOrInvalid( description, "description" );
+	
 	this->UnmanagedPointer->loadFromDesc( *description->UnmanagedPointer );
 	
 	Joint::LoadFromDescription( description );
@@ -20,7 +22,8 @@ void PointInPlaneJoint::LoadFromDescription( PointInPlaneJointDescription^ descr
 PointInPlaneJointDescription^ PointInPlaneJoint::SaveToDescription()
 {
 	PointInPlaneJointDescription^ desc = gcnew PointInPlaneJointDescription();
-		this->UnmanagedPointer->saveToDesc( *desc->UnmanagedPointer );
+	
+	this->UnmanagedPointer->saveToDesc( *desc->UnmanagedPointer );
 	
 	Joint::SaveToDescription( desc );
 	

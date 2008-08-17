@@ -13,6 +13,8 @@ PointOnLineJoint::PointOnLineJoint( NxPointOnLineJoint* pointOnLineJoint ) : Joi
 
 void PointOnLineJoint::LoadFromDescription( PointOnLineJointDescription^ description )
 {
+	ThrowIfDescriptionIsNullOrInvalid( description, "description" );
+	
 	this->UnmanagedPointer->loadFromDesc( *description->UnmanagedPointer );
 	
 	Joint::LoadFromDescription( description );
@@ -20,7 +22,8 @@ void PointOnLineJoint::LoadFromDescription( PointOnLineJointDescription^ descrip
 PointOnLineJointDescription^ PointOnLineJoint::SaveToDescription()
 {
 	PointOnLineJointDescription^ desc = gcnew PointOnLineJointDescription();
-		this->UnmanagedPointer->saveToDesc( *desc->UnmanagedPointer );
+
+	this->UnmanagedPointer->saveToDesc( *desc->UnmanagedPointer );
 	
 	Joint::SaveToDescription( desc );
 	

@@ -16,6 +16,8 @@ D6Joint::D6Joint( NxD6Joint* d6Joint ) : Joint( d6Joint )
 
 void D6Joint::LoadFromDescription( D6JointDescription^ description )
 {
+	ThrowIfDescriptionIsNullOrInvalid( description, "description" );
+	
 	this->UnmanagedPointer->loadFromDesc( *description->UnmanagedPointer );
 	
 	Joint::LoadFromDescription( description );
@@ -23,7 +25,8 @@ void D6Joint::LoadFromDescription( D6JointDescription^ description )
 D6JointDescription^ D6Joint::SaveToDescription()
 {
 	D6JointDescription^ desc = gcnew D6JointDescription();
-		this->UnmanagedPointer->saveToDesc( *desc->UnmanagedPointer );
+	
+	this->UnmanagedPointer->saveToDesc( *desc->UnmanagedPointer );
 	
 	Joint::SaveToDescription( desc );
 	

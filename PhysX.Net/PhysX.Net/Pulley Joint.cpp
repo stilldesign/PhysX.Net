@@ -15,6 +15,8 @@ PulleyJoint::PulleyJoint( NxPulleyJoint* pulleyJoint ) : Joint( pulleyJoint )
 
 void PulleyJoint::LoadFromDescription( PulleyJointDescription^ description )
 {
+	ThrowIfDescriptionIsNullOrInvalid( description, "description" );
+	
 	this->UnmanagedPointer->loadFromDesc( *description->UnmanagedPointer );
 	
 	Joint::LoadFromDescription( description );
@@ -22,7 +24,8 @@ void PulleyJoint::LoadFromDescription( PulleyJointDescription^ description )
 PulleyJointDescription^ PulleyJoint::SaveToDescription()
 {
 	PulleyJointDescription^ desc = gcnew PulleyJointDescription();
-		this->UnmanagedPointer->saveToDesc( *desc->UnmanagedPointer );
+
+	this->UnmanagedPointer->saveToDesc( *desc->UnmanagedPointer );
 	
 	Joint::SaveToDescription( desc );
 	

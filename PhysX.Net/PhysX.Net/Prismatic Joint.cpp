@@ -15,6 +15,8 @@ PrismaticJoint::PrismaticJoint( NxPrismaticJoint* prismaticJoint ) : Joint( pris
 
 void PrismaticJoint::LoadFromDescription( PrismaticJointDescription^ description )
 {
+	ThrowIfDescriptionIsNullOrInvalid( description, "description" );
+	
 	this->UnmanagedPointer->loadFromDesc( *description->UnmanagedPointer );
 	
 	Joint::LoadFromDescription( description );
@@ -22,7 +24,8 @@ void PrismaticJoint::LoadFromDescription( PrismaticJointDescription^ description
 PrismaticJointDescription^ PrismaticJoint::SaveToDescription()
 {
 	PrismaticJointDescription^ desc = gcnew PrismaticJointDescription();
-		this->UnmanagedPointer->saveToDesc( *desc->UnmanagedPointer );
+	
+	this->UnmanagedPointer->saveToDesc( *desc->UnmanagedPointer );
 	
 	Joint::SaveToDescription( desc );
 	

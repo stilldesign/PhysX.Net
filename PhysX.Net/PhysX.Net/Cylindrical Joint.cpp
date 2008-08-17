@@ -14,6 +14,8 @@ CylindricalJoint::CylindricalJoint( NxCylindricalJoint* cylindricalJoint ) : Joi
 
 void CylindricalJoint::LoadFromDescription( CylindricalJointDescription^ description )
 {
+	ThrowIfDescriptionIsNullOrInvalid( description, "description" );
+	
 	this->UnmanagedPointer->loadFromDesc( *description->UnmanagedPointer );
 	
 	Joint::LoadFromDescription( description );
@@ -21,7 +23,8 @@ void CylindricalJoint::LoadFromDescription( CylindricalJointDescription^ descrip
 CylindricalJointDescription^ CylindricalJoint::SaveToDescription()
 {
 	CylindricalJointDescription^ desc = gcnew CylindricalJointDescription();
-		this->UnmanagedPointer->saveToDesc( *desc->UnmanagedPointer );
+	
+	this->UnmanagedPointer->saveToDesc( *desc->UnmanagedPointer );
 	
 	Joint::SaveToDescription( desc );
 	

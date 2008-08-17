@@ -119,18 +119,27 @@ FluidDescription^ Fluid::SaveToDescription( bool saveEmitters )
 		_fluid->saveEmittersToFluidDesc( *desc );
 	
 	FluidDescription^ d = gcnew FluidDescription( desc );
+		// These stream should be created by the fluid description base's constructor to wrap the passed in data
+		//d->ParticleWriteData = this->ParticleWriteData;
+		//d->ParticleDeletionIdWriteData = this->ParticleDeletionIdWriteData;
+		//d->ParticleCreationIdWriteData = this->ParticleCreationIdWriteData;
+		//d->FluidPacketData = this->FluidPacketData;
+		d->Compartment = this->Compartment;
 		d->UserData = this->UserData;
 	
 	return d;
 }
 void Fluid::LoadFromDescription( FluidDescription^ description )
 {
+	ThrowIfNull( description, "description" );
+	
 	_fluid->loadFromDesc( *description->UnmanagedPointer );
 }
 
 FluidEmitter^ Fluid::CreateFluidEmitter( FluidEmitterDescription^ description )
 {
 	ThrowIfNull( description, "description" );
+	
 	if( description->IsValid() == false )
 		throw gcnew ArgumentException( "Description is invalid" );
 	
@@ -456,7 +465,11 @@ void Fluid::CollisionGroup::set( short value )
 }
 void Fluid::ParticleWriteData::set( ParticleData^ value )
 {
+	ThrowIfNull( value, "value" );
+	
 	_particleWriteData = value;
+	
+	_fluid->setParticlesWriteData( *value->UnmanagedPointer );
 }
 ParticleIdData^ Fluid::ParticleDeletionIdWriteData::get()
 {
@@ -464,7 +477,11 @@ ParticleIdData^ Fluid::ParticleDeletionIdWriteData::get()
 }
 void Fluid::ParticleDeletionIdWriteData::set( ParticleIdData^ value )
 {
+	ThrowIfNull( value, "value" );
+	
 	_particleDeletionIdWriteData = value;
+	
+	_fluid->setParticleDeletionIdWriteData( *value->UnmanagedPointer );
 }
 ParticleIdData^ Fluid::ParticleCreationIdWriteData::get()
 {
@@ -472,7 +489,11 @@ ParticleIdData^ Fluid::ParticleCreationIdWriteData::get()
 }
 void Fluid::ParticleCreationIdWriteData::set( ParticleIdData^ value )
 {
+	ThrowIfNull( value, "value" );
+	
 	_particleCreationIdWriteData = value;
+	
+	_fluid->setParticleCreationIdWriteData( *value->UnmanagedPointer );
 }
 StillDesign::PhysX::FluidPacketData^ Fluid::FluidPacketData::get()
 {
@@ -480,7 +501,11 @@ StillDesign::PhysX::FluidPacketData^ Fluid::FluidPacketData::get()
 }
 void Fluid::FluidPacketData::set( StillDesign::PhysX::FluidPacketData^ value )
 {
+	ThrowIfNull( value, "value" );
+	
 	_fluidPacketData = value;
+	
+	_fluid->setFluidPacketData( *value->UnmanagedPointer );
 }
 
 Object^ Fluid::UserData::get()

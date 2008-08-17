@@ -13,6 +13,8 @@ DistanceJoint::DistanceJoint( NxDistanceJoint* distanceJoint ) : Joint( distance
 
 void DistanceJoint::LoadFromDescription( DistanceJointDescription^ description )
 {
+	ThrowIfDescriptionIsNullOrInvalid( description, "description" );
+	
 	this->UnmanagedPointer->loadFromDesc( *description->UnmanagedPointer );
 	
 	Joint::LoadFromDescription( description );
@@ -20,7 +22,8 @@ void DistanceJoint::LoadFromDescription( DistanceJointDescription^ description )
 DistanceJointDescription^ DistanceJoint::SaveToDescription()
 {
 	DistanceJointDescription^ desc = gcnew DistanceJointDescription();
-		this->UnmanagedPointer->saveToDesc( *desc->UnmanagedPointer );
+
+	this->UnmanagedPointer->saveToDesc( *desc->UnmanagedPointer );
 	
 	Joint::SaveToDescription( desc );
 	

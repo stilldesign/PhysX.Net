@@ -90,7 +90,7 @@ namespace StillDesign
 					int get();
 				}
 				
-				/// <summary>Gets the Number of Bytes to the Next Vertex</summary>
+				/// <summary>Gets the number of bytes to the between each vertex</summary>
 				property int VertexStrideSize
 				{
 					int get();

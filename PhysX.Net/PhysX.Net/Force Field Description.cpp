@@ -85,19 +85,31 @@ bool ForceFieldDescription::IsValid()
 
 void ForceFieldDescription::_group_onAdd( Object^ sender, ForceFieldShapeGroup^ e )
 {
+	if( e == nullptr )
+		throw gcnew InvalidOperationException( "Cannot add a null force field shape group" );
+	
 	_forceFieldDesc->shapeGroups.push_back( e->UnmanagedPointer );
 }
 void ForceFieldDescription::_group_onRemove( Object^ sender, ForceFieldShapeGroup^ e )
 {
+	if( e == nullptr )
+		throw gcnew InvalidOperationException( "Cannot remove a null force field shape group" );
+	
 	_forceFieldDesc->shapeGroups.deleteEntry( e->UnmanagedPointer );
 }
 
 void ForceFieldDescription::_shapeDescriptions_onAdd( Object^ sender, ForceFieldShapeDescription^ e )
 {
+	if( e == nullptr )
+		throw gcnew InvalidOperationException( "Cannot add a null force field shape description" );
+	
 	_forceFieldDesc->includeGroupShapes.push_back( e->UnmanagedPointer );
 }
 void ForceFieldDescription::_shapeDescriptions_onRemove( Object^ sender, ForceFieldShapeDescription^ e )
 {
+	if( e == nullptr )
+		throw gcnew InvalidOperationException( "Cannot remove a null force field shape description" );
+	
 	_forceFieldDesc->includeGroupShapes.deleteEntry( e->UnmanagedPointer );
 }
 

@@ -70,6 +70,11 @@ void TriangleMeshDescription::SetToDefault()
 	_materialIndicesStream = nullptr;
 }
 
+generic<class T>
+PhysicsStream^ TriangleMeshDescription::AllocateMaterialIndices( int numberOfMaterialIndices )
+{
+	return AllocateMaterialIndices( sizeof( T ) * numberOfMaterialIndices, sizeof( T ) );
+}
 PhysicsStream^ TriangleMeshDescription::AllocateMaterialIndices( int size, int strideSize )
 {
 	StdPhysicsStreamAlloc( _materialIndicesStream, this->UnmanagedPointer->materialIndices, this->UnmanagedPointer->materialIndexStride );

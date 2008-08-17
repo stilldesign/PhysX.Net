@@ -59,14 +59,14 @@ namespace StillDesign
 				/// <summary>Returns material index of given triangle</summary>
 				NxMaterialIndex GetTriangleMaterialIndex( unsigned int triangleID );
 				
-				/// <summary></summary>
+				/// <summary>The name of the triangle mesh</summary>
 				property String^ Name
 				{
 					String^ get();
 					void set( String^ value );
 				}
 				
-				/// <summary></summary>
+				/// <summary>Gets the core the owns the triangle mesh</summary>
 				property StillDesign::PhysX::Core^ Core
 				{
 					StillDesign::PhysX::Core^ get();

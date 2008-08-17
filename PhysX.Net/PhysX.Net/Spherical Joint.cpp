@@ -15,7 +15,7 @@ SphericalJoint::SphericalJoint( NxSphericalJoint* sphericalJoint ) : Joint( sphe
 
 void SphericalJoint::LoadFromDescription( SphericalJointDescription^ description )
 {
-	ThrowIfNull( description, "description" );
+	ThrowIfDescriptionIsNullOrInvalid( description, "description" );
 	
 	this->UnmanagedPointer->loadFromDesc( *description->UnmanagedPointer );
 	
@@ -24,7 +24,8 @@ void SphericalJoint::LoadFromDescription( SphericalJointDescription^ description
 SphericalJointDescription^ SphericalJoint::SaveToDescription()
 {
 	SphericalJointDescription^ desc = gcnew SphericalJointDescription();
-		this->UnmanagedPointer->saveToDesc( *desc->UnmanagedPointer );
+	
+	this->UnmanagedPointer->saveToDesc( *desc->UnmanagedPointer );
 	
 	Joint::SaveToDescription( desc );
 		

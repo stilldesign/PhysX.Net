@@ -203,7 +203,7 @@ void SceneDescription::Limits::set( SceneLimits^ value )
 	if( value == nullptr )
 		_sceneDescription->limits = NULL;
 	else
-		*_sceneDescription->limits = (NxSceneLimits)value;
+		_sceneDescription->limits = value->UnmanagedPointer;
 }
 
 StillDesign::PhysX::SimulationType SceneDescription::SimulationType::get()

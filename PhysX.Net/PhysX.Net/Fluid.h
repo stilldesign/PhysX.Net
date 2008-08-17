@@ -67,6 +67,8 @@ namespace StillDesign
 				
 				/// <summary>Saves the fluid and emitter descriptors</summary>
 				FluidDescription^ SaveToDescription();
+				/// <summary>Saves the fluid and emitter descriptors</summary>
+				/// <param name="saveEmitters">Save the emitters to the description also</param>
 				FluidDescription^ SaveToDescription( bool saveEmitters );
 				/// <summary>Loads the fluid descriptor</summary>
 				void LoadFromDescription( FluidDescription^ description );

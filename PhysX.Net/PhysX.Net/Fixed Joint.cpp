@@ -14,6 +14,8 @@ FixedJoint::FixedJoint( NxFixedJoint* fixedJoint ) : Joint( fixedJoint )
 
 void FixedJoint::LoadFromDescription( FixedJointDescription^ description )
 {
+	ThrowIfDescriptionIsNullOrInvalid( description, "description" );
+	
 	this->UnmanagedPointer->loadFromDesc( *description->UnmanagedPointer );
 	
 	Joint::LoadFromDescription( description );
@@ -21,7 +23,8 @@ void FixedJoint::LoadFromDescription( FixedJointDescription^ description )
 FixedJointDescription^ FixedJoint::SaveToDescription()
 {
 	FixedJointDescription^ desc = gcnew FixedJointDescription();
-		this->UnmanagedPointer->saveToDesc( *desc->UnmanagedPointer );
+	
+	this->UnmanagedPointer->saveToDesc( *desc->UnmanagedPointer );
 	
 	Joint::SaveToDescription( desc );
 	

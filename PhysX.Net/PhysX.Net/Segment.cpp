@@ -15,11 +15,13 @@ Segment::Segment( Vector3 point0, Vector3 point1 )
 float Segment::LengthSqaured()
 {
 	Vector3 d = this->Point0 - this->Point1;
-	
-#if GRAPHICS_XNA2
+
+#if GRAPHICS_MDX
+	return d.LengthSq();	
+#elif GRAPHICS_XNA2
 	return d.LengthSquared();
-#elif GRAPHICS_MDX
-	return d.LengthSq();
+#elif GRAPHICS_XNA3
+	return d.LengthSquared();
 #elif GRAPHICS_SLIMDX
 	return d.LengthSquared();
 #endif

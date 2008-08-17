@@ -24,20 +24,26 @@ namespace StillDesign
 				where V : ValueType
 				static TriangleMeshDescription^ Create( array<T>^ triangleIndices, array<V>^ vertices );
 				
-				/// <summary></summary>
+				/// <summary>Returns true if the descriptor is valid</summary>
 				virtual DescriptorValidity^ IsValid() override;
-				/// <summary></summary>
+				/// <summary>Sets the structure to the default</summary>
 				virtual void SetToDefault() override;
 				
-				/// <summary></summary>
+				/// <summary>Allocates memory for material indices</summary>
+				/// <typeparam name="T">The type of each material index</typeparam>
+				generic<class T> where T : ValueType
+				PhysicsStream^ AllocateMaterialIndices( int numberOfMaterialIndices );
+				/// <summary>Allocates memory for material indices</summary>
+				/// <param name="size">The amount (in bytes) of memory to allocate</param>
+				/// <param name="strideSize">The amount (in bytes) between each material index</param>
 				PhysicsStream^ AllocateMaterialIndices( int size, int strideSize );
 				
-				/// <summary></summary>
+				/// <summary>Gets the stream to the material indices</summary>
 				property PhysicsStream^ MaterialIndicesStream
 				{
 					PhysicsStream^ get();
 				}
-				/// <summary></summary>
+				/// <summary>Tolerance for the convex edge detector</summary>
 				property Axis HeightFieldVerticalAxis
 				{
 					Axis get();

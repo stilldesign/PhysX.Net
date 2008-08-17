@@ -96,8 +96,11 @@ array<Vector3>^ SoftBody::GetPositions()
 }
 void SoftBody::SetPositions( array<Vector3>^ value )
 {
+	ThrowIfNull( value, "value" );
+	
 	NxVec3* positions = new NxVec3[ value->Length ];
 	
+	// TODO Perhaps a pinned pointer and memcpy?
 	for( int x = 0; x < value->Length; x++ )
 	{
 		positions[ x ] = Math::Vector3ToNxVec3( value[ x ] );
@@ -131,6 +134,8 @@ array<Vector3>^ SoftBody::GetVelocities()
 }
 void SoftBody::SetVelocities( array<Vector3>^ value )
 {
+	ThrowIfNull( value, "value" );
+	
 	NxVec3* velocities = new NxVec3[ value->Length ];
 	
 	for( int x = 0; x < value->Length; x++ )
@@ -214,6 +219,7 @@ array<Shape^>^ SoftBody::GetInteractingShapes()
 	}
 	
 	delete[] s;
+	s = NULL;
 	
 	return shapes;
 }

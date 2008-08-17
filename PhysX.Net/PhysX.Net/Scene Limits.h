@@ -52,6 +52,11 @@ namespace StillDesign
 					int get();
 					void set( int value );
 				}
+				
+				property NxSceneLimits* UnmanagedPointer
+				{
+					NxSceneLimits* get();
+				}
 		};
 	};
 };

@@ -94,3 +94,8 @@ void SceneLimits::MaximumJoints::set( int value )
 {
 	_sceneLimits->maxNbJoints = value;
 }
+
+NxSceneLimits* SceneLimits::UnmanagedPointer::get()
+{
+	return _sceneLimits;
+}

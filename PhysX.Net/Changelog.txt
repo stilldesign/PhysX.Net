@@ -24,6 +24,8 @@ Fixed bug where Shape.CCDSkeleton was not populated on construction of the shape
 *.SetToDefault() works much better. Managed references are nulled out, or defaulted themselves.
 Joint.GetLimitPoint() is now of type Vector3?. The return is null if the internal functions NxJoint::getLimitPoint() returns false
 Project and all source code is avaliable online at codeplex - http://www.codeplex.com/physxdotnet
+Fluid stream properties now set the unmanaged versions they wrap
+Fixed SceneDescription.Limits.Set from crashing
 
 [0.9.1.0 - 2008-06-28]
 Fixed WheelShape.GetContactData()

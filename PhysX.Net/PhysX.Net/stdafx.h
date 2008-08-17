@@ -162,6 +162,13 @@ using namespace StillDesign;
 	if( var != nullptr && var->IsDisposed == true )\
 		throw gcnew ArgumentException( "Argument is disposed", varName );\
 }
+#define ThrowIfDescriptionIsNullOrInvalid( var, varName )\
+{\
+	ThrowIfNull( var, varName );\
+	\
+	if( var->IsValid() == false )\
+		throw gcnew ArgumentException( "Description is invalid", varName );\
+}
 
 #define ToManagedString( unmanagedString ) StillDesign::PhysX::Functions::UnmanagedToManagedString( unmanagedString )
 #define ToUnmanagedString( managedString ) StillDesign::PhysX::Functions::ManagedToUnmanagedString( managedString )

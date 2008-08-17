@@ -81,6 +81,7 @@ using namespace StillDesign::PhysX;
 
 //
 
+#pragma region Constructor etc
 Scene::Scene( NxScene* scene )
 {
 	if( scene == NULL )
@@ -268,7 +269,9 @@ bool Scene::IsDisposed::get()
 {
 	return ( _scene == NULL );
 }
+#pragma endregion
 
+#pragma region Add Unmanaged Objects
 Actor^ Scene::AddActor( NxActor* actor )
 {
 	Actor^ a = gcnew Actor( actor );
@@ -388,6 +391,7 @@ SoftBody^ Scene::AddSoftBody( NxSoftBody* softBody )
 	
 	return s;
 }
+#pragma endregion
 
 SceneDescription^ Scene::SaveToDescription()
 {
