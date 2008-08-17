@@ -5,6 +5,10 @@
 	Name="StillDesign.PhysX.Net"
 	ProjectGUID="{9E50593F-DB72-44D1-8A1D-2AE73214383E}"
 	RootNamespace="PhysX.Net"
+	SccProjectName="SAK"
+	SccAuxPath="SAK"
+	SccLocalPath="SAK"
+	SccProvider="SAK"
 	TargetFrameworkVersion="131072"
 	>
 	<Platforms>
