@@ -17,6 +17,7 @@ ConvexShapeDescription::ConvexShapeDescription() : ShapeDescription( new NxConve
 ConvexShapeDescription::ConvexShapeDescription( StillDesign::PhysX::ConvexMesh^ convexMesh ) : ShapeDescription( new NxConvexShapeDesc() )
 {
 	ThrowIfDisposed( convexMesh, "convexMesh" );
+
 	this->ConvexMesh = convexMesh;
 }
 

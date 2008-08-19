@@ -6,14 +6,9 @@
 
 using namespace StillDesign::PhysX;
 
-UserControllerHitReport::UserControllerHitReport( Scene^ scene, ControllerHitReport^ hitReport ) : NxUserControllerHitReport()
+UserControllerHitReport::UserControllerHitReport( ControllerHitReport^ hitReport ) : NxUserControllerHitReport()
 {
-	if( hitReport == nullptr )
-		throw gcnew ArgumentNullException( "hitReport" );
-	if( scene == nullptr )
-		throw gcnew ArgumentNullException( "scene" );
-	
-	_scene = scene;
+	ThrowIfNull( hitReport, "hitReport" );
 	
 	_hitReport = hitReport;
 }
@@ -32,9 +27,9 @@ NxControllerAction UserControllerHitReport::onControllerHit( const NxControllers
 
 //
 
-ControllerHitReport::ControllerHitReport( Scene^ scene )
+ControllerHitReport::ControllerHitReport()
 {
-	_hitReport = new UserControllerHitReport( scene, this );
+	_hitReport = new UserControllerHitReport( this );
 }
 ControllerHitReport::~ControllerHitReport()
 {

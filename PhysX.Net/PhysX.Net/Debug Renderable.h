@@ -83,16 +83,14 @@ namespace StillDesign
 			private:
 				const NxDebugRenderable* _debugRenderable;
 			
-			private:
-				DebugRenderable();
+			internal:
+				DebugRenderable( NxDebugRenderable* debugRenderable );
 			public:
 				~DebugRenderable();
 			protected:
 				!DebugRenderable();
 			
 			public:
-				static DebugRenderable^ FromUnmanagedPointer( const NxDebugRenderable* debugRenderable );
-				
 				array< DebugPoint >^ GetDebugPoints();
 				array< DebugLine >^ GetDebugLines();
 				array< DebugTriangle >^ GetDebugTriangles();

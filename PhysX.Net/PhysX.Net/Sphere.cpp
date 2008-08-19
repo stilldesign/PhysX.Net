@@ -37,6 +37,8 @@ bool Sphere::Contains( Vector3 point )
 	return (this->Center - point).LengthSquared() <= this->Radius*this->Radius;
 #elif GRAPHICS_SLIMDX
 	return (this->Center - point).LengthSquared() <= this->Radius*this->Radius;
+#else
+	#error No graphics target specified
 #endif
 }
 bool Sphere::Contains( Sphere sphere )
@@ -56,6 +58,8 @@ bool Sphere::Contains( Sphere sphere )
 	return (this->Center - sphere.Center).LengthSquared() <= r*r;
 #elif GRAPHICS_SLIMDX
 	return (this->Center - sphere.Center).LengthSquared() <= r*r;
+#else
+	#error No graphics target specified
 #endif
 }
 
@@ -71,6 +75,8 @@ bool Sphere::Intersects( Sphere sphere )
 	return (this->Center - sphere.Center).LengthSquared() <= r*r;
 #elif GRAPHICS_SLIMDX
 	return (this->Center - sphere.Center).LengthSquared() <= r*r;
+#else
+	#error No graphics target specified
 #endif
 }
 

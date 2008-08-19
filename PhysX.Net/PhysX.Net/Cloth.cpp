@@ -331,6 +331,7 @@ array< Vector3 >^ Cloth::ParticlePositions::get()
 	}
 	
 	free( buffer );
+	buffer = NULL;
 	
 	return positions;
 }
@@ -354,6 +355,7 @@ void Cloth::ParticlePositions::set( array<Vector3>^ value )
 	_cloth->setPositions( buffer );
 	
 	free( buffer );
+	buffer = NULL;
 }
 
 array<Vector3>^ Cloth::ParticleVelocities::get()
@@ -375,6 +377,7 @@ array<Vector3>^ Cloth::ParticleVelocities::get()
 	}
 	
 	free( buffer );
+	buffer = NULL;
 	
 	return velocities;
 }

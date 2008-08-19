@@ -54,11 +54,7 @@ bool StillDesign::PhysX::ControllerManager::IsDisposed::get()
 
 StillDesign::PhysX::Controller^ StillDesign::PhysX::ControllerManager::CreateController( ControllerDescription^ controllerDescription )
 {
-	if( controllerDescription == nullptr )
-		throw gcnew ArgumentNullException( "controllerDescription" );
-	
-	if( controllerDescription->IsValid() == false )
-		throw gcnew ArgumentException( "Controller description is invalid" );
+	ThrowIfDescriptionIsNullOrInvalid( controllerDescription, "controllerDescription" );
 	
 	Controller^ controller;
 	

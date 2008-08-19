@@ -195,8 +195,7 @@ Scene^ Core::CreateScene( Vector3 gravity, bool groundPlane )
 }
 Scene^ Core::CreateScene( SceneDescription^ sceneDescription )
 {
-	if( sceneDescription == nullptr )
-		throw gcnew ArgumentNullException( "sceneDescription" );
+	ThrowIfDescriptionIsNullOrInvalid( sceneDescription, "sceneDescription" );
 	
 	NxSceneDesc* sceneDesc = sceneDescription->UnmanagedPointer;
 	
@@ -291,8 +290,7 @@ ClothMesh^ Core::CreateClothMesh( Stream^ stream )
 }
 HeightField^ Core::CreateHeightField( HeightFieldDescription^ description )
 {
-	if( description == nullptr )
-		throw gcnew ArgumentNullException( "description" );
+	ThrowIfDescriptionIsNullOrInvalid( description, "description" );
 	
 	NxHeightField* hf = _physicsSDK->createHeightField( *description->UnmanagedPointer );
 	if( hf == null )

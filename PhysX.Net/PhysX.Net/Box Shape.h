@@ -22,23 +22,24 @@ namespace StillDesign
 				
 				Box GetWorldSpaceOBB();
 				
-				/// <summary>Gets or Sets the Size of the Box Shape</summary>
+				// <summary>Gets or Sets the dimensions of the box shape</summary>
+				property Vector3 Dimensions
+				{
+					Vector3 get();
+					void set( Vector3 value );
+				}
+				/// <summary>Gets or Sets the Size of the box shape</summary>
 				property Vector3 Size
 				{
 					Vector3 get();
 					void set( Vector3 value );
 				}
-			
+				
 			internal:
 				property NxBoxShape* UnmanagedPointer
 				{
 					NxBoxShape* get() new;
 				}
 		};
-		
-		/*public ref class BoxShapesManager : BaseListNotifiableRetrieveOnly< BoxShape^ >
-		{
-			
-		};*/
 	};
 };

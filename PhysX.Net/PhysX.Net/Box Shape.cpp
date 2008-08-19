@@ -35,6 +35,15 @@ Box BoxShape::GetWorldSpaceOBB()
 	return (Box)worldOBB;
 }
 
+Vector3 BoxShape::Dimensions::get()
+{
+	return Math::NxVec3ToVector3( this->UnmanagedPointer->getDimensions() );
+}
+void BoxShape::Dimensions::set( Vector3 value )
+{
+	this->UnmanagedPointer->setDimensions( Math::Vector3ToNxVec3( value ) );
+}
+
 Vector3 BoxShape::Size::get()
 {
 	return Math::NxVec3ToVector3( this->UnmanagedPointer->getDimensions() ) * 2.0f;

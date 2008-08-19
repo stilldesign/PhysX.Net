@@ -36,6 +36,12 @@ Box::operator NxBox( Box box )
 		newBox.rot = Math::QuaternionNxQuat( Mathematics::RotationMatrixToQuaternion( Matrix::RotationQuaternion( box.Rotation ) ) );
 #elif GRAPHICS_XNA2
 		newBox.rot = Math::QuaternionNxQuat( Mathematics::RotationMatrixToQuaternion( Matrix::CreateFromQuaternion( box.Rotation ) ) );
+#elif GRAPHICS_XNA3
+		newBox.rot = Math::QuaternionNxQuat( Mathematics::RotationMatrixToQuaternion( Matrix::CreateFromQuaternion( box.Rotation ) ) );
+#elif GRAPHICS_SLIMDX
+		newBox.rot = Math::QuaternionNxQuat( Mathematics::RotationMatrixToQuaternion( Matrix::RotationQuaternion( box.Rotation ) ) );
+#else
+	#error No graphics target specified
 #endif
 	
 	return newBox;

@@ -22,11 +22,10 @@ namespace StillDesign
 		class UserControllerHitReport : public NxUserControllerHitReport
 		{
 			private:
-				gcroot< Scene^ > _scene;
 				gcroot< ControllerHitReport^ > _hitReport;
 			
 			public:
-				UserControllerHitReport( Scene^ scene, ControllerHitReport^ hitReport );
+				UserControllerHitReport( ControllerHitReport^ hitReport );
 				
 				NxControllerAction onShapeHit( const NxControllerShapeHit &hit );
 				NxControllerAction onControllerHit( const NxControllersHit &hit );
@@ -38,7 +37,7 @@ namespace StillDesign
 				UserControllerHitReport* _hitReport;
 			
 			protected:
-				ControllerHitReport( Scene^ scene );
+				ControllerHitReport();
 			public:
 				~ControllerHitReport();
 			protected:

@@ -25,9 +25,11 @@ DebugTriangle::DebugTriangle( Vector3 point0, Vector3 point1, Vector3 point2, in
 	_color = color;
 }
 
-DebugRenderable::DebugRenderable()
+DebugRenderable::DebugRenderable( NxDebugRenderable* debugRenderable )
 {
-	
+	Debug::Assert( debugRenderable != NULL );
+
+	_debugRenderable = debugRenderable;
 }
 DebugRenderable::~DebugRenderable()
 {
@@ -38,17 +40,9 @@ DebugRenderable::!DebugRenderable()
 	SAFE_DELETE( _debugRenderable );
 }
 
-DebugRenderable^ DebugRenderable::FromUnmanagedPointer( const NxDebugRenderable* debugRenderable )
-{
-	DebugRenderable^ r = gcnew DebugRenderable();
-		r->_debugRenderable = debugRenderable;
-	
-	return r;
-}
-
 array< DebugPoint >^ DebugRenderable::GetDebugPoints()
 {
-	array< DebugPoint >^ points = gcnew array< DebugPoint >( this->PointCount );
+	array<DebugPoint>^ points = gcnew array<DebugPoint>( this->PointCount );
 	
 	const NxDebugPoint* j = _debugRenderable->getPoints();
 	for( int x = 0; x < this->PointCount; x++ )
@@ -65,7 +59,7 @@ array< DebugPoint >^ DebugRenderable::GetDebugPoints()
 }
 array< DebugLine >^ DebugRenderable::GetDebugLines()
 {
-	array< DebugLine >^ lines = gcnew array< DebugLine >( this->LineCount );
+	array<DebugLine>^ lines = gcnew array<DebugLine>( this->LineCount );
 	
 	const NxDebugLine* j = _debugRenderable->getLines();
 	for( int x = 0; x < this->LineCount; x++ )
@@ -85,7 +79,7 @@ array< DebugLine >^ DebugRenderable::GetDebugLines()
 }
 array< DebugTriangle >^ DebugRenderable::GetDebugTriangles()
 {
-	array< DebugTriangle >^ triangles = gcnew array< DebugTriangle >( this->TriangleCount );
+	array<DebugTriangle>^ triangles = gcnew array<DebugTriangle>( this->TriangleCount );
 	
 	const NxDebugTriangle* j = _debugRenderable->getTriangles();
 	for( int x = 0; x < this->TriangleCount; x++ )

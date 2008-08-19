@@ -37,7 +37,7 @@ Vector3 PlaneShape::Normal::get()
 {
 	const NxPlane plane = this->UnmanagedPointer->getPlane();
 	
-	return Vector3( plane.normal.x, plane.normal.y, plane.normal.z	 );
+	return Vector3( plane.normal.x, plane.normal.y, plane.normal.z );
 }
 void PlaneShape::Normal::set( Vector3 value )
 {
