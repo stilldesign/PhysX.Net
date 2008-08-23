@@ -25,7 +25,7 @@ float Segment::LengthSqaured()
 #elif GRAPHICS_SLIMDX
 	return d.LengthSquared();
 #else
-	#error No graphics target specified
+	#error No Graphics Target Specified
 #endif
 }
 Vector3 Segment::ComputePoint( float t )

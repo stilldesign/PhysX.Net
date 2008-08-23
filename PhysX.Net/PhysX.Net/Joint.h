@@ -20,7 +20,7 @@ namespace StillDesign
 		public ref class Joint abstract : StillDesign::PhysX::IDisposable
 		{
 			public:
-				ref class LimitPlaneCollection : ReadOnlyListNotifiable<LimitPlane>
+				ref class LimitPlaneCollection : ReadOnlyList<LimitPlane>
 				{
 					
 				};
@@ -39,7 +39,7 @@ namespace StillDesign
 				Actor^ _actor1;
 				Actor^ _actor2;
 				
-				ListNotifiable<LimitPlane, LimitPlaneCollection^>^ _limitPlanes;
+				List<LimitPlane, LimitPlaneCollection^>^ _limitPlanes;
 				
 				Object^ _userData;
 				

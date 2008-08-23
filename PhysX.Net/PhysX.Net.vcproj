@@ -68,7 +68,7 @@
 				RandomizedBaseAddress="1"
 				DataExecutionPrevention="0"
 				TargetMachine="1"
-				KeyFile="C:\Data\Development\stillDesign\Keys\PublicPrivateKeyFile.snk"
+				KeyFile=""
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -978,6 +978,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\PhysX.Net\List Base.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\List.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\PhysX.Net\Material Description.cpp"
 				>
 			</File>
@@ -1079,6 +1087,10 @@
 			</File>
 			<File
 				RelativePath=".\PhysX.Net\Raycast Reporting.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Read Only List.cpp"
 				>
 			</File>
 			<File
@@ -2805,6 +2817,10 @@
 					</FileConfiguration>
 				</File>
 			</Filter>
+			<Filter
+				Name="Collections"
+				>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -2864,7 +2880,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\PhysX.Net\List.h"
+				RelativePath=".\PhysX.Net\List Base.h"
 				>
 			</File>
 			<File
@@ -2885,6 +2901,10 @@
 			</File>
 			<File
 				RelativePath=".\PhysX.Net\Physics Parameters.h"
+				>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Read Only List.h"
 				>
 			</File>
 			<File
@@ -3782,6 +3802,14 @@
 				</File>
 				<File
 					RelativePath=".\PhysX.Net\NxuStream2\NXU_tinyxml.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Collections"
+				>
+				<File
+					RelativePath=".\PhysX.Net\List.h"
 					>
 				</File>
 			</Filter>

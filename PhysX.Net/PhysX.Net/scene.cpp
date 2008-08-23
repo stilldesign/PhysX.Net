@@ -973,7 +973,7 @@ void Scene::SetActorGroupPairFlags( short group1, short group2, ContactPairFlag 
 }
 array<ActorGroupPair>^ Scene::GetActorGroupPairs()
 {
-	ListEx<ActorGroupPair>^ pairs = gcnew ListEx<ActorGroupPair>();
+	System::Collections::Generic::List<ActorGroupPair>^ pairs = gcnew System::Collections::Generic::List<ActorGroupPair>();
 	
 	NxActorGroupPair pair;
 	NxU32 i = 0;

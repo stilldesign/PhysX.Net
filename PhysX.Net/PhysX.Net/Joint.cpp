@@ -33,7 +33,7 @@ Joint::Joint( NxJoint* joint )
 	if( actor2 != NULL )
 		_actor2 = ObjectCache::GetObject<Actor^>( (intptr_t)actor2 );
 	
-	_limitPlanes = gcnew ListNotifiable<LimitPlane, LimitPlaneCollection^>();
+	_limitPlanes = gcnew List<LimitPlane, LimitPlaneCollection^>();
 }
 Joint::~Joint()
 {

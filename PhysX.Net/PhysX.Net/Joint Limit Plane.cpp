@@ -19,6 +19,12 @@ LimitPlane::LimitPlane( Plane plane, float restitution )
 	_normal = Vector3( p.A, p.B, p.C );
 #elif GRAPHICS_XNA2
 	_normal = plane.Normal;
+#elif GRAPHICS_XNA3
+	_normal = plane.Normal;
+#elif GRAPHICS_SLIMDX
+	_normal = plane.Normal;
+#else
+	#error No Graphics Target Specified
 #endif
 	
 	_d = p.D;

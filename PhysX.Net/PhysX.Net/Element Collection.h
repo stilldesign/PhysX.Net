@@ -2,6 +2,7 @@
 
 #include "IDisposable.h"
 #include "List.h"
+#include "Read Only List.h"
 
 using namespace System::Runtime::InteropServices;
 
@@ -11,7 +12,7 @@ namespace StillDesign
 	{
 		generic< class T >
 			where T : ref class, StillDesign::PhysX::IDisposable
-		public ref class ReadOnlyElementCollection : StillDesign::ReadOnlyListNotifiable< T >
+		public ref class ReadOnlyElementCollection : ReadOnlyList<T>
 		{
 			public:
 				ReadOnlyElementCollection();
@@ -26,7 +27,7 @@ namespace StillDesign
 		generic< class T, class R >
 			where T : ref class, StillDesign::PhysX::IDisposable
 			where R : ReadOnlyElementCollection<T>, gcnew()
-		public ref class ElementCollection : StillDesign::ListNotifiable< T, R >
+		public ref class ElementCollection : List< T, R >
 		{
 			public:
 				ElementCollection();

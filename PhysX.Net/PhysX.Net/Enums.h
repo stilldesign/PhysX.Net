@@ -170,7 +170,7 @@ namespace StillDesign
 			Shapeless = NX_ADT_SHAPELESS,
 			Default = NX_ADT_DEFAULT,
 			Allocator = NX_ADT_ALLOCATOR,
-			List = NX_ADT_LIST,
+			ListType = NX_ADT_LIST,
 			Pointer = NX_ADT_POINTER
 		};
 		

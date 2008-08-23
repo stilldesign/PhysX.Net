@@ -174,7 +174,7 @@ Vector3 StillDesign::PhysX::Math::QuatToEuler( NxQuat q )
 	if( test >= 0.499999999999999999f )
 	{
 		rotation.Y = 2.0f * atan2( q.x, q.w );
-		rotation.Z = StillDesign::Mathematics::Pi;
+		rotation.Z = (float)System::Math::PI;
 		rotation.X = 0.0f;
 		
 		return rotation;
@@ -182,7 +182,7 @@ Vector3 StillDesign::PhysX::Math::QuatToEuler( NxQuat q )
 	if( test <= -0.499999999999999999f )
 	{
 		rotation.Y = -2.0f * atan2( q.x, q.w );
-		rotation.Z = -StillDesign::Mathematics::PiOver2;
+		rotation.Z = -((float)System::Math::PI / 2.0f);
 		rotation.X = 0.0f;
 		
 		return rotation;
@@ -223,6 +223,8 @@ NxPlane StillDesign::PhysX::Math::PlaneToNxPlane( Plane plane )
 	return NxPlane( plane.Normal.X, plane.Normal.Y, plane.Normal.Z, plane.D );
 #elif GRAPHICS_SLIMDX
 	return NxPlane( plane.Normal.X, plane.Normal.Y, plane.Normal.Z, plane.D );
+#else
+	#error No Graphics Target Specified
 #endif
 }
 Plane StillDesign::PhysX::Math::NxPlaneToPlane( NxPlane plane )
@@ -235,5 +237,7 @@ Plane StillDesign::PhysX::Math::NxPlaneToPlane( NxPlane plane )
 	return Plane( plane.normal.x, plane.normal.y, plane.normal.z, plane.d );
 #elif GRAPHICS_SLIMDX
 	return Plane( plane.normal.x, plane.normal.y, plane.normal.z, plane.d );
+#else
+	#error No Graphics Target Specified
 #endif
 }

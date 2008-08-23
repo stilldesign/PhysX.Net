@@ -19,10 +19,13 @@ Box::Box( Vector3 center, Vector3 size, Quaternion rotation )
 
 Box::operator Box( NxBox box )
 {
+	NxQuat q;
+	box.rot.toQuat( q );
+	
 	Box newBox;
 		newBox.Center = Math::NxVec3ToVector3( box.center );
 		newBox.Size = Math::NxVec3ToVector3( box.extents ) * 2.0f;
-		newBox.Rotation = Mathematics::RotationMatrixToQuaternion( Math::Mat33ToMatrix( &box.rot ) );
+		newBox.Rotation = Math::NxQuatToQuaternion( q );
 	
 	return newBox;
 }
@@ -32,14 +35,18 @@ Box::operator NxBox( Box box )
 		newBox.center = Math::Vector3ToNxVec3( box.Center );
 		newBox.extents = Math::Vector3ToNxVec3( box.Size ) * 0.5f;
 		
+		NxQuat q = Math::QuaternionNxQuat( box.Rotation );
+		NxMat33 rot;
+		rot.fromQuat( q );
+		
 #if GRAPHICS_MDX
-		newBox.rot = Math::QuaternionNxQuat( Mathematics::RotationMatrixToQuaternion( Matrix::RotationQuaternion( box.Rotation ) ) );
+		newBox.rot = rot;
 #elif GRAPHICS_XNA2
-		newBox.rot = Math::QuaternionNxQuat( Mathematics::RotationMatrixToQuaternion( Matrix::CreateFromQuaternion( box.Rotation ) ) );
+		newBox.rot = rot;
 #elif GRAPHICS_XNA3
-		newBox.rot = Math::QuaternionNxQuat( Mathematics::RotationMatrixToQuaternion( Matrix::CreateFromQuaternion( box.Rotation ) ) );
+	newBox.rot = rot;
 #elif GRAPHICS_SLIMDX
-		newBox.rot = Math::QuaternionNxQuat( Mathematics::RotationMatrixToQuaternion( Matrix::RotationQuaternion( box.Rotation ) ) );
+		newBox.rot = rot;
 #else
 	#error No graphics target specified
 #endif
@@ -67,6 +74,15 @@ Vector3 Box::Center::get()
 void Box::Center::set( Vector3 value )
 {
 	_center = value;
+}
+
+Vector3 Box::Extents::get()
+{
+	return _size * 0.5f;
+}
+void Box::Extents::set( Vector3 value )
+{
+	_size = value * 2.0f;
 }
 
 Vector3 Box::Size::get()

@@ -50,6 +50,8 @@ TriangleMeshDescription^ TriangleMeshDescription::Create( array<T>^ triangleIndi
 		
 		desc->VerticesStream->SetData( vertices );
 	}
+	
+	return desc;
 }
 
 DescriptorValidity^ TriangleMeshDescription::IsValid()

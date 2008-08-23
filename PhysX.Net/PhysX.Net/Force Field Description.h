@@ -22,11 +22,11 @@ namespace StillDesign
 		{
 			public:
 				// TODO: Check for disposals
-				ref class ForceFieldShapeGroupCollection : ListNotifiable<ForceFieldShapeGroup^>
+				ref class ForceFieldShapeGroupCollection : ListBase<ForceFieldShapeGroup^>
 				{
 					
 				};
-				ref class ForceFieldShapeDescriptionCollection : ListNotifiable<ForceFieldShapeDescription^>
+				ref class ForceFieldShapeDescriptionCollection : ListBase<ForceFieldShapeDescription^>
 				{
 					
 				};

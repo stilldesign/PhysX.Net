@@ -31,6 +31,11 @@ namespace StillDesign
 					Vector3 get();
 					void set( Vector3 value );
 				}
+				property Vector3 Extents
+				{
+					Vector3 get();
+					void set( Vector3 value );
+				}
 				property Vector3 Size
 				{
 					Vector3 get();

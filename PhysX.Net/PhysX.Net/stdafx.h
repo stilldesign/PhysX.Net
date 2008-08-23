@@ -8,35 +8,15 @@
 #pragma warning( disable : 4635 4800 4793 )
 
 #if GRAPHICS_MDX
-	#using <C:\WINDOWS\Microsoft.NET\DirectX for Managed Code\1.0.2902.0\Microsoft.DirectX.dll>
-	#using <C:\WINDOWS\Microsoft.NET\DirectX for Managed Code\1.0.2902.0\Microsoft.DirectX.Direct3D.dll>
-	#using <C:\WINDOWS\Microsoft.NET\DirectX for Managed Code\1.0.2911.0\Microsoft.DirectX.Direct3DX.dll>
-	#if _DEBUG
-		#using <C:\Data\Development\Common Library\Common Library\bin\Debug MDX\StillDesign.CommonLibrary.dll>
-	#else
-		#using <C:\Data\Development\Common Library\Common Library\bin\Release MDX\StillDesign.CommonLibrary.dll>
-	#endif
+	#using <C:\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2902.0\Microsoft.DirectX.dll>
+	#using <C:\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2902.0\Microsoft.DirectX.Direct3D.dll>
+	#using <C:\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2902.0\Microsoft.DirectX.Direct3DX.dll>
 #elif GRAPHICS_XNA2
 	#using <C:\Program Files\Microsoft XNA\XNA Game Studio\v2.0\References\Windows\x86\Microsoft.Xna.Framework.dll>
-	#if _DEBUG
-		#using <C:\Data\Development\Common Library\Common Library\bin\Debug XNA 2.0\StillDesign.CommonLibrary.dll>
-	#else
-		#using <C:\Data\Development\Common Library\Common Library\bin\Release XNA 2.0\StillDesign.CommonLibrary.dll>
-	#endif
 #elif GRAPHICS_XNA3
 	#using <C:\Program Files\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.dll>
-	#if _DEBUG
-		#using <C:\Data\Development\Common Library\Common Library\bin\Debug XNA 3.0\StillDesign.CommonLibrary.dll>
-	#else
-		#using <C:\Data\Development\Common Library\Common Library\bin\Release XNA 3.0\StillDesign.CommonLibrary.dll>
-	#endif
 #elif GRAPHICS_SLIMDX
 	#using <C:\Program Files\SlimDX (June 2008)\SlimDX.dll>
-	#if _DEBUG
-		#using <C:\Data\Development\Common Library\Common Library\bin\Debug SlimDX\StillDesign.CommonLibrary.dll>
-	#else
-		#using <C:\Data\Development\Common Library\Common Library\bin\Release SlimDX\StillDesign.CommonLibrary.dll>
-	#endif
 #else
 	#error No Graphics Target Specified
 #endif
@@ -108,6 +88,8 @@ bool IsInstanceOf( U u )
 #include "Math.h"
 #include "Descriptor Validity.h"
 #include "Object Cache.h"
+#include "List.h"
+#include "Read Only List.h"
 
 #define _CRT_SECURE_NO_DEPRECATE
 

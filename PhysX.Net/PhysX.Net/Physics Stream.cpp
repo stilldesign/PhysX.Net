@@ -59,7 +59,7 @@ generic<typename T> void PhysicsStream::CopyData( int offsetInBytes, int strideS
 	
 	if( bufferSizeToCopy < 0 )
 		throw gcnew InvalidOperationException( "The requested buffer size to copy cannot be less than 0" );
-	if( Mathematics::IsMultipleOf( bufferSizeToCopy, strideSize ) == false )
+	if( StillDesign::PhysX::Math::IsMultipleOf( bufferSizeToCopy, strideSize ) == false )
 		throw gcnew InvalidOperationException( "Stride size must be a multiple of the size of the data array" );
 	
 	//

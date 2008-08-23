@@ -19,7 +19,7 @@ namespace StillDesign
 		public ref class ShapeDescription abstract
 		{
 			public:
-				ref class ShapeDescriptionCollection : ListNotifiable<ShapeDescription^>
+				ref class ShapeDescriptionCollection : ListBase<ShapeDescription^>
 				{
 					
 				};

@@ -32,6 +32,11 @@ namespace StillDesign
 				
 				static NxPlane PlaneToNxPlane( Plane plane );
 				static Plane NxPlaneToPlane( NxPlane plane );
+				
+				static bool IsMultipleOf( int num, int divisor )
+				{
+					return ( num % divisor ) == 0;
+				}
 		};
 	};
 };

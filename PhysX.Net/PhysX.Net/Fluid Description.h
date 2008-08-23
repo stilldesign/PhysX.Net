@@ -18,7 +18,7 @@ namespace StillDesign
 		public ref class FluidDescription : FluidDescriptionBase
 		{
 			public:
-				ref class FluidEmitterDescriptionCollection : ListNotifiable<FluidEmitterDescription^>
+				ref class FluidEmitterDescriptionCollection : ListBase<FluidEmitterDescription^>
 				{
 					
 				};

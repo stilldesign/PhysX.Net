@@ -11,7 +11,7 @@ namespace StillDesign
 		public ref class ForceFieldShapeGroupDescription
 		{
 			public:
-				ref class ForceFieldShapeDescriptionCollection : ListNotifiable<ForceFieldShapeDescription^>
+				ref class ForceFieldShapeDescriptionCollection : ListBase<ForceFieldShapeDescription^>
 				{
 					
 				};
