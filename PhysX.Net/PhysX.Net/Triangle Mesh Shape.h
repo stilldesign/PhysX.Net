@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Enums.h"
-#include "Base Shape.h"
+#include "Shape.h"
 
 class NxTriangleMeshShape;
 

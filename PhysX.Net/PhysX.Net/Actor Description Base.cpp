@@ -3,7 +3,7 @@
 #include "Actor Description Base.h"
 
 #include "Actor.h"
-#include "Base Shape.h"
+#include "Shape.h"
 #include "Capsule Shape.h"
 #include "Plane Shape.h"
 #include "Triangle Mesh Shape Description.h"

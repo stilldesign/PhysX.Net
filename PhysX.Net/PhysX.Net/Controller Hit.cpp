@@ -2,7 +2,7 @@
 
 #include "Controller Hit.h"
 #include "Scene.h"
-#include "Base Shape.h"
+#include "Shape.h"
 #include "Actor.h"
 #include "User Output Stream.h"
 #include "Core.h"

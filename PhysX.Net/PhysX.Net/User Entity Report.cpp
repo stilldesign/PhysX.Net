@@ -2,7 +2,7 @@
 
 #include "User Entity Report.h"
 #include "Scene.h"
-#include "Base Shape.h"
+#include "Shape.h"
 #include "Sweep Query Hit.h"
 #include "Actor.h"
 

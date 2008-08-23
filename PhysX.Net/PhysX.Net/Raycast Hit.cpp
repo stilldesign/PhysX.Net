@@ -2,7 +2,7 @@
 
 #include "Raycast Hit.h"
 #include "Scene.h"
-#include "Base Shape.h"
+#include "Shape.h"
 
 using namespace StillDesign::PhysX;
 

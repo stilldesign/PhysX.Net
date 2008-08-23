@@ -2,7 +2,7 @@
 
 #include "Sphere Shape Description.h"
 #include "Sphere Shape.h"
-#include "Base Shape.h"
+#include "Shape.h"
 #include "Shape Description.h"
 #include "Actor.h"
 #include "Scene.h"

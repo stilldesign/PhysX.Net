@@ -1,6 +1,6 @@
 #include "StdAfx.h"
 
-#include "Base Shape.h"
+#include "Shape.h"
 #include "Material.h"
 #include "Actor.h"
 #include "Scene.h"

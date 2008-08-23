@@ -3,9 +3,9 @@
 #include "Fluid Emitter Description.h"
 #include "Math.h"
 #include "Functions.h"
-#include "Base Shape.h"
+#include "Shape.h"
 #include "Scene.h"
-#include "Base Shape.h"
+#include "Shape.h"
 
 using namespace StillDesign::PhysX;
 

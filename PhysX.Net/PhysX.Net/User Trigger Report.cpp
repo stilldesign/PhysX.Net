@@ -2,7 +2,7 @@
 
 #include "User Trigger Report.h"
 #include "Scene.h"
-#include "Base Shape.h"
+#include "Shape.h"
 
 #include <NxUserContactReport.h> 
 

@@ -2955,11 +2955,11 @@
 				Name="Shapes"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Base Shape.h"
+					RelativePath=".\PhysX.Net\Shape Description.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Shape Description.h"
+					RelativePath=".\PhysX.Net\Shape.h"
 					>
 				</File>
 				<Filter

@@ -2,7 +2,7 @@
 
 #include <NxConvexShape.h> 
 
-#include "Base Shape.h"
+#include "Shape.h"
 #include "Convex Shape Description.h"
 
 namespace StillDesign

@@ -5,7 +5,7 @@
 
 #include "Enums.h"
 #include "IDisposable.h"
-#include "Base Shape.h"
+#include "Shape.h"
 #include "Element Collection.h"
 
 using namespace System;

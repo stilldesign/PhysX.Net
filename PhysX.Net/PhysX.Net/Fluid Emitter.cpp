@@ -3,7 +3,7 @@
 #include "Fluid Emitter.h"
 #include "Math.h"
 #include "Functions.h"
-#include "Base Shape.h"
+#include "Shape.h"
 #include "Fluid.h"
 #include "Fluid Emitter Description.h"
 #include "Scene.h"

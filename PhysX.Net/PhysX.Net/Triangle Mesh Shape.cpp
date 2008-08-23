@@ -2,7 +2,7 @@
 
 #include "Triangle Mesh Shape.h"
 #include "Shape Description.h"
-#include "Base Shape.h"
+#include "Shape.h"
 #include "Actor.h"
 #include "Scene.h"
 #include "Bounds.h"

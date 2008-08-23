@@ -9,7 +9,7 @@
 #include "Enums.h"
 #include "Scene.h"
 #include "Actor.h"
-#include "Base Shape.h"
+#include "Shape.h"
 #include "Actor.h"
 
 #include <NxShape.h> 

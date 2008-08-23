@@ -1,7 +1,7 @@
 #include "StdAfx.h"
 
 #include "Convex Shape.h"
-#include "Base Shape.h"
+#include "Shape.h"
 #include "Actor.h"
 #include "Scene.h"
 #include "Convex Mesh.h"

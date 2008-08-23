@@ -3,7 +3,7 @@
 #include "Enums.h"
 #include "User Entity Report.h"
 #include "Triangle.h"
-#include "Base Shape.h"
+#include "Shape.h"
 
 using namespace System;
 

@@ -4,7 +4,7 @@
 #include "Actor Description.h"
 
 #include "Scene.h"
-#include "Base Shape.h"
+#include "Shape.h"
 #include "Shape Description.h"
 #include "Box Shape.h"
 #include "Sphere Shape.h"

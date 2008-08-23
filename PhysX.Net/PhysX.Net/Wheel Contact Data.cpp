@@ -1,6 +1,6 @@
 #include "StdAfx.h"
 
-#include "Base Shape.h"
+#include "Shape.h"
 #include "Wheel Contact Data.h"
 
 #include <NxWheelShape.h> 

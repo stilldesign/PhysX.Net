@@ -4,7 +4,7 @@
 #include "Tire Function Description.h"
 #include "Wheel Contact Data.h"
 
-#include "Base Shape.h"
+#include "Shape.h"
 #include "Shape Description.h"
 
 namespace StillDesign
