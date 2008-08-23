@@ -25,7 +25,7 @@ DebugTriangle::DebugTriangle( Vector3 point0, Vector3 point1, Vector3 point2, in
 	_color = color;
 }
 
-DebugRenderable::DebugRenderable( NxDebugRenderable* debugRenderable )
+DebugRenderable::DebugRenderable( const NxDebugRenderable* debugRenderable )
 {
 	Debug::Assert( debugRenderable != NULL );
 

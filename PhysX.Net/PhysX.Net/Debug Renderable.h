@@ -84,7 +84,7 @@ namespace StillDesign
 				const NxDebugRenderable* _debugRenderable;
 			
 			internal:
-				DebugRenderable( NxDebugRenderable* debugRenderable );
+				DebugRenderable( const NxDebugRenderable* debugRenderable );
 			public:
 				~DebugRenderable();
 			protected:

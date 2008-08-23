@@ -1033,7 +1033,7 @@ DebugRenderable^ Scene::GetDebugRenderable()
 {
 	const NxDebugRenderable* data = _scene->getDebugRenderable();
 	
-	DebugRenderable^ r = DebugRenderable::FromUnmanagedPointer( data );
+	DebugRenderable^ r = gcnew DebugRenderable( data );
 	
 	return r;
 }
