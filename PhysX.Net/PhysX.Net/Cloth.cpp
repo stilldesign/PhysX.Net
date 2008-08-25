@@ -84,6 +84,8 @@ ClothDescription^ Cloth::SaveToDescription()
 	}
 	
 	ClothDescription^ clothDesc = gcnew ClothDescription( desc, this->MeshData );
+		clothDesc->ClothMesh = this->ClothMesh;
+		clothDesc->Compartment = this->Compartment;
 		clothDesc->UserData = this->UserData;
 	
 	return clothDesc;

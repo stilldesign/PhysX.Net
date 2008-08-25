@@ -142,6 +142,7 @@ ActorDescription^ Actor::SaveToActorDescription( bool retrieveBody, bool retriev
 	}
 	
 	desc->UserData = this->UserData;
+	desc->Compartment = this->Compartment;
 	
 	return desc;
 }

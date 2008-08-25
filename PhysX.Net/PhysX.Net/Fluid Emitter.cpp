@@ -70,6 +70,7 @@ FluidEmitterDescription^ FluidEmitter::SaveToDescription()
 	
 	FluidEmitterDescription^ d = gcnew FluidEmitterDescription( desc );
 		d->UserData = this->UserData;
+		d->FrameShape = frameShape;
 	
 	return d;
 }

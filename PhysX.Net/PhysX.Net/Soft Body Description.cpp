@@ -21,7 +21,7 @@ SoftBodyDescription::SoftBodyDescription()
 	_meshData = gcnew StillDesign::PhysX::MeshData();
 	_splitPairData = gcnew SoftBodySplitPairData();
 }
-SoftBodyDescription::SoftBodyDescription( NxSoftBodyDesc* desc, StillDesign::PhysX::MeshData^ meshData )
+SoftBodyDescription::SoftBodyDescription( NxSoftBodyDesc* desc, StillDesign::PhysX::MeshData^ meshData, StillDesign::PhysX::SoftBodySplitPairData^ splitPairData )
 {
 	Debug::Assert( desc != NULL );
 	ThrowIfDisposed( meshData, "meshData" );
@@ -32,7 +32,7 @@ SoftBodyDescription::SoftBodyDescription( NxSoftBodyDesc* desc, StillDesign::Phy
 	if( desc->compartment != NULL )
 		_compartment = ObjectCache::GetObject<StillDesign::PhysX::Compartment^>( (intptr_t)desc->compartment );
 	_meshData = meshData;
-	_splitPairData = gcnew SoftBodySplitPairData();
+	_splitPairData = splitPairData;
 }
 SoftBodyDescription::~SoftBodyDescription()
 {

@@ -32,7 +32,7 @@ namespace StillDesign
 			public:
 				SoftBodyDescription();
 			internal:
-				SoftBodyDescription( NxSoftBodyDesc* desc, StillDesign::PhysX::MeshData^ meshData );
+				SoftBodyDescription( NxSoftBodyDesc* desc, StillDesign::PhysX::MeshData^ meshData, StillDesign::PhysX::SoftBodySplitPairData^ splitPairData );
 			public:
 				~SoftBodyDescription();
 			protected:

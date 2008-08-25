@@ -76,7 +76,9 @@ SoftBodyDescription^ SoftBody::SaveToDescription()
 		return nullptr;
 	}
 	
-	SoftBodyDescription^ d = gcnew SoftBodyDescription( desc, this->MeshData );
+	SoftBodyDescription^ d = gcnew SoftBodyDescription( desc, this->MeshData, this->SplitPairData );
+		d->SoftBodyMesh = this->SoftBodyMesh;
+		d->Compartment = this->Compartment;
 		d->UserData = this->UserData;
 	
 	return d;
