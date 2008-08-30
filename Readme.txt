@@ -1,7 +1,6 @@
 PhysX.Net Readme:
 Add the following files as references to your project.
-	'bin\<API>\StillDesign.PhysX.Net.dll'
-	'bin\<API>\StillDesign.CommonLibrary.dll'
+	'References\<Build Type>\<Graphics API>\StillDesign.PhysX.Net.dll'
 Copy the following PhysX 2.8.1 runtime files into your application path (these are usually in 'C:\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\Bin\win32')
 	PhysXLoader.dll
 	NxCharacter.dll

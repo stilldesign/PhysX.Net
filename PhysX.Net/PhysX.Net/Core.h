@@ -9,6 +9,7 @@
 #include "Height Field.h"
 #include "CCD Skeleton.h"
 #include "Soft Body Mesh.h"
+#include "Runtime File Checks.h"
 
 #include <NxFoundationSDK.h> 
 #include <NxPhysics.h>
@@ -80,6 +81,8 @@ namespace StillDesign
 				StillDesign::PhysX::UserOutputStream^ _userOutputStream;
 				
 				Foundation^ _foundation;
+				
+				bool _checkPhysXRuntimeFiles;
 			
 			public:
 				Core();
@@ -99,7 +102,11 @@ namespace StillDesign
 			private:
 				void CreateCore( CoreDescription^ desc, StillDesign::PhysX::UserOutputStream^ userOutputStream );
 				void CreateAux();
-			
+				
+			public:
+				static bool CheckAllPhysXRuntimeFiles();
+				static bool CheckAllPhysXRuntimeFiles( bool throwOnError );
+				
 			internal:
 				Scene^ AddScene( NxScene* scene );
 				TriangleMesh^ AddTriangleMesh( NxTriangleMesh* triangleMesh );
@@ -213,6 +220,12 @@ namespace StillDesign
 				property Version^ SDKVersion
 				{
 					static Version^ get();
+				}
+				
+				property bool CheckPhysXRuntimeFiles
+				{
+					bool get();
+					void set( bool value );
 				}
 				
 				/// <summary>Gets the User Output Stream</summary>

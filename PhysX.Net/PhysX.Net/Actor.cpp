@@ -49,8 +49,6 @@ Actor::Actor( NxActor* actor )
 	
 	_shapes = gcnew ElementCollection< Shape^, ShapeCollection^ >();
 	CreateShapes();
-	
-	//_disposing = false;
 }
 Actor::~Actor()
 {
@@ -60,8 +58,6 @@ Actor::!Actor()
 {
 	if( this->IsDisposed == true )
 		return;
-	
-	//_disposing = true;
 	
 	onDisposing( this, nullptr );
 	
@@ -76,17 +72,11 @@ Actor::!Actor()
 	_userData = nullptr;
 	
 	onDisposed( this, nullptr );
-	
-	//_disposing = false;
 }
 bool Actor::IsDisposed::get()
 {
 	return ( _actor == NULL );
 }
-//bool Actor::IsDisposing::get()
-//{
-//	return _disposing;
-//}
 
 ActorDescription^ Actor::SaveToActorDescription()
 {

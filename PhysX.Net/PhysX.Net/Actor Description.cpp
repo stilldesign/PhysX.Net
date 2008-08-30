@@ -28,7 +28,10 @@ ActorDescription::ActorDescription( ... array<ShapeDescription^>^ shapeDescripti
 {
 	CreateActorDescription();
 	
-	_shapes->AddRange( shapeDescriptions );
+	for each( ShapeDescription^ desc in shapeDescriptions )
+	{
+		_shapes->Add( desc );
+	}
 }
 ActorDescription::~ActorDescription()
 {

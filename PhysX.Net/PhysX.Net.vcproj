@@ -1114,6 +1114,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\PhysX.Net\Runtime File Checks.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\PhysX.Net\Scene Description.cpp"
 				>
 			</File>
@@ -3480,6 +3484,10 @@
 					RelativePath=".\PhysX.Net\Core.h"
 					>
 				</File>
+				<File
+					RelativePath=".\PhysX.Net\Runtime File Checks.h"
+					>
+				</File>
 			</Filter>
 			<Filter
 				Name="Cooking"
@@ -3816,6 +3824,10 @@
 		</Filter>
 		<File
 			RelativePath=".\Changelog.txt"
+			>
+		</File>
+		<File
+			RelativePath="..\Readme.txt"
 			>
 		</File>
 	</Files>

@@ -17,14 +17,20 @@ using namespace StillDesign::PhysX;
 
 Core::Core()
 {
+	CheckAllPhysXRuntimeFiles( true );
+	
 	CreateCore( gcnew CoreDescription(), nullptr );
 }
 Core::Core( CoreDescription^ description, StillDesign::PhysX::UserOutputStream^ userOutputStream )
 {
+	CheckAllPhysXRuntimeFiles( true );
+	
 	CreateCore( description, userOutputStream );
 }
 Core::Core( NxPhysicsSDK* core )
 {
+	CheckAllPhysXRuntimeFiles( true );
+	
 	Debug::Assert( core != NULL );
 	
 	ObjectCache::Add( (intptr_t)core, this );
@@ -120,6 +126,24 @@ void Core::CreateAux()
 	_softBodyMeshCollection = gcnew ElementCollection< SoftBodyMesh^, SoftBodyMeshCollection^ >();
 	
 	_foundation = gcnew StillDesign::PhysX::Foundation( &_physicsSDK->getFoundationSDK() );
+	
+	_checkPhysXRuntimeFiles = true;
+}
+
+bool Core::CheckAllPhysXRuntimeFiles()
+{
+	return CheckAllPhysXRuntimeFiles( false );
+}
+bool Core::CheckAllPhysXRuntimeFiles( bool throwOnError )
+{
+	bool result = RuntimeFileChecks::Check();
+	
+	if( throwOnError == true && result == false )
+	{
+		throw gcnew Exception( "PhysX Runtime file check failed" );
+	}else{
+		return result;
+	}
 }
 
 Scene^ Core::AddScene( NxScene* scene )
@@ -410,6 +434,15 @@ Version^ Core::InternalVersion::get()
 Version^ Core::SDKVersion::get()
 {
 	return gcnew Version( NX_SDK_VERSION_MAJOR, NX_SDK_VERSION_MINOR, NX_SDK_VERSION_BUGFIX );
+}
+
+bool Core::CheckPhysXRuntimeFiles::get()
+{
+	return _checkPhysXRuntimeFiles;
+}
+void Core::CheckPhysXRuntimeFiles::set( bool value )
+{
+	_checkPhysXRuntimeFiles = value;
 }
 
 StillDesign::PhysX::UserOutputStream^ Core::UserOutputStream::get()

@@ -6,7 +6,7 @@
 #include "Core.h"
 #include "Error Report.h"
 
-#include <NXU_Helper.h> 
+#include "NXU_Helper.h" 
 #include <NXU_schema.h> 
 
 using namespace System::IO;

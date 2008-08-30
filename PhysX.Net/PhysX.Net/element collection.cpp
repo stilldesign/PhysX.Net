@@ -31,7 +31,7 @@ generic< class T >void ReadOnlyElementCollection< T >::ReadOnlyElementCollection
 
 generic< class T >void ReadOnlyElementCollection< T >::ReadOnlyElement_onDisposing( System::Object^ sender, EventArgs^ e )
 {
-	this->Collection->Remove( (T)sender );
+	this->Items->Remove( (T)sender );
 }
 
 //

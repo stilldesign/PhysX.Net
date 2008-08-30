@@ -10,7 +10,7 @@
 #include "Joint Enums.h"
 #include "Controller Enums.h"
 
-#include <NXU_Helper.h> 
+#include "NXU_Helper.h" 
 #include <NxCooking.h>
 #include <NxUserContactReport.h> 
 #include <NxCapsuleController.h>
