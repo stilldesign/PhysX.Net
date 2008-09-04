@@ -7,10 +7,11 @@ namespace StillDesign
 		private ref class RuntimeFileChecks
 		{
 			public:
-				static bool Check();
+				static void Check();
 				
 			private:
-				static bool CheckFile( String^ filename, ... array<int>^ hash );
+				static void CheckFile( String^ filename, ... array<int>^ hash );
+				static System::String^ FindLibraryPath( System::String^ name );
 		};
 	};
 };

@@ -46,7 +46,7 @@ ActorDescription::!ActorDescription()
 }
 void ActorDescription::CreateActorDescription()
 {
-	_shapes = gcnew ShapeDescription::ShapeDescriptionCollection();
+	_shapes = gcnew ListBase< ShapeDescription^ >();
 	
 	_shapes->onAdd += gcnew EventHandlerItem< ShapeDescription^ >( this, &ActorDescription::ShapeAdded );
 	_shapes-> onRemove += gcnew EventHandlerItem< ShapeDescription^ >( this, &ActorDescription::ShapeRemoved );
@@ -97,7 +97,7 @@ void ActorDescription::ShapeRemoved( Object^ sender, ShapeDescription^ e )
 }
 
 
-ShapeDescription::ShapeDescriptionCollection^ ActorDescription::Shapes::get()
+ListBase< ShapeDescription^ >^ ActorDescription::Shapes::get()
 {
 	return _shapes;
 }

@@ -1,7 +1,5 @@
 #pragma once
 
-#include <NxTriangleMeshShapeDesc.h> 
-
 #include "Shape Description.h"
 
 namespace StillDesign

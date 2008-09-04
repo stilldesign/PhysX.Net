@@ -31,7 +31,7 @@ WheelContactData::WheelContactData()
 WheelContactData::WheelContactData( NxWheelContactData* contactData, Shape^ shape )
 {
 	if( contactData == NULL )
-		throw gcnew ApplicationException( "Contact data parameter is NULL" );
+		throw gcnew ArgumentNullException( "contactData", "Contact data parameter is NULL" );
 	
 	_contactData = contactData;
 	_shape = shape;

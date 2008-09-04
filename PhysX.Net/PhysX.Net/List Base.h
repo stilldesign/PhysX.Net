@@ -12,7 +12,7 @@ namespace StillDesign
 	namespace PhysX
 	{
 		generic<class T>
-		public ref class ListBase abstract : System::Collections::ObjectModel::Collection<T>
+		public ref class ListBase : System::Collections::ObjectModel::Collection<T>
 		{
 			public:
 				/// <summary>Occurs when an Item is Added to the Collection</summary>
@@ -36,12 +36,15 @@ namespace StillDesign
 				virtual void SetItem( int index, T item ) override;
 				
 				array<T>^ ToArray();
+
+				property System::Collections::ObjectModel::ReadOnlyCollection< T >^ ReadOnlyCollection
+				{
+					System::Collections::ObjectModel::ReadOnlyCollection< T >^ get();
+				}
+
+		private:
+			System::Collections::ObjectModel::ReadOnlyCollection< T >^ _readOnlyCollection;
 		};
-		
-		generic<class T>
-		private ref class InternalList : ListBase<T>
-		{
-			
-		};
+
 	};
 };

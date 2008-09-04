@@ -1,7 +1,5 @@
 #pragma once
 
-#include <NxJoint.h> 
-
 namespace StillDesign
 {
 	namespace PhysX

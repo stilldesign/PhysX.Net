@@ -3,6 +3,7 @@
 #include "Bounds.h"
 #include "Math.h"
 
+using namespace System::Globalization;
 using namespace StillDesign::PhysX;
 UsingFrameworkNamespace
 
@@ -145,7 +146,7 @@ String^ Bounds3::ToString()
 	Vector3 size = this->Size;
 	Vector3 center = this->Center;
 	
-	return String::Format( "Size: ( {0:0.00}, {1:0.00}, {2:0.00} ) Center: ( {3:0.00}, {4:0.00}, {5:0.00} )", size.X, size.Y, size.Z, center.X, center.Y, center.Z );
+	return String::Format( CultureInfo::CurrentCulture, "Size: ( {0:0.00}; {1:0.00}; {2:0.00} ) Center: ( {3:0.00}; {4:0.00}; {5:0.00} )", size.X, size.Y, size.Z, center.X, center.Y, center.Z );
 }
 
 //

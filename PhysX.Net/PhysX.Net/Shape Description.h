@@ -1,7 +1,5 @@
 #pragma once
 
-#include <NxShapeDesc.h>
-
 #include "Enums.h"
 #include "Groups Mask.h"
 
@@ -18,12 +16,6 @@ namespace StillDesign
 		
 		public ref class ShapeDescription abstract
 		{
-			public:
-				ref class ShapeDescriptionCollection : ListBase<ShapeDescription^>
-				{
-					
-				};
-			
 			protected:
 				NxShapeDesc* _desc;
 				

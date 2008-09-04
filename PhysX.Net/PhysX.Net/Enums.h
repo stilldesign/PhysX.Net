@@ -1,22 +1,12 @@
 #pragma once
 
-#include <NxPhysicsSDK.h>
-#include <NxScene.h> 
-#include <Nxp.h>
-#include <NxFluidDesc.h> 
-
 #include "Physics Parameters.h"
 #include "Fluid Enums.h"
 #include "Joint Enums.h"
 #include "Controller Enums.h"
 
-#include "NXU_Helper.h" 
-#include <NxCooking.h>
-#include <NxUserContactReport.h> 
-#include <NxCapsuleController.h>
+#include "NXU_Helper.h"
 #include <nxu_schema.h> 
-#include <NxForceFieldShape.h>
-#include <NxSimpleTriangleMesh.h>
 
 
 //using namespace NXU;

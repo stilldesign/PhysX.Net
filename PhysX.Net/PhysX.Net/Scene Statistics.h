@@ -1,7 +1,5 @@
 #pragma once
 
-#include <NxSceneStats.h> 
-
 namespace StillDesign
 {
 	namespace PhysX

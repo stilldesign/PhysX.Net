@@ -2,8 +2,6 @@
 
 #include "Enums.h"
 
-#include <NxBounds3.h>
-
 namespace StillDesign
 {
 	namespace PhysX

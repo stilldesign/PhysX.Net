@@ -1,6 +1,5 @@
 #pragma once
 
-#include <NxSceneDesc.h> 
 
 namespace StillDesign
 {

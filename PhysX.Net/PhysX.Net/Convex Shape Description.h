@@ -1,7 +1,5 @@
 #pragma once
 
-#include <NxConvexShapeDesc.h> 
-
 #include "Shape Description.h"
 
 namespace StillDesign

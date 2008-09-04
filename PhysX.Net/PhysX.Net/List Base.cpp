@@ -8,12 +8,13 @@ using namespace StillDesign::PhysX;
 generic<class T>
 ListBase<T>::ListBase()
 {
-	
+	_readOnlyCollection = gcnew System::Collections::ObjectModel::ReadOnlyCollection< T >( Items );
 }
+
 generic<class T>
-ListBase<T>::ListBase( int capacity ) : System::Collections::ObjectModel::Collection<T>( gcnew System::Collections::Generic::List<T>( capacity ) )
+ListBase<T>::ListBase( int capacity ) : Collection<T>( gcnew System::Collections::Generic::List<T>( capacity ) )
 {
-	
+	_readOnlyCollection = gcnew System::Collections::ObjectModel::ReadOnlyCollection< T >( Items );
 }
 //generic<class T>
 //ListBase<T>::ListBase( System::Collections::Generic::IEnumerable<T>^ collection ) : System::Collections::ObjectModel::Collection<T>( collection )
@@ -76,4 +77,10 @@ array<T>^ ListBase<T>::ToArray()
 	}
 	
 	return a;
+}
+
+generic< class T >
+System::Collections::ObjectModel::ReadOnlyCollection< T >^ ListBase< T >::ReadOnlyCollection::get()
+{
+	return _readOnlyCollection;
 }

@@ -1,20 +1,19 @@
 #pragma once
 
 #include "Actor Description Base.h"
-#include "Shape Description.h"
-
-#include <NxActorDesc.h> 
 
 namespace StillDesign
 {
 	namespace PhysX
 	{
 		ref class Actor;
+		ref class ShapeDescription;
+		generic< class T> ref class ListBase;
 		
 		public ref class ActorDescription : ActorDescriptionBase
 		{
 			private:
-				ShapeDescription::ShapeDescriptionCollection^ _shapes;
+				ListBase< ShapeDescription^ >^ _shapes;
 				
 			public:
 				ActorDescription();
@@ -33,9 +32,9 @@ namespace StillDesign
 				void ShapeRemoved( Object^ sender, ShapeDescription^ e );
 			
 			public:
-				property ShapeDescription::ShapeDescriptionCollection^ Shapes
+				property ListBase< ShapeDescription^ >^ Shapes
 				{
-					ShapeDescription::ShapeDescriptionCollection^ get();
+					ListBase< ShapeDescription^ >^ get();
 				}
 		};
 	};

@@ -2,9 +2,6 @@
 
 #include "Enums.h"
 
-#include <NxFluid.h> 
-#include <NxFluidEmitter.h> 
-
 namespace StillDesign
 {
 	namespace PhysX

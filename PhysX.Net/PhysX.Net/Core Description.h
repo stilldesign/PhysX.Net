@@ -1,7 +1,5 @@
 #pragma once
 
-#include <NxPhysicsSDK.h> 
-
 #include "Enums.h"
 
 namespace StillDesign

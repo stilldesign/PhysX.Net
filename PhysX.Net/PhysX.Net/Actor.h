@@ -1,8 +1,5 @@
 #pragma once
 
-#include <NxActor.h> 
-#include <NxActorDesc.h> 
-
 #include "Enums.h"
 #include "IDisposable.h"
 #include "Shape.h"
@@ -26,16 +23,13 @@ namespace StillDesign
 		ref class SweepCache;
 		ref class Compartment;
 		ref class UserEntitySweepQueryHitReport;
+		ref class ActorFlagsWrapper;
+		ref class BodyFlagsWrapper;
 		
 		/// <summary>Actor is the main simulation object in the physics SDK</summary>
+		[System::ComponentModel::TypeConverter( System::ComponentModel::ExpandableObjectConverter::typeid )]
 		public ref class Actor : StillDesign::PhysX::IDisposable
 		{
-			public:
-				ref class ShapeCollection : ReadOnlyElementCollection<Shape^>
-				{
-					
-				};
-			
 			public:
 				virtual event EventHandler^ onDisposing;
 				virtual event EventHandler^ onDisposed;
@@ -44,10 +38,13 @@ namespace StillDesign
 				NxActor* _actor;
 				
 				StillDesign::PhysX::Scene^ _scene;
-				ElementCollection< Shape^, ShapeCollection^ >^ _shapes;
+				ElementCollection< Shape^ >^ _shapes;
 				StillDesign::PhysX::Compartment^ _compartment;
 				
 				Object^ _userData;
+
+				ActorFlagsWrapper^ _actorFlagsWrapper;
+				BodyFlagsWrapper^ _bodyFlagsWrapper;
 				
 				//bool _disposing;
 			
@@ -209,9 +206,9 @@ namespace StillDesign
 				
 				// Shapes
 				/// <summary>Gets a Collection of Shapes Attached to this Actor</summary>
-				property ShapeCollection^ Shapes
+				property System::Collections::ObjectModel::ReadOnlyCollection< Shape^ >^ Shapes
 				{
-					ShapeCollection^ get();
+					System::Collections::ObjectModel::ReadOnlyCollection< Shape^ >^ get();
 				}
 				
 				/// <summary>Gets the actor's simulation compartment, if any</summary>
@@ -435,6 +432,16 @@ namespace StillDesign
 				{
 					Object^ get();
 					void set( Object^ value );
+				}
+
+				property ActorFlagsWrapper^ ActorFlags
+				{
+					ActorFlagsWrapper^ get();
+				}
+
+				property BodyFlagsWrapper^ BodyFlags
+				{
+					BodyFlagsWrapper^ get();
 				}
 			
 			internal:

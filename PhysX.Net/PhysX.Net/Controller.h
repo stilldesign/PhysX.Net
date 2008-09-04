@@ -1,7 +1,5 @@
 #pragma once
 
-#include <NxController.h> 
-
 #include "Controller Enums.h"
 #include "Enums.h"
 #include "IDisposable.h"

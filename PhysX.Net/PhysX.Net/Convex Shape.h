@@ -1,7 +1,5 @@
 #pragma once
 
-#include <NxConvexShape.h> 
-
 #include "Shape.h"
 #include "Convex Shape Description.h"
 

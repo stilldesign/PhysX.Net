@@ -12,6 +12,8 @@
 #include "Particle Id Data.h"
 #include "Fluid Packet Data.h"
 #include "Particle Data.h"
+#include "Fluid Flags Wrapper.h"
+#include "PhysX Exception.h"
 
 using namespace StillDesign::PhysX;
 
@@ -32,7 +34,7 @@ Fluid::Fluid( NxFluid* fluid )
 	_particleDeletionIdWriteData = gcnew StillDesign::PhysX::ParticleIdData( fluid->getParticleDeletionIdWriteData() );
 	_fluidPacketData = gcnew StillDesign::PhysX::FluidPacketData( fluid->getFluidPacketData() );
 	
-	_fluidEmitters = gcnew ElementCollection< FluidEmitter^, FluidEmitterCollection^ >();
+	_fluidEmitters = gcnew ElementCollection< FluidEmitter^ >();
 	for( unsigned int x = 0; x < fluid->getNbEmitters(); x++ )
 	{
 		NxFluidEmitter* emitter = fluid->getEmitters()[ x ];
@@ -41,6 +43,8 @@ Fluid::Fluid( NxFluid* fluid )
 		
 		_fluidEmitters->Add( gcnew FluidEmitter( emitter ) );
 	}
+
+	_fluidFlagsWrapper = gcnew FluidFlagsWrapper( this );
 }
 Fluid::Fluid( NxFluid* fluid, ParticleData^ particleWriteData, ParticleIdData^ particleDeletionIdWriteData, ParticleIdData^ particleCreationIdWriteData, StillDesign::PhysX::FluidPacketData^ fluidPacketData )
 {
@@ -59,7 +63,7 @@ Fluid::Fluid( NxFluid* fluid, ParticleData^ particleWriteData, ParticleIdData^ p
 	_particleCreationIdWriteData = particleCreationIdWriteData;
 	_fluidPacketData = fluidPacketData;
 	
-	_fluidEmitters = gcnew ElementCollection< FluidEmitter^, FluidEmitterCollection^ >();
+	_fluidEmitters = gcnew ElementCollection< FluidEmitter^ >();
 	for( unsigned int x = 0; x < fluid->getNbEmitters(); x++ )
 	{
 		NxFluidEmitter* emitter = fluid->getEmitters()[ x ];
@@ -68,6 +72,8 @@ Fluid::Fluid( NxFluid* fluid, ParticleData^ particleWriteData, ParticleIdData^ p
 		
 		_fluidEmitters->Add( gcnew FluidEmitter( emitter ) );
 	}
+	
+	_fluidFlagsWrapper = gcnew FluidFlagsWrapper( this );
 }
 Fluid::~Fluid()
 {
@@ -145,7 +151,7 @@ FluidEmitter^ Fluid::CreateFluidEmitter( FluidEmitterDescription^ description )
 	
 	NxFluidEmitter* emitter = _fluid->createEmitter( *description->UnmanagedPointer );
 	if( emitter == NULL )
-		throw gcnew Exception( "Failed to create emitter" );
+		throw gcnew PhysXException( "Failed to create emitter" );
 	
 	FluidEmitter^ e = gcnew FluidEmitter( emitter );
 	
@@ -206,7 +212,7 @@ void Fluid::UpdateParticles( ParticleUpdateData^ updateData )
 	_fluid->updateParticles( *updateData->UnmanagedPointer );
 }
 
-Fluid::FluidEmitterCollection^ Fluid::Emitters::get()
+System::Collections::ObjectModel::ReadOnlyCollection< FluidEmitter^ >^ Fluid::Emitters::get()
 {
 	return _fluidEmitters->ReadOnlyCollection;
 }
@@ -515,6 +521,11 @@ Object^ Fluid::UserData::get()
 void Fluid::UserData::set( Object^ value )
 {
 	_userData = value;
+}
+
+FluidFlagsWrapper^ Fluid::Flags::get()
+{
+	return _fluidFlagsWrapper;
 }
 
 NxFluid* Fluid::UnmanagedPointer::get()

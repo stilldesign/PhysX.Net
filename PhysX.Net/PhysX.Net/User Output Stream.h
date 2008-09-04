@@ -1,7 +1,5 @@
 #pragma once
 
-#include <NxUserOutputStream.h> 
-
 #include "Enums.h"
 
 using namespace System;

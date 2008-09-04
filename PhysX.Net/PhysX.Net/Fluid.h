@@ -24,15 +24,11 @@ namespace StillDesign
 		ref class ParticleIdData;
 		ref class FluidPacketData;
 		ref class Compartment;
+		ref class FluidFlagsWrapper;
 		
 		public ref class Fluid : StillDesign::PhysX::IDisposable
 		{
 			public:
-				ref class FluidEmitterCollection : ReadOnlyElementCollection<FluidEmitter^>
-				{
-					
-				};
-				
 				virtual event EventHandler^ onDisposing;
 				virtual event EventHandler^ onDisposed;
 			
@@ -48,9 +44,11 @@ namespace StillDesign
 				
 				StillDesign::PhysX::Compartment^ _compartment;
 				
-				ElementCollection<FluidEmitter^, FluidEmitterCollection^ >^ _fluidEmitters;
+				ElementCollection< FluidEmitter^ >^ _fluidEmitters;
 				
 				Object^ _userData;
+
+				FluidFlagsWrapper^ _fluidFlagsWrapper;
 				
 			internal:
 				Fluid( NxFluid* fluid );
@@ -103,9 +101,9 @@ namespace StillDesign
 				//
 				
 				/// <summary>Gets the collection of emitters</summary>
-				property FluidEmitterCollection^ Emitters
+				property System::Collections::ObjectModel::ReadOnlyCollection< FluidEmitter^ >^ Emitters
 				{
-					FluidEmitterCollection^ get();
+					System::Collections::ObjectModel::ReadOnlyCollection< FluidEmitter^ >^ get();
 				}
 				///// <summary>Gets the collection of screen meshes</summary>
 				//property StillDesign::PhysX::Fluid::ImplicitScreenMeshCollection^ ImplicitScreenMeshes
@@ -324,6 +322,11 @@ namespace StillDesign
 				{
 					Object^ get();
 					void set( Object^ value );
+				}
+
+				property FluidFlagsWrapper^ Flags
+				{
+					FluidFlagsWrapper^ get();
 				}
 			
 			internal:

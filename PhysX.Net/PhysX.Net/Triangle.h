@@ -1,7 +1,5 @@
 #pragma once
 
-#include <NxTriangle.h> 
-
 UsingFrameworkNamespace
 
 namespace StillDesign

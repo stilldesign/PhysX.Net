@@ -12,6 +12,8 @@
 #include "Simple Triangle Mesh.h"
 #include "Foundation.h"
 #include "Memory Reader Stream.h"
+#include "Physics Parameters Wrapper.h"
+#include "PhysX Initialization Exception.h"
 
 using namespace StillDesign::PhysX;
 
@@ -110,23 +112,24 @@ void Core::CreateCore( CoreDescription^ desc, StillDesign::PhysX::UserOutputStre
 	_physicsSDK = NxCreatePhysicsSDK( NX_PHYSICS_SDK_VERSION, NULL, out, *desc->UnmanagedPointer, &error );
 	
 	if( _physicsSDK == NULL || error != 0 )
-		throw gcnew Exception( "PhysX failed to initialize", gcnew Exception( String::Format( "Error code: {0} ({1})", (int)error, (CoreCreationError)error ) ) );
+		throw gcnew PhysXInitializationException( (CoreCreationError)error );
 	
 	ObjectCache::Add( (intptr_t)_physicsSDK, this );
 	CreateAux();
 }
 void Core::CreateAux()
 {
-	_sceneCollection = gcnew ElementCollection< Scene^, SceneCollection^ >();
-	_triangleMeshCollection = gcnew ElementCollection< TriangleMesh^, TriangleMeshCollection^ >();
-	_convexMeshCollection = gcnew ElementCollection< ConvexMesh^, ConvexMeshCollection^ >();
-	_clothMeshCollection = gcnew ElementCollection< ClothMesh^, ClothMeshCollection^ >();
-	_heightFieldCollection = gcnew ElementCollection< HeightField^, HeightFieldCollection^ >();
-	_CCDSkeletonCollection = gcnew ElementCollection< CCDSkeleton^, CCDSkeletonCollection^ >();
-	_softBodyMeshCollection = gcnew ElementCollection< SoftBodyMesh^, SoftBodyMeshCollection^ >();
+	_sceneCollection = gcnew ElementCollection< Scene^ >();
+	_triangleMeshCollection = gcnew ElementCollection< TriangleMesh^ >();
+	_convexMeshCollection = gcnew ElementCollection< ConvexMesh^ >();
+	_clothMeshCollection = gcnew ElementCollection< ClothMesh^ >();
+	_heightFieldCollection = gcnew ElementCollection< HeightField^ >();
+	_CCDSkeletonCollection = gcnew ElementCollection< CCDSkeleton^ >();
+	_softBodyMeshCollection = gcnew ElementCollection< SoftBodyMesh^ >();
 	
 	_foundation = gcnew StillDesign::PhysX::Foundation( &_physicsSDK->getFoundationSDK() );
-	
+	_physicsParametersWrapper = gcnew PhysicsParametersWrapper( this );
+
 	_checkPhysXRuntimeFiles = true;
 }
 
@@ -136,13 +139,24 @@ bool Core::CheckAllPhysXRuntimeFiles()
 }
 bool Core::CheckAllPhysXRuntimeFiles( bool throwOnError )
 {
-	bool result = RuntimeFileChecks::Check();
-	
-	if( throwOnError == true && result == false )
+	if ( !throwOnError )
 	{
-		throw gcnew Exception( "PhysX Runtime file check failed" );
-	}else{
-		return result;
+		try
+		{
+			RuntimeFileChecks::Check();
+		}
+		catch ( DllNotFoundException^ exception )
+		{
+			System::Diagnostics::Debug::WriteLine( exception->ToString() );
+			return false;
+		}
+
+		return true;
+	}
+	else
+	{
+		RuntimeFileChecks::Check();
+		return true;
 	}
 }
 
@@ -256,7 +270,7 @@ TriangleMesh^ Core::CreateTriangleMesh( Stream^ stream )
 	
 	NxTriangleMesh* triangleMesh = _physicsSDK->createTriangleMesh( *reader->UnmanagedPointer );
 	if( triangleMesh == NULL )
-		throw gcnew Exception( "Unable to create triangle mesh" );
+		throw gcnew PhysXException( "Failed to create triangle mesh" );
 	
 	TriangleMesh^ tm = gcnew TriangleMesh( triangleMesh, this );
 	
@@ -280,7 +294,7 @@ ConvexMesh^ Core::CreateConvexMesh( Stream^ stream )
 	
 	NxConvexMesh* convexMesh = _physicsSDK->createConvexMesh( *reader->UnmanagedPointer );
 	if( convexMesh == NULL )
-		throw gcnew Exception( "Unable to create convexMesh" );
+		throw gcnew PhysXException( "Failed to create convexMesh" );
 	
 	StillDesign::PhysX::ConvexMesh^ c = gcnew StillDesign::PhysX::ConvexMesh( convexMesh, this );
 	
@@ -303,8 +317,8 @@ ClothMesh^ Core::CreateClothMesh( Stream^ stream )
 	MemoryReaderStream^ reader = gcnew MemoryReaderStream( data );
 		
 	NxClothMesh* clothMesh = _physicsSDK->createClothMesh( *reader->UnmanagedPointer );
-	if( clothMesh == null )
-		throw gcnew Exception( "Cloth mesh failed to be created" );
+	if( clothMesh == NULL )
+		throw gcnew PhysXException( "Failed to create cloth mesh" );
 	
 	ClothMesh^ cm = gcnew ClothMesh( clothMesh, this );
 	
@@ -317,8 +331,8 @@ HeightField^ Core::CreateHeightField( HeightFieldDescription^ description )
 	ThrowIfDescriptionIsNullOrInvalid( description, "description" );
 	
 	NxHeightField* hf = _physicsSDK->createHeightField( *description->UnmanagedPointer );
-	if( hf == null )
-		throw gcnew Exception( "Height field failed to be created" );
+	if( hf == NULL )
+		throw gcnew PhysXException( "Failed to create height field" );
 	
 	HeightField^ heightField = gcnew HeightField(  hf, this );
 	
@@ -333,7 +347,7 @@ CCDSkeleton^ Core::CreateCCDSkeleton( SimpleTriangleMesh^ simpleTriangleMesh )
 	NxCCDSkeleton* s = _physicsSDK->createCCDSkeleton( *simpleTriangleMesh->UnmanagedPointer );
 	
 	if( s == NULL )
-		throw gcnew Exception( "Failed to create CCD skeleton" );
+		throw gcnew PhysXException( "Failed to create CCD skeleton" );
 	
 	CCDSkeleton^ skeleton = gcnew CCDSkeleton( s, this );
 	
@@ -357,7 +371,7 @@ SoftBodyMesh^ Core::CreateSoftBodyMesh( Stream^ stream )
 	
 	NxSoftBodyMesh* softBodyMesh = _physicsSDK->createSoftBodyMesh( *reader->UnmanagedPointer );
 	if( softBodyMesh == NULL )
-		throw gcnew Exception( "Failed to create soft body mesh" );
+		throw gcnew PhysXException( "Failed to create soft body mesh" );
 	
 	SoftBodyMesh^ s = gcnew SoftBodyMesh( softBodyMesh, this );
 	
@@ -379,31 +393,31 @@ void Core::SetParameter( PhysicsParameter parameter, bool enabled )
 	_physicsSDK->setParameter( (NxParameter)parameter, enabled ? 1.0f : 0.0f );
 }
 
-Core::SceneCollection^ Core::Scenes::get()
+System::Collections::ObjectModel::ReadOnlyCollection< Scene^ >^ Core::Scenes::get()
 {
 	return _sceneCollection->ReadOnlyCollection;
 }
-Core::TriangleMeshCollection^ Core::TriangleMeshes::get()
+System::Collections::ObjectModel::ReadOnlyCollection< TriangleMesh^ >^ Core::TriangleMeshes::get()
 {
 	return _triangleMeshCollection->ReadOnlyCollection;
 }
-Core::ConvexMeshCollection^ Core::ConvexMeshes::get()
+System::Collections::ObjectModel::ReadOnlyCollection< ConvexMesh^ >^ Core::ConvexMeshes::get()
 {
 	return _convexMeshCollection->ReadOnlyCollection;
 }
-Core::ClothMeshCollection^ Core::ClothMeshes::get()
+System::Collections::ObjectModel::ReadOnlyCollection< ClothMesh^ >^ Core::ClothMeshes::get()
 {
 	return _clothMeshCollection->ReadOnlyCollection;
 }
-Core::HeightFieldCollection^ Core::HeightFields::get()
+System::Collections::ObjectModel::ReadOnlyCollection< HeightField^ >^ Core::HeightFields::get()
 {
 	return _heightFieldCollection->ReadOnlyCollection;
 }
-Core::CCDSkeletonCollection^ Core::CCDSkeletons::get()
+System::Collections::ObjectModel::ReadOnlyCollection< CCDSkeleton^ >^ Core::CCDSkeletons::get()
 {
 	return _CCDSkeletonCollection->ReadOnlyCollection;
 }
-Core::SoftBodyMeshCollection^ Core::SoftBodyMeshes::get()
+System::Collections::ObjectModel::ReadOnlyCollection< SoftBodyMesh^ >^ Core::SoftBodyMeshes::get()
 {
 	return _softBodyMeshCollection->ReadOnlyCollection;
 }
@@ -448,6 +462,11 @@ void Core::CheckPhysXRuntimeFiles::set( bool value )
 StillDesign::PhysX::UserOutputStream^ Core::UserOutputStream::get()
 {
 	return _userOutputStream;
+}
+
+PhysicsParametersWrapper^ Core::Parameters::get()
+{
+	return _physicsParametersWrapper;
 }
 
 NxPhysicsSDK* Core::UnmanagedPointer::get()

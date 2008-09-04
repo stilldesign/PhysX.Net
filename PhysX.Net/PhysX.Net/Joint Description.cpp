@@ -156,7 +156,8 @@ NxJointDesc* JointDescription::CopyToUnmanagedPointer( NxJointDesc* desc )
 			*(NxFixedJointDesc*)d = *(NxFixedJointDesc*)desc;
 		break;
 		
-		default: throw gcnew ApplicationException( "Invalid joint type" );
+		default:
+			throw gcnew NotSupportedException( "Invalid joint type" );
 	}
 	
 	return d;
@@ -198,7 +199,8 @@ JointDescription^ JointDescription::CopyToManagedReference( NxJointDesc* desc )
 			return gcnew FixedJointDescription( (NxFixedJointDesc*)d );
 		break;
 		
-		default: throw gcnew ApplicationException( "Invalid joint type" );
+		default:
+			throw gcnew NotSupportedException( "Invalid joint type" );
 	}
 }
 

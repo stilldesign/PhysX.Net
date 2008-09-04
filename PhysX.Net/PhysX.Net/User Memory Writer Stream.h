@@ -1,7 +1,5 @@
 #pragma once
 
-#include <NxStream.h>
-
 namespace StillDesign
 {
 	namespace PhysX

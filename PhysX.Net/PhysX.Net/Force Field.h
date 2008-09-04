@@ -23,10 +23,10 @@ namespace StillDesign
 		public ref class ForceField : StillDesign::PhysX::IDisposable
 		{
 			public:
-				ref class ForceFieldShapeGroupCollection : ReadOnlyElementCollection<ForceFieldShapeGroup^>
-				{
-					
-				};
+				//ref class ForceFieldShapeGroupCollection : ReadOnlyElementCollection<ForceFieldShapeGroup^>
+				//{
+				//	
+				//};
 				
 				ref class SamplePointForcesResult
 				{
@@ -56,7 +56,7 @@ namespace StillDesign
 				
 				Actor^ _actor;
 				
-				ElementCollection<ForceFieldShapeGroup^, ForceFieldShapeGroupCollection^>^ _shapeGroups;
+				ElementCollection< ForceFieldShapeGroup^ >^ _shapeGroups;
 				StillDesign::PhysX::ForceFieldKernel^ _forceFieldKernel;
 				
 				Object^ _userData;
@@ -96,9 +96,9 @@ namespace StillDesign
 					void set( StillDesign::PhysX::Actor^ value );
 				}
 				
-				property ForceField::ForceFieldShapeGroupCollection^ ShapeGroups
+				property System::Collections::ObjectModel::ReadOnlyCollection< ForceFieldShapeGroup^ >^ ShapeGroups
 				{
-					ForceField::ForceFieldShapeGroupCollection^ get();
+					System::Collections::ObjectModel::ReadOnlyCollection< ForceFieldShapeGroup^ >^ get();
 				}
 				
 				/// <summary>Retrieves the kernel function which this field is using</summary>

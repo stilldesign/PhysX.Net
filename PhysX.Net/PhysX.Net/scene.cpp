@@ -70,6 +70,7 @@
 #include "Force Field Shape Group.h"
 #include "Mesh Data.h"
 #include "Soft Body Split Pair Data.h"
+#include "PhysX Exception.h"
 
 #include <NxScene.h>
 #include <NxSceneDesc.h>
@@ -85,34 +86,34 @@ using namespace StillDesign::PhysX;
 Scene::Scene( NxScene* scene )
 {
 	if( scene == NULL )
-		throw gcnew ApplicationException( "Scene argument is NULL" );
+		throw gcnew ArgumentNullException( "scene", "Scene argument is NULL" );
 	
 	ObjectCache::Add( (intptr_t)scene, this );
 	
 	_scene = scene;
 	_core = ObjectCache::GetObject<StillDesign::PhysX::Core^>( (intptr_t)(&scene->getPhysicsSDK()) );
 	
-	_actors = gcnew ElementCollection< Actor^, ActorCollection^ >();
-	_shapes = gcnew ElementCollection< Shape^, ShapeCollection^ >();
-	_materials = gcnew ElementCollection< Material^, MaterialCollection^ >();
-	_joints = gcnew ElementCollection< Joint^, JointCollection^ >();
-	_cloths = gcnew ElementCollection< Cloth^, ClothCollection^ >();
-	_forceFields = gcnew ElementCollection< ForceField^, ForceFieldCollection^ >();
-	_controllerManagers = gcnew ElementCollection< ControllerManager^, ControllerManagerCollection^ >();
-	_controllerCollection = gcnew ElementCollection< Controller^, ControllerCollection^ >();
-	_fluids = gcnew ElementCollection< Fluid^, FluidCollection^ >();
-	_softBodies = gcnew ElementCollection< SoftBody^, SoftBodyCollection^ >();
-	_compartments = gcnew ElementCollection< Compartment^, CompartmentCollection^ >();
-	_forceFieldLinearKernels = gcnew ElementCollection< ForceFieldLinearKernel^, ForceFieldLinearKernelCollection^ >();
-	_forceFieldShapeGroups = gcnew ElementCollection< ForceFieldShapeGroup^, ForceFieldShapeGroupCollection^ >();
+	_actors = gcnew ElementCollection< Actor^ >();
+	//_shapes = gcnew ElementCollection< Shape^ >();
+	_materials = gcnew ElementCollection< Material^ >();
+	_joints = gcnew ElementCollection< Joint^ >();
+	_cloths = gcnew ElementCollection< Cloth^ >();
+	_forceFields = gcnew ElementCollection< ForceField^ >();
+	_controllerManagers = gcnew ElementCollection< ControllerManager^ >();
+	//_controllerCollection = gcnew ElementCollection< Controller^ >();
+	_fluids = gcnew ElementCollection< Fluid^ >();
+	_softBodies = gcnew ElementCollection< SoftBody^ >();
+	_compartments = gcnew ElementCollection< Compartment^ >();
+	_forceFieldLinearKernels = gcnew ElementCollection< ForceFieldLinearKernel^ >();
+	_forceFieldShapeGroups = gcnew ElementCollection< ForceFieldShapeGroup^ >();
 	
 	//
 	
-	_actors->onAdd += gcnew EventHandlerItem<Actor^>( this, &Scene::Actors_onAdd );
-	_actors->onRemove += gcnew EventHandlerItem<Actor^>( this, &Scene::Actors_onRemove );
+	//_actors->onAdd += gcnew EventHandlerItem<Actor^>( this, &Scene::Actors_onAdd );
+	//_actors->onRemove += gcnew EventHandlerItem<Actor^>( this, &Scene::Actors_onRemove );
 	
-	_controllerManagers->onAdd += gcnew EventHandlerItem< ControllerManager^ >( this, &Scene::_controllerManagerCollection_onAdd );
-	_controllerManagers->onRemove += gcnew EventHandlerItem< ControllerManager^ >( this, &Scene::_controllerManagerCollection_onRemove );
+	//_controllerManagers->onAdd += gcnew EventHandlerItem< ControllerManager^ >( this, &Scene::_controllerManagerCollection_onAdd );
+	//_controllerManagers->onRemove += gcnew EventHandlerItem< ControllerManager^ >( this, &Scene::_controllerManagerCollection_onRemove );
 	
 	// Compartments
 	for( unsigned int x = 0; x < scene->getNbCompartments(); x++ )
@@ -183,7 +184,8 @@ Scene::Scene( NxScene* scene )
 				j = gcnew SphericalJoint( joint->isSphericalJoint() );
 			break;
 			
-			default: throw gcnew ApplicationException( "Invalid Joint Type" );
+			default:
+				throw gcnew NotSupportedException( "Invalid Joint Type" );
 		}
 		
 		_joints->Add( j );
@@ -241,7 +243,7 @@ Scene::!Scene()
 	_softBodies->DiposeOfAll();
 	
 	_actors = nullptr;
-	_shapes = nullptr;
+	//_shapes = nullptr;
 	_materials = nullptr;
 	_joints = nullptr;
 	_cloths = nullptr;
@@ -325,7 +327,8 @@ Joint^ Scene::AddJoint( NxJoint* joint )
 			j = gcnew SphericalJoint( joint->isSphericalJoint() );
 		break;
 		
-		default: throw gcnew ApplicationException();
+		default:
+			throw gcnew NotSupportedException( "Invalid joint type" );
 	}
 	
 	_joints->Add( j );
@@ -425,7 +428,7 @@ Actor^ Scene::CreateActor( ActorDescription^ actorDescription )
 		for each( ShapeDescription^ shape in actorDescription->Shapes )
 		{
 			if( shape->IsValid() == false )
-				throw gcnew InvalidOperationException( "Shape description is invalid", gcnew Exception( String::Format( "Shape index: {0}", index ) ) );
+				throw gcnew InvalidOperationException( "Shape description is invalid. Shape index: {0}" );
 			
 			index++;
 		}
@@ -433,7 +436,7 @@ Actor^ Scene::CreateActor( ActorDescription^ actorDescription )
 	
 	NxActor* actor = _scene->createActor( *actorDescription->UnmanagedPointer );
 	if( actor == NULL )
-		throw gcnew ApplicationException( "Failed to create actor" );
+		throw gcnew PhysXException( "Failed to create actor" );
 	
 	Actor^ a = gcnew Actor( actor );
 	
@@ -451,6 +454,8 @@ Material^ Scene::CreateMaterial( MaterialDescription^ materialDescription )
 		throw gcnew ArgumentException( "Material description is invalid" );
 	
 	NxMaterial* material = _scene->createMaterial( *materialDescription->UnmanagedPointer );
+	if ( material == NULL )
+		throw gcnew PhysXException( "Failed to create material" );
 	
 	Material^ mat = gcnew Material( material );
 		mat->Name = materialDescription->Name;
@@ -467,6 +472,8 @@ Joint^ Scene::CreateJoint( JointDescription^ jointDescription )
 		throw gcnew ArgumentException( "Joint description is invalid" );
 	
 	NxJoint* joint = _scene->createJoint( *jointDescription->UnmanagedPointer );
+	if ( joint == NULL )
+		throw gcnew PhysXException( "Failed to create joint" );
 	
 	Joint^ j;
 	switch( jointDescription->Type )
@@ -502,7 +509,8 @@ Joint^ Scene::CreateJoint( JointDescription^ jointDescription )
 			j = gcnew SphericalJoint( joint->isSphericalJoint() );
 		break;
 		
-		default: throw gcnew ApplicationException( "Joint type not supported" );
+		default:
+			throw gcnew PhysXException( "Joint type not supported" );
 	}
 	
 	j->Name = jointDescription->Name;
@@ -520,6 +528,8 @@ Cloth^ Scene::CreateCloth( ClothDescription^ clothDescription )
 		throw gcnew ArgumentException( "Cloth description is invalid" );
 	
 	NxCloth* cloth = _scene->createCloth( *clothDescription->UnmanagedPointer );
+	if ( cloth == NULL )
+		throw gcnew PhysXException( "Failed to create cloth" );
 	
 	Cloth^ c = gcnew Cloth( cloth, clothDescription->MeshData );
 		c->UserData = clothDescription->UserData;
@@ -536,6 +546,8 @@ ForceField^ Scene::CreateForceField( ForceFieldDescription^ forceFieldDescriptio
 		throw gcnew ArgumentException( "Force field description is invalid" );
 	
 	NxForceField* forceField = _scene->createForceField( *forceFieldDescription->UnmanagedPointer );
+	if ( forceField == NULL )
+		throw gcnew PhysXException( "Failed to create force field" );
 	
 	ForceField^ f = gcnew ForceField( forceField );
 		f->UserData = forceFieldDescription->UserData;
@@ -564,6 +576,8 @@ StillDesign::PhysX::ControllerManager^ Scene::CreateControllerManager()
 	ControllerManagerAllocator* a = new ControllerManagerAllocator();
 	
 	NxControllerManager* manager = NxCreateControllerManager( a );
+	if ( manager == NULL )
+		throw gcnew PhysXException( "Failed to create controller manager" );
 	
 	ControllerManager^ c = gcnew ControllerManager( manager, this );
 	
@@ -579,9 +593,9 @@ Fluid^ Scene::CreateFluid( FluidDescription^ fluidDescription )
 		throw gcnew ArgumentException( "Fluid description is invalid" );
 	
 	NxFluid* f = _scene->createFluid( *fluidDescription->UnmanagedPointer );
-	
+
 	if( f == NULL )
-		throw gcnew Exception( "Fluid failed to be created" );
+		throw gcnew PhysXException( "Failed to create fluid" );
 	
 	Fluid^ fluid = gcnew Fluid( f, fluidDescription->ParticleWriteData, fluidDescription->ParticleDeletionIdWriteData, fluidDescription->ParticleCreationIdWriteData, fluidDescription->FluidPacketData );
 		fluid->UserData = fluidDescription->UserData;
@@ -600,7 +614,7 @@ ForceFieldLinearKernel^ Scene::CreateForceFieldLinearKernel( ForceFieldLinearKer
 	NxForceFieldLinearKernel* k = _scene->createForceFieldLinearKernel( *kernelDescription->UnmanagedPointer );
 	
 	if( k == NULL )
-		throw gcnew ApplicationException( "Force field linear kernel failed to be created" );
+		throw gcnew PhysXException( "Failed to create force field linear kernel" );
 	
 	ForceFieldLinearKernel^ kernel = gcnew ForceFieldLinearKernel( k );
 		kernel->UserData = kernelDescription->UserData;
@@ -634,8 +648,8 @@ ForceFieldShapeGroup^ Scene::CreateForceFieldShapeGroup( ForceFieldShapeGroupDes
 	
 	NxForceFieldShapeGroup* g = _scene->createForceFieldShapeGroup( *groupDescription->UnmanagedPointer );
 	
-	if( g == nullptr )
-		throw gcnew ApplicationException( "Force field shape group failed to be created" );
+	if( g == NULL )
+		throw gcnew PhysXException( "Failed to create force field shape group" );
 	
 	ForceFieldShapeGroup^ group = gcnew ForceFieldShapeGroup( g );
 		group->UserData = groupDescription->UserData;
@@ -661,7 +675,7 @@ SoftBody^ Scene::CreateSoftBody( SoftBodyDescription^ softBodyDescription )
 	NxSoftBody* softBody = _scene->createSoftBody( *softBodyDescription->UnmanagedPointer );
 	
 	if( softBody == NULL )
-		throw gcnew Exception( "Soft body failed to be created" );
+		throw gcnew PhysXException( "Failed to create soft body" );
 	
 	SoftBody^ s = gcnew SoftBody( softBody, softBodyDescription->MeshData, softBodyDescription->SplitPairData );
 		s->UserData = softBodyDescription->UserData;
@@ -680,7 +694,7 @@ Compartment^ Scene::CreateCompartment( CompartmentDescription^ compartmentDescri
 	NxCompartment* compartment = _scene->createCompartment( *compartmentDescription->UnmanagedPointer );
 	
 	if( compartment == NULL )
-		throw gcnew ApplicationException( "Compartment failed to be created" );
+		throw gcnew PhysXException( "Failed to create compartment" );
 	
 	Compartment^ c = gcnew Compartment( compartment, this );
 	
@@ -770,8 +784,7 @@ array<Shape^>^ Scene::OverlappedShapes( Sphere sphere, ShapesType type )
 }
 array<Shape^>^ Scene::OverlappedShapes( Sphere sphere, ShapesType type, unsigned int activeGroups, Nullable<GroupsMask> groupsMask, bool accurateCollision )
 {
-	int n =  this->Shapes->Count;
-	
+	NxU32 n = _scene->getTotalNbShapes();
 	NxShape** s = new NxShape*[ n ];
 	
 	NxGroupsMask* mask = groupsMask.HasValue ? &((NxGroupsMask)groupsMask.Value) : NULL;
@@ -801,8 +814,7 @@ array<Shape^>^ Scene::OverlappedShapes( Bounds3 worldBounds, ShapesType type )
 }
 array<Shape^>^ Scene::OverlappedShapes( Bounds3 worldBounds, ShapesType type, unsigned int activeGroups, Nullable<GroupsMask> groupsMask, bool accurateCollision )
 {
-	int n =  this->Shapes->Count;
-	
+	NxU32 n = _scene->getTotalNbShapes();
 	NxShape** s = new NxShape*[ n ];
 	
 	NxGroupsMask* mask = groupsMask.HasValue ? &((NxGroupsMask)groupsMask.Value) : NULL;
@@ -832,8 +844,7 @@ array<Shape^>^ Scene::OverlappedShapes( Box worldBox, ShapesType type )
 }
 array<Shape^>^ Scene::OverlappedShapes( Box worldBox, ShapesType type, unsigned int activeGroups, Nullable<GroupsMask> groupsMask, bool accurateCollision )
 {
-	int n =  this->Shapes->Count;
-	
+	NxU32 n = _scene->getTotalNbShapes();
 	NxShape** s = new NxShape*[ n ];
 	
 	NxGroupsMask* mask = groupsMask.HasValue ? &((NxGroupsMask)groupsMask.Value) : NULL;
@@ -863,8 +874,7 @@ array<Shape^>^ Scene::OverlappedShapes( Capsule worldCapsule, ShapesType type )
 }
 array<Shape^>^ Scene::OverlappedShapes( Capsule worldCapsule, ShapesType type, unsigned int activeGroups, Nullable<GroupsMask> groupsMask, bool accurateCollision )
 {
-	int n = this->Shapes->Count;
-	
+	NxU32 n = _scene->getTotalNbShapes();
 	NxShape** s = new NxShape*[ n ];
 	
 	NxGroupsMask* mask = groupsMask.HasValue ? &((NxGroupsMask)groupsMask.Value) : NULL;
@@ -1136,6 +1146,7 @@ RaycastHit^ Scene::RaycastClosestShape( StillDesign::PhysX::Ray worldRay, Shapes
 
 array<Shape^>^ Scene::LinearSweep( Box worldBox, Vector3 motion, SweepFlags flags, Object^ userData )
 {
+	//TODO: Change Int32::MaxValue to some reasonable value
 	return LinearSweep( worldBox, motion, flags, userData, Int32::MaxValue, nullptr, -1, Nullable<GroupsMask>() );
 }
 array<Shape^>^ Scene::LinearSweep( Box worldBox, Vector3 motion, SweepFlags flags, Object^ userData, int maximumShapes, UserEntitySweepQueryHitReport^ callback, unsigned int activeGroups, Nullable<GroupsMask> groupsMask )
@@ -1145,7 +1156,7 @@ array<Shape^>^ Scene::LinearSweep( Box worldBox, Vector3 motion, SweepFlags flag
 	int shapesHit = _scene->linearOBBSweep( (NxBox)worldBox, Math::Vector3ToNxVec3( motion ), (NxU32)flags, NULL, maximumShapes, hits, callback->UnmanagedPointer, activeGroups, groupsMask.HasValue ? &((NxGroupsMask)groupsMask.Value) : NULL );
 	
 	if( shapesHit >= maximumShapes )
-		throw gcnew ApplicationException( "Number of returned shapes exceeds maximum shapes" );
+		throw gcnew PhysXException( "Number of returned shapes exceeds maximum shapes" );
 	
 	array<Shape^>^ shapes = gcnew array<Shape^>( shapesHit );
 	for( int x = 0; x < shapesHit; x++ )
@@ -1159,6 +1170,7 @@ array<Shape^>^ Scene::LinearSweep( Box worldBox, Vector3 motion, SweepFlags flag
 }
 array<Shape^>^ Scene::LinearSweep( Capsule worldCapsule, Vector3 motion, SweepFlags flags, Object^ userData )
 {
+	//TODO: Change Int32::MaxValue to some reasonable value
 	return LinearSweep( worldCapsule, motion, flags, userData, Int32::MaxValue, nullptr, -1, Nullable<GroupsMask>() );
 }
 array<Shape^>^ Scene::LinearSweep( Capsule worldCapsule, Vector3 motion, SweepFlags flags, Object^ userData, int maximumShapes, UserEntitySweepQueryHitReport^ callback, unsigned int activeGroups, Nullable<GroupsMask> groupsMask )
@@ -1191,7 +1203,7 @@ array<Shape^>^ Scene::CullShapes( array<Plane>^ planes, ShapesType shapesType, u
 	if( planes == nullptr )
 		throw gcnew ArgumentNullException( "planes" );
 	
-	int n = this->Shapes->Count;
+	NxU32 n = _scene->getTotalNbShapes();
 	
 	NxShape** s = new NxShape*[ n ];
 	
@@ -1200,7 +1212,7 @@ array<Shape^>^ Scene::CullShapes( array<Plane>^ planes, ShapesType shapesType, u
 	{
 		Plane plane = planes[ x ];
 		
-#if GRAPHICS_XNA2
+#if GRAPHICS_XNA2 || GRAPHICS_SLIMDX
 		p[ x ] = NxPlane( Math::Vector3ToNxVec3( plane.Normal ), plane.D );
 #elif GRAPHICS_MDX
 		p[ x ] = NxPlane( plane.A, plane.B, plane.C, plane.D );
@@ -1231,7 +1243,7 @@ int Scene::CullShapes( array<Plane>^ planes, ShapesType shapesType, unsigned int
 	{
 		Plane plane = planes[ x ];
 		
-#if GRAPHICS_XNA2
+#if GRAPHICS_XNA2 || GRAPHICS_SLIMDX
 		p[ x ] = NxPlane( Math::Vector3ToNxVec3( plane.Normal ), plane.D );
 #elif GRAPHICS_MDX
 		p[ x ] = NxPlane( plane.A, plane.B, plane.C, plane.D );
@@ -1263,62 +1275,62 @@ array<ActiveTransform^>^ Scene::GetActiveTransforms()
 
 //
 
-void Scene::Actors_onAdd( Object^ sender, Actor^ item )
-{
-	for each( Shape^ shape in item->Shapes )
-	{
-		_shapes->Add( shape );
-	}
-	
-	item->Shapes->onAdd += gcnew EventHandlerItem<Shape^>( this, &Scene::Actors_Shapes_onAdd );
-	item->Shapes->onRemove += gcnew EventHandlerItem<Shape^>( this, &Scene::Actors_Shapes_onRemove );
-}
-void Scene::Actors_onRemove( Object^ sender, Actor^ item )
-{
-	for each( Shape^ shape in item->Shapes )
-	{
-		_shapes->Remove( shape );
-	}
-	
-	item->Shapes->onAdd -= gcnew EventHandlerItem<Shape^>( this, &Scene::Actors_Shapes_onAdd );
-	item->Shapes->onRemove -= gcnew EventHandlerItem<Shape^>( this, &Scene::Actors_Shapes_onRemove );
-}
-void Scene::Actors_Shapes_onAdd( Object^ sender, Shape^ item )
-{
-	_shapes->Add( item );
-}
-void Scene::Actors_Shapes_onRemove( Object^ sender, Shape^ item )
-{
-	_shapes->Remove( item );
-}
-
-void Scene::_controllerManagerCollection_onAdd( System::Object^ sender, StillDesign::PhysX::ControllerManager^ e )
-{
-	e->Controllers->onAdd += gcnew EventHandlerItem<Controller^>( this, &Scene::Controllers_onAdd );
-	e->Controllers->onRemove += gcnew EventHandlerItem<Controller^>( this, &Scene::Controllers_onRemove );
-}
-void Scene::_controllerManagerCollection_onRemove( System::Object^ sender, StillDesign::PhysX::ControllerManager^ e )
-{
-	e->Controllers->onAdd -= gcnew EventHandlerItem<Controller^>( this, &Scene::Controllers_onAdd );
-	e->Controllers->onRemove -= gcnew EventHandlerItem<Controller^>( this, &Scene::Controllers_onRemove );
-}
-
-void Scene::Controllers_onAdd( System::Object^ sender, StillDesign::PhysX::Controller^ e )
-{
-	_controllerCollection->Add( e );
-	
-	Actor^ actor = e->Actor;
-	
-	_actors->Add( actor );
-}
-void Scene::Controllers_onRemove( System::Object^ sender, StillDesign::PhysX::Controller^ e )
-{
-	_controllerCollection->Remove( e );
-	
-	Actor^ actor = e->Actor;
-	
-	_actors->Remove( actor );
-}
+//void Scene::Actors_onAdd( Object^ sender, Actor^ item )
+//{
+//	for each( Shape^ shape in item->Shapes )
+//	{
+//		_shapes->Add( shape );
+//	}
+//	
+//	item->Shapes->onAdd += gcnew EventHandlerItem<Shape^>( this, &Scene::Actors_Shapes_onAdd );
+//	item->Shapes->onRemove += gcnew EventHandlerItem<Shape^>( this, &Scene::Actors_Shapes_onRemove );
+//}
+//void Scene::Actors_onRemove( Object^ sender, Actor^ item )
+//{
+//	for each( Shape^ shape in item->Shapes )
+//	{
+//		_shapes->Remove( shape );
+//	}
+//	
+//	item->Shapes->onAdd -= gcnew EventHandlerItem<Shape^>( this, &Scene::Actors_Shapes_onAdd );
+//	item->Shapes->onRemove -= gcnew EventHandlerItem<Shape^>( this, &Scene::Actors_Shapes_onRemove );
+//}
+//void Scene::Actors_Shapes_onAdd( Object^ sender, Shape^ item )
+//{
+//	_shapes->Add( item );
+//}
+//void Scene::Actors_Shapes_onRemove( Object^ sender, Shape^ item )
+//{
+//	_shapes->Remove( item );
+//}
+//
+//void Scene::_controllerManagerCollection_onAdd( System::Object^ sender, StillDesign::PhysX::ControllerManager^ e )
+//{
+//	e->Controllers->onAdd += gcnew EventHandlerItem<Controller^>( this, &Scene::Controllers_onAdd );
+//	e->Controllers->onRemove += gcnew EventHandlerItem<Controller^>( this, &Scene::Controllers_onRemove );
+//}
+//void Scene::_controllerManagerCollection_onRemove( System::Object^ sender, StillDesign::PhysX::ControllerManager^ e )
+//{
+//	e->Controllers->onAdd -= gcnew EventHandlerItem<Controller^>( this, &Scene::Controllers_onAdd );
+//	e->Controllers->onRemove -= gcnew EventHandlerItem<Controller^>( this, &Scene::Controllers_onRemove );
+//}
+//
+//void Scene::Controllers_onAdd( System::Object^ sender, StillDesign::PhysX::Controller^ e )
+//{
+//	_controllerCollection->Add( e );
+//	
+//	Actor^ actor = e->Actor;
+//	
+//	_actors->Add( actor );
+//}
+//void Scene::Controllers_onRemove( System::Object^ sender, StillDesign::PhysX::Controller^ e )
+//{
+//	_controllerCollection->Remove( e );
+//	
+//	Actor^ actor = e->Actor;
+//	
+//	_actors->Remove( actor );
+//}
 
 
 // Properties
@@ -1328,56 +1340,56 @@ StillDesign::PhysX::Core^ Scene::Core::get()
 	return _core;
 }
 
-Scene::ActorCollection^ Scene::Actors::get()
+System::Collections::ObjectModel::ReadOnlyCollection< Actor^ >^ Scene::Actors::get()
 {
 	return _actors->ReadOnlyCollection;
 }
-Scene::ShapeCollection^ Scene::Shapes::get()
-{
-	return _shapes->ReadOnlyCollection;
-}
-Scene::MaterialCollection^ Scene::Materials::get()
+//System::Collections::ObjectModel::ReadOnlyCollection< Shape^ >^ Scene::Shapes::get()
+//{
+//	return _shapes->ReadOnlyCollection;
+//}
+System::Collections::ObjectModel::ReadOnlyCollection< Material^ >^ Scene::Materials::get()
 {
 	return _materials->ReadOnlyCollection;
 }
-Scene::ControllerManagerCollection^ Scene::ControllerManagers::get()
+System::Collections::ObjectModel::ReadOnlyCollection< StillDesign::PhysX::ControllerManager^ >^ Scene::ControllerManagers::get()
 {
 	return _controllerManagers->ReadOnlyCollection;
 }
-Scene::ControllerCollection^ Scene::Controllers::get()
-{
-	return _controllerCollection->ReadOnlyCollection;
-}
-Scene::JointCollection^ Scene::Joints::get()
+//System::Collections::ObjectModel::ReadOnlyCollection< StillDesign::PhysX::Controller^ >^ Scene::Controllers::get()
+//{
+//	return _controllerCollection->ReadOnlyCollection;
+//}
+System::Collections::ObjectModel::ReadOnlyCollection< Joint^ >^ Scene::Joints::get()
 {
 	return _joints->ReadOnlyCollection;
 }
-Scene::ClothCollection^ Scene::Cloths::get()
+System::Collections::ObjectModel::ReadOnlyCollection< Cloth^ >^ Scene::Cloths::get()
 {
 	return _cloths->ReadOnlyCollection;
 }
-Scene::ForceFieldCollection^ Scene::ForceFields::get()
+System::Collections::ObjectModel::ReadOnlyCollection< ForceField^ >^ Scene::ForceFields::get()
 {
 	return _forceFields->ReadOnlyCollection;
 }
-Scene::FluidCollection^ Scene::Fluids::get()
+System::Collections::ObjectModel::ReadOnlyCollection< Fluid^ >^ Scene::Fluids::get()
 {
 	return _fluids->ReadOnlyCollection;
 }
-Scene::SoftBodyCollection^ Scene::SoftBodies::get()
+System::Collections::ObjectModel::ReadOnlyCollection< SoftBody^ >^ Scene::SoftBodies::get()
 {
 	return _softBodies->ReadOnlyCollection;
 }
-Scene::CompartmentCollection^ Scene::Compartments::get()
+System::Collections::ObjectModel::ReadOnlyCollection< Compartment^ >^ Scene::Compartments::get()
 {
 	return _compartments->ReadOnlyCollection;
 }
 
-Scene::ForceFieldLinearKernelCollection^ Scene::ForceFieldLinearKernels::get()
+System::Collections::ObjectModel::ReadOnlyCollection< ForceFieldLinearKernel^ >^ Scene::ForceFieldLinearKernels::get()
 {
 	return _forceFieldLinearKernels->ReadOnlyCollection;
 }
-Scene::ForceFieldShapeGroupCollection^ Scene::ForceFieldShapeGroups::get()
+System::Collections::ObjectModel::ReadOnlyCollection< ForceFieldShapeGroup^ >^ Scene::ForceFieldShapeGroups::get()
 {
 	return _forceFieldShapeGroups->ReadOnlyCollection;
 }

@@ -26,6 +26,13 @@ Joint.GetLimitPoint() is now of type Vector3?. The return is null if the interna
 Project and all source code is avaliable online at codeplex - http://www.codeplex.com/physxdotnet
 Fluid stream properties now set the unmanaged versions they wrap
 Fixed SceneDescription.Limits.Set from crashing
+Added PhysXException and PhysXInitializationException. Replaced all Exception/ApplicationException with the new ones.
+Added flag wrappers in Core, Actor and Fluid classes.
+Replaced all custom ReadOnly* collections with System.Collection.ObjectModel.ReadOnlyCollection<T>.
+Removed specialized collections like, e.g. Scene.ActorCollection.
+Modified RuntimeFileChecker to follow DLL search order and throw DllNotFoundException. Also fixed bug in CheckFile.
+Changed precompiled header settings. That gave compiler a nice boost.
+Moved all PhysX includes from individual headers to stdafx.h.
 
 [0.9.1.0 - 2008-06-28]
 Fixed WheelShape.GetContactData()

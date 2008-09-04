@@ -6,6 +6,7 @@ namespace StillDesign
 {
 	namespace PhysX
 	{
+
 		public value class SceneTimingInformation
 		{
 			private:

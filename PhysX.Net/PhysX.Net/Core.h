@@ -11,9 +11,6 @@
 #include "Soft Body Mesh.h"
 #include "Runtime File Checks.h"
 
-#include <NxFoundationSDK.h> 
-#include <NxPhysics.h>
-
 using namespace System;
 using namespace System::IO;
 
@@ -30,39 +27,12 @@ namespace StillDesign
 		ref class HeightFieldDescription;
 		ref class SimpleTriangleMesh;
 		ref class Foundation;
+		ref class PhysicsParametersWrapper;
+
 		
+		[System::ComponentModel::TypeConverter( System::ComponentModel::ExpandableObjectConverter::typeid )]
 		public ref class Core : IDisposable
 		{
-			public:
-				ref class SceneCollection : ReadOnlyElementCollection<Scene^>
-				{
-					
-				};
-				ref class TriangleMeshCollection : ReadOnlyElementCollection<TriangleMesh^>
-				{
-					
-				};
-				ref class ConvexMeshCollection : ReadOnlyElementCollection<ConvexMesh^>
-				{
-					
-				};
-				ref class ClothMeshCollection : ReadOnlyElementCollection<ClothMesh^>
-				{
-					
-				};
-				ref class HeightFieldCollection : ReadOnlyElementCollection<HeightField^>
-				{
-					
-				};
-				ref class CCDSkeletonCollection : ReadOnlyElementCollection<CCDSkeleton^>
-				{
-					
-				};
-				ref class SoftBodyMeshCollection : ReadOnlyElementCollection<SoftBodyMesh^>
-				{
-					
-				};
-			
 			public:
 				virtual event EventHandler^ onDisposing;
 				virtual event EventHandler^ onDisposed;
@@ -70,17 +40,18 @@ namespace StillDesign
 			private:
 				NxPhysicsSDK* _physicsSDK;
 				
-				ElementCollection< Scene^, SceneCollection^ >^ _sceneCollection;
-				ElementCollection< TriangleMesh^, TriangleMeshCollection^ >^ _triangleMeshCollection;
-				ElementCollection< ConvexMesh^, ConvexMeshCollection^ >^ _convexMeshCollection;
-				ElementCollection< ClothMesh^, ClothMeshCollection^ >^ _clothMeshCollection;
-				ElementCollection< HeightField^, HeightFieldCollection^ >^ _heightFieldCollection;
-				ElementCollection< CCDSkeleton^, CCDSkeletonCollection^ >^ _CCDSkeletonCollection;
-				ElementCollection< SoftBodyMesh^, SoftBodyMeshCollection^ >^ _softBodyMeshCollection;
+				ElementCollection< Scene^ >^ _sceneCollection;
+				ElementCollection< TriangleMesh^ >^ _triangleMeshCollection;
+				ElementCollection< ConvexMesh^ >^ _convexMeshCollection;
+				ElementCollection< ClothMesh^ >^ _clothMeshCollection;
+				ElementCollection< HeightField^ >^ _heightFieldCollection;
+				ElementCollection< CCDSkeleton^ >^ _CCDSkeletonCollection;
+				ElementCollection< SoftBodyMesh^ >^ _softBodyMeshCollection;
 				
 				StillDesign::PhysX::UserOutputStream^ _userOutputStream;
 				
 				Foundation^ _foundation;
+				PhysicsParametersWrapper^ _physicsParametersWrapper;
 				
 				bool _checkPhysXRuntimeFiles;
 			
@@ -161,39 +132,39 @@ namespace StillDesign
 				void SetParameter( PhysicsParameter parameter, bool enabled );
 				
 				/// <summary>Gets the Collection of Scenes</summary>
-				property SceneCollection^ Scenes
+				property System::Collections::ObjectModel::ReadOnlyCollection< Scene^ >^ Scenes
 				{
-					SceneCollection^ get();
+					System::Collections::ObjectModel::ReadOnlyCollection< Scene^ >^ get();
 				}
 				/// <summary>Gets the Collection of Triangle Mesh</summary>
-				property TriangleMeshCollection^ TriangleMeshes
+				property System::Collections::ObjectModel::ReadOnlyCollection< TriangleMesh^ >^ TriangleMeshes
 				{
-					TriangleMeshCollection^ get();
+					System::Collections::ObjectModel::ReadOnlyCollection< TriangleMesh^ >^ get();
 				}
 				/// <summary>Gets the Collection of Convex Mesh</summary>
-				property ConvexMeshCollection^ ConvexMeshes
+				property System::Collections::ObjectModel::ReadOnlyCollection< ConvexMesh^ >^ ConvexMeshes
 				{
-					ConvexMeshCollection^ get();
+					System::Collections::ObjectModel::ReadOnlyCollection< ConvexMesh^ >^ get();
 				}
 				/// <summary>Gets the Collection of Cloth Mesh</summary>
-				property ClothMeshCollection^ ClothMeshes
+				property System::Collections::ObjectModel::ReadOnlyCollection< ClothMesh^ >^ ClothMeshes
 				{
-					ClothMeshCollection^ get();
+					System::Collections::ObjectModel::ReadOnlyCollection< ClothMesh^ >^ get();
 				}
 				/// <summary>Gets the Collection of Heightfield</summary>
-				property HeightFieldCollection^ HeightFields
+				property System::Collections::ObjectModel::ReadOnlyCollection< HeightField^ >^ HeightFields
 				{
-					HeightFieldCollection^ get();
+					System::Collections::ObjectModel::ReadOnlyCollection< HeightField^ >^ get();
 				}
 				/// <summary>Gets the Collection of CCD Skeletons</summary>
-				property CCDSkeletonCollection^ CCDSkeletons
+				property System::Collections::ObjectModel::ReadOnlyCollection< CCDSkeleton^ >^ CCDSkeletons
 				{
-					CCDSkeletonCollection^ get();
+					System::Collections::ObjectModel::ReadOnlyCollection< CCDSkeleton^ >^ get();
 				}
 				/// <summary>Gets the Collection of SoftBody Mesh</summary>
-				property SoftBodyMeshCollection^ SoftBodyMeshes
+				property System::Collections::ObjectModel::ReadOnlyCollection< SoftBodyMesh^ >^ SoftBodyMeshes
 				{
-					SoftBodyMeshCollection^ get();
+					System::Collections::ObjectModel::ReadOnlyCollection< SoftBodyMesh^ >^ get();
 				}
 				
 				/// <summary>Gets the Foundation Class Associated with this Core</summary>
@@ -232,6 +203,11 @@ namespace StillDesign
 				property StillDesign::PhysX::UserOutputStream^ UserOutputStream
 				{
 					StillDesign::PhysX::UserOutputStream^ get();
+				}
+
+				property PhysicsParametersWrapper^ Parameters
+				{
+					PhysicsParametersWrapper^ get();
 				}
 			
 			internal:

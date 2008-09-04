@@ -36,7 +36,7 @@ FluidDescription::!FluidDescription()
 }
 void FluidDescription::CreateFluidDescription()
 {
-	_emitters = gcnew FluidEmitterDescriptionCollection();
+	_emitters = gcnew ListBase< FluidEmitterDescription^ >();
 		_emitters->onAdd += gcnew EventHandlerItem<FluidEmitterDescription^>( this, &FluidDescription::FluidEmitterDescriptionAdded );
 		_emitters->onRemove += gcnew EventHandlerItem<FluidEmitterDescription^>( this, &FluidDescription::FluidEmitterDescriptionRemoved );
 }
@@ -65,7 +65,7 @@ DescriptorValidity^ FluidDescription::IsValid()
 	return true;
 }
 
-FluidDescription::FluidEmitterDescriptionCollection^ FluidDescription::Emitters::get()
+ListBase< FluidEmitterDescription^ >^ FluidDescription::Emitters::get()
 {
 	return _emitters;
 }

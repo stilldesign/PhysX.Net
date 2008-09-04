@@ -2,6 +2,7 @@
 
 #include "Physics Stream.h"
 #include "Functions.h"
+#include "PhysX Exception.h"
 
 using namespace StillDesign::PhysX;
 using namespace System::IO;
@@ -41,7 +42,7 @@ generic<typename T> void PhysicsStream::CopyData( int offsetInBytes, int strideS
 		return;
 	
 	if( this->CanRead == false )
-		throw gcnew InvalidOperationException( "Cannot read from stream", gcnew Exception( "The CanRead property must be set to true" ) );
+		throw gcnew InvalidOperationException( "Cannot read from stream. The CanRead property must be set to true" );
 	if( strideSize <= 0 )
 		throw gcnew ArgumentException( "Stride size must be greater than 0", "strideSize" );
 	if( sizeof( T ) == 0 )
@@ -88,7 +89,7 @@ generic<typename T> void PhysicsStream::CopyData( int offsetInBytes, int strideS
 			}
 		}
 	}catch(...){
-		throw gcnew ApplicationException( "Failed to copy data" );
+		throw gcnew PhysXException( "Failed to copy data" );
 	}
 	
 	this->Position = originalPosition;

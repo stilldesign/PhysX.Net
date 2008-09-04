@@ -12,6 +12,7 @@
 #include "Convex Force Field Shape Description.h"
 #include "Scene.h"
 
+using namespace System::Globalization;
 using namespace StillDesign::PhysX;
 
 ForceFieldShapeGroup::ForceFieldShapeGroup( NxForceFieldShapeGroup* group )
@@ -26,7 +27,7 @@ ForceFieldShapeGroup::ForceFieldShapeGroup( NxForceFieldShapeGroup* group )
 	_forceField = nullptr;
 	_scene = scene;
 	
-	_shapes = gcnew ElementCollection<ForceFieldShape^, ForceFieldShapeCollection^>();
+	_shapes = gcnew ElementCollection< ForceFieldShape^ >();
 }
 ForceFieldShapeGroup::~ForceFieldShapeGroup()
 {
@@ -102,7 +103,8 @@ ForceFieldShape^ ForceFieldShapeGroup::CreateShape( ForceFieldShapeDescription^ 
 		}
 		break;
 		
-		default: throw gcnew ApplicationException( String::Format( "Force field shape type not supported: '{0}'", forceFieldShapeDescription->Type ) );
+		default:
+			throw gcnew NotSupportedException( String::Format( CultureInfo::CurrentCulture, "Force field shape type not supported: '{0}'", forceFieldShapeDescription->Type ) );
 	}
 	
 	_shapes->Add( s );
@@ -124,7 +126,7 @@ StillDesign::PhysX::Scene^ ForceFieldShapeGroup::Scene::get()
 	return _scene;
 }
 
-ForceFieldShapeGroup::ForceFieldShapeCollection^ ForceFieldShapeGroup::Shapes::get()
+System::Collections::ObjectModel::ReadOnlyCollection< ForceFieldShape^ >^ ForceFieldShapeGroup::Shapes::get()
 {
 	return _shapes->ReadOnlyCollection;
 }

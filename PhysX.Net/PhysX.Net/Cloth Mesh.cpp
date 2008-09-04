@@ -4,6 +4,7 @@
 #include "Functions.h"
 #include "Core.h"
 #include "Cloth Mesh Description.h"
+#include "PhysX Exception.h"
 
 #include <NxClothMesh.h> 
 
@@ -49,7 +50,7 @@ ClothMeshDescription^ ClothMesh::SaveToDescription()
 		if( _clothMesh->saveToDesc( *desc ) == false )
 		{
 			delete desc;
-			throw gcnew ApplicationException( "Could not save cloth mesh description" );
+			throw gcnew PhysXException( "Could not save cloth mesh description" );
 		}
 		
 		int trianglesSize = desc->triangleStrideBytes * desc->numTriangles;

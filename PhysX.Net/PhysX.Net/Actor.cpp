@@ -32,7 +32,10 @@
 #include "Height Field Shape.h"
 #include "Compartment.h"
 #include "User Entity Report.h"
+#include "Actor Flags Wrapper.h"
+#include "Body Flags Wrapper.h"
 
+using namespace System::Globalization;
 using namespace StillDesign;
 using namespace StillDesign::PhysX;
 
@@ -47,8 +50,11 @@ Actor::Actor( NxActor* actor )
 	if( actor->getCompartment() != NULL )
 		_compartment = ObjectCache::GetObject<StillDesign::PhysX::Compartment^>( (intptr_t)actor->getCompartment() );
 	
-	_shapes = gcnew ElementCollection< Shape^, ShapeCollection^ >();
+	_shapes = gcnew ElementCollection< Shape^ >();
 	CreateShapes();
+
+	_actorFlagsWrapper = gcnew ActorFlagsWrapper( this );
+	_bodyFlagsWrapper = gcnew BodyFlagsWrapper( this );
 }
 Actor::~Actor()
 {
@@ -124,7 +130,8 @@ ActorDescription^ Actor::SaveToActorDescription( bool retrieveBody, bool retriev
 					shapeDesc = ((WheelShape^)shape)->SaveToDescription();
 				break;
 				
-				default: throw gcnew ApplicationException( String::Format( "Cannot Save {0} Shape Descriptions", shape->Type ) );
+				default:
+					throw gcnew NotSupportedException( String::Format( CultureInfo::CurrentCulture, "Cannot save {0} shape description", shape->Type ) );
 			}
 			
 			desc->Shapes->Add( shapeDesc );
@@ -184,7 +191,8 @@ void Actor::CreateShapes()
 				shape = gcnew WheelShape( shapes[ x ]->isWheel() );
 			break;
 			
-			default: throw gcnew NotImplementedException( "Shape Type Unhandled" );
+			default:
+				throw gcnew NotSupportedException( "Shape type unhandled" );
 		}
 		
 		//shape->Material = this->Scene->Materials->GetMaterialByIndex( shapes[ x ]->getMaterial() );
@@ -259,7 +267,8 @@ Shape^ Actor::CreateShape( ShapeDescription^ shapeDescription )
 		}
 		break;
 		
-		default: throw gcnew NotImplementedException( "Shape type is invalid" );
+		default:
+			throw gcnew NotSupportedException( "Shape type is invalid" );
 	}
 	
 	_shapes->Add( shape );
@@ -468,7 +477,7 @@ bool Actor::IsDynamic::get()
 }
 
 // Shapes
-Actor::ShapeCollection^ Actor::Shapes::get()
+System::Collections::ObjectModel::ReadOnlyCollection< Shape^ >^ Actor::Shapes::get()
 {
 	return _shapes->ReadOnlyCollection;
 }
@@ -633,7 +642,7 @@ float Actor::Mass::get()
 void Actor::Mass::set( float value )
 {
 	if( value < 0 )
-		throw gcnew ArgumentOutOfRangeException( "value", "Mass must be greater than or equal to 0" );
+		throw gcnew ArgumentOutOfRangeException( "value", value, "Mass must be greater than or equal to 0" );
 	
 	_actor->setMass( value );
 }
@@ -766,6 +775,16 @@ Object^ Actor::UserData::get()
 void Actor::UserData::set( Object^ value )
 {
 	_userData = value;
+}
+
+ActorFlagsWrapper^ Actor::ActorFlags::get()
+{
+	return _actorFlagsWrapper;
+}
+
+BodyFlagsWrapper^ Actor::BodyFlags::get()
+{
+	return _bodyFlagsWrapper;
 }
 
 NxActor* Actor::UnmanagedPointer::get()

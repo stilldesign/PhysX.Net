@@ -1,6 +1,5 @@
 #pragma once
 
-#include <vcclr.h>
 #include "Actor.h"
 
 using namespace System;

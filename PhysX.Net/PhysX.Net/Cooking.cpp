@@ -9,6 +9,7 @@
 #include "Soft Body Mesh Description.h"
 #include "Memory Writer Stream.h"
 #include "User Memory Writer Stream.h"
+#include "PhysX Exception.h"
 
 #include <NxCooking.h> 
 
@@ -18,15 +19,15 @@ static Cooking::Cooking()
 {
 	_cooking = NxGetCookingLib( NX_PHYSICS_SDK_VERSION );
 	
+	if( _cooking == NULL )
+		throw gcnew PhysXException( "Cooking library unavailable" );
+
 	CookingParameters parameters;
 		parameters.Platform = Platform::PC;
 		parameters.ResourceType = CookingResourceType::Performance;
 		parameters.SkinWidth = 0.025f;
 	
 	Cooking::Parameters = parameters;
-	
-	if( _cooking == NULL )
-		throw gcnew Exception( "Cooking library unavailable" );
 }
 Cooking::~Cooking()
 {
@@ -56,7 +57,7 @@ void Cooking::InitializeCooking( UserOutputStream^ outputStream )
 	_userOutputStream = outputStream;
 	
 	if( _cooking->NxInitCooking( NULL, output ) == false )
-		throw gcnew Exception( "Unable to initialize cooking" );
+		throw gcnew PhysXException( "Unable to initialize cooking" );
 }
 void Cooking::CloseCooking()
 {

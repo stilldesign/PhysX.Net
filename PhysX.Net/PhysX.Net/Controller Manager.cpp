@@ -22,7 +22,7 @@ StillDesign::PhysX::ControllerManager::ControllerManager( NxControllerManager* m
 	_manager = manager;
 	_scene = scene;
 	
-	_controllers = gcnew ElementCollection< Controller^, ControllerCollection^ >();
+	_controllers = gcnew ElementCollection< Controller^ >();
 }
 StillDesign::PhysX::ControllerManager::~ControllerManager()
 {
@@ -79,7 +79,8 @@ StillDesign::PhysX::Controller^ StillDesign::PhysX::ControllerManager::CreateCon
 		}
 		break;
 		
-		default: throw gcnew InvalidOperationException( "Unsupported controller type" );
+		default:
+			throw gcnew NotSupportedException( "Unsupported controller type" );
 	}
 	
 	_controllers->Add( controller );
@@ -97,7 +98,7 @@ StillDesign::PhysX::Scene^ StillDesign::PhysX::ControllerManager::Scene::get()
 	return _scene;
 }
 
-StillDesign::PhysX::ControllerManager::ControllerCollection^ StillDesign::PhysX::ControllerManager::Controllers::get()
+System::Collections::ObjectModel::ReadOnlyCollection< StillDesign::PhysX::Controller^ >^ StillDesign::PhysX::ControllerManager::Controllers::get()
 {
 	return _controllers->ReadOnlyCollection;
 }

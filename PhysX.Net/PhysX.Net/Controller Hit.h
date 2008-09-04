@@ -1,8 +1,5 @@
 #pragma once
 
-#include <NxUserContactReport.h> 
-#include <NxController.h> 
-
 using namespace System;
 
 UsingFrameworkNamespace

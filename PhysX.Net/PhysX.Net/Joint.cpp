@@ -33,7 +33,7 @@ Joint::Joint( NxJoint* joint )
 	if( actor2 != NULL )
 		_actor2 = ObjectCache::GetObject<Actor^>( (intptr_t)actor2 );
 	
-	_limitPlanes = gcnew List<LimitPlane, LimitPlaneCollection^>();
+	_limitPlanes = gcnew ListBase< LimitPlane >();
 }
 Joint::~Joint()
 {
@@ -125,21 +125,32 @@ void Joint::RemoveLimitPlane( int index )
 	_limitPlanes->RemoveAt( index );
 	
 	_joint->resetLimitPlaneIterator();
+	_joint->purgeLimitPlanes();
+
+	for each ( LimitPlane plane in _limitPlanes )
+	{
+		_joint->addLimitPlane(
+				Math::Vector3ToNxVec3( plane.Normal ),
+				Math::Vector3ToNxVec3( plane.PointInPlane() ),
+				plane.Distance
+			);
+	}
 	
 	// Copy all limit planes
-	array<LimitPlane>^ planes = this->LimitPlanes->ToArray();
+	//array<LimitPlane>^ planes = this->LimitPlanes->ToArray();
 	
 	// Remove all limit planes
-	_joint->purgeLimitPlanes();
+
+	
 	
 	// Add limit planes in again, except the delete one
-	for( int x = 0; x < planes->Length; x++ )
-	{
-		if( x == index )
-			continue;
+	//for( int x = 0; x < _limitPlanes->Length; x++ )
+	//{
+	//	if( x == index )
+	//		continue;
 		
-		AddLimitPlane( planes[ x ] );
-	}
+		//AddLimitPlane( planes[ x ] );
+	//}
 }
 
 void Joint::SetLimitPoint( Vector3 point )
@@ -265,7 +276,7 @@ JointType Joint::Type::get()
 	return (JointType)_joint->getType();
 }
 
-Joint::LimitPlaneCollection^ Joint::LimitPlanes::get()
+System::Collections::ObjectModel::ReadOnlyCollection< LimitPlane >^ Joint::LimitPlanes::get()
 {
 	return _limitPlanes->ReadOnlyCollection;
 }

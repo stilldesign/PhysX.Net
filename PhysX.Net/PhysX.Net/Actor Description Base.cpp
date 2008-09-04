@@ -134,7 +134,7 @@ float ActorDescriptionBase::Density::get()
 void ActorDescriptionBase::Density::set( float value )
 {
 	if( value < 0 )
-		throw gcnew ArgumentException( "Value must be greater than or equal to 0" );
+		throw gcnew ArgumentOutOfRangeException( "value", value, "Value must be greater than or equal to 0" );
 	
 	_desc->density = value;
 }

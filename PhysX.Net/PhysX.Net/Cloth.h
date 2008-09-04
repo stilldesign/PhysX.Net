@@ -28,10 +28,10 @@ namespace StillDesign
 		public ref class Cloth : StillDesign::PhysX::IDisposable
 		{
 			public:
-				ref class ClothCollection : ReadOnlyElementCollection<Cloth^>
-				{
-					
-				};
+				//ref class ClothCollection : ReadOnlyElementCollection<Cloth^>
+				//{
+				//	
+				//};
 				
 				virtual event EventHandler^ onDisposing;
 				virtual event EventHandler^ onDisposed;

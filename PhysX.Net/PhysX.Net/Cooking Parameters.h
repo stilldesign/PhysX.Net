@@ -1,7 +1,5 @@
 #pragma once
 
-#include <NxCooking.h> 
-
 #include "Enums.h"
 
 UsingFrameworkNamespace

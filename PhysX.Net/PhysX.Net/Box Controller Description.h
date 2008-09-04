@@ -1,6 +1,5 @@
 #pragma once
 
-#include <NxBoxController.h> 
 #include "Controller Description.h"
 
 using namespace System;

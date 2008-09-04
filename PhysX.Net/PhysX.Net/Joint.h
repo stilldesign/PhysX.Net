@@ -15,18 +15,11 @@ namespace StillDesign
 		ref class JointDescription;
 		ref class Joint;
 		ref class Actor;
+		generic < class T > ref class ListBase;
 		value class LimitPlane;
 		
 		public ref class Joint abstract : StillDesign::PhysX::IDisposable
 		{
-			public:
-				ref class LimitPlaneCollection : ReadOnlyList<LimitPlane>
-				{
-					
-				};
-			
-			//
-			
 			public:
 				virtual event EventHandler^ onDisposing;
 				virtual event EventHandler^ onDisposed;
@@ -39,7 +32,7 @@ namespace StillDesign
 				Actor^ _actor1;
 				Actor^ _actor2;
 				
-				List<LimitPlane, LimitPlaneCollection^>^ _limitPlanes;
+				ListBase< LimitPlane >^ _limitPlanes;
 				
 				Object^ _userData;
 				
@@ -147,9 +140,9 @@ namespace StillDesign
 				}
 				
 				/// <summary></summary>
-				property LimitPlaneCollection^ LimitPlanes
+				property System::Collections::ObjectModel::ReadOnlyCollection< LimitPlane >^ LimitPlanes
 				{
-					LimitPlaneCollection^ get();
+					System::Collections::ObjectModel::ReadOnlyCollection< LimitPlane >^ get();
 				}
 				
 				/// <summary>Gets or Sets an arbitary 1:1 object</summary>

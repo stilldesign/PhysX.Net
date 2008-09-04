@@ -16,7 +16,7 @@
 #elif GRAPHICS_XNA3
 	#using <C:\Program Files\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.dll>
 #elif GRAPHICS_SLIMDX
-	#using <C:\Program Files\SlimDX (June 2008)\SlimDX.dll>
+#using <F:\NetAssemblies\SlimDX.dll>
 #else
 	#error No Graphics Target Specified
 #endif
@@ -81,15 +81,23 @@ bool IsInstanceOf( U u )
 
 #include <vcclr.h>
 
+//#define NX_USE_FLUID_API
+//#define NX_USE_CLOTH_API
+//#define NX_USE_SOFTBODY_API
 #include <NxPhysics.h>
+#include <NxCharacter.h>
+#include <NxCooking.h>
+#include <Controller.h>
+#include <ControllerManager.h>
+#include <NxBoxController.h>
+#include <NxCapsuleController.h>
+#include <NxStream.h>
 
 
 #include "Functions.h"
 #include "Math.h"
 #include "Descriptor Validity.h"
 #include "Object Cache.h"
-#include "List.h"
-#include "Read Only List.h"
 
 #define _CRT_SECURE_NO_DEPRECATE
 

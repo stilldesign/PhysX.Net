@@ -2,8 +2,6 @@
 
 #include "Joint Description.h"
 
-#include <NxCylindricalJointDesc.h> 
-
 UsingFrameworkNamespace
 
 namespace StillDesign

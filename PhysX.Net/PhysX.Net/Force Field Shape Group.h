@@ -18,10 +18,10 @@ namespace StillDesign
 		public ref class ForceFieldShapeGroup : StillDesign::PhysX::IDisposable
 		{
 			public:
-				ref class ForceFieldShapeCollection : ReadOnlyElementCollection<ForceFieldShape^>
-				{
-					
-				};
+				//ref class ForceFieldShapeCollection : ReadOnlyElementCollection<ForceFieldShape^>
+				//{
+				//	
+				//};
 				
 				virtual event EventHandler^ onDisposing;
 				virtual event EventHandler^ onDisposed;
@@ -33,7 +33,7 @@ namespace StillDesign
 				
 				StillDesign::PhysX::Scene^ _scene;
 				
-				ElementCollection<ForceFieldShape^, ForceFieldShapeCollection^>^ _shapes;
+				ElementCollection< ForceFieldShape^ >^ _shapes;
 				
 				Object^ _userData;
 				
@@ -64,9 +64,9 @@ namespace StillDesign
 				}
 				
 				/// <summary></summary>
-				property ForceFieldShapeGroup::ForceFieldShapeCollection^ Shapes
+				property System::Collections::ObjectModel::ReadOnlyCollection< ForceFieldShape^ >^ Shapes
 				{
-					ForceFieldShapeGroup::ForceFieldShapeCollection^ get();
+					System::Collections::ObjectModel::ReadOnlyCollection< ForceFieldShape^ >^ get();
 				}
 				
 				property String^ Name

@@ -1,7 +1,5 @@
 #pragma once
 
-#include <NxRevoluteJointDesc.h> 
-
 #include "Joint Enums.h"
 
 using namespace System;

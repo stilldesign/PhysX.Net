@@ -1,7 +1,5 @@
 #pragma once
 
-#include <NxConvexMesh.h> 
-
 #include "Enums.h"
 #include "IDisposable.h"
 

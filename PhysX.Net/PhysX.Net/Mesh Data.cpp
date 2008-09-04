@@ -352,21 +352,21 @@ void MeshData::MaximumParentIndices::set( int value )
 int MeshData::NumberOfVertices::get()
 {
 	if( _meshData->numVerticesPtr == NULL )
-		throw gcnew ApplicationException( "NumberOfVertices is unallocated" );
+		throw gcnew InvalidOperationException( "NumberOfVertices is unallocated" );
 	
 	return *_meshData->numVerticesPtr;
 }
 int MeshData::NumberOfIndices::get()
 {
 	if( _meshData->numIndicesPtr == NULL )
-		throw gcnew ApplicationException( "NumberOfIndices is unallocated" );
+		throw gcnew InvalidOperationException( "NumberOfIndices is unallocated" );
 	
 	return *_meshData->numIndicesPtr;
 }
 int MeshData::NumberOfParentIndices::get()
 {
 	if( _meshData->numParentIndicesPtr == NULL )
-		throw gcnew ApplicationException( "NumberOfParentIndices is unallocated" );
+		throw gcnew InvalidOperationException( "NumberOfParentIndices is unallocated" );
 	
 	return *_meshData->numParentIndicesPtr;
 }

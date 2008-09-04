@@ -1,10 +1,5 @@
 #pragma once
 
-#include <NxMath.h> 
-#include <NxMat33.h> 
-#include <NxMat34.h> 
-#include <NxBounds3.h>
-
 UsingFrameworkNamespace
 
 namespace StillDesign

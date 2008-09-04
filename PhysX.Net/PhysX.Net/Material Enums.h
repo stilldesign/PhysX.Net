@@ -1,7 +1,5 @@
 #pragma once
 
-#include <NxMaterialDesc.h> 
-
 namespace StillDesign
 {
 	namespace PhysX

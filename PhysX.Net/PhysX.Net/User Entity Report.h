@@ -2,8 +2,6 @@
 
 #include "Sweep Query Hit.h"
 
-#include <NxUserEntityReport.h> 
-
 namespace StillDesign
 {
 	namespace PhysX

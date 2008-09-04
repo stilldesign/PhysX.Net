@@ -1,4 +1,5 @@
-#include <NxScene.h>
+
+#pragma once
 
 #include "Enums.h"
 #include "IDisposable.h"

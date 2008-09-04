@@ -1,7 +1,5 @@
 #pragma once
 
-#include <NxSphere.h> 
-
 UsingFrameworkNamespace
 
 namespace StillDesign

@@ -1,7 +1,5 @@
 #pragma once
 
-#include <ControllerManager.h> 
-
 #include "Controller.h"
 #include "Element Collection.h"
 
@@ -18,10 +16,10 @@ namespace StillDesign
 		public ref class ControllerManager : StillDesign::PhysX::IDisposable
 		{
 			public:
-				ref class ControllerCollection : ReadOnlyElementCollection<StillDesign::PhysX::Controller^>
-				{
-					
-				};
+				//ref class ControllerCollection : ReadOnlyElementCollection<StillDesign::PhysX::Controller^>
+				//{
+				//	
+				//};
 				
 				virtual event EventHandler^ onDisposing;
 				virtual event EventHandler^ onDisposed;
@@ -30,7 +28,7 @@ namespace StillDesign
 				NxControllerManager* _manager;
 				StillDesign::PhysX::Scene^ _scene;
 				
-				ElementCollection< StillDesign::PhysX::Controller^, ControllerCollection^ >^ _controllers;
+				ElementCollection< StillDesign::PhysX::Controller^ >^ _controllers;
 				
 				Object^ _userData;
 				
@@ -64,9 +62,9 @@ namespace StillDesign
 				}
 				
 				/// <summary>Gets the Collection of Controller</summary>
-				property ControllerCollection^ Controllers
+				property System::Collections::ObjectModel::ReadOnlyCollection< Controller^ >^ Controllers
 				{
-					ControllerCollection^ get();
+					System::Collections::ObjectModel::ReadOnlyCollection< Controller^ >^ get();
 				}
 				
 				/// <summary></summary>

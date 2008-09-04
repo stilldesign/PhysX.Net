@@ -1,7 +1,5 @@
 #pragma once
 
-#include <NxSegment.h> 
-
 UsingFrameworkNamespace
 
 namespace StillDesign

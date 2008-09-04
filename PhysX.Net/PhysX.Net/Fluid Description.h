@@ -14,17 +14,12 @@ namespace StillDesign
 		ref class FluidEmitterDescription;
 		ref class DescriptorValidity;
 		ref class Scene;
+		generic< class T > ref class ListBase;
 		
 		public ref class FluidDescription : FluidDescriptionBase
-		{
-			public:
-				ref class FluidEmitterDescriptionCollection : ListBase<FluidEmitterDescription^>
-				{
-					
-				};
-				
+		{		
 			private:
-				FluidEmitterDescriptionCollection^ _emitters;
+				ListBase< FluidEmitterDescription^ >^ _emitters;
 			
 			internal:
 				FluidDescription( NxFluidDesc* desc );
@@ -43,9 +38,9 @@ namespace StillDesign
 				DescriptorValidity^ IsValid();
 				
 				/// <summary>Gets a collection of emitter descriptors that describe emitters which emit fluid into this fluid actor</summary>
-				property FluidEmitterDescriptionCollection^ Emitters
+				property ListBase< FluidEmitterDescription^ >^ Emitters
 				{
-					FluidEmitterDescriptionCollection^ get();
+					ListBase< FluidEmitterDescription^ >^ get();
 				}
 			
 			internal:

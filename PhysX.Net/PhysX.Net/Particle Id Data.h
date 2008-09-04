@@ -1,7 +1,5 @@
 #pragma once
 
-#include <NxParticleIdData.h> 
-
 #include "IDisposable.h"
 
 namespace StillDesign

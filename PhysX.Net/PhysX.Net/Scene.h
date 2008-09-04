@@ -73,60 +73,6 @@ namespace StillDesign
 		/// <summary>A scene is a collection of bodies, constraints, and effectors which can interact</summary>
 		public ref class Scene : StillDesign::PhysX::IDisposable
 		{
-			public:
-				ref class ActorCollection : ReadOnlyElementCollection<Actor^>
-				{
-					
-				};
-				ref class ShapeCollection : ReadOnlyElementCollection<Shape^>
-				{
-					
-				};
-				ref class MaterialCollection : ReadOnlyElementCollection<Material^>
-				{
-					
-				};
-				ref class JointCollection : ReadOnlyElementCollection<Joint^>
-				{
-					
-				};
-				ref class ClothCollection : ReadOnlyElementCollection<Cloth^>
-				{
-					
-				};
-				ref class ForceFieldCollection : ReadOnlyElementCollection<ForceField^>
-				{
-					
-				};
-				ref class ControllerManagerCollection : ReadOnlyElementCollection<StillDesign::PhysX::ControllerManager^>
-				{
-					
-				};
-				ref class ControllerCollection : ReadOnlyElementCollection<Controller^>
-				{
-					
-				};
-				ref class FluidCollection : ReadOnlyElementCollection<Fluid^>
-				{
-					
-				};
-				ref class SoftBodyCollection : ReadOnlyElementCollection<SoftBody^>
-				{
-					
-				};
-				ref class CompartmentCollection : ReadOnlyElementCollection<Compartment^>
-				{
-					
-				};
-				ref class ForceFieldLinearKernelCollection : ReadOnlyElementCollection<ForceFieldLinearKernel^>
-				{
-					
-				};
-				ref class ForceFieldShapeGroupCollection : ReadOnlyElementCollection<ForceFieldShapeGroup^>
-				{
-					
-				};
-			
 			private:
 				ref class RaycastReport : UserRaycastReport
 				{
@@ -156,19 +102,19 @@ namespace StillDesign
 				
 				Material^ _defaultMaterial;
 				
-				ElementCollection< Compartment^, CompartmentCollection^ >^ _compartments;
-				ElementCollection< Actor^, ActorCollection^ >^ _actors;
-				ElementCollection< Shape^, ShapeCollection^ >^ _shapes;
-				ElementCollection< Material^, MaterialCollection^ >^ _materials;
-				ElementCollection< Joint^, JointCollection^ >^ _joints;
-				ElementCollection< Cloth^, ClothCollection^ >^ _cloths;
-				ElementCollection< ForceField^, ForceFieldCollection^ >^ _forceFields;
-				ElementCollection< ForceFieldLinearKernel^, ForceFieldLinearKernelCollection^ >^ _forceFieldLinearKernels;
-				ElementCollection< ForceFieldShapeGroup^, ForceFieldShapeGroupCollection^ >^ _forceFieldShapeGroups;
-				ElementCollection< ControllerManager^, ControllerManagerCollection^ >^ _controllerManagers;
-				ElementCollection< Controller^, ControllerCollection^ >^ _controllerCollection;
-				ElementCollection< Fluid^, FluidCollection^ >^ _fluids;
-				ElementCollection< SoftBody^, SoftBodyCollection^ >^ _softBodies;
+				ElementCollection< Compartment^ >^ _compartments;
+				ElementCollection< Actor^ >^ _actors;
+				//ElementCollection< Shape^ >^ _shapes;
+				ElementCollection< Material^ >^ _materials;
+				ElementCollection< Joint^ >^ _joints;
+				ElementCollection< Cloth^ >^ _cloths;
+				ElementCollection< ForceField^ >^ _forceFields;
+				ElementCollection< ForceFieldLinearKernel^ >^ _forceFieldLinearKernels;
+				ElementCollection< ForceFieldShapeGroup^ >^ _forceFieldShapeGroups;
+				ElementCollection< ControllerManager^ >^ _controllerManagers;
+				//ElementCollection< Controller^ >^ _controllerCollection;
+				ElementCollection< Fluid^ >^ _fluids;
+				ElementCollection< SoftBody^ >^ _softBodies;
 				
 				StillDesign::PhysX::UserNotify^ _userNotify;
 				StillDesign::PhysX::FluidUserNotify^ _fluidUserNotify;
@@ -295,14 +241,14 @@ namespace StillDesign
 				/// <summary>Returns the set of shapes overlapped by the world-space sphere</summary>
 				/// <param name="sphere">Sphere description in world space</param>
 				/// <param name="type">Choose if to intersect with static, dynamic or both types of shape</param>
-				array<Shape^>^ OverlappedShapes( Sphere sphere, ShapesType type );
+				array< Shape^ >^ OverlappedShapes( Sphere sphere, ShapesType type );
 				/// <summary>Returns the set of shapes overlapped by the world-space sphere</summary>
 				/// <param name="sphere">Sphere description in world space</param>
 				/// <param name="type">Choose if to intersect with static, dynamic or both types of shape</param>
 				/// <param name="activeGroups">Mask used to filter shape objects</param>
 				/// <param name="groupsMask">Alternative mask used to filter shapes</param>
 				/// <param name="accurateCollision">True to test the sphere against the actual shapes, false to test against the AABBs only</param>
-				array<Shape^>^ OverlappedShapes( Sphere sphere, ShapesType type, unsigned int activeGroups, Nullable<GroupsMask> groupsMask, bool accurateCollision );
+				array< Shape^ >^ OverlappedShapes( Sphere sphere, ShapesType type, unsigned int activeGroups, Nullable<GroupsMask> groupsMask, bool accurateCollision );
 				/// <summary>Returns the set of shapes overlapped by the world-space sphere</summary>
 				/// <param name="sphere">Sphere description in world space</param>
 				/// <param name="type">Choose if to intersect with static, dynamic or both types of shape</param>
@@ -315,14 +261,14 @@ namespace StillDesign
 				/// <summary>Returns the set of shapes overlapped by the world-space AABB</summary>
 				/// <param name="worldBounds">Axis Aligned Bounding Box in world space</param>
 				/// <param name="type">Choose if to intersect with static, dynamic or both types of shape</param>
-				array<Shape^>^ OverlappedShapes( Bounds3 worldBounds, ShapesType type );
+				array< Shape^ >^ OverlappedShapes( Bounds3 worldBounds, ShapesType type );
 				/// <summary>Returns the set of shapes overlapped by the world-space AABB</summary>
 				/// <param name="worldBounds">Axis Aligned Bounding Box in world space</param>
 				/// <param name="type">Choose if to intersect with static, dynamic or both types of shape</param>
 				/// <param name="activeGroups">Mask used to filter shape objects</param>
 				/// <param name="groupsMask">Alternative mask used to filter shapes</param>
 				/// <param name="accurateCollision">True to test the AABB against the actual shapes, false to test against the AABBs only</param>
-				array<Shape^>^ OverlappedShapes( Bounds3 worldBounds, ShapesType type, unsigned int activeGroups, Nullable<GroupsMask> groupsMask, bool accurateCollision );
+				array< Shape^ >^ OverlappedShapes( Bounds3 worldBounds, ShapesType type, unsigned int activeGroups, Nullable<GroupsMask> groupsMask, bool accurateCollision );
 				/// <summary>Returns the set of shapes overlapped by the world-space AABB</summary>
 				/// <param name="worldBounds">Axis Aligned Bounding Box in world space</param>
 				/// <param name="type">Choose if to intersect with static, dynamic or both types of shape</param>
@@ -335,14 +281,14 @@ namespace StillDesign
 				/// <summary>Returns the set of shapes overlapped by the world-space OBB</summary>
 				/// <param name="worldBox">Oriented Bounding Box in world space</param>
 				/// <param name="type">Choose if to intersect with static, dynamic or both types of shape</param>
-				array<Shape^>^ OverlappedShapes( Box worldBox, ShapesType type );
+				array< Shape^ >^ OverlappedShapes( Box worldBox, ShapesType type );
 				/// <summary>Returns the set of shapes overlapped by the world-space OBB</summary>
 				/// <param name="worldBox">Oriented Bounding Box in world space</param>
 				/// <param name="type">Choose if to intersect with static, dynamic or both types of shape</param>
 				/// <param name="activeGroups">Mask used to filter shape objects</param>
 				/// <param name="groupsMask">Alternative mask used to filter shapes</param>
 				/// <param name="accurateCollision">True to test the OBB against the actual shapes, false to test against the AABBs only</param>
-				array<Shape^>^ OverlappedShapes( Box worldBox, ShapesType type, unsigned int activeGroups, Nullable<GroupsMask> groupsMask, bool accurateCollision );
+				array< Shape^ >^ OverlappedShapes( Box worldBox, ShapesType type, unsigned int activeGroups, Nullable<GroupsMask> groupsMask, bool accurateCollision );
 				/// <summary>Returns the set of shapes overlapped by the world-space OBB</summary>
 				/// <param name="worldBox">Oriented Bounding Box in world space</param>
 				/// <param name="type">Choose if to intersect with static, dynamic or both types of shape</param>
@@ -355,14 +301,14 @@ namespace StillDesign
 				/// <summary>Returns the set of shapes overlapped by the world-space capsule</summary>
 				/// <param name="worldCapsule">capsule in world space</param>
 				/// <param name="type">Choose if to intersect with static, dynamic or both types of shape</param>
-				array<Shape^>^ OverlappedShapes( Capsule worldCapsule, ShapesType type );
+				array< Shape^ >^ OverlappedShapes( Capsule worldCapsule, ShapesType type );
 				/// <summary>Returns the set of shapes overlapped by the world-space capsule</summary>
 				/// <param name="worldCapsule">capsule in world space</param>
 				/// <param name="type">Choose if to intersect with static, dynamic or both types of shape</param>
 				/// <param name="activeGroups">Mask used to filter shape objects</param>
 				/// <param name="groupsMask">Alternative mask used to filter shapes</param>
 				/// <param name="accurateCollision">True to test the OBB against the actual shapes, false to test against the AABBs only</param>
-				array<Shape^>^ OverlappedShapes( Capsule worldCapsule, ShapesType type, unsigned int activeGroups, Nullable<GroupsMask> groupsMask, bool accurateCollision );
+				array< Shape^ >^ OverlappedShapes( Capsule worldCapsule, ShapesType type, unsigned int activeGroups, Nullable<GroupsMask> groupsMask, bool accurateCollision );
 				/// <summary>Returns the set of shapes overlapped by the world-space capsule</summary>
 				/// <param name="worldCapsule">capsule in world space</param>
 				/// <param name="type">Choose if to intersect with static, dynamic or both types of shape</param>
@@ -560,16 +506,16 @@ namespace StillDesign
 				array<ActiveTransform^>^ GetActiveTransforms();
 				
 			private:
-				void Actors_onAdd( Object^ sender, Actor^ item );
-				void Actors_onRemove( Object^ sender, Actor^ item );
-				void Actors_Shapes_onAdd( Object^ sender, Shape^ item );
-				void Actors_Shapes_onRemove( Object^ sender, Shape^ item );
-				
-				void _controllerManagerCollection_onAdd( Object^ sender, ControllerManager^ e );
-				void _controllerManagerCollection_onRemove( Object^ sender, ControllerManager^ e );
-				
-				void Controllers_onAdd( Object^ sender, StillDesign::PhysX::Controller^ e );
-				void Controllers_onRemove( Object^ sender, StillDesign::PhysX::Controller^ e );
+				//void Actors_onAdd( Object^ sender, Actor^ item );
+				//void Actors_onRemove( Object^ sender, Actor^ item );
+				//void Actors_Shapes_onAdd( Object^ sender, Shape^ item );
+				//void Actors_Shapes_onRemove( Object^ sender, Shape^ item );
+				//
+				//void _controllerManagerCollection_onAdd( Object^ sender, ControllerManager^ e );
+				//void _controllerManagerCollection_onRemove( Object^ sender, ControllerManager^ e );
+				//
+				//void Controllers_onAdd( Object^ sender, StillDesign::PhysX::Controller^ e );
+				//void Controllers_onRemove( Object^ sender, StillDesign::PhysX::Controller^ e );
 				
 				//
 				
@@ -581,68 +527,68 @@ namespace StillDesign
 				}
 				
 				/// <summary>Gets the Actors in the Scene</summary>
-				property ActorCollection^ Actors
+				property System::Collections::ObjectModel::ReadOnlyCollection< Actor^ >^ Actors
 				{
-					ActorCollection^ get();
+					System::Collections::ObjectModel::ReadOnlyCollection< Actor^ >^ get();
 				}
 				/// <summary>Gets the Shapes in the Scene</summary>
-				property ShapeCollection^ Shapes
-				{
-					ShapeCollection^ get();
-				}
+				//property System::Collections::ObjectModel::ReadOnlyCollection< Shape^ >^ Shapes
+				//{
+				//	System::Collections::ObjectModel::ReadOnlyCollection< Shape^ >^ get();
+				//}
 				/// <summary>Gets the Materials in the Scene</summary>
-				property MaterialCollection^ Materials
+				property System::Collections::ObjectModel::ReadOnlyCollection< Material^ >^ Materials
 				{
-					MaterialCollection^ get();
+					System::Collections::ObjectModel::ReadOnlyCollection< Material^ >^ get();
 				}
 				/// <summary>Gets the Controller Managers in the Scene</summary>
-				property ControllerManagerCollection^ ControllerManagers
+				property System::Collections::ObjectModel::ReadOnlyCollection< ControllerManager^ >^ ControllerManagers
 				{
-					ControllerManagerCollection^ get();
+					System::Collections::ObjectModel::ReadOnlyCollection< ControllerManager^ >^ get();
 				}
 				/// <summary>Gets the Controllers in the Scene</summary>
-				property ControllerCollection^ Controllers
-				{
-					ControllerCollection^ get();
-				}
+				//property System::Collections::ObjectModel::ReadOnlyCollection< Controller^ >^ Controllers
+				//{
+				//	System::Collections::ObjectModel::ReadOnlyCollection< Controller^ >^ get();
+				//}
 				/// <summary>Gets the Joints in the Scene</summary>
-				property JointCollection^ Joints
+				property System::Collections::ObjectModel::ReadOnlyCollection< Joint^ >^ Joints
 				{
-					JointCollection^ get();
+					System::Collections::ObjectModel::ReadOnlyCollection< Joint^ >^ get();
 				}
 				/// <summary>Gets the Cloths in the Scene</summary>
-				property ClothCollection^ Cloths
+				property System::Collections::ObjectModel::ReadOnlyCollection< Cloth^ >^ Cloths
 				{
-					ClothCollection^ get();
+					System::Collections::ObjectModel::ReadOnlyCollection< Cloth^ >^ get();
 				}
 				/// <summary>Gets the Force Fields in the Scene</summary>
-				property ForceFieldCollection^ ForceFields
+				property System::Collections::ObjectModel::ReadOnlyCollection< ForceField^ >^ ForceFields
 				{
-					ForceFieldCollection^ get();
+					System::Collections::ObjectModel::ReadOnlyCollection< ForceField^ >^ get();
 				}
 				/// <summary>Gets the Fluids in the Scene</summary>
-				property FluidCollection^ Fluids
+				property System::Collections::ObjectModel::ReadOnlyCollection< Fluid^ >^ Fluids
 				{
-					FluidCollection^ get();
+					System::Collections::ObjectModel::ReadOnlyCollection< Fluid^ >^ get();
 				}
 				/// <summary>Gets the Soft Bodies in the Scene</summary>
-				property SoftBodyCollection^ SoftBodies
+				property System::Collections::ObjectModel::ReadOnlyCollection< SoftBody^ >^ SoftBodies
 				{
-					SoftBodyCollection^ get();
+					System::Collections::ObjectModel::ReadOnlyCollection< SoftBody^ >^ get();
 				}
 				/// <summary>Gets the Compartments in the Scene</summary>
-				property CompartmentCollection^ Compartments
+				property System::Collections::ObjectModel::ReadOnlyCollection< Compartment^ >^ Compartments
 				{
-					CompartmentCollection^ get();
+					System::Collections::ObjectModel::ReadOnlyCollection< Compartment^ >^ get();
 				}
 				
-				property ForceFieldLinearKernelCollection^ ForceFieldLinearKernels
+				property System::Collections::ObjectModel::ReadOnlyCollection< ForceFieldLinearKernel^ >^ ForceFieldLinearKernels
 				{
-					ForceFieldLinearKernelCollection^ get();
+					System::Collections::ObjectModel::ReadOnlyCollection< ForceFieldLinearKernel^ >^ get();
 				}
-				property ForceFieldShapeGroupCollection^ ForceFieldShapeGroups
+				property System::Collections::ObjectModel::ReadOnlyCollection< ForceFieldShapeGroup^ >^ ForceFieldShapeGroups
 				{
-					ForceFieldShapeGroupCollection^ get();
+					System::Collections::ObjectModel::ReadOnlyCollection< ForceFieldShapeGroup^ >^ get();
 				}
 				
 				// Callbacks

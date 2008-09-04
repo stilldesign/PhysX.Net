@@ -1,7 +1,5 @@
 #pragma once
 
-#include <NxController.h> 
-
 #include "Enums.h"
 #include "Controller Enums.h"
 

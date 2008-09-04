@@ -52,7 +52,7 @@ ForceField::ForceField( NxForceField* forceField )
 		_actor = ObjectCache::GetObject<StillDesign::PhysX::Actor^>( (intptr_t)forceField->getActor() );
 	_forceFieldKernel = ObjectCache::GetObject<StillDesign::PhysX::ForceFieldKernel^>( (intptr_t)forceField->getForceFieldKernel() );
 	
-	_shapeGroups = gcnew ElementCollection<ForceFieldShapeGroup^, ForceFieldShapeGroupCollection^>();
+	_shapeGroups = gcnew ElementCollection< ForceFieldShapeGroup^ >();
 	forceField->resetShapeGroupsIterator();
 	for( unsigned int x = 0; x < forceField->getNbShapeGroups(); x++ )
 	{
@@ -179,7 +179,7 @@ void ForceField::Actor::set( StillDesign::PhysX::Actor^ value )
 	else
 		_forceField->setActor( _actor->UnmanagedPointer );
 }
-ForceField::ForceFieldShapeGroupCollection^ ForceField::ShapeGroups::get()
+System::Collections::ObjectModel::ReadOnlyCollection< ForceFieldShapeGroup^ >^ ForceField::ShapeGroups::get()
 {
 	return _shapeGroups->ReadOnlyCollection;
 }

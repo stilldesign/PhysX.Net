@@ -7,6 +7,7 @@
 #include "Math.h"
 
 #include "Utilities Library.h"
+#include "PhysX Exception.h"
 
 using namespace System;
 using namespace StillDesign::PhysX;
@@ -16,7 +17,7 @@ UtilitiesLibrary::UtilitiesLibrary()
 	_library = NxGetUtilLib();
 	
 	if( _library == NULL )
-		throw gcnew Exception( "Utilities library failed to be created. Possible cause: Physics core not created." );
+		throw gcnew PhysXException( "Utilities library failed to be created. Possible cause: Physics core not created." );
 }
 UtilitiesLibrary::~UtilitiesLibrary()
 {

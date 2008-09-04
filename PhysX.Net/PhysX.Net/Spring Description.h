@@ -1,7 +1,5 @@
 #pragma once
 
-#include <NxSpringDesc.h>
-
 using namespace System;
 
 namespace StillDesign
