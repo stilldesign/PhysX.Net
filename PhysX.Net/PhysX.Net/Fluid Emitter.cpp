@@ -7,9 +7,7 @@
 #include "Fluid.h"
 #include "Fluid Emitter Description.h"
 #include "Scene.h"
-
-#include <NxFluid.h> 
-#include <NxFluidEmitter.h> 
+#include "Fluid Emitter Flags Wrapper.h"
 
 using namespace StillDesign::PhysX;
 
@@ -25,6 +23,8 @@ FluidEmitter::FluidEmitter( NxFluidEmitter* emitter )
 	
 	if( emitter->getFrameShape() != NULL )
 		_shape = ObjectCache::GetObject<StillDesign::PhysX::Shape^>( (intptr_t)emitter->getFrameShape() );
+
+	_flagsWrapper = gcnew FluidEmitterFlagsWrapper( this );
 }
 
 FluidEmitter::~FluidEmitter()
@@ -263,6 +263,11 @@ Object^ FluidEmitter::UserData::get()
 void FluidEmitter::UserData::set( Object^ value )
 {
 	_userData = value;
+}
+
+FluidEmitterFlagsWrapper^ FluidEmitter::Flags::get()
+{
+	return _flagsWrapper;
 }
 
 NxFluidEmitter* FluidEmitter::UnmanagedPointer::get()

@@ -13,6 +13,7 @@ namespace StillDesign
 		ref class Shape;
 		ref class Fluid;
 		ref class FluidEmitterDescription;
+		ref class FluidEmitterFlagsWrapper;
 		
 		public ref class FluidEmitter : StillDesign::PhysX::IDisposable
 		{
@@ -27,6 +28,8 @@ namespace StillDesign
 				Shape^ _shape;
 				
 				Object^ _userData;
+
+				FluidEmitterFlagsWrapper^ _flagsWrapper;
 			
 			internal:
 				FluidEmitter( NxFluidEmitter* emitter );
@@ -174,6 +177,11 @@ namespace StillDesign
 				{
 					Object^ get();
 					void set( Object^ value );
+				}
+
+				property FluidEmitterFlagsWrapper^ Flags
+				{
+					FluidEmitterFlagsWrapper^ get();
 				}
 			
 			internal:

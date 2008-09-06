@@ -14466,6 +14466,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\PhysX.Net\Fluid Emitter Flags Wrapper.h"
+					>
+				</File>
+				<File
 					RelativePath=".\PhysX.Net\Fluid Emitter.h"
 					>
 				</File>

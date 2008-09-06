@@ -23,11 +23,6 @@ namespace StillDesign
 		public ref class ForceField : StillDesign::PhysX::IDisposable
 		{
 			public:
-				//ref class ForceFieldShapeGroupCollection : ReadOnlyElementCollection<ForceFieldShapeGroup^>
-				//{
-				//	
-				//};
-				
 				ref class SamplePointForcesResult
 				{
 					public:
