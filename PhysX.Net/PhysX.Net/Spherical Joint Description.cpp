@@ -24,7 +24,7 @@ SphericalJointDescription::SphericalJointDescription( NxSphericalJointDesc* desc
 	
 }
 
-DescriptorValidity^ SphericalJointDescription::IsValid()
+bool SphericalJointDescription::IsValid()
 {
 	return this->UnmanagedPointer->isValid();
 }

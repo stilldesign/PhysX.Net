@@ -44,7 +44,7 @@ namespace StillDesign
 			
 			public:
 				/// <summary>Is the convex mesh description valid</summary>
-				DescriptorValidity^ IsValid();
+				bool IsValid();
 				/// <summary>Sets the description to default</summary>
 				void SetToDefault();
 				

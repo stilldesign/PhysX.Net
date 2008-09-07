@@ -45,26 +45,17 @@ void TireFunctionDescription::SetToDefault()
 }
 bool TireFunctionDescription::IsValid()
 {
-	if(!(0.0f < _extremumSlip))
-		return DescriptorValidity::Invalid( "!(0.0f < _extremumSlip)" );
-		
-	if(!(_extremumSlip < _asymptoteSlip))	
-		return DescriptorValidity::Invalid( "!(_extremumSlip < _asymptoteSlip)" );
-		
-	if(!(0.0f < _extremumValue))
-		return DescriptorValidity::Invalid( "!(0.0f < _extremumValue)" );
-		
-	if(!(0.0f < _asymptoteValue))
-		return DescriptorValidity::Invalid( "!(0.0f < _asymptoteValue)" );
-		
-	if(!(0.0f <= _stiffnessFactor))
-		return DescriptorValidity::Invalid( "!(0.0f <= _stiffnessFactor)" );
+	NxTireFunctionDesc d;
+		d.extremumSlip = _extremumSlip;
+		d.extremumValue = _extremumValue;
+		d.asymptoteSlip = _asymptoteSlip;
+		d.asymptoteValue = _asymptoteValue;
+		d.stiffnessFactor = _stiffnessFactor;
 	
-	return true;
+	return d.isValid();
 }
 float TireFunctionDescription::HermiteEvaluation( float t )
 {
-
 	// This fix for TTP 3429 & 3675 is from Sega.
 	// Assume blending functions (look these up in a graph):
 	// H0(t) =  2ttt - 3tt + 1

@@ -59,23 +59,8 @@ void ShapeDescription::LocalRotation::set( Matrix value )
 	_desc->localPose.M = Math::MatrixToMat33( value );
 }
 
-DescriptorValidity^ ShapeDescription::IsValid()
+bool ShapeDescription::IsValid()
 {
-	if(!_desc->localPose.isFinite())
-		return DescriptorValidity::Invalid( "!localPose.isFinite()" );
-		
-	if(_desc->group>=32)
-		return DescriptorValidity::Invalid( "group>=32" );
-		
-	if(_desc->getType() >= NX_SHAPE_COUNT)
-		return DescriptorValidity::Invalid( "type >= NX_SHAPE_COUNT" );
-		
-	if(_desc->materialIndex==0xffff)
-		return DescriptorValidity::Invalid( "materialIndex==0xffff" );	// 0xffff is reserved for internal usage
-		
-	if (_desc->skinWidth != -1 && _desc->skinWidth < 0)
-		return DescriptorValidity::Invalid( "skinWidth != -1 && skinWidth < 0" );
-	
 	return _desc->isValid();
 }
 void ShapeDescription::SetToDefault()

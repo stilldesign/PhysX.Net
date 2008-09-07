@@ -35,7 +35,7 @@ namespace StillDesign
 				/// <summary>(Re)sets the structure to the default</summary>
 				void SetToDefault();
 				/// <summary>Returns true if the current settings are valid</summary>
-				DescriptorValidity^ IsValid();
+				bool IsValid();
 				
 				/// <summary>Gets a collection of emitter descriptors that describe emitters which emit fluid into this fluid actor</summary>
 				property ListBase< FluidEmitterDescription^ >^ Emitters

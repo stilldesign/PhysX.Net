@@ -33,7 +33,7 @@ namespace StillDesign
 				!JointDescription();
 			
 			public:
-				virtual DescriptorValidity^ IsValid();
+				virtual bool IsValid();
 				/// <summary>(Re)sets the structure to the default</summary>
 				virtual void SetToDefault();
 				

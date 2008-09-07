@@ -33,6 +33,7 @@ Removed specialized collections like, e.g. Scene.ActorCollection.
 Modified RuntimeFileChecker to follow DLL search order and throw DllNotFoundException. Also fixed bug in CheckFile.
 Changed precompiled header settings. That gave compiler a nice boost.
 Moved all PhysX includes from individual headers to stdafx.h.
+Removed DescriptorValidity. If the user wishes to debug IsValid() calls, they can aquire the source code and step into.
 
 [0.9.1.0 - 2008-06-28]
 Fixed WheelShape.GetContactData()

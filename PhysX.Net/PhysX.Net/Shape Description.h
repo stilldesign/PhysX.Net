@@ -30,7 +30,7 @@ namespace StillDesign
 				!ShapeDescription();
 				
 			public:
-				DescriptorValidity^ IsValid();
+				bool IsValid();
 				void SetToDefault();
 				
 				property ShapeType Type

@@ -54,7 +54,7 @@ TriangleMeshDescription^ TriangleMeshDescription::Create( array<T>^ triangleIndi
 	return desc;
 }
 
-DescriptorValidity^ TriangleMeshDescription::IsValid()
+bool TriangleMeshDescription::IsValid()
 {
 	return this->UnmanagedPointer->isValid();
 }

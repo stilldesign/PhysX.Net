@@ -20,10 +20,10 @@ namespace StillDesign
 				ForceFieldLinearKernel( NxForceFieldLinearKernel* kernel );
 			
 			public:
-				/// <summary></summary>
+				/// <summary>Writes all of the kernel's attributes to the description, as well as setting the actor connection point</summary>
 				ForceFieldLinearKernelDescription^ SaveToDescription();
 				
-				/// <summary></summary>
+				/// <summary>Retrieves the scene which this kernel belongs to</summary>
 				property StillDesign::PhysX::Scene^ Scene
 				{
 					StillDesign::PhysX::Scene^ get();
@@ -36,55 +36,55 @@ namespace StillDesign
 					void set( String^ value );
 				}
 				
-				/// <summary></summary>
+				/// <summary>Gets or Sets the constant part of force field function</summary>
 				property Vector3 Constant
 				{
 					Vector3 get();
 					void set( Vector3 value );
 				}
-				/// <summary></summary>
+				/// <summary>Gets or Sets the coefficient of force field function position term</summary>
 				property Matrix PositionMultiplier
 				{
 					Matrix get();
 					void set( Matrix value );
 				}
-				/// <summary></summary>
+				/// <summary>Gets or Sets the force field position target</summary>
 				property Vector3 PositionTarget
 				{
 					Vector3 get();
 					void set( Vector3 value );
 				}
-				/// <summary></summary>
+				/// <summary>Gets or Sets the coefficient of force field function velocity term</summary>
 				property Matrix VelocityMultiplier
 				{
 					Matrix get();
 					void set( Matrix value );
 				}
-				/// <summary></summary>
+				/// <summary>Gets or Sets the force field velocity target</summary>
 				property Vector3 VelocityTarget
 				{
 					Vector3 get();
 					void set( Vector3 value );
 				}
-				/// <summary></summary>
+				/// <summary>Gets or Sets the linear falloff term</summary>
 				property Vector3 FalloffLinear
 				{
 					Vector3 get();
 					void set( Vector3 value );
 				}
-				/// <summary></summary>
+				/// <summary>Gets or Sets the quadratic falloff term</summary>
 				property Vector3 FalloffQuadratic
 				{
 					Vector3 get();
 					void set( Vector3 value );
 				}
-				/// <summary></summary>
+				/// <summary>Gets or Sets the toroidal radius</summary>
 				property float TorusRadius
 				{
 					float get();
 					void set( float value );
 				}
-				/// <summary></summary>
+				/// <summary>Gets or Sets the force field noise</summary>
 				property Vector3 Noise
 				{
 					Vector3 get();

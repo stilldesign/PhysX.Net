@@ -32,7 +32,7 @@ namespace StillDesign
 				/// <summary>Resets the structure to the default</summary>
 				virtual void SetToDefault() override;
 				/// <summary>Returns true if the current settings are valid</summary>
-				virtual DescriptorValidity^ IsValid() override;
+				virtual bool IsValid() override;
 				
 				/// <summary>Allocates memory for the vertex masses</summary>
 				/// <param name="numberOfVertices">Number of vertices to allocate</param>

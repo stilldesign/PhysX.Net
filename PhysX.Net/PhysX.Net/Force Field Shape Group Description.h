@@ -34,7 +34,7 @@ namespace StillDesign
 			
 			public:
 				void SetToDefault();
-				DescriptorValidity^ IsValid();
+				bool IsValid();
 				
 				/// <summary></summary>
 				property ForceFieldShapeDescriptionCollection^ Shapes

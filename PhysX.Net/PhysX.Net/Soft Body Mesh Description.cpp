@@ -83,33 +83,6 @@ void SoftBodyMeshDescription::SetToDefault()
 }
 bool SoftBodyMeshDescription::IsValid()
 {
-	// Check geometry
-	if(_desc->numVertices > 0xffff && _desc->flags & NX_SOFTBODY_MESH_16_BIT_INDICES)
-		return DescriptorValidity::Invalid( "numVertices > 0xffff && flags & NX_SOFTBODY_MESH_16_BIT_INDICES" );
-	if(!_desc->vertices)
-		return DescriptorValidity::Invalid( "!vertices" );
-	if(_desc->vertexStrideBytes < sizeof(NxPoint))	//should be at least one point's worth of data
-		return DescriptorValidity::Invalid( "vertexStrideBytes < sizeof(NxPoint)" );
-
-	if(!_desc->tetrahedra) 
-		return DescriptorValidity::Invalid( "!tetrahedra" );
-
-	if(_desc->flags & NX_SOFTBODY_MESH_16_BIT_INDICES)
-		{
-		if((_desc->tetrahedronStrideBytes < sizeof(NxU16)*3))
-			return DescriptorValidity::Invalid( "tetrahedronStrideBytes < sizeof(NxU16)*3" );
-		}
-	else
-		{
-		if((_desc->tetrahedronStrideBytes < sizeof(NxU32)*3))
-			return DescriptorValidity::Invalid( "(tetrahedronStrideBytes < sizeof(NxU32)*3)" );
-		}
-		
-	if(_desc->vertexMasses && (_desc->vertexMassStrideBytes < sizeof(NxReal)))
-		return DescriptorValidity::Invalid( "vertexMasses && (vertexMassStrideBytes < sizeof(NxReal))" );
-	if(_desc->vertexFlags && (_desc->vertexFlagStrideBytes < sizeof(NxU32)))
-		return DescriptorValidity::Invalid( "vertexFlags && (vertexFlagStrideBytes < sizeof(NxU32))" );
-
 	return _desc->isValid();
 }
 

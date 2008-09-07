@@ -38,7 +38,7 @@ namespace StillDesign
 				}
 			
 				/// <summary>Is the Simple Triangle Mesh Valid</summary>
-				virtual DescriptorValidity^ IsValid();
+				virtual bool IsValid();
 				/// <summary>Sets the Simple Triangle Mesh to its Default Values</summary>
 				/// <remarks>Does Not Delete Allocated Memory</remarks>
 				virtual void SetToDefault();

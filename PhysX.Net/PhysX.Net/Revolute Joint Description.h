@@ -22,7 +22,7 @@ namespace StillDesign
 				RevoluteJointDescription( NxRevoluteJointDesc* desc );
 				
 			public:
-				virtual DescriptorValidity^ IsValid() override;
+				virtual bool IsValid() override;
 				
 				/// <summary>Gets or Sets optional limits for the angular motion of the joint</summary>
 				property JointLimitPairDescription Limit

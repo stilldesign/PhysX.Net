@@ -22,7 +22,7 @@ namespace StillDesign
 				SphericalJointDescription( NxSphericalJointDesc* desc );
 				
 			public:
-				virtual DescriptorValidity^ IsValid() override;
+				virtual bool IsValid() override;
 				
 				/// <summary>Gets or Sets the swing limit axis defined in the joint space of actor A</summary>
 				property Vector3 SwingAxis

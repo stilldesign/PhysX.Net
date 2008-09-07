@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="9,00"
+	Version="9.00"
 	Name="StillDesign.PhysX.Net"
 	ProjectGUID="{9E50593F-DB72-44D1-8A1D-2AE73214383E}"
 	RootNamespace="PhysX.Net"
@@ -4104,74 +4104,6 @@
 			</File>
 			<File
 				RelativePath=".\PhysX.Net\Dependency.cpp"
-				>
-				<FileConfiguration
-					Name="Debug XNA 2.0|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="2"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release XNA 2.0|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="2"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug MDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="2"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release MDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="2"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug SlimDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="2"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release SlimDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="2"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug XNA 3.0|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="2"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release XNA 3.0|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="2"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath=".\PhysX.Net\Descriptor Validity.cpp"
 				>
 				<FileConfiguration
 					Name="Debug XNA 2.0|Win32"
@@ -13950,10 +13882,6 @@
 			</File>
 			<File
 				RelativePath=".\PhysX.Net\Dependency.h"
-				>
-			</File>
-			<File
-				RelativePath=".\PhysX.Net\Descriptor Validity.h"
 				>
 			</File>
 			<File

@@ -2,7 +2,6 @@
 
 #include "Fluid Description.h"
 #include "Fluid Emitter Description.h"
-#include "Descriptor Validity.h"
 #include "Scene.h"
 
 using namespace StillDesign::PhysX;
@@ -47,22 +46,9 @@ void FluidDescription::SetToDefault()
 	
 	_emitters->Clear();
 }
-DescriptorValidity^ FluidDescription::IsValid()
+bool FluidDescription::IsValid()
 {
-	DescriptorValidity^ baseDescriptorValidity = FluidDescriptionBase::IsValid();
-	if( baseDescriptorValidity == false )
-		return baseDescriptorValidity;
-	
-	if( this->UnmanagedPointer->emitters.size() > 0xffff )
-		return gcnew DescriptorValidity( false, "emitters.size() > 0xffff" );
-	
-	for (unsigned i = 0; i < this->UnmanagedPointer->emitters.size(); i++)
-	{
-		if( !this->UnmanagedPointer->emitters[i].isValid() )
-			return gcnew DescriptorValidity( false, "!emitters[i].isValid()" );
-	}
-	
-	return true;
+	return this->UnmanagedPointer->isValid();
 }
 
 ListBase< FluidEmitterDescription^ >^ FluidDescription::Emitters::get()

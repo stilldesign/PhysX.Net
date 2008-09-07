@@ -44,7 +44,7 @@ namespace StillDesign
 				}
 				
 				/// <summary>Is the Description Valid</summary>
-				virtual DescriptorValidity^ IsValid();
+				virtual bool IsValid();
 				/// <summary>Sets the Structure to a Default State</summary>
 				virtual void SetToDefault();
 				/// <summary>Are the Mass and Density Settings Valid</summary>

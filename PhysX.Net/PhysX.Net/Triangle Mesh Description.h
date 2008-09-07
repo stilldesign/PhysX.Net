@@ -25,7 +25,7 @@ namespace StillDesign
 				static TriangleMeshDescription^ Create( array<T>^ triangleIndices, array<V>^ vertices );
 				
 				/// <summary>Returns true if the descriptor is valid</summary>
-				virtual DescriptorValidity^ IsValid() override;
+				virtual bool IsValid() override;
 				/// <summary>Sets the structure to the default</summary>
 				virtual void SetToDefault() override;
 				

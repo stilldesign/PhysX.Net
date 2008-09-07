@@ -51,7 +51,7 @@ bool SimpleTriangleMesh::IsDisposed::get()
 	return ( _triMesh == NULL );
 }
 
-DescriptorValidity^ SimpleTriangleMesh::IsValid()
+bool SimpleTriangleMesh::IsValid()
 {
 	return _triMesh->isValid();
 }

@@ -25,7 +25,7 @@ namespace StillDesign
 				void CreateActorDescription();
 				
 			public:
-				virtual DescriptorValidity^ IsValid() override;
+				virtual bool IsValid() override;
 				
 			private:
 				void ShapeAdded( Object^ sender, ShapeDescription^ e );

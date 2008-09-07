@@ -42,7 +42,7 @@ namespace StillDesign
 				
 			public:
 				void SetToDefault();
-				DescriptorValidity^ IsValid();
+				bool IsValid();
 				
 				/// <summary>Gets or Sets the name of the emitter</summary>
 				property String^ Name

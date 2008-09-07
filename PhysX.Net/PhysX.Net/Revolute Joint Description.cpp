@@ -23,21 +23,8 @@ RevoluteJointDescription::RevoluteJointDescription( NxRevoluteJointDesc* desc ) 
 	
 }
 
-DescriptorValidity^ RevoluteJointDescription::IsValid()
+bool RevoluteJointDescription::IsValid()
 {
-	if (this->UnmanagedPointer->projectionDistance < 0.0f)
-		return DescriptorValidity::Invalid( "projectionDistance < 0.0f" );
-	if (this->UnmanagedPointer->projectionAngle < 0.02f) 
-		return DescriptorValidity::Invalid( "projectionAngle < 0.02f" );	//if its smaller then current algo gets too close to a singularity.
-	
-
-	if (!this->UnmanagedPointer->limit.isValid()) 
-		return DescriptorValidity::Invalid( "!limit.isValid()" );
-	if (!this->UnmanagedPointer->motor.isValid()) 
-		return DescriptorValidity::Invalid( "!motor.isValid()" );
-	if (!this->UnmanagedPointer->spring.isValid()) 
-		return DescriptorValidity::Invalid( "!spring.isValid()" );
-	
 	return JointDescription::IsValid();
 }
 

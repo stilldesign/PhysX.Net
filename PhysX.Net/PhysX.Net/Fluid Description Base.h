@@ -54,7 +54,7 @@ namespace StillDesign
 				/// <summary>Sets the structure to the default</summary>
 				void SetToDefault();
 				/// <summary>Returns true if the descriptor is valid</summary>
-				DescriptorValidity^ IsValid();
+				bool IsValid();
 				
 				/// <summary>Gets or Sets the particles which are added to the fluid initially</summary>
 				property ParticleData^ InitialParticleData

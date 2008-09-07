@@ -31,7 +31,7 @@ namespace StillDesign
 				/// <summary>Resets the structure to the default</summary>
 				void SetToDefault();
 				/// <summary>Returns true if the descriptor is valid</summary>
-				DescriptorValidity^ IsValid();
+				bool IsValid();
 				
 				/// <summary>Gets or Sets the position and orientation of the center of mass</summary>
 				property Matrix MassLocalPose

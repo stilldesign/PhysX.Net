@@ -35,27 +35,8 @@ void BodyDescription::SetToDefault()
 {
 	_desc->setToDefault();
 }
-DescriptorValidity^ BodyDescription::IsValid()
+bool BodyDescription::IsValid()
 {
-	if(_desc->mass<0.0f)		//no negative masses plz.
-		return DescriptorValidity::Invalid( "mass<0.0f" );
-	if (_desc->wakeUpCounter < 0.0f) //must be nonnegative
-		return DescriptorValidity::Invalid( "wakeUpCounter < 0.0f" );
-	if (_desc->linearDamping < 0.0f) //must be nonnegative
-		return DescriptorValidity::Invalid( "linearDamping < 0.0f" );
-	if (_desc->angularDamping < 0.0f) //must be nonnegative
-		return DescriptorValidity::Invalid( "angularDamping < 0.0f" );
-	if (_desc->CCDMotionThreshold < 0.0f) //must be nonnegative
-		return DescriptorValidity::Invalid( "CCDMotionThreshold < 0.0f" );
-	if (_desc->solverIterationCount < 1) //must be positive
-		return DescriptorValidity::Invalid( "solverIterationCount < 1" );
-	if (_desc->solverIterationCount > 255) 
-		return DescriptorValidity::Invalid( "solverIterationCount > 255" );
-	if (_desc->contactReportThreshold < 0.0f) //must be nonnegative
-		return DescriptorValidity::Invalid( "contactReportThreshold < 0.0f" );
-	if(!_desc->massLocalPose.isFinite())
-		return DescriptorValidity::Invalid( "massLocalPose.isFinite()" );
-	
 	return _desc->isValid();
 }
 

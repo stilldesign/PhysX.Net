@@ -51,7 +51,6 @@
 #include "Cloth Mesh.h"
 #include "Sweep Cache.h"
 #include "Shape Description.h"
-#include "Descriptor Validity.h"
 #include "Soft Body Description.h"
 #include "Compartment Description.h"
 #include "User Notify.h"

@@ -58,7 +58,7 @@ void ClothMeshDescription::SetToDefault()
 	};
 	SAFE_FREE_MANY( buffers );
 }
-DescriptorValidity^ ClothMeshDescription::IsValid()
+bool ClothMeshDescription::IsValid()
 {
 	return this->UnmanagedPointer->isValid();
 }

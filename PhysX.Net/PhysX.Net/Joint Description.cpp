@@ -41,43 +41,9 @@ JointDescription::!JointDescription()
 	_userData = nullptr;
 }
 
-DescriptorValidity^ JointDescription::IsValid()
+bool JointDescription::IsValid()
 {
-	NxJointDesc* desc = this->UnmanagedPointer;
-	
-	if (desc->actor[0] == desc->actor[1])
-		return DescriptorValidity::Invalid( "Actor1 cannot equal Actor2" );
-	
-	if (!(desc->actor[0] || desc->actor[1]))
-		return DescriptorValidity::Invalid( "Actor1 and Actor2 are not set" );
-	
-	//non-null pointers must be dynamic:
-	if (desc->actor[0] && ! desc->actor[0]->isDynamic())
-		return DescriptorValidity::Invalid( "Actor1 is not dynamic" );
-	if (desc->actor[1] && ! desc->actor[1]->isDynamic())
-		return DescriptorValidity::Invalid( "Actor2 is not dynamic" );
-	
-	if (desc->getType() >= NX_JOINT_COUNT)
-		return DescriptorValidity::Invalid( "Invalid Type" );
-	
-	for (int i=0; i<2; i++)
-	{
-		if (fabsf(desc->localAxis[i].magnitudeSquared() - 1.0f) > 0.1f)
-			return DescriptorValidity::Invalid( "Local axis length(s) are invalid" );
-		
-		if (fabsf(desc->localNormal[i].magnitudeSquared() - 1.0f) > 0.1f)
-			return DescriptorValidity::Invalid( "Local normal length(s) are invalid" );
-			
-		//check orthogonal pairs
-		if (fabsf(desc->localAxis[i].dot(desc->localNormal[i])) > 0.1f)
-			return DescriptorValidity::Invalid( "Local axis and local normals are not orthogonal" );
-	}
-	if (desc->maxForce <= 0)
-		return DescriptorValidity::Invalid( "Maximum force must be greater than 0" );
-	if (desc->maxTorque <= 0)
-		return DescriptorValidity::Invalid( "Maximum torque must be greater than 0" );
-	
-	return desc->isValid();
+	return _desc->isValid();
 }
 void JointDescription::SetToDefault()
 {

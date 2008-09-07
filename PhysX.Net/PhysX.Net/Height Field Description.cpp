@@ -29,29 +29,6 @@ void HeightFieldDescription::SetToDefault()
 }
 bool HeightFieldDescription::IsValid()
 {
-	if (_heightFieldDesc->nbColumns < 2)
-		return DescriptorValidity::Invalid( "nbColumns < 2" );
-	if (_heightFieldDesc->nbRows < 2)
-		return DescriptorValidity::Invalid( "nbRows < 2" );
-	
-	switch (_heightFieldDesc->format) 
-	{
-		case NX_HF_S16_TM:
-			if (_heightFieldDesc->sampleStride < 4)
-				return DescriptorValidity::Invalid( "sampleStride < 4" );
-		break;
-		
-		default: return false;
-	}
-	
-	if (_heightFieldDesc->convexEdgeThreshold < 0)
-		return DescriptorValidity::Invalid( "convexEdgeThreshold < 0" );
-	
-	if ((_heightFieldDesc->flags & NX_HF_NO_BOUNDARY_EDGES) != _heightFieldDesc->flags)
-		return DescriptorValidity::Invalid( "(flags & NX_HF_NO_BOUNDARY_EDGES) != flags" );
-	if (_heightFieldDesc->verticalExtent != 0 && _heightFieldDesc->thickness != 0)
-		return DescriptorValidity::Invalid( "verticalExtent != 0 && thickness != 0" );
-	
 	return _heightFieldDesc->isValid();
 }
 

@@ -52,7 +52,7 @@ void ActorDescription::CreateActorDescription()
 	_shapes-> onRemove += gcnew EventHandlerItem< ShapeDescription^ >( this, &ActorDescription::ShapeRemoved );
 }
 
-DescriptorValidity^ ActorDescription::IsValid()
+bool ActorDescription::IsValid()
 {
 	NxActorDesc* desc = this->UnmanagedPointer;
 	

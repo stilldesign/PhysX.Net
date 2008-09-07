@@ -5,7 +5,6 @@
 #include "Groups Mask.h"
 #include "Particle Data.h"
 #include "Physics Stream.h"
-#include "Descriptor Validity.h"
 #include "Compartment.h"
 #include "Particle Id Data.h"
 #include "Fluid Packet Data.h"
@@ -64,92 +63,9 @@ void FluidDescriptionBase::SetToDefault()
 	_compartment = nullptr;
 				
 }
-DescriptorValidity^ FluidDescriptionBase::IsValid()
+bool FluidDescriptionBase::IsValid()
 {
-	if( _fluidDescBase->kernelRadiusMultiplier < 1.0f )
-		return gcnew DescriptorValidity( false, -1, "kernelRadiusMultiplier < 1.0f" );
-	
-	if( _fluidDescBase->restDensity <= 0.0f )
-		return gcnew DescriptorValidity( false, -2, "restDensity <= 0.0f" );
-	
-	if( _fluidDescBase->restParticlesPerMeter <= 0.0f )
-		return gcnew DescriptorValidity( false, -3, "restParticlesPerMeter <= 0.0f" );
-
-	if (_fluidDescBase->packetSizeMultiplier < 4)
-		return gcnew DescriptorValidity( false, -4, "packetSizeMultiplier < 4" );
-	if (_fluidDescBase->packetSizeMultiplier & ( _fluidDescBase->packetSizeMultiplier - 1 ) )
-		return gcnew DescriptorValidity( false, -5, "packetSizeMultiplier & ( packetSizeMultiplier - 1 )" );
-
-	if (_fluidDescBase->motionLimitMultiplier <= 0.0f)
-		return gcnew DescriptorValidity( false, -6, "motionLimitMultiplier <= 0.0f" );
-	if (_fluidDescBase->motionLimitMultiplier > _fluidDescBase->packetSizeMultiplier*_fluidDescBase->kernelRadiusMultiplier)
-		return gcnew DescriptorValidity( false, -7, "motionLimitMultiplier > packetSizeMultiplier*kernelRadiusMultiplier" );
-
-	if (_fluidDescBase->collisionDistanceMultiplier <= 0.0f)
-		return gcnew DescriptorValidity( false, -8, "collisionDistanceMultiplier <= 0.0f" );
-	if (_fluidDescBase->collisionDistanceMultiplier > _fluidDescBase->packetSizeMultiplier*_fluidDescBase->kernelRadiusMultiplier)
-		return gcnew DescriptorValidity( false, -9, "collisionDistanceMultiplier > packetSizeMultiplier*kernelRadiusMultiplier" );
-
-	if (_fluidDescBase->stiffness <= 0.0f)
-		return gcnew DescriptorValidity( false, -10, "stiffness <= 0.0f" );
-	if (_fluidDescBase->viscosity <= 0.0f)
-		return gcnew DescriptorValidity( false, -11, "viscosity <= 0.0f" );
-
-	bool isNoInteraction = (_fluidDescBase->simulationMethod & NX_F_NO_PARTICLE_INTERACTION) > 0;
-	bool isSPH = (_fluidDescBase->simulationMethod & NX_F_SPH) > 0;
-	bool isMixed = (_fluidDescBase->simulationMethod & NX_F_MIXED_MODE) > 0;
-	if (!(isNoInteraction || isSPH || isMixed))
-		return gcnew DescriptorValidity( false, -12, "!(isNoInteraction || isSPH || isMixed)" );
-	if (isNoInteraction && (isSPH || isMixed))
-		return gcnew DescriptorValidity( false, -13, "isNoInteraction && (isSPH || isMixed)" );
-	if (isSPH && (isNoInteraction || isMixed))
-		return gcnew DescriptorValidity( false, -14, "isSPH && (isNoInteraction || isMixed)" );
-	if (isMixed && (isNoInteraction || isSPH))
-		return gcnew DescriptorValidity( false, -15, "isMixed && (isNoInteraction || isSPH)" );
-	
-	if (_fluidDescBase->damping < 0.0f)
-		return gcnew DescriptorValidity( false, -16, "damping < 0.0f" );
-	if (_fluidDescBase->fadeInTime < 0.0f)
-		return gcnew DescriptorValidity( false, -17, "fadeInTime < 0.0f" );
-
-	if (_fluidDescBase->dynamicFrictionForDynamicShapes < 0.0f || _fluidDescBase->dynamicFrictionForDynamicShapes > 1.0f)
-		return gcnew DescriptorValidity( false, -18, "DynamicFrictionForDynamicShapes < 0.0f || DynamicFrictionForDynamicShapes > 1.0f" );
-	if (_fluidDescBase->restitutionForDynamicShapes < 0.0f || _fluidDescBase->restitutionForDynamicShapes > 1.0f)
-		return gcnew DescriptorValidity( false, -19, "RestitutionForDynamicShapes < 0.0f || RestitutionForDynamicShapes > 1.0f" );
-	if (_fluidDescBase->attractionForDynamicShapes < 0.0f)
-		return gcnew DescriptorValidity( false, -20, "AttractionForDynamicShapes < 0.0f" );
-	if (_fluidDescBase->dynamicFrictionForStaticShapes < 0.0f || _fluidDescBase->dynamicFrictionForStaticShapes > 1.0f)
-		return gcnew DescriptorValidity( false, -21, "DynamicFrictionForStaticShapes < 0.0f || DynamicFrictionForStaticShapes > 1.0f" );
-	if (_fluidDescBase->restitutionForStaticShapes < 0.0f || _fluidDescBase->restitutionForStaticShapes > 1.0f)
-		return gcnew DescriptorValidity( false, -22, "RestitutionForStaticShapes < 0.0f || RestitutionForStaticShapes > 1.0f" );
-	if (_fluidDescBase->attractionForStaticShapes < 0.0f)
-		return gcnew DescriptorValidity( false, -23, "AttractionForStaticShapes < 0.0f" );
-	if (_fluidDescBase->collisionResponseCoefficient < 0.0f)
-		return gcnew DescriptorValidity( false, -24, "collisionResponseCoefficient < 0.0f" );
-	
-	if (!_fluidDescBase->initialParticleData.isValid())
-		return gcnew DescriptorValidity( false, -25, "!initialParticleData.isValid()" );
-	if (!_fluidDescBase->particlesWriteData.isValid())
-		return gcnew DescriptorValidity( false, -26, "!particlesWriteData.isValid()" );
-	if (!_fluidDescBase->particleDeletionIdWriteData.isValid())
-		return gcnew DescriptorValidity( false, -27, "!particleDeletionIdWriteData.isValid()" );
-	if (!_fluidDescBase->particleCreationIdWriteData.isValid())
-		return gcnew DescriptorValidity( false, -28, "!particleCreationIdWriteData.isValid()" );
-	if (!_fluidDescBase->fluidPacketData.isValid())
-		return gcnew DescriptorValidity( false, -29, "!fluidPacketData.isValid()" );
-	
-	if (_fluidDescBase->maxParticles > 32767)
-		return gcnew DescriptorValidity( false, -30, "maxParticles > 32767" );
-	if (_fluidDescBase->maxParticles < 1)
-		return gcnew DescriptorValidity( false, -31, "maxParticles < 1" );
-	
-	if (_fluidDescBase->numReserveParticles >= _fluidDescBase->maxParticles)
-		return gcnew DescriptorValidity( false, -32, "numReserveParticles >= maxParticles" );
-	
-	if(_fluidDescBase->collisionGroup >= 32)
-		return gcnew DescriptorValidity( false, -33, "collisionGroup >= 32" ); // We only support 32 different collision groups
-	
-	return true;
+	return _fluidDescBase->isValid();
 }
 
 ParticleData^ FluidDescriptionBase::InitialParticleData::get()

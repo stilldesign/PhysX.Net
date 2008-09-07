@@ -22,11 +22,8 @@ MotorDescription::operator NxMotorDesc( MotorDescription motorDescription )
 	return NxMotorDesc( motorDescription.VelocityTarget, motorDescription.MaximumForce, motorDescription.FreeSpinEnabled );
 }
 
-DescriptorValidity^ MotorDescription::IsValid()
+bool MotorDescription::IsValid()
 {
-	if( _maximumForce < 0 )
-		return DescriptorValidity::Invalid( "Maximum Force must be >= 0" );
-	
 	return true;
 }
 

@@ -19,7 +19,7 @@ namespace StillDesign
 				static explicit operator NxMotorDesc( MotorDescription motorDescription );
 				
 			public:
-				DescriptorValidity^ IsValid();
+				bool IsValid();
 				
 				/// <summary></summary>
 				property float VelocityTarget

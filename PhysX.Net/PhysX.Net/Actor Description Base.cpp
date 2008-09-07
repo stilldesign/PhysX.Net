@@ -43,20 +43,8 @@ bool ActorDescriptionBase::IsDisposed::get()
 	return ( _desc == NULL );
 }
 
-DescriptorValidity^ ActorDescriptionBase::IsValid()
+bool ActorDescriptionBase::IsValid()
 {
-	if( this->Density < 0 )
-		return DescriptorValidity::Invalid( "Density < 0" );
-	
-	if( this->BodyDescription && !this->BodyDescription->IsValid() )
-		return DescriptorValidity::Invalid( "BodyDescription is invalid" );
-	
-	if( !this->UnmanagedPointer->globalPose.isFinite() )
-		return DescriptorValidity::Invalid( "GlobalPose is not finite" );
-		
-	if( !this->BodyDescription && this->DominanceGroup )	//only dynamic actors may have a nonzero dominance group.
-		return DescriptorValidity::Invalid( "Only dynamic actors may have a nonzero dominance group." );
-	
 	return _desc->isValid() && IsMassDensityValid();
 }
 void ActorDescriptionBase::SetToDefault()
