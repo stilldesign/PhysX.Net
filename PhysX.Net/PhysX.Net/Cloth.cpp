@@ -106,10 +106,8 @@ void Cloth::SaveStateToStream( Stream^ stream, bool permute )
 	_cloth->saveStateToStream( writer, permute );
 	
 	array<Byte>^ buffer = gcnew array<Byte>( writer.currentSize );
-	for( unsigned int x = 0; x < writer.currentSize; x++ )
-	{
-		buffer[ x ] = *(writer.data + x);
-	}
+	pin_ptr<Byte> b = &buffer[ 0 ];
+	memcpy_s( b, writer.currentSize, writer.data, writer.currentSize );
 	
 	stream->Write( buffer, 0, writer.currentSize );
 }
@@ -124,13 +122,13 @@ void Cloth::LoadStateFromStream( Stream^ stream )
 }
 
 // Forces
-void Cloth::AddForceToVertex( Vector3 force, int vertexID )
+void Cloth::AddForceToVertex( Vector3 force, int vertexId )
 {
-	_cloth->addForceAtVertex( Math::Vector3ToNxVec3( force ), (NxU32)vertexID );
+	_cloth->addForceAtVertex( Math::Vector3ToNxVec3( force ), (NxU32)vertexId );
 }
-void Cloth::AddForceToVertex( Vector3 force, int vertexID, ForceMode forceMode )
+void Cloth::AddForceToVertex( Vector3 force, int vertexId, ForceMode forceMode )
 {
-	_cloth->addForceAtVertex( Math::Vector3ToNxVec3( force ), (NxU32)vertexID, (NxForceMode)forceMode );
+	_cloth->addForceAtVertex( Math::Vector3ToNxVec3( force ), (NxU32)vertexId, (NxForceMode)forceMode );
 }
 void Cloth::AddForceAtPosition( Vector3 position, float magnitude, float radius )
 {

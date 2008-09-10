@@ -13,6 +13,15 @@ WheelShapeDescription::WheelShapeDescription() : ShapeDescription( new NxWheelSh
 	
 }
 
+DescriptorValidity^ WheelShapeDescription::IsValid()
+{
+	return this->UnmanagedPointer->isValid();
+}
+void WheelShapeDescription::SetToDefault()
+{
+	this->UnmanagedPointer->setToDefault();
+}
+
 UserWheelContactModify^ WheelShapeDescription::WheelContactModify::get()
 {
 	return _wheelContactModify;

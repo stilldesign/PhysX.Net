@@ -26,6 +26,7 @@ Joint.GetLimitPoint() is now of type Vector3?. The return is null if the interna
 Project and all source code is avaliable online at codeplex - http://www.codeplex.com/physxdotnet
 Fluid stream properties now set the unmanaged versions they wrap
 Fixed SceneDescription.Limits.Set from crashing
+SoftBody.DampingStiffness is now DampingCoefficient
 Added PhysXException and PhysXInitializationException. Replaced all Exception/ApplicationException with the new ones.
 Added flag wrappers in Core, Actor and Fluid classes.
 Replaced all custom ReadOnly* collections with System.Collection.ObjectModel.ReadOnlyCollection<T>.
@@ -34,6 +35,7 @@ Modified RuntimeFileChecker to follow DLL search order and throw DllNotFoundExce
 Changed precompiled header settings. That gave compiler a nice boost.
 Moved all PhysX includes from individual headers to stdafx.h.
 Removed DescriptorValidity. If the user wishes to debug IsValid() calls, they can aquire the source code and step into.
+Added IsValid and SetToDefault to WheelShapeDescription
 
 [0.9.1.0 - 2008-06-28]
 Fixed WheelShape.GetContactData()

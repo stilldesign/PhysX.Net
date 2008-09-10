@@ -334,11 +334,11 @@ void SoftBody::StretchingStiffness::set( float value )
 	_softBody->setStretchingStiffness( value );
 }
 
-float SoftBody::DampingStiffness::get()
+float SoftBody::DampingCoefficient::get()
 {
 	return _softBody->getDampingCoefficient();
 }
-void SoftBody::DampingStiffness::set( float value )
+void SoftBody::DampingCoefficient::set( float value )
 {
 	_softBody->setDampingCoefficient( value );
 }
@@ -511,12 +511,12 @@ NxSoftBody* SoftBody::UnmanagedPointer::get()
 
 //
 
-SoftBody::SoftBodyRaycastResult::SoftBodyRaycastResult( bool hit, Vector3 hitPosition, int vertexID ) : RaycastResult( hit, hitPosition )
+SoftBody::SoftBodyRaycastResult::SoftBodyRaycastResult( bool hit, Vector3 hitPosition, int vertexId ) : RaycastResult( hit, hitPosition )
 {
-	_vertexID = vertexID;
+	_vertexId = vertexId;
 }
 
-int SoftBody::SoftBodyRaycastResult::VertexID::get()
+int SoftBody::SoftBodyRaycastResult::VertexId::get()
 {
-	return _vertexID;
+	return _vertexId;
 }

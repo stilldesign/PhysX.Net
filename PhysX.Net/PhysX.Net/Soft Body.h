@@ -142,6 +142,7 @@ namespace StillDesign
 					StillDesign::PhysX::Scene^ get();
 				}
 				
+				/// <summary>Gets the soft body's simulation compartment, as specified by the user at creation time</summary>
 				property StillDesign::PhysX::Compartment^ Compartment
 				{
 					StillDesign::PhysX::Compartment^ get();
@@ -189,41 +190,49 @@ namespace StillDesign
 					float get();
 					void set( float value );
 				}
-				property float DampingStiffness
+				/// <summary>Gets or Sets the damping coefficient. (Range is from 0 to 1)</summary>
+				property float DampingCoefficient
 				{
 					float get();
 					void set( float value );
 				}
+				/// <summary>Gets or Sets the soft body friction coefficient. (Range is from 0 to 1)</summary>
 				property float Friction
 				{
 					float get();
 					void set( float value );
 				}
+				/// <summary>Gets or Sets </summary>
 				property float TearFactor
 				{
 					float get();
 					void set( float value );
 				}
+				/// <summary>Gets or Sets </summary>
 				property float CollisionResponseCoefficient
 				{
 					float get();
 					void set( float value );
 				}
+				/// <summary>Gets or Sets </summary>
 				property float AttachmentResponseCoefficient
 				{
 					float get();
 					void set( float value );
 				}
+				/// <summary>Gets or Sets </summary>
 				property float AttachmentTearFactor
 				{
 					float get();
 					void set( float value );
 				}
+				/// <summary>Gets or Sets </summary>
 				property float ToFluidResponseCoefficient
 				{
 					float get();
 					void set( float value );
 				}
+				/// <summary>Gets or Sets </summary>
 				property float FromFluidResponseCoefficient
 				{
 					float get();
@@ -235,50 +244,60 @@ namespace StillDesign
 					float get();
 					void set( float value );
 				}
+				/// <summary>Gets or Sets the soft body solver iterations</summary>
 				property int SolverIterations
 				{
 					int get();
 					void set( int value );
 				}
+				/// <summary>Gets or Sets external acceleration which affects all non attached particles of the soft body</summary>
 				property Vector3 ExternalAcceleration
 				{
 					Vector3 get();
 					void set( Vector3 value );
 				}
+				/// <summary>Gets or Sets linear velocity below which a soft body may go to sleep</summary>
 				property float SleepLinearVelocity
 				{
 					float get();
 					void set( float value );
 				}
+				/// <summary>Gets or Sets user buffer wrapper for the soft body mesh</summary>
 				property StillDesign::PhysX::MeshData^ MeshData
 				{
 					StillDesign::PhysX::MeshData^ get();
 					void set( StillDesign::PhysX::MeshData^ value );
 				}
+				/// <summary>Gets or Sets the 128-bit mask used for collision filtering</summary>
 				property StillDesign::PhysX::GroupsMask GroupsMask
 				{
 					StillDesign::PhysX::GroupsMask get();
 					void set( StillDesign::PhysX::GroupsMask value );
 				}
+				/// <summary>Gets the user buffer wrapper for the soft body split pairs</summary>
 				property SoftBodySplitPairData^ SplitPairData
 				{
 					SoftBodySplitPairData^ get();
 				}
+				/// <summary>Gets or Sets the valid bounds of the soft body in world space</summary>
 				property Bounds3 ValidBounds
 				{
 					Bounds3 get();
 					void set( Bounds3 value );
 				}
+				/// <summary>Gets the relative grid spacing for the broad phase</summary>
 				property float RelativeGridSpacing
 				{
 					float get();
 				}
+				/// <summary>Gets or Sets the flags, a combination of the bits defined by the enum SoftBodyFlag</summary>
 				property SoftBodyFlag Flags
 				{
 					SoftBodyFlag get();
 					void set( SoftBodyFlag value );
 				}
 				
+				/// <summary>Gets or Sets an arbitary 1:1 object</summary>
 				property Object^ UserData
 				{
 					Object^ get();
@@ -297,13 +316,13 @@ namespace StillDesign
 				ref class SoftBodyRaycastResult : RaycastResult
 				{
 					private:
-						int _vertexID;
+						int _vertexId;
 					
 					public:
-						SoftBodyRaycastResult( bool hit, Vector3 hitPosition, int vertexID );
+						SoftBodyRaycastResult( bool hit, Vector3 hitPosition, int vertexId );
 						
 						/// <summary>Index of the nearest vertex hit by the raycast</summary>
-						property int VertexID
+						property int VertexId
 						{
 							int get();
 						}

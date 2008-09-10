@@ -12,17 +12,20 @@ namespace StillDesign
 				float _asymptoteSlip;
 				float _asymptoteValue;
 				float _stiffnessFactor;
-			
-			public:
+				
+			internal:
 				static explicit operator TireFunctionDescription( NxTireFunctionDesc desc );
 				static explicit operator NxTireFunctionDesc( TireFunctionDescription desc );
 				
+			public:
 				/// <summary>Resets the structure to the default.</summary>
 				void SetToDefault();
 				/// <summary>Returns true if the current settings are valid.</summary>
 				bool IsValid();
 				/// <summary>Evaluates the Force(Slip) function.</summary>
 				float HermiteEvaluation( float t );
+				
+				//
 				
 				property TireFunctionDescription Default
 				{
