@@ -22,7 +22,7 @@ namespace StillDesign
 				WheelShapeDescription();
 				
 				/// <summary>Returns true if the current settings are valid</summary>
-				virtual DescriptorValidity^ IsValid() override;
+				virtual bool IsValid() override;
 				/// <summary>Sets the structure to the default</summary>
 				virtual void SetToDefault() override;
 				

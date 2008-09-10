@@ -13,7 +13,7 @@ WheelShapeDescription::WheelShapeDescription() : ShapeDescription( new NxWheelSh
 	
 }
 
-DescriptorValidity^ WheelShapeDescription::IsValid()
+bool WheelShapeDescription::IsValid()
 {
 	return this->UnmanagedPointer->isValid();
 }
