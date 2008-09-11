@@ -158,16 +158,16 @@ namespace StillDesign
 				}
 				
 				/// <summary>Gets or Sets the positions of the cloth</summary>
-				property array< Vector3 >^ ParticlePositions
+				property array<Vector3>^ ParticlePositions
 				{
-					array< Vector3 >^ get();
-					void set( array< Vector3 >^ value );
+					array<Vector3>^ get();
+					void set( array<Vector3>^ value );
 				}
 				/// <summary>Gets or Sets the velocities of the cloth</summary>
-				property array< Vector3 >^ ParticleVelocities
+				property array<Vector3>^ ParticleVelocities
 				{
-					array< Vector3 >^ get();
-					void set( array< Vector3 >^ value );
+					array<Vector3>^ get();
+					void set( array<Vector3>^ value );
 				}
 				/// <summary>Gets the number of cloth particles</summary>
 				property int ParticleCount

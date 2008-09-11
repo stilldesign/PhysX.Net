@@ -31,15 +31,15 @@ namespace StillDesign
 				UtilitiesLibrary::BoxPlanesResult^ ComputeBoxPlanes( Box box );
 				UtilitiesLibrary::BoxPointsResult^ ComputeBoxPoints( Box box );
 				UtilitiesLibrary::BoxNormalsResult^ ComputeBoxVertexNormals( Box box );
-				array< int >^ GetBoxEdges();
-				//array< int >^ GetBoxEdgesAxes();
-				//array< int >^ GetBoxTriangles();
-				//array< Vector3 >^ GetBoxLocalEdgeNormals();
+				array<int>^ GetBoxEdges();
+				//array<int>^ GetBoxEdgesAxes();
+				//array<int>^ GetBoxTriangles();
+				//array<Vector3>^ GetBoxLocalEdgeNormals();
 				Vector3 ComputeBoxWorldEdgeNormal( Box box, unsigned int edgeIndex );
 				Capsule ComputeCapsuleAroundBox( Box box );
 				bool IsBoxAInsideBoxB( Box boxA, Box boxB );
-				array< int >^ GetBoxQuads();
-				array< int >^ BoxVertexToQuad( int vertexIndex );
+				array<int>^ GetBoxQuads();
+				array<int>^ BoxVertexToQuad( int vertexIndex );
 				Box ComputeBoxAroundCapsule( Capsule capsule );
 				
 				void SetFPUPrecision24();
@@ -57,7 +57,7 @@ namespace StillDesign
 				SphereGenerationResult^ ComputeSphere( array<Vector3>^ vertices );
 				
 				Matrix FindRotationMatrix( Vector3 x, Vector3 b );
-				Bounds3 ComputeBounds( array< Vector3 >^ vertices );
+				Bounds3 ComputeBounds( array<Vector3>^ vertices );
 				System::UInt32 CRC32( array< System::Byte >^ buffer );
 				
 				// Shape Densities and Mass
@@ -112,9 +112,9 @@ namespace StillDesign
 						{
 							bool get();
 						}
-						property array< Vector3 >^ Points
+						property array<Vector3>^ Points
 						{
-							array< Vector3 >^ get();
+							array<Vector3>^ get();
 						}
 				};
 				ref class BoxNormalsResult

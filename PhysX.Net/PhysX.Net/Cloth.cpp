@@ -312,7 +312,7 @@ StillDesign::PhysX::Compartment^ Cloth::Compartment::get()
 	return _compartment;
 }
 
-array< Vector3 >^ Cloth::ParticlePositions::get()
+array<Vector3>^ Cloth::ParticlePositions::get()
 {
 	int c = _cloth->getNumberOfParticles();
 	

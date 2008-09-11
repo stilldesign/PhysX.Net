@@ -1,19 +1,24 @@
 
 #pragma once
 
-
+using namespace System;
 
 namespace StillDesign
 {
 	namespace PhysX
 	{
 
-		public ref class PhysXException : public System::Exception
+		public ref class PhysXException : public Exception
 		{
 		internal:
-			PhysXException( System::String^ message )
-				: System::Exception( message )
+			PhysXException( String^ message )
+				: Exception( message )
 			{
+			}
+			
+			PhysXException( String^ format, ... array<String^>^ args ) : Exception( String::Format( format, args ) )
+			{
+				
 			}
 		};
 

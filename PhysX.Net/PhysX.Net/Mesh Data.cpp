@@ -150,6 +150,8 @@ NxMeshData* MeshData::Clone( NxMeshData meshData )
 	Debug::Assert( meshData.numVerticesPtr != NULL );
 	
 	NxMeshData* d = new NxMeshData();
+	if( d == NULL )
+		throw gcnew PhysXException( "Could not allocate Mesh Data" );
 	
 	int maxVertices = meshData.maxVertices;
 	int maxIndices = meshData.maxIndices;

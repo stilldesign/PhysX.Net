@@ -1,2 +1,0 @@
-C:\Data\Development\PhysX.Net\All in One Demo\All in One Demo\obj\Release XNA\All in One Demo.exe
-C:\Data\Development\PhysX.Net\All in One Demo\All in One Demo\obj\Release XNA\All in One Demo.pdb

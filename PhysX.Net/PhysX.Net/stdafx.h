@@ -97,6 +97,7 @@ bool IsInstanceOf( U u )
 #include "Functions.h"
 #include "Math.h"
 #include "Object Cache.h"
+#include "PhysX Exception.h"
 
 #define _CRT_SECURE_NO_DEPRECATE
 

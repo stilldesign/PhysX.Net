@@ -72,9 +72,19 @@ namespace StillDesign
 			float currentAngle = _leftFront.SteeringAngle;
 
 			// About 34 degrees of max steering lock
-			float newAngle = Mathematics.Clamp( currentAngle + additionalSteeringAngle, -0.6f, 0.6f );
+			float newAngle = Clamp( currentAngle + additionalSteeringAngle, -0.6f, 0.6f );
 
 			_leftFront.SteeringAngle = _rightFront.SteeringAngle = newAngle;
+		}
+
+		private float Clamp( float value, float min, float max )
+		{
+			if( value < min )
+				return min;
+			if( value > max )
+				return max;
+
+			return value;
 		}
 
 		public WheelShape LeftFront

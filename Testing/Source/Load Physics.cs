@@ -44,54 +44,54 @@ namespace StillDesign
 			//return;
 
 			// CCD Skeleton
-			{
-				Vector3 size = new Vector3( 5, 5, 5 );
+			//{
+			//    Vector3 size = new Vector3( 5, 5, 5 );
 
-				int[] Triangles =
-            #region Triangle Incident
-                {
-                    0,1,3,
-                    0,3,2,
-                    3,7,6,
-                    3,6,2,
-                    1,5,7,
-                    1,7,3,
-                    4,6,7,
-                    4,7,5,
-                    1,0,4,
-                    5,1,4,
-                    4,0,2,
-                    4,2,6
-                };
-			#endregion
+			//    int[] Triangles =
+			//#region Triangle Incident
+			//    {
+			//        0,1,3,
+			//        0,3,2,
+			//        3,7,6,
+			//        3,6,2,
+			//        1,5,7,
+			//        1,7,3,
+			//        4,6,7,
+			//        4,7,5,
+			//        1,0,4,
+			//        5,1,4,
+			//        4,0,2,
+			//        4,2,6
+			//    };
+			//#endregion
 
-				Vector3[] Points =
-            #region Points
-                {
-                    new Vector3(size.X, -size.Y, -size.Z),
-                    new Vector3(size.X, -size.Y, size.Z),
-                    new Vector3(size.X, size.Y, -size.Z),
-                    new Vector3(size.X,  size.Y,  size.Z),
-                    new Vector3(-size.X, -size.Y, -size.Z),
-                    new Vector3(-size.X, -size.Y, size.Z),
-                    new Vector3(-size.X,  size.Y, -size.Z),
-                    new Vector3(-size.X,  size.Y,  size.Z)
-                };
-			#endregion
+			//    Vector3[] Points =
+			//#region Points
+			//    {
+			//        new Vector3(size.X, -size.Y, -size.Z),
+			//        new Vector3(size.X, -size.Y, size.Z),
+			//        new Vector3(size.X, size.Y, -size.Z),
+			//        new Vector3(size.X,  size.Y,  size.Z),
+			//        new Vector3(-size.X, -size.Y, -size.Z),
+			//        new Vector3(-size.X, -size.Y, size.Z),
+			//        new Vector3(-size.X,  size.Y, -size.Z),
+			//        new Vector3(-size.X,  size.Y,  size.Z)
+			//    };
+			//#endregion
 
-				TriangleMeshDescription stm = new TriangleMeshDescription();
-				stm.AllocateVertices<Vector3>( Points.Length );
-				stm.AllocateTriangles<int>( Triangles.Length );
-				stm.VertexCount = 8;
-				stm.TriangleCount = 6 * 2;
-				stm.VerticesStream.SetData<Vector3>( Points );//Excption line
-				stm.TriangleStream.SetData<int>( Triangles );//Also excption line
-				stm.Flags |= MeshFlag.FlipNormals;
-				CCDSkeleton ccd = _core.CreateCCDSkeleton( stm );
+			//    TriangleMeshDescription stm = new TriangleMeshDescription();
+			//    stm.AllocateVertices<Vector3>( Points.Length );
+			//    stm.AllocateTriangles<int>( Triangles.Length );
+			//    stm.VertexCount = 8;
+			//    stm.TriangleCount = 6 * 2;
+			//    stm.VerticesStream.SetData<Vector3>( Points );//Excption line
+			//    stm.TriangleStream.SetData<int>( Triangles );//Also excption line
+			//    stm.Flags |= MeshFlag.FlipNormals;
+			//    CCDSkeleton ccd = _core.CreateCCDSkeleton( stm );
 
-				_core.SetParameter( PhysicsParameter.VisualizeContinuousCollisionDetectionTests, true );
-				_core.SetParameter( PhysicsParameter.ContinuousCollisionDetection, true );
-			}
+			//    _core.SetParameter( PhysicsParameter.VisualizeContinuousCollisionDetectionTests, true );
+			//    _core.SetParameter( PhysicsParameter.ContinuousCollisionDetection, true );
+			//}
 
 			
 
@@ -101,7 +101,7 @@ namespace StillDesign
 			for( int x = 0; x < 20; x++ )
 			{
 				BoxShapeDescription boxShapeDesc = new BoxShapeDescription( 2, 3, 8 );
-				boxShapeDesc.CCDSkeleton = _core.CCDSkeletons[ 0 ];
+				//boxShapeDesc.CCDSkeleton = _core.CCDSkeletons[ 0 ];
 
 				ActorDescription actorDesc = new ActorDescription();
 					actorDesc.Name = String.Format( "Box {0}", x );
@@ -163,7 +163,7 @@ namespace StillDesign
 				Actor actor = _scene.CreateActor( actorDesc );
 			}
 
-			return;
+			
 			#region Cloth (Flag)
 			{
 				// Create a Grid of Points

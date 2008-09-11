@@ -69,7 +69,7 @@ UtilitiesLibrary::BoxPointsResult^ UtilitiesLibrary::ComputeBoxPoints( StillDesi
 	BoxPointsResult^ result;
 	if( success == true )
 	{
-		array< Vector3 >^ points = gcnew array< Vector3 >( 8 );
+		array<Vector3>^ points = gcnew array<Vector3>( 8 );
 		
 		for( int x = 0; x < 8; x++ )
 		{
@@ -94,7 +94,7 @@ UtilitiesLibrary::BoxNormalsResult^ UtilitiesLibrary::ComputeBoxVertexNormals( S
 	BoxNormalsResult^ result;
 	if( success == true )
 	{
-		array< Vector3 >^ n = gcnew array< Vector3 >( 8 );
+		array<Vector3>^ n = gcnew array<Vector3>( 8 );
 		
 		for( int x = 0; x < 8; x++ )
 		{
@@ -153,11 +153,11 @@ Capsule UtilitiesLibrary::ComputeCapsuleAroundBox( StillDesign::PhysX::Box box )
 	return (Capsule)capsule;
 }
 
-array< int >^ UtilitiesLibrary::GetBoxQuads()
+array<int>^ UtilitiesLibrary::GetBoxQuads()
 {
 	throw gcnew NotImplementedException();
 }
-array< int >^ UtilitiesLibrary::BoxVertexToQuad( int vertexIndex )
+array<int>^ UtilitiesLibrary::BoxVertexToQuad( int vertexIndex )
 {
 	throw gcnew NotImplementedException();
 }
@@ -219,17 +219,21 @@ Matrix UtilitiesLibrary::FindRotationMatrix( Vector3 x, Vector3 b )
 {
 	NxMat33 matrix;
 	
-	_library->NxFindRotationMatrix( NxVec3( x.X, x.Y, x.Z ), NxVec3( b.X, b.Y, b.Z ), matrix );
+	_library->NxFindRotationMatrix( Math::Vector3ToNxVec3( x ), Math::Vector3ToNxVec3( b ), matrix );
 	
 	return Math::Mat33ToMatrix( &matrix );
 }
-Bounds3 UtilitiesLibrary::ComputeBounds( array< Vector3 >^ vertices )
+Bounds3 UtilitiesLibrary::ComputeBounds( array<Vector3>^ vertices )
 {
+	if( vertices == nullptr )
+		throw gcnew ArgumentNullException( "vertices" );
+	
 	NxVec3* v = (NxVec3*)malloc( sizeof( NxVec3 ) * vertices->Length );
-	for( int x = 0; x < vertices->Length; x++ )
-	{
-		v[ x ] = NxVec3( vertices[ x ].X, vertices[ x ].Y, vertices[ x ].Z );
-	}
+	if( v == NULL )
+		throw gcnew PhysXException( "Cannot allocate memory for vertices" );
+	
+	pin_ptr<Vector3> b = &vertices[ 0 ];
+	memcpy_s( v, sizeof( NxVec3 ) * vertices->Length, b, sizeof( Vector3 ) * vertices->Length );
 	
 	NxVec3 min, max;
 	_library->NxComputeBounds( min, max, vertices->Length, v );
@@ -237,12 +241,12 @@ Bounds3 UtilitiesLibrary::ComputeBounds( array< Vector3 >^ vertices )
 	v = NULL;
 	free( v );
 	
-	NxBounds3 b;
-		b.set( min, max );
+	NxBounds3 bounds;
+		bounds.set( min, max );
 	
-	return (Bounds3)b;
+	return (Bounds3)bounds;
 }
-System::UInt32 UtilitiesLibrary::CRC32( array< System::Byte >^ buffer )
+System::UInt32 UtilitiesLibrary::CRC32( array<System::Byte>^ buffer )
 {
 	BYTE* b = (BYTE*)malloc( sizeof( BYTE ) * buffer->Length );
 	for( int x = 0; x < buffer->Length; x++ )
@@ -253,6 +257,7 @@ System::UInt32 UtilitiesLibrary::CRC32( array< System::Byte >^ buffer )
 	NxU32 crc = _library->NxCrc32( b, buffer->Length );
 	
 	free( b );
+	b = NULL;
 	
 	return crc;
 }
@@ -272,7 +277,7 @@ Vector3 UtilitiesLibrary::ComputeBoxInteriaTensor( Vector3 diagonalInertia, floa
 	NxVec3 i;
 	_library->NxComputeBoxInertiaTensor( i, mass, size.X, size.Y, size.Z );
 	
-	return Vector3( i.x, i.y, i.z );
+	return Math::NxVec3ToVector3( i );
 }
 
 // Cone
@@ -317,6 +322,8 @@ float UtilitiesLibrary::ComputeSphereMass( float radius, float density )
 
 UtilitiesLibrary::SphereGenerationResult^ UtilitiesLibrary::ComputeSphere( array<Vector3>^ vertices )
 {
+	ThrowIfNull( vertices, "vertices" );
+	
 	NxSphere sphere;
 	NxVec3* v = new NxVec3[ vertices->Length ];
 	
@@ -380,7 +387,7 @@ bool UtilitiesLibrary::BoxPointsResult::Successful::get()
 {
 	return _successful;
 }
-array< Vector3 >^ UtilitiesLibrary::BoxPointsResult::Points::get()
+array<Vector3>^ UtilitiesLibrary::BoxPointsResult::Points::get()
 {
 	return _points;
 }
@@ -396,7 +403,7 @@ bool UtilitiesLibrary::BoxNormalsResult::Successful::get()
 {
 	return _successful;
 }
-array< Vector3 >^ UtilitiesLibrary::BoxNormalsResult::Normals::get()
+array<Vector3>^ UtilitiesLibrary::BoxNormalsResult::Normals::get()
 {
 	return _normals;
 }
