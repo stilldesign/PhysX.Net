@@ -16,7 +16,7 @@
 #elif GRAPHICS_XNA3
 	#using <C:\Program Files\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.dll>
 #elif GRAPHICS_SLIMDX
-#using <F:\NetAssemblies\SlimDX.dll>
+	#using <C:\Program Files\SlimDX (June 2008)\SlimDX.dll>
 #else
 	#error No Graphics Target Specified
 #endif
