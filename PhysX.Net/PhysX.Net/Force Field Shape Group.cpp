@@ -126,7 +126,7 @@ StillDesign::PhysX::Scene^ ForceFieldShapeGroup::Scene::get()
 	return _scene;
 }
 
-System::Collections::ObjectModel::ReadOnlyCollection< ForceFieldShape^ >^ ForceFieldShapeGroup::Shapes::get()
+ReadOnlyList< ForceFieldShape^ >^ ForceFieldShapeGroup::Shapes::get()
 {
 	return _shapes->ReadOnlyCollection;
 }

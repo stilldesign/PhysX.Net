@@ -64,9 +64,9 @@ namespace StillDesign
 				}
 				
 				/// <summary></summary>
-				property System::Collections::ObjectModel::ReadOnlyCollection< ForceFieldShape^ >^ Shapes
+				property ReadOnlyList< ForceFieldShape^ >^ Shapes
 				{
-					System::Collections::ObjectModel::ReadOnlyCollection< ForceFieldShape^ >^ get();
+					ReadOnlyList< ForceFieldShape^ >^ get();
 				}
 				
 				property String^ Name

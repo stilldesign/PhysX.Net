@@ -179,7 +179,7 @@ void ForceField::Actor::set( StillDesign::PhysX::Actor^ value )
 	else
 		_forceField->setActor( _actor->UnmanagedPointer );
 }
-System::Collections::ObjectModel::ReadOnlyCollection< ForceFieldShapeGroup^ >^ ForceField::ShapeGroups::get()
+ReadOnlyList< ForceFieldShapeGroup^ >^ ForceField::ShapeGroups::get()
 {
 	return _shapeGroups->ReadOnlyCollection;
 }

@@ -132,39 +132,39 @@ namespace StillDesign
 				void SetParameter( PhysicsParameter parameter, bool enabled );
 				
 				/// <summary>Gets the Collection of Scenes</summary>
-				property System::Collections::ObjectModel::ReadOnlyCollection< Scene^ >^ Scenes
+				property ReadOnlyList< Scene^ >^ Scenes
 				{
-					System::Collections::ObjectModel::ReadOnlyCollection< Scene^ >^ get();
+					ReadOnlyList< Scene^ >^ get();
 				}
 				/// <summary>Gets the Collection of Triangle Mesh</summary>
-				property System::Collections::ObjectModel::ReadOnlyCollection< TriangleMesh^ >^ TriangleMeshes
+				property ReadOnlyList< TriangleMesh^ >^ TriangleMeshes
 				{
-					System::Collections::ObjectModel::ReadOnlyCollection< TriangleMesh^ >^ get();
+					ReadOnlyList< TriangleMesh^ >^ get();
 				}
 				/// <summary>Gets the Collection of Convex Mesh</summary>
-				property System::Collections::ObjectModel::ReadOnlyCollection< ConvexMesh^ >^ ConvexMeshes
+				property ReadOnlyList< ConvexMesh^ >^ ConvexMeshes
 				{
-					System::Collections::ObjectModel::ReadOnlyCollection< ConvexMesh^ >^ get();
+					ReadOnlyList< ConvexMesh^ >^ get();
 				}
 				/// <summary>Gets the Collection of Cloth Mesh</summary>
-				property System::Collections::ObjectModel::ReadOnlyCollection< ClothMesh^ >^ ClothMeshes
+				property ReadOnlyList< ClothMesh^ >^ ClothMeshes
 				{
-					System::Collections::ObjectModel::ReadOnlyCollection< ClothMesh^ >^ get();
+					ReadOnlyList< ClothMesh^ >^ get();
 				}
 				/// <summary>Gets the Collection of Heightfield</summary>
-				property System::Collections::ObjectModel::ReadOnlyCollection< HeightField^ >^ HeightFields
+				property ReadOnlyList< HeightField^ >^ HeightFields
 				{
-					System::Collections::ObjectModel::ReadOnlyCollection< HeightField^ >^ get();
+					ReadOnlyList< HeightField^ >^ get();
 				}
 				/// <summary>Gets the Collection of CCD Skeletons</summary>
-				property System::Collections::ObjectModel::ReadOnlyCollection< CCDSkeleton^ >^ CCDSkeletons
+				property ReadOnlyList< CCDSkeleton^ >^ CCDSkeletons
 				{
-					System::Collections::ObjectModel::ReadOnlyCollection< CCDSkeleton^ >^ get();
+					ReadOnlyList< CCDSkeleton^ >^ get();
 				}
 				/// <summary>Gets the Collection of SoftBody Mesh</summary>
-				property System::Collections::ObjectModel::ReadOnlyCollection< SoftBodyMesh^ >^ SoftBodyMeshes
+				property ReadOnlyList< SoftBodyMesh^ >^ SoftBodyMeshes
 				{
-					System::Collections::ObjectModel::ReadOnlyCollection< SoftBodyMesh^ >^ get();
+					ReadOnlyList< SoftBodyMesh^ >^ get();
 				}
 				
 				/// <summary>Gets the Foundation Class Associated with this Core</summary>

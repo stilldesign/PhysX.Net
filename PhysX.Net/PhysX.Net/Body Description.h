@@ -116,10 +116,10 @@ namespace StillDesign
 					void set( float value );
 				}
 				/// <summary>Gets or Sets the number of solver iterations performed when processing joint/contacts connected to this body</summary>
-				property unsigned int SolverIterationCount
+				property int SolverIterationCount
 				{
-					unsigned int get();
-					void set( unsigned int value );
+					int get();
+					void set( int value );
 				}
 				/// <summary>Gets or Sets the threshold for the energy-based sleeping algorithm. Only used when the BodyFlag.EnergySleepTest flag is set</summary>
 				property float SleepEnergyThreshold

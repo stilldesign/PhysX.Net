@@ -1,6 +1,7 @@
 #include "StdAfx.h"
 
 #include "List Base.h"
+#include "Read Only List.h"
 
 using namespace System::Collections::ObjectModel;
 using namespace StillDesign::PhysX;
@@ -8,29 +9,44 @@ using namespace StillDesign::PhysX;
 generic<class T>
 ListBase<T>::ListBase()
 {
-	_readOnlyCollection = gcnew System::Collections::ObjectModel::ReadOnlyCollection< T >( Items );
+	_readOnlyCollection = gcnew ReadOnlyList<T>( this );
 }
 
 generic<class T>
 ListBase<T>::ListBase( int capacity ) : Collection<T>( gcnew System::Collections::Generic::List<T>( capacity ) )
 {
-	_readOnlyCollection = gcnew System::Collections::ObjectModel::ReadOnlyCollection< T >( Items );
+	_readOnlyCollection = gcnew ReadOnlyList<T>( this );
 }
-//generic<class T>
-//ListBase<T>::ListBase( System::Collections::Generic::IEnumerable<T>^ collection ) : System::Collections::ObjectModel::Collection<T>( collection )
-//{
-//	
-//}
+generic<class T>
+ListBase<T>::ListBase( System::Collections::Generic::IEnumerable<T>^ collection ) : Collection<T>( CopyToList( collection ) )
+{
+	_readOnlyCollection = gcnew ReadOnlyList<T>( this );
+}
 
 generic<class T>
 void ListBase<T>::RaiseAdd( T item )
 {
-	onAdd( this, item );
+	ItemAdded( this, item );
 }
 generic<class T>
 void ListBase<T>::RaiseRemove( T item )
 {
-	onRemove( this, item );
+	ItemRemoved( this, item );
+}
+
+generic<class T>
+List<T>^ ListBase<T>::CopyToList( System::Collections::Generic::IEnumerable<T>^ collection )
+{
+	List<T>^ list = gcnew List<T>();
+	
+	for each( T item in collection )
+	{
+		list->Add( item );
+	}
+	
+	list->TrimExcess();
+	
+	return list;
 }
 
 generic<class T>
@@ -79,8 +95,8 @@ array<T>^ ListBase<T>::ToArray()
 	return a;
 }
 
-generic< class T >
-System::Collections::ObjectModel::ReadOnlyCollection< T >^ ListBase< T >::ReadOnlyCollection::get()
+generic<class T>
+ReadOnlyList<T>^ ListBase<T>::ReadOnlyCollection::get()
 {
 	return _readOnlyCollection;
 }

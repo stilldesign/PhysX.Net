@@ -1343,56 +1343,56 @@ StillDesign::PhysX::Core^ Scene::Core::get()
 	return _core;
 }
 
-System::Collections::ObjectModel::ReadOnlyCollection< Actor^ >^ Scene::Actors::get()
+ReadOnlyList< Actor^ >^ Scene::Actors::get()
 {
 	return _actors->ReadOnlyCollection;
 }
-//System::Collections::ObjectModel::ReadOnlyCollection< Shape^ >^ Scene::Shapes::get()
+//ReadOnlyList< Shape^ >^ Scene::Shapes::get()
 //{
 //	return _shapes->ReadOnlyCollection;
 //}
-System::Collections::ObjectModel::ReadOnlyCollection< Material^ >^ Scene::Materials::get()
+ReadOnlyList< Material^ >^ Scene::Materials::get()
 {
 	return _materials->ReadOnlyCollection;
 }
-System::Collections::ObjectModel::ReadOnlyCollection< StillDesign::PhysX::ControllerManager^ >^ Scene::ControllerManagers::get()
+ReadOnlyList< StillDesign::PhysX::ControllerManager^ >^ Scene::ControllerManagers::get()
 {
 	return _controllerManagers->ReadOnlyCollection;
 }
-//System::Collections::ObjectModel::ReadOnlyCollection< StillDesign::PhysX::Controller^ >^ Scene::Controllers::get()
+//ReadOnlyList< StillDesign::PhysX::Controller^ >^ Scene::Controllers::get()
 //{
 //	return _controllerCollection->ReadOnlyCollection;
 //}
-System::Collections::ObjectModel::ReadOnlyCollection< Joint^ >^ Scene::Joints::get()
+ReadOnlyList< Joint^ >^ Scene::Joints::get()
 {
 	return _joints->ReadOnlyCollection;
 }
-System::Collections::ObjectModel::ReadOnlyCollection< Cloth^ >^ Scene::Cloths::get()
+ReadOnlyList< Cloth^ >^ Scene::Cloths::get()
 {
 	return _cloths->ReadOnlyCollection;
 }
-System::Collections::ObjectModel::ReadOnlyCollection< ForceField^ >^ Scene::ForceFields::get()
+ReadOnlyList< ForceField^ >^ Scene::ForceFields::get()
 {
 	return _forceFields->ReadOnlyCollection;
 }
-System::Collections::ObjectModel::ReadOnlyCollection< Fluid^ >^ Scene::Fluids::get()
+ReadOnlyList< Fluid^ >^ Scene::Fluids::get()
 {
 	return _fluids->ReadOnlyCollection;
 }
-System::Collections::ObjectModel::ReadOnlyCollection< SoftBody^ >^ Scene::SoftBodies::get()
+ReadOnlyList< SoftBody^ >^ Scene::SoftBodies::get()
 {
 	return _softBodies->ReadOnlyCollection;
 }
-System::Collections::ObjectModel::ReadOnlyCollection< Compartment^ >^ Scene::Compartments::get()
+ReadOnlyList< Compartment^ >^ Scene::Compartments::get()
 {
 	return _compartments->ReadOnlyCollection;
 }
 
-System::Collections::ObjectModel::ReadOnlyCollection< ForceFieldLinearKernel^ >^ Scene::ForceFieldLinearKernels::get()
+ReadOnlyList< ForceFieldLinearKernel^ >^ Scene::ForceFieldLinearKernels::get()
 {
 	return _forceFieldLinearKernels->ReadOnlyCollection;
 }
-System::Collections::ObjectModel::ReadOnlyCollection< ForceFieldShapeGroup^ >^ Scene::ForceFieldShapeGroups::get()
+ReadOnlyList< ForceFieldShapeGroup^ >^ Scene::ForceFieldShapeGroups::get()
 {
 	return _forceFieldShapeGroups->ReadOnlyCollection;
 }

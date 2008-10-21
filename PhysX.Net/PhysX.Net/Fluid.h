@@ -101,9 +101,9 @@ namespace StillDesign
 				//
 				
 				/// <summary>Gets the collection of emitters</summary>
-				property System::Collections::ObjectModel::ReadOnlyCollection< FluidEmitter^ >^ Emitters
+				property ReadOnlyList< FluidEmitter^ >^ Emitters
 				{
-					System::Collections::ObjectModel::ReadOnlyCollection< FluidEmitter^ >^ get();
+					ReadOnlyList< FluidEmitter^ >^ get();
 				}
 				///// <summary>Gets the collection of screen meshes</summary>
 				//property StillDesign::PhysX::Fluid::ImplicitScreenMeshCollection^ ImplicitScreenMeshes
@@ -317,18 +317,18 @@ namespace StillDesign
 					void set( StillDesign::PhysX::FluidPacketData^ value );
 				}
 				
+				property FluidFlagsWrapper^ Flags
+				{
+					FluidFlagsWrapper^ get();
+				}
+				
 				/// <summary>Gets or Sets an arbitary 1:1 object</summary>
 				property Object^ UserData
 				{
 					Object^ get();
 					void set( Object^ value );
 				}
-
-				property FluidFlagsWrapper^ Flags
-				{
-					FluidFlagsWrapper^ get();
-				}
-			
+				
 			internal:
 				property NxFluid* UnmanagedPointer
 				{

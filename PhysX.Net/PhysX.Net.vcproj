@@ -6893,70 +6893,6 @@
 			<File
 				RelativePath=".\PhysX.Net\List Base.cpp"
 				>
-				<FileConfiguration
-					Name="Debug XNA 2.0|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="2"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release XNA 2.0|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="2"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug MDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="2"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release MDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="2"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug SlimDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="2"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release SlimDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="2"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug XNA 3.0|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="2"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release XNA 3.0|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="2"
-					/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\PhysX.Net\Material Description.cpp"
@@ -8725,6 +8661,10 @@
 						UsePrecompiledHeader="2"
 					/>
 				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Read Only List.cpp"
+				>
 			</File>
 			<File
 				RelativePath=".\PhysX.Net\Remote Debugger Event Listener.cpp"
@@ -14866,11 +14806,15 @@
 				Name="Collections"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Element Collection.h"
+					RelativePath=".\PhysX.Net\Delegates.h"
 					>
 				</File>
 				<File
 					RelativePath=".\PhysX.Net\List Base.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Read Only List.h"
 					>
 				</File>
 			</Filter>

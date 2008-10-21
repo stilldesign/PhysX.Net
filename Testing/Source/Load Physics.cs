@@ -96,7 +96,38 @@ namespace StillDesign
 			
 
 			_core.Foundation.RemoteDebugger.Connect( "localhost" );
-			
+
+			//
+
+			{
+				BoxShapeDescription boxShapeDesc = new BoxShapeDescription( 2, 3, 8 );
+
+				ActorDescription actorDesc = new ActorDescription();
+					actorDesc.Name = String.Format( "Box {0}", 1 );
+					actorDesc.BodyDescription = new BodyDescription( 10.0f );
+					actorDesc.GlobalPose = Matrix.CreateTranslation( 0, 15 + 3 * 1, 20 );
+					actorDesc.Shapes.Add( boxShapeDesc );
+
+				Actor actor = _scene.CreateActor( actorDesc );
+
+				BoxShapeDescription boxShapeDesc2 = new BoxShapeDescription( 2, 3, 8 );
+
+				ActorDescription actorDesc2 = new ActorDescription();
+					actorDesc2.Name = String.Format( "Box {0}", 2 );
+					actorDesc2.BodyDescription = new BodyDescription( 10.0f );
+					actorDesc2.GlobalPose = Matrix.CreateTranslation( 0, 15 + 3 * 9, 20 );
+					actorDesc2.Shapes.Add( boxShapeDesc2 );
+
+				bool v = actorDesc2.IsValid();
+				Actor actor2 = _scene.CreateActor( actorDesc2 );
+
+				_scene.SetActorPairFlags( actor, actor2, ContactPairFlag.All );
+
+				actor2.Dispose();
+			}
+
+			//
+
 			#region Some Boxes
 			for( int x = 0; x < 20; x++ )
 			{

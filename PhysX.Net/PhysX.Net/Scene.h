@@ -527,68 +527,68 @@ namespace StillDesign
 				}
 				
 				/// <summary>Gets the Actors in the Scene</summary>
-				property System::Collections::ObjectModel::ReadOnlyCollection< Actor^ >^ Actors
+				property ReadOnlyList< Actor^ >^ Actors
 				{
-					System::Collections::ObjectModel::ReadOnlyCollection< Actor^ >^ get();
+					ReadOnlyList< Actor^ >^ get();
 				}
 				/// <summary>Gets the Shapes in the Scene</summary>
-				//property System::Collections::ObjectModel::ReadOnlyCollection< Shape^ >^ Shapes
+				//property ReadOnlyList< Shape^ >^ Shapes
 				//{
-				//	System::Collections::ObjectModel::ReadOnlyCollection< Shape^ >^ get();
+				//	ReadOnlyList< Shape^ >^ get();
 				//}
 				/// <summary>Gets the Materials in the Scene</summary>
-				property System::Collections::ObjectModel::ReadOnlyCollection< Material^ >^ Materials
+				property ReadOnlyList< Material^ >^ Materials
 				{
-					System::Collections::ObjectModel::ReadOnlyCollection< Material^ >^ get();
+					ReadOnlyList< Material^ >^ get();
 				}
 				/// <summary>Gets the Controller Managers in the Scene</summary>
-				property System::Collections::ObjectModel::ReadOnlyCollection< ControllerManager^ >^ ControllerManagers
+				property ReadOnlyList< ControllerManager^ >^ ControllerManagers
 				{
-					System::Collections::ObjectModel::ReadOnlyCollection< ControllerManager^ >^ get();
+					ReadOnlyList< ControllerManager^ >^ get();
 				}
 				/// <summary>Gets the Controllers in the Scene</summary>
-				//property System::Collections::ObjectModel::ReadOnlyCollection< Controller^ >^ Controllers
+				//property ReadOnlyList< Controller^ >^ Controllers
 				//{
-				//	System::Collections::ObjectModel::ReadOnlyCollection< Controller^ >^ get();
+				//	ReadOnlyList< Controller^ >^ get();
 				//}
 				/// <summary>Gets the Joints in the Scene</summary>
-				property System::Collections::ObjectModel::ReadOnlyCollection< Joint^ >^ Joints
+				property ReadOnlyList< Joint^ >^ Joints
 				{
-					System::Collections::ObjectModel::ReadOnlyCollection< Joint^ >^ get();
+					ReadOnlyList< Joint^ >^ get();
 				}
 				/// <summary>Gets the Cloths in the Scene</summary>
-				property System::Collections::ObjectModel::ReadOnlyCollection< Cloth^ >^ Cloths
+				property ReadOnlyList< Cloth^ >^ Cloths
 				{
-					System::Collections::ObjectModel::ReadOnlyCollection< Cloth^ >^ get();
+					ReadOnlyList< Cloth^ >^ get();
 				}
 				/// <summary>Gets the Force Fields in the Scene</summary>
-				property System::Collections::ObjectModel::ReadOnlyCollection< ForceField^ >^ ForceFields
+				property ReadOnlyList< ForceField^ >^ ForceFields
 				{
-					System::Collections::ObjectModel::ReadOnlyCollection< ForceField^ >^ get();
+					ReadOnlyList< ForceField^ >^ get();
 				}
 				/// <summary>Gets the Fluids in the Scene</summary>
-				property System::Collections::ObjectModel::ReadOnlyCollection< Fluid^ >^ Fluids
+				property ReadOnlyList< Fluid^ >^ Fluids
 				{
-					System::Collections::ObjectModel::ReadOnlyCollection< Fluid^ >^ get();
+					ReadOnlyList< Fluid^ >^ get();
 				}
 				/// <summary>Gets the Soft Bodies in the Scene</summary>
-				property System::Collections::ObjectModel::ReadOnlyCollection< SoftBody^ >^ SoftBodies
+				property ReadOnlyList< SoftBody^ >^ SoftBodies
 				{
-					System::Collections::ObjectModel::ReadOnlyCollection< SoftBody^ >^ get();
+					ReadOnlyList< SoftBody^ >^ get();
 				}
 				/// <summary>Gets the Compartments in the Scene</summary>
-				property System::Collections::ObjectModel::ReadOnlyCollection< Compartment^ >^ Compartments
+				property ReadOnlyList< Compartment^ >^ Compartments
 				{
-					System::Collections::ObjectModel::ReadOnlyCollection< Compartment^ >^ get();
+					ReadOnlyList< Compartment^ >^ get();
 				}
 				
-				property System::Collections::ObjectModel::ReadOnlyCollection< ForceFieldLinearKernel^ >^ ForceFieldLinearKernels
+				property ReadOnlyList< ForceFieldLinearKernel^ >^ ForceFieldLinearKernels
 				{
-					System::Collections::ObjectModel::ReadOnlyCollection< ForceFieldLinearKernel^ >^ get();
+					ReadOnlyList< ForceFieldLinearKernel^ >^ get();
 				}
-				property System::Collections::ObjectModel::ReadOnlyCollection< ForceFieldShapeGroup^ >^ ForceFieldShapeGroups
+				property ReadOnlyList< ForceFieldShapeGroup^ >^ ForceFieldShapeGroups
 				{
-					System::Collections::ObjectModel::ReadOnlyCollection< ForceFieldShapeGroup^ >^ get();
+					ReadOnlyList< ForceFieldShapeGroup^ >^ get();
 				}
 				
 				// Callbacks

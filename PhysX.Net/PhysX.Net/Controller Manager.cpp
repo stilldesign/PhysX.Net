@@ -98,7 +98,7 @@ StillDesign::PhysX::Scene^ StillDesign::PhysX::ControllerManager::Scene::get()
 	return _scene;
 }
 
-System::Collections::ObjectModel::ReadOnlyCollection< StillDesign::PhysX::Controller^ >^ StillDesign::PhysX::ControllerManager::Controllers::get()
+ReadOnlyList< StillDesign::PhysX::Controller^ >^ StillDesign::PhysX::ControllerManager::Controllers::get()
 {
 	return _controllers->ReadOnlyCollection;
 }

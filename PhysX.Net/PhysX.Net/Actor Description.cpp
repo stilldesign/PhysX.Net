@@ -39,8 +39,8 @@ ActorDescription::~ActorDescription()
 }
 ActorDescription::!ActorDescription()
 {
-	_shapes->onAdd -= gcnew EventHandlerItem< ShapeDescription^ >( this, &ActorDescription::ShapeAdded );
-	_shapes-> onRemove -= gcnew EventHandlerItem< ShapeDescription^ >( this, &ActorDescription::ShapeRemoved );
+	_shapes->ItemAdded -= gcnew EventHandlerItem< ShapeDescription^ >( this, &ActorDescription::ShapeAdded );
+	_shapes->ItemRemoved -= gcnew EventHandlerItem< ShapeDescription^ >( this, &ActorDescription::ShapeRemoved );
 	
 	_shapes = nullptr;
 }
@@ -48,8 +48,8 @@ void ActorDescription::CreateActorDescription()
 {
 	_shapes = gcnew ListBase< ShapeDescription^ >();
 	
-	_shapes->onAdd += gcnew EventHandlerItem< ShapeDescription^ >( this, &ActorDescription::ShapeAdded );
-	_shapes-> onRemove += gcnew EventHandlerItem< ShapeDescription^ >( this, &ActorDescription::ShapeRemoved );
+	_shapes->ItemAdded += gcnew EventHandlerItem< ShapeDescription^ >( this, &ActorDescription::ShapeAdded );
+	_shapes->ItemRemoved += gcnew EventHandlerItem< ShapeDescription^ >( this, &ActorDescription::ShapeRemoved );
 }
 
 bool ActorDescription::IsValid()

@@ -98,6 +98,7 @@ bool IsInstanceOf( U u )
 #include "Math.h"
 #include "Object Cache.h"
 #include "PhysX Exception.h"
+#include "List Base.h"
 
 #define _CRT_SECURE_NO_DEPRECATE
 
@@ -117,7 +118,7 @@ using namespace StillDesign;
 		throw gcnew InvalidOperationException( "Buffer already allocated" );\
 	\
 	if( size <= 0 || strideSize <= 0 )\
-		throw gcnew ArgumentException( "Size and Stride Size Must be Greater than Zero" );\
+		throw gcnew ArgumentException( "Size and stride size must be greater than zero" );\
 	\
 	void* m = malloc( size );\
 	Debug::Assert( m != NULL );\

@@ -393,31 +393,31 @@ void Core::SetParameter( PhysicsParameter parameter, bool enabled )
 	_physicsSDK->setParameter( (NxParameter)parameter, enabled ? 1.0f : 0.0f );
 }
 
-System::Collections::ObjectModel::ReadOnlyCollection< Scene^ >^ Core::Scenes::get()
+ReadOnlyList< Scene^ >^ Core::Scenes::get()
 {
 	return _sceneCollection->ReadOnlyCollection;
 }
-System::Collections::ObjectModel::ReadOnlyCollection< TriangleMesh^ >^ Core::TriangleMeshes::get()
+ReadOnlyList< TriangleMesh^ >^ Core::TriangleMeshes::get()
 {
 	return _triangleMeshCollection->ReadOnlyCollection;
 }
-System::Collections::ObjectModel::ReadOnlyCollection< ConvexMesh^ >^ Core::ConvexMeshes::get()
+ReadOnlyList< ConvexMesh^ >^ Core::ConvexMeshes::get()
 {
 	return _convexMeshCollection->ReadOnlyCollection;
 }
-System::Collections::ObjectModel::ReadOnlyCollection< ClothMesh^ >^ Core::ClothMeshes::get()
+ReadOnlyList< ClothMesh^ >^ Core::ClothMeshes::get()
 {
 	return _clothMeshCollection->ReadOnlyCollection;
 }
-System::Collections::ObjectModel::ReadOnlyCollection< HeightField^ >^ Core::HeightFields::get()
+ReadOnlyList< HeightField^ >^ Core::HeightFields::get()
 {
 	return _heightFieldCollection->ReadOnlyCollection;
 }
-System::Collections::ObjectModel::ReadOnlyCollection< CCDSkeleton^ >^ Core::CCDSkeletons::get()
+ReadOnlyList< CCDSkeleton^ >^ Core::CCDSkeletons::get()
 {
 	return _CCDSkeletonCollection->ReadOnlyCollection;
 }
-System::Collections::ObjectModel::ReadOnlyCollection< SoftBodyMesh^ >^ Core::SoftBodyMeshes::get()
+ReadOnlyList< SoftBodyMesh^ >^ Core::SoftBodyMeshes::get()
 {
 	return _softBodyMeshCollection->ReadOnlyCollection;
 }

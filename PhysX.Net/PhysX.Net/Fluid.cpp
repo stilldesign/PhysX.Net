@@ -212,7 +212,7 @@ void Fluid::UpdateParticles( ParticleUpdateData^ updateData )
 	_fluid->updateParticles( *updateData->UnmanagedPointer );
 }
 
-System::Collections::ObjectModel::ReadOnlyCollection< FluidEmitter^ >^ Fluid::Emitters::get()
+ReadOnlyList< FluidEmitter^ >^ Fluid::Emitters::get()
 {
 	return _fluidEmitters->ReadOnlyCollection;
 }

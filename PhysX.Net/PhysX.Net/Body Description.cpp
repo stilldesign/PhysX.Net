@@ -154,11 +154,11 @@ void BodyDescription::SleepAngularVelocity::set( float value )
 	_desc->sleepAngularVelocity = value;
 }
 
-unsigned int BodyDescription::SolverIterationCount::get()
+int BodyDescription::SolverIterationCount::get()
 {
 	return _desc->solverIterationCount;
 }
-void BodyDescription::SolverIterationCount::set( unsigned int value )
+void BodyDescription::SolverIterationCount::set( int value )
 {
 	_desc->solverIterationCount = value;
 }

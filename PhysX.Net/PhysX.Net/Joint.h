@@ -140,9 +140,9 @@ namespace StillDesign
 				}
 				
 				/// <summary></summary>
-				property System::Collections::ObjectModel::ReadOnlyCollection< LimitPlane >^ LimitPlanes
+				property ReadOnlyList< LimitPlane >^ LimitPlanes
 				{
-					System::Collections::ObjectModel::ReadOnlyCollection< LimitPlane >^ get();
+					ReadOnlyList< LimitPlane >^ get();
 				}
 				
 				/// <summary>Gets or Sets an arbitary 1:1 object</summary>

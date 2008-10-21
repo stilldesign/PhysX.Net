@@ -62,9 +62,9 @@ namespace StillDesign
 				}
 				
 				/// <summary>Gets the Collection of Controller</summary>
-				property System::Collections::ObjectModel::ReadOnlyCollection< Controller^ >^ Controllers
+				property ReadOnlyList< Controller^ >^ Controllers
 				{
-					System::Collections::ObjectModel::ReadOnlyCollection< Controller^ >^ get();
+					ReadOnlyList< Controller^ >^ get();
 				}
 				
 				/// <summary></summary>

@@ -477,7 +477,7 @@ bool Actor::IsDynamic::get()
 }
 
 // Shapes
-System::Collections::ObjectModel::ReadOnlyCollection< Shape^ >^ Actor::Shapes::get()
+ReadOnlyList< Shape^ >^ Actor::Shapes::get()
 {
 	return _shapes->ReadOnlyCollection;
 }

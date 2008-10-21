@@ -36,8 +36,8 @@ FluidDescription::!FluidDescription()
 void FluidDescription::CreateFluidDescription()
 {
 	_emitters = gcnew ListBase< FluidEmitterDescription^ >();
-		_emitters->onAdd += gcnew EventHandlerItem<FluidEmitterDescription^>( this, &FluidDescription::FluidEmitterDescriptionAdded );
-		_emitters->onRemove += gcnew EventHandlerItem<FluidEmitterDescription^>( this, &FluidDescription::FluidEmitterDescriptionRemoved );
+		_emitters->ItemAdded += gcnew EventHandlerItem<FluidEmitterDescription^>( this, &FluidDescription::FluidEmitterDescriptionAdded );
+		_emitters->ItemRemoved += gcnew EventHandlerItem<FluidEmitterDescription^>( this, &FluidDescription::FluidEmitterDescriptionRemoved );
 }
 
 void FluidDescription::SetToDefault()

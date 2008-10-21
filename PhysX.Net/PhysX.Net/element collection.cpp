@@ -39,8 +39,8 @@ using namespace StillDesign::PhysX;
 generic< class T >
 ElementCollection< T >::ElementCollection()
 {
-	this->onAdd += gcnew EventHandlerItem< T >( this, &ElementCollection::ElementCollection_onAdd );
-	this->onRemove += gcnew EventHandlerItem< T >( this, &ElementCollection::ElementCollection_onRemove );
+	this->ItemAdded += gcnew EventHandlerItem< T >( this, &ElementCollection::ElementCollection_onAdd );
+	this->ItemRemoved += gcnew EventHandlerItem< T >( this, &ElementCollection::ElementCollection_onRemove );
 }
 
 //generic< class T, class R >ElementCollection< T, R >::!ElementCollection()

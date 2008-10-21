@@ -276,7 +276,7 @@ JointType Joint::Type::get()
 	return (JointType)_joint->getType();
 }
 
-System::Collections::ObjectModel::ReadOnlyCollection< LimitPlane >^ Joint::LimitPlanes::get()
+ReadOnlyList< LimitPlane >^ Joint::LimitPlanes::get()
 {
 	return _limitPlanes->ReadOnlyCollection;
 }

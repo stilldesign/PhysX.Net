@@ -91,9 +91,9 @@ namespace StillDesign
 					void set( StillDesign::PhysX::Actor^ value );
 				}
 				
-				property System::Collections::ObjectModel::ReadOnlyCollection< ForceFieldShapeGroup^ >^ ShapeGroups
+				property ReadOnlyList< ForceFieldShapeGroup^ >^ ShapeGroups
 				{
-					System::Collections::ObjectModel::ReadOnlyCollection< ForceFieldShapeGroup^ >^ get();
+					ReadOnlyList< ForceFieldShapeGroup^ >^ get();
 				}
 				
 				/// <summary>Retrieves the kernel function which this field is using</summary>

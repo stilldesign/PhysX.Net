@@ -59,12 +59,12 @@ bool ForceFieldDescription::IsDisposed::get()
 void ForceFieldDescription::CreateAux()
 {
 	_groups = gcnew ForceFieldShapeGroupCollection();
-		_groups->onAdd += gcnew EventHandlerItem<ForceFieldShapeGroup^>( this, &ForceFieldDescription::_group_onAdd );
-		_groups->onRemove += gcnew EventHandlerItem<ForceFieldShapeGroup^>( this, &ForceFieldDescription::_group_onRemove );
+		_groups->ItemAdded += gcnew EventHandlerItem<ForceFieldShapeGroup^>( this, &ForceFieldDescription::_group_onAdd );
+		_groups->ItemRemoved += gcnew EventHandlerItem<ForceFieldShapeGroup^>( this, &ForceFieldDescription::_group_onRemove );
 		
 	_shapeDescriptions = gcnew ForceFieldShapeDescriptionCollection();
-		_shapeDescriptions->onAdd += gcnew EventHandlerItem<ForceFieldShapeDescription^>( this, &ForceFieldDescription::_shapeDescriptions_onAdd );
-		_shapeDescriptions->onRemove += gcnew EventHandlerItem<ForceFieldShapeDescription^>( this, &ForceFieldDescription::_shapeDescriptions_onRemove );
+		_shapeDescriptions->ItemAdded += gcnew EventHandlerItem<ForceFieldShapeDescription^>( this, &ForceFieldDescription::_shapeDescriptions_onAdd );
+		_shapeDescriptions->ItemRemoved += gcnew EventHandlerItem<ForceFieldShapeDescription^>( this, &ForceFieldDescription::_shapeDescriptions_onRemove );
 }
 
 void ForceFieldDescription::SetToDefault()

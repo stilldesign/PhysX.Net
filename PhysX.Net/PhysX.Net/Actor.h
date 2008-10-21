@@ -206,9 +206,9 @@ namespace StillDesign
 				
 				// Shapes
 				/// <summary>Gets a Collection of Shapes Attached to this Actor</summary>
-				property System::Collections::ObjectModel::ReadOnlyCollection< Shape^ >^ Shapes
+				property ReadOnlyList< Shape^ >^ Shapes
 				{
-					System::Collections::ObjectModel::ReadOnlyCollection< Shape^ >^ get();
+					ReadOnlyList< Shape^ >^ get();
 				}
 				
 				/// <summary>Gets the actor's simulation compartment, if any</summary>
