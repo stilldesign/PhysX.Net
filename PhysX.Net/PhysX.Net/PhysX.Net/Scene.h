@@ -104,7 +104,6 @@ namespace StillDesign
 				
 				ElementCollection< Compartment^ >^ _compartments;
 				ElementCollection< Actor^ >^ _actors;
-				//ElementCollection< Shape^ >^ _shapes;
 				ElementCollection< Material^ >^ _materials;
 				ElementCollection< Joint^ >^ _joints;
 				ElementCollection< Cloth^ >^ _cloths;
@@ -112,7 +111,6 @@ namespace StillDesign
 				ElementCollection< ForceFieldLinearKernel^ >^ _forceFieldLinearKernels;
 				ElementCollection< ForceFieldShapeGroup^ >^ _forceFieldShapeGroups;
 				ElementCollection< ControllerManager^ >^ _controllerManagers;
-				//ElementCollection< Controller^ >^ _controllerCollection;
 				ElementCollection< Fluid^ >^ _fluids;
 				ElementCollection< SoftBody^ >^ _softBodies;
 				

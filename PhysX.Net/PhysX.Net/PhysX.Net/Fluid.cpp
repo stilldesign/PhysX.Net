@@ -86,7 +86,7 @@ Fluid::!Fluid()
 	
 	onDisposing( this, nullptr );
 	
-	_fluidEmitters->DiposeOfAll();
+	_fluidEmitters->DisposeOfAll();
 	
 	_scene->UnmanagedPointer->releaseFluid( *_fluid );
 	

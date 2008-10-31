@@ -67,7 +67,7 @@ Actor::!Actor()
 	
 	onDisposing( this, nullptr );
 	
-	_shapes->DiposeOfAll();
+	_shapes->DisposeOfAll();
 	_shapes->Clear();
 	_shapes = nullptr;
 	

@@ -14810,6 +14810,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\PhysX.Net\Element Collection.h"
+					>
+				</File>
+				<File
 					RelativePath=".\PhysX.Net\List Base.h"
 					>
 				</File>

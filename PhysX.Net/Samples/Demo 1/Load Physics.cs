@@ -185,6 +185,7 @@ namespace StillDesign
 					fluidDesc.Flags = FluidFlag.Enabled | FluidFlag.Visualization;
 					fluidDesc.MaximumParticles = maximumParticles;
 					fluidDesc.ParticleWriteData.AllocatePositionBuffer<Vector3>( maximumParticles );
+					fluidDesc.ParticleWriteData.NumberOfParticles = maximumParticles;
 				
 				Fluid fluid = _scene.CreateFluid( fluidDesc );
 

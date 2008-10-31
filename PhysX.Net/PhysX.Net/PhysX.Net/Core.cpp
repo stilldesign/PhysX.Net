@@ -68,20 +68,13 @@ Core::!Core()
 	onDisposing( this, nullptr );
 	
 	// Delete Children
-	_sceneCollection->DiposeOfAll();
-	_triangleMeshCollection->DiposeOfAll();
-	_convexMeshCollection->DiposeOfAll();
-	_clothMeshCollection->DiposeOfAll();
-	_heightFieldCollection->DiposeOfAll();
-	_CCDSkeletonCollection->DiposeOfAll();
-	_softBodyMeshCollection->DiposeOfAll();
-	
-	if( _physicsSDK != NULL )
-	{
-		NxReleasePhysicsSDK( _physicsSDK );
-		
-		_physicsSDK = NULL;
-	}
+	_sceneCollection->DisposeOfAll();
+	_triangleMeshCollection->DisposeOfAll();
+	_convexMeshCollection->DisposeOfAll();
+	_clothMeshCollection->DisposeOfAll();
+	_heightFieldCollection->DisposeOfAll();
+	_CCDSkeletonCollection->DisposeOfAll();
+	_softBodyMeshCollection->DisposeOfAll();
 	
 	_sceneCollection = nullptr;
 	_triangleMeshCollection = nullptr;
@@ -93,6 +86,13 @@ Core::!Core()
 	_userOutputStream = nullptr;
 	
 	_foundation = nullptr;
+	
+	if( _physicsSDK != NULL )
+	{
+		NxReleasePhysicsSDK( _physicsSDK );
+		
+		_physicsSDK = NULL;
+	}
 	
 	onDisposed( this, nullptr );
 }

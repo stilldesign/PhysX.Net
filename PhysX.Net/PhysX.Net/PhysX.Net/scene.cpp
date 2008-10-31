@@ -232,22 +232,26 @@ Scene::!Scene()
 	
 	onDisposing( this, nullptr );
 	
-	_actors->DiposeOfAll();
-	_materials->DiposeOfAll();
-	_joints->DiposeOfAll();
-	_cloths->DiposeOfAll();
-	_forceFields->DiposeOfAll();
-	_controllerManagers->DiposeOfAll();
-	_fluids->DiposeOfAll();
-	_softBodies->DiposeOfAll();
+	_compartments->DisposeOfAll();
+	_actors->DisposeOfAll();
+	_materials->DisposeOfAll();
+	_joints->DisposeOfAll();
+	_cloths->DisposeOfAll();
+	_forceFields->DisposeOfAll();
+	_forceFieldLinearKernels->DisposeOfAll();
+	_forceFieldShapeGroups->DisposeOfAll();
+	_controllerManagers->DisposeOfAll();
+	_fluids->DisposeOfAll();
+	_softBodies->DisposeOfAll();
 	
+	_compartments = nullptr;
 	_actors = nullptr;
-	//_shapes = nullptr;
 	_materials = nullptr;
 	_joints = nullptr;
 	_cloths = nullptr;
 	_forceFields = nullptr;
-	//_implicitScreenMeshes = nullptr;
+	_forceFieldLinearKernels = nullptr;
+	_forceFieldShapeGroups = nullptr;
 	_controllerManagers = nullptr;
 	_fluids = nullptr;
 	_softBodies = nullptr;

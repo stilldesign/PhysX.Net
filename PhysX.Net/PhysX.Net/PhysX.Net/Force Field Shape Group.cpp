@@ -40,7 +40,7 @@ ForceFieldShapeGroup::!ForceFieldShapeGroup()
 	
 	onDisposing( this, nullptr );
 	
-	_shapes->DiposeOfAll();
+	_shapes->DisposeOfAll();
 	
 	_scene->UnmanagedPointer->releaseForceFieldShapeGroup( *_group );
 	

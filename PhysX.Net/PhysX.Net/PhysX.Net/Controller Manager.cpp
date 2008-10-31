@@ -35,7 +35,7 @@ StillDesign::PhysX::ControllerManager::!ControllerManager()
 	
 	onDisposing( this, nullptr );
 	
-	_controllers->DiposeOfAll();
+	_controllers->DisposeOfAll();
 	
 	NxReleaseControllerManager( _manager );
 	_manager = NULL;
