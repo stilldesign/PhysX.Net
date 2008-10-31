@@ -4171,6 +4171,10 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath=".\PhysX.Net\Descriptor Validity.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\PhysX.Net\Distance Joint Description.cpp"
 				>
 				<FileConfiguration
@@ -13822,6 +13826,10 @@
 			</File>
 			<File
 				RelativePath=".\PhysX.Net\Dependency.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Descriptor Validity.h"
 				>
 			</File>
 			<File
