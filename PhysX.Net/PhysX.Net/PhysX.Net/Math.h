@@ -24,7 +24,8 @@ namespace StillDesign
 				
 				static Quaternion NxQuatToQuaternion( NxQuat quat );
 				static NxQuat QuaternionNxQuat( Quaternion quat );
-				
+//				static Quaternion RoationMatrixToQuaternion( NxMat33 matrix );
+
 				static NxPlane PlaneToNxPlane( Plane plane );
 				static Plane NxPlaneToPlane( NxPlane plane );
 				

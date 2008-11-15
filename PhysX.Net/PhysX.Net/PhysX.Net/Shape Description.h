@@ -30,14 +30,18 @@ namespace StillDesign
 				!ShapeDescription();
 				
 			public:
+				/// <summary>Is the shape description valid</summary>
 				virtual bool IsValid();
+				/// <summary>Resets the description to default</summary>
 				virtual void SetToDefault();
 				
+				/// <summary>Gets or Sets the type of shape. This value is specified during construction</summary>
 				property ShapeType Type
 				{
 					ShapeType get();
 				}
 				
+				/// <summary>Gets or Sets the name of the shape</summary>
 				property String^ Name
 				{
 					String^ get();

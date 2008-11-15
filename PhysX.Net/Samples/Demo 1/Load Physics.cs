@@ -96,7 +96,7 @@ namespace StillDesign
 				_flag.BendingStiffness = 0.1f;
 			}
 			#endregion
-
+			
 			#region Revolute Joint
 			{
 				BoxShapeDescription boxShapeDescA = new BoxShapeDescription( 3, 3, 3 );
@@ -165,7 +165,7 @@ namespace StillDesign
 					prismaticJoint.AddLimitPlane( limitPlane );
 			}
 			#endregion
-
+			
 			#region Fluid
 			{
 				const int maximumParticles = 1000;
@@ -213,7 +213,7 @@ namespace StillDesign
 				}
 			}
 			#endregion
-
+			
 			#region Force Field
 			{
 				BoxForceFieldShapeDescription boxForceFieldShapeDesc = new BoxForceFieldShapeDescription();
@@ -288,7 +288,7 @@ namespace StillDesign
 				Actor actor = _scene.CreateActor( actorDesc );
 			}
 			#endregion
-
+			
 			#region Convex Mesh
 			{
 				ModelMesh mesh = _torusModel.Meshes[ 0 ];
@@ -300,20 +300,15 @@ namespace StillDesign
 				VertexPositionNormalTexture[] vertices = new VertexPositionNormalTexture[ mesh.MeshParts[ 0 ].NumVertices ];
 				mesh.VertexBuffer.GetData<VertexPositionNormalTexture>( vertices );
 
-				// Get the indices from the mesh
-				//short[] indices = new short[ mesh.MeshParts[ 0 ].PrimitiveCount * 3 ];
-				//mesh.IndexBuffer.GetData<short>( indices );
-
-				//int numberOfTriangles = indices.Length / 3;
-
 				//
 
 				// Allocate memory for the points and triangles
-				ConvexMeshDescription convexMeshDesc = new ConvexMeshDescription();
-				    convexMeshDesc.PointCount = vertices.Length;
-				    convexMeshDesc.Flags |= ConvexFlag.ComputeConvex;
-
-				    convexMeshDesc.AllocatePoints<Vector3>( vertices.Length );
+				var convexMeshDesc = new ConvexMeshDescription()
+				{
+				    PointCount = vertices.Length
+				};
+				convexMeshDesc.Flags |= ConvexFlag.ComputeConvex;
+				convexMeshDesc.AllocatePoints<Vector3>( vertices.Length );
 
 				// Write in the points and triangles
 				// We only want the Position component of the vertex. Also scale down the mesh
@@ -340,15 +335,17 @@ namespace StillDesign
 
 				ConvexShapeDescription convexShapeDesc = new ConvexShapeDescription( convexMesh );
 
-				ActorDescription actorDesc = new ActorDescription();
-				    actorDesc.BodyDescription = new BodyDescription( 10.0f );
-					actorDesc.GlobalPose = Matrix.CreateTranslation( 30, 30, 0 );
-				    actorDesc.Shapes.Add( convexShapeDesc );
+				ActorDescription actorDesc = new ActorDescription()
+				{
+				    BodyDescription = new BodyDescription( 10.0f ),
+					GlobalPose = Matrix.CreateTranslation( 30, 30, 0 )
+				};
+			    actorDesc.Shapes.Add( convexShapeDesc );
 
 				_torusActor = _scene.CreateActor( actorDesc );
 			}
 			#endregion
-
+			
 			#region SoftBody
 			if( false ) // Enable to view soft bodies, they run slowly
 			{
@@ -359,21 +356,17 @@ namespace StillDesign
 				Vector3[] vertices = ReadVertices( doc.SelectSingleNode( "/NXUSTREAM2/NxuPhysicsCollection/NxSoftBodyMeshDesc/vertices" ) );
 				int[] tetrahedraSingles = ReadTetrahedra( doc.SelectSingleNode( "/NXUSTREAM2/NxuPhysicsCollection/NxSoftBodyMeshDesc/tetrahedra" ) );
 
-				SoftBodyMeshDescription softBodyMeshDesc = new SoftBodyMeshDescription();
-					softBodyMeshDesc.VertexCount = vertices.Length;
-					softBodyMeshDesc.TetrahedraCount = tetrahedraSingles.Length / 4; // Tetrahedras come in quadruples of ints
+				var softBodyMeshDesc = new SoftBodyMeshDescription()
+				{
+					VertexCount = vertices.Length,
+					TetrahedraCount = tetrahedraSingles.Length / 4 // Tetrahedras come in quadruples of ints
+				};
 
-					softBodyMeshDesc.AllocateVertices<Vector3>( softBodyMeshDesc.VertexCount );
-					softBodyMeshDesc.AllocateTetrahedra<int>( softBodyMeshDesc.TetrahedraCount ); // Note: T is an int. T is the type of each point
+				softBodyMeshDesc.AllocateVertices<Vector3>( softBodyMeshDesc.VertexCount );
+				softBodyMeshDesc.AllocateTetrahedra<int>( softBodyMeshDesc.TetrahedraCount ); // Note: T is an int. T is the type of each point
 
-					foreach( Vector3 vertex in vertices )
-					{
-						softBodyMeshDesc.VertexStream.Write( vertex );
-					}
-					foreach( int tet in tetrahedraSingles )
-					{
-						softBodyMeshDesc.TetrahedraStream.Write( tet );
-					}
+				softBodyMeshDesc.VertexStream.SetData( vertices );
+				softBodyMeshDesc.TetrahedraStream.SetData( tetrahedraSingles );
 
 				MemoryStream memoryStream = new MemoryStream();
 
@@ -385,13 +378,16 @@ namespace StillDesign
 
 				SoftBodyMesh softBodyMesh = _core.CreateSoftBodyMesh( memoryStream );
 
-				SoftBodyDescription desc = new SoftBodyDescription();
-					desc.GlobalPose = Matrix.CreateTranslation( -30, 20, -30 );
-					desc.SoftBodyMesh = softBodyMesh;
-					desc.Flags |= SoftBodyFlag.Visualization;
+				SoftBodyDescription desc = new SoftBodyDescription()
+				{
+					GlobalPose = Matrix.CreateTranslation( -30, 20, -30 ),
+					SoftBodyMesh = softBodyMesh
+				};
+				desc.Flags |= SoftBodyFlag.Visualization;
 
-					desc.MeshData.AllocatePositions<Vector3>( vertices.Length );
-					desc.MeshData.AllocateIndices<int>( tetrahedraSingles.Length );
+				desc.MeshData.AllocatePositions<Vector3>( vertices.Length );
+				desc.MeshData.AllocateIndices<int>( tetrahedraSingles.Length );
+
 				SoftBody softBody = _scene.CreateSoftBody( desc );
 			}
 			#endregion
@@ -402,11 +398,13 @@ namespace StillDesign
 			{
 				CapsuleShapeDescription capsuleShapeDesc = new CapsuleShapeDescription( 1, 5 );
 				
-				ActorDescription actorDesc = new ActorDescription();
-					actorDesc.GlobalPose = Matrix.CreateTranslation( -30, 20, 0 );
-					actorDesc.BodyDescription = new BodyDescription( 10.0f );
-					actorDesc.Shapes.Add( capsuleShapeDesc );
-					actorDesc.Name = "Report Capsule";
+				ActorDescription actorDesc = new ActorDescription()
+				{
+					GlobalPose = Matrix.CreateTranslation( -30, 20, 0 ),
+					BodyDescription = new BodyDescription( 10.0f ),
+					Name = "Report Capsule"
+				};
+				actorDesc.Shapes.Add( capsuleShapeDesc );
 
 				_contactReportActor = _scene.CreateActor( actorDesc );
 

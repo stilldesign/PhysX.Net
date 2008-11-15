@@ -23,7 +23,7 @@ StillDesign::PhysX::Controller::Controller( NxController* controller, Controller
 	_manager = manager;
 	
 	_actor = gcnew StillDesign::PhysX::Actor( controller->getActor() );
-	GC::SuppressFinalize( _actor );
+	//GC::SuppressFinalize( _actor );
 }
 StillDesign::PhysX::Controller::~Controller()
 {
@@ -38,9 +38,11 @@ StillDesign::PhysX::Controller::!Controller()
 	
 	_manager->UnmanagedPointer->releaseController( *_controller );
 	
-	// Because the controller will be disposing of the actor, the actor class should not.
+	// Because the controller will be disposing of the actor (and thus its internal shape) they should not be released by the finalizer code (they already have been).
+	// The managed classes should still pass through the normal garbage collection route.
 	_actor->UnmanagedPointer = NULL;
-	GC::ReRegisterForFinalize( _actor );
+	_actor->Shapes[ 0 ]->UnmanagedPointer = NULL;
+	//GC::ReRegisterForFinalize( _actor );
 	
 	_controller = NULL;
 	

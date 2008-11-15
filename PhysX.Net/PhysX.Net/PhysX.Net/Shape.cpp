@@ -287,3 +287,7 @@ NxShape* Shape::UnmanagedPointer::get()
 {
 	return _shape;
 }
+void Shape::UnmanagedPointer::set( NxShape* value )
+{
+	_shape = value;
+}

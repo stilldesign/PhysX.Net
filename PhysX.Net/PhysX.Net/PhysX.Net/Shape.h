@@ -33,7 +33,7 @@ namespace StillDesign
 				
 			private:
 				NxShape* _shape;
-			
+				
 				StillDesign::PhysX::Actor^ _actor;
 				StillDesign::PhysX::Material^ _material;
 				
@@ -193,6 +193,7 @@ namespace StillDesign
 				property NxShape* UnmanagedPointer
 				{
 					virtual NxShape* get();
+					void set( NxShape* value );
 				}
 		};
 	};

@@ -47,7 +47,7 @@ namespace StillDesign
 				/// <summary>Moves the controller</summary>
 				/// <param name="displacementX">The distance to move the controller in the world space X direction</param>
 				/// <param name="displacementY">The distance to move the controller in the world space Y direction</param>
-				/// <param name="displacementZ">The distance to move the controller in the world space z direction</param>
+				/// <param name="displacementZ">The distance to move the controller in the world space Z direction</param>
 				/// <remarks>Minimum Distance = 0.00001f</remarks>
 				ControllerMoveResult^ Move( float displacementX, float displacementY, float displacementZ );
 				/// <summary>Moves the Controller</summary>
@@ -72,6 +72,7 @@ namespace StillDesign
 				
 				//
 				
+				/// <summary>Gets the controller manager this controller is owned by</summary>
 				property StillDesign::PhysX::ControllerManager^ Manager
 				{
 					StillDesign::PhysX::ControllerManager^ get();

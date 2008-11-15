@@ -95,7 +95,7 @@ namespace StillDesign
 			base.Draw( gameTime );
 
 			_engine.Draw();
-
+			return;
 			// Draw the torus knot
 			{
 				Matrix[] transforms = new Matrix[ _torusModel.Bones.Count ];

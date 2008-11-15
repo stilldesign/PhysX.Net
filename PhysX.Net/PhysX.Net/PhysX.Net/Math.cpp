@@ -194,6 +194,20 @@ Vector3 StillDesign::PhysX::Math::QuatToEuler( NxQuat q )
 	
 	return rotation;
 }
+//Quaternion StillDesign::PhysX::Math::RoationMatrixToQuaternion( NxMat33 matrix )
+//{
+//	Quaternion q = gcnew Quaternion()
+//		q.W = (float)Math.Sqrt( Math.Max( 0, 1 + matrix.M11 + matrix.M22 + matrix.M33 ) ) / 2.0f,
+//		q.X = (float)Math.Sqrt( Math.Max( 0, 1 + matrix.M11 - matrix.M22 - matrix.M33 ) ) / 2.0f,
+//		q.Y = (float)Math.Sqrt( Math.Max( 0, 1 - matrix.M11 + matrix.M22 - matrix.M33 ) ) / 2.0f,
+//		q.Z = (float)Math.Sqrt( Math.Max( 0, 1 - matrix.M11 - matrix.M22 + matrix.M33 ) ) / 2.0f
+//		
+//		q.X = CopySign( q.X, matrix.M23 - matrix.M32 );
+//		q.Y = CopySign( q.Y, matrix.M31 - matrix.M13 );
+//		q.Z = CopySign( q.Z, matrix.M12 - matrix.M21 );
+//	
+//	return q;
+//}
 
 Vector3 StillDesign::PhysX::Math::NxVec3ToVector3( NxVec3 vector )
 {
