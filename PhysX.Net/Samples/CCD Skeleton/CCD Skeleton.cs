@@ -15,14 +15,14 @@ using StillDesign.PhysX;
 
 namespace StillDesign
 {
-	public class Game1 : Microsoft.Xna.Framework.Game
+	public class CCDSkeletonSample : Microsoft.Xna.Framework.Game
 	{
 		private Engine _engine;
 
 		private Core _core;
 		private Scene _scene;
 
-		public Game1()
+		public CCDSkeletonSample()
 		{
 			Content.RootDirectory = "Content";
 
@@ -98,7 +98,7 @@ namespace StillDesign
 			// For CCD to work/be used many conditions must be met (check the docs for full list)
 			// One of those conditions is that one of the objects must be a triangle mesh or a convex mesh (for static-dynamic)
 			{
-				Vector3[] vertices = new Vector3[]
+				Vector3[] vertices = 
 				{
 					new Vector3( -100, 5, -100 ),
 					new Vector3( -100, 5, 100 ),
@@ -106,7 +106,7 @@ namespace StillDesign
 					new Vector3( 100, 5, 100 ),
 				};
 
-				int[] indices = new int[]
+				int[] indices =
 				{
 					0, 1, 2,
 					1, 3, 2
@@ -122,7 +122,6 @@ namespace StillDesign
 					triangleMeshDesc.TriangleStream.SetData( indices );
 					triangleMeshDesc.VerticesStream.SetData( vertices );
 
-				
 				MemoryStream s = new MemoryStream();
 
 				Cooking.InitializeCooking();
@@ -132,9 +131,11 @@ namespace StillDesign
 				s.Position = 0;
 				TriangleMesh triangleMesh = _core.CreateTriangleMesh( s );
 
-				TriangleMeshShapeDescription triangleMeshShapeDesc = new TriangleMeshShapeDescription();
-					triangleMeshShapeDesc.TriangleMesh = triangleMesh;
-					triangleMeshShapeDesc.Flags = ShapeFlag.Visualization;
+				TriangleMeshShapeDescription triangleMeshShapeDesc = new TriangleMeshShapeDescription()
+				{
+					TriangleMesh = triangleMesh,
+					Flags = ShapeFlag.Visualization
+				};
 
 				ActorDescription actorDesc = new ActorDescription();
 					actorDesc.Shapes.Add( triangleMeshShapeDesc );
@@ -149,7 +150,7 @@ namespace StillDesign
 				// Assign the CCD Skeleton to the shape
 				boxShapeDesc.CCDSkeleton = ccdSkeletonForBox;
 
-				ActorDescription actorDesc = new ActorDescription( );
+				ActorDescription actorDesc = new ActorDescription();
 					actorDesc.Name = String.Format( "Box {0}", x );
 					actorDesc.BodyDescription = new BodyDescription( 10.0f );
 					actorDesc.GlobalPose = Matrix.CreateTranslation( 0, 15 + 3 * x, 0 );

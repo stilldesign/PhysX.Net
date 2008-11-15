@@ -9,7 +9,7 @@ namespace StillDesign
 		/// </summary>
 		static void Main( string[] args )
 		{
-			using( Game1 game = new Game1() )
+			using( CCDSkeletonSample game = new CCDSkeletonSample() )
 			{
 				game.Run();
 			}

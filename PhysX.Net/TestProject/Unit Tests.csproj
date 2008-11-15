@@ -17,45 +17,44 @@
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug MDX|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;GRAPHICS_MDX</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug MDX|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Debug MDX\</OutputPath>
+    <DefineConstants>DEBUG;GRAPHICS_MDX</DefineConstants>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release MDX|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE;GRAPHICS_MDX</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release MDX|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Release MDX\</OutputPath>
+    <DefineConstants>DEBUG;GRAPHICS_MDX</DefineConstants>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug SlimDX|AnyCPU' ">
-    <OutputPath>bin\Debug SlimDX\</OutputPath>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug SlimDX|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Debug SlimDX\</OutputPath>
+    <DefineConstants>DEBUG;GRAPHICS_SLIMDX</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug XNA 2.0|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Debug XNA 2.0\</OutputPath>
+    <DefineConstants>DEBUG;GRAPHICS_XNA2</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug XNA 3.0|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Debug XNA 3.0\</OutputPath>
+    <DefineConstants>DEBUG;GRAPHICS_XNA3</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release SlimDX|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Release SlimDX\</OutputPath>
     <DefineConstants>GRAPHICS_SLIMDX</DefineConstants>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug XNA 2.0|AnyCPU' ">
-    <OutputPath>bin\Debug XNA 2.0\</OutputPath>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release XNA 2.0|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Release XNA 2.0\</OutputPath>
     <DefineConstants>GRAPHICS_XNA2</DefineConstants>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug XNA 3.0|AnyCPU' ">
-    <OutputPath>bin\Debug XNA 3.0\</OutputPath>
-    <DefineConstants>GRAPHICS_XNA3</DefineConstants>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release SlimDX|AnyCPU' ">
-    <OutputPath>bin\Release SlimDX\</OutputPath>
-    <DefineConstants>GRAPHICS_SLIMDX</DefineConstants>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release XNA 2.0|AnyCPU' ">
-    <OutputPath>bin\Release XNA 2.0\</OutputPath>
-    <DefineConstants>GRAPHICS_XNA2</DefineConstants>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release XNA 3.0|AnyCPU' ">
-    <OutputPath>bin\Release XNA 3.0\</OutputPath>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release XNA 3.0|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Release XNA 3.0\</OutputPath>
     <DefineConstants>GRAPHICS_XNA3</DefineConstants>
   </PropertyGroup>
   <ItemGroup>

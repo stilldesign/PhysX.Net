@@ -12,8 +12,6 @@ namespace StillDesign
 		#region Variables
 		private Engine _engine;
 
-		private Matrix _view, _projection;
-
 		private float _cameraPitch, _cameraYaw;
 		#endregion
 
@@ -21,8 +19,8 @@ namespace StillDesign
 		{
 			_engine = engine;
 
-			_view = Matrix.CreateLookAt( new Vector3( 0, 20, 90 ), new Vector3( 0, 20, 0 ), new Vector3( 0, 1, 0 ) );
-			_projection = Matrix.CreatePerspectiveFieldOfView( MathHelper.PiOver4, _engine.Game.GraphicsDevice.Viewport.AspectRatio, 0.5f, 10000.0f );
+			this.View = Matrix.CreateLookAt( new Vector3( 0, 20, 90 ), new Vector3( 0, 20, 0 ), new Vector3( 0, 1, 0 ) );
+			this.Projection = Matrix.CreatePerspectiveFieldOfView( MathHelper.PiOver4, _engine.Game.GraphicsDevice.Viewport.AspectRatio, 0.5f, 10000.0f );
 			
 			CenterCursor();
 		}
@@ -75,7 +73,7 @@ namespace StillDesign
 			if( translateDirection.LengthSquared() > 0 )
 				newPosition += Vector3.Normalize( translateDirection ) * distance;
 
-			_view = Matrix.CreateLookAt( newPosition, newPosition + newForward, Vector3.Up );
+			this.View = Matrix.CreateLookAt( newPosition, newPosition + newForward, Vector3.Up );
 		}
 
 		private void CenterCursor()
@@ -88,17 +86,13 @@ namespace StillDesign
 		#region Properties
 		public Matrix View
 		{
-			get
-			{
-				return _view;
-			}
+			get;
+			private set;
 		}
 		public Matrix Projection
 		{
-			get
-			{
-				return _projection;
-			}
+			get;
+			private set;
 		}
 		#endregion
 	}

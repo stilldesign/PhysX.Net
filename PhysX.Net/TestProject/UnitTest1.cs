@@ -2,6 +2,7 @@
 using System.Text;
 using System.Collections.Generic;
 using System.Linq;
+using System.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using StillDesign.PhysX;
@@ -20,9 +21,6 @@ using SlimDX;
 
 namespace TestProject
 {
-	/// <summary>
-	/// Summary description for UnitTest1
-	/// </summary>
 	[TestClass]
 	public class UnitTest1
 	{
@@ -192,6 +190,28 @@ namespace TestProject
 
 			actorA.Dispose();
 			d6.Dispose();
+		}
+
+		[TestMethod]
+		public void DisposeOfBoxController()
+		{
+			Core core = new Core();
+
+			Scene scene = core.CreateScene();
+
+			var manager = scene.CreateControllerManager();
+
+			var boxControllerDesc = new BoxControllerDescription( 2, 5, 2 )
+			{
+				
+			};
+
+			var boxController = manager.CreateController( boxControllerDesc ) as BoxController;
+
+			boxController.Dispose();
+
+			Debug.Assert( boxController.IsDisposed == true );
+			Debug.Assert( manager.Controllers.Count == 0 );
 		}
 	}
 }

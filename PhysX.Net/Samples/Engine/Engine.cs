@@ -16,25 +16,17 @@ namespace StillDesign
 {
 	public class Engine
 	{
-		private Game _game;
-		private GraphicsDeviceManager _deviceManager;
-
-		private Camera _camera;
-
 		private BasicEffect _visualizationEffect;
-
-		private Core _core;
-		private Scene _scene;
 
 		public Engine( Game game )
 		{
-			_game = game;
-			_deviceManager = new GraphicsDeviceManager( game );
+			this.Game = game;
+			this.DeviceManager = new GraphicsDeviceManager( game );
 		}
 
 		public void Initalize()
 		{
-			_camera = new Camera( this );
+			this.Camera = new Camera( this );
 
 			_visualizationEffect = new BasicEffect( this.Device, null );
 			_visualizationEffect.VertexColorEnabled = true;
@@ -43,40 +35,44 @@ namespace StillDesign
 
 			CoreDescription coreDesc = new CoreDescription();
 			UserOutput output = new UserOutput();
-			
-			_core = new Core( coreDesc, output );
-				_core.SetParameter( PhysicsParameter.VisualizationScale, 2.0f );
-				_core.SetParameter( PhysicsParameter.VisualizeCollisionShapes, true );
-				_core.SetParameter( PhysicsParameter.VisualizeClothMesh, true );
-				_core.SetParameter( PhysicsParameter.VisualizeJointLocalAxes, true );
-				_core.SetParameter( PhysicsParameter.VisualizeJointLimits, true );
-				_core.SetParameter( PhysicsParameter.VisualizeFluidPosition, true );
-				_core.SetParameter( PhysicsParameter.VisualizeFluidEmitters, false ); // Slows down rendering a bit to much
-				_core.SetParameter( PhysicsParameter.VisualizeForceFields, true );
-				_core.SetParameter( PhysicsParameter.VisualizeSoftBodyMesh, true );
 
-			SceneDescription sceneDesc = new SceneDescription();
-				sceneDesc.SimulationType = SimulationType.Software;
-				sceneDesc.Gravity = new Vector3( 0.0f, -9.81f, 0.0f );
-				sceneDesc.GroundPlaneEnabled = true;
+			this.Core = new Core( coreDesc, output );
 
-			_scene = _core.CreateScene( sceneDesc );
+			var core = this.Core;
+			core.SetParameter( PhysicsParameter.VisualizationScale, 2.0f );
+			core.SetParameter( PhysicsParameter.VisualizeCollisionShapes, true );
+			core.SetParameter( PhysicsParameter.VisualizeClothMesh, true );
+			core.SetParameter( PhysicsParameter.VisualizeJointLocalAxes, true );
+			core.SetParameter( PhysicsParameter.VisualizeJointLimits, true );
+			core.SetParameter( PhysicsParameter.VisualizeFluidPosition, true );
+			core.SetParameter( PhysicsParameter.VisualizeFluidEmitters, false ); // Slows down rendering a bit to much
+			core.SetParameter( PhysicsParameter.VisualizeForceFields, true );
+			core.SetParameter( PhysicsParameter.VisualizeSoftBodyMesh, true );
+
+			SceneDescription sceneDesc = new SceneDescription()
+			{
+				SimulationType = SimulationType.Software,
+				Gravity = new Vector3( 0.0f, -9.81f, 0.0f ),
+				GroundPlaneEnabled = true
+			};
+
+			this.Scene = core.CreateScene( sceneDesc );
 
 			HardwareVersion ver = Core.HardwareVersion;
 
 			// Connect to the remote debugger if its there
-			_core.Foundation.RemoteDebugger.Connect( "localhost" );
+			core.Foundation.RemoteDebugger.Connect( "localhost" );
 		}
 
 		public void Update( GameTime gameTime )
 		{
 			// Update Physics
-			_scene.Simulate( (float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f );
+			this.Scene.Simulate( (float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f );
 			//_scene.Simulate( 1.0f / 60.0f );
-			_scene.FlushStream();
-			_scene.FetchResults( SimulationStatus.RigidBodyFinished, true );
+			this.Scene.FlushStream();
+			this.Scene.FetchResults( SimulationStatus.RigidBodyFinished, true );
 
-			_camera.Update( gameTime );
+			this.Camera.Update( gameTime );
 		}
 		public void Draw()
 		{
@@ -85,10 +81,10 @@ namespace StillDesign
 			this.Device.VertexDeclaration = new VertexDeclaration( this.Device, VertexPositionColor.VertexElements );
 
 			_visualizationEffect.World = Matrix.Identity;
-			_visualizationEffect.View = _camera.View;
-			_visualizationEffect.Projection = _camera.Projection;
+			_visualizationEffect.View = this.Camera.View;
+			_visualizationEffect.Projection = this.Camera.Projection;
 
-			DebugRenderable data = _scene.GetDebugRenderable();
+			DebugRenderable data = this.Scene.GetDebugRenderable();
 
 			_visualizationEffect.Begin();
 
@@ -155,40 +151,30 @@ namespace StillDesign
 		#region Properties
 		public Game Game
 		{
-			get
-			{
-				return _game;
-			}
+			get;
+			private set;
 		}
 		public Camera Camera
 		{
-			get
-			{
-				return _camera;
-			}
+			get;
+			private set;
 		}
 
 		public Core Core
 		{
-			get
-			{
-				return _core;
-			}
+			get;
+			private set;
 		}
 		public Scene Scene
 		{
-			get
-			{
-				return _scene;
-			}
+			get;
+			private set;
 		}
 
 		public GraphicsDeviceManager DeviceManager
 		{
-			get
-			{
-				return _deviceManager;
-			}
+			get;
+			private set;
 		}
 		public GraphicsDevice Device
 		{

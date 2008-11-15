@@ -27,11 +27,13 @@ namespace StillDesign
 			{
 				BoxShapeDescription boxShapeDesc = new BoxShapeDescription( 2, 3, 8 );
 				
-				ActorDescription actorDesc = new ActorDescription();
-					actorDesc.Name = String.Format( "Box {0}", x );
-					actorDesc.BodyDescription = new BodyDescription( 10.0f );
-					actorDesc.GlobalPose = Matrix.CreateTranslation( 100, 15 + 3 * x, 20 );
-					actorDesc.Shapes.Add( boxShapeDesc );
+				ActorDescription actorDesc = new ActorDescription()
+				{
+					Name = String.Format( "Box {0}", x ),
+					BodyDescription = new BodyDescription( 10.0f ),
+					GlobalPose = Matrix.CreateTranslation( 100, 15 + 3 * x, 20 )
+				};
+				actorDesc.Shapes.Add( boxShapeDesc );
 
 				Actor actor = _scene.CreateActor( actorDesc );
 			}
@@ -70,12 +72,14 @@ namespace StillDesign
 
 				//
 
-				ClothDescription clothDesc = new ClothDescription();
-					clothDesc.ClothMesh = clothMesh;
-					clothDesc.Flags = ClothFlag.Gravity | ClothFlag.Bending | ClothFlag.CollisionTwoway | ClothFlag.Visualization;
-					clothDesc.GlobalPose =
+				ClothDescription clothDesc = new ClothDescription()
+				{
+					ClothMesh = clothMesh,
+					Flags = ClothFlag.Gravity | ClothFlag.Bending | ClothFlag.CollisionTwoway | ClothFlag.Visualization,
+					GlobalPose =
 						Matrix.CreateFromYawPitchRoll( 0, (float)Math.PI / 2.0f, (float)Math.PI / 2.0f ) *
-						Matrix.CreateTranslation( 0, 20, 0 );
+						Matrix.CreateTranslation( 0, 20, 0 )
+				};
 
 					clothDesc.MeshData.AllocatePositions<Vector3>( grid.Points.Length );
 					clothDesc.MeshData.AllocateIndices<int>( grid.Indices.Length );
@@ -263,23 +267,27 @@ namespace StillDesign
 					}
 				}
 
-				HeightFieldDescription heightFieldDesc = new HeightFieldDescription();
-					heightFieldDesc.NumberOfRows = rows;
-					heightFieldDesc.NumberOfColumns = columns;
-					heightFieldDesc.Samples = samples;
+				HeightFieldDescription heightFieldDesc = new HeightFieldDescription()
+				{
+					NumberOfRows = rows,
+					NumberOfColumns = columns,
+					Samples = samples
+				};
 
 				HeightField heightField = _core.CreateHeightField( heightFieldDesc );
 				
 				//
 
-				HeightFieldShapeDescription heightFieldShapeDesc = new HeightFieldShapeDescription();
-					heightFieldShapeDesc.HeightField = heightField;
-					heightFieldShapeDesc.HoleMaterial = 2;
+				HeightFieldShapeDescription heightFieldShapeDesc = new HeightFieldShapeDescription()
+				{
+					HeightField = heightField,
+					HoleMaterial = 2,
 					// The max height of our samples is short.MaxValue and we want it to be 1
-					heightFieldShapeDesc.HeightScale = 1.0f / (float)short.MaxValue;
-					heightFieldShapeDesc.RowScale = 3;
-					heightFieldShapeDesc.ColumnScale = 3;
-					heightFieldShapeDesc.LocalPosition = new Vector3( -0.5f * rows * 1 * heightFieldShapeDesc.RowScale, 0, -0.5f * columns * 1 * heightFieldShapeDesc.ColumnScale );
+					HeightScale = 1.0f / (float)short.MaxValue,
+					RowScale = 3,
+					ColumnScale = 3
+				};
+				heightFieldShapeDesc.LocalPosition = new Vector3( -0.5f * rows * 1 * heightFieldShapeDesc.RowScale, 0, -0.5f * columns * 1 * heightFieldShapeDesc.ColumnScale );
 
 				ActorDescription actorDesc = new ActorDescription();
 					actorDesc.Shapes.Add( heightFieldShapeDesc );
@@ -436,13 +444,14 @@ namespace StillDesign
 			}
 			#endregion
 
-			ControllerManager manager = _scene.CreateControllerManager();
+			{
+				ControllerManager manager = _scene.CreateControllerManager();
 
-			CapsuleControllerDescription boxControllerDesc = new CapsuleControllerDescription( 4, 3 );
-
-			CapsuleController boxController = manager.CreateController( boxControllerDesc ) as CapsuleController;
-
-			boxController.Actor.Name = "BoxController";
+				CapsuleControllerDescription capsuleControllerDesc = new CapsuleControllerDescription( 4, 3 );
+				CapsuleController capsuleController = manager.CreateController( capsuleControllerDesc ) as CapsuleController;
+					capsuleController.Position = new Vector3( 0, 1.5f, -15 );
+					capsuleController.Actor.Name = "BoxController";
+			}
 		}
 
 		private Vector3[] ReadVertices( XmlNode node )
@@ -450,7 +459,7 @@ namespace StillDesign
 			string innerText = node.InnerText;
 
 			string[] floatStrings = innerText.Split( ' ' );
-			List<float> floats = new List<float>();
+			var floats = new List<float>();
 
 			for( int x = 0; x < floatStrings.Length; x++ )
 			{
@@ -461,7 +470,7 @@ namespace StillDesign
 				floats.Add( f );
 			}
 
-			Vector3[] vertices = new Vector3[ floats.Count / 3 ];
+			var vertices = new Vector3[ floats.Count / 3 ];
 			for( int i = 0; i < floats.Count; i += 3 )
 			{
 				float x = floats[ i + 0 ];
@@ -476,7 +485,7 @@ namespace StillDesign
 		private int[] ReadTetrahedra( XmlNode node )
 		{
 			string innerText = node.InnerText;
-			string[] tetrahedraStrings = innerText.Split( new string[] { " " }, StringSplitOptions.RemoveEmptyEntries );
+			string[] tetrahedraStrings = innerText.Split( new[] { " " }, StringSplitOptions.RemoveEmptyEntries );
 
 			List<int> tetrahedra = new List<int>();
 
