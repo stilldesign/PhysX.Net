@@ -56,9 +56,11 @@ ElementCollection< T >::ElementCollection()
 generic< class T >
 void ElementCollection< T >::DisposeOfAll()
 {
-	array<StillDesign::PhysX::IDisposable^>^ items = gcnew array<StillDesign::PhysX::IDisposable^>( this->Count );
+	int count = this->Count;
+
+	array<StillDesign::PhysX::IDisposable^>^ items = gcnew array<StillDesign::PhysX::IDisposable^>( count );
 	
-	for( int x = 0; x < this->Count; x++ )
+	for( int x = 0; x < count; x++ )
 	{
 		items[ x ] = (StillDesign::PhysX::IDisposable^)this[ x ];
 	}

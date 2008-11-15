@@ -32,7 +32,6 @@ Shape::Shape( NxShape* shape )
 	_actor = ObjectCache::GetObject<StillDesign::PhysX::Actor^>( (intptr_t)(&shape->getActor()) );
 	
 	{
-		// Assign Managed Material
 		NxMaterial* material = _actor->Scene->UnmanagedPointer->getMaterialFromIndex( shape->getMaterial() );
 		
 		this->Material = ObjectCache::GetObject<StillDesign::PhysX::Material^>( (intptr_t)material );

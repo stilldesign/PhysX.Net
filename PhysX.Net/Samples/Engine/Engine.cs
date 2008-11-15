@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
@@ -55,7 +56,7 @@ namespace StillDesign
 				_core.SetParameter( PhysicsParameter.VisualizeSoftBodyMesh, true );
 
 			SceneDescription sceneDesc = new SceneDescription();
-				sceneDesc.SimulationType = SimulationType.Hardware;
+				sceneDesc.SimulationType = SimulationType.Software;
 				sceneDesc.Gravity = new Vector3( 0.0f, -9.81f, 0.0f );
 				sceneDesc.GroundPlaneEnabled = true;
 

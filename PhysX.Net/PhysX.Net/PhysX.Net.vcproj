@@ -69,8 +69,7 @@
 				RandomizedBaseAddress="1"
 				DataExecutionPrevention="0"
 				TargetMachine="1"
-				KeyFile="PublicKey.snk"
-				DelaySign="true"
+				KeyFile=""
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -141,8 +140,7 @@
 				RandomizedBaseAddress="1"
 				DataExecutionPrevention="0"
 				TargetMachine="1"
-				KeyFile="PublicKey.snk"
-				DelaySign="true"
+				KeyFile=""
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -216,8 +214,7 @@
 				RandomizedBaseAddress="1"
 				DataExecutionPrevention="0"
 				TargetMachine="1"
-				KeyFile="PublicKey.snk"
-				DelaySign="true"
+				KeyFile=""
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -288,8 +285,7 @@
 				RandomizedBaseAddress="1"
 				DataExecutionPrevention="0"
 				TargetMachine="1"
-				KeyFile="PublicKey.snk"
-				DelaySign="true"
+				KeyFile=""
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -364,8 +360,7 @@
 				RandomizedBaseAddress="1"
 				DataExecutionPrevention="0"
 				TargetMachine="1"
-				KeyFile="PublicKey.snk"
-				DelaySign="true"
+				KeyFile=""
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -436,8 +431,7 @@
 				RandomizedBaseAddress="1"
 				DataExecutionPrevention="0"
 				TargetMachine="1"
-				KeyFile="PublicKey.snk"
-				DelaySign="true"
+				KeyFile=""
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -511,8 +505,7 @@
 				RandomizedBaseAddress="1"
 				DataExecutionPrevention="0"
 				TargetMachine="1"
-				KeyFile="PublicKey.snk"
-				DelaySign="true"
+				KeyFile=""
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -583,8 +576,7 @@
 				RandomizedBaseAddress="1"
 				DataExecutionPrevention="0"
 				TargetMachine="1"
-				KeyFile="PublicKey.snk"
-				DelaySign="true"
+				KeyFile=""
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -4177,10 +4169,6 @@
 						UsePrecompiledHeader="2"
 					/>
 				</FileConfiguration>
-			</File>
-			<File
-				RelativePath=".\PhysX.Net\Descriptor Validity.cpp"
-				>
 			</File>
 			<File
 				RelativePath=".\PhysX.Net\Distance Joint Description.cpp"
