@@ -20,7 +20,5 @@ The empty constructors for Bounds3 and NxBounds3 create different results.
 Bounds3 is a ValueType (struct) so calling the empty constructor can only leave the Min and Max properties as ( 0, 0, 0 ) where as in 
 NxBounds3 they are effectively set to Min=(MaxFloat, MaxFloat, MaxFloat ) and Max=(MinFloat, MinFloat, MinFloat).
 Use Bounds3 mybounds = Bounds3.Extremes; instead.
-So watch out for this.
-Reported by christophe loustaunau
 
 Just a change in the nameing, NxPhysicsSDK is called Core.

@@ -139,7 +139,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PhysX.Net\PhysX.Net.vcproj">
+    <ProjectReference Include="E:\Development\PhysX.Net\PhysX.Net.vcproj">
       <Project>{9E50593F-DB72-44D1-8A1D-2AE73214383E}</Project>
       <Name>StillDesign.PhysX.Net</Name>
     </ProjectReference>

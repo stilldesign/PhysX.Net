@@ -69,7 +69,8 @@
 				RandomizedBaseAddress="1"
 				DataExecutionPrevention="0"
 				TargetMachine="1"
-				KeyFile=""
+				KeyFile="PublicKey.snk"
+				DelaySign="true"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -140,7 +141,8 @@
 				RandomizedBaseAddress="1"
 				DataExecutionPrevention="0"
 				TargetMachine="1"
-				KeyFile=""
+				KeyFile="PublicKey.snk"
+				DelaySign="true"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -214,7 +216,8 @@
 				RandomizedBaseAddress="1"
 				DataExecutionPrevention="0"
 				TargetMachine="1"
-				KeyFile=""
+				KeyFile="PublicKey.snk"
+				DelaySign="true"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -285,7 +288,8 @@
 				RandomizedBaseAddress="1"
 				DataExecutionPrevention="0"
 				TargetMachine="1"
-				KeyFile=""
+				KeyFile="PublicKey.snk"
+				DelaySign="true"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -360,7 +364,8 @@
 				RandomizedBaseAddress="1"
 				DataExecutionPrevention="0"
 				TargetMachine="1"
-				KeyFile=""
+				KeyFile="PublicKey.snk"
+				DelaySign="true"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -431,7 +436,8 @@
 				RandomizedBaseAddress="1"
 				DataExecutionPrevention="0"
 				TargetMachine="1"
-				KeyFile=""
+				KeyFile="PublicKey.snk"
+				DelaySign="true"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -505,7 +511,8 @@
 				RandomizedBaseAddress="1"
 				DataExecutionPrevention="0"
 				TargetMachine="1"
-				KeyFile=""
+				KeyFile="PublicKey.snk"
+				DelaySign="true"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -576,7 +583,8 @@
 				RandomizedBaseAddress="1"
 				DataExecutionPrevention="0"
 				TargetMachine="1"
-				KeyFile=""
+				KeyFile="PublicKey.snk"
+				DelaySign="true"
 			/>
 			<Tool
 				Name="VCALinkTool"

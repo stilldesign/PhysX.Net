@@ -1,4 +1,14 @@
-[0.10.0.0 - ]
+[0.10.2.0 - 2008-11-15]
+PhysX.Net assmebly is partially signed by default
+Public Key is included
+Fixed bug where Fluid.ParticleWriteData would be empty
+Added sample projects to solution
+Samples target the RTM version of XNA 3.0 and SlimDX September 2008
+Included some unit tests (many more can be written)
+Changed onAdd, onRemove to ItemAdded, ItemRemoved
+Changed ParticleData, FluidPacketData to take pointers instead of values in their constructors - this fixes up Fluid.ParticleWriteData being empty (among others)
+
+[0.10.0.0 - 2008-08-24]
 Changed to PhysX SDK 2.8.1 - Check the official change log
 Removed the 'Base' prefix from abstract class names, no need for it, conforms to .Net naming and PhysX naming better
 Added Timing to Compartment
@@ -36,9 +46,6 @@ Changed precompiled header settings. That gave compiler a nice boost.
 Moved all PhysX includes from individual headers to stdafx.h.
 Removed DescriptorValidity. If the user wishes to debug IsValid() calls, they can aquire the source code and step into.
 Added IsValid and SetToDefault to WheelShapeDescription
-Changed onAdd, onRemove to ItemAdded, ItemRemoved
-Added sample projects to solution and converted them to XNA3
-Changed ParticleData, FluidPacketData to take pointers instead of values in their constructors - this fixes up Fluid.ParticleWriteData being empty (among others)
 
 [0.9.1.0 - 2008-06-28]
 Fixed WheelShape.GetContactData()

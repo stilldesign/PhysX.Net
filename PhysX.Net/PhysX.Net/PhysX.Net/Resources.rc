@@ -53,7 +53,7 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 0,10,1,0
+ FILEVERSION 0,10,2,0
  PRODUCTVERSION 1,0,0,0
  FILEFLAGSMASK 0x17L
 #ifdef _DEBUG
@@ -72,7 +72,7 @@ BEGIN
             VALUE "Comments", ".Net Wrapper for NVIDIA PhysX 2.8.1"
             VALUE "CompanyName", "StillDesign"
             VALUE "FileDescription", "PhysX.Net"
-            VALUE "FileVersion", "0.10.1.0"
+            VALUE "FileVersion", "0.10.2.0"
             VALUE "InternalName", "PhysX.Net"
             VALUE "LegalCopyright", "Copyright (C) 2008"
             VALUE "OriginalFilename", "PhysX.Net"
