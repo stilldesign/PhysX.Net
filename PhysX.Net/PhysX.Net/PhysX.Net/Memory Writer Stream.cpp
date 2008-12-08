@@ -49,7 +49,7 @@ void MemoryWriterStream::Write( Double value )
 
 array< Byte >^ MemoryWriterStream::ToArray()
 {
-	array< Byte >^ buffer = gcnew array< Byte >( _writer->currentSize );
+	array<Byte>^ buffer = gcnew array<Byte>( _writer->currentSize );
 	
 	for( unsigned int x = 0; x < _writer->currentSize; x++ )
 	{

@@ -2811,74 +2811,6 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\PhysX.Net\Controller Hit.cpp"
-				>
-				<FileConfiguration
-					Name="Debug XNA 2.0|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="2"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release XNA 2.0|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="2"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug MDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="2"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release MDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="2"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug SlimDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="2"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release SlimDX|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="2"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug XNA 3.0|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="2"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release XNA 3.0|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="2"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
 				RelativePath=".\PhysX.Net\Controller Manager.cpp"
 				>
 				<FileConfiguration
@@ -2948,6 +2880,74 @@
 			</File>
 			<File
 				RelativePath=".\PhysX.Net\Controller Move Result.cpp"
+				>
+				<FileConfiguration
+					Name="Debug XNA 2.0|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="2"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release XNA 2.0|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="2"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug MDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="2"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release MDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="2"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug SlimDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="2"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release SlimDX|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="2"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug XNA 3.0|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="2"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release XNA 3.0|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="2"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\PhysX.Net\Controller Shape Hit.cpp"
 				>
 				<FileConfiguration
 					Name="Debug XNA 2.0|Win32"
@@ -14076,10 +14076,6 @@
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Controller Hit.h"
-					>
-				</File>
-				<File
 					RelativePath=".\PhysX.Net\Controller Manager.h"
 					>
 					<FileConfiguration
@@ -14099,6 +14095,10 @@
 				</File>
 				<File
 					RelativePath=".\PhysX.Net\Controller Move Result.h"
+					>
+				</File>
+				<File
+					RelativePath=".\PhysX.Net\Controller Shape Hit.h"
 					>
 				</File>
 				<File

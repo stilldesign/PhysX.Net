@@ -28,40 +28,40 @@ namespace StillDesign
 				!ControllerShapeHit();
 				
 			public:
-				/// <summary></summary>
+				/// <summary>Gets the current controller</summary>
 				property StillDesign::PhysX::Controller^ Controller
 				{
 					StillDesign::PhysX::Controller^ get();
 				}
-				/// <summary></summary>
+				/// <summary>Gets the touched shape</summary>
 				property StillDesign::PhysX::Shape^ Shape
 				{
 					StillDesign::PhysX::Shape^ get();
 				}
 				
-				/// <summary></summary>
+				/// <summary>Gets the contact position in world space</summary>
 				property Vector3 WorldPosition
 				{
 					Vector3 get();
 				}
-				/// <summary></summary>
+				/// <summary>Gets the contact normal in world space</summary>
 				property Vector3 WorldNormal
 				{
 					Vector3 get();
 				}
 				
-				/// <summary></summary>
-				property unsigned int TriangleIndex
-				{
-					unsigned int get();
-				}
+				///// <summary>Gets the </summary>
+				//property unsigned int TriangleIndex
+				//{
+				//	unsigned int get();
+				//}
 				
-				/// <summary></summary>
+				/// <summary>Gets the motion direction</summary>
 				property Vector3 MotionDirection
 				{
 					Vector3 get();
 				}
-				/// <summary></summary>
+				/// <summary>Gets the motion length</summary>
 				property float MotionLength
 				{
 					float get();

@@ -1,6 +1,6 @@
 #include "StdAfx.h"
 
-#include "Controller Hit.h"
+#include "Controller Shape Hit.h"
 #include "Scene.h"
 #include "Shape.h"
 #include "Actor.h"
@@ -50,10 +50,10 @@ Vector3 ControllerShapeHit::WorldNormal::get()
 	return Vector3( (float)_shapeHit->worldNormal.x, (float)_shapeHit->worldNormal.y, (float)_shapeHit->worldNormal.z );
 }
 
-unsigned int ControllerShapeHit::TriangleIndex::get()
-{
-	return _shapeHit->id;
-}
+//unsigned int ControllerShapeHit::TriangleIndex::get()
+//{
+//	return _shapeHit->id;
+//}
 
 Vector3 ControllerShapeHit::MotionDirection::get()
 {

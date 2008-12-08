@@ -1,7 +1,7 @@
 #include "StdAfx.h"
 
 #include "Controller Hit Report.h"
-#include "Controller Hit.h"
+#include "Controller Shape Hit.h"
 #include "Scene.h"
 
 using namespace StillDesign::PhysX;
