@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Xml;
 using System.IO;
@@ -31,9 +32,9 @@ namespace StillDesign
 				{
 					Name = String.Format( "Box {0}", x ),
 					BodyDescription = new BodyDescription( 10.0f ),
-					GlobalPose = Matrix.CreateTranslation( 100, 15 + 3 * x, 20 )
+					GlobalPose = Matrix.CreateTranslation( 100, 15 + 3 * x, 20 ),
+					Shapes = { boxShapeDesc }
 				};
-				actorDesc.Shapes.Add( boxShapeDesc );
 
 				Actor actor = _scene.CreateActor( actorDesc );
 			}
@@ -51,8 +52,8 @@ namespace StillDesign
 					clothMeshDesc.VertexCount = grid.Points.Length;
 					clothMeshDesc.TriangleCount = grid.Indices.Length / 3;
 
-					clothMeshDesc.VerticesStream.SetData<Vector3>( grid.Points );
-					clothMeshDesc.TriangleStream.SetData<int>( grid.Indices );
+					clothMeshDesc.VerticesStream.SetData( grid.Points );
+					clothMeshDesc.TriangleStream.SetData( grid.Indices );
 
 					// We are using 32 bit integers, so make sure the 16 bit flag is removed.
 					// 32 bits are the default, so this isn't technically needed
@@ -80,18 +81,19 @@ namespace StillDesign
 						Matrix.CreateFromYawPitchRoll( 0, (float)Math.PI / 2.0f, (float)Math.PI / 2.0f ) *
 						Matrix.CreateTranslation( 0, 20, 0 )
 				};
-
-					clothDesc.MeshData.AllocatePositions<Vector3>( grid.Points.Length );
-					clothDesc.MeshData.AllocateIndices<int>( grid.Indices.Length );
-					clothDesc.MeshData.MaximumVertices = grid.Points.Length;
-					clothDesc.MeshData.MaximumIndices = grid.Indices.Length;
+				clothDesc.MeshData.AllocatePositions<Vector3>( grid.Points.Length );
+				clothDesc.MeshData.AllocateIndices<int>( grid.Indices.Length );
+				clothDesc.MeshData.MaximumVertices = grid.Points.Length;
+				clothDesc.MeshData.MaximumIndices = grid.Indices.Length;
 
 				_flag = _scene.CreateCloth( clothDesc );
 
 				// Flag Pole
-				ActorDescription flagPoleActorDesc = new ActorDescription();
-					flagPoleActorDesc.Shapes.Add( new BoxShapeDescription( 1.0f, 20.0f, 1.0f ) );
-					flagPoleActorDesc.GlobalPose = Matrix.CreateTranslation( 0, 10, 0 );
+				ActorDescription flagPoleActorDesc = new ActorDescription()
+				{
+					GlobalPose = Matrix.CreateTranslation( 0, 10, 0 ),
+					Shapes = { new BoxShapeDescription( 1.0f, 20.0f, 1.0f ) }
+				};
 
 				Actor flagPoleActor = _scene.CreateActor( flagPoleActorDesc );
 
@@ -106,27 +108,33 @@ namespace StillDesign
 				BoxShapeDescription boxShapeDescA = new BoxShapeDescription( 3, 3, 3 );
 				BoxShapeDescription boxShapeDescB = new BoxShapeDescription( 3, 3, 3 );
 
-				ActorDescription actorDescA = new ActorDescription();
-					actorDescA.BodyDescription = new BodyDescription( 10.0f );
-					actorDescA.GlobalPose = Matrix.CreateTranslation( 75, 1.5f, 55 );
-					actorDescA.Shapes.Add( boxShapeDescA );
+				ActorDescription actorDescA = new ActorDescription()
+				{
+					BodyDescription = new BodyDescription( 10.0f ),
+					GlobalPose = Matrix.CreateTranslation( 75, 1.5f, 55 ),
+					Shapes = { boxShapeDescA }
+				};
 				Actor actorA = _scene.CreateActor( actorDescA );
 
-				ActorDescription actorDescB = new ActorDescription();
-					actorDescB.BodyDescription = new BodyDescription( 10.0f );
-					actorDescB.GlobalPose = Matrix.CreateTranslation( 70, 1.5f, 55 );
-					actorDescB.Shapes.Add( boxShapeDescB );
+				ActorDescription actorDescB = new ActorDescription()
+				{
+					BodyDescription = new BodyDescription( 10.0f ),
+					GlobalPose = Matrix.CreateTranslation( 70, 1.5f, 55 ),
+					Shapes = { boxShapeDescB }
+				};
 				Actor actorB = _scene.CreateActor( actorDescB );
 
 				//
 
-				RevoluteJointDescription revoluteJointDesc = new RevoluteJointDescription();
-					revoluteJointDesc.Actor1 = actorA;
-					revoluteJointDesc.Actor2 = actorB;
-					revoluteJointDesc.Motor = new MotorDescription( 20, 20.1f, true );
-					revoluteJointDesc.Flags |= RevoluteJointFlag.MotorEnabled;
-					revoluteJointDesc.SetGlobalAnchor( new Vector3( 73.5f, 1.5f, 55 ) );
-					revoluteJointDesc.SetGlobalAxis( new Vector3( 1, 0, 0 ) );
+				RevoluteJointDescription revoluteJointDesc = new RevoluteJointDescription()
+				{
+					Actor1 = actorA,
+					Actor2 = actorB,
+					Motor = new MotorDescription( 20, 20.1f, true )
+				};
+				revoluteJointDesc.Flags |= RevoluteJointFlag.MotorEnabled;
+				revoluteJointDesc.SetGlobalAnchor( new Vector3( 73.5f, 1.5f, 55 ) );
+				revoluteJointDesc.SetGlobalAxis( new Vector3( 1, 0, 0 ) );
 
 				RevoluteJoint revoluteJoint = _scene.CreateJoint( revoluteJointDesc ) as RevoluteJoint;
 			}
@@ -141,27 +149,33 @@ namespace StillDesign
 					BodyDescription bodyDesc = new BodyDescription( 10.0f );
 						bodyDesc.BodyFlags |= BodyFlag.Kinematic;
 
-					ActorDescription actorDesc = new ActorDescription();
-						actorDesc.BodyDescription = bodyDesc;
-						actorDesc.GlobalPose = Matrix.CreateTranslation( 70, 25, 65 );
-						actorDesc.Shapes.Add( boxShapeDesc );
+					ActorDescription actorDesc = new ActorDescription()
+					{
+						BodyDescription = bodyDesc,
+						GlobalPose = Matrix.CreateTranslation( 70, 25, 65 ),
+						Shapes = { boxShapeDesc }
+					};
 					actorA = _scene.CreateActor( actorDesc );
 				}
 				{
 					BoxShapeDescription boxShapeDesc = new BoxShapeDescription( 3, 3, 3 );
 
-					ActorDescription actorDesc = new ActorDescription();
-						actorDesc.BodyDescription = new BodyDescription( 10.0f );
-						actorDesc.GlobalPose = Matrix.CreateTranslation( 70, 15, 65 );
-						actorDesc.Shapes.Add( boxShapeDesc );
+					ActorDescription actorDesc = new ActorDescription()
+					{
+						BodyDescription = new BodyDescription( 10.0f ),
+						GlobalPose = Matrix.CreateTranslation( 70, 15, 65 ),
+						Shapes = { boxShapeDesc }
+					};
 					actorB = _scene.CreateActor( actorDesc );
 				}
 
-				PrismaticJointDescription prismaticJointDesc = new PrismaticJointDescription();
-					prismaticJointDesc.Actor1 = actorA;
-					prismaticJointDesc.Actor2 = actorB;
-					prismaticJointDesc.SetGlobalAnchor( new Vector3( 70, 20, 65 ) );
-					prismaticJointDesc.SetGlobalAxis( new Vector3( 0, 1, 0 ) );
+				PrismaticJointDescription prismaticJointDesc = new PrismaticJointDescription()
+				{
+					Actor1 = actorA,
+					Actor2 = actorB,
+				};
+				prismaticJointDesc.SetGlobalAnchor( new Vector3( 70, 20, 65 ) );
+				prismaticJointDesc.SetGlobalAxis( new Vector3( 0, 1, 0 ) );
 
 				PrismaticJoint prismaticJoint = _scene.CreateJoint( prismaticJointDesc ) as PrismaticJoint;
 
@@ -174,32 +188,38 @@ namespace StillDesign
 			{
 				const int maximumParticles = 1000;
 
-				FluidEmitterDescription fluidEmitterDesc = new FluidEmitterDescription();
-					fluidEmitterDesc.DimensionX = 0.5f;
-					fluidEmitterDesc.DimensionY = 0.5f;
-					fluidEmitterDesc.Flags |= ( FluidEmitterFlag.Enabled | FluidEmitterFlag.Visualization );
-					fluidEmitterDesc.Rate = 15;
-					fluidEmitterDesc.RelativePose = Matrix.CreateTranslation( -40, 10, 50 );
-					fluidEmitterDesc.Shape = EmitterShape.Rectangular;
-					fluidEmitterDesc.Type = EmitterType.ConstantFlowRate;
-					fluidEmitterDesc.RandomAngle = 0.5f;
+				FluidEmitterDescription fluidEmitterDesc = new FluidEmitterDescription()
+				{
+					DimensionX = 0.5f,
+					DimensionY = 0.5f,
+					Rate = 15,
+					RelativePose = Matrix.CreateTranslation( -40, 10, 50 ),
+					Shape = EmitterShape.Rectangular,
+					Type = EmitterType.ConstantFlowRate,
+					RandomAngle = 0.5f
+				};
+				fluidEmitterDesc.Flags |= ( FluidEmitterFlag.Enabled | FluidEmitterFlag.Visualization );
 
-				FluidDescription fluidDesc = new FluidDescription();
-					fluidDesc.Emitters.Add( fluidEmitterDesc );
-					fluidDesc.Flags = FluidFlag.Enabled | FluidFlag.Visualization;
-					fluidDesc.MaximumParticles = maximumParticles;
-					fluidDesc.ParticleWriteData.AllocatePositionBuffer<Vector3>( maximumParticles );
-					fluidDesc.ParticleWriteData.NumberOfParticles = maximumParticles;
-				
+				FluidDescription fluidDesc = new FluidDescription()
+				{
+					Emitters = { fluidEmitterDesc },
+					Flags = FluidFlag.Enabled | FluidFlag.Visualization,
+					MaximumParticles = maximumParticles
+				};
+				fluidDesc.ParticleWriteData.AllocatePositionBuffer<Vector3>( maximumParticles );
+				fluidDesc.ParticleWriteData.NumberOfParticles = maximumParticles;
+
 				Fluid fluid = _scene.CreateFluid( fluidDesc );
 
 				// Ledge
 				{
 					BoxShapeDescription boxShapeDesc = new BoxShapeDescription( 5, 0.1f, 5 );
 					
-					ActorDescription drainActorDesc = new ActorDescription();
-						drainActorDesc.Shapes.Add( boxShapeDesc );
-						drainActorDesc.GlobalPose = Matrix.CreateRotationX( 0.5f ) * Matrix.CreateTranslation( -40, 5, 52 );
+					ActorDescription drainActorDesc = new ActorDescription()
+					{
+						GlobalPose = Matrix.CreateRotationX( 0.5f ) * Matrix.CreateTranslation( -40, 5, 52 ),
+						Shapes =  { boxShapeDesc }
+					};
 
 					Actor drianActor = _scene.CreateActor( drainActorDesc );
 				}
@@ -209,9 +229,11 @@ namespace StillDesign
 					BoxShapeDescription boxShapeDesc = new BoxShapeDescription( 5, 0.1f, 5 );
 						boxShapeDesc.Flags |= ShapeFlag.FluidDrain;
 
-					ActorDescription drainActorDesc = new ActorDescription();
-						drainActorDesc.Shapes.Add( boxShapeDesc );
-						drainActorDesc.GlobalPose = Matrix.CreateTranslation( -40, 0, 55 );
+					ActorDescription drainActorDesc = new ActorDescription()
+					{
+						GlobalPose = Matrix.CreateTranslation( -40, 0, 55 ),
+						Shapes = { boxShapeDesc }
+					};
 
 					Actor drianActor = _scene.CreateActor( drainActorDesc );
 				}
@@ -220,26 +242,33 @@ namespace StillDesign
 			
 			#region Force Field
 			{
-				BoxForceFieldShapeDescription boxForceFieldShapeDesc = new BoxForceFieldShapeDescription();
-					boxForceFieldShapeDesc.Size = new Vector3( 10, 10, 10 );
-				
-				ForceFieldLinearKernelDescription kernelDesc = new ForceFieldLinearKernelDescription();
-					kernelDesc.Constant = new Vector3( 0, 100.0f, 0 );
+				BoxForceFieldShapeDescription boxForceFieldShapeDesc = new BoxForceFieldShapeDescription()
+				{
+					Size = new Vector3( 10, 10, 10 )
+				};
+
+				ForceFieldLinearKernelDescription kernelDesc = new ForceFieldLinearKernelDescription()
+				{
+					Constant = new Vector3( 0, 100.0f, 0 )
+				};
 
 				ForceFieldLinearKernel kernel = _scene.CreateForceFieldLinearKernel( kernelDesc );
 
-				ForceFieldShapeGroupDescription shapeGroupDesc = new ForceFieldShapeGroupDescription();
-					shapeGroupDesc.Shapes.Add( boxForceFieldShapeDesc );
+				ForceFieldShapeGroupDescription shapeGroupDesc = new ForceFieldShapeGroupDescription()
+				{
+					Shapes = { boxForceFieldShapeDesc }
+				};
 
 				ForceFieldShapeGroup shapeGroup = _scene.CreateForceFieldShapeGroup( shapeGroupDesc );
 
 				BoxForceFieldShape boxForceFieldShape = shapeGroup.CreateShape( boxForceFieldShapeDesc ) as BoxForceFieldShape;
 					boxForceFieldShape.Pose = Matrix.CreateTranslation( 30, 5, 0 );
 
-				ForceFieldDescription forceFieldDesc = new ForceFieldDescription();
-					forceFieldDesc.Kernel = kernel;
-					forceFieldDesc.ShapeGroups.Add( shapeGroup );
-
+				ForceFieldDescription forceFieldDesc = new ForceFieldDescription()
+				{
+					Kernel = kernel,
+					ShapeGroups = { shapeGroup }
+				};
 				ForceField forceField = _scene.CreateForceField( forceFieldDesc );
 			}
 			#endregion
@@ -289,17 +318,18 @@ namespace StillDesign
 				};
 				heightFieldShapeDesc.LocalPosition = new Vector3( -0.5f * rows * 1 * heightFieldShapeDesc.RowScale, 0, -0.5f * columns * 1 * heightFieldShapeDesc.ColumnScale );
 
-				ActorDescription actorDesc = new ActorDescription();
-					actorDesc.Shapes.Add( heightFieldShapeDesc );
-					actorDesc.GlobalPose = Matrix.CreateTranslation( 100, 0, 0 );
-
+				ActorDescription actorDesc = new ActorDescription()
+				{
+					GlobalPose = Matrix.CreateTranslation( 100, 0, 0 ),
+					Shapes = { heightFieldShapeDesc }
+				};
 				Actor actor = _scene.CreateActor( actorDesc );
 			}
 			#endregion
 			
 			#region Convex Mesh
 			{
-				ModelMesh mesh = _torusModel.Meshes[ 0 ];
+				ModelMesh mesh = _torusModel.Meshes.First();
 
 				Matrix[] transforms = new Matrix[ _torusModel.Bones.Count ];
 				_torusModel.CopyAbsoluteBoneTransformsTo( transforms );
@@ -410,9 +440,9 @@ namespace StillDesign
 				{
 					GlobalPose = Matrix.CreateTranslation( -30, 20, 0 ),
 					BodyDescription = new BodyDescription( 10.0f ),
-					Name = "Report Capsule"
+					Name = "Report Capsule",
+					Shapes = { capsuleShapeDesc }
 				};
-				actorDesc.Shapes.Add( capsuleShapeDesc );
 
 				_contactReportActor = _scene.CreateActor( actorDesc );
 
@@ -426,10 +456,11 @@ namespace StillDesign
 				BoxShapeDescription boxShapeDesc = new BoxShapeDescription( 15, 8, 15 );
 					boxShapeDesc.Flags |= ( ShapeFlag.TriggerOnEnter | ShapeFlag.TriggerOnLeave );
 
-				ActorDescription actorDesc = new ActorDescription();
-					actorDesc.GlobalPose = Matrix.CreateTranslation( -30, 4, 0 );
-					actorDesc.Shapes.Add( boxShapeDesc );
-
+				ActorDescription actorDesc = new ActorDescription()
+				{
+					GlobalPose = Matrix.CreateTranslation( -30, 4, 0 ),
+					Shapes = { boxShapeDesc }
+				};
 				_scene.CreateActor( actorDesc );
 
 				_scene.UserTriggerReport = new TriggerReport( this );
@@ -547,28 +578,21 @@ namespace StillDesign
 
 	public class VertexGrid
 	{
-		private Vector3[] _points;
-		private int[] _indices;
-
 		public VertexGrid( Vector3[] points, int[] indices )
 		{
-			_points = points;
-			_indices = indices;
+			this.Points = points;
+			this.Indices = indices;
 		}
 
 		public Vector3[] Points
 		{
-			get
-			{
-				return _points;
-			}
+			get;
+			private set;
 		}
 		public int[] Indices
 		{
-			get
-			{
-				return _indices;
-			}
+			get;
+			private set;
 		}
 	}
 }

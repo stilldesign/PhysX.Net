@@ -160,8 +160,10 @@ namespace StillDesign
 			_demo = demo;
 
 			// Associate the pairs with a function
-			_contactPairs = new List<ContactReportPair>();
-				_contactPairs.Add( new ContactReportPair( _demo.ContactReportActor, _demo.GroundActor, new ContactCallback( CapsuleAndGroundPlaneContact ) ) );
+			_contactPairs = new List<ContactReportPair>()
+			{
+				{ new ContactReportPair( _demo.ContactReportActor, _demo.GroundActor, CapsuleAndGroundPlaneContact ) }
+			};
 		}
 
 		// PhysX calls OnContactNotify is the base class which you then provide the implementation for
@@ -173,7 +175,7 @@ namespace StillDesign
 			// This shouldn't be O(n)
 			foreach( ContactReportPair pair in _contactPairs )
 			{
-				if( ( pair.A == a || pair.A == b ) && ( pair.B == a || pair.B == b ) )
+				if( ( pair.ActorA == a || pair.ActorA == b ) && ( pair.ActorB == a || pair.ActorB == b ) )
 				{
 					pair.Callback( a, b, events );
 				}
@@ -189,36 +191,27 @@ namespace StillDesign
 	}
 	public class ContactReportPair
 	{
-		private Actor _a, _b;
-		private ContactCallback _callback;
-
 		public ContactReportPair( Actor a, Actor b, ContactCallback callback )
 		{
-			_a = a;
-			_b = b;
-			_callback = callback;
+			this.ActorA = a;
+			this.ActorB = b;
+			this.Callback = callback;
 		}
 
-		public Actor A
+		public Actor ActorA
 		{
-			get
-			{
-				return _a;
-			}
+			get;
+			private set;
 		}
-		public Actor B
+		public Actor ActorB
 		{
-			get
-			{
-				return _b;
-			}
+			get;
+			private set;
 		}
 		public ContactCallback Callback
 		{
-			get
-			{
-				return _callback;
-			}
+			get;
+			private set;
 		}
 	}
 

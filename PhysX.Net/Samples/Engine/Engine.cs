@@ -22,6 +22,9 @@ namespace StillDesign
 		{
 			this.Game = game;
 			this.DeviceManager = new GraphicsDeviceManager( game );
+
+			this.DeviceManager.PreferredBackBufferWidth = (int)( GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width * 0.8 );
+			this.DeviceManager.PreferredBackBufferHeight = (int)( GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height * 0.8 );
 		}
 
 		public void Initalize()
@@ -51,7 +54,7 @@ namespace StillDesign
 
 			SceneDescription sceneDesc = new SceneDescription()
 			{
-				SimulationType = SimulationType.Software,
+				SimulationType = SimulationType.Hardware,
 				Gravity = new Vector3( 0.0f, -9.81f, 0.0f ),
 				GroundPlaneEnabled = true
 			};
@@ -59,6 +62,7 @@ namespace StillDesign
 			this.Scene = core.CreateScene( sceneDesc );
 
 			HardwareVersion ver = Core.HardwareVersion;
+			SimulationType simType = this.Scene.SimulationType;
 
 			// Connect to the remote debugger if its there
 			core.Foundation.RemoteDebugger.Connect( "localhost" );
@@ -146,6 +150,15 @@ namespace StillDesign
 			byte b = (byte)( ( color & 0x000000FF ) >> 0 );
 
 			return new Color( r, g, b, a );
+		}
+		public int ColorToArgb( Color color )
+		{
+			int a = (int)( color.A );
+			int r = (int)( color.R );
+			int g = (int)( color.G );
+			int b = (int)( color.B );
+
+			return ( a << 24 ) | ( r << 16 ) | ( g << 8 ) | ( b << 0 );
 		}
 
 		#region Properties

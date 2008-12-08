@@ -50,32 +50,32 @@ namespace StillDesign
 				Vector3 size = new Vector3( 5, 5, 5 );
 
 				int[] indices =
-                {
-                    0, 1, 3,
-                    0, 3, 2,
-                    3, 7, 6,
-                    3, 6, 2,
-                    1, 5, 7,
-                    1, 7, 3,
-                    4, 6, 7,
-                    4, 7, 5,
-                    1, 0, 4,
-                    5, 1, 4,
-                    4, 0, 2,
-                    4, 2, 6
-                };
+				{
+					0, 1, 3,
+					0, 3, 2,
+					3, 7, 6,
+					3, 6, 2,
+					1, 5, 7,
+					1, 7, 3,
+					4, 6, 7,
+					4, 7, 5,
+					1, 0, 4,
+					5, 1, 4,
+					4, 0, 2,
+					4, 2, 6
+				};
 
 				Vector3[] vertices =
-                {
-                    new Vector3( size.X, -size.Y, -size.Z ),
-                    new Vector3( size.X, -size.Y, size.Z ),
-                    new Vector3( size.X, size.Y, -size.Z ),
-                    new Vector3( size.X,  size.Y,  size.Z ),
-                    new Vector3( -size.X, -size.Y, -size.Z ),
-                    new Vector3( -size.X, -size.Y, size.Z ),
-                    new Vector3( -size.X,  size.Y, -size.Z ),
-                    new Vector3( -size.X,  size.Y,  size.Z )
-                };
+				{
+					new Vector3( size.X, -size.Y, -size.Z ),
+					new Vector3( size.X, -size.Y, size.Z ),
+					new Vector3( size.X, size.Y, -size.Z ),
+					new Vector3( size.X,  size.Y,  size.Z ),
+					new Vector3( -size.X, -size.Y, -size.Z ),
+					new Vector3( -size.X, -size.Y, size.Z ),
+					new Vector3( -size.X,  size.Y, -size.Z ),
+					new Vector3( -size.X,  size.Y,  size.Z )
+				};
 
 				TriangleMeshDescription triangleMeshDesc = new TriangleMeshDescription();
 					triangleMeshDesc.AllocateVertices<Vector3>( vertices.Length );
@@ -137,8 +137,10 @@ namespace StillDesign
 					Flags = ShapeFlag.Visualization
 				};
 
-				ActorDescription actorDesc = new ActorDescription();
-					actorDesc.Shapes.Add( triangleMeshShapeDesc );
+				ActorDescription actorDesc = new ActorDescription()
+				{
+					Shapes = { triangleMeshShapeDesc }
+				};
 
 				Actor actor = _scene.CreateActor( actorDesc );
 			}
@@ -150,11 +152,13 @@ namespace StillDesign
 				// Assign the CCD Skeleton to the shape
 				boxShapeDesc.CCDSkeleton = ccdSkeletonForBox;
 
-				ActorDescription actorDesc = new ActorDescription();
-					actorDesc.Name = String.Format( "Box {0}", x );
-					actorDesc.BodyDescription = new BodyDescription( 10.0f );
-					actorDesc.GlobalPose = Matrix.CreateTranslation( 0, 15 + 3 * x, 0 );
-					actorDesc.Shapes.Add( boxShapeDesc );
+				ActorDescription actorDesc = new ActorDescription()
+				{
+					Name = String.Format( "Box {0}", x ),
+					BodyDescription = new BodyDescription( 10.0f ),
+					GlobalPose = Matrix.CreateTranslation( 0, 15 + 3 * x, 0 ),
+					Shapes = { boxShapeDesc }
+				};
 
 				Actor actor = _scene.CreateActor( actorDesc );
 			}

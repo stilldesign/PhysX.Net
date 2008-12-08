@@ -20,10 +20,12 @@ namespace StillDesign
 			};
 				//bodyDesc.MassLocalPose = Matrix.CreateTranslation( 0, -1.5f, 0 ); // Seems not to be working
 
-			ActorDescription actorDesc = new ActorDescription();
-				actorDesc.BodyDescription = bodyDesc;
-				actorDesc.Shapes.Add( new BoxShapeDescription( 5, 3, 7 ) );
-				actorDesc.GlobalPose = Matrix.CreateTranslation( -50, 5, 70 );
+			ActorDescription actorDesc = new ActorDescription()
+			{
+				BodyDescription = bodyDesc,
+				Shapes = { new BoxShapeDescription( 5, 3, 7 ) },
+				GlobalPose = Matrix.CreateTranslation( -50, 5, 70 )
+			};
 
 			_vehicleBodyActor = demo.Scene.CreateActor( actorDesc );
 				_vehicleBodyActor.SetCenterOfMassOffsetLocalPosition( new Vector3( 0, -1.5f, 0 ) ); // Move the COM to the bottom of the vehicle to stop it flipping over so much
