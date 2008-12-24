@@ -184,10 +184,12 @@ namespace StillDesign
 				{
 					StillDesign::PhysX::HardwareVersion get();
 				}
+				/// <summary>Gets the internal API version number of the SDK</summary>
 				property Version^ InternalVersion
 				{
 					Version^ get();
 				}
+				/// <summary>Gets the SDK version number</summary>
 				property Version^ SDKVersion
 				{
 					static Version^ get();

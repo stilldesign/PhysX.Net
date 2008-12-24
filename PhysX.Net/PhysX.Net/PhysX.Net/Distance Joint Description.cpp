@@ -8,7 +8,7 @@
 
 using namespace StillDesign::PhysX;
 
-DistanceJointDescription::DistanceJointDescription() : JointDescription( new NxD6JointDesc() )
+DistanceJointDescription::DistanceJointDescription() : JointDescription( new NxDistanceJointDesc() )
 {
 	
 }

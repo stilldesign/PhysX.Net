@@ -1,5 +1,6 @@
 [0.10.3.0 - ]
 Changed RuntimeFileChecks to strip quotes from environment variable paths
+Bug in the construction of DistanceJointDescription (thanks to rhumba)
 
 [0.10.2.0 - 2008-11-15]
 Fixed bug where Fluid.ParticleWriteData would be empty
