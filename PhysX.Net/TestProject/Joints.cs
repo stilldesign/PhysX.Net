@@ -55,6 +55,46 @@ namespace TestProject
 		#endregion
 
 		[TestMethod]
+		public void CreateDistanceJoint()
+		{
+			Core core = new Core();
+
+			Scene scene = core.CreateScene();
+
+			Actor actorA, actorB;
+			{
+				ActorDescription actorDesc = new ActorDescription()
+				{
+					BodyDescription = new BodyDescription( 20 ),
+					Shapes = { new BoxShapeDescription( 5, 6, 7 ) }
+				};
+
+				actorA = scene.CreateActor( actorDesc );
+			}
+			{
+				ActorDescription actorDesc = new ActorDescription()
+				{
+					BodyDescription = new BodyDescription( 20 ),
+					Shapes = { new BoxShapeDescription( 5, 6, 7 ) }
+				};
+
+				actorB = scene.CreateActor( actorDesc );
+			}
+
+			DistanceJointDescription distanceJointDesc = new DistanceJointDescription()
+			{
+				Actor1 = actorA,
+				Actor2 = actorB
+			};
+
+			var distanceJoint = scene.CreateJoint( distanceJointDesc ) as DistanceJoint;
+
+			Assert.IsNotNull( distanceJoint );
+
+			scene.Simulate( 1.0f / 60.0f );
+		}
+
+		[TestMethod]
 		public void ReleaseJoint()
 		{
 			Core core = new Core();

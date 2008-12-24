@@ -1,6 +1,9 @@
 [0.10.3.0 - ]
 Changed RuntimeFileChecks to strip quotes from environment variable paths
 Bug in the construction of DistanceJointDescription (thanks to rhumba)
+Wrapper now targets PhysX 2.8.1.15
+Tidied Source Files folder to match the Header Files folder
+Fixed Core.CheckPhysXRuntimeFiles; this property is now static and used by the Core constructors
 
 [0.10.2.0 - 2008-11-15]
 Fixed bug where Fluid.ParticleWriteData would be empty

@@ -17,21 +17,28 @@
 
 using namespace StillDesign::PhysX;
 
+static Core::Core()
+{
+	CheckPhysXRuntimeFiles = true;
+}
 Core::Core()
 {
-	CheckAllPhysXRuntimeFiles( true );
+	if( CheckPhysXRuntimeFiles == true )
+		CheckAllPhysXRuntimeFiles( true );
 	
 	CreateCore( gcnew CoreDescription(), nullptr );
 }
 Core::Core( CoreDescription^ description, StillDesign::PhysX::UserOutputStream^ userOutputStream )
 {
-	CheckAllPhysXRuntimeFiles( true );
+	if( CheckPhysXRuntimeFiles == true )
+		CheckAllPhysXRuntimeFiles( true );
 	
 	CreateCore( description, userOutputStream );
 }
 Core::Core( NxPhysicsSDK* core )
 {
-	CheckAllPhysXRuntimeFiles( true );
+	if( CheckPhysXRuntimeFiles == true )
+		CheckAllPhysXRuntimeFiles( true );
 	
 	Debug::Assert( core != NULL );
 	
@@ -139,23 +146,25 @@ bool Core::CheckAllPhysXRuntimeFiles()
 }
 bool Core::CheckAllPhysXRuntimeFiles( bool throwOnError )
 {
-	if ( !throwOnError )
+	if( throwOnError == false )
 	{
 		try
 		{
 			RuntimeFileChecks::Check();
-		}
-		catch ( DllNotFoundException^ exception )
-		{
-			System::Diagnostics::Debug::WriteLine( exception->ToString() );
+		}catch ( DllNotFoundException^ ex ){
+			System::Diagnostics::Debug::WriteLine( ex->Message );
+			
+			return false;
+		}catch( Exception^ ex ){
+			System::Diagnostics::Debug::WriteLine( ex->Message );
+			
 			return false;
 		}
-
+		
 		return true;
-	}
-	else
-	{
+	}else{
 		RuntimeFileChecks::Check();
+		
 		return true;
 	}
 }

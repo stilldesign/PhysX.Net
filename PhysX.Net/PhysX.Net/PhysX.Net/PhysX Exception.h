@@ -1,4 +1,3 @@
-
 #pragma once
 
 using namespace System;
@@ -14,6 +13,7 @@ namespace StillDesign
 			PhysXException( String^ message )
 				: Exception( message )
 			{
+				
 			}
 			
 			PhysXException( String^ format, ... array<String^>^ args ) : Exception( String::Format( format, args ) )

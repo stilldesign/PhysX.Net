@@ -53,9 +53,10 @@ namespace StillDesign
 				Foundation^ _foundation;
 				PhysicsParametersWrapper^ _physicsParametersWrapper;
 				
-				bool _checkPhysXRuntimeFiles;
+				static bool _checkPhysXRuntimeFiles;
 			
 			public:
+				static Core();
 				Core();
 				Core( CoreDescription^ description, StillDesign::PhysX::UserOutputStream^ userOutputStream );
 			internal:
@@ -195,10 +196,11 @@ namespace StillDesign
 					static Version^ get();
 				}
 				
+				/// <summary>Gets or Sets if the Core should check and validate the required PhysX runtime files upon construction</summary>
 				property bool CheckPhysXRuntimeFiles
 				{
-					bool get();
-					void set( bool value );
+					static bool get();
+					static void set( bool value );
 				}
 				
 				/// <summary>Gets the User Output Stream</summary>
