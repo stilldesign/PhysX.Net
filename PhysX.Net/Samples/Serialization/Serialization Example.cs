@@ -72,12 +72,6 @@ namespace StillDesign
 			base.Update( gameTime );
 
 			_engine.Update( gameTime );
-
-			// Update Physics
-			_scene.Simulate( (float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000.0f );
-			//_scene.Simulate( 1.0f / 60.0f );
-			_scene.FlushStream();
-			_scene.FetchResults( SimulationStatus.RigidBodyFinished, true );
 		}
 
 		protected override void Draw( GameTime gameTime )
