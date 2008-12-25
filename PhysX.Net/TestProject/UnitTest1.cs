@@ -20,7 +20,7 @@ using SlimDX;
 #error No graphics target specified
 #endif
 
-namespace TestProject
+namespace StillDesign.PhysX.UnitTests
 {
 	[TestClass]
 	public class UnitTest1
@@ -83,7 +83,7 @@ namespace TestProject
 		{
 			Core core = new Core();
 
-			Scene scene = core.CreateScene();
+			var scene = core.CreateScene();
 
 			ActorDescription actorDesc = new ActorDescription();
 
@@ -99,7 +99,7 @@ namespace TestProject
 		{
 			Core core = new Core();
 
-			Scene scene = core.CreateScene();
+			var scene = core.CreateScene();
 
 			Actor actorA, actorB;
 			{
@@ -129,7 +129,7 @@ namespace TestProject
 		{
 			Core core = new Core();
 
-			Scene scene = core.CreateScene();
+			var scene = core.CreateScene();
 
 			FluidDescription fluidDescription = new FluidDescription()
 			{
@@ -158,7 +158,7 @@ namespace TestProject
 		{
 			Core core = new Core();
 
-			Scene scene = core.CreateScene();
+			var scene = core.CreateScene();
 
 			Actor actorA, actorB;
 			{
@@ -198,7 +198,7 @@ namespace TestProject
 		{
 			Core core = new Core();
 
-			Scene scene = core.CreateScene();
+			var scene = core.CreateScene();
 
 			var manager = scene.CreateControllerManager();
 

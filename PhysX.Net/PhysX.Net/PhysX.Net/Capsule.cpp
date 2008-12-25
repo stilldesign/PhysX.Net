@@ -9,10 +9,17 @@ using namespace StillDesign::PhysX;
 
 Capsule::Capsule( Segment segment, float radius )
 {
-	_radius = radius;
-	
 	_p0 = segment.Point0;
 	_p1 = segment.Point1;
+	
+	_radius = radius;
+}
+Capsule::Capsule( Vector3 p0, Vector3 p1, float radius )
+{
+	_p0 = p0;
+	_p1 = p1;
+	
+	_radius = radius;
 }
 
 Capsule::operator Capsule( NxCapsule capsule )

@@ -23,6 +23,7 @@
 
 using namespace System;
 using namespace System::Collections::Generic;
+
 UsingFrameworkNamespace
 
 class NxScene;
@@ -451,7 +452,8 @@ namespace StillDesign
 				/// <param name="motion">Length and direction of the sweep</param>
 				/// <param name="flags">Flags controlling the mode of the sweep</param>
 				/// <param name="userData">User data to impart to the returned data struct</param>
-				array<Shape^>^ LinearSweep( Box worldBox, Vector3 motion, SweepFlags flags, Object^ userData );
+				array<SweepQueryHit^>^ LinearObbSweep( Box worldBox, Vector3 motion, SweepFlags flags, Object^ userData );
+				array<SweepQueryHit^>^ LinearObbSweep( Box worldBox, Vector3 motion, SweepFlags flags, Object^ userData, unsigned int activeGroups, Nullable<GroupsMask> groupsMask );
 				/// <summary>Performs a linear sweep through space with an oriented box</summary>
 				/// <param name="worldBox">The oriented box (Box object) that is to be swept</param>
 				/// <param name="motion">Length and direction of the sweep</param>
@@ -461,14 +463,16 @@ namespace StillDesign
 				/// <param name="callback">Callback function invoked on the closest hit (if any)</param>
 				/// <param name="activeGroups">Mask used to filter shape objects</param>
 				/// <param name="groupsMask">Alternative mask used to filter shapes</param>
-				array<Shape^>^ LinearSweep( Box worldBox, Vector3 motion, SweepFlags flags, Object^ userData, int maximumShapes, UserEntitySweepQueryHitReport^ callback, unsigned int activeGroups, Nullable<GroupsMask> groupsMask );
+				void LinearObbSweep( Box worldBox, Vector3 motion, SweepFlags flags, Object^ userData, UserEntitySweepQueryHitReport^ callback );
+				void LinearObbSweep( Box worldBox, Vector3 motion, SweepFlags flags, Object^ userData, UserEntitySweepQueryHitReport^ callback, unsigned int activeGroups, Nullable<GroupsMask> groupsMask );
 				
 				/// <summary>Performs a linear sweep through space with an oriented capsule</summary>
 				/// <param name="worldCapsule">The oriented capsule (Capsule object) that is to be swept</param>
 				/// <param name="motion">Length and direction of the sweep</param>
 				/// <param name="flags">Flags controlling the mode of the sweep</param>
 				/// <param name="userData">User data to impart to the returned data struct</param>
-				array<Shape^>^ LinearSweep( Capsule worldCapsule, Vector3 motion, SweepFlags flags, Object^ userData );
+				array<SweepQueryHit^>^ LinearCapsuleSweep( Capsule worldCapsule, Vector3 motion, SweepFlags flags, Object^ userData );
+				array<SweepQueryHit^>^ LinearCapsuleSweep( Capsule worldCapsule, Vector3 motion, SweepFlags flags, Object^ userData, unsigned int activeGroups, Nullable<GroupsMask> groupsMask );
 				/// <summary>Performs a linear sweep through space with an oriented capsule</summary>
 				/// <summary>Performs a linear sweep through space with an oriented box</summary>
 				/// <param name="worldCapsule">The oriented capsule (Capsule object) that is to be swept</param>
@@ -479,9 +483,15 @@ namespace StillDesign
 				/// <param name="callback">Callback function invoked on the closest hit (if any)</param>
 				/// <param name="activeGroups">Mask used to filter shape objects</param>
 				/// <param name="groupsMask">Alternative mask used to filter shapes</param>
-				array<Shape^>^ LinearSweep( Capsule worldCapsule, Vector3 motion, SweepFlags flags, Object^ userData, int maximumShapes, UserEntitySweepQueryHitReport^ callback, unsigned int activeGroups, Nullable<GroupsMask> groupsMask );
+				void LinearCapsuleSweep( Capsule worldCapsule, Vector3 motion, SweepFlags flags, Object^ userData, UserEntitySweepQueryHitReport^ callback );
+				void LinearCapsuleSweep( Capsule worldCapsule, Vector3 motion, SweepFlags flags, Object^ userData, UserEntitySweepQueryHitReport^ callback, unsigned int activeGroups, Nullable<GroupsMask> groupsMask );
+				
+			private:
+				generic<class T> where T : ValueType
+				array<SweepQueryHit^>^ LinearSweep( T sweepObject, Vector3 motion, SweepFlags flags, Object^ userData, UserEntitySweepQueryHitReport^ callback, unsigned int activeGroups, Nullable<GroupsMask> groupsMask );
 #pragma endregion
 				
+			public:
 				/// <summary>Returns the set of shapes which are in the negative half space of a number of planes</summary>
 				/// <param name="planes">Set of planes to test</param>
 				/// <param name="shapesType">Choose if to intersect with static, dynamic or both types of shape</param>

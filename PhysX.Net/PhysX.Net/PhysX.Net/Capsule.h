@@ -15,6 +15,7 @@ namespace StillDesign
 			
 			public:
 				Capsule( Segment segment, float radius );
+				Capsule( Vector3 p0, Vector3 p1, float radius );
 			
 			internal:
 				static explicit operator Capsule( NxCapsule capsule );

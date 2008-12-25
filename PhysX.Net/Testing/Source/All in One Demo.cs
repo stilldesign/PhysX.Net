@@ -71,12 +71,12 @@ namespace StillDesign
 			if( keyboardState.IsKeyDown( Keys.Escape ) )
 				this.Exit();
 
-			if( keyboardState.IsKeyDown( Keys.L ) )
-			{
-				Box box = new Box( new Vector3( 0, 0, 0 ), new Vector3( 100, 100, 100 ) );
+			//if( keyboardState.IsKeyDown( Keys.L ) )
+			//{
+			//    Box box = new Box( new Vector3( 0, 0, 0 ), new Vector3( 100, 100, 100 ) );
 
-				Shape[] s = _scene.LinearSweep( box, new Vector3( 0, 0, 100 ), SweepFlags.AllHits, null );
-			}
+			//    var s = _scene.LinearSweep( box, new Vector3( 0, 0, 100 ), SweepFlags.AllHits, null );
+			//}
 
 			//
 

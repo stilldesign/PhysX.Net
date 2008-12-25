@@ -19,18 +19,17 @@ void RuntimeFileChecks::Check()
 
 void RuntimeFileChecks::CheckFile( String^ filename, array<Byte>^ knownHash )
 {
+	FileStream^ stream;
 	try
 	{
 		MD5^ md5 = MD5::Create();
 		
-		FileStream^ stream = gcnew FileStream( FindLibraryPath( filename ), FileMode::Open, FileAccess::Read );
+		stream = gcnew FileStream( FindLibraryPath( filename ), FileMode::Open, FileAccess::Read );
 		
 		array<Byte>^ fileHash = md5->ComputeHash( stream );
 		
-		stream->Close();
-		
 		if( CompareHash( knownHash, fileHash ) == false )
-			throw gcnew DllNotFoundException( String::Format( CultureInfo::CurrentCulture, "PhysX library \"{0}\" is missing, corrupt or has invalid version.", filename ) );
+			throw gcnew DllNotFoundException( String::Format( CultureInfo::CurrentCulture, "PhysX library \"{0}\" is missing, corrupt or has invalid version. The required version is: {1}", filename, RequiredPhysXVersion ) );
 	}
 	catch( FileNotFoundException^ exception )
 	{
@@ -43,6 +42,9 @@ void RuntimeFileChecks::CheckFile( String^ filename, array<Byte>^ knownHash )
 	catch( Exception^ ex )
 	{
 		throw ex;
+	}finally{
+		if( stream != nullptr )
+			stream->Close();
 	}
 }
 

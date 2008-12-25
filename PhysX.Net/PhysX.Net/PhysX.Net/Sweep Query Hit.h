@@ -46,12 +46,12 @@ namespace StillDesign
 				{
 					Object^ get();
 				}
-				/// <summary>Gets the ID of touched triangle (internal)</summary>
+				/// <summary>Gets the ID of the touched triangle (internal)</summary>
 				property int InternalFaceID
 				{
 					int get();
 				}
-				/// <summary>Gets the ID of touched triangle (external)</summary>
+				/// <summary>Gets the ID of the touched triangle (external)</summary>
 				property int FaceID
 				{
 					int get();

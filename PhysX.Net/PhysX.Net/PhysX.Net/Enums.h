@@ -469,8 +469,8 @@ namespace StillDesign
 			Dynamics = NX_SF_DYNAMICS,
 			Asynchronous = NX_SF_ASYNC,
 			AllHits = NX_SF_ALL_HITS,
-			DebugSM = NX_SF_DEBUG_SM,
-			DebugET = NX_SF_DEBUG_ET
+			//DebugSM = NX_SF_DEBUG_SM,
+			//DebugET = NX_SF_DEBUG_ET
 		};
 		
 		[Flags]

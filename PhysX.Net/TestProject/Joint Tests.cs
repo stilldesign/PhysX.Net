@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework;
 
 using StillDesign.PhysX;
 
-namespace TestProject
+namespace StillDesign.PhysX.UnitTests
 {
 	[TestClass]
 	public class Joints
@@ -59,7 +59,7 @@ namespace TestProject
 		{
 			Core core = new Core();
 
-			Scene scene = core.CreateScene();
+			var scene = core.CreateScene();
 
 			Actor actorA, actorB;
 			{
@@ -99,7 +99,7 @@ namespace TestProject
 		{
 			Core core = new Core();
 
-			Scene scene = core.CreateScene();
+			var scene = core.CreateScene();
 
 			Actor actorA, actorB;
 			{

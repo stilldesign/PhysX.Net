@@ -24,7 +24,7 @@ Box::operator Box( NxBox box )
 	
 	Box newBox;
 		newBox.Center = Math::NxVec3ToVector3( box.center );
-		newBox.Size = Math::NxVec3ToVector3( box.extents ) * 2.0f;
+		newBox.Size = Math::NxVec3ToVector3( box.extents * 2.0f );
 		newBox.Rotation = Math::NxQuatToQuaternion( q );
 	
 	return newBox;
@@ -33,24 +33,13 @@ Box::operator NxBox( Box box )
 {
 	NxBox newBox;
 		newBox.center = Math::Vector3ToNxVec3( box.Center );
-		newBox.extents = Math::Vector3ToNxVec3( box.Size ) * 0.5f;
+		newBox.extents = Math::Vector3ToNxVec3( box.Extents );
 		
 		NxQuat q = Math::QuaternionNxQuat( box.Rotation );
 		NxMat33 rot;
 		rot.fromQuat( q );
+		newBox.rot = rot;
 		
-#if GRAPHICS_MDX
-		newBox.rot = rot;
-#elif GRAPHICS_XNA2
-		newBox.rot = rot;
-#elif GRAPHICS_XNA3
-	newBox.rot = rot;
-#elif GRAPHICS_SLIMDX
-		newBox.rot = rot;
-#else
-	#error No graphics target specified
-#endif
-	
 	return newBox;
 }
 

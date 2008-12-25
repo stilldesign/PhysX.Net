@@ -1147,57 +1147,111 @@ RaycastHit^ Scene::RaycastClosestShape( StillDesign::PhysX::Ray worldRay, Shapes
 #pragma endregion
 #pragma endregion
 
-array<Shape^>^ Scene::LinearSweep( Box worldBox, Vector3 motion, SweepFlags flags, Object^ userData )
+// Box Sweeps
+array<SweepQueryHit^>^ Scene::LinearObbSweep( Box worldBox, Vector3 motion, SweepFlags flags, Object^ userData )
 {
-	int shapesCount = _scene->getNbDynamicShapes() + _scene->getNbStaticShapes();
-	
-	return LinearSweep( worldBox, motion, flags, userData, shapesCount, nullptr, 0xFFFFFFFF, Nullable<GroupsMask>() );
+	return LinearObbSweep( worldBox, motion, flags, userData, 0xFFFFFFFF, Nullable<GroupsMask>() );
 }
-array<Shape^>^ Scene::LinearSweep( Box worldBox, Vector3 motion, SweepFlags flags, Object^ userData, int maximumShapes, UserEntitySweepQueryHitReport^ callback, unsigned int activeGroups, Nullable<GroupsMask> groupsMask )
+array<SweepQueryHit^>^ Scene::LinearObbSweep( Box worldBox, Vector3 motion, SweepFlags flags, Object^ userData, unsigned int activeGroups, Nullable<GroupsMask> groupsMask )
 {
-	NxSweepQueryHit* hits = new NxSweepQueryHit[ maximumShapes ];
-	
-	int shapesHit = _scene->linearOBBSweep( (NxBox)worldBox, Math::Vector3ToNxVec3( motion ), (NxU32)flags, NULL, maximumShapes, hits, callback == nullptr ? NULL : callback->UnmanagedPointer, activeGroups, groupsMask.HasValue ? &((NxGroupsMask)groupsMask.Value) : NULL );
-	
-	// TODO Should this throw? probably not.
-	if( shapesHit >= maximumShapes )
-		throw gcnew PhysXException( "Number of returned shapes exceeds maximum shapes" );
-	
-	array<Shape^>^ shapes = gcnew array<Shape^>( shapesHit );
-	for( int x = 0; x < shapesHit; x++ )
-	{
-		shapes[ x ] = ObjectCache::GetObject<Shape^>( (intptr_t)hits[ x ].hitShape );
-	}
-	
-	delete[] hits;
-	
-	return shapes;
+	return LinearSweep<Box>( worldBox, motion, flags, userData, nullptr, activeGroups, groupsMask );
 }
-array<Shape^>^ Scene::LinearSweep( Capsule worldCapsule, Vector3 motion, SweepFlags flags, Object^ userData )
+void Scene::LinearObbSweep( Box worldBox, Vector3 motion, SweepFlags flags, Object^ userData, UserEntitySweepQueryHitReport^ callback )
 {
-	int shapesCount = _scene->getNbDynamicShapes() + _scene->getNbStaticShapes();
+	LinearObbSweep( worldBox, motion, flags, userData, callback, 0xFFFFFFFF, Nullable<GroupsMask>() );
+}
+void Scene::LinearObbSweep( Box worldBox, Vector3 motion, SweepFlags flags, Object^ userData, UserEntitySweepQueryHitReport^ callback, unsigned int activeGroups, Nullable<GroupsMask> groupsMask )
+{
+	if( callback == nullptr )
+		throw gcnew ArgumentNullException( "callback" );
+	
+	LinearSweep<Box>( worldBox, motion, flags, userData, callback, activeGroups, groupsMask );
+}
 
-	return LinearSweep( worldCapsule, motion, flags, userData, shapesCount, nullptr, 0xFFFFFFFF, Nullable<GroupsMask>() );
-}
-array<Shape^>^ Scene::LinearSweep( Capsule worldCapsule, Vector3 motion, SweepFlags flags, Object^ userData, int maximumShapes, UserEntitySweepQueryHitReport^ callback, unsigned int activeGroups, Nullable<GroupsMask> groupsMask )
+// Capsule Sweeps
+array<SweepQueryHit^>^ Scene::LinearCapsuleSweep( Capsule worldCapsule, Vector3 motion, SweepFlags flags, Object^ userData )
 {
-	NxSweepQueryHit* hits = new NxSweepQueryHit[ maximumShapes ];
+	return LinearCapsuleSweep( worldCapsule, motion, flags, userData, 0xFFFFFFFF, Nullable<GroupsMask>() );
+}
+array<SweepQueryHit^>^ Scene::LinearCapsuleSweep( Capsule worldCapsule, Vector3 motion, SweepFlags flags, Object^ userData, unsigned int activeGroups, Nullable<GroupsMask> groupsMask )
+{
+	return LinearSweep<Capsule>( worldCapsule, motion, flags, userData, nullptr, activeGroups, groupsMask );
+}
+void Scene::LinearCapsuleSweep( Capsule worldCapsule, Vector3 motion, SweepFlags flags, Object^ userData, UserEntitySweepQueryHitReport^ callback )
+{
+	LinearCapsuleSweep( worldCapsule, motion, flags, userData, callback, 0xFFFFFFFF, Nullable<GroupsMask>() );
+}
+void Scene::LinearCapsuleSweep( Capsule worldCapsule, Vector3 motion, SweepFlags flags, Object^ userData, UserEntitySweepQueryHitReport^ callback, unsigned int activeGroups, Nullable<GroupsMask> groupsMask )
+{
+	if( callback == nullptr )
+		throw gcnew ArgumentNullException( "callback" );
 	
-	int shapesHit = _scene->linearCapsuleSweep( (NxCapsule)worldCapsule, Math::Vector3ToNxVec3( motion ), (NxU32)flags, NULL, maximumShapes, hits, callback == nullptr ? NULL : callback->UnmanagedPointer, activeGroups, groupsMask.HasValue ? &((NxGroupsMask)groupsMask.Value) : NULL );
-	
-	// TODO Should this throw? probably not.
-	if( shapesHit >= maximumShapes )
-		throw gcnew PhysXException( "Number of returned shapes exceeds maximum shapes" );
-	
-	array<Shape^>^ shapes = gcnew array<Shape^>( shapesHit );
-	for( int x = 0; x < shapesHit; x++ )
-	{	
-		shapes[ x ] = ObjectCache::GetObject<Shape^>( (intptr_t)hits[ x ].hitShape );
+	LinearSweep<Capsule>( worldCapsule, motion, flags, userData, callback, activeGroups, groupsMask );
+}
+
+generic<class T>
+array<SweepQueryHit^>^ Scene::LinearSweep( T sweepObject, Vector3 motion, SweepFlags flags, Object^ userData, UserEntitySweepQueryHitReport^ callback, unsigned int activeGroups, Nullable<GroupsMask> groupsMask )
+{
+	{
+		if( T::typeid != Box::typeid && T::typeid != Capsule::typeid )
+			throw gcnew ArgumentException( "Invalid sweep object. Must be either a Box or Capsule" );
+		
+		if( (int)(flags & SweepFlags::Statics) == 0 && (int)(flags & SweepFlags::Dynamics) == 0 )
+			throw gcnew ArgumentException( "flags", "Flags argument must be either or a combination of Statics and Dynamics" );
 	}
 	
-	delete[] hits;
+	bool returnHits = ( callback == nullptr );
 	
-	return shapes;
+	int numberOfShapes;
+	NxSweepQueryHit* hits;
+	if( returnHits == true )
+	{
+		numberOfShapes = _scene->getTotalNbShapes();
+		
+		hits = new NxSweepQueryHit[ numberOfShapes ];
+		ZeroMemory( hits, sizeof( NxSweepQueryHit ) * numberOfShapes );
+	}else{
+		numberOfShapes = 0;
+	}
+	
+	NxVec3 m = StillDesign::PhysX::Math::Vector3ToNxVec3( motion );
+	
+	NxBox b = (NxBox)(Box());
+	
+	int shapesHit;
+	if( T::typeid == Box::typeid )
+	{
+		Box box = (Box)sweepObject;
+		
+		shapesHit = _scene->linearOBBSweep( (NxBox)box, m, (NxU32)flags, NULL, numberOfShapes, hits, callback == nullptr ? NULL : callback->UnmanagedPointer, activeGroups, groupsMask.HasValue ? &((NxGroupsMask)groupsMask.Value) : NULL );
+	}else if( T::typeid == Capsule::typeid ){
+		Capsule capsule = (Capsule)sweepObject;
+		
+		shapesHit = _scene->linearCapsuleSweep( (NxCapsule)capsule, m, (NxU32)flags, NULL, numberOfShapes, hits, callback == nullptr ? NULL : callback->UnmanagedPointer, activeGroups, groupsMask.HasValue ? &((NxGroupsMask)groupsMask.Value) : NULL );
+	}else{
+		throw gcnew PhysXException( "Internal error; sweep object type is unsupported" );
+	}
+	
+	// If callback is provided; we stop here no return
+	if( returnHits == false )
+	{
+		return nullptr;
+	}else{
+		//// TODO Should this throw? probably not.
+		//if( shapesHit >= numberOfShapes )
+		//	throw gcnew PhysXException( "Internal error; number of returned shapes exceeds maximum shapes" );
+		
+		array<SweepQueryHit^>^ shapes = gcnew array<SweepQueryHit^>( shapesHit );
+		for( int x = 0; x < shapesHit; x++ )
+		{
+			shapes[ x ] = gcnew SweepQueryHit( &(hits[ x ]), userData );
+		}
+		
+		delete[] hits;
+		hits = NULL;
+		
+		return shapes;
+	}
 }
 
 // Cull Tests
