@@ -1,7 +1,5 @@
 #pragma once
 
-#include "nxu_helper.h" 
-
 namespace StillDesign
 {
 	namespace PhysX

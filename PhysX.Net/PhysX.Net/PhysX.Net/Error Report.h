@@ -1,7 +1,5 @@
 #pragma once
 
-#include "NXU_Helper.h" 
-
 class NxuPhysicsCollection;
 
 namespace StillDesign

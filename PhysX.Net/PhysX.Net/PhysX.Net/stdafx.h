@@ -96,6 +96,9 @@ bool IsInstanceOf( U u )
 #include <NxFluid.h>
 #include <NxActor.h>
 
+#include "NXU\NXU_Helper.h"
+#include "NXU\nxu_schema.h"
+
 #include "Functions.h"
 #include "Math.h"
 #include "Object Cache.h"

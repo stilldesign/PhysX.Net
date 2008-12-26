@@ -2,7 +2,6 @@
 
 #include "Enums.h"
 #include "Groups Mask.h"
-#include "NXU_Helper.h" 
 
 class NxuPhysicsCollection;
 

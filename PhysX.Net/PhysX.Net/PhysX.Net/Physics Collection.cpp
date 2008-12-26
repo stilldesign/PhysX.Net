@@ -2,7 +2,6 @@
 
 #include "Physics Collection.h"
 #include "Functions.h"
-#include "nxu_schema.h"
 #include "Core.h"
 #include "Scene.h"
 #include "Actor.h"
@@ -12,7 +11,7 @@
 #include "User Notify.h"
 #include "Pair Flag.h"
 #include "Core Description.h"
-#include "NXU_customcopy.h"
+#include "NXU\NXU_customcopy.h"
 #include "Scene Description.h"
 #include "Utilities User Notify.h"
 

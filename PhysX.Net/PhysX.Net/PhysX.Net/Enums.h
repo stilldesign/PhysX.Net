@@ -5,12 +5,6 @@
 #include "Joint Enums.h"
 #include "Controller Enums.h"
 
-#include "NXU_Helper.h"
-#include <nxu_schema.h> 
-
-
-//using namespace NXU;
-
 namespace StillDesign
 {
 	namespace PhysX
