@@ -88,7 +88,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Serialization Example.cs" />
+    <Compile Include="Load Document.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scene 3.xml">
