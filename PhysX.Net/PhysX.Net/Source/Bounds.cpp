@@ -3,19 +3,26 @@
 #include "Bounds.h"
 #include "Math.h"
 
+using namespace System;
 using namespace System::Globalization;
+
 using namespace StillDesign::PhysX;
 UsingFrameworkNamespace
 
-Bounds3::Bounds3( float minX, float minY, float minZ, float maxX, float maxY, float maxZ )
+Bounds3::Bounds3( Vector3 size )
 {
-	_min = Vector3( minX, minY, minZ );
-	_max = Vector3( maxX, maxY, maxZ );
+	_min = -size * 0.5f;
+	_max = size * 0.5f;
 }
 Bounds3::Bounds3( Vector3 min, Vector3 max )
 {
 	_min = min;
 	_max = max;
+}
+Bounds3::Bounds3( float minX, float minY, float minZ, float maxX, float maxY, float maxZ )
+{
+	_min = Vector3( minX, minY, minZ );
+	_max = Vector3( maxX, maxY, maxZ );
 }
 
 Bounds3::operator NxBounds3( Bounds3 bounds )
@@ -36,10 +43,7 @@ void Bounds3::Include( Vector3 vector )
 #if GRAPHICS_MDX
 	this->Min = Vector3::Minimize( this->Min, vector );
 	this->Max = Vector3::Maximize( this->Max, vector );
-#elif GRAPHICS_XNA2
-	this->Min = Vector3::Min( this->Min, vector );
-	this->Max = Vector3::Max( this->Max, vector );
-#elif GRAPHICS_XNA3
+#elif GRAPHICS_XNA2 || GRAPHICS_XNA3
 	this->Min = Vector3::Min( this->Min, vector );
 	this->Max = Vector3::Max( this->Max, vector );
 #elif GRAPHICS_SLIMDX
@@ -54,10 +58,7 @@ void Bounds3::Combine( Bounds3 bounds )
 #if GRAPHICS_MDX
 	this->Min = Vector3::Minimize( bounds.Min, this->Min );
 	this->Max = Vector3::Maximize( bounds.Max, this->Max );
-#elif GRAPHICS_XNA2
-	this->Min = Vector3::Min( bounds.Min, this->Min );
-	this->Max = Vector3::Max( bounds.Max, this->Max );
-#elif GRAPHICS_XNA3
+#elif GRAPHICS_XNA2 || GRAPHICS_XNA3
 	this->Min = Vector3::Min( bounds.Min, this->Min );
 	this->Max = Vector3::Max( bounds.Max, this->Max );
 #elif GRAPHICS_SLIMDX
@@ -84,9 +85,7 @@ void Bounds3::Transform( Matrix orientation, Vector3 translation )
 {
 #if GRAPHICS_MDX
 	Vector3 center = Vector3::TransformCoordinate( this->Center, orientation ) + translation;
-#elif GRAPHICS_XNA2
-	Vector3 center = Vector3::Transform( this->Center, orientation ) + translation;
-#elif GRAPHICS_XNA3
+#elif GRAPHICS_XNA2 || GRAPHICS_XNA3
 	Vector3 center = Vector3::Transform( this->Center, orientation ) + translation;
 #elif GRAPHICS_SLIMDX
 	Vector3 center = Vector3::TransformCoordinate( this->Center, orientation ) + translation;
@@ -199,9 +198,7 @@ bool Bounds3::IsEmpty::get()
 {
 #if GRAPHICS_MDX
 	return this->Size.LengthSq() == 0;
-#elif GRAPHICS_XNA2
-	return this->Size.LengthSquared() == 0;
-#elif GRAPHICS_XNA3
+#elif GRAPHICS_XNA2 || GRAPHICS_XNA3
 	return this->Size.LengthSquared() == 0;
 #elif GRAPHICS_SLIMDX
 	return this->Size.LengthSquared() == 0;

@@ -13,6 +13,9 @@ namespace StillDesign
 			
 			public:
 				/// <summary>Constructs a Bounds object</summary>
+				/// <param name="size">The size of the bounds</param>
+				Bounds3( Vector3 size );
+				/// <summary>Constructs a Bounds object</summary>
 				/// <param name="min">The Minimum point</param>
 				/// <param name="min">The Maximum point</param>
 				Bounds3( Vector3 min, Vector3 max );

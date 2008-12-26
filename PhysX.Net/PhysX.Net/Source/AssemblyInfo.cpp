@@ -12,7 +12,7 @@ using namespace System::Security::Permissions;
 // associated with an assembly.
 //
 [assembly:AssemblyTitleAttribute( "PhysX.Net" )];
-[assembly:AssemblyDescriptionAttribute( ".Net Wrapper for NVIDIA PhysX 2.8.1" )];
+[assembly:AssemblyDescriptionAttribute( ".Net Wrapper for NVIDIA PhysX 2.8.1.15" )];
 [assembly:AssemblyConfigurationAttribute( "" )];
 [assembly:AssemblyCompanyAttribute( "StillDesign" )];
 [assembly:AssemblyProductAttribute( "PhysX.Net" )];
@@ -31,7 +31,7 @@ using namespace System::Security::Permissions;
 // You can specify all the value or you can default the Revision and Build Numbers
 // by using the '*' as shown below:
 
-[assembly:AssemblyVersionAttribute("0.10.3.0")];
+[assembly:AssemblyVersionAttribute("0.11.0.0")];
 
 [assembly:ComVisible(false)];
 

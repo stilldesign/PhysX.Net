@@ -8,42 +8,14 @@ using StillDesign.PhysX;
 
 using Microsoft.Xna.Framework;
 
-using PhysXScene = StillDesign.PhysX.Scene;
-
 namespace StillDesign.PhysX.UnitTests
 {
 	[TestClass]
-	public class Scene
+	public class SceneTests : TestBase
 	{
-		private Core _core;
-		private PhysXScene _scene;
-
-		public Scene()
+		public SceneTests()
 		{
-			_core = new Core();
-			_scene = _core.CreateScene();
-
-			Actor actorA, actorB;
-			{
-				ActorDescription actorDesc = new ActorDescription()
-				{
-					BodyDescription = new BodyDescription( 20 ),
-					GlobalPose = Matrix.CreateTranslation( 0, 0, 10 ),
-					Shapes = { new BoxShapeDescription( 5, 5, 5 ) }
-				};
-				
-				actorA = _scene.CreateActor( actorDesc );
-			}
-			{
-				ActorDescription actorDesc = new ActorDescription()
-				{
-					BodyDescription = new BodyDescription( 20 ),
-					GlobalPose = Matrix.CreateTranslation( 0, 0, 50 ),
-					Shapes = { new BoxShapeDescription( 5, 5, 5 ) }
-				};
-
-				actorB = _scene.CreateActor( actorDesc );
-			}
+			
 		}
 
 		private TestContext testContextInstance;
@@ -82,12 +54,13 @@ namespace StillDesign.PhysX.UnitTests
 		//
 		#endregion
 
+		#region Linear Sweep
 		[TestMethod]
 		public void LinearBoxSweep()
 		{
 			Box box = new Box( new Vector3( 0, 2.5f, 0 ), new Vector3( 5, 5, 5 ) );
 
-			var sweepHits = _scene.LinearObbSweep( box, new Vector3( 0, 0, 1000 ), SweepFlags.Dynamics | SweepFlags.Statics, "Dummy Object" );
+			var sweepHits = this.Scene.LinearObbSweep( box, new Vector3( 0, 0, 1000 ), SweepFlags.Dynamics | SweepFlags.Statics, "Dummy Object" );
 
 			Assert.IsTrue( sweepHits.Length == 1, "The linear box sweep should of returned 1 hit. Hits returned: {0}", sweepHits.Length );
 		}
@@ -96,7 +69,7 @@ namespace StillDesign.PhysX.UnitTests
 		{
 			Box box = new Box( new Vector3( 0, 2.5f, 0 ), new Vector3( 5, 5, 5 ) );
 
-			var sweepHits = _scene.LinearObbSweep( box, new Vector3( 0, 0, 1000 ), SweepFlags.Dynamics | SweepFlags.Statics | SweepFlags.AllHits, "Dummy Object" );
+			var sweepHits = this.Scene.LinearObbSweep( box, new Vector3( 0, 0, 1000 ), SweepFlags.Dynamics | SweepFlags.Statics | SweepFlags.AllHits, "Dummy Object" );
 
 			Assert.IsTrue( sweepHits.Length == 2, "The linear box sweep should of returned 2 hit. Hits returned: {0}", sweepHits.Length );
 		}
@@ -107,7 +80,7 @@ namespace StillDesign.PhysX.UnitTests
 
 			SweepCallback callback = new SweepCallback();
 
-			_scene.LinearObbSweep( box, new Vector3( 0, 0, 1000 ), SweepFlags.Dynamics | SweepFlags.Statics, "Dummy Object", callback );
+			this.Scene.LinearObbSweep( box, new Vector3( 0, 0, 1000 ), SweepFlags.Dynamics | SweepFlags.Statics, "Dummy Object", callback );
 
 			Assert.IsTrue( callback.NumberOfHits == 1, "The linear box sweep should of returned 1 hit. Hits returned: {0}", callback.NumberOfHits );
 		}
@@ -117,7 +90,7 @@ namespace StillDesign.PhysX.UnitTests
 		{
 			Capsule capsule = new Capsule( new Vector3( 0, -5, 0 ), new Vector3( 0, 5, 0 ), 10 );
 
-			var sweepHits = _scene.LinearCapsuleSweep( capsule, new Vector3( 0, 0, 1000 ), SweepFlags.Dynamics | SweepFlags.Statics, "Dummy Object" );
+			var sweepHits = this.Scene.LinearCapsuleSweep( capsule, new Vector3( 0, 0, 1000 ), SweepFlags.Dynamics | SweepFlags.Statics, "Dummy Object" );
 
 			Assert.IsTrue( sweepHits.Length == 1, "The linear capsule sweep should of returned 1 hit. Hits returned: {0}", sweepHits.Length );
 		}
@@ -126,7 +99,7 @@ namespace StillDesign.PhysX.UnitTests
 		{
 			Capsule capsule = new Capsule( new Vector3( 0, -5, 0 ), new Vector3( 0, 5, 0 ), 10 );
 
-			var sweepHits = _scene.LinearCapsuleSweep( capsule, new Vector3( 0, 0, 1000 ), SweepFlags.Dynamics | SweepFlags.Statics | SweepFlags.AllHits, "Dummy Object" );
+			var sweepHits = this.Scene.LinearCapsuleSweep( capsule, new Vector3( 0, 0, 1000 ), SweepFlags.Dynamics | SweepFlags.Statics | SweepFlags.AllHits, "Dummy Object" );
 
 			Assert.IsTrue( sweepHits.Length == 2, "The linear capsule sweep should of returned 2 hit. Hits returned: {0}", sweepHits.Length );
 		}
@@ -137,9 +110,39 @@ namespace StillDesign.PhysX.UnitTests
 
 			SweepCallback callback = new SweepCallback();
 
-			_scene.LinearCapsuleSweep( capsule, new Vector3( 0, 0, 1000 ), SweepFlags.Dynamics | SweepFlags.Statics, "Dummy Object", callback );
+			this.Scene.LinearCapsuleSweep( capsule, new Vector3( 0, 0, 1000 ), SweepFlags.Dynamics | SweepFlags.Statics, "Dummy Object", callback );
 
 			Assert.IsTrue( callback.NumberOfHits == 1, "The linear capsule sweep should of returned 1 hit. Hits returned: {0}", callback.NumberOfHits );
+		}
+		#endregion
+
+		[TestMethod]
+		public void CullShapes_TwoActorsSinglePlane()
+		{
+			CreateCoreAndScene();
+
+			var actorA = CreateBoxActor( new Vector3( 0, 0, 10 ) );
+			var actorB = CreateBoxActor( new Vector3( 0, 0, 100 ) );
+
+			var frustum = new[] { new Plane( 0, 0, 1, 0 ) };
+			var shapes = this.Scene.CullShapes( frustum, ShapesType.Dynamic );
+
+			Assert.IsTrue( shapes.Contains( actorA.Shapes.Single() ) );
+			Assert.IsTrue( shapes.Contains( actorB.Shapes.Single() ) );
+		}
+		[TestMethod]
+		public void CullShapes_TwoActorsTwoPlanes()
+		{
+			CreateCoreAndScene();
+
+			var actorA = CreateBoxActor( new Vector3( 0, 0, 10 ) );
+			var actorB = CreateBoxActor( new Vector3( 0, 0, 100 ) );
+
+			var frustum = new[] { new Plane( 0, 0, 1, 0 ), new Plane( 0, 0, -1, -50 ) };
+			var shapes = this.Scene.CullShapes( frustum, ShapesType.Dynamic );
+
+			Assert.IsTrue( shapes.Contains( actorA.Shapes.Single() ) );
+			Assert.IsFalse( shapes.Contains( actorB.Shapes.Single() ) );
 		}
 	}
 
