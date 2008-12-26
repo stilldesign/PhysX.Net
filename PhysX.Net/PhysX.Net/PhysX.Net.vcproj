@@ -635,7 +635,7 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\PhysX.Net\Active Transform.cpp"
+				RelativePath=".\Source\Active Transform.cpp"
 				>
 				<FileConfiguration
 					Name="Debug XNA 2.0|Win32"
@@ -703,7 +703,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\PhysX.Net\AssemblyInfo.cpp"
+				RelativePath=".\Source\AssemblyInfo.cpp"
 				>
 				<FileConfiguration
 					Name="Debug XNA 2.0|Win32"
@@ -771,7 +771,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\PhysX.Net\Constraint Dominance.cpp"
+				RelativePath=".\Source\Constraint Dominance.cpp"
 				>
 				<FileConfiguration
 					Name="Debug XNA 2.0|Win32"
@@ -839,7 +839,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\PhysX.Net\Debug Renderable.cpp"
+				RelativePath=".\Source\Debug Renderable.cpp"
 				>
 				<FileConfiguration
 					Name="Debug XNA 2.0|Win32"
@@ -907,7 +907,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\PhysX.Net\Foundation.cpp"
+				RelativePath=".\Source\Foundation.cpp"
 				>
 				<FileConfiguration
 					Name="Debug XNA 2.0|Win32"
@@ -975,7 +975,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\PhysX.Net\Functions.cpp"
+				RelativePath=".\Source\Functions.cpp"
 				>
 				<FileConfiguration
 					Name="Debug XNA 2.0|Win32"
@@ -1043,7 +1043,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\PhysX.Net\Groups Mask.cpp"
+				RelativePath=".\Source\Groups Mask.cpp"
 				>
 				<FileConfiguration
 					Name="Debug XNA 2.0|Win32"
@@ -1111,7 +1111,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\PhysX.Net\Integrals.cpp"
+				RelativePath=".\Source\Integrals.cpp"
 				>
 				<FileConfiguration
 					Name="Debug XNA 2.0|Win32"
@@ -1179,7 +1179,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\PhysX.Net\Math.cpp"
+				RelativePath=".\Source\Math.cpp"
 				>
 				<FileConfiguration
 					Name="Debug XNA 2.0|Win32"
@@ -1247,7 +1247,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\PhysX.Net\Motor Description.cpp"
+				RelativePath=".\Source\Motor Description.cpp"
 				>
 				<FileConfiguration
 					Name="Debug XNA 2.0|Win32"
@@ -1315,7 +1315,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\PhysX.Net\Object Cache.cpp"
+				RelativePath=".\Source\Object Cache.cpp"
 				>
 				<FileConfiguration
 					Name="Debug XNA 2.0|Win32"
@@ -1383,7 +1383,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\PhysX.Net\Pair Flag.cpp"
+				RelativePath=".\Source\Pair Flag.cpp"
 				>
 				<FileConfiguration
 					Name="Debug XNA 2.0|Win32"
@@ -1451,11 +1451,11 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\PhysX.Net\Resources.rc"
+				RelativePath=".\Source\Resources.rc"
 				>
 			</File>
 			<File
-				RelativePath=".\PhysX.Net\Spring Description.cpp"
+				RelativePath=".\Source\Spring Description.cpp"
 				>
 				<FileConfiguration
 					Name="Debug XNA 2.0|Win32"
@@ -1523,7 +1523,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\PhysX.Net\stdafx.cpp"
+				RelativePath=".\Source\stdafx.cpp"
 				>
 				<FileConfiguration
 					Name="Debug XNA 2.0|Win32"
@@ -1591,7 +1591,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\PhysX.Net\Sweep Cache.cpp"
+				RelativePath=".\Source\Sweep Cache.cpp"
 				>
 				<FileConfiguration
 					Name="Debug XNA 2.0|Win32"
@@ -1659,7 +1659,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\PhysX.Net\Sweep Query Hit.cpp"
+				RelativePath=".\Source\Sweep Query Hit.cpp"
 				>
 				<FileConfiguration
 					Name="Debug XNA 2.0|Win32"
@@ -1727,7 +1727,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\PhysX.Net\User Actor Pair Filtering.cpp"
+				RelativePath=".\Source\User Actor Pair Filtering.cpp"
 				>
 				<FileConfiguration
 					Name="Debug XNA 2.0|Win32"
@@ -1795,7 +1795,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\PhysX.Net\User Contact Modify.cpp"
+				RelativePath=".\Source\User Contact Modify.cpp"
 				>
 				<FileConfiguration
 					Name="Debug XNA 2.0|Win32"
@@ -1863,7 +1863,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\PhysX.Net\User Contact Report.cpp"
+				RelativePath=".\Source\User Contact Report.cpp"
 				>
 				<FileConfiguration
 					Name="Debug XNA 2.0|Win32"
@@ -1931,7 +1931,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\PhysX.Net\User Entity Report.cpp"
+				RelativePath=".\Source\User Entity Report.cpp"
 				>
 				<FileConfiguration
 					Name="Debug XNA 2.0|Win32"
@@ -1999,7 +1999,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\PhysX.Net\User Notify.cpp"
+				RelativePath=".\Source\User Notify.cpp"
 				>
 				<FileConfiguration
 					Name="Debug XNA 2.0|Win32"
@@ -2067,7 +2067,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\PhysX.Net\User Output Stream.cpp"
+				RelativePath=".\Source\User Output Stream.cpp"
 				>
 				<FileConfiguration
 					Name="Debug XNA 2.0|Win32"
@@ -2135,7 +2135,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\PhysX.Net\User Trigger Report.cpp"
+				RelativePath=".\Source\User Trigger Report.cpp"
 				>
 				<FileConfiguration
 					Name="Debug XNA 2.0|Win32"
@@ -2203,7 +2203,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\PhysX.Net\User Wheel Contact Modify.cpp"
+				RelativePath=".\Source\User Wheel Contact Modify.cpp"
 				>
 				<FileConfiguration
 					Name="Debug XNA 2.0|Win32"
@@ -2271,7 +2271,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\PhysX.Net\Wheel Contact Data.cpp"
+				RelativePath=".\Source\Wheel Contact Data.cpp"
 				>
 				<FileConfiguration
 					Name="Debug XNA 2.0|Win32"
@@ -2342,7 +2342,7 @@
 				Name="Utilities"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Error Report.cpp"
+					RelativePath=".\Source\Error Report.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -2410,7 +2410,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Physics Collection.cpp"
+					RelativePath=".\Source\Physics Collection.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -2478,7 +2478,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Utilities Library.cpp"
+					RelativePath=".\Source\Utilities Library.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -2546,7 +2546,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Utilities User Notify.cpp"
+					RelativePath=".\Source\Utilities User Notify.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -2614,7 +2614,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Utilities.cpp"
+					RelativePath=".\Source\Utilities.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -2686,7 +2686,7 @@
 				Name="NXU"
 				>
 				<File
-					RelativePath=".\PhysX.Net\NXU\NXU_Asc2Bin.cpp"
+					RelativePath=".\Source\NXU\NXU_Asc2Bin.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 3.0|Win32"
@@ -2698,7 +2698,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\NXU\NXU_ColladaExport.cpp"
+					RelativePath=".\Source\NXU\NXU_ColladaExport.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 3.0|Win32"
@@ -2710,7 +2710,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\NXU\NXU_ColladaImport.cpp"
+					RelativePath=".\Source\NXU\NXU_ColladaImport.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 3.0|Win32"
@@ -2722,7 +2722,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\NXU\NXU_cooking.cpp"
+					RelativePath=".\Source\NXU\NXU_cooking.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 3.0|Win32"
@@ -2734,7 +2734,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\NXU\NXU_customcopy.cpp"
+					RelativePath=".\Source\NXU\NXU_customcopy.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 3.0|Win32"
@@ -2746,7 +2746,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\NXU\NXU_File.cpp"
+					RelativePath=".\Source\NXU\NXU_File.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 3.0|Win32"
@@ -2758,7 +2758,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\NXU\NXU_Geometry.cpp"
+					RelativePath=".\Source\NXU\NXU_Geometry.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 3.0|Win32"
@@ -2770,7 +2770,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\NXU\NXU_GraphicsMesh.cpp"
+					RelativePath=".\Source\NXU\NXU_GraphicsMesh.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 3.0|Win32"
@@ -2782,7 +2782,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\NXU\NXU_helper.cpp"
+					RelativePath=".\Source\NXU\NXU_helper.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 3.0|Win32"
@@ -2794,7 +2794,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\NXU\NXU_hull.cpp"
+					RelativePath=".\Source\NXU\NXU_hull.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 3.0|Win32"
@@ -2806,7 +2806,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\NXU\NXU_PhysicsExport.cpp"
+					RelativePath=".\Source\NXU\NXU_PhysicsExport.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 3.0|Win32"
@@ -2818,7 +2818,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\NXU\NXU_PhysicsInstantiator.cpp"
+					RelativePath=".\Source\NXU\NXU_PhysicsInstantiator.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 3.0|Win32"
@@ -2830,7 +2830,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\NXU\NXU_ScaledCopy.cpp"
+					RelativePath=".\Source\NXU\NXU_ScaledCopy.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 3.0|Win32"
@@ -2842,7 +2842,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\NXU\NXU_schema.cpp"
+					RelativePath=".\Source\NXU\NXU_schema.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 3.0|Win32"
@@ -2854,7 +2854,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\NXU\NXU_SchemaStream.cpp"
+					RelativePath=".\Source\NXU\NXU_SchemaStream.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 3.0|Win32"
@@ -2866,7 +2866,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\NXU\NXU_Streaming.cpp"
+					RelativePath=".\Source\NXU\NXU_Streaming.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 3.0|Win32"
@@ -2878,7 +2878,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\NXU\NXU_string.cpp"
+					RelativePath=".\Source\NXU\NXU_string.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 3.0|Win32"
@@ -2890,7 +2890,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\NXU\NXU_tinystr.cpp"
+					RelativePath=".\Source\NXU\NXU_tinystr.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 3.0|Win32"
@@ -2902,7 +2902,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\NXU\NXU_tinyxml.cpp"
+					RelativePath=".\Source\NXU\NXU_tinyxml.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 3.0|Win32"
@@ -2914,7 +2914,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\NXU\NXU_tinyxmlerror.cpp"
+					RelativePath=".\Source\NXU\NXU_tinyxmlerror.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 3.0|Win32"
@@ -2926,7 +2926,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\NXU\NXU_tinyxmlparser.cpp"
+					RelativePath=".\Source\NXU\NXU_tinyxmlparser.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 3.0|Win32"
@@ -2942,7 +2942,7 @@
 				Name="Collections"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Element Collection.cpp"
+					RelativePath=".\Source\Element Collection.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -3010,11 +3010,11 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\List Base.cpp"
+					RelativePath=".\Source\List Base.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Read Only List.cpp"
+					RelativePath=".\Source\Read Only List.cpp"
 					>
 				</File>
 			</Filter>
@@ -3022,7 +3022,7 @@
 				Name="Actor"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Actor Description Base.cpp"
+					RelativePath=".\Source\Actor Description Base.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -3090,7 +3090,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Actor Description.cpp"
+					RelativePath=".\Source\Actor Description.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -3158,7 +3158,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Actor Group Pair.cpp"
+					RelativePath=".\Source\Actor Group Pair.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -3226,7 +3226,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Actor.cpp"
+					RelativePath=".\Source\Actor.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -3298,7 +3298,7 @@
 				Name="Primitives"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Bounds.cpp"
+					RelativePath=".\Source\Bounds.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -3366,7 +3366,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Box.cpp"
+					RelativePath=".\Source\Box.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -3434,7 +3434,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Capsule.cpp"
+					RelativePath=".\Source\Capsule.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -3502,7 +3502,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Segment.cpp"
+					RelativePath=".\Source\Segment.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -3570,7 +3570,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Sphere.cpp"
+					RelativePath=".\Source\Sphere.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -3638,7 +3638,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Triangle.cpp"
+					RelativePath=".\Source\Triangle.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -3710,7 +3710,7 @@
 				Name="Body"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Body Description.cpp"
+					RelativePath=".\Source\Body Description.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -3782,7 +3782,7 @@
 				Name="Cloth"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Cloth Description.cpp"
+					RelativePath=".\Source\Cloth Description.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -3850,7 +3850,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Cloth Mesh Description.cpp"
+					RelativePath=".\Source\Cloth Mesh Description.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -3918,7 +3918,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Cloth Mesh.cpp"
+					RelativePath=".\Source\Cloth Mesh.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -3986,7 +3986,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Cloth.cpp"
+					RelativePath=".\Source\Cloth.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -4058,7 +4058,7 @@
 				Name="Compartment"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Compartment Description.cpp"
+					RelativePath=".\Source\Compartment Description.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -4126,7 +4126,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Compartment.cpp"
+					RelativePath=".\Source\Compartment.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -4198,7 +4198,7 @@
 				Name="Controller"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Box Controller Description.cpp"
+					RelativePath=".\Source\Box Controller Description.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -4266,7 +4266,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Box Controller.cpp"
+					RelativePath=".\Source\Box Controller.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -4334,7 +4334,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Capsule Controller Description.cpp"
+					RelativePath=".\Source\Capsule Controller Description.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -4402,7 +4402,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Capsule Controller.cpp"
+					RelativePath=".\Source\Capsule Controller.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -4470,7 +4470,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Controller Description.cpp"
+					RelativePath=".\Source\Controller Description.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -4538,7 +4538,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Controller Hit Report.cpp"
+					RelativePath=".\Source\Controller Hit Report.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -4606,7 +4606,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Controller Manager.cpp"
+					RelativePath=".\Source\Controller Manager.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -4674,7 +4674,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Controller Move Result.cpp"
+					RelativePath=".\Source\Controller Move Result.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -4742,7 +4742,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Controller Shape Hit.cpp"
+					RelativePath=".\Source\Controller Shape Hit.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -4810,7 +4810,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Controller.cpp"
+					RelativePath=".\Source\Controller.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -4882,7 +4882,7 @@
 				Name="Convex Mesh"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Convex Mesh Description.cpp"
+					RelativePath=".\Source\Convex Mesh Description.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -4950,7 +4950,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Convex Mesh.cpp"
+					RelativePath=".\Source\Convex Mesh.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -5022,7 +5022,7 @@
 				Name="Cooking"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Cooking Parameters.cpp"
+					RelativePath=".\Source\Cooking Parameters.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -5090,7 +5090,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Cooking.cpp"
+					RelativePath=".\Source\Cooking.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -5162,7 +5162,7 @@
 				Name="Core"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Core Description.cpp"
+					RelativePath=".\Source\Core Description.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -5230,7 +5230,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Core.cpp"
+					RelativePath=".\Source\Core.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -5298,7 +5298,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Runtime File Checks.cpp"
+					RelativePath=".\Source\Runtime File Checks.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -5370,7 +5370,7 @@
 				Name="Fluids"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Fluid Description Base.cpp"
+					RelativePath=".\Source\Fluid Description Base.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -5438,7 +5438,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Fluid Description.cpp"
+					RelativePath=".\Source\Fluid Description.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -5506,7 +5506,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Fluid Emitter Description.cpp"
+					RelativePath=".\Source\Fluid Emitter Description.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -5574,7 +5574,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Fluid Emitter.cpp"
+					RelativePath=".\Source\Fluid Emitter.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -5642,7 +5642,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Fluid Packet Data.cpp"
+					RelativePath=".\Source\Fluid Packet Data.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -5710,7 +5710,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Fluid Packet.cpp"
+					RelativePath=".\Source\Fluid Packet.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -5778,7 +5778,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Fluid User Notify.cpp"
+					RelativePath=".\Source\Fluid User Notify.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -5846,7 +5846,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Fluid.cpp"
+					RelativePath=".\Source\Fluid.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -5914,7 +5914,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Particle Data.cpp"
+					RelativePath=".\Source\Particle Data.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -5982,7 +5982,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Particle Id Data.cpp"
+					RelativePath=".\Source\Particle Id Data.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -6050,7 +6050,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Particle Update Data.cpp"
+					RelativePath=".\Source\Particle Update Data.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -6122,7 +6122,7 @@
 				Name="Force Field"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Force Field Description.cpp"
+					RelativePath=".\Source\Force Field Description.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -6190,7 +6190,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Force Field Kernel.cpp"
+					RelativePath=".\Source\Force Field Kernel.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -6258,7 +6258,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Force Field Linear Kernel Description.cpp"
+					RelativePath=".\Source\Force Field Linear Kernel Description.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -6326,7 +6326,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Force Field Linear Kernel.cpp"
+					RelativePath=".\Source\Force Field Linear Kernel.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -6394,7 +6394,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Force Field Shape Description.cpp"
+					RelativePath=".\Source\Force Field Shape Description.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -6462,7 +6462,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Force Field Shape Group Description.cpp"
+					RelativePath=".\Source\Force Field Shape Group Description.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -6530,7 +6530,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Force Field Shape Group.cpp"
+					RelativePath=".\Source\Force Field Shape Group.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -6598,7 +6598,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Force Field Shape.cpp"
+					RelativePath=".\Source\Force Field Shape.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -6666,7 +6666,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Force Field.cpp"
+					RelativePath=".\Source\Force Field.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -6737,7 +6737,7 @@
 					Name="Box"
 					>
 					<File
-						RelativePath=".\PhysX.Net\Box Force Field Shape Description.cpp"
+						RelativePath=".\Source\Box Force Field Shape Description.cpp"
 						>
 						<FileConfiguration
 							Name="Debug XNA 2.0|Win32"
@@ -6805,7 +6805,7 @@
 						</FileConfiguration>
 					</File>
 					<File
-						RelativePath=".\PhysX.Net\Box Force Field Shape.cpp"
+						RelativePath=".\Source\Box Force Field Shape.cpp"
 						>
 						<FileConfiguration
 							Name="Debug XNA 2.0|Win32"
@@ -6877,7 +6877,7 @@
 					Name="Sphere"
 					>
 					<File
-						RelativePath=".\PhysX.Net\Sphere Force Field Shape Description.cpp"
+						RelativePath=".\Source\Sphere Force Field Shape Description.cpp"
 						>
 						<FileConfiguration
 							Name="Debug XNA 2.0|Win32"
@@ -6945,7 +6945,7 @@
 						</FileConfiguration>
 					</File>
 					<File
-						RelativePath=".\PhysX.Net\Sphere Force Field Shape.cpp"
+						RelativePath=".\Source\Sphere Force Field Shape.cpp"
 						>
 						<FileConfiguration
 							Name="Debug XNA 2.0|Win32"
@@ -7017,7 +7017,7 @@
 					Name="Capsule"
 					>
 					<File
-						RelativePath=".\PhysX.Net\Capsule Force Field Shape Description.cpp"
+						RelativePath=".\Source\Capsule Force Field Shape Description.cpp"
 						>
 						<FileConfiguration
 							Name="Debug XNA 2.0|Win32"
@@ -7085,7 +7085,7 @@
 						</FileConfiguration>
 					</File>
 					<File
-						RelativePath=".\PhysX.Net\Capsule Force Field Shape.cpp"
+						RelativePath=".\Source\Capsule Force Field Shape.cpp"
 						>
 						<FileConfiguration
 							Name="Debug XNA 2.0|Win32"
@@ -7157,7 +7157,7 @@
 					Name="Convex"
 					>
 					<File
-						RelativePath=".\PhysX.Net\Convex Force Field Shape Description.cpp"
+						RelativePath=".\Source\Convex Force Field Shape Description.cpp"
 						>
 						<FileConfiguration
 							Name="Debug XNA 2.0|Win32"
@@ -7225,7 +7225,7 @@
 						</FileConfiguration>
 					</File>
 					<File
-						RelativePath=".\PhysX.Net\Convex Force Field Shape.cpp"
+						RelativePath=".\Source\Convex Force Field Shape.cpp"
 						>
 						<FileConfiguration
 							Name="Debug XNA 2.0|Win32"
@@ -7298,7 +7298,7 @@
 				Name="HeightField"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Height Field Description.cpp"
+					RelativePath=".\Source\Height Field Description.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -7366,7 +7366,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Height Field Sample.cpp"
+					RelativePath=".\Source\Height Field Sample.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -7434,7 +7434,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Height Field.cpp"
+					RelativePath=".\Source\Height Field.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -7506,7 +7506,7 @@
 				Name="Joints"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Cylindrical Joint Description.cpp"
+					RelativePath=".\Source\Cylindrical Joint Description.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -7574,7 +7574,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Cylindrical Joint.cpp"
+					RelativePath=".\Source\Cylindrical Joint.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -7642,7 +7642,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\D6 Joint Description.cpp"
+					RelativePath=".\Source\D6 Joint Description.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -7710,7 +7710,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\D6 Joint.cpp"
+					RelativePath=".\Source\D6 Joint.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -7778,7 +7778,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Distance Joint Description.cpp"
+					RelativePath=".\Source\Distance Joint Description.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -7846,7 +7846,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Distance Joint.cpp"
+					RelativePath=".\Source\Distance Joint.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -7914,7 +7914,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Fixed Joint Description.cpp"
+					RelativePath=".\Source\Fixed Joint Description.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -7982,7 +7982,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Fixed Joint.cpp"
+					RelativePath=".\Source\Fixed Joint.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -8050,7 +8050,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Joint Description.cpp"
+					RelativePath=".\Source\Joint Description.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -8118,7 +8118,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Joint Drive Description.cpp"
+					RelativePath=".\Source\Joint Drive Description.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -8186,7 +8186,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Joint Limit Description.cpp"
+					RelativePath=".\Source\Joint Limit Description.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -8254,7 +8254,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Joint Limit Pair Description.cpp"
+					RelativePath=".\Source\Joint Limit Pair Description.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -8322,7 +8322,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Joint Limit Plane.cpp"
+					RelativePath=".\Source\Joint Limit Plane.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -8390,7 +8390,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Joint Limit Soft Description.cpp"
+					RelativePath=".\Source\Joint Limit Soft Description.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -8458,7 +8458,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Joint Limit Soft Pair Description.cpp"
+					RelativePath=".\Source\Joint Limit Soft Pair Description.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -8526,7 +8526,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Joint.cpp"
+					RelativePath=".\Source\Joint.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -8594,7 +8594,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Point In Plane Joint Description.cpp"
+					RelativePath=".\Source\Point In Plane Joint Description.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -8662,7 +8662,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Point In Plane Joint.cpp"
+					RelativePath=".\Source\Point In Plane Joint.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -8730,7 +8730,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Point On Line Joint Description.cpp"
+					RelativePath=".\Source\Point On Line Joint Description.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -8798,7 +8798,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Point On Line Joint.cpp"
+					RelativePath=".\Source\Point On Line Joint.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -8866,7 +8866,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Prismatic Joint Description.cpp"
+					RelativePath=".\Source\Prismatic Joint Description.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -8934,7 +8934,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Prismatic Joint.cpp"
+					RelativePath=".\Source\Prismatic Joint.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -9002,7 +9002,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Pulley Joint Description.cpp"
+					RelativePath=".\Source\Pulley Joint Description.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -9070,7 +9070,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Pulley Joint.cpp"
+					RelativePath=".\Source\Pulley Joint.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -9138,7 +9138,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Revolute Joint Description.cpp"
+					RelativePath=".\Source\Revolute Joint Description.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -9206,7 +9206,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Revolute Joint.cpp"
+					RelativePath=".\Source\Revolute Joint.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -9274,7 +9274,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Spherical Joint Description.cpp"
+					RelativePath=".\Source\Spherical Joint Description.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -9342,7 +9342,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Spherical Joint.cpp"
+					RelativePath=".\Source\Spherical Joint.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -9414,7 +9414,7 @@
 				Name="Materials"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Material Description.cpp"
+					RelativePath=".\Source\Material Description.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -9482,7 +9482,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Material.cpp"
+					RelativePath=".\Source\Material.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -9554,7 +9554,7 @@
 				Name="CCD"
 				>
 				<File
-					RelativePath=".\PhysX.Net\CCD Skeleton.cpp"
+					RelativePath=".\Source\CCD Skeleton.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -9626,7 +9626,7 @@
 				Name="Shapes"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Shape Description.cpp"
+					RelativePath=".\Source\Shape Description.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -9694,7 +9694,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Shape.cpp"
+					RelativePath=".\Source\Shape.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -9765,7 +9765,7 @@
 					Name="Box"
 					>
 					<File
-						RelativePath=".\PhysX.Net\Box Shape Description.cpp"
+						RelativePath=".\Source\Box Shape Description.cpp"
 						>
 						<FileConfiguration
 							Name="Debug XNA 2.0|Win32"
@@ -9833,7 +9833,7 @@
 						</FileConfiguration>
 					</File>
 					<File
-						RelativePath=".\PhysX.Net\Box Shape.cpp"
+						RelativePath=".\Source\Box Shape.cpp"
 						>
 						<FileConfiguration
 							Name="Debug XNA 2.0|Win32"
@@ -9905,7 +9905,7 @@
 					Name="Convex"
 					>
 					<File
-						RelativePath=".\PhysX.Net\Convex Shape Description.cpp"
+						RelativePath=".\Source\Convex Shape Description.cpp"
 						>
 						<FileConfiguration
 							Name="Debug XNA 2.0|Win32"
@@ -9973,7 +9973,7 @@
 						</FileConfiguration>
 					</File>
 					<File
-						RelativePath=".\PhysX.Net\Convex Shape.cpp"
+						RelativePath=".\Source\Convex Shape.cpp"
 						>
 						<FileConfiguration
 							Name="Debug XNA 2.0|Win32"
@@ -10045,7 +10045,7 @@
 					Name="Plane"
 					>
 					<File
-						RelativePath=".\PhysX.Net\Plane Shape Description.cpp"
+						RelativePath=".\Source\Plane Shape Description.cpp"
 						>
 						<FileConfiguration
 							Name="Debug XNA 2.0|Win32"
@@ -10113,7 +10113,7 @@
 						</FileConfiguration>
 					</File>
 					<File
-						RelativePath=".\PhysX.Net\Plane Shape.cpp"
+						RelativePath=".\Source\Plane Shape.cpp"
 						>
 						<FileConfiguration
 							Name="Debug XNA 2.0|Win32"
@@ -10185,7 +10185,7 @@
 					Name="Capsule"
 					>
 					<File
-						RelativePath=".\PhysX.Net\Capsule Shape Description.cpp"
+						RelativePath=".\Source\Capsule Shape Description.cpp"
 						>
 						<FileConfiguration
 							Name="Debug XNA 2.0|Win32"
@@ -10253,7 +10253,7 @@
 						</FileConfiguration>
 					</File>
 					<File
-						RelativePath=".\PhysX.Net\Capsule Shape.cpp"
+						RelativePath=".\Source\Capsule Shape.cpp"
 						>
 						<FileConfiguration
 							Name="Debug XNA 2.0|Win32"
@@ -10325,7 +10325,7 @@
 					Name="HeightField"
 					>
 					<File
-						RelativePath=".\PhysX.Net\Height Field Shape Description.cpp"
+						RelativePath=".\Source\Height Field Shape Description.cpp"
 						>
 						<FileConfiguration
 							Name="Debug XNA 2.0|Win32"
@@ -10393,7 +10393,7 @@
 						</FileConfiguration>
 					</File>
 					<File
-						RelativePath=".\PhysX.Net\Height Field Shape.cpp"
+						RelativePath=".\Source\Height Field Shape.cpp"
 						>
 						<FileConfiguration
 							Name="Debug XNA 2.0|Win32"
@@ -10465,7 +10465,7 @@
 					Name="Triangle Mesh"
 					>
 					<File
-						RelativePath=".\PhysX.Net\Triangle Mesh Shape Description.cpp"
+						RelativePath=".\Source\Triangle Mesh Shape Description.cpp"
 						>
 						<FileConfiguration
 							Name="Debug XNA 2.0|Win32"
@@ -10533,7 +10533,7 @@
 						</FileConfiguration>
 					</File>
 					<File
-						RelativePath=".\PhysX.Net\Triangle Mesh Shape.cpp"
+						RelativePath=".\Source\Triangle Mesh Shape.cpp"
 						>
 						<FileConfiguration
 							Name="Debug XNA 2.0|Win32"
@@ -10605,7 +10605,7 @@
 					Name="Wheel"
 					>
 					<File
-						RelativePath=".\PhysX.Net\Tire Function Description.cpp"
+						RelativePath=".\Source\Tire Function Description.cpp"
 						>
 						<FileConfiguration
 							Name="Debug XNA 2.0|Win32"
@@ -10673,7 +10673,7 @@
 						</FileConfiguration>
 					</File>
 					<File
-						RelativePath=".\PhysX.Net\Wheel Shape Description.cpp"
+						RelativePath=".\Source\Wheel Shape Description.cpp"
 						>
 						<FileConfiguration
 							Name="Debug XNA 2.0|Win32"
@@ -10741,7 +10741,7 @@
 						</FileConfiguration>
 					</File>
 					<File
-						RelativePath=".\PhysX.Net\Wheel Shape.cpp"
+						RelativePath=".\Source\Wheel Shape.cpp"
 						>
 						<FileConfiguration
 							Name="Debug XNA 2.0|Win32"
@@ -10813,7 +10813,7 @@
 					Name="Sphere"
 					>
 					<File
-						RelativePath=".\PhysX.Net\Sphere Shape Description.cpp"
+						RelativePath=".\Source\Sphere Shape Description.cpp"
 						>
 						<FileConfiguration
 							Name="Debug XNA 2.0|Win32"
@@ -10881,7 +10881,7 @@
 						</FileConfiguration>
 					</File>
 					<File
-						RelativePath=".\PhysX.Net\Sphere Shape.cpp"
+						RelativePath=".\Source\Sphere Shape.cpp"
 						>
 						<FileConfiguration
 							Name="Debug XNA 2.0|Win32"
@@ -10954,7 +10954,7 @@
 				Name="SoftBody"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Soft Body Description.cpp"
+					RelativePath=".\Source\Soft Body Description.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -11022,7 +11022,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Soft Body Mesh Description.cpp"
+					RelativePath=".\Source\Soft Body Mesh Description.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -11090,7 +11090,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Soft Body Mesh.cpp"
+					RelativePath=".\Source\Soft Body Mesh.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -11158,7 +11158,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Soft Body Split Pair Data.cpp"
+					RelativePath=".\Source\Soft Body Split Pair Data.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -11242,7 +11242,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Soft Body Split Pair.cpp"
+					RelativePath=".\Source\Soft Body Split Pair.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -11310,7 +11310,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Soft Body.cpp"
+					RelativePath=".\Source\Soft Body.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -11382,7 +11382,7 @@
 				Name="Scene"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Scene Description.cpp"
+					RelativePath=".\Source\Scene Description.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -11450,7 +11450,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Scene Limits.cpp"
+					RelativePath=".\Source\Scene Limits.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -11518,7 +11518,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Scene Statistics.cpp"
+					RelativePath=".\Source\Scene Statistics.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -11586,7 +11586,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Scene Timing Information.cpp"
+					RelativePath=".\Source\Scene Timing Information.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -11654,7 +11654,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Scene.cpp"
+					RelativePath=".\Source\Scene.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -11726,7 +11726,7 @@
 				Name="Streams"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Memory Reader Stream.cpp"
+					RelativePath=".\Source\Memory Reader Stream.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -11794,7 +11794,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Memory Writer Stream.cpp"
+					RelativePath=".\Source\Memory Writer Stream.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -11862,7 +11862,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Physics Stream.cpp"
+					RelativePath=".\Source\Physics Stream.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -11930,7 +11930,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\User Memory Reader Stream.cpp"
+					RelativePath=".\Source\User Memory Reader Stream.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -11998,7 +11998,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\User Memory Writer Stream.cpp"
+					RelativePath=".\Source\User Memory Writer Stream.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -12070,7 +12070,7 @@
 				Name="Rays"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Ray.cpp"
+					RelativePath=".\Source\Ray.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -12138,7 +12138,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Raycast Hit.cpp"
+					RelativePath=".\Source\Raycast Hit.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -12206,7 +12206,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Raycast Reporting.cpp"
+					RelativePath=".\Source\Raycast Reporting.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -12278,7 +12278,7 @@
 				Name="Triangle Mesh"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Mesh Data.cpp"
+					RelativePath=".\Source\Mesh Data.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -12346,7 +12346,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Simple Triangle Mesh.cpp"
+					RelativePath=".\Source\Simple Triangle Mesh.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -12414,7 +12414,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Triangle Mesh Description.cpp"
+					RelativePath=".\Source\Triangle Mesh Description.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -12482,7 +12482,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Triangle Mesh.cpp"
+					RelativePath=".\Source\Triangle Mesh.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -12554,7 +12554,7 @@
 				Name="Remote Debugger"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Remote Debugger Event Listener.cpp"
+					RelativePath=".\Source\Remote Debugger Event Listener.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -12622,7 +12622,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Remote Debugger.cpp"
+					RelativePath=".\Source\Remote Debugger.cpp"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -12697,106 +12697,106 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\PhysX.Net\Active Transform.h"
+				RelativePath=".\Source\Active Transform.h"
 				>
 			</File>
 			<File
-				RelativePath=".\PhysX.Net\Constraint Dominance.h"
+				RelativePath=".\Source\Constraint Dominance.h"
 				>
 			</File>
 			<File
-				RelativePath=".\PhysX.Net\Debug Renderable.h"
+				RelativePath=".\Source\Debug Renderable.h"
 				>
 			</File>
 			<File
-				RelativePath=".\PhysX.Net\Enums.h"
+				RelativePath=".\Source\Enums.h"
 				>
 			</File>
 			<File
-				RelativePath=".\PhysX.Net\Foundation.h"
+				RelativePath=".\Source\Foundation.h"
 				>
 			</File>
 			<File
-				RelativePath=".\PhysX.Net\Functions.h"
+				RelativePath=".\Source\Functions.h"
 				>
 			</File>
 			<File
-				RelativePath=".\PhysX.Net\Groups Mask.h"
+				RelativePath=".\Source\Groups Mask.h"
 				>
 			</File>
 			<File
-				RelativePath=".\PhysX.Net\IDisposable.h"
+				RelativePath=".\Source\IDisposable.h"
 				>
 			</File>
 			<File
-				RelativePath=".\PhysX.Net\Integrals.h"
+				RelativePath=".\Source\Integrals.h"
 				>
 			</File>
 			<File
-				RelativePath=".\PhysX.Net\Math.h"
+				RelativePath=".\Source\Math.h"
 				>
 			</File>
 			<File
-				RelativePath=".\PhysX.Net\Object Cache.h"
+				RelativePath=".\Source\Object Cache.h"
 				>
 			</File>
 			<File
-				RelativePath=".\PhysX.Net\Pair Flag.h"
+				RelativePath=".\Source\Pair Flag.h"
 				>
 			</File>
 			<File
-				RelativePath=".\PhysX.Net\Physics Collection.h"
+				RelativePath=".\Source\Physics Collection.h"
 				>
 			</File>
 			<File
-				RelativePath=".\PhysX.Net\Physics Parameters.h"
+				RelativePath=".\Source\Physics Parameters.h"
 				>
 			</File>
 			<File
-				RelativePath=".\PhysX.Net\PhysX Exception.h"
+				RelativePath=".\Source\PhysX Exception.h"
 				>
 			</File>
 			<File
-				RelativePath=".\PhysX.Net\resource.h"
+				RelativePath=".\Source\resource.h"
 				>
 			</File>
 			<File
-				RelativePath=".\PhysX.Net\stdafx.h"
+				RelativePath=".\Source\stdafx.h"
 				>
 			</File>
 			<File
-				RelativePath=".\PhysX.Net\Sweep Cache.h"
+				RelativePath=".\Source\Sweep Cache.h"
 				>
 			</File>
 			<File
-				RelativePath=".\PhysX.Net\Sweep Query Hit.h"
+				RelativePath=".\Source\Sweep Query Hit.h"
 				>
 			</File>
 			<Filter
 				Name="Actor"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Actor Description Base.h"
+					RelativePath=".\Source\Actor Description Base.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Actor Description.h"
+					RelativePath=".\Source\Actor Description.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Actor Flags Wrapper.h"
+					RelativePath=".\Source\Actor Flags Wrapper.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Actor Group Pair.h"
+					RelativePath=".\Source\Actor Group Pair.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Actor.h"
+					RelativePath=".\Source\Actor.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Body Flags Wrapper.h"
+					RelativePath=".\Source\Body Flags Wrapper.h"
 					>
 				</File>
 			</Filter>
@@ -12804,7 +12804,7 @@
 				Name="Body"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Body Description.h"
+					RelativePath=".\Source\Body Description.h"
 					>
 				</File>
 			</Filter>
@@ -12812,22 +12812,22 @@
 				Name="Shapes"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Shape Description.h"
+					RelativePath=".\Source\Shape Description.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Shape.h"
+					RelativePath=".\Source\Shape.h"
 					>
 				</File>
 				<Filter
 					Name="Box"
 					>
 					<File
-						RelativePath=".\PhysX.Net\Box Shape Description.h"
+						RelativePath=".\Source\Box Shape Description.h"
 						>
 					</File>
 					<File
-						RelativePath=".\PhysX.Net\Box Shape.h"
+						RelativePath=".\Source\Box Shape.h"
 						>
 					</File>
 				</Filter>
@@ -12835,11 +12835,11 @@
 					Name="Sphere"
 					>
 					<File
-						RelativePath=".\PhysX.Net\Sphere Shape Description.h"
+						RelativePath=".\Source\Sphere Shape Description.h"
 						>
 					</File>
 					<File
-						RelativePath=".\PhysX.Net\Sphere Shape.h"
+						RelativePath=".\Source\Sphere Shape.h"
 						>
 					</File>
 				</Filter>
@@ -12847,11 +12847,11 @@
 					Name="Capsule"
 					>
 					<File
-						RelativePath=".\PhysX.Net\Capsule Shape Description.h"
+						RelativePath=".\Source\Capsule Shape Description.h"
 						>
 					</File>
 					<File
-						RelativePath=".\PhysX.Net\Capsule Shape.h"
+						RelativePath=".\Source\Capsule Shape.h"
 						>
 					</File>
 				</Filter>
@@ -12859,11 +12859,11 @@
 					Name="Triangle Mesh"
 					>
 					<File
-						RelativePath=".\PhysX.Net\Triangle Mesh Shape Description.h"
+						RelativePath=".\Source\Triangle Mesh Shape Description.h"
 						>
 					</File>
 					<File
-						RelativePath=".\PhysX.Net\Triangle Mesh Shape.h"
+						RelativePath=".\Source\Triangle Mesh Shape.h"
 						>
 					</File>
 				</Filter>
@@ -12871,11 +12871,11 @@
 					Name="Heightfield"
 					>
 					<File
-						RelativePath=".\PhysX.Net\Height Field Shape Description.h"
+						RelativePath=".\Source\Height Field Shape Description.h"
 						>
 					</File>
 					<File
-						RelativePath=".\PhysX.Net\Height Field Shape.h"
+						RelativePath=".\Source\Height Field Shape.h"
 						>
 					</File>
 				</Filter>
@@ -12883,19 +12883,19 @@
 					Name="Wheel"
 					>
 					<File
-						RelativePath=".\PhysX.Net\Tire Function Description.h"
+						RelativePath=".\Source\Tire Function Description.h"
 						>
 					</File>
 					<File
-						RelativePath=".\PhysX.Net\Wheel Contact Data.h"
+						RelativePath=".\Source\Wheel Contact Data.h"
 						>
 					</File>
 					<File
-						RelativePath=".\PhysX.Net\Wheel Shape Description.h"
+						RelativePath=".\Source\Wheel Shape Description.h"
 						>
 					</File>
 					<File
-						RelativePath=".\PhysX.Net\Wheel Shape.h"
+						RelativePath=".\Source\Wheel Shape.h"
 						>
 					</File>
 				</Filter>
@@ -12903,11 +12903,11 @@
 					Name="Plane"
 					>
 					<File
-						RelativePath=".\PhysX.Net\Plane Shape Description.h"
+						RelativePath=".\Source\Plane Shape Description.h"
 						>
 					</File>
 					<File
-						RelativePath=".\PhysX.Net\Plane Shape.h"
+						RelativePath=".\Source\Plane Shape.h"
 						>
 					</File>
 				</Filter>
@@ -12915,11 +12915,11 @@
 					Name="Convex"
 					>
 					<File
-						RelativePath=".\PhysX.Net\Convex Shape Description.h"
+						RelativePath=".\Source\Convex Shape Description.h"
 						>
 					</File>
 					<File
-						RelativePath=".\PhysX.Net\Convex Shape.h"
+						RelativePath=".\Source\Convex Shape.h"
 						>
 					</File>
 				</Filter>
@@ -12928,35 +12928,35 @@
 				Name="Controller"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Box Controller Description.h"
+					RelativePath=".\Source\Box Controller Description.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Box Controller.h"
+					RelativePath=".\Source\Box Controller.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Capsule Controller Description.h"
+					RelativePath=".\Source\Capsule Controller Description.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Capsule Controller.h"
+					RelativePath=".\Source\Capsule Controller.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Controller Description.h"
+					RelativePath=".\Source\Controller Description.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Controller Enums.h"
+					RelativePath=".\Source\Controller Enums.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Controller Hit Report.h"
+					RelativePath=".\Source\Controller Hit Report.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Controller Manager.h"
+					RelativePath=".\Source\Controller Manager.h"
 					>
 					<FileConfiguration
 						Name="Debug XNA 2.0|Win32"
@@ -12974,15 +12974,15 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Controller Move Result.h"
+					RelativePath=".\Source\Controller Move Result.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Controller Shape Hit.h"
+					RelativePath=".\Source\Controller Shape Hit.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Controller.h"
+					RelativePath=".\Source\Controller.h"
 					>
 				</File>
 			</Filter>
@@ -12990,50 +12990,50 @@
 				Name="Force Field"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Force Field Description.h"
+					RelativePath=".\Source\Force Field Description.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Force Field Kernel.h"
+					RelativePath=".\Source\Force Field Kernel.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Force Field Linear Kernel Description.h"
+					RelativePath=".\Source\Force Field Linear Kernel Description.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Force Field Linear Kernel.h"
+					RelativePath=".\Source\Force Field Linear Kernel.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Force Field Shape Description.h"
+					RelativePath=".\Source\Force Field Shape Description.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Force Field Shape Group Description.h"
+					RelativePath=".\Source\Force Field Shape Group Description.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Force Field Shape Group.h"
+					RelativePath=".\Source\Force Field Shape Group.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Force Field Shape.h"
+					RelativePath=".\Source\Force Field Shape.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Force Field.h"
+					RelativePath=".\Source\Force Field.h"
 					>
 				</File>
 				<Filter
 					Name="Box"
 					>
 					<File
-						RelativePath=".\PhysX.Net\Box Force Field Shape Description.h"
+						RelativePath=".\Source\Box Force Field Shape Description.h"
 						>
 					</File>
 					<File
-						RelativePath=".\PhysX.Net\Box Force Field Shape.h"
+						RelativePath=".\Source\Box Force Field Shape.h"
 						>
 					</File>
 				</Filter>
@@ -13041,11 +13041,11 @@
 					Name="Sphere"
 					>
 					<File
-						RelativePath=".\PhysX.Net\Sphere Force Field Shape Description.h"
+						RelativePath=".\Source\Sphere Force Field Shape Description.h"
 						>
 					</File>
 					<File
-						RelativePath=".\PhysX.Net\Sphere Force Field Shape.h"
+						RelativePath=".\Source\Sphere Force Field Shape.h"
 						>
 					</File>
 				</Filter>
@@ -13053,11 +13053,11 @@
 					Name="Capsule"
 					>
 					<File
-						RelativePath=".\PhysX.Net\Capsule Force Field Shape Description.h"
+						RelativePath=".\Source\Capsule Force Field Shape Description.h"
 						>
 					</File>
 					<File
-						RelativePath=".\PhysX.Net\Capsule Force Field Shape.h"
+						RelativePath=".\Source\Capsule Force Field Shape.h"
 						>
 					</File>
 				</Filter>
@@ -13065,11 +13065,11 @@
 					Name="Convex"
 					>
 					<File
-						RelativePath=".\PhysX.Net\Convex Force Field Shape Description.h"
+						RelativePath=".\Source\Convex Force Field Shape Description.h"
 						>
 					</File>
 					<File
-						RelativePath=".\PhysX.Net\Convex Force Field Shape.h"
+						RelativePath=".\Source\Convex Force Field Shape.h"
 						>
 					</File>
 				</Filter>
@@ -13078,127 +13078,127 @@
 				Name="Joints"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Cylindrical Joint Description.h"
+					RelativePath=".\Source\Cylindrical Joint Description.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Cylindrical Joint.h"
+					RelativePath=".\Source\Cylindrical Joint.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\D6 Joint Description.h"
+					RelativePath=".\Source\D6 Joint Description.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\D6 Joint.h"
+					RelativePath=".\Source\D6 Joint.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Distance Joint Description.h"
+					RelativePath=".\Source\Distance Joint Description.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Distance Joint.h"
+					RelativePath=".\Source\Distance Joint.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Fixed Joint Description.h"
+					RelativePath=".\Source\Fixed Joint Description.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Fixed Joint.h"
+					RelativePath=".\Source\Fixed Joint.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Joint Description.h"
+					RelativePath=".\Source\Joint Description.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Joint Drive Description.h"
+					RelativePath=".\Source\Joint Drive Description.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Joint Enums.h"
+					RelativePath=".\Source\Joint Enums.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Joint Limit Description.h"
+					RelativePath=".\Source\Joint Limit Description.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Joint Limit Pair Description.h"
+					RelativePath=".\Source\Joint Limit Pair Description.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Joint Limit Plane.h"
+					RelativePath=".\Source\Joint Limit Plane.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Joint Limit Soft Description.h"
+					RelativePath=".\Source\Joint Limit Soft Description.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Joint Limit Soft Pair Description.h"
+					RelativePath=".\Source\Joint Limit Soft Pair Description.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Joint.h"
+					RelativePath=".\Source\Joint.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Motor Description.h"
+					RelativePath=".\Source\Motor Description.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Point In Plane Joint Description.h"
+					RelativePath=".\Source\Point In Plane Joint Description.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Point In Plane Joint.h"
+					RelativePath=".\Source\Point In Plane Joint.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Point On Line Joint Description.h"
+					RelativePath=".\Source\Point On Line Joint Description.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Point On Line Joint.h"
+					RelativePath=".\Source\Point On Line Joint.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Prismatic Joint Description.h"
+					RelativePath=".\Source\Prismatic Joint Description.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Prismatic Joint.h"
+					RelativePath=".\Source\Prismatic Joint.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Pulley Joint Description.h"
+					RelativePath=".\Source\Pulley Joint Description.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Pulley Joint.h"
+					RelativePath=".\Source\Pulley Joint.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Revolute Joint Description.h"
+					RelativePath=".\Source\Revolute Joint Description.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Revolute Joint.h"
+					RelativePath=".\Source\Revolute Joint.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Spherical Joint Description.h"
+					RelativePath=".\Source\Spherical Joint Description.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Spherical Joint.h"
+					RelativePath=".\Source\Spherical Joint.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Spring Description.h"
+					RelativePath=".\Source\Spring Description.h"
 					>
 				</File>
 			</Filter>
@@ -13206,55 +13206,55 @@
 				Name="Fluids"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Fluid Description Base.h"
+					RelativePath=".\Source\Fluid Description Base.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Fluid Description.h"
+					RelativePath=".\Source\Fluid Description.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Fluid Emitter Description.h"
+					RelativePath=".\Source\Fluid Emitter Description.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Fluid Emitter Flags Wrapper.h"
+					RelativePath=".\Source\Fluid Emitter Flags Wrapper.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Fluid Emitter.h"
+					RelativePath=".\Source\Fluid Emitter.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Fluid Enums.h"
+					RelativePath=".\Source\Fluid Enums.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Fluid Flags Wrapper.h"
+					RelativePath=".\Source\Fluid Flags Wrapper.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Fluid Packet Data.h"
+					RelativePath=".\Source\Fluid Packet Data.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Fluid Packet.h"
+					RelativePath=".\Source\Fluid Packet.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Fluid.h"
+					RelativePath=".\Source\Fluid.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Particle Data.h"
+					RelativePath=".\Source\Particle Data.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Particle Id Data.h"
+					RelativePath=".\Source\Particle Id Data.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Particle Update Data.h"
+					RelativePath=".\Source\Particle Update Data.h"
 					>
 				</File>
 			</Filter>
@@ -13262,15 +13262,15 @@
 				Name="Materials"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Material Description.h"
+					RelativePath=".\Source\Material Description.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Material Enums.h"
+					RelativePath=".\Source\Material Enums.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Material.h"
+					RelativePath=".\Source\Material.h"
 					>
 				</File>
 			</Filter>
@@ -13278,15 +13278,15 @@
 				Name="Heightfield"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Height Field Description.h"
+					RelativePath=".\Source\Height Field Description.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Height Field Sample.h"
+					RelativePath=".\Source\Height Field Sample.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Height Field.h"
+					RelativePath=".\Source\Height Field.h"
 					>
 				</File>
 			</Filter>
@@ -13294,19 +13294,19 @@
 				Name="Cloth"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Cloth Description.h"
+					RelativePath=".\Source\Cloth Description.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Cloth Mesh Description.h"
+					RelativePath=".\Source\Cloth Mesh Description.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Cloth Mesh.h"
+					RelativePath=".\Source\Cloth Mesh.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Cloth.h"
+					RelativePath=".\Source\Cloth.h"
 					>
 				</File>
 			</Filter>
@@ -13314,11 +13314,11 @@
 				Name="Convex Mesh"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Convex Mesh Description.h"
+					RelativePath=".\Source\Convex Mesh Description.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Convex Mesh.h"
+					RelativePath=".\Source\Convex Mesh.h"
 					>
 				</File>
 			</Filter>
@@ -13326,11 +13326,11 @@
 				Name="Compartment"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Compartment Description.h"
+					RelativePath=".\Source\Compartment Description.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Compartment.h"
+					RelativePath=".\Source\Compartment.h"
 					>
 				</File>
 			</Filter>
@@ -13338,23 +13338,23 @@
 				Name="Core"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Core Description.h"
+					RelativePath=".\Source\Core Description.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Core.h"
+					RelativePath=".\Source\Core.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Physics Parameters Wrapper.h"
+					RelativePath=".\Source\Physics Parameters Wrapper.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\PhysX Initialization Exception.h"
+					RelativePath=".\Source\PhysX Initialization Exception.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Runtime File Checks.h"
+					RelativePath=".\Source\Runtime File Checks.h"
 					>
 				</File>
 			</Filter>
@@ -13362,11 +13362,11 @@
 				Name="Cooking"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Cooking Parameters.h"
+					RelativePath=".\Source\Cooking Parameters.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Cooking.h"
+					RelativePath=".\Source\Cooking.h"
 					>
 				</File>
 			</Filter>
@@ -13374,15 +13374,15 @@
 				Name="Streams"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Memory Reader Stream.h"
+					RelativePath=".\Source\Memory Reader Stream.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Memory Writer Stream.h"
+					RelativePath=".\Source\Memory Writer Stream.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Physics Stream.h"
+					RelativePath=".\Source\Physics Stream.h"
 					>
 				</File>
 			</Filter>
@@ -13390,11 +13390,11 @@
 				Name="Utilities"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Error Report.h"
+					RelativePath=".\Source\Error Report.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Parameter Description.h"
+					RelativePath=".\Source\Parameter Description.h"
 					>
 				</File>
 				<File
@@ -13402,15 +13402,15 @@
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Utilities Library.h"
+					RelativePath=".\Source\Utilities Library.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Utilities User Notify.h"
+					RelativePath=".\Source\Utilities User Notify.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Utilities.h"
+					RelativePath=".\Source\Utilities.h"
 					>
 				</File>
 				<Filter
@@ -13422,27 +13422,27 @@
 				Name="SoftBody"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Soft Body Description.h"
+					RelativePath=".\Source\Soft Body Description.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Soft Body Mesh Description.h"
+					RelativePath=".\Source\Soft Body Mesh Description.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Soft Body Mesh.h"
+					RelativePath=".\Source\Soft Body Mesh.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Soft Body Split Pair Data.h"
+					RelativePath=".\Source\Soft Body Split Pair Data.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Soft Body Split Pair.h"
+					RelativePath=".\Source\Soft Body Split Pair.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Soft Body.h"
+					RelativePath=".\Source\Soft Body.h"
 					>
 				</File>
 			</Filter>
@@ -13450,15 +13450,15 @@
 				Name="Rays"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Ray.h"
+					RelativePath=".\Source\Ray.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Raycast Hit.h"
+					RelativePath=".\Source\Raycast Hit.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Raycast Reporting.h"
+					RelativePath=".\Source\Raycast Reporting.h"
 					>
 				</File>
 			</Filter>
@@ -13470,23 +13470,23 @@
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Scene Description.h"
+					RelativePath=".\Source\Scene Description.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Scene Limits.h"
+					RelativePath=".\Source\Scene Limits.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Scene Statistics.h"
+					RelativePath=".\Source\Scene Statistics.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Scene Timing Information.h"
+					RelativePath=".\Source\Scene Timing Information.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Scene.h"
+					RelativePath=".\Source\Scene.h"
 					>
 				</File>
 			</Filter>
@@ -13494,47 +13494,47 @@
 				Name="Reports"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Fluid User Notify.h"
+					RelativePath=".\Source\Fluid User Notify.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\User Actor Pair Filtering.h"
+					RelativePath=".\Source\User Actor Pair Filtering.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\User Contact Modify.h"
+					RelativePath=".\Source\User Contact Modify.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\User Contact Report.h"
+					RelativePath=".\Source\User Contact Report.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\User Entity Report.h"
+					RelativePath=".\Source\User Entity Report.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\User Memory Reader Stream.h"
+					RelativePath=".\Source\User Memory Reader Stream.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\User Memory Writer Stream.h"
+					RelativePath=".\Source\User Memory Writer Stream.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\User Notify.h"
+					RelativePath=".\Source\User Notify.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\User Output Stream.h"
+					RelativePath=".\Source\User Output Stream.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\User Trigger Report.h"
+					RelativePath=".\Source\User Trigger Report.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\User Wheel Contact Modify.h"
+					RelativePath=".\Source\User Wheel Contact Modify.h"
 					>
 				</File>
 			</Filter>
@@ -13542,15 +13542,15 @@
 				Name="Remote Debugger"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Remote Debugger Event Listener.h"
+					RelativePath=".\Source\Remote Debugger Event Listener.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Remote Debugger Values.h"
+					RelativePath=".\Source\Remote Debugger Values.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Remote Debugger.h"
+					RelativePath=".\Source\Remote Debugger.h"
 					>
 				</File>
 			</Filter>
@@ -13558,27 +13558,27 @@
 				Name="Primitives"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Bounds.h"
+					RelativePath=".\Source\Bounds.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Box.h"
+					RelativePath=".\Source\Box.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Capsule.h"
+					RelativePath=".\Source\Capsule.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Segment.h"
+					RelativePath=".\Source\Segment.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Sphere.h"
+					RelativePath=".\Source\Sphere.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Triangle.h"
+					RelativePath=".\Source\Triangle.h"
 					>
 				</File>
 			</Filter>
@@ -13586,19 +13586,19 @@
 				Name="Triangle Mesh"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Mesh Data.h"
+					RelativePath=".\Source\Mesh Data.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Simple Triangle Mesh.h"
+					RelativePath=".\Source\Simple Triangle Mesh.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Triangle Mesh Description.h"
+					RelativePath=".\Source\Triangle Mesh Description.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Triangle Mesh.h"
+					RelativePath=".\Source\Triangle Mesh.h"
 					>
 				</File>
 			</Filter>
@@ -13606,83 +13606,83 @@
 				Name="NXU"
 				>
 				<File
-					RelativePath=".\PhysX.Net\NXU\NXU_Asc2Bin.h"
+					RelativePath=".\Source\NXU\NXU_Asc2Bin.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\NXU\NXU_ColladaExport.h"
+					RelativePath=".\Source\NXU\NXU_ColladaExport.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\NXU\NXU_ColladaImport.h"
+					RelativePath=".\Source\NXU\NXU_ColladaImport.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\NXU\NXU_cooking.h"
+					RelativePath=".\Source\NXU\NXU_cooking.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\NXU\NXU_customcopy.h"
+					RelativePath=".\Source\NXU\NXU_customcopy.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\NXU\NXU_File.h"
+					RelativePath=".\Source\NXU\NXU_File.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\NXU\NXU_Geometry.h"
+					RelativePath=".\Source\NXU\NXU_Geometry.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\NXU\NXU_GraphicsMesh.h"
+					RelativePath=".\Source\NXU\NXU_GraphicsMesh.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\NXU\NXU_helper.h"
+					RelativePath=".\Source\NXU\NXU_helper.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\NXU\NXU_hull.h"
+					RelativePath=".\Source\NXU\NXU_hull.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\NXU\NXU_PhysicsExport.h"
+					RelativePath=".\Source\NXU\NXU_PhysicsExport.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\NXU\NXU_PhysicsInstantiator.h"
+					RelativePath=".\Source\NXU\NXU_PhysicsInstantiator.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\NXU\NXU_ScaledCopy.h"
+					RelativePath=".\Source\NXU\NXU_ScaledCopy.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\NXU\NXU_schema.h"
+					RelativePath=".\Source\NXU\NXU_schema.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\NXU\NXU_SchemaStream.h"
+					RelativePath=".\Source\NXU\NXU_SchemaStream.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\NXU\NXU_SchemaTypes.h"
+					RelativePath=".\Source\NXU\NXU_SchemaTypes.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\NXU\NXU_Streaming.h"
+					RelativePath=".\Source\NXU\NXU_Streaming.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\NXU\NXU_string.h"
+					RelativePath=".\Source\NXU\NXU_string.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\NXU\NXU_tinystr.h"
+					RelativePath=".\Source\NXU\NXU_tinystr.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\NXU\NXU_tinyxml.h"
+					RelativePath=".\Source\NXU\NXU_tinyxml.h"
 					>
 				</File>
 			</Filter>
@@ -13690,19 +13690,19 @@
 				Name="Collections"
 				>
 				<File
-					RelativePath=".\PhysX.Net\Delegates.h"
+					RelativePath=".\Source\Delegates.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Element Collection.h"
+					RelativePath=".\Source\Element Collection.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\List Base.h"
+					RelativePath=".\Source\List Base.h"
 					>
 				</File>
 				<File
-					RelativePath=".\PhysX.Net\Read Only List.h"
+					RelativePath=".\Source\Read Only List.h"
 					>
 				</File>
 			</Filter>
@@ -13710,7 +13710,7 @@
 				Name="CCD"
 				>
 				<File
-					RelativePath=".\PhysX.Net\CCD Skeleton.h"
+					RelativePath=".\Source\CCD Skeleton.h"
 					>
 				</File>
 			</Filter>
