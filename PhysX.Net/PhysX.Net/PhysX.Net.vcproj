@@ -13512,7 +13512,7 @@
 			>
 		</File>
 		<File
-			RelativePath="..\Readme.txt"
+			RelativePath=".\Readme.txt"
 			>
 		</File>
 	</Files>
