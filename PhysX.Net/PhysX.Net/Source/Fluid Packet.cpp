@@ -27,11 +27,11 @@ FluidPacket::!FluidPacket()
 	if( this->IsDisposed == true )
 		return;
 	
-	onDisposing( this, nullptr );
+	OnDisposing( this, nullptr );
 	
 	SAFE_DELETE( _fluidPacket );
 	
-	onDisposed( this, nullptr );
+	OnDisposed( this, nullptr );
 }
 bool FluidPacket::IsDisposed::get()
 {

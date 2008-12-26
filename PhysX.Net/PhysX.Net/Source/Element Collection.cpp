@@ -22,14 +22,14 @@ using namespace StillDesign::PhysX;
 //
 //generic< class T >void ReadOnlyElementCollection< T >::ReadOnlyElementCollection_onAdd( System::Object^ sender, T item )
 //{
-//	item->onDisposing += gcnew EventHandler( this, &ReadOnlyElementCollection< T >::ReadOnlyElement_onDisposing );
+//	item->OnDisposing += gcnew EventHandler( this, &ReadOnlyElementCollection< T >::ReadOnlyElement_OnDisposing );
 //}
 //generic< class T >void ReadOnlyElementCollection< T >::ReadOnlyElementCollection_onRemove( System::Object^ sender, T item )
 //{
-//	item->onDisposing -= gcnew EventHandler( this, &ReadOnlyElementCollection< T >::ReadOnlyElement_onDisposing );
+//	item->OnDisposing -= gcnew EventHandler( this, &ReadOnlyElementCollection< T >::ReadOnlyElement_OnDisposing );
 //}
 //
-//generic< class T >void ReadOnlyElementCollection< T >::ReadOnlyElement_onDisposing( System::Object^ sender, EventArgs^ e )
+//generic< class T >void ReadOnlyElementCollection< T >::ReadOnlyElement_OnDisposing( System::Object^ sender, EventArgs^ e )
 //{
 //	this->Items->Remove( (T)sender );
 //}
@@ -39,8 +39,8 @@ using namespace StillDesign::PhysX;
 generic< class T >
 ElementCollection< T >::ElementCollection()
 {
-	this->ItemAdded += gcnew EventHandlerItem< T >( this, &ElementCollection::ElementCollection_onAdd );
-	this->ItemRemoved += gcnew EventHandlerItem< T >( this, &ElementCollection::ElementCollection_onRemove );
+	this->ItemAdded += gcnew EventHandlerItem< T >( this, &ElementCollection::ElementCollection_OnAdd );
+	this->ItemRemoved += gcnew EventHandlerItem< T >( this, &ElementCollection::ElementCollection_OnRemove );
 }
 
 //generic< class T, class R >ElementCollection< T, R >::!ElementCollection()
@@ -72,19 +72,19 @@ void ElementCollection< T >::DisposeOfAll()
 }
 
 generic< class T >
-void ElementCollection< T >::ElementCollection_onAdd( System::Object^ sender, T item )
+void ElementCollection< T >::ElementCollection_OnAdd( System::Object^ sender, T item )
 {
-	item->onDisposing += gcnew EventHandler( this, &ElementCollection< T >::Element_onDisposing );
+	item->OnDisposing += gcnew EventHandler( this, &ElementCollection< T >::Element_OnDisposing );
 }
 
 generic< class T >
-void ElementCollection< T >::ElementCollection_onRemove( System::Object^ sender, T item )
+void ElementCollection< T >::ElementCollection_OnRemove( System::Object^ sender, T item )
 {
-	item->onDisposing -= gcnew EventHandler( this, &ElementCollection< T >::Element_onDisposing );
+	item->OnDisposing -= gcnew EventHandler( this, &ElementCollection< T >::Element_OnDisposing );
 }
 
 generic< class T >
-void ElementCollection< T >::Element_onDisposing( System::Object^ sender, EventArgs^ e )
+void ElementCollection< T >::Element_OnDisposing( System::Object^ sender, EventArgs^ e )
 {
 	this->Remove( (T)sender );
 }

@@ -93,9 +93,9 @@ namespace StillDesign
 				
 			public:
 				/// <summary>Raised before any disposing is performed</summary>
-				virtual event EventHandler^ onDisposing;
+				virtual event EventHandler^ OnDisposing;
 				/// <summary>Raised once all disposing is performed</summary>
-				virtual event EventHandler^ onDisposed;
+				virtual event EventHandler^ OnDisposed;
 				
 			private:
 				NxScene* _scene;

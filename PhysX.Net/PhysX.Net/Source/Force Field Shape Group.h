@@ -23,8 +23,8 @@ namespace StillDesign
 				//	
 				//};
 				
-				virtual event EventHandler^ onDisposing;
-				virtual event EventHandler^ onDisposed;
+				virtual event EventHandler^ OnDisposing;
+				virtual event EventHandler^ OnDisposed;
 			
 			private:
 				NxForceFieldShapeGroup* _group;

@@ -29,14 +29,14 @@ CCDSkeleton::!CCDSkeleton()
 	if( this->IsDisposed == true )
 		return;
 	
-	onDisposing( this, nullptr );
+	OnDisposing( this, nullptr );
 	
 	_core->UnmanagedPointer->releaseCCDSkeleton( *_skeleton );
 	_skeleton = NULL;
 	
 	_core = nullptr;
 	
-	onDisposed( this, nullptr );
+	OnDisposed( this, nullptr );
 }
 bool CCDSkeleton::IsDisposed::get()
 {

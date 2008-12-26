@@ -9,8 +9,8 @@ namespace StillDesign
 		public interface class IDisposable : System::IDisposable
 		{
 			public:
-				event EventHandler^ onDisposing;
-				event EventHandler^ onDisposed;
+				event EventHandler^ OnDisposing;
+				event EventHandler^ OnDisposed;
 				
 				property bool IsDisposed
 				{

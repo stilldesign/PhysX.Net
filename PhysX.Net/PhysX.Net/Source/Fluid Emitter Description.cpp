@@ -30,14 +30,14 @@ FluidEmitterDescription::!FluidEmitterDescription()
 	if( this->IsDisposed == true )
 		return;
 	
-	onDisposing( this, nullptr );
+	OnDisposing( this, nullptr );
 
 	SAFE_DELETE( _fluidEmitterDesc );
 	
 	_shape = nullptr;
 	_userData = nullptr;
 	
-	onDisposed( this, nullptr );
+	OnDisposed( this, nullptr );
 }
 bool FluidEmitterDescription::IsDisposed::get()
 {

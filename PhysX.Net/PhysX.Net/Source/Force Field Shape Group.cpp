@@ -38,7 +38,7 @@ ForceFieldShapeGroup::!ForceFieldShapeGroup()
 	if( this->IsDisposed == true )
 		return;
 	
-	onDisposing( this, nullptr );
+	OnDisposing( this, nullptr );
 	
 	_shapes->DisposeOfAll();
 	
@@ -51,7 +51,7 @@ ForceFieldShapeGroup::!ForceFieldShapeGroup()
 	_shapes = nullptr;
 	_userData = nullptr;
 	
-	onDisposed( this, nullptr );
+	OnDisposed( this, nullptr );
 }
 bool ForceFieldShapeGroup::IsDisposed::get()
 {

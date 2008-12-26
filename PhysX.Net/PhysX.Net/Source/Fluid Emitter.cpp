@@ -36,7 +36,7 @@ FluidEmitter::!FluidEmitter()
 	if( this->IsDisposed == true )
 		return;
 	
-	onDisposing( this, nullptr );
+	OnDisposing( this, nullptr );
 	
 	_fluid->UnmanagedPointer->releaseEmitter( *_fluidEmitter );
 	
@@ -46,7 +46,7 @@ FluidEmitter::!FluidEmitter()
 	_shape = nullptr;
 	_userData = nullptr;
 	
-	onDisposed( this, nullptr );
+	OnDisposed( this, nullptr );
 }
 bool FluidEmitter::IsDisposed::get()
 {

@@ -12,7 +12,7 @@ void ObjectCache::Add( intptr_t pointer, Object^ object )
 	{
 		StillDesign::PhysX::IDisposable^ disposableObject = dynamic_cast<StillDesign::PhysX::IDisposable^>( object );
 		
-		disposableObject->onDisposing += gcnew EventHandler( &ObjectCache::_cache_onDisposing );
+		disposableObject->OnDisposing += gcnew EventHandler( &ObjectCache::_cache_OnDisposing );
 	}
 	
 	_cache->Add( pointer, object );
@@ -26,7 +26,7 @@ bool ObjectCache::Remove( intptr_t pointer )
 	{
 		StillDesign::PhysX::IDisposable^ disposableObject = dynamic_cast<StillDesign::PhysX::IDisposable^>( object );
 		
-		disposableObject->onDisposing -= gcnew EventHandler( &ObjectCache::_cache_onDisposing );
+		disposableObject->OnDisposing -= gcnew EventHandler( &ObjectCache::_cache_OnDisposing );
 	}
 	
 	return _cache->Remove( pointer );
@@ -92,7 +92,7 @@ T ObjectCache::GetObject( intptr_t pointer )
 //		return nullptr;
 //}
 
-void ObjectCache::_cache_onDisposing( Object^ sender, EventArgs^ e )
+void ObjectCache::_cache_OnDisposing( Object^ sender, EventArgs^ e )
 {
 	Remove( sender );
 }

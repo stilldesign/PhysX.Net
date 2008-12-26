@@ -33,7 +33,7 @@ StillDesign::PhysX::ControllerManager::!ControllerManager()
 	if( this->IsDisposed == true )
 		return;
 	
-	onDisposing( this, nullptr );
+	OnDisposing( this, nullptr );
 	
 	_controllers->DisposeOfAll();
 	
@@ -45,7 +45,7 @@ StillDesign::PhysX::ControllerManager::!ControllerManager()
 	
 	_userData = nullptr;
 	
-	onDisposed( this, nullptr );
+	OnDisposed( this, nullptr );
 }
 bool StillDesign::PhysX::ControllerManager::IsDisposed::get()
 {

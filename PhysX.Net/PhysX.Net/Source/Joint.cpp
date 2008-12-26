@@ -44,7 +44,7 @@ Joint::!Joint()
 	if( this->IsDisposed == true )
 		return;
 	
-	onDisposing( this, nullptr );
+	OnDisposing( this, nullptr );
 	
 	_scene->UnmanagedPointer->releaseJoint( *_joint );
 	
@@ -55,7 +55,7 @@ Joint::!Joint()
 	_actor1 = nullptr;
 	_actor2 = nullptr;
 	
-	onDisposed( this, nullptr );
+	OnDisposed( this, nullptr );
 }
 bool Joint::IsDisposed::get()
 {

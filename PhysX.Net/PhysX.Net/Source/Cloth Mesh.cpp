@@ -30,14 +30,14 @@ ClothMesh::!ClothMesh()
 	if( this->IsDisposed == true )
 		return;
 	
-	onDisposing( this, nullptr );
+	OnDisposing( this, nullptr );
 	
 	_core->UnmanagedPointer->releaseClothMesh( *_clothMesh );
 	
 	_clothMesh = NULL;
 	_core = nullptr;
 	
-	onDisposed( this, nullptr );
+	OnDisposed( this, nullptr );
 }
 bool ClothMesh::IsDisposed::get()
 {

@@ -14,8 +14,8 @@ namespace StillDesign
 		public ref class CCDSkeleton : IDisposable
 		{
 			public:
-				virtual event EventHandler^ onDisposing;
-				virtual event EventHandler^ onDisposed;
+				virtual event EventHandler^ OnDisposing;
+				virtual event EventHandler^ OnDisposed;
 				
 			private:
 				NxCCDSkeleton* _skeleton;

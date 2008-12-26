@@ -27,14 +27,14 @@ HeightField::!HeightField()
 	if( this->IsDisposed == true )
 		return;
 	
-	onDisposing( this, nullptr );
+	OnDisposing( this, nullptr );
 	
 	_core->UnmanagedPointer->releaseHeightField( *_heightField );
 	
 	_heightField = NULL;
 	_core = nullptr;
 	
-	onDisposed( this, nullptr );
+	OnDisposed( this, nullptr );
 }
 
 bool HeightField::IsDisposed::get()

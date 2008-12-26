@@ -48,7 +48,7 @@ SoftBody::!SoftBody()
 	if( this->IsDisposed == true )
 		return;
 	
-	onDisposing( this, nullptr );
+	OnDisposing( this, nullptr );
 	
 	_scene->UnmanagedPointer->releaseSoftBody( *_softBody );
 	
@@ -59,7 +59,7 @@ SoftBody::!SoftBody()
 	_meshData = nullptr;
 	_userData = nullptr;
 	
-	onDisposed( this, nullptr );
+	OnDisposed( this, nullptr );
 }
 bool SoftBody::IsDisposed::get()
 {

@@ -18,8 +18,8 @@ namespace StillDesign
 		public ref class ClothMesh : StillDesign::PhysX::IDisposable
 		{
 			public:
-				virtual event EventHandler^ onDisposing;
-				virtual event EventHandler^ onDisposed;
+				virtual event EventHandler^ OnDisposing;
+				virtual event EventHandler^ OnDisposed;
 				
 			private:
 				NxClothMesh* _clothMesh;

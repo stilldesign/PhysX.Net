@@ -32,7 +32,7 @@ ConvexMeshDescription::!ConvexMeshDescription()
 	if( this->IsDisposed == true )
 		return;
 	
-	onDisposing( this, nullptr );
+	OnDisposing( this, nullptr );
 	
 	if( _desc != NULL )
 	{
@@ -47,7 +47,7 @@ ConvexMeshDescription::!ConvexMeshDescription()
 		SAFE_DELETE( _desc );
 	}
 	
-	onDisposed( this, nullptr );
+	OnDisposed( this, nullptr );
 }
 bool ConvexMeshDescription::IsDisposed::get()
 {

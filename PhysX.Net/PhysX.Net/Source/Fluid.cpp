@@ -84,7 +84,7 @@ Fluid::!Fluid()
 	if( this->IsDisposed == true )
 		return;
 	
-	onDisposing( this, nullptr );
+	OnDisposing( this, nullptr );
 	
 	_fluidEmitters->DisposeOfAll();
 	
@@ -99,7 +99,7 @@ Fluid::!Fluid()
 	_fluidEmitters = nullptr;
 	//_implicitScreenMesh = nullptr;
 	
-	onDisposed( this, nullptr );
+	OnDisposed( this, nullptr );
 }
 
 bool Fluid::IsDisposed::get()

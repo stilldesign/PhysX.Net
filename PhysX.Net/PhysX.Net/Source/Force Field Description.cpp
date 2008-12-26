@@ -44,13 +44,13 @@ ForceFieldDescription::!ForceFieldDescription()
 	if( this->IsDisposed == true )
 		return;
 	
-	onDisposing( this, nullptr );
+	OnDisposing( this, nullptr );
 	
 	SAFE_DELETE( _forceFieldDesc );
 	
 	_actor = nullptr;
 	
-	onDisposed( this, nullptr );
+	OnDisposed( this, nullptr );
 }
 bool ForceFieldDescription::IsDisposed::get()
 {

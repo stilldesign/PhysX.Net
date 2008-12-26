@@ -11,8 +11,8 @@ namespace StillDesign
 		public ref class ParticleIdData : IDisposable
 		{
 			public:
-				virtual event EventHandler^ onDisposing;
-				virtual event EventHandler^ onDisposed;
+				virtual event EventHandler^ OnDisposing;
+				virtual event EventHandler^ OnDisposed;
 			
 			private:
 				NxParticleIdData* _data;

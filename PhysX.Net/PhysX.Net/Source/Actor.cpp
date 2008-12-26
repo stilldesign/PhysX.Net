@@ -65,7 +65,7 @@ Actor::!Actor()
 	if( this->IsDisposed == true )
 		return;
 	
-	onDisposing( this, nullptr );
+	OnDisposing( this, nullptr );
 	
 	_shapes->DisposeOfAll();
 	_shapes->Clear();
@@ -77,7 +77,7 @@ Actor::!Actor()
 	_scene = nullptr;
 	_userData = nullptr;
 	
-	onDisposed( this, nullptr );
+	OnDisposed( this, nullptr );
 }
 bool Actor::IsDisposed::get()
 {

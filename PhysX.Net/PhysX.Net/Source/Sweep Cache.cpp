@@ -27,14 +27,14 @@ SweepCache::!SweepCache()
 	if( this->IsDisposed == true )
 		return;
 	
-	onDisposing( this, nullptr );
+	OnDisposing( this, nullptr );
 	
 	_scene->UnmanagedPointer->releaseSweepCache( _sweepCache );
 	
 	_sweepCache = NULL;
 	_scene = nullptr;
 	
-	onDisposed( this, nullptr );
+	OnDisposed( this, nullptr );
 }
 bool SweepCache::IsDisposed::get()
 {

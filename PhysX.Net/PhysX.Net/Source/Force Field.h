@@ -42,8 +42,8 @@ namespace StillDesign
 				};
 				
 			public:
-				virtual event EventHandler^ onDisposing;
-				virtual event EventHandler^ onDisposed;
+				virtual event EventHandler^ OnDisposing;
+				virtual event EventHandler^ OnDisposed;
 				
 			private:
 				NxForceField* _forceField;

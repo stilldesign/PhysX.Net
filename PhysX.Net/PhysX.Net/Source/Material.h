@@ -19,8 +19,8 @@ namespace StillDesign
 		public ref class Material : StillDesign::PhysX::IDisposable
 		{
 			public:
-				virtual event EventHandler^ onDisposing;
-				virtual event EventHandler^ onDisposed;
+				virtual event EventHandler^ OnDisposing;
+				virtual event EventHandler^ OnDisposed;
 
 			private:
 				NxMaterial* _material;

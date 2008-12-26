@@ -51,7 +51,7 @@ Shape::!Shape()
 	if( this->IsDisposed == true )
 		return;
 	
-	onDisposing( this, nullptr );
+	OnDisposing( this, nullptr );
 	
 	_actor->UnmanagedPointer->releaseShape( *_shape );
 	
@@ -60,10 +60,10 @@ Shape::!Shape()
 	_actor = nullptr;
 	_ccdSkeleton = nullptr;
 	
-	_material->onDisposing -= gcnew EventHandler( this, &Shape::_material_onDisposing );
+	_material->OnDisposing -= gcnew EventHandler( this, &Shape::_material_OnDisposing );
 	_material = nullptr;
 	
-	onDisposed( this, nullptr );
+	OnDisposed( this, nullptr );
 }
 bool Shape::IsDisposed::get()
 {
@@ -76,7 +76,7 @@ void Shape::SaveToDescription( ShapeDescription^ shapeDescription )
 	shapeDescription->Material = this->Material;
 }
 
-void Shape::_material_onDisposing( System::Object^ sender, EventArgs^ e )
+void Shape::_material_OnDisposing( System::Object^ sender, EventArgs^ e )
 {
 	// If the Material the Shape is Using is Deleted, Use the Default One
 	this->Material = this->Actor->Scene->Materials[ 0 ];
@@ -173,14 +173,14 @@ void Shape::Material::set( StillDesign::PhysX::Material^ value )
 	
 	if( _material != nullptr )
 	{
-		_material->onDisposing -= gcnew EventHandler( this, &Shape::_material_onDisposing );
+		_material->OnDisposing -= gcnew EventHandler( this, &Shape::_material_OnDisposing );
 	}
 	
 	_material = value;
 	
 	_shape->setMaterial( value->UnmanagedPointer->getMaterialIndex() );
 	
-	_material->onDisposing += gcnew EventHandler( this, &Shape::_material_onDisposing );
+	_material->OnDisposing += gcnew EventHandler( this, &Shape::_material_OnDisposing );
 }
 
 short Shape::Group::get()

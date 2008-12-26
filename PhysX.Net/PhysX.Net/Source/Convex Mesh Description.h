@@ -19,8 +19,8 @@ namespace StillDesign
 		public ref class ConvexMeshDescription : IDisposable
 		{
 			public:
-				virtual event EventHandler^ onDisposing;
-				virtual event EventHandler^ onDisposed;
+				virtual event EventHandler^ OnDisposing;
+				virtual event EventHandler^ OnDisposed;
 			
 			private:
 				NxConvexMeshDesc* _desc;

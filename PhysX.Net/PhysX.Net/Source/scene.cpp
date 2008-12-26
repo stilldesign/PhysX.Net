@@ -230,7 +230,7 @@ Scene::!Scene()
 	if( this->IsDisposed == true )
 		return;
 	
-	onDisposing( this, nullptr );
+	OnDisposing( this, nullptr );
 	
 	_compartments->DisposeOfAll();
 	_actors->DisposeOfAll();
@@ -268,7 +268,7 @@ Scene::!Scene()
 	_scene = NULL;
 	_core = nullptr;
 	
-	onDisposed( this, nullptr );
+	OnDisposed( this, nullptr );
 }
 bool Scene::IsDisposed::get()
 {

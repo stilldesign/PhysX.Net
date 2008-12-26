@@ -61,7 +61,7 @@ Core::Core( NxPhysicsSDK* core )
 		//CCDSkeleton* skeleton = CCDSkeleton::FromUnmanaged( sdk->getccd
 	}
 	
-	CreateAux();
+	CreateCommon();
 }
 Core::~Core()
 {
@@ -72,7 +72,7 @@ Core::!Core()
 	if( this->IsDisposed == true )
 		return;
 	
-	onDisposing( this, nullptr );
+	OnDisposing( this, nullptr );
 	
 	// Delete Children
 	_sceneCollection->DisposeOfAll();
@@ -101,7 +101,7 @@ Core::!Core()
 		_physicsSDK = NULL;
 	}
 	
-	onDisposed( this, nullptr );
+	OnDisposed( this, nullptr );
 }
 
 bool Core::IsDisposed::get()
@@ -122,9 +122,9 @@ void Core::CreateCore( CoreDescription^ desc, StillDesign::PhysX::UserOutputStre
 		throw gcnew PhysXInitializationException( (CoreCreationError)error );
 	
 	ObjectCache::Add( (intptr_t)_physicsSDK, this );
-	CreateAux();
+	CreateCommon();
 }
-void Core::CreateAux()
+void Core::CreateCommon()
 {
 	_sceneCollection = gcnew ElementCollection< Scene^ >();
 	_triangleMeshCollection = gcnew ElementCollection< TriangleMesh^ >();

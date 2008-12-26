@@ -28,8 +28,8 @@ namespace StillDesign
 		public ref class Shape abstract : StillDesign::PhysX::IDisposable
 		{
 			public:
-				virtual event EventHandler^ onDisposing;
-				virtual event EventHandler^ onDisposed;
+				virtual event EventHandler^ OnDisposing;
+				virtual event EventHandler^ OnDisposed;
 				
 			private:
 				NxShape* _shape;
@@ -55,7 +55,7 @@ namespace StillDesign
 				void SaveToDescription( ShapeDescription^ shapeDescription );
 			
 			private:
-				void _material_onDisposing( System::Object^ sender, EventArgs^ e );
+				void _material_OnDisposing( System::Object^ sender, EventArgs^ e );
 			
 			public:
 				/// <summary>Retrieves the information computed from a ray intersection</summary>

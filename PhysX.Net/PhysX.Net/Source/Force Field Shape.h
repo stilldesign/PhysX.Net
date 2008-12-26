@@ -20,8 +20,8 @@ namespace StillDesign
 		public ref class ForceFieldShape abstract : StillDesign::PhysX::IDisposable
 		{
 			public:
-				virtual event EventHandler^ onDisposing;
-				virtual event EventHandler^ onDisposed;
+				virtual event EventHandler^ OnDisposing;
+				virtual event EventHandler^ OnDisposed;
 				
 			private:
 				NxForceFieldShape* _forceFieldShape;

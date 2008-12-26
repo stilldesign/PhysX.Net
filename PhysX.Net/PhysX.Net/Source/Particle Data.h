@@ -27,8 +27,8 @@ namespace StillDesign
 					CollisionNormal = (1 << 6)
 				};
 				
-				virtual event EventHandler^ onDisposing;
-				virtual event EventHandler^ onDisposed;
+				virtual event EventHandler^ OnDisposing;
+				virtual event EventHandler^ OnDisposed;
 				
 			private:
 				NxParticleData* _data;

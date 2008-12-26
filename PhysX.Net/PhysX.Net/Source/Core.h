@@ -34,8 +34,8 @@ namespace StillDesign
 		public ref class Core : IDisposable
 		{
 			public:
-				virtual event EventHandler^ onDisposing;
-				virtual event EventHandler^ onDisposed;
+				virtual event EventHandler^ OnDisposing;
+				virtual event EventHandler^ OnDisposed;
 				
 			private:
 				NxPhysicsSDK* _physicsSDK;
@@ -73,7 +73,7 @@ namespace StillDesign
 			
 			private:
 				void CreateCore( CoreDescription^ desc, StillDesign::PhysX::UserOutputStream^ userOutputStream );
-				void CreateAux();
+				void CreateCommon();
 				
 			public:
 				static bool CheckAllPhysXRuntimeFiles();

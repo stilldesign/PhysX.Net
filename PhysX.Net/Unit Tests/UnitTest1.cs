@@ -25,9 +25,11 @@ namespace StillDesign.PhysX.UnitTests
 	[TestClass]
 	public class UnitTest1
 	{
+		private Core _core;
+
 		public UnitTest1()
 		{
-			
+			CoreCreation();
 		}
 
 		private TestContext testContextInstance;
@@ -73,9 +75,7 @@ namespace StillDesign.PhysX.UnitTests
 		[TestMethod]
 		public void CoreCreation()
 		{
-			Core core = new Core();
-
-			Assert.IsTrue( core != null );
+			Assert.IsTrue( _core != null );
 		}
 
 		[TestMethod]

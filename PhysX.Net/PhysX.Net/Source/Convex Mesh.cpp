@@ -27,14 +27,14 @@ ConvexMesh::!ConvexMesh()
 	if( this->IsDisposed == true )
 		return;
 	
-	onDisposing( this, nullptr );
+	OnDisposing( this, nullptr );
 	
 	_core->UnmanagedPointer->releaseConvexMesh( *_convexMesh );
 	
 	_convexMesh = NULL;
 	_core = nullptr;
 	
-	onDisposed( this, nullptr );
+	OnDisposed( this, nullptr );
 }
 bool ConvexMesh::IsDisposed::get()
 {

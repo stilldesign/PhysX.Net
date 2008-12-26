@@ -15,8 +15,8 @@ namespace StillDesign
 		public ref class MeshData : IDisposable, ICloneable
 		{
 			public:
-				virtual event EventHandler^ onDisposing;
-				virtual event EventHandler^ onDisposed;
+				virtual event EventHandler^ OnDisposing;
+				virtual event EventHandler^ OnDisposed;
 			
 				[Flags]
 				enum class Type

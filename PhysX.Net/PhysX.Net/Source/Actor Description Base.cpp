@@ -30,13 +30,13 @@ ActorDescriptionBase::!ActorDescriptionBase()
 	if( this->IsDisposed == true )
 		return;
 	
-	onDisposing( this, nullptr );
+	OnDisposing( this, nullptr );
 	
 	SAFE_DELETE( _desc );
 	
 	_body = nullptr;
 	
-	onDisposed( this, nullptr );
+	OnDisposed( this, nullptr );
 }
 bool ActorDescriptionBase::IsDisposed::get()
 {

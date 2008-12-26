@@ -34,7 +34,7 @@ StillDesign::PhysX::Controller::!Controller()
 	if( this->IsDisposed == true )
 		return;
 	
-	onDisposing( this, nullptr );
+	OnDisposing( this, nullptr );
 	
 	_manager->UnmanagedPointer->releaseController( *_controller );
 	
@@ -50,7 +50,7 @@ StillDesign::PhysX::Controller::!Controller()
 	_actor = nullptr;
 	_userData = nullptr;
 	
-	onDisposed( this, nullptr );
+	OnDisposed( this, nullptr );
 }
 bool StillDesign::PhysX::Controller::IsDisposed::get()
 {

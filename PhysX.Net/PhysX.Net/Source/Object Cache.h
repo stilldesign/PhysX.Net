@@ -35,7 +35,7 @@ namespace StillDesign
 				//static array<T>^ GetObjectsOfType();
 				
 			private:
-				static void _cache_onDisposing( Object^ sender, EventArgs^ e );
+				static void _cache_OnDisposing( Object^ sender, EventArgs^ e );
 				
 			public:
 				property System::Collections::Generic::Dictionary<intptr_t, Object^>^ Cache

@@ -44,7 +44,7 @@ SoftBodyMeshDescription::!SoftBodyMeshDescription()
 	if( this->IsDisposed == true )
 		return;
 	
-	onDisposing( this, nullptr );
+	OnDisposing( this, nullptr );
 	
 	if( _desc != NULL )
 	{
@@ -65,7 +65,7 @@ SoftBodyMeshDescription::!SoftBodyMeshDescription()
 	_vertexMassesStream = nullptr;
 	_vertexFlagsStream = nullptr;
 	
-	onDisposed( this, nullptr );
+	OnDisposed( this, nullptr );
 }
 bool SoftBodyMeshDescription::IsDisposed::get()
 {

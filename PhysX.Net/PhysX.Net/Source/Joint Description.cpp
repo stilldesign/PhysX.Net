@@ -66,11 +66,11 @@ void JointDescription::SetGlobalAxis( Vector3 axis )
 	_desc->setGlobalAxis( Math::Vector3ToNxVec3( axis ) );
 }
 
-void JointDescription::_actor1_onDisposed( System::Object^ sender, EventArgs^ e )
+void JointDescription::_actor1_OnDisposed( System::Object^ sender, EventArgs^ e )
 {
 	_actor1 = nullptr;
 }
-void JointDescription::_actor2_onDisposed( System::Object^ sender, EventArgs^ e )
+void JointDescription::_actor2_OnDisposed( System::Object^ sender, EventArgs^ e )
 {
 	_actor2 = nullptr;
 }
@@ -183,7 +183,7 @@ void JointDescription::Actor1::set( Actor^ value )
 {
 	if( _actor1 != nullptr )
 	{
-		_actor1->onDisposing -= gcnew EventHandler( this, &JointDescription::_actor1_onDisposed );
+		_actor1->OnDisposing -= gcnew EventHandler( this, &JointDescription::_actor1_OnDisposed );
 	}
 	
 	_actor1 = value;
@@ -194,7 +194,7 @@ void JointDescription::Actor1::set( Actor^ value )
 	}else{
 		_desc->actor[ 0 ] = value->UnmanagedPointer;
 		
-		_actor1->onDisposing += gcnew EventHandler( this, &JointDescription::_actor1_onDisposed );
+		_actor1->OnDisposing += gcnew EventHandler( this, &JointDescription::_actor1_OnDisposed );
 	}
 }
 Actor^ JointDescription::Actor2::get()
@@ -205,7 +205,7 @@ void JointDescription::Actor2::set( Actor^ value )
 {
 	if( _actor2 != nullptr )
 	{
-		_actor2->onDisposing -= gcnew EventHandler( this, &JointDescription::_actor2_onDisposed );
+		_actor2->OnDisposing -= gcnew EventHandler( this, &JointDescription::_actor2_OnDisposed );
 	}
 	
 	_actor2 = value;
@@ -216,7 +216,7 @@ void JointDescription::Actor2::set( Actor^ value )
 	}else{
 		_desc->actor[ 1 ] = value->UnmanagedPointer;
 		
-		_actor2->onDisposing += gcnew EventHandler( this, &JointDescription::_actor2_onDisposed );
+		_actor2->OnDisposing += gcnew EventHandler( this, &JointDescription::_actor2_OnDisposed );
 	}
 }
 

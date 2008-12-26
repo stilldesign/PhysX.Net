@@ -30,7 +30,7 @@ Material::!Material()
 	if( this->IsDisposed == true || this->Index == 0 )
 		return;
 	
-	onDisposing( this, nullptr );
+	OnDisposing( this, nullptr );
 	
 	NxScene* scene = &_material->getScene();
 	scene->releaseMaterial( *_material );
@@ -39,7 +39,7 @@ Material::!Material()
 	
 	_scene = nullptr;
 	
-	onDisposed( this, nullptr );
+	OnDisposed( this, nullptr );
 }
 bool Material::IsDisposed::get()
 {

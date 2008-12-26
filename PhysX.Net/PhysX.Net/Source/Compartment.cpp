@@ -29,12 +29,12 @@ Compartment::!Compartment()
 	if( this->IsDisposed == true )
 		return;
 	
-	onDisposing( this, nullptr );
+	OnDisposing( this, nullptr );
 	
 	_compartment = NULL;
 	_scene = nullptr;
 	
-	onDisposed( this, nullptr );
+	OnDisposed( this, nullptr );
 }
 
 bool Compartment::IsDisposed::get()

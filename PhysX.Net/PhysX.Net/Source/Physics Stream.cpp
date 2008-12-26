@@ -21,9 +21,9 @@ PhysicsStream::~PhysicsStream()
 }
 PhysicsStream::!PhysicsStream()
 {
-	onDisposing( this, nullptr );
+	OnDisposing( this, nullptr );
 	
-	onDisposed( this, nullptr );
+	OnDisposed( this, nullptr );
 }
 
 bool PhysicsStream::IsDisposed::get()

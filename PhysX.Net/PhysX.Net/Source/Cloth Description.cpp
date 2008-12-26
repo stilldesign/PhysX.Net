@@ -42,7 +42,7 @@ ClothDescription::!ClothDescription()
 	if( this->IsDisposed == true )
 		return;
 	
-	onDisposing( this, nullptr );
+	OnDisposing( this, nullptr );
 	
 	SAFE_DELETE( _clothDesc );
 	
@@ -51,7 +51,7 @@ ClothDescription::!ClothDescription()
 	
 	_userData = nullptr;
 	
-	onDisposed( this, nullptr );
+	OnDisposed( this, nullptr );
 }
 bool ClothDescription::IsDisposed::get()
 {

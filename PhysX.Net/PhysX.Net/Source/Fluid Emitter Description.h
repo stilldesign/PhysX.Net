@@ -16,8 +16,8 @@ namespace StillDesign
 		public ref class FluidEmitterDescription : StillDesign::PhysX::IDisposable
 		{
 			public:
-				virtual event EventHandler^ onDisposing;
-				virtual event EventHandler^ onDisposed;
+				virtual event EventHandler^ OnDisposing;
+				virtual event EventHandler^ OnDisposed;
 			
 			private:
 				NxFluidEmitterDesc* _fluidEmitterDesc;

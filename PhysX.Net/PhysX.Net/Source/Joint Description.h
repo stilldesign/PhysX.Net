@@ -45,8 +45,8 @@ namespace StillDesign
 				void SetGlobalAxis( Vector3 axis );
 				
 			private:
-				void _actor1_onDisposed( System::Object^ sender, EventArgs^ e );
-				void _actor2_onDisposed( System::Object^ sender, EventArgs^ e );
+				void _actor1_OnDisposed( System::Object^ sender, EventArgs^ e );
+				void _actor2_OnDisposed( System::Object^ sender, EventArgs^ e );
 				
 			internal:
 				static NxJointDesc* CopyToUnmanagedPointer( NxJointDesc* desc );
