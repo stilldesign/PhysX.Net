@@ -28,11 +28,6 @@ namespace StillDesign
 		public ref class Cloth : StillDesign::PhysX::IDisposable
 		{
 			public:
-				//ref class ClothCollection : ReadOnlyElementCollection<Cloth^>
-				//{
-				//	
-				//};
-				
 				virtual event EventHandler^ OnDisposing;
 				virtual event EventHandler^ OnDisposed;
 				
@@ -117,14 +112,34 @@ namespace StillDesign
 				/// <summary>Forces the cloth to sleep</summary>
 				void Sleep();
 				
+				/// <summary>Changes the weight of a vertex in the cloth solver for a period of time</summary>
+				/// <param name="vertexID">Index of the vertex</param>
+				/// <param name="expirationTime">Time period where dominance will be active for this vertex</param>
+				/// <param name="dominanceWeight">Dominance weight for this vertex</param>
 				void DominateVertex( int vertexID, float expirationTime, float dominanceWeight );
+				/// <summary>Return the attachment status of the given vertex</summary>
+				/// <param name="vertexID">Index of the vertex.</param>
 				ClothVertexAttachmentStatus GetVertexAttachmentStatus( int vertexID );
+				/// <summary>Returns the pointer to an attached shape pointer of the given vertex</summary>
+				/// <param name="vertexID">Index of the vertex</param>
 				Shape^ GetVertexAttachmentShape( int vertexID );
+				/// <summary>Returns the attachment position of the given vertex</summary>
+				/// <param name="vertexID">Index of the vertex</param>
 				Vector3 GetVertexAttachmentPosition( int vertexID );
 				
+				/// <summary></summary>
+				/// <param name="vertexID"></param>
 				Vector3 GetVertexPosition( int vertexID );
+				/// <summary></summary>
+				/// <param name="vertexID"></param>
+				/// <param name="vertexID"></param>
 				void SetVertexPosition( int vertexID, Vector3 position );
+				/// <summary></summary>
+				/// <param name="vertexID"></param>
 				Vector3 GetVertexVelocity( int vertexID );
+				/// <summary></summary>
+				/// <param name="vertexID"></param>
+				/// <param name="vertexID"></param>
 				void SetVertexVelocity( int vertexID, Vector3 velocity );
 				
 				/// <summary>Get or Sets the Name of the Cloth</summary>

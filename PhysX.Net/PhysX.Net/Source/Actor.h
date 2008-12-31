@@ -59,11 +59,6 @@ namespace StillDesign
 				{
 					virtual bool get();
 				}
-			//internal:
-			//	property bool IsDisposing
-			//	{
-			//		bool get();
-			//	}
 				
 			private:
 				void CreateShapes();

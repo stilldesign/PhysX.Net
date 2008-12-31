@@ -13,7 +13,7 @@ namespace StillDesign
 		public ref class ActorDescription : ActorDescriptionBase
 		{
 			private:
-				ListBase< ShapeDescription^ >^ _shapes;
+				ListBase<ShapeDescription^>^ _shapes;
 				
 			public:
 				ActorDescription();
@@ -25,6 +25,7 @@ namespace StillDesign
 				void CreateActorDescription();
 				
 			public:
+				/// <summary>Is the ActorDescription valid. (Step into to diagnose)</summary>
 				virtual bool IsValid() override;
 				
 			private:
@@ -32,7 +33,8 @@ namespace StillDesign
 				void ShapeRemoved( Object^ sender, ShapeDescription^ e );
 			
 			public:
-				property ListBase< ShapeDescription^ >^ Shapes
+				/// <summary>Gets a collection of shape descriptions</summary>
+				property ListBase<ShapeDescription^>^ Shapes
 				{
 					ListBase< ShapeDescription^ >^ get();
 				}

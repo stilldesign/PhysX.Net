@@ -80,6 +80,7 @@
     <Compile Include="Core Tests.cs" />
     <Compile Include="Fluid Tests.cs" />
     <Compile Include="Force Field Tests.cs" />
+    <Compile Include="Graphics Library Wrapper.cs" />
     <Compile Include="Heightfield Tests.cs" />
     <Compile Include="Joint Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

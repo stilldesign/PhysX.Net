@@ -3,7 +3,18 @@ using System.Linq;
 using System.Collections.Generic;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+#if GRAPHICS_XNA2 || GRAPHICS_XNA3
 using Microsoft.Xna.Framework;
+#elif GRAPHICS_MDX
+using Microsoft.DirectX;
+#elif GRAPHICS_SLIMDX
+using SlimDX;
+#else
+#error No Graphics Framework Defined
+#endif
+
+using StillDesign.PhysX;
 
 namespace StillDesign.PhysX.UnitTests
 {
@@ -81,7 +92,7 @@ namespace StillDesign.PhysX.UnitTests
 			ForceFieldShapeGroup shapeGroup = this.Scene.CreateForceFieldShapeGroup( shapeGroupDesc );
 
 			BoxForceFieldShape boxForceFieldShape = shapeGroup.CreateShape( boxForceFieldShapeDesc ) as BoxForceFieldShape;
-			boxForceFieldShape.Pose = Matrix.CreateTranslation( 30, 5, 0 );
+			boxForceFieldShape.Pose = GraphicsLibraryWrapper.CreateTranslationMatrix( new Vector3( 30, 5, 0 ) );
 
 			ForceFieldDescription forceFieldDesc = new ForceFieldDescription()
 			{

@@ -53,7 +53,6 @@
 #define _WIN32_IE 0x0600	// Change this to the appropriate value to target other versions of IE.
 #endif
 
-#define null NULL
 #define SAFE_DELETE(p)	{ if( (p) != NULL){ (p) = NULL; delete (p); } }
 #define SAFE_FREE_MANY( void_ptrs )\
 {\
@@ -63,7 +62,7 @@
 		if( void_ptrs[ x ] != NULL )\
 			free( (void*)void_ptrs[ x ] );\
 	}\
-}\
+}
 
 template < class T, class U > 
 bool IsInstanceOf( U u )
