@@ -8,9 +8,6 @@ namespace StillDesign
 	{
 		public value class Bounds3
 		{
-			private:
-				Vector3 _min, _max;
-			
 			public:
 				/// <summary>Constructs a Bounds object</summary>
 				/// <param name="size">The size of the bounds</param>
@@ -65,17 +62,9 @@ namespace StillDesign
 				}
 				
 				/// <summary>Gets or Sets the minimum point of the Bounds</summary>
-				property Vector3 Min
-				{
-					Vector3 get();
-					void set( Vector3 value );
-				}
+				property Vector3 Min;
 				/// <summary>Gets or Sets the maximum point of the Bounds</summary>
-				property Vector3 Max
-				{
-					Vector3 get();
-					void set( Vector3 value );
-				}
+				property Vector3 Max;
 				
 				/// <summary>Gets the center of the Bounds</summary>
 				property Vector3 Center

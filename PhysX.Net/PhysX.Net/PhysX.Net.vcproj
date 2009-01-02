@@ -500,7 +500,7 @@
 				Name="VCLinkerTool"
 				AdditionalDependencies="NxCharacter.lib NxCooking.lib PhysXLoader.lib"
 				AdditionalLibraryDirectories="&quot;C:\Program Files\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.1\SDKs\lib\Win32&quot;"
-				DelayLoadDLLs="NxCharacter.dll;NxCooking.dll"
+				DelayLoadDLLs="NxCharacter.dll"
 				GenerateDebugInformation="true"
 				RandomizedBaseAddress="1"
 				DataExecutionPrevention="0"
@@ -14531,7 +14531,7 @@
 				</File>
 			</Filter>
 			<Filter
-				Name="Basic Shapes"
+				Name="Primitives"
 				>
 				<File
 					RelativePath=".\Source\Bounds.h"

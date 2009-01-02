@@ -38,7 +38,7 @@ namespace StillDesign
 				NxActor* _actor;
 				
 				StillDesign::PhysX::Scene^ _scene;
-				ElementCollection< Shape^ >^ _shapes;
+				ElementCollection<Shape^>^ _shapes;
 				StillDesign::PhysX::Compartment^ _compartment;
 				
 				Object^ _userData;

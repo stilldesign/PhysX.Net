@@ -56,38 +56,11 @@ Box Box::Empty::get()
 	return Box();
 }
 
-Vector3 Box::Center::get()
-{
-	return _center;
-}
-void Box::Center::set( Vector3 value )
-{
-	_center = value;
-}
-
 Vector3 Box::Extents::get()
 {
-	return _size * 0.5f;
+	return this->Size * 0.5f;
 }
 void Box::Extents::set( Vector3 value )
 {
-	_size = value * 2.0f;
-}
-
-Vector3 Box::Size::get()
-{
-	return _size;
-}
-void Box::Size::set( Vector3 value )
-{
-	_size = value;
-}
-
-Quaternion Box::Rotation::get()
-{
-	return _rotation;
-}
-void Box::Rotation::set( Quaternion value )
-{
-	_rotation = value;
+	this->Size = value * 2.0f;
 }

@@ -9,25 +9,25 @@ using namespace StillDesign::PhysX;
 
 Capsule::Capsule( Segment segment, float radius )
 {
-	_p0 = segment.Point0;
-	_p1 = segment.Point1;
+	this->Point0 = segment.Point0;
+	this->Point1 = segment.Point1;
 	
-	_radius = radius;
+	this->Radius = radius;
 }
 Capsule::Capsule( Vector3 p0, Vector3 p1, float radius )
 {
-	_p0 = p0;
-	_p1 = p1;
+	this->Point0 = p0;
+	this->Point1 = p1;
 	
-	_radius = radius;
+	this->Radius = radius;
 }
 
 Capsule::operator Capsule( NxCapsule capsule )
 {
 	Capsule c;
-		c._radius = capsule.radius;
-		c._p0 = Math::NxVec3ToVector3( capsule.p0 );
-		c._p1 = Math::NxVec3ToVector3( capsule.p1 );
+		c.Radius = capsule.radius;
+		c.Point0 = Math::NxVec3ToVector3( capsule.p0 );
+		c.Point1 = Math::NxVec3ToVector3( capsule.p1 );
 	
 	return c;
 }
@@ -47,31 +47,4 @@ Capsule::operator Segment( Capsule capsule )
 		segment.Point1 = capsule.Point1;
 	
 	return segment;
-}
-
-float Capsule::Radius::get()
-{
-	return _radius;
-}
-void Capsule::Radius::set( float value )
-{
-	_radius = value;
-}
-
-Vector3 Capsule::Point0::get()
-{
-	return _p0;
-}
-void Capsule::Point0::set( Vector3 value )
-{
-	_p0 = value;
-}
-
-Vector3 Capsule::Point1::get()
-{
-	return _p1;
-}
-void Capsule::Point1::set( Vector3 value )
-{
-	_p1 = value;
 }

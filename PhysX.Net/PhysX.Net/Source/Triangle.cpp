@@ -57,43 +57,16 @@ void Triangle::Inflate( float fatCoeff, bool constantBorder )
 	}
 }
 
-Vector3 Triangle::Vertex0::get()
-{
-	return _vertex0;
-}
-void Triangle::Vertex0::set( Vector3 value )
-{
-	_vertex0 = value;
-}
-
-Vector3 Triangle::Vertex1::get()
-{
-	return _vertex1;
-}
-void Triangle::Vertex1::set( Vector3 value )
-{
-	_vertex1 = value;
-}
-
-Vector3 Triangle::Vertex2::get()
-{
-	return _vertex2;
-}
-void Triangle::Vertex2::set( Vector3 value )
-{
-	_vertex2 = value;
-}
-
 Vector3 Triangle::default::get( int index )
 {
 	switch( index )
 	{
 		case 0:
-			return _vertex0;
+			return this->Vertex0;
 		case 1:
-			return _vertex1;
+			return this->Vertex1;
 		case 2:
-			return _vertex2;
+			return this->Vertex2;
 		
 		default: throw gcnew ArgumentException( "Invalid index" );
 	}
@@ -103,13 +76,13 @@ void Triangle::default::set( int index, Vector3 value )
 	switch( index )
 	{
 		case 0:
-			_vertex0 = value;
+			this->Vertex0 = value;
 		break;
 		case 1:
-			_vertex1 = value;
+			this->Vertex1 = value;
 		break;
 		case 2:
-			_vertex2 = value;
+			this->Vertex2 = value;
 		break;
 		
 		default: throw gcnew ArgumentException( "Invalid index" );

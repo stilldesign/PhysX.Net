@@ -11,18 +11,18 @@ UsingFrameworkNamespace
 
 Bounds3::Bounds3( Vector3 size )
 {
-	_min = -size * 0.5f;
-	_max = size * 0.5f;
+	this->Min = -size * 0.5f;
+	this->Max = size * 0.5f;
 }
 Bounds3::Bounds3( Vector3 min, Vector3 max )
 {
-	_min = min;
-	_max = max;
+	this->Min = min;
+	this->Max = max;
 }
 Bounds3::Bounds3( float minX, float minY, float minZ, float maxX, float maxY, float maxZ )
 {
-	_min = Vector3( minX, minY, minZ );
-	_max = Vector3( maxX, maxY, maxZ );
+	this->Min = Vector3( minX, minY, minZ );
+	this->Max = Vector3( maxX, maxY, maxZ );
 }
 
 Bounds3::operator NxBounds3( Bounds3 bounds )
@@ -136,8 +136,8 @@ bool Bounds3::Contains( Vector3 point )
 
 void Bounds3::SetToEmpty()
 {
-	_min = Vector3( 0.0f, 0.0f, 0.0f );
-	_max = Vector3( 0.0f, 0.0f, 0.0f );
+	this->Min = Vector3( 0.0f, 0.0f, 0.0f );
+	this->Max = Vector3( 0.0f, 0.0f, 0.0f );
 }
 
 String^ Bounds3::ToString()
@@ -161,24 +161,6 @@ Bounds3 Bounds3::Extremes::get()
 		Single::MaxValue, Single::MaxValue, Single::MaxValue, 
 		Single::MinValue, Single::MinValue, Single::MinValue
 	);
-}
-
-Vector3 Bounds3::Min::get()
-{
-	return _min;
-}
-void Bounds3::Min::set( Vector3 value )
-{
-	_min = value;
-}
-
-Vector3 Bounds3::Max::get()
-{
-	return _max;
-}
-void Bounds3::Max::set( Vector3 value )
-{
-	_max = value;
 }
 
 Vector3 Bounds3::Center::get()
