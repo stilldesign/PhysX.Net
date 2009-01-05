@@ -120,13 +120,12 @@ Core::!Core()
 	
 	_foundation = nullptr;
 	
-	if( _physicsSDK != NULL )
-	{
-		NxReleasePhysicsSDK( _physicsSDK );
-		_physicsSDK = NULL;
-		
-		_isCoreCreated = false;
-	}
+	NxReleasePhysicsSDK( _physicsSDK );
+	_physicsSDK = NULL;
+	
+	_isCoreCreated = false;
+	
+	ObjectCache::Clear();
 	
 	OnDisposed( this, nullptr );
 }

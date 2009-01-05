@@ -15,7 +15,12 @@ void ObjectCache::Add( intptr_t pointer, Object^ object )
 		disposableObject->OnDisposing += gcnew EventHandler( &ObjectCache::_cache_OnDisposing );
 	}
 	
-	_cache->Add( pointer, object );
+	try
+	{
+		_cache->Add( pointer, object );
+	}catch( Exception^ ex ){
+		throw;
+	}
 }
 
 bool ObjectCache::Remove( intptr_t pointer )
@@ -40,6 +45,11 @@ bool ObjectCache::Remove( Object^ object )
 	}
 	
 	return false;
+}
+
+void ObjectCache::Clear()
+{
+	_cache->Clear();
 }
 
 generic<class T>

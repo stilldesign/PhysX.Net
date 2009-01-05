@@ -164,11 +164,11 @@ namespace StillDesign.PhysX.UnitTests
 				var actorA = CreateBoxActor( 0, 0, 10 );
 				var actorB = CreateBoxActor( 0, 0, 100 );
 
-				var frustum = new[] { new Plane( 0, 0, 1, 0 ) };
+				var frustum = new[] { new Plane( 0, 0, -1, 0 ) };
 				var shapes = this.Scene.CullShapes( frustum, ShapesType.Dynamic );
 
-				Assert.IsTrue( shapes.Contains( actorA.Shapes.Single() ) );
-				Assert.IsTrue( shapes.Contains( actorB.Shapes.Single() ) );
+				Assert.IsTrue( shapes.Contains( actorA.Shapes.Single() ), "Shape A is missing" );
+				Assert.IsTrue( shapes.Contains( actorB.Shapes.Single() ), "Shape B is missing" );
 			}
 		}
 		[TestMethod]
@@ -179,11 +179,31 @@ namespace StillDesign.PhysX.UnitTests
 				var actorA = CreateBoxActor( 0, 0, 10 );
 				var actorB = CreateBoxActor( 0, 0, 100 );
 
-				var frustum = new[] { new Plane( 0, 0, 1, 0 ), new Plane( 0, 0, -1, 50 ) };
+				var frustum = new[] { new Plane( 0, 0, -1, 0 ), new Plane( 0, 0, -1, -50 ) };
 				var shapes = this.Scene.CullShapes( frustum, ShapesType.Dynamic );
 
-				Assert.IsTrue( shapes.Contains( actorA.Shapes.Single() ) );
-				Assert.IsFalse( shapes.Contains( actorB.Shapes.Single() ) );
+				Assert.IsTrue( shapes.Contains( actorA.Shapes.Single() ), "Shape A is missing" );
+				Assert.IsFalse( shapes.Contains( actorB.Shapes.Single() ), "Shape B should not be culled" );
+			}
+		}
+
+		[TestMethod]
+		public void RaycastAllShapes()
+		{
+			using( CreateCoreAndScene() )
+			{
+				Actor a = CreateBoxActor( 0, 0, 10 );
+				Actor b = CreateBoxActor( 0, 0, 50 );
+				Actor c = CreateBoxActor( 0, 10, 10 );
+
+				Ray ray = new Ray( new Vector3( 0, 0, 0 ), new Vector3( 0, 0, 1 ) );
+
+				var hits = this.Scene.RaycastAllShapes( ray, ShapesType.All );
+
+				Assert.IsTrue( hits.Length == 2, "Ray should of hit 2 boxes" );
+				Assert.IsTrue( hits.All( t => t.WorldNormal == new Vector3( 0, 0, -1 ) ), "The normals of hitting the boxes should point directly back" );
+				Assert.IsTrue( hits.Any( t => t.Shape == a.Shapes.Single() ), "One of the shapes hit must be that of Actor a" );
+				Assert.IsTrue( hits.Any( t => t.Shape == b.Shapes.Single() ), "One of the shapes hit must be that of Actor b" );
 			}
 		}
 	}

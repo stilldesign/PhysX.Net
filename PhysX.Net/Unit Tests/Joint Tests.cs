@@ -97,7 +97,7 @@ namespace StillDesign.PhysX.UnitTests
 
 				Assert.IsNotNull( distanceJoint );
 
-				this.Scene.Simulate( 1.0f / 60.0f );
+				Update();
 			}
 		}
 

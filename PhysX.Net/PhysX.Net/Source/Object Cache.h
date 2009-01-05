@@ -21,6 +21,8 @@ namespace StillDesign
 				static bool Remove( intptr_t pointer );
 				static bool Remove( Object^ object );
 				
+				static void Clear();
+				
 				generic<class T>
 				//where T : ref class
 				static T GetObject( intptr_t pointer );
