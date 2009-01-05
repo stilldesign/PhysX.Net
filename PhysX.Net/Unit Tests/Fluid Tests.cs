@@ -64,31 +64,34 @@ namespace StillDesign.PhysX.UnitTests
 		[TestMethod]
 		public void DisposeOfFluid()
 		{
-			const int numberOfParticles = 100;
-
-			FluidDescription fluidDescription = new FluidDescription()
+			using( CreateCoreAndScene() )
 			{
-				Flags = FluidFlag.Enabled | FluidFlag.Visualization
-			};
+				const int numberOfParticles = 100;
 
-			Random random = new Random();
+				FluidDescription fluidDescription = new FluidDescription()
+				{
+					Flags = FluidFlag.Enabled | FluidFlag.Visualization
+				};
 
-			fluidDescription.InitialParticleData.AllocatePositionBuffer<Vector3>( numberOfParticles );
-			for( int i = 0; i < numberOfParticles; i++ )
-			{
-				float x = (float)random.NextDouble();
-				float y = (float)random.NextDouble();
-				float z = (float)random.NextDouble();
+				Random random = new Random();
 
-				fluidDescription.InitialParticleData.PositionBuffer.Write( new Vector3( x, y, z ) * 50 );
+				fluidDescription.InitialParticleData.AllocatePositionBuffer<Vector3>( numberOfParticles );
+				for( int i = 0; i < numberOfParticles; i++ )
+				{
+					float x = (float)random.NextDouble();
+					float y = (float)random.NextDouble();
+					float z = (float)random.NextDouble();
+
+					fluidDescription.InitialParticleData.PositionBuffer.Write( new Vector3( x, y, z ) * 50 );
+				}
+
+				fluidDescription.InitialParticleData.NumberOfParticles = numberOfParticles;
+
+				fluidDescription.IsValid();
+				Fluid fluid = this.Scene.CreateFluid( fluidDescription );
+
+				fluid.Dispose();
 			}
-
-			fluidDescription.InitialParticleData.NumberOfParticles = numberOfParticles;
-
-			fluidDescription.IsValid();
-			Fluid fluid = this.Scene.CreateFluid( fluidDescription );
-
-			fluid.Dispose();
 		}
 	}
 }

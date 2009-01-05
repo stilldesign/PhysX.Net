@@ -28,7 +28,6 @@ namespace StillDesign
 		ref class SimpleTriangleMesh;
 		ref class Foundation;
 		ref class PhysicsParametersWrapper;
-
 		
 		[System::ComponentModel::TypeConverter( System::ComponentModel::ExpandableObjectConverter::typeid )]
 		public ref class Core : IDisposable
@@ -54,7 +53,8 @@ namespace StillDesign
 				PhysicsParametersWrapper^ _physicsParametersWrapper;
 				
 				static bool _checkPhysXRuntimeFiles;
-			
+				static bool _isCoreCreated;
+				
 			public:
 				static Core();
 				Core();
@@ -132,6 +132,11 @@ namespace StillDesign
 				/// <param name="enabled">The Physics Parameter to Set</summary>
 				void SetParameter( PhysicsParameter parameter, bool enabled );
 				
+				property bool IsCoreCreated
+				{
+					static bool get();
+				}
+				
 				/// <summary>Gets the Collection of Scenes</summary>
 				property ReadOnlyList< Scene^ >^ Scenes
 				{
@@ -200,7 +205,6 @@ namespace StillDesign
 				property bool CheckPhysXRuntimeFiles
 				{
 					static bool get();
-					static void set( bool value );
 				}
 				
 				/// <summary>Gets the User Output Stream</summary>

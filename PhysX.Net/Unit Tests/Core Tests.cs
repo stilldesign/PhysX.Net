@@ -10,7 +10,7 @@ namespace StillDesign.PhysX.UnitTests
 	/// Summary description for Core_Tests
 	/// </summary>
 	[TestClass]
-	public class CoreTests
+	public class CoreTests : TestBase
 	{
 		public CoreTests()
 		{
@@ -63,6 +63,75 @@ namespace StillDesign.PhysX.UnitTests
 			Core core = new Core();
 
 			Assert.IsTrue( core != null );
+
+			core.Dispose();
+		}
+
+		[TestMethod]
+		public void DisposeCore()
+		{
+			{
+				ConsoleOutputStream consoleOutputStream = new ConsoleOutputStream();
+
+				Core core = new Core( new CoreDescription(), consoleOutputStream );
+
+				Scene scene = core.CreateScene();
+
+				Actor actorA, actorB;
+				{
+					ActorDescription actorDesc = new ActorDescription();
+
+					actorDesc.Shapes.Add( new BoxShapeDescription( 5, 6, 7 ) );
+
+					actorA = scene.CreateActor( actorDesc );
+				}
+				{
+					ActorDescription actorDesc = new ActorDescription();
+
+					actorDesc.Shapes.Add( new BoxShapeDescription( 2, 5, 7 ) );
+
+					actorB = scene.CreateActor( actorDesc );
+				}
+
+				core.Dispose();
+			}
+
+			{
+				ConsoleOutputStream consoleOutputStream = new ConsoleOutputStream();
+
+				Core core = new Core( new CoreDescription(), consoleOutputStream );
+
+				Scene scene = core.CreateScene();
+
+				Actor actorA, actorB;
+				{
+					ActorDescription actorDesc = new ActorDescription();
+
+					actorDesc.Shapes.Add( new BoxShapeDescription( 5, 6, 7 ) );
+
+					actorA = scene.CreateActor( actorDesc );
+				}
+
+				core.Dispose();
+			}
+		}
+
+		[TestMethod]
+		public void CreatingTwoCoresCausesException()
+		{
+			Core core1 = new Core();
+
+			bool threw = false;
+			try
+			{
+				Core core2 = new Core();
+			}catch( PhysXException ){
+				threw = true;
+			}
+
+			Assert.IsTrue( threw );
+
+			core1.Dispose();
 		}
 	}
 }

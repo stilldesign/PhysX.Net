@@ -65,110 +65,119 @@ namespace StillDesign.PhysX.UnitTests
 		[TestMethod]
 		public void CreateDistanceJoint()
 		{
-			Actor actorA, actorB;
+			using( CreateCoreAndScene() )
 			{
-				ActorDescription actorDesc = new ActorDescription()
+				Actor actorA, actorB;
 				{
-					BodyDescription = new BodyDescription( 20 ),
-					Shapes = { new BoxShapeDescription( 5, 6, 7 ) }
+					ActorDescription actorDesc = new ActorDescription()
+					{
+						BodyDescription = new BodyDescription( 20 ),
+						Shapes = { new BoxShapeDescription( 5, 6, 7 ) }
+					};
+
+					actorA = this.Scene.CreateActor( actorDesc );
+				}
+				{
+					ActorDescription actorDesc = new ActorDescription()
+					{
+						BodyDescription = new BodyDescription( 20 ),
+						Shapes = { new BoxShapeDescription( 5, 6, 7 ) }
+					};
+
+					actorB = this.Scene.CreateActor( actorDesc );
+				}
+
+				DistanceJointDescription distanceJointDesc = new DistanceJointDescription()
+				{
+					Actor1 = actorA,
+					Actor2 = actorB
 				};
 
-				actorA = this.Scene.CreateActor( actorDesc );
+				var distanceJoint = this.Scene.CreateJoint( distanceJointDesc ) as DistanceJoint;
+
+				Assert.IsNotNull( distanceJoint );
+
+				this.Scene.Simulate( 1.0f / 60.0f );
 			}
-			{
-				ActorDescription actorDesc = new ActorDescription()
-				{
-					BodyDescription = new BodyDescription( 20 ),
-					Shapes = { new BoxShapeDescription( 5, 6, 7 ) }
-				};
-
-				actorB = this.Scene.CreateActor( actorDesc );
-			}
-
-			DistanceJointDescription distanceJointDesc = new DistanceJointDescription()
-			{
-				Actor1 = actorA,
-				Actor2 = actorB
-			};
-
-			var distanceJoint = this.Scene.CreateJoint( distanceJointDesc ) as DistanceJoint;
-
-			Assert.IsNotNull( distanceJoint );
-
-			this.Scene.Simulate( 1.0f / 60.0f );
 		}
 
 		[TestMethod]
 		public void ReleaseJoint()
 		{
-			Actor actorA, actorB;
+			using( CreateCoreAndScene() )
 			{
-				ActorDescription actorDesc = new ActorDescription()
+				Actor actorA, actorB;
 				{
-					BodyDescription = new BodyDescription( 20 ),
-					Shapes = { new BoxShapeDescription( 5, 6, 7 ) }
+					ActorDescription actorDesc = new ActorDescription()
+					{
+						BodyDescription = new BodyDescription( 20 ),
+						Shapes = { new BoxShapeDescription( 5, 6, 7 ) }
+					};
+
+					actorA = this.Scene.CreateActor( actorDesc );
+				}
+				{
+					ActorDescription actorDesc = new ActorDescription()
+					{
+						BodyDescription = new BodyDescription( 20 ),
+						Shapes = { new BoxShapeDescription( 2, 5, 7 ) }
+					};
+
+					actorB = this.Scene.CreateActor( actorDesc );
+				}
+
+				D6JointDescription d6JointDesc = new D6JointDescription()
+				{
+					Actor1 = actorA,
+					Actor2 = actorB
 				};
 
-				actorA = this.Scene.CreateActor( actorDesc );
+				d6JointDesc.SetGlobalAnchor( new Vector3( 5, 6, 7 ) );
+				d6JointDesc.SetGlobalAxis( new Vector3( 0, 0, 1 ) );
+
+				D6Joint d6 = this.Scene.CreateJoint( d6JointDesc ) as D6Joint;
+
+				d6.Dispose();
 			}
-			{
-				ActorDescription actorDesc = new ActorDescription()
-				{
-					BodyDescription = new BodyDescription( 20 ),
-					Shapes = { new BoxShapeDescription( 2, 5, 7 ) }
-				};
-
-				actorB = this.Scene.CreateActor( actorDesc );
-			}
-
-			D6JointDescription d6JointDesc = new D6JointDescription()
-			{
-				Actor1 = actorA,
-				Actor2 = actorB
-			};
-
-			d6JointDesc.SetGlobalAnchor( new Vector3( 5, 6, 7 ) );
-			d6JointDesc.SetGlobalAxis( new Vector3( 0, 0, 1 ) );
-
-			D6Joint d6 = this.Scene.CreateJoint( d6JointDesc ) as D6Joint;
-
-			d6.Dispose();
 		}
 
 		[TestMethod]
 		public void DisposalOfJointedActor()
 		{
-			Actor actorA, actorB;
+			using( CreateCoreAndScene() )
 			{
-				ActorDescription actorDesc = new ActorDescription();
-				actorDesc.BodyDescription = new BodyDescription( 20 );
+				Actor actorA, actorB;
+				{
+					ActorDescription actorDesc = new ActorDescription();
+					actorDesc.BodyDescription = new BodyDescription( 20 );
 
-				actorDesc.Shapes.Add( new BoxShapeDescription( 5, 6, 7 ) );
+					actorDesc.Shapes.Add( new BoxShapeDescription( 5, 6, 7 ) );
 
-				actorA = this.Scene.CreateActor( actorDesc );
+					actorA = this.Scene.CreateActor( actorDesc );
+				}
+				{
+					ActorDescription actorDesc = new ActorDescription();
+					actorDesc.BodyDescription = new BodyDescription( 20 );
+
+					actorDesc.Shapes.Add( new BoxShapeDescription( 2, 5, 7 ) );
+
+					actorB = this.Scene.CreateActor( actorDesc );
+				}
+
+				D6JointDescription d6JointDesc = new D6JointDescription()
+				{
+					Actor1 = actorA,
+					Actor2 = actorB
+				};
+
+				d6JointDesc.SetGlobalAnchor( new Vector3( 5, 6, 7 ) );
+				d6JointDesc.SetGlobalAxis( new Vector3( 0, 0, 1 ) );
+
+				D6Joint d6 = this.Scene.CreateJoint( d6JointDesc ) as D6Joint;
+
+				actorA.Dispose();
+				d6.Dispose();
 			}
-			{
-				ActorDescription actorDesc = new ActorDescription();
-				actorDesc.BodyDescription = new BodyDescription( 20 );
-
-				actorDesc.Shapes.Add( new BoxShapeDescription( 2, 5, 7 ) );
-
-				actorB = this.Scene.CreateActor( actorDesc );
-			}
-
-			D6JointDescription d6JointDesc = new D6JointDescription()
-			{
-				Actor1 = actorA,
-				Actor2 = actorB
-			};
-
-			d6JointDesc.SetGlobalAnchor( new Vector3( 5, 6, 7 ) );
-			d6JointDesc.SetGlobalAxis( new Vector3( 0, 0, 1 ) );
-
-			D6Joint d6 = this.Scene.CreateJoint( d6JointDesc ) as D6Joint;
-
-			actorA.Dispose();
-			d6.Dispose();
 		}
 	}
 }

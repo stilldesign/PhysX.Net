@@ -9,21 +9,26 @@ namespace StillDesign
 {
 	namespace PhysX
 	{
+		interface class IDisposeOfChildren
+		{
+			virtual void DisposeOfAll();
+		};
+		
 		generic<class T>
 			where T : ref class, StillDesign::PhysX::IDisposable
-		public ref class ElementCollection : ListBase<T>
+		public ref class ElementCollection : ListBase<T>, IDisposeOfChildren
 		{
-			public:
+			internal:
 				ElementCollection();
 				
 			internal:
-				void DisposeOfAll();
+				virtual void DisposeOfAll() = IDisposeOfChildren::DisposeOfAll;	
 				
 			private:
-				void ElementCollection_onAdd( System::Object^ sender, T item );
-				void ElementCollection_onRemove( System::Object^ sender, T item );
+				void ElementCollection_OnAdd( System::Object^ sender, T item );
+				void ElementCollection_OnRemove( System::Object^ sender, T item );
 				
-				void Element_onDisposing( System::Object^ sender, EventArgs^ e );
+				void Element_OnDisposing( System::Object^ sender, EventArgs^ e );
 		};
 	};
 };

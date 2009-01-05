@@ -60,11 +60,9 @@ namespace StillDesign.PhysX.UnitTests
 		#endregion
 
 		[TestMethod]
-		public void TestMethod1()
+		public void InitializeCooking()
 		{
-			//
-			// TODO: Add test logic	here
-			//
+			Cooking.InitializeCooking();
 		}
 	}
 }

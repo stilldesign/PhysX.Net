@@ -58,13 +58,5 @@ namespace StillDesign.PhysX.UnitTests
 		// public void MyTestCleanup() { }
 		//
 		#endregion
-
-		[TestMethod]
-		public void TestMethod1()
-		{
-			//
-			// TODO: Add test logic	here
-			//
-		}
 	}
 }

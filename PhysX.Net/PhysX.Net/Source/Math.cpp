@@ -229,29 +229,9 @@ NxQuat StillDesign::PhysX::Math::QuaternionNxQuat( Quaternion quat )
 
 NxPlane StillDesign::PhysX::Math::PlaneToNxPlane( Plane plane )
 {
-#if GRAPHICS_MDX
-	return NxPlane( plane.A, plane.B, plane.C, plane.D );
-#elif GRAPHICS_XNA2
-	return NxPlane( plane.Normal.X, plane.Normal.Y, plane.Normal.Z, plane.D );
-#elif GRAPHICS_XNA3
-	return NxPlane( plane.Normal.X, plane.Normal.Y, plane.Normal.Z, plane.D );
-#elif GRAPHICS_SLIMDX
-	return NxPlane( plane.Normal.X, plane.Normal.Y, plane.Normal.Z, plane.D );
-#else
-	#error No Graphics Target Specified
-#endif
+	return _PlaneToNxPlane( plane );
 }
 Plane StillDesign::PhysX::Math::NxPlaneToPlane( NxPlane plane )
 {
-#if GRAPHICS_MDX
 	return Plane( plane.normal.x, plane.normal.y, plane.normal.z, plane.d );
-#elif GRAPHICS_XNA2
-	return Plane( plane.normal.x, plane.normal.y, plane.normal.z, plane.d );
-#elif GRAPHICS_XNA3
-	return Plane( plane.normal.x, plane.normal.y, plane.normal.z, plane.d );
-#elif GRAPHICS_SLIMDX
-	return Plane( plane.normal.x, plane.normal.y, plane.normal.z, plane.d );
-#else
-	#error No Graphics Target Specified
-#endif
 }

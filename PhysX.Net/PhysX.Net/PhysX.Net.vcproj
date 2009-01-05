@@ -13701,6 +13701,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Source\Graphics Library Wrapper.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Source\Groups Mask.h"
 				>
 			</File>
@@ -14667,6 +14671,10 @@
 				>
 				<File
 					RelativePath=".\Source\Delegates.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Source\Element Collection.h"
 					>
 				</File>
 				<File

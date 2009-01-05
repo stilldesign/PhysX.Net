@@ -24,7 +24,5 @@ namespace StillDesign.PhysX.UnitTests
 			return Matrix.CreateTranslation( translation );
 #endif
 		}
-
-		
 	}
 }

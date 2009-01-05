@@ -15,16 +15,8 @@ Segment::Segment( Vector3 point0, Vector3 point1 )
 float Segment::LengthSqaured()
 {
 	Vector3 d = this->Point0 - this->Point1;
-
-#if GRAPHICS_MDX
-	return d.LengthSq();	
-#elif GRAPHICS_XNA2 || GRAPHICS_XNA3
-	return d.LengthSquared();
-#elif GRAPHICS_SLIMDX
-	return d.LengthSquared();
-#else
-	#error No Graphics Target Specified
-#endif
+	
+	return Vector3_LengthSquared( d );
 }
 Vector3 Segment::ComputePoint( float t )
 {

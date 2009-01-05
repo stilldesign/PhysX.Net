@@ -1271,13 +1271,7 @@ array<Shape^>^ Scene::CullShapes( array<Plane>^ planes, ShapesType shapesType, u
 	NxPlane* p = new NxPlane[ planes->Length ];
 	for( int x = 0; x < planes->Length; x++ )
 	{
-		Plane plane = planes[ x ];
-		
-#if GRAPHICS_XNA2 || GRAPHICS_SLIMDX
-		p[ x ] = NxPlane( Math::Vector3ToNxVec3( plane.Normal ), plane.D );
-#elif GRAPHICS_MDX
-		p[ x ] = NxPlane( plane.A, plane.B, plane.C, plane.D );
-#endif
+		p[ x ] = Math::PlaneToNxPlane( planes[ x ] );
 	}
 	
 	NxGroupsMask* mask = groupsMask.HasValue ? &((NxGroupsMask)groupsMask.Value) : NULL;
@@ -1302,13 +1296,7 @@ int Scene::CullShapes( array<Plane>^ planes, ShapesType shapesType, unsigned int
 	NxPlane* p = new NxPlane[ planes->Length ];
 	for( int x = 0; x < planes->Length; x++ )
 	{
-		Plane plane = planes[ x ];
-		
-#if GRAPHICS_XNA2 || GRAPHICS_SLIMDX
-		p[ x ] = NxPlane( Math::Vector3ToNxVec3( plane.Normal ), plane.D );
-#elif GRAPHICS_MDX
-		p[ x ] = NxPlane( plane.A, plane.B, plane.C, plane.D );
-#endif
+		p[ x ] = Math::PlaneToNxPlane( planes[ x ] );
 	}
 	
 	NxGroupsMask* mask = groupsMask.HasValue ? &((NxGroupsMask)groupsMask.Value) : NULL;
@@ -1334,66 +1322,6 @@ array<ActiveTransform^>^ Scene::GetActiveTransforms()
 	return transforms;
 }
 
-//
-
-//void Scene::Actors_onAdd( Object^ sender, Actor^ item )
-//{
-//	for each( Shape^ shape in item->Shapes )
-//	{
-//		_shapes->Add( shape );
-//	}
-//	
-//	item->Shapes->onAdd += gcnew EventHandlerItem<Shape^>( this, &Scene::Actors_Shapes_onAdd );
-//	item->Shapes->onRemove += gcnew EventHandlerItem<Shape^>( this, &Scene::Actors_Shapes_onRemove );
-//}
-//void Scene::Actors_onRemove( Object^ sender, Actor^ item )
-//{
-//	for each( Shape^ shape in item->Shapes )
-//	{
-//		_shapes->Remove( shape );
-//	}
-//	
-//	item->Shapes->onAdd -= gcnew EventHandlerItem<Shape^>( this, &Scene::Actors_Shapes_onAdd );
-//	item->Shapes->onRemove -= gcnew EventHandlerItem<Shape^>( this, &Scene::Actors_Shapes_onRemove );
-//}
-//void Scene::Actors_Shapes_onAdd( Object^ sender, Shape^ item )
-//{
-//	_shapes->Add( item );
-//}
-//void Scene::Actors_Shapes_onRemove( Object^ sender, Shape^ item )
-//{
-//	_shapes->Remove( item );
-//}
-//
-//void Scene::_controllerManagerCollection_onAdd( System::Object^ sender, StillDesign::PhysX::ControllerManager^ e )
-//{
-//	e->Controllers->onAdd += gcnew EventHandlerItem<Controller^>( this, &Scene::Controllers_onAdd );
-//	e->Controllers->onRemove += gcnew EventHandlerItem<Controller^>( this, &Scene::Controllers_onRemove );
-//}
-//void Scene::_controllerManagerCollection_onRemove( System::Object^ sender, StillDesign::PhysX::ControllerManager^ e )
-//{
-//	e->Controllers->onAdd -= gcnew EventHandlerItem<Controller^>( this, &Scene::Controllers_onAdd );
-//	e->Controllers->onRemove -= gcnew EventHandlerItem<Controller^>( this, &Scene::Controllers_onRemove );
-//}
-//
-//void Scene::Controllers_onAdd( System::Object^ sender, StillDesign::PhysX::Controller^ e )
-//{
-//	_controllerCollection->Add( e );
-//	
-//	Actor^ actor = e->Actor;
-//	
-//	_actors->Add( actor );
-//}
-//void Scene::Controllers_onRemove( System::Object^ sender, StillDesign::PhysX::Controller^ e )
-//{
-//	_controllerCollection->Remove( e );
-//	
-//	Actor^ actor = e->Actor;
-//	
-//	_actors->Remove( actor );
-//}
-
-
 // Properties
 
 StillDesign::PhysX::Core^ Scene::Core::get()
@@ -1405,10 +1333,6 @@ ReadOnlyList< Actor^ >^ Scene::Actors::get()
 {
 	return _actors->ReadOnlyCollection;
 }
-//ReadOnlyList< Shape^ >^ Scene::Shapes::get()
-//{
-//	return _shapes->ReadOnlyCollection;
-//}
 ReadOnlyList< Material^ >^ Scene::Materials::get()
 {
 	return _materials->ReadOnlyCollection;
@@ -1417,10 +1341,6 @@ ReadOnlyList< StillDesign::PhysX::ControllerManager^ >^ Scene::ControllerManager
 {
 	return _controllerManagers->ReadOnlyCollection;
 }
-//ReadOnlyList< StillDesign::PhysX::Controller^ >^ Scene::Controllers::get()
-//{
-//	return _controllerCollection->ReadOnlyCollection;
-//}
 ReadOnlyList< Joint^ >^ Scene::Joints::get()
 {
 	return _joints->ReadOnlyCollection;

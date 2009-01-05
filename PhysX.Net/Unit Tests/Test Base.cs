@@ -18,24 +18,40 @@ namespace StillDesign.PhysX.UnitTests
 {
 	public abstract class TestBase
 	{
+		private static Core _core;
+
 		public TestBase()
 		{
 
 		}
 
-		protected void CreateCoreAndScene()
+		protected void CleanUp()
 		{
-			this.Core = new Core();
+			if( this.Core != null )
+				this.Core.Dispose();
 
-			this.Scene = this.Core.CreateScene();
+			this.Scene = null;
+			this.Core = null;
 		}
 
-		protected Actor CreateBoxActor( Vector3 position )
+		protected Core CreateCoreAndScene()
+		{
+			if( _core != null )
+				CleanUp();
+
+			_core = this.Core = new Core();
+
+			this.Scene = this.Core.CreateScene();
+
+			return this.Core;
+		}
+
+		protected Actor CreateBoxActor( float x, float y, float z )
 		{
 			ActorDescription actorDesc = new ActorDescription()
 			{
 				BodyDescription = new BodyDescription( 20 ),
-				GlobalPose = GraphicsLibraryWrapper.CreateTranslationMatrix( position ),
+				GlobalPose = GraphicsLibraryWrapper.CreateTranslationMatrix( new Vector3( x, y, z ) ),
 				Shapes = { new BoxShapeDescription( 5, 5, 5 ) }
 			};
 

@@ -62,19 +62,22 @@ namespace StillDesign.PhysX.UnitTests
 		[TestMethod]
 		public void DisposeOfBoxController()
 		{
-			var manager = this.Scene.CreateControllerManager();
-
-			var boxControllerDesc = new BoxControllerDescription( 2, 5, 2 )
+			using( CreateCoreAndScene() )
 			{
+				var manager = this.Scene.CreateControllerManager();
 
-			};
+				var boxControllerDesc = new BoxControllerDescription( 2, 5, 2 )
+				{
 
-			var boxController = manager.CreateController( boxControllerDesc ) as BoxController;
+				};
 
-			boxController.Dispose();
+				var boxController = manager.CreateController( boxControllerDesc ) as BoxController;
 
-			Assert.IsTrue( boxController.IsDisposed == true );
-			Assert.IsTrue( manager.Controllers.Count == 0 );
+				boxController.Dispose();
+
+				Assert.IsTrue( boxController.IsDisposed == true );
+				Assert.IsTrue( manager.Controllers.Count == 0 );
+			}
 		}
 	}
 }

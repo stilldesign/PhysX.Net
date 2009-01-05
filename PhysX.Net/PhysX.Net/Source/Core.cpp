@@ -19,10 +19,14 @@ using namespace StillDesign::PhysX;
 
 static Core::Core()
 {
-	CheckPhysXRuntimeFiles = true;
+	_checkPhysXRuntimeFiles = true;
+	_isCoreCreated = false;
 }
 Core::Core()
 {
+	if( IsCoreCreated == true )
+		throw gcnew PhysXException( "A core instance has already been created" );
+		
 	if( CheckPhysXRuntimeFiles == true )
 		CheckAllPhysXRuntimeFiles( true );
 	
@@ -30,6 +34,9 @@ Core::Core()
 }
 Core::Core( CoreDescription^ description, StillDesign::PhysX::UserOutputStream^ userOutputStream )
 {
+	if( IsCoreCreated == true )
+		throw gcnew PhysXException( "A core instance has already been created" );
+		
 	if( CheckPhysXRuntimeFiles == true )
 		CheckAllPhysXRuntimeFiles( true );
 	
@@ -37,6 +44,9 @@ Core::Core( CoreDescription^ description, StillDesign::PhysX::UserOutputStream^ 
 }
 Core::Core( NxPhysicsSDK* core )
 {
+	if( IsCoreCreated == true )
+		throw gcnew PhysXException( "A core instance has already been created" );
+		
 	if( CheckPhysXRuntimeFiles == true )
 		CheckAllPhysXRuntimeFiles( true );
 	
@@ -75,13 +85,29 @@ Core::!Core()
 	OnDisposing( this, nullptr );
 	
 	// Delete Children
-	_sceneCollection->DisposeOfAll();
-	_triangleMeshCollection->DisposeOfAll();
-	_convexMeshCollection->DisposeOfAll();
-	_clothMeshCollection->DisposeOfAll();
-	_heightFieldCollection->DisposeOfAll();
-	_CCDSkeletonCollection->DisposeOfAll();
-	_softBodyMeshCollection->DisposeOfAll();
+	array<IDisposeOfChildren^>^ dispose =
+	{
+		_sceneCollection,
+		_triangleMeshCollection,
+		_convexMeshCollection,
+		_clothMeshCollection,
+		_heightFieldCollection,
+		_CCDSkeletonCollection,
+		_softBodyMeshCollection
+	};
+	
+	for each( IDisposeOfChildren^ disposable in dispose )
+	{
+		disposable->DisposeOfAll();
+	}
+	
+	//_sceneCollection->DisposeOfAll();
+	//_triangleMeshCollection->DisposeOfAll();
+	//_convexMeshCollection->DisposeOfAll();
+	//_clothMeshCollection->DisposeOfAll();
+	//_heightFieldCollection->DisposeOfAll();
+	//_CCDSkeletonCollection->DisposeOfAll();
+	//_softBodyMeshCollection->DisposeOfAll();
 	
 	_sceneCollection = nullptr;
 	_triangleMeshCollection = nullptr;
@@ -97,8 +123,9 @@ Core::!Core()
 	if( _physicsSDK != NULL )
 	{
 		NxReleasePhysicsSDK( _physicsSDK );
-		
 		_physicsSDK = NULL;
+		
+		_isCoreCreated = false;
 	}
 	
 	OnDisposed( this, nullptr );
@@ -126,18 +153,19 @@ void Core::CreateCore( CoreDescription^ desc, StillDesign::PhysX::UserOutputStre
 }
 void Core::CreateCommon()
 {
-	_sceneCollection = gcnew ElementCollection< Scene^ >();
-	_triangleMeshCollection = gcnew ElementCollection< TriangleMesh^ >();
-	_convexMeshCollection = gcnew ElementCollection< ConvexMesh^ >();
-	_clothMeshCollection = gcnew ElementCollection< ClothMesh^ >();
-	_heightFieldCollection = gcnew ElementCollection< HeightField^ >();
-	_CCDSkeletonCollection = gcnew ElementCollection< CCDSkeleton^ >();
-	_softBodyMeshCollection = gcnew ElementCollection< SoftBodyMesh^ >();
+	_sceneCollection = gcnew ElementCollection<Scene^>();
+	_triangleMeshCollection = gcnew ElementCollection<TriangleMesh^>();
+	_convexMeshCollection = gcnew ElementCollection<ConvexMesh^>();
+	_clothMeshCollection = gcnew ElementCollection<ClothMesh^>();
+	_heightFieldCollection = gcnew ElementCollection<HeightField^>();
+	_CCDSkeletonCollection = gcnew ElementCollection<CCDSkeleton^>();
+	_softBodyMeshCollection = gcnew ElementCollection<SoftBodyMesh^>();
 	
 	_foundation = gcnew StillDesign::PhysX::Foundation( &_physicsSDK->getFoundationSDK() );
 	_physicsParametersWrapper = gcnew PhysicsParametersWrapper( this );
 
 	_checkPhysXRuntimeFiles = true;
+	_isCoreCreated = true;
 }
 
 bool Core::CheckAllPhysXRuntimeFiles()
@@ -402,6 +430,10 @@ void Core::SetParameter( PhysicsParameter parameter, bool enabled )
 	_physicsSDK->setParameter( (NxParameter)parameter, enabled ? 1.0f : 0.0f );
 }
 
+bool Core::IsCoreCreated::get()
+{
+	return _isCoreCreated;
+}
 ReadOnlyList< Scene^ >^ Core::Scenes::get()
 {
 	return _sceneCollection->ReadOnlyCollection;
@@ -462,10 +494,6 @@ Version^ Core::SDKVersion::get()
 bool Core::CheckPhysXRuntimeFiles::get()
 {
 	return _checkPhysXRuntimeFiles;
-}
-void Core::CheckPhysXRuntimeFiles::set( bool value )
-{
-	_checkPhysXRuntimeFiles = value;
 }
 
 StillDesign::PhysX::UserOutputStream^ Core::UserOutputStream::get()

@@ -7,6 +7,8 @@
 
 #pragma warning( disable : 4635 4800 4793 )
 
+#define NoGraphicsTargetSpecified #error No Graphics Target Specified
+
 #if GRAPHICS_MDX
 	#using <C:\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2902.0\Microsoft.DirectX.dll>
 	#using <C:\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2902.0\Microsoft.DirectX.Direct3D.dll>
@@ -18,21 +20,23 @@
 #elif GRAPHICS_SLIMDX
 	#using <C:\Program Files\SlimDX (September 2008)\SlimDX.dll>
 #else
-	#error No Graphics Target Specified
+	NoGraphicsTargetSpecified
 #endif
 
 #if GRAPHICS_MDX
-#define UsingFrameworkNamespace using namespace Microsoft::DirectX;
-#define UsingGraphicsNamespace using namespace Microsoft::DirectX::Direct3D;
+	#define UsingFrameworkNamespace using namespace Microsoft::DirectX;
+	#define UsingGraphicsNamespace using namespace Microsoft::DirectX::Direct3D;
 #elif GRAPHICS_XNA2
-#define UsingFrameworkNamespace using namespace Microsoft::Xna::Framework;
-#define UsingGraphicsNamespace using namespace Microsoft::Xna::Framework::Graphics;
+	#define UsingFrameworkNamespace using namespace Microsoft::Xna::Framework;
+	#define UsingGraphicsNamespace using namespace Microsoft::Xna::Framework::Graphics;
 #elif GRAPHICS_XNA3
-#define UsingFrameworkNamespace using namespace Microsoft::Xna::Framework;
-#define UsingGraphicsNamespace using namespace Microsoft::Xna::Framework::Graphics;
+	#define UsingFrameworkNamespace using namespace Microsoft::Xna::Framework;
+	#define UsingGraphicsNamespace using namespace Microsoft::Xna::Framework::Graphics;
 #elif GRAPHICS_SLIMDX
-#define UsingFrameworkNamespace using namespace SlimDX;
-#define UsingGraphicsNamespace using namespace SlimDX::Direct3D9;
+	#define UsingFrameworkNamespace using namespace SlimDX;
+	#define UsingGraphicsNamespace using namespace SlimDX::Direct3D9;
+#else
+	NoGraphicsTargetSpecified
 #endif
 
 // Modify the following defines if you have to target a platform prior to the ones specified below.
@@ -103,6 +107,7 @@ bool IsInstanceOf( U u )
 #include "Object Cache.h"
 #include "PhysX Exception.h"
 #include "List Base.h"
+#include "Graphics Library Wrapper.h"
 
 #define _CRT_SECURE_NO_DEPRECATE
 

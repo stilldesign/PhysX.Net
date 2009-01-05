@@ -62,39 +62,45 @@ namespace StillDesign.PhysX.UnitTests
 		[TestMethod]
 		public void ActorDeletion()
 		{
-			ActorDescription actorDesc = new ActorDescription();
-
-			actorDesc.Shapes.Add( new BoxShapeDescription( 5, 6, 7 ) );
-
-			Actor actor = this.Scene.CreateActor( actorDesc );
-
-			actor.Dispose();
-		}
-
-		[TestMethod]
-		public void DeletePairedActors()
-		{
-			Actor actorA, actorB;
+			using( CreateCoreAndScene() )
 			{
 				ActorDescription actorDesc = new ActorDescription();
 
 				actorDesc.Shapes.Add( new BoxShapeDescription( 5, 6, 7 ) );
 
-				actorA = this.Scene.CreateActor( actorDesc );
+				Actor actor = this.Scene.CreateActor( actorDesc );
+
+				actor.Dispose();
 			}
+		}
+
+		[TestMethod]
+		public void DeletePairedActors()
+		{
+			using( CreateCoreAndScene() )
 			{
-				ActorDescription actorDesc = new ActorDescription();
+				Actor actorA, actorB;
+				{
+					ActorDescription actorDesc = new ActorDescription();
 
-				actorDesc.Shapes.Add( new BoxShapeDescription( 2, 5, 7 ) );
+					actorDesc.Shapes.Add( new BoxShapeDescription( 5, 6, 7 ) );
 
-				actorB = this.Scene.CreateActor( actorDesc );
+					actorA = this.Scene.CreateActor( actorDesc );
+				}
+				{
+					ActorDescription actorDesc = new ActorDescription();
+
+					actorDesc.Shapes.Add( new BoxShapeDescription( 2, 5, 7 ) );
+
+					actorB = this.Scene.CreateActor( actorDesc );
+				}
+
+				this.Scene.SetActorPairFlags( actorA, actorB, ContactPairFlag.All );
+				ContactPairFlag pairFlags = this.Scene.GetActorPairFlags( actorA, actorB );
+
+				actorB.Dispose();
+				actorA.Dispose();
 			}
-
-			this.Scene.SetActorPairFlags( actorA, actorB, ContactPairFlag.All );
-			ContactPairFlag pairFlags = this.Scene.GetActorPairFlags( actorA, actorB );
-
-			actorB.Dispose();
-			actorA.Dispose();
 		}
 	}
 }

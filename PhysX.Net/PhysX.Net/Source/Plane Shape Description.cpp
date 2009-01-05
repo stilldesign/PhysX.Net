@@ -10,12 +10,7 @@ PlaneShapeDescription::PlaneShapeDescription() : ShapeDescription( new NxPlaneSh
 }
 PlaneShapeDescription::PlaneShapeDescription( Plane plane ) : ShapeDescription( new NxPlaneShapeDesc() )
 {
-#if GRAPHICS_XNA2
-	this->Normal = plane.Normal;
-#elif GRAPHICS_MDX
-	this->Normal = Vector3( plane.A, plane.B, plane.C );
-#endif
-	
+	this->Normal = Vector3::Normalize( Plane_GetNormal( plane ) );
 	this->Distance = plane.D;
 }
 PlaneShapeDescription::PlaneShapeDescription( Vector3 normal, float distance ) : ShapeDescription( new NxPlaneShapeDesc() )

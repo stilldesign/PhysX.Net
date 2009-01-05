@@ -72,35 +72,38 @@ namespace StillDesign.PhysX.UnitTests
 		[TestMethod]
 		public void CreateBoxForceField()
 		{
-			BoxForceFieldShapeDescription boxForceFieldShapeDesc = new BoxForceFieldShapeDescription()
+			using( CreateCoreAndScene() )
 			{
-				Size = new Vector3( 10, 10, 10 )
-			};
+				BoxForceFieldShapeDescription boxForceFieldShapeDesc = new BoxForceFieldShapeDescription()
+				{
+					Size = new Vector3( 10, 10, 10 )
+				};
 
-			ForceFieldLinearKernelDescription kernelDesc = new ForceFieldLinearKernelDescription()
-			{
-				Constant = new Vector3( 0, 100.0f, 0 )
-			};
+				ForceFieldLinearKernelDescription kernelDesc = new ForceFieldLinearKernelDescription()
+				{
+					Constant = new Vector3( 0, 100.0f, 0 )
+				};
 
-			ForceFieldLinearKernel kernel = this.Scene.CreateForceFieldLinearKernel( kernelDesc );
+				ForceFieldLinearKernel kernel = this.Scene.CreateForceFieldLinearKernel( kernelDesc );
 
-			ForceFieldShapeGroupDescription shapeGroupDesc = new ForceFieldShapeGroupDescription()
-			{
-				Shapes = { boxForceFieldShapeDesc }
-			};
+				ForceFieldShapeGroupDescription shapeGroupDesc = new ForceFieldShapeGroupDescription()
+				{
+					Shapes = { boxForceFieldShapeDesc }
+				};
 
-			ForceFieldShapeGroup shapeGroup = this.Scene.CreateForceFieldShapeGroup( shapeGroupDesc );
+				ForceFieldShapeGroup shapeGroup = this.Scene.CreateForceFieldShapeGroup( shapeGroupDesc );
 
-			BoxForceFieldShape boxForceFieldShape = shapeGroup.CreateShape( boxForceFieldShapeDesc ) as BoxForceFieldShape;
-			boxForceFieldShape.Pose = GraphicsLibraryWrapper.CreateTranslationMatrix( new Vector3( 30, 5, 0 ) );
+				BoxForceFieldShape boxForceFieldShape = shapeGroup.CreateShape( boxForceFieldShapeDesc ) as BoxForceFieldShape;
+				boxForceFieldShape.Pose = GraphicsLibraryWrapper.CreateTranslationMatrix( new Vector3( 30, 5, 0 ) );
 
-			ForceFieldDescription forceFieldDesc = new ForceFieldDescription()
-			{
-				Kernel = kernel,
-				ShapeGroups = { shapeGroup }
-			};
+				ForceFieldDescription forceFieldDesc = new ForceFieldDescription()
+				{
+					Kernel = kernel,
+					ShapeGroups = { shapeGroup }
+				};
 
-			ForceField forceField = this.Scene.CreateForceField( forceFieldDesc );
+				ForceField forceField = this.Scene.CreateForceField( forceFieldDesc );
+			}
 		}
 	}
 }

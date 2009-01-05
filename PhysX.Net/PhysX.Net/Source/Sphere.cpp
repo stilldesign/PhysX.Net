@@ -29,15 +29,7 @@ bool Sphere::IsValid()
 }
 bool Sphere::Contains( Vector3 point )
 {
-#if GRAPHICS_MDX
-	return this->Center.LengthSq( point ) <= this->Radius*this->Radius;
-#elif GRAPHICS_XNA2 || GRAPHICS_XNA3
-	return (this->Center - point).LengthSquared() <= this->Radius*this->Radius;
-#elif GRAPHICS_SLIMDX
-	return (this->Center - point).LengthSquared() <= this->Radius*this->Radius;
-#else
-	#error No Graphics Target Specified
-#endif
+	return Vector3_LengthSquared( ( this->Center - point ) ) <= this->Radius*this->Radius;
 }
 bool Sphere::Contains( Sphere sphere )
 {
@@ -47,29 +39,13 @@ bool Sphere::Contains( Sphere sphere )
 	
 	// So r is always positive or null now
 	float r = this->Radius - sphere.Radius;
-
-#if GRAPHICS_MDX
-	return this->Center.LengthSq( sphere.Center ) <= r*r;
-#elif GRAPHICS_XNA2 || GRAPHICS_XNA3
-	return (this->Center - sphere.Center).LengthSquared() <= r*r;
-#elif GRAPHICS_SLIMDX
-	return (this->Center - sphere.Center).LengthSquared() <= r*r;
-#else
-	#error No Graphics Target Specified
-#endif
+	
+	return Vector3_LengthSquared( ( this->Center - sphere.Center ) ) < r*r;
 }
 
 bool Sphere::Intersects( Sphere sphere )
 {
 	float r = this->Radius + sphere.Radius;
 	
-#if GRAPHICS_MDX
-	return this->Center.LengthSq( sphere.Center ) <= r*r;
-#elif GRAPHICS_XNA2 || GRAPHICS_XNA3
-	return (this->Center - sphere.Center).LengthSquared() <= r*r;
-#elif GRAPHICS_SLIMDX
-	return (this->Center - sphere.Center).LengthSquared() <= r*r;
-#else
-	#error No Graphics Target Specified
-#endif
+	return Vector3_LengthSquared( ( this->Center - sphere.Center ) ) < r*r;
 }

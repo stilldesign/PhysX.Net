@@ -40,33 +40,13 @@ Bounds3::operator Bounds3( NxBounds3 bounds )
 
 void Bounds3::Include( Vector3 vector )
 {
-#if GRAPHICS_MDX
-	this->Min = Vector3::Minimize( this->Min, vector );
-	this->Max = Vector3::Maximize( this->Max, vector );
-#elif GRAPHICS_XNA2 || GRAPHICS_XNA3
-	this->Min = Vector3::Min( this->Min, vector );
-	this->Max = Vector3::Max( this->Max, vector );
-#elif GRAPHICS_SLIMDX
-	this->Min = Vector3::Minimize( this->Min, vector );
-	this->Max = Vector3::Maximize( this->Max, vector );
-#else
-	#error No Graphics Target Specified
-#endif
+	this->Min = Vector3_Minimize( this->Min, vector );
+	this->Max = Vector3_Maximize( this->Max, vector );
 }
 void Bounds3::Combine( Bounds3 bounds )
 {
-#if GRAPHICS_MDX
-	this->Min = Vector3::Minimize( bounds.Min, this->Min );
-	this->Max = Vector3::Maximize( bounds.Max, this->Max );
-#elif GRAPHICS_XNA2 || GRAPHICS_XNA3
-	this->Min = Vector3::Min( bounds.Min, this->Min );
-	this->Max = Vector3::Max( bounds.Max, this->Max );
-#elif GRAPHICS_SLIMDX
-	this->Min = Vector3::Minimize( bounds.Min, this->Min );
-	this->Max = Vector3::Maximize( bounds.Max, this->Max );
-#else
-	#error No Graphics Target Specified
-#endif
+	this->Min = Vector3_Minimize( bounds.Min, this->Min );
+	this->Max = Vector3_Maximize( bounds.Max, this->Max );
 }
 void Bounds3::BoundsOfOBB( Matrix orientation, Vector3 translation, Vector3 halfDimensions )
 {
@@ -83,15 +63,7 @@ void Bounds3::BoundsOfOBB( Matrix orientation, Vector3 translation, Vector3 half
 }
 void Bounds3::Transform( Matrix orientation, Vector3 translation )
 {
-#if GRAPHICS_MDX
-	Vector3 center = Vector3::TransformCoordinate( this->Center, orientation ) + translation;
-#elif GRAPHICS_XNA2 || GRAPHICS_XNA3
-	Vector3 center = Vector3::Transform( this->Center, orientation ) + translation;
-#elif GRAPHICS_SLIMDX
-	Vector3 center = Vector3::TransformCoordinate( this->Center, orientation ) + translation;
-#else
-	#error No Graphics Target Specified
-#endif
+	Vector3 center = Vector3_Transform( this->Center, orientation ) + translation;
 	
 	this->BoundsOfOBB( orientation, center, this->Extents );
 }
@@ -158,7 +130,7 @@ Bounds3 Bounds3::Extremes::get()
 {
 	return Bounds3
 	(
-		Single::MaxValue, Single::MaxValue, Single::MaxValue, 
+		Single::MaxValue, Single::MaxValue, Single::MaxValue,
 		Single::MinValue, Single::MinValue, Single::MinValue
 	);
 }
@@ -178,13 +150,5 @@ Vector3 Bounds3::Extents::get()
 
 bool Bounds3::IsEmpty::get()
 {
-#if GRAPHICS_MDX
-	return this->Size.LengthSq() == 0;
-#elif GRAPHICS_XNA2 || GRAPHICS_XNA3
-	return this->Size.LengthSquared() == 0;
-#elif GRAPHICS_SLIMDX
-	return this->Size.LengthSquared() == 0;
-#else
-	#error No Graphics Target Specified
-#endif
+	return Vector3_LengthSquared( this->Size ) == 0;
 }
