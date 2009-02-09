@@ -9,6 +9,7 @@
   <Deployment>
     <DeploymentItem filename="Assemblies\NxCharacter.dll" />
     <DeploymentItem filename="Assemblies\PhysXLoader.dll" />
+    <DeploymentItem filename="Unit Tests\Scene 3.xml" />
     <DeploymentItem filename="Assemblies\NxCooking.dll" />
   </Deployment>
   <TestTypeSpecific>
