@@ -133,5 +133,16 @@ namespace StillDesign.PhysX.UnitTests
 
 			core1.Dispose();
 		}
+
+		public void ParameterTests()
+		{
+			CreateCoreAndScene();
+
+			this.Core.SetParameter( PhysicsParameter.DefaultSleepLinearVelocitySquared, 0.14f * 0.14f );
+			this.Core.SetParameter( PhysicsParameter.DefaultSleepAngularVelocitySquared, 0.15f * 0.15f );
+
+			Assert.AreEqual( this.Core.GetParameter( PhysicsParameter.DefaultSleepLinearVelocitySquared ), 0.14 * 0.14f );
+			Assert.AreEqual( this.Core.GetParameter( PhysicsParameter.DefaultSleepAngularVelocitySquared ), 0.15f * 0.15f );
+		}
 	}
 }
