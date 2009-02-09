@@ -8,10 +8,6 @@ namespace StillDesign
 	{
 		public value class Ray
 		{
-			private:
-				Vector3 _origin;
-				Vector3 _direction;
-			
 			public:
 				Ray( Vector3 origin, Vector3 direction );
 			
@@ -21,17 +17,10 @@ namespace StillDesign
 				
 			public:
 				/// <summary>Gets or Sets the origin of the ray</summary>
-				property Vector3 Origin
-				{
-					Vector3 get();
-					void set( Vector3 value );
-				}
+				property Vector3 Origin;
+				
 				/// <summary>Gets or Sets the direction of the ray (should be normalized)</summary>
-				property Vector3 Direction
-				{
-					Vector3 get();
-					void set( Vector3 value );
-				}
+				property Vector3 Direction;
 		};
 		
 		public ref class RaycastResult abstract

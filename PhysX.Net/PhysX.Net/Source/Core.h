@@ -37,15 +37,15 @@ namespace StillDesign
 				virtual event EventHandler^ OnDisposed;
 				
 			private:
-				NxPhysicsSDK* _physicsSDK;
+				static NxPhysicsSDK* _physicsSDK;
 				
-				ElementCollection< Scene^ >^ _sceneCollection;
-				ElementCollection< TriangleMesh^ >^ _triangleMeshCollection;
-				ElementCollection< ConvexMesh^ >^ _convexMeshCollection;
-				ElementCollection< ClothMesh^ >^ _clothMeshCollection;
-				ElementCollection< HeightField^ >^ _heightFieldCollection;
-				ElementCollection< CCDSkeleton^ >^ _CCDSkeletonCollection;
-				ElementCollection< SoftBodyMesh^ >^ _softBodyMeshCollection;
+				ElementCollection<Scene^>^ _sceneCollection;
+				ElementCollection<TriangleMesh^>^ _triangleMeshCollection;
+				ElementCollection<ConvexMesh^>^ _convexMeshCollection;
+				ElementCollection<ClothMesh^>^ _clothMeshCollection;
+				ElementCollection<HeightField^>^ _heightFieldCollection;
+				ElementCollection<CCDSkeleton^>^ _CCDSkeletonCollection;
+				ElementCollection<SoftBodyMesh^>^ _softBodyMeshCollection;
 				
 				StillDesign::PhysX::UserOutputStream^ _userOutputStream;
 				
@@ -221,7 +221,7 @@ namespace StillDesign
 			internal:
 				property NxPhysicsSDK* UnmanagedPointer
 				{
-					NxPhysicsSDK* get();
+					static NxPhysicsSDK* get();
 				}
 		};
 	};

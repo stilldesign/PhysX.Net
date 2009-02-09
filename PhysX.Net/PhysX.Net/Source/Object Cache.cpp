@@ -102,6 +102,11 @@ T ObjectCache::GetObject( intptr_t pointer )
 //		return nullptr;
 //}
 
+int ObjectCache::Count::get()
+{
+	return _cache->Count;
+}
+
 void ObjectCache::_cache_OnDisposing( Object^ sender, EventArgs^ e )
 {
 	Remove( sender );

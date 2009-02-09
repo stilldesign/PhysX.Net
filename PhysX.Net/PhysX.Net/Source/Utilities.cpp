@@ -28,11 +28,15 @@ bool StillDesign::PhysX::Utilities::Utilities::SaveCollection( PhysicsCollection
 
 PhysicsCollection^ StillDesign::PhysX::Utilities::Utilities::LoadCollection( String^ file, UtilitiesFileType fileType )
 {
-	//PhysicsCollection^ physicsCollection = gcnew PhysicsCollection();
+	if( File::Exists( file ) == false )
+		throw gcnew FileNotFoundException( "Could not find Physics Collection file", file );
 	
-	NXU::NxuPhysicsCollection* c = NXU::loadCollection( Functions::ManagedToUnmanagedString( file ), (NXU::NXU_FileType)fileType );
+	NXU::NxuPhysicsCollection* collection = NXU::loadCollection( Functions::ManagedToUnmanagedString( file ), (NXU::NXU_FileType)fileType );
 	
-	return gcnew PhysicsCollection( c );
+	if( collection == NULL )
+		throw gcnew PhysXException( "Failed to create a Physics Collection" );
+	
+	return gcnew PhysicsCollection( collection );
 }
 
 PhysicsCollection^ StillDesign::PhysX::Utilities::Utilities::ExtractCollectionFromScene( Scene^ scene )

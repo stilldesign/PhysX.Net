@@ -12,7 +12,7 @@
 #if GRAPHICS_MDX
 	#using <C:\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2902.0\Microsoft.DirectX.dll>
 	#using <C:\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2902.0\Microsoft.DirectX.Direct3D.dll>
-	#using <C:\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2905.0\Microsoft.DirectX.Direct3DX.dll>
+	#using <C:\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2911.0\Microsoft.DirectX.Direct3DX.dll>
 #elif GRAPHICS_XNA2
 	#using <C:\Program Files\Microsoft XNA\XNA Game Studio\v2.0\References\Windows\x86\Microsoft.Xna.Framework.dll>
 #elif GRAPHICS_XNA3

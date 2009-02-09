@@ -11,8 +11,8 @@ using namespace StillDesign::PhysX;
 // Ray
 StillDesign::PhysX::Ray::Ray( Vector3 origin, Vector3 direction )
 {
-	_origin = origin;
-	_direction = direction;
+	this->Origin = origin;
+	this->Direction = direction;
 }
 
 StillDesign::PhysX::Ray::operator NxRay( Ray ray )
@@ -22,25 +22,6 @@ StillDesign::PhysX::Ray::operator NxRay( Ray ray )
 StillDesign::PhysX::Ray::operator StillDesign::PhysX::Ray( NxRay ray )
 {
 	return Ray( Math::NxVec3ToVector3( ray.orig ), Math::NxVec3ToVector3( ray.dir ) );
-}
-
-// Properties
-Vector3 StillDesign::PhysX::Ray::Origin::get()
-{
-	return _origin;
-}
-void StillDesign::PhysX::Ray::Origin::set( Vector3 value )
-{
-	_origin = value;
-}
-
-Vector3 StillDesign::PhysX::Ray::Direction::get()
-{
-	return _direction;
-}
-void StillDesign::PhysX::Ray::Direction::set( Vector3 value )
-{
-	_direction = value;
 }
 
 //

@@ -76,7 +76,14 @@ namespace StillDesign
 					HeightFieldFlag get();
 					void set( HeightFieldFlag flags );
 				}
-			
+				
+				/// <summary>Gets or Sets how far 'below ground' the height volume extends (Deprecated)</summary>
+				property float VerticalExtent
+				{
+					float get();
+					void set( float value );
+				}
+				
 			internal:
 				property NxHeightFieldDesc* UnmanagedPointer
 				{

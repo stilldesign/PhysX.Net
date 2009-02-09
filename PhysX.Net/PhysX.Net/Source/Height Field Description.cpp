@@ -118,6 +118,15 @@ void HeightFieldDescription::Flags::set( HeightFieldFlag value )
 	_heightFieldDesc->flags = (NxHeightFieldFlags)value;
 }
 
+float HeightFieldDescription::VerticalExtent::get()
+{
+	return _heightFieldDesc->verticalExtent;
+}
+void HeightFieldDescription::VerticalExtent::set( float value )
+{
+	_heightFieldDesc->verticalExtent = value;
+}
+
 NxHeightFieldDesc* HeightFieldDescription::UnmanagedPointer::get()
 {
 	return _heightFieldDesc;

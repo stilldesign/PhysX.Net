@@ -36,10 +36,15 @@ namespace StillDesign
 				//where T : ref class
 				//static array<T>^ GetObjectsOfType();
 				
+				property int Count
+				{
+					static int get();
+				}
+				
 			private:
 				static void _cache_OnDisposing( Object^ sender, EventArgs^ e );
 				
-			public:
+			internal:
 				property System::Collections::Generic::Dictionary<intptr_t, Object^>^ Cache
 				{
 					static System::Collections::Generic::Dictionary<intptr_t, Object^>^ get()

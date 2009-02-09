@@ -15,6 +15,8 @@ Fixed Core.CheckPhysXRuntimeFiles; this property is now static and used by the C
 Fixed bug where a D6JointDesc was being created instead of a NxDistanceJointDesc
 Removed ControllerShapeHit.TriangleIndex (Reserved for future use)
 Cleaned up Runtime File Checks; correct hash array sizes, throw on uncaught exception
+Changed Microsoft.DirectX.Direct3DX.dll to version 1.0.2911.0
+Added HeightFieldDescription.VerticalExtent
 
 [0.10.2.0 - 2008-11-15]
 Fixed bug where Fluid.ParticleWriteData would be empty
