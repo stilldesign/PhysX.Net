@@ -17,7 +17,7 @@ PhysicsStream::PhysicsStream( BYTE* data, int length ) : UnmanagedMemoryStream( 
 }
 PhysicsStream::~PhysicsStream()
 {
-	this->~PhysicsStream();
+	this->!PhysicsStream();
 }
 PhysicsStream::!PhysicsStream()
 {
