@@ -17,6 +17,9 @@ Removed ControllerShapeHit.TriangleIndex (Reserved for future use)
 Cleaned up Runtime File Checks; correct hash array sizes, throw on uncaught exception
 Changed Microsoft.DirectX.Direct3DX.dll to version 1.0.2911.0
 Added HeightFieldDescription.VerticalExtent
+Fixed bug in SceneDescription.MaximumBounds setter
+Changed PhysX.Net to target PhysX 2.8.1.21 (January 2009)
+Fixed PhysicsStream Finalizer. Was calling itself.
 
 [0.10.2.0 - 2008-11-15]
 Fixed bug where Fluid.ParticleWriteData would be empty

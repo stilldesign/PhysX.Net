@@ -139,15 +139,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\Assemblies\NxCharacter.dll">
+    <Content Include="..\..\Assemblies\NxCharacter.dll">
       <Link>NxCharacter.dll</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\Assemblies\NxCooking.dll">
+    <Content Include="..\..\Assemblies\NxCooking.dll">
       <Link>NxCooking.dll</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\Assemblies\PhysXLoader.dll">
+    <Content Include="..\..\Assemblies\PhysXLoader.dll">
       <Link>PhysXLoader.dll</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

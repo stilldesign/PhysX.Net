@@ -91,7 +91,8 @@
     <Compile Include="Heightfield Tests.cs" />
     <Compile Include="Joint Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Scene Tests.cs" />
+    <Compile Include="Scene\Scene Description.cs" />
+    <Compile Include="Scene\Scene Tests.cs" />
     <Compile Include="Serialization.cs" />
     <Compile Include="Shape Tests.cs" />
     <Compile Include="SoftBody Tests.cs" />

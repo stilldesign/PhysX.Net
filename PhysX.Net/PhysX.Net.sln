@@ -7,7 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing", "Testing\Testing.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6122AE90-D0DA-4342-8284-AB8450A46C2C}"
 	ProjectSection(SolutionItems) = preProject
-		Changelog.txt = Changelog.txt
 		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
 		Assemblies\NxCharacter.dll = Assemblies\NxCharacter.dll
 		Assemblies\NxCooking.dll = Assemblies\NxCooking.dll

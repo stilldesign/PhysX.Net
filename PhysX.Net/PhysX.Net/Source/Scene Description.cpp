@@ -32,6 +32,9 @@ SceneDescription::!SceneDescription()
 	
 	OnDisposing( this, nullptr );
 	
+	// Delete the maximum bounds memory
+	this->MaximumBounds = Nullable<Bounds3>();
+	
 	SAFE_DELETE( _sceneDescription );
 	
 	_name = nullptr;
@@ -187,9 +190,17 @@ Nullable<Bounds3> SceneDescription::MaximumBounds::get()
 void SceneDescription::MaximumBounds::set( Nullable<Bounds3> value )
 {
 	if( value.HasValue == false )
+	{
+		if( _sceneDescription->maxBounds != NULL )
+			delete _sceneDescription->maxBounds;
+		
 		_sceneDescription->maxBounds = NULL;
-	else
-		*_sceneDescription->maxBounds = (NxBounds3)value.Value;
+	}else{
+		if( _sceneDescription->maxBounds == NULL )
+			_sceneDescription->maxBounds = new NxBounds3();
+		
+		*(_sceneDescription->maxBounds) = (NxBounds3)value.Value;
+	}
 }
 
 SceneLimits^ SceneDescription::Limits::get()
