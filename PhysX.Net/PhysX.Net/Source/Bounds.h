@@ -37,10 +37,10 @@ namespace StillDesign
 				void Expand( float distance );
 				
 				/// <summary>Does the Bounds intersect another Bounds object</summary>
-				/// <param name="point>The other Bounds object to check</param>
+				/// <param name="bounds>The other Bounds object to check</param>
 				bool Intersects( Bounds3 bounds );
 				/// <summary>Is a point contained inside the Bounds</summary>
-				/// <param name="point>The point to check</param>
+				/// <param name="point">The point to check</param>
 				bool Contains( Vector3 point );
 				
 				/// <summary>Sets the components of Minimum and Maximum to 0</summary>

@@ -125,7 +125,7 @@ namespace StillDesign
 				
 				/// <summary>Computes the total kinetic (rotational and translational) energy of the object</summary>
 				float ComputeKineticEnergy();
-				/// summary>Computes the velocity of a point given in world coordinates if it were attached to the actor and moving with it</summary>
+				/// <summary>Computes the velocity of a point given in world coordinates if it were attached to the actor and moving with it</summary>
 				Vector3 ComputePointVelocity( Vector3 point );
 				/// <summary>Computes the velocity of a point given in body local coordinates as if it were attached to the actor and moving with it</summary>
 				Vector3 ComputeLocalPointVelocity( Vector3 point );

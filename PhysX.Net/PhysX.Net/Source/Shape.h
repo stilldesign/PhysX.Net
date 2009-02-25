@@ -118,7 +118,7 @@ namespace StillDesign
 				}
 				
 				/// <summary>Gets or Sets Which Collision Group this Shape is Part of</summary>
-				/// <remarks>When Setting the Group the Value Must be < 32</remarks>
+				/// <remarks>When Setting the Group the Value Must be below 32</remarks>
 				property short Group
 				{
 					short get();

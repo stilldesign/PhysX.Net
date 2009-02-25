@@ -39,7 +39,7 @@ namespace StillDesign
 				/// <typeparam name="T">The type of each vertex mass</typeparam>
 				generic<typename T> where T : ValueType PhysicsStream^ AllocateVertexMasses( int numberOfVertices );
 				/// <summary>Allocates memory for the mass of each vertex to be stored</summary>
-				/// <param name="size">The amount of memory in bytes to allocate</summary>
+				/// <param name="size">The amount of memory in bytes to allocate</param>
 				/// <param name="strideSize">The number of bytes that separate each vertex mass</param>
 				PhysicsStream^ AllocateVertexMasses( int size, int strideSize );
 				/// <summary>Allocates memory for the vertex flags</summary>
@@ -47,7 +47,7 @@ namespace StillDesign
 				/// <typeparam name="T">The type of each vertex flag</typeparam>
 				generic<typename T> where T : ValueType PhysicsStream^ AllocateVertexFlags( int numberOfVertices );
 				/// <summary>Allocates memory for a flag of each vertex to be stored</summary>
-				/// <param name="size">The amount of memory in bytes to allocate</summary>
+				/// <param name="size">The amount of memory in bytes to allocate</param>
 				/// <param name="strideSize">The number of bytes that separate each vertex flag</param>
 				PhysicsStream^ AllocateVertexFlags( int size, int strideSize );
 				

@@ -13962,6 +13962,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\Source\Controller Shape Hit.h"
+					>
+				</File>
+				<File
 					RelativePath=".\Source\Controller.h"
 					>
 				</File>

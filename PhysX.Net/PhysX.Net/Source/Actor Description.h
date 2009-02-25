@@ -8,7 +8,7 @@ namespace StillDesign
 	{
 		ref class Actor;
 		ref class ShapeDescription;
-		generic< class T> ref class ListBase;
+		//generic< class T> ref class ListBase;
 		
 		public ref class ActorDescription : ActorDescriptionBase
 		{

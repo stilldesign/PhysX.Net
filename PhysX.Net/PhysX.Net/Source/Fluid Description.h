@@ -14,7 +14,7 @@ namespace StillDesign
 		ref class FluidEmitterDescription;
 		ref class DescriptorValidity;
 		ref class Scene;
-		generic< class T > ref class ListBase;
+		//generic< class T > ref class ListBase;
 		
 		public ref class FluidDescription : FluidDescriptionBase
 		{		

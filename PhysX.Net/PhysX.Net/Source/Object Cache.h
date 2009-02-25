@@ -36,6 +36,8 @@ namespace StillDesign
 				//where T : ref class
 				//static array<T>^ GetObjectsOfType();
 				
+				static bool Contains( intptr_t pointer );
+				
 				property int Count
 				{
 					static int get();

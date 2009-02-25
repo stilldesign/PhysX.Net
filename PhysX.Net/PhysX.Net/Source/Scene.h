@@ -528,7 +528,7 @@ namespace StillDesign
 				//
 				
 			public:
-				/// <summary>Gets the Core parent of the scene<summary>
+				/// <summary>Gets the Core parent of the scene</summary>
 				property StillDesign::PhysX::Core^ Core
 				{
 					StillDesign::PhysX::Core^ get();

@@ -44,20 +44,20 @@ namespace StillDesign
 				virtual void SetToDefault();
 				
 				/// <summary>Allocates memory for vertices</summary>
-				/// <param name="numberOfVertices">The number of vertices to allocate</summary>
-				/// <typeparam name="T">The type of each vertex</summary>
+				/// <param name="numberOfVertices">The number of vertices to allocate</param>
+				/// <typeparam name="T">The type of each vertex</typeparam>
 				generic<typename T> where T : ValueType PhysicsStream^ AllocateVertices( int numberOfVertices );
 				/// <summary>Allocates memory for vertices</summary>
-				/// <param name="size">The size (in bytes) of the memory to allocate</summary>
-				/// <param name="strideSize">The size (int bytes) between each vertex</summary>
+				/// <param name="size">The size (in bytes) of the memory to allocate</param>
+				/// <param name="strideSize">The size (int bytes) between each vertex</param>
 				PhysicsStream^ AllocateVertices( int size, int strideSize );
 				/// <summary>Allocates memory for vertices</summary>
-				/// <param name="numberOfVertices">The number of triangles to allocate</summary>
-				/// <typeparam name="T">The type of each index</summary>
+				/// <param name="numberOfVertices">The number of triangles to allocate</param>
+				/// <typeparam name="T">The type of each index</typeparam>
 				generic<typename T> where T : ValueType PhysicsStream^ AllocateTriangles( int numberOfTriangles );
 				/// <summary>Allocates Memory for Triangles</summary>
-				/// <param name="size">The Size (in Bytes) of the Memory to Allocate</summary>
-				/// <param name="strideSize">The Size (int Bytes) Between Each Triangle</summary>
+				/// <param name="size">The Size (in Bytes) of the Memory to Allocate</param>
+				/// <param name="strideSize">The Size (int Bytes) Between Each Triangle</param>
 				PhysicsStream^ AllocateTriangles( int size, int strideSize );
 				
 				/// <summary>Gets a Stream to the Vertices</summary>

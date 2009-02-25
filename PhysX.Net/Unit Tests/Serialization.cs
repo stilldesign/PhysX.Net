@@ -4,9 +4,17 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+#if GRAPHICS_MDX
+using Microsoft.DirectX;
+#elif GRAPHICS_XNA2 || GRAPHICS_XNA3
 using Microsoft.Xna.Framework;
+#elif GRAPHICS_SLIMDX
+using SlimDX;
+#endif
 
 using StillDesign.PhysX.Utilities;
+
+using Ray = StillDesign.PhysX.Ray;
 
 namespace StillDesign.PhysX.UnitTests
 {
@@ -18,61 +26,41 @@ namespace StillDesign.PhysX.UnitTests
 
 		}
 
-		private TestContext testContextInstance;
-
-		public TestContext TestContext
+		[TestMethod]
+		public void LoadScene()
 		{
-			get
+			using( CreateCoreAndScene() )
 			{
-				return testContextInstance;
-			}
-			set
-			{
-				testContextInstance = value;
+				PhysicsCollection collection = PhysX.Utilities.Utilities.LoadCollection( @"Scene 3.xml", UtilitiesFileType.Xml );
+
+				LoadUserNotify userNotify = new LoadUserNotify();
+
+				bool successfulLoad = collection.InstantiateCollection( this.Core, this.Scene, null, userNotify );
+
+				Assert.IsTrue( successfulLoad, "Scene did not load successfully" );
 			}
 		}
-
-		#region Additional test attributes
-		//
-		// You can use the following additional attributes as you write your tests:
-		//
-		// Use ClassInitialize to run code before running the first test in the class
-		// [ClassInitialize()]
-		// public static void MyClassInitialize(TestContext testContext) { }
-		//
-		// Use ClassCleanup to run code after all tests in a class have run
-		// [ClassCleanup()]
-		// public static void MyClassCleanup() { }
-		//
-		// Use TestInitialize to run code before running each test 
-		// [TestInitialize()]
-		// public void MyTestInitialize() { }
-		//
-		// Use TestCleanup to run code after each test has run
-		// [TestCleanup()]
-		// public void MyTestCleanup() { }
-		//
-		#endregion
 
 		[TestMethod]
 		public void LoadSceneAndRaycast()
 		{
-			CreateCoreAndScene();
-
-			PhysicsCollection collection = PhysX.Utilities.Utilities.LoadCollection( @"Scene 3.xml", UtilitiesFileType.Xml );
-
-			LoadUserNotify notify = new LoadUserNotify();
-
-			bool successfulLoad = collection.InstantiateCollection( this.Core, this.Scene, null, null );
-
-			Assert.IsTrue( successfulLoad );
-			Assert.IsTrue( this.Scene.Actors.Sum( t => t.Shapes.Count ) == 4 );
+			using( CreateCoreAndScene() )
 			{
-				Ray ray = new Ray();
+				PhysicsCollection collection = PhysX.Utilities.Utilities.LoadCollection( @"Scene 3.xml", UtilitiesFileType.Xml );
+
+				LoadUserNotify notify = new LoadUserNotify();
+
+				bool successfulLoad = collection.InstantiateCollection( this.Core, this.Scene, null, null );
+
+				Assert.IsTrue( successfulLoad );
+				Assert.IsTrue( this.Scene.Actors.Sum( t => t.Shapes.Count ) == 4, "Loaded file does not contain 4 shapes" );
+				{
+					Ray ray = new Ray();
 					ray.Origin = new Vector3( 0, 0, 0 );
 					ray.Direction = Vector3.Normalize( this.Scene.Actors[ 2 ].Shapes[ 0 ].WorldSpaceBounds.Center - ray.Origin );
 
-				Assert.IsTrue( this.Scene.RaycastAllShapes( ray, ShapesType.All ).Length == 1 );
+					Assert.IsTrue( this.Scene.RaycastAllShapes( ray, ShapesType.All ).Length == 1 );
+				}
 			}
 		}
 	}

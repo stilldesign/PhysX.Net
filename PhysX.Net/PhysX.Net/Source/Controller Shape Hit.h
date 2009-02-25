@@ -78,6 +78,9 @@ namespace StillDesign
 		{
 			private:
 				NxControllersHit* _controllersHit;
+				
+				Controller^ _controller;
+				Controller^ _other;
 			
 			public:
 				ControllersHit();
@@ -87,6 +90,24 @@ namespace StillDesign
 				~ControllersHit();
 			protected:
 				!ControllersHit();
+				
+			public:
+				/// <summary>Gets the current controller</summary>
+				property StillDesign::PhysX::Controller^ Controller
+				{
+					StillDesign::PhysX::Controller^ get();
+				}
+				/// <summary>Gets the touched controller</summary>
+				property StillDesign::PhysX::Controller^ Other
+				{
+					StillDesign::PhysX::Controller^ get();
+				}
+				
+			internal:
+				property NxControllersHit* UnmanagedPointer
+				{
+					NxControllersHit* get();
+				}
 		};
 	};
 };

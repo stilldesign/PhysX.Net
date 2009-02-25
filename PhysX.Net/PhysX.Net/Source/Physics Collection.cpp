@@ -81,9 +81,15 @@ bool PhysicsCollection::InstantiateCollection( Core^ core, Scene^ scene, Nullabl
 	if( rootNode.HasValue == true )
 		r = Math::MatrixToMat34( rootNode.Value );
 	
-	bool result = NXU::instantiateCollection( _physicsCollection, *core->UnmanagedPointer, scene == nullptr ? NULL : scene->UnmanagedPointer, rootNode.HasValue ? &r : NULL, userNotify == nullptr ? NULL : userNotify->UnmanagedPointer );
+	NXU_userNotify* n;
+	if( userNotify == nullptr )
+		n = new InternalUserNotify();
+	else
+		n = userNotify->UnmanagedPointer;
 	
+	NxScene* s = (scene == nullptr ? NULL : scene->UnmanagedPointer);
 	
+	bool result = NXU::instantiateCollection( _physicsCollection, *core->UnmanagedPointer, s, rootNode.HasValue ? &r : NULL, n );
 	
 	return result;
 }

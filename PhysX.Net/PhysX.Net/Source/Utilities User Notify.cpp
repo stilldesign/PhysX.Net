@@ -47,6 +47,10 @@ StillDesign::PhysX::Utilities::InternalUserNotify* UserNotify::UnmanagedPointer:
 
 //
 
+InternalUserNotify::InternalUserNotify()
+{
+	_userNotify = nullptr;
+}
 InternalUserNotify::InternalUserNotify( gcroot<UserNotify^> notify )
 {
 	_userNotify = notify;
@@ -57,7 +61,8 @@ void InternalUserNotify::NXU_notifyScene (NxU32 sno, NxScene *scene, const char 
 	Core^ core = ObjectCache::GetObject<Core^>( (intptr_t)(&scene->getPhysicsSDK()) );
 	core->AddScene( scene );
 	
-	_userNotify->NotifyScene( sno, ObjectCache::GetObject<Scene^>( (intptr_t)scene ), ToManagedString( userProperties ) );
+	if( _userNotify )
+		_userNotify->NotifyScene( sno, ObjectCache::GetObject<Scene^>( (intptr_t)scene ), ToManagedString( userProperties ) );
 }
 void  InternalUserNotify::NXU_notifyCompartment (NxCompartment *compartment)
 {
@@ -99,98 +104,117 @@ void  InternalUserNotify::NXU_notifyCompartment (NxCompartment *compartment)
 	
 	Compartment^ c = gcnew Compartment( compartment, parentScene );
 	
-	_userNotify->NotifyCompartment( ObjectCache::GetObject<Compartment^>( (intptr_t)compartment ) );
+	if( _userNotify )
+		_userNotify->NotifyCompartment( ObjectCache::GetObject<Compartment^>( (intptr_t)compartment ) );
 }
 void  InternalUserNotify::NXU_notifyJoint (NxJoint *joint, const char *userProperties)
 {
 	Scene^ scene = ObjectCache::GetObject<Scene^>( (intptr_t)(&joint->getScene()) );
 	Joint^ j = scene->AddJoint( joint );
 	
-	_userNotify->NotifyJoint( ObjectCache::GetObject<Joint^>( (intptr_t)joint ), ToManagedString( userProperties ) );
+	if( _userNotify )
+		_userNotify->NotifyJoint( ObjectCache::GetObject<Joint^>( (intptr_t)joint ), ToManagedString( userProperties ) );
 }
 void  InternalUserNotify::NXU_notifyForceField (NxForceField *effector, const char *userProperties)
 {
 	Scene^ scene = ObjectCache::GetObject<Scene^>( (intptr_t)(&effector->getScene()) );
 	ForceField^ f = scene->AddForceField( effector );
 	
-	_userNotify->NotifyForceField( f, ToManagedString( userProperties ) );
+	if( _userNotify )
+		_userNotify->NotifyForceField( f, ToManagedString( userProperties ) );
 }
 void  InternalUserNotify::NXU_notifyActor (NxActor *actor, const char *userProperties)
 {
 	Scene^ scene = ObjectCache::GetObject<Scene^>( (intptr_t)(&actor->getScene()) );
 	Actor^ a = scene->AddActor( actor );
 	
-	_userNotify->NotifyActor( a, ToManagedString( userProperties ) );
+	if( _userNotify )
+		_userNotify->NotifyActor( a, ToManagedString( userProperties ) );
 }
 void  InternalUserNotify::NXU_notifyCloth (NxCloth *cloth, const char *userProperties)
 {
 	Scene^ scene = ObjectCache::GetObject<Scene^>( (intptr_t)(&cloth->getScene()) );
 	Cloth^ c = scene->AddCloth( cloth );
 	
-	_userNotify->NotifyCloth( c, ToManagedString( userProperties ) );
+	if( _userNotify )
+		_userNotify->NotifyCloth( c, ToManagedString( userProperties ) );
 }
 void  InternalUserNotify::NXU_notifySoftBody (NxSoftBody *softBody, const char *userProperties)
 {
 	Scene^ scene = ObjectCache::GetObject<Scene^>( (intptr_t)(&softBody->getScene()) );
 	SoftBody^ s = scene->AddSoftBody( softBody );
 	
-	_userNotify->NotifySoftBody( s, ToManagedString( userProperties ) );
+	if( _userNotify )
+		_userNotify->NotifySoftBody( s, ToManagedString( userProperties ) );
 }
 void  InternalUserNotify::NXU_notifyFluid (NxFluid *fluid, const char *userProperties)
 {
 	Scene^ scene = ObjectCache::GetObject<Scene^>( (intptr_t)(&fluid->getScene()) );
 	Fluid^ f = scene->AddFluid( fluid );
 	
-	_userNotify->NotifyFluid( f, ToManagedString( userProperties ) );
+	if( _userNotify )
+		_userNotify->NotifyFluid( f, ToManagedString( userProperties ) );
 }
 void  InternalUserNotify::NXU_notifyTriangleMesh (NxTriangleMesh *t, const char *userProperties)
 {
 	Core^ core = ObjectCache::GetObject<TriangleMesh^>( (intptr_t)&t )->Core;
 	TriangleMesh^ triangleMesh = core->AddTriangleMesh( t );
 	
-	_userNotify->NotifyTriangleMesh( triangleMesh, ToManagedString( userProperties ) );
+	if( _userNotify )
+		_userNotify->NotifyTriangleMesh( triangleMesh, ToManagedString( userProperties ) );
 }
 void  InternalUserNotify::NXU_notifyConvexMesh (NxConvexMesh *c, const char *userProperties)
 {
 	Core^ core = ObjectCache::GetObject<ConvexMesh^>( (intptr_t)c )->Core;
 	ConvexMesh^ convexMesh = core->AddConvexMesh( c );
 	
-	_userNotify->NotifyConvexMesh( convexMesh, ToManagedString( userProperties ) );
+	if( _userNotify )
+		_userNotify->NotifyConvexMesh( convexMesh, ToManagedString( userProperties ) );
 }
 void  InternalUserNotify::NXU_notifyClothMesh (NxClothMesh *t, const char *userProperties)
 {
 	Core^ core = ObjectCache::GetObject<ClothMesh^>( (intptr_t)t )->Core;
 	ClothMesh^ clothMesh = core->AddClothMesh( t );
 	
-	_userNotify->NotifyClothMesh( clothMesh, ToManagedString( userProperties ) );
+	if( _userNotify )
+		_userNotify->NotifyClothMesh( clothMesh, ToManagedString( userProperties ) );
 }
 void  InternalUserNotify::NXU_notifySoftBodyMesh (NxSoftBodyMesh *t, const char *userProperties)
 {
 	Core^ core = ObjectCache::GetObject<SoftBodyMesh^>( (intptr_t)t )->Core;
 	SoftBodyMesh^ softBodyMesh = core->AddSoftBodyMesh( t );
 	
-	_userNotify->NotifySoftBodyMesh( softBodyMesh, ToManagedString( userProperties ) );
+	if( _userNotify )
+		_userNotify->NotifySoftBodyMesh( softBodyMesh, ToManagedString( userProperties ) );
 }
 void  InternalUserNotify::NXU_notifyCCDSkeleton (NxCCDSkeleton *t, const char *userProperties)
 {
 	Core^ core = ObjectCache::GetObject<CCDSkeleton^>( (intptr_t)t )->Core;
 	CCDSkeleton^ skeleton = core->AddCCDSkeleton( t );
 	
-	_userNotify->NotifyCCDSkeleton( skeleton, ToManagedString( userProperties ) );
+	if( _userNotify )
+		_userNotify->NotifyCCDSkeleton( skeleton, ToManagedString( userProperties ) );
 }
 void  InternalUserNotify::NXU_notifyHeightField (NxHeightField *t, const char *userProperties)
 {
 	Core^ core = ObjectCache::GetObject<HeightField^>( (intptr_t)t )->Core;
 	HeightField^ heightField = core->AddHeightField( t );
 	
-	_userNotify->NotifyHeightField( heightField, ToManagedString( userProperties ) );
+	if( _userNotify )
+		_userNotify->NotifyHeightField( heightField, ToManagedString( userProperties ) );
 }
 void  InternalUserNotify::NXU_notifyMaterial (NxMaterial *t, const char *userProperties)
 {
 	Scene^ scene = ObjectCache::GetObject<Material^>( (intptr_t)t )->Scene;
-	Material^ material = scene->AddMaterial( t );
 	
-	_userNotify->NotifyMaterial( material, ToManagedString( userProperties ) );
+	Material^ material;
+	if( ObjectCache::Contains( (intptr_t)t ) == true )
+		material = ObjectCache::GetObject<Material^>( (intptr_t)t );
+	else
+		material = scene->AddMaterial( t );
+	
+	if( _userNotify )
+		_userNotify->NotifyMaterial( material, ToManagedString( userProperties ) );
 }
 void  InternalUserNotify::NXU_notifySaveActor (NxActor *pActor, const char **pUserProperties)
 {
@@ -213,12 +237,18 @@ bool  InternalUserNotify::NXU_preNotifyCompartment (NxCompartmentDesc &compartme
 }
 bool  InternalUserNotify::NXU_preNotifyJoint (NxJointDesc &joint, const char *userProperties)
 {
+	if( !_userNotify )
+		return true;
+	
 	JointDescription^ desc = JointDescription::CopyToManagedReference( &joint );
 	
 	return _userNotify->PreNotifyJoint( desc, ToManagedString( userProperties ) );
 }
 bool  InternalUserNotify::NXU_preNotifyForceField (NxForceFieldDesc &effector, const char *userProperties)
 {
+	if( !_userNotify )
+		return true;
+	
 	NxForceFieldDesc* desc = new NxForceFieldDesc();
 	memcpy_s( desc, sizeof( NxForceFieldDesc ), &effector, sizeof( NxForceFieldDesc ) );
 	
@@ -268,6 +298,9 @@ bool  InternalUserNotify::NXU_preNotifyHeightField (NxHeightFieldDesc &t, const 
 }
 bool  InternalUserNotify::NXU_preNotifyMaterial (NxMaterialDesc &t, const char *userProperties)
 {
+	if( !_userNotify )
+		return true;
+	
 	MaterialDescription^ d = gcnew MaterialDescription();
 	*d->UnmanagedPointer = t;
 	

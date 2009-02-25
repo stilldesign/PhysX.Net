@@ -92,23 +92,23 @@ namespace StillDesign
 				/// <summary>Creates a default scene</summary>
 				Scene^ CreateScene();
 				/// <summary>Creates a Scene</summary>
-				/// <param name="sceneDescription">A Description of the Scene to Create</summary>
+				/// <param name="sceneDescription">A Description of the Scene to Create</param>
 				Scene^ CreateScene( SceneDescription^ sceneDescription );
 				/// <summary>Creates a Scene with from a Default Scene Description</summary>
-				/// <param name="gravity">The Gravity Vector of the Scene</summary>
-				/// <param name="groundPlane">To Create the Default Ground Plane</summary>
+				/// <param name="gravity">The Gravity Vector of the Scene</param>
+				/// <param name="groundPlane">To Create the Default Ground Plane</param>
 				Scene^ CreateScene( Vector3 gravity, bool groundPlane );
 				
 				/// <summary>Creates a Triangle Mesh</summary>
-				/// <param name="streamReader">A Stream Reader Containing the Cooked Triangle Mesh Data</summary>
+				/// <param name="streamReader">A Stream Reader Containing the Cooked Triangle Mesh Data</param>
 				/// <remarks>Make Sure the Data Pointer is Placed at the Beginning of the Stream</remarks>
 				TriangleMesh^ CreateTriangleMesh( Stream^ stream );
 				/// <summary>Creates a ConvexMesh</summary>
-				/// <param name="streamReader">A Stream Reader Containing the Cooked Convex Mesh Data</summary>
+				/// <param name="streamReader">A Stream Reader Containing the Cooked Convex Mesh Data</param>
 				/// <remarks>Make Sure the Data Pointer is Placed at the Beginning of the Stream</remarks>
 				ConvexMesh^ CreateConvexMesh( Stream^ stream );
 				/// <summary>Creates a Cloth Mesh</summary>
-				/// <param name="streamReader">A Stream Reader Containing the Cooked Cloth Mesh Data</summary>
+				/// <param name="streamReader">A Stream Reader Containing the Cooked Cloth Mesh Data</param>
 				/// <remarks>Make Sure the Data Pointer is Placed at the Beginning of the Stream</remarks>
 				ClothMesh^ CreateClothMesh( Stream^ stream );
 				/// <summary>Creates a Heightfield</summary>
@@ -118,18 +118,18 @@ namespace StillDesign
 				/// <param name="simpleTriangleMesh">A Description of the CCD Skeleton to Create</param>
 				CCDSkeleton^ CreateCCDSkeleton( SimpleTriangleMesh^ simpleTriangleMesh );
 				/// <summary>Creates a SoftBody Mesh</summary>
-				/// <param name="streamReader">A Stream Reader Containing the Cooked SoftBody Mesh Data</summary>
+				/// <param name="streamReader">A Stream Reader Containing the Cooked SoftBody Mesh Data</param>
 				/// <remarks>Make Sure the Data Pointer is Placed at the Beginning of the Stream</remarks>
 				SoftBodyMesh^ CreateSoftBodyMesh( Stream^ stream );
 				
 				/// <summary>Gets the State of a Physics Parameter</summary>
-				/// <param name="parameter">The Physics Parameter to Reteieve</summary>
+				/// <param name="parameter">The Physics Parameter to Reteieve</param>
 				float GetParameter( PhysicsParameter parameter );
 				/// <summary>Sets the State of a Physics Parameter</summary>
-				/// <param name="value">The Physics Parameter to Set</summary>
+				/// <param name="value">The Physics Parameter to Set</param>
 				void SetParameter( PhysicsParameter parameter, float value );
 				/// <summary>Sets the State of a Physics Parameter</summary>
-				/// <param name="enabled">The Physics Parameter to Set</summary>
+				/// <param name="enabled">The Physics Parameter to Set</param>
 				void SetParameter( PhysicsParameter parameter, bool enabled );
 				
 				property bool IsCoreCreated

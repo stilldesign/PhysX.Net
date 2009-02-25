@@ -26,7 +26,7 @@ namespace StillDesign
 					void set( PulleyJointFlag value );
 				}
 				
-				/// <summarys>Gets back the motor parameters</summary>
+				/// <summary>Gets back the motor parameters</summary>
 				property MotorDescription Motor
 				{
 					MotorDescription get();

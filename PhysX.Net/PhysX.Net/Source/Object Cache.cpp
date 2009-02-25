@@ -58,6 +58,11 @@ T ObjectCache::GetObject( intptr_t pointer )
 	return (T)_cache[ pointer ];
 }
 
+bool ObjectCache::Contains( intptr_t pointer )
+{
+	return _cache->ContainsKey( pointer );
+}
+
 //generic<class T>
 //T ObjectCache::GetObjectByIndexIfType( int index )
 //{

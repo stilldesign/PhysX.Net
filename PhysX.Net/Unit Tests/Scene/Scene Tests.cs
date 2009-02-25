@@ -179,11 +179,18 @@ namespace StillDesign.PhysX.UnitTests
 				var actorA = CreateBoxActor( 0, 0, 10 );
 				var actorB = CreateBoxActor( 0, 0, 100 );
 
-				var frustum = new[] { new Plane( 0, 0, -1, 0 ), new Plane( 0, 0, -1, -50 ) };
-				var shapes = this.Scene.CullShapes( frustum, ShapesType.Dynamic );
+				{
+					var frustum = new[] { new Plane( 0, 0, -1, 0 ), new Plane( 0, 0, -1, -50 ) };
+					var shapes = this.Scene.CullShapes( frustum, ShapesType.Dynamic );
 
-				Assert.IsTrue( shapes.Contains( actorA.Shapes.Single() ), "Shape A is missing" );
-				Assert.IsFalse( shapes.Contains( actorB.Shapes.Single() ), "Shape B should not be culled" );
+					Assert.IsTrue( shapes.Contains( actorA.Shapes.Single() ), "Shape A should be culled" );
+					Assert.IsTrue( shapes.Contains( actorB.Shapes.Single() ), "Shape B should be culled" );
+				}
+				{
+					var shapes = this.Scene.CullShapes( new[] { new Plane( 0, 0, 1, 150 ) }, ShapesType.Dynamic );
+
+					Assert.IsTrue( shapes.Count() == 0, "No shapes should be culled" );
+				}
 			}
 		}
 
@@ -204,6 +211,51 @@ namespace StillDesign.PhysX.UnitTests
 				Assert.IsTrue( hits.All( t => t.WorldNormal == new Vector3( 0, 0, -1 ) ), "The normals of hitting the boxes should point directly back" );
 				Assert.IsTrue( hits.Any( t => t.Shape == a.Shapes.Single() ), "One of the shapes hit must be that of Actor a" );
 				Assert.IsTrue( hits.Any( t => t.Shape == b.Shapes.Single() ), "One of the shapes hit must be that of Actor b" );
+			}
+		}
+
+		[TestMethod]
+		public void PrimitiveProperties()
+		{
+			using( CreateCoreAndScene() )
+			{
+				var primitiveProperties = from c in typeof( Scene ).GetProperties()
+										  where c.PropertyType.IsPrimitive
+										  select c;
+
+				foreach( var property in primitiveProperties )
+				{
+					{
+						var getMethod = property.GetGetMethod();
+
+						try
+						{
+							var r = getMethod.Invoke( this.Scene, null );
+						}
+						catch
+						{
+							Assert.Fail( "Property from scene failed. Property: '{0}'", getMethod.Name );
+						}
+					}
+
+					//
+
+					{
+						var setMethod = property.GetSetMethod();
+
+						if( setMethod != null )
+						{
+							try
+							{
+								setMethod.Invoke( this.Scene, new[] { Activator.CreateInstance( property.PropertyType ) } );
+							}
+							catch
+							{
+								Assert.Fail( "Property from scene failed. Property: '{0}'", setMethod.Name );
+							}
+						}
+					}
+				}
 			}
 		}
 	}

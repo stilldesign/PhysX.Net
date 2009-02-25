@@ -39,7 +39,7 @@ namespace StillDesign
 				!Cooking();
 				
 			public:
-				/// <summary>Checks endianness is the same between cooking & target platforms</summary>
+				/// <summary>Checks endianness is the same between cooking &amp; target platforms</summary>
 				static bool IsPlatformMismatch();
 				/// <summary>Initializes cooking</summary>
 				static void InitializeCooking();

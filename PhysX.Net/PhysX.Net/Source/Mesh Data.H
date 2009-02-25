@@ -133,12 +133,12 @@ namespace StillDesign
 					void set( int value );
 				}
 				
-				/// <summary>Gets the number of vertices</summar>
+				/// <summary>Gets the number of vertices</summary>
 				property int NumberOfVertices
 				{
 					int get();
 				}
-				/// <summary>Gets the number of indices</summar>
+				/// <summary>Gets the number of indices</summary>
 				property int NumberOfIndices
 				{
 					int get();

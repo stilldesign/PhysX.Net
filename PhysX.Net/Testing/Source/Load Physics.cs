@@ -707,28 +707,21 @@ namespace StillDesign
 
 	public class VertexGrid
 	{
-		private Vector3[] _points;
-		private int[] _indices;
-
 		public VertexGrid( Vector3[] points, int[] indices )
 		{
-			_points = points;
-			_indices = indices;
+			this.Points = points;
+			this.Indices = indices;
 		}
 
 		public Vector3[] Points
 		{
-			get
-			{
-				return _points;
-			}
+			get;
+			private set;
 		}
 		public int[] Indices
 		{
-			get
-			{
-				return _indices;
-			}
+			get;
+			private set;
 		}
 	}
 

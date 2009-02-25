@@ -104,9 +104,6 @@ namespace StillDesign
 					virtual void PreNotifyHeightFieldFailed( HeightFieldDescription^ heightField, String^ userProperties ) {}
 					virtual void PreNotifyMaterialFailed( MaterialDescription^ material, String^ userProperties ) {}
 					
-					//generic<class T> where T : ref class
-					//array<T>^ GetObjectsOfType();
-					
 					property StillDesign::PhysX::Utilities::InternalUserNotify* UnmanagedPointer
 					{
 						StillDesign::PhysX::Utilities::InternalUserNotify* get();
@@ -119,8 +116,10 @@ namespace StillDesign
 					gcroot<UserNotify^> _userNotify;
 				
 				public:
+					InternalUserNotify();
 					InternalUserNotify( gcroot<UserNotify^> notify );
 					
+				public:
 					virtual void  NXU_notifyScene (NxU32 sno, NxScene *scene, const char *userProperties);
 					virtual void  NXU_notifyCompartment (NxCompartment *compartment) ;
 					virtual void  NXU_notifyJoint (NxJoint *joint, const char *userProperties) ;

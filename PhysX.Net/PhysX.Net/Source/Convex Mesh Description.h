@@ -50,7 +50,7 @@ namespace StillDesign
 				
 				/// <summary>Allocates memory for the points</summary>
 				/// <param name="size">The number of bytes to allocate</param>
-				/// <param name="strideSize">The number of bytes between each point</summary>
+				/// <param name="strideSize">The number of bytes between each point</param>
 				PhysicsStream^ AllocatePoints( int size, int strideSize );
 				/// <summary>Allocates memory for the points</summary>
 				/// <param name="numberOfPoints">Number of points to allocate</param>
@@ -58,7 +58,7 @@ namespace StillDesign
 				generic<typename T> where T : ValueType PhysicsStream^ AllocatePoints( int numberOfPoints );
 				
 				/// <summary>Allocates memory for the triangles</summary>
-				/// <param name="size">The nmber of bytes to allocate</summary>
+				/// <param name="size">The nmber of bytes to allocate</param>
 				/// <param name="strideSize">The number of bytes betweeb each triangle</param>
 				PhysicsStream^ AllocateTriangles( int size, int strideSize );
 				/// <summary>Allocates memory for the triangles</summary>
