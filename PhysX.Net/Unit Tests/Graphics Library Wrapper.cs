@@ -16,6 +16,10 @@ namespace StillDesign.PhysX.UnitTests
 {
 	public static class GraphicsLibraryWrapper
 	{
+		public static Matrix CreateTranslationMatrix( float x, float y, float z )
+		{
+			return CreateTranslationMatrix( new Vector3( x, y, z ) );
+		}
 		public static Matrix CreateTranslationMatrix( Vector3 translation )
 		{
 #if GRAPHICS_MDX || GRAPHICS_SLIMDX

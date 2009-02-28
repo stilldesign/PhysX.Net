@@ -102,7 +102,7 @@ namespace StillDesign.PhysX.UnitTests
 
 			ActorDescription actorDesc = new ActorDescription()
 			{
-				GlobalPose = Matrix.CreateTranslation( 100, 0, 0 ),
+				GlobalPose = GraphicsLibraryWrapper.CreateTranslationMatrix( 100, 0, 0 ),
 				Shapes = { heightFieldShapeDesc }
 			};
 
