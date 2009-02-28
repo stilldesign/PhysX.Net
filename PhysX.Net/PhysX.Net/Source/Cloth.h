@@ -66,9 +66,9 @@ namespace StillDesign
 				void LoadStateFromStream( Stream^ stream );
 				
 				/// <summary>Applies a force (or impulse) defined in the global coordinate frame, to a particular vertex of the cloth</summary>
-				void AddForceToVertex( Vector3 force, int vertexID );
+				void AddForceToVertex( Vector3 force, int vertexId );
 				/// <summary>Applies a force (or impulse) defined in the global coordinate frame, to a particular vertex of the cloth</summary>
-				void AddForceToVertex( Vector3 force, int vertexID, ForceMode forceMode );
+				void AddForceToVertex( Vector3 force, int vertexId, ForceMode forceMode );
 				/// <summary>Applies a radial force (or impulse) at a particular position. All vertices within radius will be affected with a quadratic drop-off</summary>
 				void AddForceAtPosition( Vector3 position, float magnitude, float radius );
 				/// <summary>Applies a radial force (or impulse) at a particular position. All vertices within radius will be affected with a quadratic drop-off</summary>
@@ -113,34 +113,34 @@ namespace StillDesign
 				void Sleep();
 				
 				/// <summary>Changes the weight of a vertex in the cloth solver for a period of time</summary>
-				/// <param name="vertexID">Index of the vertex</param>
+				/// <param name="vertexId">Index of the vertex</param>
 				/// <param name="expirationTime">Time period where dominance will be active for this vertex</param>
 				/// <param name="dominanceWeight">Dominance weight for this vertex</param>
-				void DominateVertex( int vertexID, float expirationTime, float dominanceWeight );
+				void DominateVertex( int vertexId, float expirationTime, float dominanceWeight );
 				/// <summary>Return the attachment status of the given vertex</summary>
-				/// <param name="vertexID">Index of the vertex.</param>
-				ClothVertexAttachmentStatus GetVertexAttachmentStatus( int vertexID );
+				/// <param name="vertexId">Index of the vertex.</param>
+				ClothVertexAttachmentStatus GetVertexAttachmentStatus( int vertexId );
 				/// <summary>Returns the pointer to an attached shape pointer of the given vertex</summary>
-				/// <param name="vertexID">Index of the vertex</param>
-				Shape^ GetVertexAttachmentShape( int vertexID );
+				/// <param name="vertexId">Index of the vertex</param>
+				Shape^ GetVertexAttachmentShape( int vertexId );
 				/// <summary>Returns the attachment position of the given vertex</summary>
-				/// <param name="vertexID">Index of the vertex</param>
-				Vector3 GetVertexAttachmentPosition( int vertexID );
+				/// <param name="vertexId">Index of the vertex</param>
+				Vector3 GetVertexAttachmentPosition( int vertexId );
 				
 				/// <summary></summary>
-				/// <param name="vertexID"></param>
-				Vector3 GetVertexPosition( int vertexID );
+				/// <param name="vertexId"></param>
+				Vector3 GetVertexPosition( int vertexId );
 				/// <summary></summary>
-				/// <param name="vertexID"></param>
-				/// <param name="vertexID"></param>
-				void SetVertexPosition( int vertexID, Vector3 position );
+				/// <param name="vertexId"></param>
+				/// <param name="vertexId"></param>
+				void SetVertexPosition( int vertexId, Vector3 position );
 				/// <summary></summary>
-				/// <param name="vertexID"></param>
-				Vector3 GetVertexVelocity( int vertexID );
+				/// <param name="vertexId"></param>
+				Vector3 GetVertexVelocity( int vertexId );
 				/// <summary></summary>
-				/// <param name="vertexID"></param>
-				/// <param name="vertexID"></param>
-				void SetVertexVelocity( int vertexID, Vector3 velocity );
+				/// <param name="vertexId"></param>
+				/// <param name="vertexId"></param>
+				void SetVertexVelocity( int vertexId, Vector3 velocity );
 				
 				/// <summary>Get or Sets the Name of the Cloth</summary>
 				property String^ Name
@@ -358,7 +358,7 @@ namespace StillDesign
 				int _vertexIndex;
 			
 			public:
-				ClothRaycastResult( bool hit, Vector3 hitPosition, int vertexID );
+				ClothRaycastResult( bool hit, Vector3 hitPosition, int vertexId );
 				
 				/// <summary>Gets the index to the nearest vertex hit by the raycast</summary>
 				property int VertexIndex

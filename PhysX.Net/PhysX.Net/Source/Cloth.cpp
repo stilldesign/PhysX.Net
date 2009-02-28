@@ -242,43 +242,43 @@ void Cloth::Sleep()
 	_cloth->putToSleep();
 }
 
-void Cloth::DominateVertex( int vertexID, float expirationTime, float dominanceWeight )
+void Cloth::DominateVertex( int vertexId, float expirationTime, float dominanceWeight )
 {
-	_cloth->dominateVertex( vertexID, expirationTime, dominanceWeight );
+	_cloth->dominateVertex( vertexId, expirationTime, dominanceWeight );
 }
-ClothVertexAttachmentStatus Cloth::GetVertexAttachmentStatus( int vertexID )
+ClothVertexAttachmentStatus Cloth::GetVertexAttachmentStatus( int vertexId )
 {
-	return (ClothVertexAttachmentStatus)_cloth->getVertexAttachmentStatus( vertexID );
+	return (ClothVertexAttachmentStatus)_cloth->getVertexAttachmentStatus( vertexId );
 }
-Shape^ Cloth::GetVertexAttachmentShape( int vertexID )
+Shape^ Cloth::GetVertexAttachmentShape( int vertexId )
 {
-	NxShape* s = _cloth->getVertexAttachmentShape( vertexID );
+	NxShape* s = _cloth->getVertexAttachmentShape( vertexId );
 	
 	if( s == NULL )
 		return nullptr;
 	else
 		return ObjectCache::GetObject<Shape^>( (intptr_t)s );
 }
-Vector3 Cloth::GetVertexAttachmentPosition( int vertexID )
+Vector3 Cloth::GetVertexAttachmentPosition( int vertexId )
 {
-	return Math::NxVec3ToVector3( _cloth->getVertexAttachmentPosition( vertexID ) );
+	return Math::NxVec3ToVector3( _cloth->getVertexAttachmentPosition( vertexId ) );
 }
 
-Vector3 Cloth::GetVertexPosition( int vertexID )
+Vector3 Cloth::GetVertexPosition( int vertexId )
 {
-	return Math::NxVec3ToVector3( _cloth->getPosition( vertexID ) );
+	return Math::NxVec3ToVector3( _cloth->getPosition( vertexId ) );
 }
-void Cloth::SetVertexPosition( int vertexID, Vector3 position )
+void Cloth::SetVertexPosition( int vertexId, Vector3 position )
 {
-	_cloth->setPosition( Math::Vector3ToNxVec3( position ), vertexID );
+	_cloth->setPosition( Math::Vector3ToNxVec3( position ), vertexId );
 }
-Vector3 Cloth::GetVertexVelocity( int vertexID )
+Vector3 Cloth::GetVertexVelocity( int vertexId )
 {
-	return Math::NxVec3ToVector3( _cloth->getVelocity( vertexID ) );
+	return Math::NxVec3ToVector3( _cloth->getVelocity( vertexId ) );
 }
-void Cloth::SetVertexVelocity( int vertexID, Vector3 velocity )
+void Cloth::SetVertexVelocity( int vertexId, Vector3 velocity )
 {
-	_cloth->setVelocity( Math::Vector3ToNxVec3( velocity ), vertexID );
+	_cloth->setVelocity( Math::Vector3ToNxVec3( velocity ), vertexId );
 }
 
 //

@@ -20,7 +20,7 @@ ClothDescription::ClothDescription()
 {
 	_clothDesc = new NxClothDesc();
 	
-	_meshData = gcnew StillDesign::PhysX::MeshData();
+	_meshData = gcnew StillDesign::PhysX::MeshData( &_clothDesc->meshData );
 }
 ClothDescription::ClothDescription( NxClothDesc* description, StillDesign::PhysX::MeshData^ meshData )
 {

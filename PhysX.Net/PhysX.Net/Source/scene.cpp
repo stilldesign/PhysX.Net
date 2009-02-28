@@ -39,8 +39,6 @@
 #include "Cloth Description.h"
 #include "Force Field.h"
 #include "Force Field Description.h"
-//#include "Implicit Screen Mesh.h"
-//#include "Implicit Screen Mesh Description.h"
 #include "Controller Manager.h"
 #include "Controller.h"
 #include "Functions.h"
@@ -84,8 +82,7 @@ using namespace StillDesign::PhysX;
 #pragma region Constructor etc
 Scene::Scene( NxScene* scene )
 {
-	if( scene == NULL )
-		throw gcnew ArgumentNullException( "scene", "Scene argument is NULL" );
+	Debug::Assert( scene != NULL );
 	
 	ObjectCache::Add( (intptr_t)scene, this );
 	
@@ -93,13 +90,11 @@ Scene::Scene( NxScene* scene )
 	_core = ObjectCache::GetObject<StillDesign::PhysX::Core^>( (intptr_t)(&scene->getPhysicsSDK()) );
 	
 	_actors = gcnew ElementCollection< Actor^ >();
-	//_shapes = gcnew ElementCollection< Shape^ >();
 	_materials = gcnew ElementCollection< Material^ >();
 	_joints = gcnew ElementCollection< Joint^ >();
 	_cloths = gcnew ElementCollection< Cloth^ >();
 	_forceFields = gcnew ElementCollection< ForceField^ >();
 	_controllerManagers = gcnew ElementCollection< ControllerManager^ >();
-	//_controllerCollection = gcnew ElementCollection< Controller^ >();
 	_fluids = gcnew ElementCollection< Fluid^ >();
 	_softBodies = gcnew ElementCollection< SoftBody^ >();
 	_compartments = gcnew ElementCollection< Compartment^ >();
@@ -107,12 +102,6 @@ Scene::Scene( NxScene* scene )
 	_forceFieldShapeGroups = gcnew ElementCollection< ForceFieldShapeGroup^ >();
 	
 	//
-	
-	//_actors->onAdd += gcnew EventHandlerItem<Actor^>( this, &Scene::Actors_onAdd );
-	//_actors->onRemove += gcnew EventHandlerItem<Actor^>( this, &Scene::Actors_onRemove );
-	
-	//_controllerManagers->onAdd += gcnew EventHandlerItem< ControllerManager^ >( this, &Scene::_controllerManagerCollection_onAdd );
-	//_controllerManagers->onRemove += gcnew EventHandlerItem< ControllerManager^ >( this, &Scene::_controllerManagerCollection_onRemove );
 	
 	// Compartments
 	for( unsigned int x = 0; x < scene->getNbCompartments(); x++ )
@@ -530,6 +519,7 @@ Cloth^ Scene::CreateCloth( ClothDescription^ clothDescription )
 	if( clothDescription->IsValid() == false )
 		throw gcnew ArgumentException( "Cloth description is invalid" );
 	
+	NxMeshData d = clothDescription->UnmanagedPointer->meshData;
 	NxCloth* cloth = _scene->createCloth( *clothDescription->UnmanagedPointer );
 	if ( cloth == NULL )
 		throw gcnew PhysXException( "Failed to create cloth" );
@@ -559,21 +549,6 @@ ForceField^ Scene::CreateForceField( ForceFieldDescription^ forceFieldDescriptio
 	
 	return f;
 }
-//ImplicitScreenMesh^ Scene::CreateImplicitScreenMesh( ImplicitScreenMeshDescription^ implicitScreenMeshDescription )
-//{
-//#if _DEBUG
-//	if( implicitScreenMeshDescription == nullptr || implicitScreenMeshDescription->IsValid() == false )
-//		throw gcnew PhysicsException( "Implicit Screen Mesh Description is Null or Invalid" );
-//#endif
-//	
-//	NxImplicitScreenMesh* implicitScreenMesh = _scene->createImplicitScreenMesh( *implicitScreenMeshDescription->UnmanagedPointer );
-//	
-//	ImplicitScreenMesh^ i = ImplicitScreenMesh::FromUnmanagedPointer( this, implicitScreenMesh );
-//	
-//	_implicitScreenMeshes->Add( i );
-//	
-//	return i;
-//}
 StillDesign::PhysX::ControllerManager^ Scene::CreateControllerManager()
 {
 	ControllerManagerAllocator* a = new ControllerManagerAllocator();
