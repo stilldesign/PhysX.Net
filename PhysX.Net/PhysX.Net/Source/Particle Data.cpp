@@ -164,7 +164,7 @@ generic<typename T> PhysicsStream^ ParticleData::AllocatePositionBuffer( int num
 }
 PhysicsStream^ ParticleData::AllocatePositionBuffer( int size, int strideSize )
 {
-	StdPhysicsStreamAlloc2( _positionBuffer, _data->bufferPos, _data->bufferPosByteStride, NxF32* );
+	StdPhysicsStreamAllocEx( _positionBuffer, _data->bufferPos, _data->bufferPosByteStride, NxF32* );
 }
 
 generic<typename T> PhysicsStream^ ParticleData::AllocateVelocityBuffer( int numberOfParticles )
@@ -173,7 +173,7 @@ generic<typename T> PhysicsStream^ ParticleData::AllocateVelocityBuffer( int num
 }
 PhysicsStream^ ParticleData::AllocateVelocityBuffer( int size, int strideSize )
 {
-	StdPhysicsStreamAlloc2( _velocityBuffer, _data->bufferVel, _data->bufferVelByteStride, NxF32* );
+	StdPhysicsStreamAllocEx( _velocityBuffer, _data->bufferVel, _data->bufferVelByteStride, NxF32* );
 }
 
 generic<typename T> PhysicsStream^ ParticleData::AllocateLifeBuffer( int numberOfParticles )
@@ -182,7 +182,7 @@ generic<typename T> PhysicsStream^ ParticleData::AllocateLifeBuffer( int numberO
 }
 PhysicsStream^ ParticleData::AllocateLifeBuffer( int size, int strideSize )
 {
-	StdPhysicsStreamAlloc2( _lifeBuffer, _data->bufferLife, _data->bufferLifeByteStride, NxF32* );
+	StdPhysicsStreamAllocEx( _lifeBuffer, _data->bufferLife, _data->bufferLifeByteStride, NxF32* );
 }
 
 generic<typename T> PhysicsStream^ ParticleData::AllocateDensityBuffer( int numberOfParticles )
@@ -191,7 +191,7 @@ generic<typename T> PhysicsStream^ ParticleData::AllocateDensityBuffer( int numb
 }
 PhysicsStream^ ParticleData::AllocateDensityBuffer( int size, int strideSize )
 {
-	StdPhysicsStreamAlloc2( _densityBuffer, _data->bufferDensity, _data->bufferDensityByteStride, NxF32* );
+	StdPhysicsStreamAllocEx( _densityBuffer, _data->bufferDensity, _data->bufferDensityByteStride, NxF32* );
 }
 
 generic<typename T> PhysicsStream^ ParticleData::AllocateIdBuffer( int numberOfParticles )
@@ -200,7 +200,7 @@ generic<typename T> PhysicsStream^ ParticleData::AllocateIdBuffer( int numberOfP
 }
 PhysicsStream^ ParticleData::AllocateIdBuffer( int size, int strideSize )
 {
-	StdPhysicsStreamAlloc2( _idBuffer, _data->bufferId, _data->bufferIdByteStride, NxU32* );
+	StdPhysicsStreamAllocEx( _idBuffer, _data->bufferId, _data->bufferIdByteStride, NxU32* );
 }
 
 generic<typename T> PhysicsStream^ ParticleData::AllocateFlagBuffer( int numberOfParticles )
@@ -209,7 +209,7 @@ generic<typename T> PhysicsStream^ ParticleData::AllocateFlagBuffer( int numberO
 }
 PhysicsStream^ ParticleData::AllocateFlagBuffer( int size, int strideSize )
 {
-	StdPhysicsStreamAlloc2( _flagBuffer, _data->bufferFlag, _data->bufferFlagByteStride, NxU32* );
+	StdPhysicsStreamAllocEx( _flagBuffer, _data->bufferFlag, _data->bufferFlagByteStride, NxU32* );
 }
 
 generic<typename T> PhysicsStream^ ParticleData::AllocateCollisionNormalBuffer( int numberOfParticles )
@@ -218,7 +218,7 @@ generic<typename T> PhysicsStream^ ParticleData::AllocateCollisionNormalBuffer( 
 }
 PhysicsStream^ ParticleData::AllocateCollisionNormalBuffer( int size, int strideSize )
 {
-	StdPhysicsStreamAlloc2( _collisionNormalBuffer, _data->bufferCollisionNormal, _data->bufferCollisionNormalByteStride, NxF32* );
+	StdPhysicsStreamAllocEx( _collisionNormalBuffer, _data->bufferCollisionNormal, _data->bufferCollisionNormalByteStride, NxF32* );
 }
 
 void ParticleData::AllocateCommonParticleData( int numberOfParticles, ParticleData::Type types )

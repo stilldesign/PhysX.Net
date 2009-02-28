@@ -69,7 +69,7 @@ bool ParticleIdData::IsValid()
 
 PhysicsStream^ ParticleIdData::AllocateIds( int size, int strideSize )
 {
-	StdPhysicsStreamAlloc2( _idsStream, _data->bufferId, strideSize, NxU32* );
+	StdPhysicsStreamAllocEx( _idsStream, _data->bufferId, strideSize, NxU32* );
 }
 generic<typename T> PhysicsStream^ ParticleIdData::AllocateIds( int numberOfIds )
 {

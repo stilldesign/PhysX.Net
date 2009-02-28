@@ -63,7 +63,7 @@ PhysicsStream^ FluidPacketData::AllocateFluidPacketData( int numberOfFluidPacket
 	int strideSize = sizeof( NxFluidPacket );
 	int size = numberOfFluidPackets * strideSize;
 	
-	StdPhysicsStreamAlloc2( _packetsStream, _fluidPacketData->bufferFluidPackets, strideSize, NxFluidPacket* );
+	StdPhysicsStreamAllocEx( _packetsStream, _fluidPacketData->bufferFluidPackets, strideSize, NxFluidPacket* );
 }
 
 PhysicsStream^ FluidPacketData::FluidPackets::get()

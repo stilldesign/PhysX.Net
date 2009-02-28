@@ -119,9 +119,9 @@ using namespace StillDesign;
 
 #define StdPhysicsStreamAlloc( localStreamVar, localMem, localStrideVar )\
 {\
-	StdPhysicsStreamAlloc2( localStreamVar, localMem, localStrideVar, void* );\
+	StdPhysicsStreamAllocEx( localStreamVar, localMem, localStrideVar, void* );\
 }
-#define StdPhysicsStreamAlloc2( localStreamVar, localMem, localStrideVar, memType )\
+#define StdPhysicsStreamAllocEx( localStreamVar, localMem, localStrideVar, memType )\
 {\
 	if( localStreamVar != nullptr )\
 		throw gcnew InvalidOperationException( "Buffer already allocated" );\
@@ -130,7 +130,7 @@ using namespace StillDesign;
 		throw gcnew ArgumentException( "Size and stride size must be greater than zero" );\
 	\
 	void* m = malloc( size );\
-	Debug::Assert( m != NULL );\
+	Debug::Assert( m != NULL, String::Format( "Failed to allocate {0} bytes", size ) );\
 	localMem = (memType)m;\
 	\
 	if( localMem == NULL )\

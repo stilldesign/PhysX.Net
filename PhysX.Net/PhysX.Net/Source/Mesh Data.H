@@ -39,7 +39,6 @@ namespace StillDesign
 				
 			public:
 				MeshData();
-				//MeshData( int vertexCount, int triangleCount, int parentIndicesCount, int positionStrideSize, int normalsStrideSize, int parentIndicesStrideSize, int indexStrideSize );
 			internal:
 				MeshData( NxMeshData* meshData );
 				MeshData( NxMeshData meshData );
@@ -48,7 +47,7 @@ namespace StillDesign
 			protected:
 				!MeshData();
 			private:
-				void CreateMeshData();
+				//void CreateMeshData();
 				void CreateMeshData( NxMeshData* meshData );
 			public:
 				property bool IsDisposed
@@ -134,19 +133,22 @@ namespace StillDesign
 				}
 				
 				/// <summary>Gets the number of vertices</summary>
-				property int NumberOfVertices
+				property Nullable<int> NumberOfVertices
 				{
-					int get();
+					Nullable<int> get();
+					void set( Nullable<int> value );
 				}
 				/// <summary>Gets the number of indices</summary>
-				property int NumberOfIndices
+				property Nullable<int> NumberOfIndices
 				{
-					int get();
+					Nullable<int> get();
+					void set( Nullable<int> value );
 				}
 				/// <summary>Gets the the number of parent indices</summary>
-				property int NumberOfParentIndices
+				property Nullable<int> NumberOfParentIndices
 				{
-					int get();
+					Nullable<int> get();
+					void set( Nullable<int> value );
 				}
 				
 				/// <summary>Gets the number of bytes between each vertex</summary>

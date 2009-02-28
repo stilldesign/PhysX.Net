@@ -54,7 +54,7 @@ bool ParticleUpdateData::IsValid()
 
 PhysicsStream^ ParticleUpdateData::AllocateForcesStream( int size, int strideSize )
 {
-	StdPhysicsStreamAlloc2( _forceStream, _updateData->bufferForce, strideSize, NxF32* );
+	StdPhysicsStreamAllocEx( _forceStream, _updateData->bufferForce, strideSize, NxF32* );
 }
 generic<typename T> PhysicsStream^ ParticleUpdateData::AllocateForcesStream( int numberOfForces )
 {
@@ -63,7 +63,7 @@ generic<typename T> PhysicsStream^ ParticleUpdateData::AllocateForcesStream( int
 
 PhysicsStream^ ParticleUpdateData::AllocateFlagsStream( int size, int strideSize )
 {
-	StdPhysicsStreamAlloc2( _flagsStream, _updateData->bufferFlag, strideSize, NxU32* );
+	StdPhysicsStreamAllocEx( _flagsStream, _updateData->bufferFlag, strideSize, NxU32* );
 }
 generic<typename T> PhysicsStream^ ParticleUpdateData::AllocateFlagsStream( int numberOfFlags )
 {
@@ -72,7 +72,7 @@ generic<typename T> PhysicsStream^ ParticleUpdateData::AllocateFlagsStream( int 
 
 PhysicsStream^ ParticleUpdateData::AllocateIdsStream( int size, int strideSize )
 {
-	StdPhysicsStreamAlloc2( _idsStream, _updateData->bufferId, strideSize, NxU32* );
+	StdPhysicsStreamAllocEx( _idsStream, _updateData->bufferId, strideSize, NxU32* );
 }
 generic<typename T> PhysicsStream^ ParticleUpdateData::AllocateIdsStream( int numberOfIds )
 {

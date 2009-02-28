@@ -11,43 +11,12 @@ using namespace StillDesign::PhysX;
 
 MeshData::MeshData()
 {
-	CreateMeshData();
+	_meshData = new NxMeshData();
+	//CreateMeshData();
 }
-//MeshData::MeshData( int vertexCount, int triangleCount, int parentIndicesCount, int positionStrideSize, int normalsStrideSize, int parentIndicesStrideSize, int indexStrideSize )
-//{
-//	if( vertexCount <= 0 )
-//		throw gcnew ArgumentException( "Vertex count must be greater than 0", "vertexCount" );
-//	if( triangleCount <= 0 )
-//		throw gcnew ArgumentException( "'Triangle count must be greater than 0", "triangleCount" );
-//	
-//	CreateMeshData();
-//	
-//	int indexCount = triangleCount * 3;
-//	
-//	// Positions
-//	if( positionStrideSize > 0 )
-//		AllocatePositions( vertexCount * positionStrideSize, positionStrideSize );
-//	
-//	// Normals
-//	if( normalsStrideSize > 0 )
-//		AllocateNormals( vertexCount * normalsStrideSize, normalsStrideSize );
-//	
-//	// Parent Indices
-//	if( parentIndicesStrideSize > 0 && parentIndicesCount > 0 )
-//		AllocateParentIndices( vertexCount * parentIndicesStrideSize, parentIndicesStrideSize );
-//	
-//	// Indices
-//	if( indexStrideSize > 0 )
-//		AllocateIndices( indexCount * indexStrideSize, indexStrideSize );
-//	
-//	//
-//	
-//	_meshData->maxVertices = vertexCount;
-//	_meshData->maxIndices = indexCount;
-//	_meshData->maxParentIndices = parentIndicesCount;
-//}
 MeshData::MeshData( NxMeshData* meshData )
 {
+	// Clone the Mesh Data
 	CreateMeshData( meshData );
 }
 MeshData::MeshData( NxMeshData meshData )
@@ -55,6 +24,7 @@ MeshData::MeshData( NxMeshData meshData )
 	NxMeshData* data = new NxMeshData();
 	*data = meshData;
 	
+	// Clone the Mesh Data
 	CreateMeshData( data );
 }
 MeshData::~MeshData()
@@ -97,16 +67,16 @@ MeshData::!MeshData()
 	OnDisposed( this, nullptr );
 }
 
-void MeshData::CreateMeshData()
-{
-	_meshData = new NxMeshData();
-	
-	_meshData->numVerticesPtr = new NxU32();
-	_meshData->numIndicesPtr = new NxU32();
-	
-	(*_meshData->numVerticesPtr) = 0;
-	(*_meshData->numIndicesPtr) = 0;
-}
+//void MeshData::CreateMeshData()
+//{
+//	_meshData = new NxMeshData();
+//	
+//	_meshData->numVerticesPtr = new NxU32();
+//	_meshData->numIndicesPtr = new NxU32();
+//	
+//	(*_meshData->numVerticesPtr) = 0;
+//	(*_meshData->numIndicesPtr) = 0;
+//}
 void MeshData::CreateMeshData( NxMeshData* meshData )
 {
 	Debug::Assert( meshData != NULL );
@@ -274,7 +244,7 @@ PhysicsStream^ MeshData::AllocateDirtyBufferFlags( int numberOfDirtyBufferFlags 
 	int size = sizeof( NxU32 ) * numberOfDirtyBufferFlags;
 	int strideSize = sizeof( NxU32 );
 	
-	StdPhysicsStreamAlloc2( _dirtyBufferFlagsStream, _meshData->dirtyBufferFlagsPtr, strideSize, NxU32* );
+	StdPhysicsStreamAllocEx( _dirtyBufferFlagsStream, _meshData->dirtyBufferFlagsPtr, strideSize, NxU32* );
 }
 
 MeshData^ MeshData::AllocateCommonMeshData( int numberOfPositions, int numberOfTriangles, Type types )
@@ -351,26 +321,64 @@ void MeshData::MaximumParentIndices::set( int value )
 	_meshData->maxParentIndices = value;
 }
 
-int MeshData::NumberOfVertices::get()
+Nullable<int> MeshData::NumberOfVertices::get()
 {
 	if( _meshData->numVerticesPtr == NULL )
-		throw gcnew InvalidOperationException( "NumberOfVertices is unallocated" );
-	
-	return *_meshData->numVerticesPtr;
+		return Nullable<int>();
+	else
+		return *_meshData->numVerticesPtr;
 }
-int MeshData::NumberOfIndices::get()
+void MeshData::NumberOfVertices::set( Nullable<int> value )
+{
+	if( value.HasValue == false )
+	{
+		SAFE_DELETE( _meshData->numVerticesPtr );
+	}else{
+		if( _meshData->numVerticesPtr == NULL )
+			_meshData->numVerticesPtr = new NxU32();
+		
+		*_meshData->numVerticesPtr = value.Value;
+	}
+}
+
+Nullable<int> MeshData::NumberOfIndices::get()
 {
 	if( _meshData->numIndicesPtr == NULL )
-		throw gcnew InvalidOperationException( "NumberOfIndices is unallocated" );
-	
-	return *_meshData->numIndicesPtr;
+		return Nullable<int>();
+	else
+		return *_meshData->numIndicesPtr;
 }
-int MeshData::NumberOfParentIndices::get()
+void MeshData::NumberOfIndices::set( Nullable<int> value )
+{
+	if( value.HasValue == false )
+	{
+		SAFE_DELETE( _meshData->numIndicesPtr );
+	}else{
+		if( _meshData->numIndicesPtr == NULL )
+			_meshData->numIndicesPtr = new NxU32();
+		
+		*_meshData->numIndicesPtr = value.Value;
+	}
+}
+
+Nullable<int> MeshData::NumberOfParentIndices::get()
 {
 	if( _meshData->numParentIndicesPtr == NULL )
-		throw gcnew InvalidOperationException( "NumberOfParentIndices is unallocated" );
-	
-	return *_meshData->numParentIndicesPtr;
+		return Nullable<int>();
+	else
+		return *_meshData->numParentIndicesPtr;
+}
+void MeshData::NumberOfParentIndices::set( Nullable<int> value )
+{
+	if( value.HasValue == false )
+	{
+		SAFE_DELETE( _meshData->numParentIndicesPtr );
+	}else{
+		if( _meshData->numParentIndicesPtr == NULL )
+			_meshData->numParentIndicesPtr = new NxU32();
+		
+		*_meshData->numParentIndicesPtr = value.Value;
+	}
 }
 
 int MeshData::PositionStrideSize::get()
