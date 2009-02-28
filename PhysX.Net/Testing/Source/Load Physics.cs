@@ -724,16 +724,4 @@ namespace StillDesign
 			private set;
 		}
 	}
-
-	public class LoadUserNotify : StillDesign.PhysX.Utilities.UserNotify
-	{
-		public override void NotifyJoint( Joint joint, string userProperties )
-		{
-			base.NotifyJoint( joint, userProperties );
-		}
-		public override bool PreNotifyJoint( JointDescription joint, string userProperties )
-		{
-			return base.PreNotifyJoint( joint, userProperties );
-		}
-	}
 }
