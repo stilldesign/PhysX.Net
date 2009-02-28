@@ -3019,6 +3019,10 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath=".\Source\Controllers Hit.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Source\Convex Force Field Shape Description.cpp"
 				>
 				<FileConfiguration
@@ -12411,6 +12415,10 @@
 				</File>
 				<File
 					RelativePath=".\Source\Controller.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Source\Controllers Hit.h"
 					>
 				</File>
 			</Filter>

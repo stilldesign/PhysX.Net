@@ -3,6 +3,7 @@
 #include "Controller Hit Report.h"
 #include "Controller Shape Hit.h"
 #include "Scene.h"
+#include "Controllers Hit.h"
 
 using namespace StillDesign::PhysX;
 
