@@ -8,10 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6122AE90-D0DA-4342-8284-AB8450A46C2C}"
 	ProjectSection(SolutionItems) = preProject
 		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
-		Assemblies\NxCharacter.dll = Assemblies\NxCharacter.dll
-		Assemblies\NxCooking.dll = Assemblies\NxCooking.dll
 		PhysX.Net1.vsmdi = PhysX.Net1.vsmdi
-		Assemblies\PhysXLoader.dll = Assemblies\PhysXLoader.dll
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Engine", "Samples\Engine\Engine.csproj", "{D126F9D4-66BB-403B-B4B6-18C3546BEDF8}"
@@ -25,6 +22,13 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unit Tests", "Unit Tests\Unit Tests.csproj", "{3A2594CF-7E97-49E5-B1B7-34473CF514A6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cloth", "Samples\Cloth\Cloth.csproj", "{18000A79-3163-402E-A6F2-F050BC13EF9B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assemblies", "Assemblies", "{F87E2F48-E066-4169-8271-59C456C702BE}"
+	ProjectSection(SolutionItems) = preProject
+		Assemblies\NxCharacter.dll = Assemblies\NxCharacter.dll
+		Assemblies\NxCooking.dll = Assemblies\NxCooking.dll
+		Assemblies\PhysXLoader.dll = Assemblies\PhysXLoader.dll
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
