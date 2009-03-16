@@ -16,11 +16,11 @@ Joint::Joint( NxJoint* joint )
 {
 	Debug::Assert( joint != NULL );
 	
-	ObjectCache::Add( (intptr_t)joint, this );
+	ObjectTable::Add( (intptr_t)joint, this );
 	
 	_joint = joint;
 	
-	_scene = ObjectCache::GetObject<StillDesign::PhysX::Scene^>( (intptr_t)(&joint->getScene()) );
+	_scene = ObjectTable::GetObject<StillDesign::PhysX::Scene^>( (intptr_t)(&joint->getScene()) );
 	
 	// Find Actors
 	NxActor* actor1;
@@ -29,9 +29,9 @@ Joint::Joint( NxJoint* joint )
 	joint->getActors( &actor1, &actor2 );
 	
 	if( actor1 != NULL )
-		_actor1 = ObjectCache::GetObject<Actor^>( (intptr_t)actor1 );
+		_actor1 = ObjectTable::GetObject<Actor^>( (intptr_t)actor1 );
 	if( actor2 != NULL )
-		_actor2 = ObjectCache::GetObject<Actor^>( (intptr_t)actor2 );
+		_actor2 = ObjectTable::GetObject<Actor^>( (intptr_t)actor2 );
 	
 	_limitPlanes = gcnew ListBase< LimitPlane >();
 }

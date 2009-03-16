@@ -16,7 +16,7 @@ ClothMesh::ClothMesh( NxClothMesh* clothMesh, StillDesign::PhysX::Core^ core )
 	Debug::Assert( clothMesh != NULL );
 	Debug::Assert( core != nullptr );
 	
-	ObjectCache::Add( (intptr_t)clothMesh, this );
+	ObjectTable::Add( (intptr_t)clothMesh, this );
 	
 	_clothMesh = clothMesh;
 	_core = core;

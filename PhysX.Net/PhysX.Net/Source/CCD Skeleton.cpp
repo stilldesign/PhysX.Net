@@ -14,7 +14,7 @@ CCDSkeleton::CCDSkeleton( NxCCDSkeleton* skeleton, StillDesign::PhysX::Core^ cor
 	Debug::Assert( skeleton != NULL );
 	Debug::Assert( core != nullptr );
 	
-	ObjectCache::Add( (intptr_t)skeleton, this );
+	ObjectTable::Add( (intptr_t)skeleton, this );
 	
 	_skeleton = skeleton;
 	

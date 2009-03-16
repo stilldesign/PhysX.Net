@@ -96,8 +96,8 @@ InternalWheelContactModify::InternalWheelContactModify( UserWheelContactModify^ 
 
 bool InternalWheelContactModify::onWheelContact( NxWheelShape* wheelShape, NxVec3& contactPoint, NxVec3& contactNormal, NxReal& contactPosition, NxReal& normalForce, NxShape* otherShape, NxMaterialIndex& otherShapeMaterialIndex, NxU32 otherShapeFeatureIndex )
 {
-	WheelShape^ wheel = ObjectCache::GetObject<WheelShape^>( (intptr_t)wheelShape );
-	Shape^ other = ObjectCache::GetObject<Shape^>( (intptr_t)otherShape );
+	WheelShape^ wheel = ObjectTable::GetObject<WheelShape^>( (intptr_t)wheelShape );
+	Shape^ other = ObjectTable::GetObject<Shape^>( (intptr_t)otherShape );
 	
 	UserWheelContactModifyData^ data = gcnew UserWheelContactModifyData( wheel, other );
 		data->ContactNormal = Math::NxVec3ToVector3( contactNormal );
@@ -105,7 +105,7 @@ bool InternalWheelContactModify::onWheelContact( NxWheelShape* wheelShape, NxVec
 		data->ContactPosition = contactPosition;
 		data->NormalForce = normalForce;
 		data->OtherShapeFeatureIndex = otherShapeFeatureIndex;
-		data->OtherShapeMaterial = ObjectCache::GetObject<Material^>( (intptr_t)otherShapeMaterialIndex );
+		data->OtherShapeMaterial = ObjectTable::GetObject<Material^>( (intptr_t)otherShapeMaterialIndex );
 	
 	bool result = _wheelContactModify->OnWheelContact( data );
 	

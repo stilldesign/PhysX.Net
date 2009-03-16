@@ -35,8 +35,8 @@ InternalUserTriggerReport::InternalUserTriggerReport( gcroot<UserTriggerReport^>
 
 void InternalUserTriggerReport::onTrigger( NxShape &triggerShape, NxShape &otherShape, NxTriggerFlag status )
 {
-	Shape^ t = ObjectCache::GetObject<Shape^>( (intptr_t)(&triggerShape) );
-	Shape^ o = ObjectCache::GetObject<Shape^>( (intptr_t)(&otherShape) );
+	Shape^ t = ObjectTable::GetObject<Shape^>( (intptr_t)(&triggerShape) );
+	Shape^ o = ObjectTable::GetObject<Shape^>( (intptr_t)(&otherShape) );
 	
 	_userTriggerReport->OnTrigger( t, o, (TriggerFlag)status );
 }

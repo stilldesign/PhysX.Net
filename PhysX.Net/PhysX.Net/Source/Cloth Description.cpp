@@ -29,7 +29,7 @@ ClothDescription::ClothDescription( NxClothDesc* description, StillDesign::PhysX
 	_clothDesc = description;
 	
 	if( description->clothMesh != NULL )
-		_clothMesh = ObjectCache::GetObject<StillDesign::PhysX::ClothMesh^>( (intptr_t)description->clothMesh );
+		_clothMesh = ObjectTable::GetObject<StillDesign::PhysX::ClothMesh^>( (intptr_t)description->clothMesh );
 	
 	_meshData = meshData;
 }

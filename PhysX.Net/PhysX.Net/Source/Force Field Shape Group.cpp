@@ -19,9 +19,9 @@ ForceFieldShapeGroup::ForceFieldShapeGroup( NxForceFieldShapeGroup* group )
 {
 	Debug::Assert( group != NULL );
 	
-	ObjectCache::Add( (intptr_t)group, this );
+	ObjectTable::Add( (intptr_t)group, this );
 	
-	StillDesign::PhysX::Scene^ scene = ObjectCache::GetObject<StillDesign::PhysX::Scene^>( (intptr_t)(&group->getScene()) );
+	StillDesign::PhysX::Scene^ scene = ObjectTable::GetObject<StillDesign::PhysX::Scene^>( (intptr_t)(&group->getScene()) );
 	
 	_group = group;
 	_forceField = nullptr;

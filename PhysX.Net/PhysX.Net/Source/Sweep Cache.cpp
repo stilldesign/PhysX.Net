@@ -13,7 +13,7 @@ SweepCache::SweepCache( NxSweepCache* sweepCache, StillDesign::PhysX::Scene^ sce
 	Debug::Assert( sweepCache != NULL );
 	Debug::Assert( scene != nullptr );
 	
-	ObjectCache::Add( (intptr_t)_sweepCache, this );
+	ObjectTable::Add( (intptr_t)_sweepCache, this );
 	
 	_sweepCache = sweepCache;
 	_scene = scene;

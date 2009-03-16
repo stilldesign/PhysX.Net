@@ -19,7 +19,7 @@ TriangleMeshShapeDescription::TriangleMeshShapeDescription() : ShapeDescription(
 TriangleMeshShapeDescription::TriangleMeshShapeDescription( NxTriangleMeshShapeDesc* triMeshShapeDesc ) : ShapeDescription( triMeshShapeDesc )
 {
 	if( triMeshShapeDesc->meshData != NULL )
-		_triangleMesh = ObjectCache::GetObject<StillDesign::PhysX::TriangleMesh^>( (intptr_t)triMeshShapeDesc->meshData );
+		_triangleMesh = ObjectTable::GetObject<StillDesign::PhysX::TriangleMesh^>( (intptr_t)triMeshShapeDesc->meshData );
 }
 
 StillDesign::PhysX::TriangleMesh^ TriangleMeshShapeDescription::TriangleMesh::get()

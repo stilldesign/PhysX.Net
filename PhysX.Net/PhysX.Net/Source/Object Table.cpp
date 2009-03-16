@@ -1,18 +1,18 @@
 #include "StdAfx.h"
 
-#include "Object Cache.h"
+#include "Object Table.h"
 #include "IDisposable.h"
 
 using namespace System::Collections::Generic;
 using namespace StillDesign::PhysX;
 
-void ObjectCache::Add( intptr_t pointer, Object^ object )
+void StillDesign::PhysX::ObjectTable::Add( intptr_t pointer, Object^ object )
 {
 	if( IsInstanceOf<StillDesign::PhysX::IDisposable^>( object ) == true )
 	{
 		StillDesign::PhysX::IDisposable^ disposableObject = dynamic_cast<StillDesign::PhysX::IDisposable^>( object );
 		
-		disposableObject->OnDisposing += gcnew EventHandler( &ObjectCache::_cache_OnDisposing );
+		disposableObject->OnDisposing += gcnew EventHandler( &ObjectTable::_cache_OnDisposing );
 	}
 	
 	try
@@ -23,7 +23,7 @@ void ObjectCache::Add( intptr_t pointer, Object^ object )
 	}
 }
 
-bool ObjectCache::Remove( intptr_t pointer )
+bool StillDesign::PhysX::ObjectTable::Remove( intptr_t pointer )
 {
 	Object^ object = _cache[ pointer ];
 	
@@ -31,12 +31,12 @@ bool ObjectCache::Remove( intptr_t pointer )
 	{
 		StillDesign::PhysX::IDisposable^ disposableObject = dynamic_cast<StillDesign::PhysX::IDisposable^>( object );
 		
-		disposableObject->OnDisposing -= gcnew EventHandler( &ObjectCache::_cache_OnDisposing );
+		disposableObject->OnDisposing -= gcnew EventHandler( &ObjectTable::_cache_OnDisposing );
 	}
 	
 	return _cache->Remove( pointer );
 }
-bool ObjectCache::Remove( Object^ object )
+bool StillDesign::PhysX::ObjectTable::Remove( Object^ object )
 {
 	for each( KeyValuePair<intptr_t, Object^>^ pair in _cache )
 	{
@@ -47,24 +47,24 @@ bool ObjectCache::Remove( Object^ object )
 	return false;
 }
 
-void ObjectCache::Clear()
+void StillDesign::PhysX::ObjectTable::Clear()
 {
 	_cache->Clear();
 }
 
 generic<class T>
-T ObjectCache::GetObject( intptr_t pointer )
+T StillDesign::PhysX::ObjectTable::GetObject( intptr_t pointer )
 {
 	return (T)_cache[ pointer ];
 }
 
-bool ObjectCache::Contains( intptr_t pointer )
+bool StillDesign::PhysX::ObjectTable::Contains( intptr_t pointer )
 {
 	return _cache->ContainsKey( pointer );
 }
 
 //generic<class T>
-//T ObjectCache::GetObjectByIndexIfType( int index )
+//T ObjectTable::GetObjectByIndexIfType( int index )
 //{
 //	intptr_t key = _cache->Keys[ index ];
 //	
@@ -76,7 +76,7 @@ bool ObjectCache::Contains( intptr_t pointer )
 //	return dynamic_cast<T>( _cache[ key ] );
 //}
 //generic<class T>
-//array<T>^ ObjectCache::GetObjectsOfType()
+//array<T>^ ObjectTable::GetObjectsOfType()
 //{
 //	System::Collections::Generic::List<T>^ items = gcnew System::Collections::Generic::List<T>();
 //	
@@ -92,7 +92,7 @@ bool ObjectCache::Contains( intptr_t pointer )
 //}
 
 //generic<class T>
-//T ObjectCache::GetObjectOrNull( intptr_t pointer )
+//T ObjectTable::GetObjectOrNull( intptr_t pointer )
 //{
 //	if( pointer == NULL )
 //		return nullptr;
@@ -107,12 +107,12 @@ bool ObjectCache::Contains( intptr_t pointer )
 //		return nullptr;
 //}
 
-int ObjectCache::Count::get()
+int StillDesign::PhysX::ObjectTable::Count::get()
 {
 	return _cache->Count;
 }
 
-void ObjectCache::_cache_OnDisposing( Object^ sender, EventArgs^ e )
+void StillDesign::PhysX::ObjectTable::_cache_OnDisposing( Object^ sender, EventArgs^ e )
 {
 	Remove( sender );
 }

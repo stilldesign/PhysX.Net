@@ -11,7 +11,7 @@ using namespace StillDesign::PhysX;
 
 HeightFieldShape::HeightFieldShape( NxHeightFieldShape* heightFieldShape ) : Shape( heightFieldShape )
 {
-	_heightField = ObjectCache::GetObject<StillDesign::PhysX::HeightField^>( (intptr_t)(&heightFieldShape->getHeightField()) );
+	_heightField = ObjectTable::GetObject<StillDesign::PhysX::HeightField^>( (intptr_t)(&heightFieldShape->getHeightField()) );
 }
 
 HeightFieldShapeDescription^ HeightFieldShape::SaveToDescription()

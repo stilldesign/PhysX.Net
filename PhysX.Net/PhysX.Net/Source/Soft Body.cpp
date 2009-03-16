@@ -26,16 +26,16 @@ SoftBody::SoftBody( NxSoftBody* softBody, StillDesign::PhysX::MeshData^ meshData
 	Debug::Assert( meshData != nullptr );
 	Debug::Assert( splitPairData != nullptr );
 	
-	ObjectCache::Add( (intptr_t)softBody, this );
+	ObjectTable::Add( (intptr_t)softBody, this );
 	
 	_softBody = softBody;
 	
-	_scene = ObjectCache::GetObject<StillDesign::PhysX::Scene^>( (intptr_t)(&softBody->getScene()) );
-	_mesh = ObjectCache::GetObject<StillDesign::PhysX::SoftBodyMesh^>( (intptr_t)softBody->getSoftBodyMesh() );
+	_scene = ObjectTable::GetObject<StillDesign::PhysX::Scene^>( (intptr_t)(&softBody->getScene()) );
+	_mesh = ObjectTable::GetObject<StillDesign::PhysX::SoftBodyMesh^>( (intptr_t)softBody->getSoftBodyMesh() );
 	_meshData = meshData;
 	
 	if( softBody->getCompartment() != NULL )
-		_compartment = ObjectCache::GetObject<StillDesign::PhysX::Compartment^>( (intptr_t)softBody->getCompartment() );
+		_compartment = ObjectTable::GetObject<StillDesign::PhysX::Compartment^>( (intptr_t)softBody->getCompartment() );
 	
 	_splitPairData = splitPairData;
 }
@@ -217,7 +217,7 @@ array<Shape^>^ SoftBody::GetInteractingShapes()
 	
 	for( int x = 0; x < i; x++ )
 	{
-		shapes[ i ] = ObjectCache::GetObject<Shape^>( (intptr_t)s[ i ] );
+		shapes[ i ] = ObjectTable::GetObject<Shape^>( (intptr_t)s[ i ] );
 	}
 	
 	delete[] s;

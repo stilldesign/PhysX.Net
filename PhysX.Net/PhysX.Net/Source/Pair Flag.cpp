@@ -21,11 +21,11 @@ PairFlag::PairFlag( NxPairFlag pairFlag )
 {
 	if( (pairFlag.flags & 0xF0000000 ) == 0 )
 	{
-		_objectA = ObjectCache::GetObject<Shape^>( (intptr_t)pairFlag.objects[ 0 ] );
-		_objectB = ObjectCache::GetObject<Shape^>( (intptr_t)pairFlag.objects[ 1 ] );
+		_objectA = ObjectTable::GetObject<Shape^>( (intptr_t)pairFlag.objects[ 0 ] );
+		_objectB = ObjectTable::GetObject<Shape^>( (intptr_t)pairFlag.objects[ 1 ] );
 	}else{
-		_objectA = ObjectCache::GetObject<Actor^>( (intptr_t)pairFlag.objects[ 0 ] );
-		_objectB = ObjectCache::GetObject<Actor^>( (intptr_t)pairFlag.objects[ 1 ] );
+		_objectA = ObjectTable::GetObject<Actor^>( (intptr_t)pairFlag.objects[ 0 ] );
+		_objectB = ObjectTable::GetObject<Actor^>( (intptr_t)pairFlag.objects[ 1 ] );
 	}
 	
 	_flags = pairFlag.flags;

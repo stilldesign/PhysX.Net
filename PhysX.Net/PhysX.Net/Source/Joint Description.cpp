@@ -23,9 +23,9 @@ JointDescription::JointDescription( NxJointDesc* jointDesc )
 	_desc = jointDesc;
 	
 	if( jointDesc->actor[ 0 ] != NULL )
-		_actor1 = ObjectCache::GetObject<Actor^>( (intptr_t)jointDesc->actor[ 0 ] );
+		_actor1 = ObjectTable::GetObject<Actor^>( (intptr_t)jointDesc->actor[ 0 ] );
 	if( jointDesc->actor[ 1 ] != NULL )
-		_actor2 = ObjectCache::GetObject<Actor^>( (intptr_t)jointDesc->actor[ 1 ] );
+		_actor2 = ObjectTable::GetObject<Actor^>( (intptr_t)jointDesc->actor[ 1 ] );
 }
 JointDescription::~JointDescription()
 {

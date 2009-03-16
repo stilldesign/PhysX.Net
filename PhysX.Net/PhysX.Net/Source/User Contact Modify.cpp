@@ -185,8 +185,8 @@ bool InternalUserContactModify::onContactConstraint( NxU32 &changeFlags, const N
 {
 	UserContactModify::ContactCallbackData^ callback = (UserContactModify::ContactCallbackData^)data;
 	
-	Shape^ s0 = ObjectCache::GetObject<Shape^>( (intptr_t)shape0 );
-	Shape^ s1 = ObjectCache::GetObject<Shape^>( (intptr_t)shape1 );
+	Shape^ s0 = ObjectTable::GetObject<Shape^>( (intptr_t)shape0 );
+	Shape^ s1 = ObjectTable::GetObject<Shape^>( (intptr_t)shape1 );
 	
 	bool result = _userContactModify->OnContactConstraint( changeFlags, s0, s1, featureIndex0, featureIndex1, callback );
 	

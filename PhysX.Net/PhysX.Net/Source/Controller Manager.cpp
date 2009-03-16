@@ -17,7 +17,7 @@ StillDesign::PhysX::ControllerManager::ControllerManager( NxControllerManager* m
 	Debug::Assert( manager != NULL );
 	Debug::Assert( scene != nullptr );
 	
-	ObjectCache::Add( (intptr_t)manager, this );
+	ObjectTable::Add( (intptr_t)manager, this );
 	
 	_manager = manager;
 	_scene = scene;

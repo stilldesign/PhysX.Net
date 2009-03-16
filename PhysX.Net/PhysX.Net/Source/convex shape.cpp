@@ -12,7 +12,7 @@ using namespace StillDesign::PhysX;
 
 ConvexShape::ConvexShape( NxConvexShape* convexShape ) : Shape( convexShape )
 {
-	_convexMesh = ObjectCache::GetObject<StillDesign::PhysX::ConvexMesh^>( (intptr_t)(&convexShape->getConvexMesh()) );
+	_convexMesh = ObjectTable::GetObject<StillDesign::PhysX::ConvexMesh^>( (intptr_t)(&convexShape->getConvexMesh()) );
 }
 
 ConvexShapeDescription^ ConvexShape::SaveToDescription()

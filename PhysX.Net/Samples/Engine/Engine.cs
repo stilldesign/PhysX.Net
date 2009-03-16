@@ -31,8 +31,10 @@ namespace StillDesign
 		{
 			this.Camera = new Camera( this );
 
-			_visualizationEffect = new BasicEffect( this.Device, null );
-			_visualizationEffect.VertexColorEnabled = true;
+			_visualizationEffect = new BasicEffect( this.Device, null )
+			{
+				VertexColorEnabled = true
+			};
 
 			//
 

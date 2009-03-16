@@ -8,7 +8,7 @@ ForceFieldKernel::ForceFieldKernel( NxForceFieldKernel* kernel )
 {
 	Debug::Assert( kernel != NULL );
 	
-	ObjectCache::Add( (intptr_t)kernel, this );
+	ObjectTable::Add( (intptr_t)kernel, this );
 	
 	_kernel = kernel;
 }

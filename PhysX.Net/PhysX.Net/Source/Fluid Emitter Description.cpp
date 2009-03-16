@@ -19,7 +19,7 @@ FluidEmitterDescription::FluidEmitterDescription( NxFluidEmitterDesc* emitterDes
 	
 	_fluidEmitterDesc = emitterDesc;
 	
-	_shape = ObjectCache::GetObject<StillDesign::PhysX::Shape^>( (intptr_t)emitterDesc->frameShape );
+	_shape = ObjectTable::GetObject<StillDesign::PhysX::Shape^>( (intptr_t)emitterDesc->frameShape );
 }
 FluidEmitterDescription::~FluidEmitterDescription()
 {

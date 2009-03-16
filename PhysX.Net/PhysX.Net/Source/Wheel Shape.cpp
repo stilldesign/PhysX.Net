@@ -37,7 +37,7 @@ WheelContactData^ WheelShape::GetContactData()
 		
 		return WheelContactData::Empty;
 	}else{
-		Shape^ s = ObjectCache::GetObject<Shape^>( (intptr_t)shape );
+		Shape^ s = ObjectTable::GetObject<Shape^>( (intptr_t)shape );
 		
 		return gcnew WheelContactData( contactData, s );
 	}

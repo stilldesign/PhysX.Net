@@ -12,7 +12,7 @@ HeightField::HeightField( NxHeightField* heightField, StillDesign::PhysX::Core^ 
 	Debug::Assert( heightField != NULL );
 	Debug::Assert( core != nullptr );
 	
-	ObjectCache::Add( (intptr_t)heightField, this );
+	ObjectTable::Add( (intptr_t)heightField, this );
 	
 	_heightField = heightField;
 	

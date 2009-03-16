@@ -18,7 +18,7 @@ Compartment::Compartment( NxCompartment* compartment, StillDesign::PhysX::Scene^
 	
 	_scene = scene;
 	
-	ObjectCache::Add( (intptr_t)_compartment, this );
+	ObjectTable::Add( (intptr_t)_compartment, this );
 }
 Compartment::~Compartment()
 {

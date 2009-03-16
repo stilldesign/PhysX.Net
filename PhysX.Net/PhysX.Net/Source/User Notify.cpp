@@ -34,7 +34,7 @@ InternalUserNotify::InternalUserNotify( gcroot<UserNotify^> userNotify )
 
 bool InternalUserNotify::onJointBreak( NxReal breakingForce, NxJoint &brokenJoint )
 {
-	Joint^ joint = ObjectCache::GetObject<Joint^>( (intptr_t)(&brokenJoint) );
+	Joint^ joint = ObjectTable::GetObject<Joint^>( (intptr_t)(&brokenJoint) );
 	
 	return _userNotify->OnJointBreak( breakingForce, joint );
 }
@@ -44,7 +44,7 @@ void InternalUserNotify::onWake( NxActor** actors, NxU32 count )
 	
 	for( unsigned int x = 0; x < count; x++ )
 	{
-		a[ x ] = ObjectCache::GetObject<Actor^>( (intptr_t)actors[ x ] );
+		a[ x ] = ObjectTable::GetObject<Actor^>( (intptr_t)actors[ x ] );
 	}
 	
 	_userNotify->OnWake( a );
@@ -55,7 +55,7 @@ void InternalUserNotify::onSleep( NxActor** actors, NxU32 count )
 	
 	for( unsigned int x = 0; x < count; x++ )
 	{
-		a[ x ] = ObjectCache::GetObject<Actor^>( (intptr_t)actors[ x ] );
+		a[ x ] = ObjectTable::GetObject<Actor^>( (intptr_t)actors[ x ] );
 	}
 	
 	_userNotify->OnSleep( a );

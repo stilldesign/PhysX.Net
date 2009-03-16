@@ -13,7 +13,7 @@ ForceFieldLinearKernel::ForceFieldLinearKernel( NxForceFieldLinearKernel* kernel
 {
 	Debug::Assert( kernel != NULL );
 	
-	_scene = ObjectCache::GetObject<StillDesign::PhysX::Scene^>( (intptr_t)(&kernel->getScene()) );
+	_scene = ObjectTable::GetObject<StillDesign::PhysX::Scene^>( (intptr_t)(&kernel->getScene()) );
 }
 
 ForceFieldLinearKernelDescription^ ForceFieldLinearKernel::SaveToDescription()

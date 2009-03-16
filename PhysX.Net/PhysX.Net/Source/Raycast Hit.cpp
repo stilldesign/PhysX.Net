@@ -27,7 +27,7 @@ RaycastHit::operator RaycastHit^( NxRaycastHit hit )
 {
 	RaycastHit^ managedHit = gcnew RaycastHit();
 		if( hit.shape != NULL )
-			managedHit->_shape = ObjectCache::GetObject<StillDesign::PhysX::Shape^>( (intptr_t)hit.shape );
+			managedHit->_shape = ObjectTable::GetObject<StillDesign::PhysX::Shape^>( (intptr_t)hit.shape );
 		managedHit->_distance = hit.distance;
 		managedHit->_faceID = hit.faceID;
 		managedHit->_flags = (RaycastBit)hit.flags;

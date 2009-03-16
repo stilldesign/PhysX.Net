@@ -84,10 +84,10 @@ Scene::Scene( NxScene* scene )
 {
 	Debug::Assert( scene != NULL );
 	
-	ObjectCache::Add( (intptr_t)scene, this );
+	ObjectTable::Add( (intptr_t)scene, this );
 	
 	_scene = scene;
-	_core = ObjectCache::GetObject<StillDesign::PhysX::Core^>( (intptr_t)(&scene->getPhysicsSDK()) );
+	_core = ObjectTable::GetObject<StillDesign::PhysX::Core^>( (intptr_t)(&scene->getPhysicsSDK()) );
 	
 	_actors = gcnew ElementCollection< Actor^ >();
 	_materials = gcnew ElementCollection< Material^ >();
@@ -772,7 +772,7 @@ array<Shape^>^ Scene::OverlappedShapes( Sphere sphere, ShapesType type, unsigned
 	
 	for( unsigned int x = 0; x < overlapCount; x++ )
 	{
-		shapes[ x ] = ObjectCache::GetObject<Shape^>( (intptr_t)s[ x ] );
+		shapes[ x ] = ObjectTable::GetObject<Shape^>( (intptr_t)s[ x ] );
 	}
 	
 	delete[] s;
@@ -802,7 +802,7 @@ array<Shape^>^ Scene::OverlappedShapes( Bounds3 worldBounds, ShapesType type, un
 	
 	for( unsigned int x = 0; x < overlapCount; x++ )
 	{
-		shapes[ x ] = ObjectCache::GetObject<Shape^>( (intptr_t)s[ x ] );
+		shapes[ x ] = ObjectTable::GetObject<Shape^>( (intptr_t)s[ x ] );
 	}
 	
 	delete[] s;
@@ -832,7 +832,7 @@ array<Shape^>^ Scene::OverlappedShapes( Box worldBox, ShapesType type, unsigned 
 	
 	for( unsigned int x = 0; x < overlapCount; x++ )
 	{
-		shapes[ x ] = ObjectCache::GetObject<Shape^>( (intptr_t)s[ x ] );
+		shapes[ x ] = ObjectTable::GetObject<Shape^>( (intptr_t)s[ x ] );
 	}
 	
 	delete[] s;
@@ -862,7 +862,7 @@ array<Shape^>^ Scene::OverlappedShapes( Capsule worldCapsule, ShapesType type, u
 	
 	for( unsigned int x = 0; x < overlapCount; x++ )
 	{
-		shapes[ x ] = ObjectCache::GetObject<Shape^>( (intptr_t)s[ x ] );
+		shapes[ x ] = ObjectTable::GetObject<Shape^>( (intptr_t)s[ x ] );
 	}
 	
 	delete[] s;
@@ -1050,7 +1050,7 @@ bool Scene::RaycastAnyShape( StillDesign::PhysX::Ray worldRay, ShapesType shapeT
 	bool result = _scene->raycastAnyShape( (NxRay)worldRay, (NxShapesType)shapeTypes, groups, maximumDistance, groupsMask.HasValue ? &((NxGroupsMask)groupsMask.Value) : NULL, &cacheShape );
 	
 	if( cacheShape != NULL )
-		cache = ObjectCache::GetObject<Shape^>( (intptr_t)cacheShape );
+		cache = ObjectTable::GetObject<Shape^>( (intptr_t)cacheShape );
 	
 	return result;
 }
@@ -1256,7 +1256,7 @@ array<Shape^>^ Scene::CullShapes( array<Plane>^ planes, ShapesType shapesType, u
 	
 	for( unsigned int x = 0; x < overlapCount; x++ )
 	{
-		shapes[ x ] = ObjectCache::GetObject<Shape^>( (intptr_t)s[ x ] );
+		shapes[ x ] = ObjectTable::GetObject<Shape^>( (intptr_t)s[ x ] );
 	}
 	
 	delete[] p, s;

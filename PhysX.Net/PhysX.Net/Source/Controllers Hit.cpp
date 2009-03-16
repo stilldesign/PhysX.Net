@@ -14,10 +14,10 @@ ControllersHit::ControllersHit( const NxControllersHit controllersHit )
 	_controllersHit = new NxControllersHit( controllersHit );
 	
 	if( controllersHit.controller != NULL )
-		_controller = ObjectCache::GetObject<StillDesign::PhysX::Controller^>( (intptr_t)controllersHit.controller );
+		_controller = ObjectTable::GetObject<StillDesign::PhysX::Controller^>( (intptr_t)controllersHit.controller );
 	
 	if( controllersHit.other != NULL )
-		_other = ObjectCache::GetObject<StillDesign::PhysX::Controller^>( (intptr_t)controllersHit.other );
+		_other = ObjectTable::GetObject<StillDesign::PhysX::Controller^>( (intptr_t)controllersHit.other );
 }
 ControllersHit::~ControllersHit()
 {

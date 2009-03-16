@@ -14,10 +14,10 @@ ControllerShapeHit::ControllerShapeHit( NxControllerShapeHit shapeHit )
 	_shapeHit = new NxControllerShapeHit( shapeHit );
 	
 	if( shapeHit.shape != NULL )
-		_shape = ObjectCache::GetObject<StillDesign::PhysX::Shape^>( (intptr_t)shapeHit.shape );
+		_shape = ObjectTable::GetObject<StillDesign::PhysX::Shape^>( (intptr_t)shapeHit.shape );
 	
 	if( shapeHit.controller != NULL )
-		_controller = ObjectCache::GetObject<StillDesign::PhysX::Controller^>( (intptr_t)shapeHit.controller );
+		_controller = ObjectTable::GetObject<StillDesign::PhysX::Controller^>( (intptr_t)shapeHit.controller );
 }
 ControllerShapeHit::~ControllerShapeHit()
 {

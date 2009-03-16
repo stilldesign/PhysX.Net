@@ -16,7 +16,7 @@ StillDesign::PhysX::Controller::Controller( NxController* controller, Controller
 	Debug::Assert( controller != NULL );
 	Debug::Assert( manager != nullptr );
 	
-	ObjectCache::Add( (intptr_t)controller, this );
+	ObjectTable::Add( (intptr_t)controller, this );
 	
 	_controller = controller;
 	

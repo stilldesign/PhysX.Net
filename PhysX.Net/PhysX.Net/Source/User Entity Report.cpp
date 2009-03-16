@@ -40,7 +40,7 @@ bool EntityShapeReport::onEvent( NxU32 nbEntities, NxShape** entities )
 	array<Shape^>^ shapes = gcnew array<Shape^>( nbEntities );
 	for( unsigned int x = 0; x < nbEntities; x++ )
 	{
-		shapes[ x ] = ObjectCache::GetObject<Shape^>( (intptr_t)entities[ x ] );
+		shapes[ x ] = ObjectTable::GetObject<Shape^>( (intptr_t)entities[ x ] );
 	}
 	
 	return _userEntityShapeReport->OnEvent( shapes );

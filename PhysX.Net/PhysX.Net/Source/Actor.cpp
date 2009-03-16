@@ -43,12 +43,12 @@ Actor::Actor( NxActor* actor )
 {
 	Debug::Assert( actor != NULL );
 	
-	ObjectCache::Add( (intptr_t)actor, this );
+	ObjectTable::Add( (intptr_t)actor, this );
 	
 	_actor = actor;
-	_scene = ObjectCache::GetObject<StillDesign::PhysX::Scene^>( (intptr_t)(&actor->getScene()) );
+	_scene = ObjectTable::GetObject<StillDesign::PhysX::Scene^>( (intptr_t)(&actor->getScene()) );
 	if( actor->getCompartment() != NULL )
-		_compartment = ObjectCache::GetObject<StillDesign::PhysX::Compartment^>( (intptr_t)actor->getCompartment() );
+		_compartment = ObjectTable::GetObject<StillDesign::PhysX::Compartment^>( (intptr_t)actor->getCompartment() );
 	
 	_shapes = gcnew ElementCollection< Shape^ >();
 	CreateShapes();

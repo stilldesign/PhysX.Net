@@ -29,18 +29,18 @@ Shape::Shape( NxShape* shape )
 	
 	_shape = shape;
 	
-	_actor = ObjectCache::GetObject<StillDesign::PhysX::Actor^>( (intptr_t)(&shape->getActor()) );
+	_actor = ObjectTable::GetObject<StillDesign::PhysX::Actor^>( (intptr_t)(&shape->getActor()) );
 	
 	{
 		NxMaterial* material = _actor->Scene->UnmanagedPointer->getMaterialFromIndex( shape->getMaterial() );
 		
-		this->Material = ObjectCache::GetObject<StillDesign::PhysX::Material^>( (intptr_t)material );
+		this->Material = ObjectTable::GetObject<StillDesign::PhysX::Material^>( (intptr_t)material );
 	}
 	
 	if( shape->getCCDSkeleton() != NULL )
-		_ccdSkeleton = ObjectCache::GetObject<StillDesign::PhysX::CCDSkeleton^>( (intptr_t)shape->getCCDSkeleton() );
+		_ccdSkeleton = ObjectTable::GetObject<StillDesign::PhysX::CCDSkeleton^>( (intptr_t)shape->getCCDSkeleton() );
 	
-	ObjectCache::Add( (intptr_t)_shape, this );
+	ObjectTable::Add( (intptr_t)_shape, this );
 }
 Shape::~Shape()
 {

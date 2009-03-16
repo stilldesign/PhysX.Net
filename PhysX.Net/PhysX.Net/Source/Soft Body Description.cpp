@@ -28,9 +28,9 @@ SoftBodyDescription::SoftBodyDescription( NxSoftBodyDesc* desc, StillDesign::Phy
 	
 	_desc = desc;
 	if( desc->softBodyMesh != NULL )
-		_mesh = ObjectCache::GetObject<StillDesign::PhysX::SoftBodyMesh^>( (intptr_t)desc->softBodyMesh );
+		_mesh = ObjectTable::GetObject<StillDesign::PhysX::SoftBodyMesh^>( (intptr_t)desc->softBodyMesh );
 	if( desc->compartment != NULL )
-		_compartment = ObjectCache::GetObject<StillDesign::PhysX::Compartment^>( (intptr_t)desc->compartment );
+		_compartment = ObjectTable::GetObject<StillDesign::PhysX::Compartment^>( (intptr_t)desc->compartment );
 	_meshData = meshData;
 	_splitPairData = splitPairData;
 }

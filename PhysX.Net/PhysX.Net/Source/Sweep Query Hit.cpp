@@ -23,10 +23,10 @@ SweepQueryHit::SweepQueryHit( NxSweepQueryHit* hit, Object^ userData )
 	_hit = hit;
 	
 	if( hit->hitShape != NULL )
-		_hitShape = ObjectCache::GetObject<Shape^>( (intptr_t)hit->hitShape );
+		_hitShape = ObjectTable::GetObject<Shape^>( (intptr_t)hit->hitShape );
 		
 	if( hit->sweepShape != NULL )
-		_sweepShape = ObjectCache::GetObject<Shape^>( (intptr_t)hit->sweepShape );
+		_sweepShape = ObjectTable::GetObject<Shape^>( (intptr_t)hit->sweepShape );
 		
 	_userData = userData;
 }

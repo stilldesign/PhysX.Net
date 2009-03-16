@@ -13,7 +13,7 @@ ConvexMesh::ConvexMesh( NxConvexMesh* convexMesh, StillDesign::PhysX::Core^ core
 	Debug::Assert( convexMesh != NULL );
 	Debug::Assert( core != nullptr );
 	
-	ObjectCache::Add( (intptr_t)convexMesh, this );
+	ObjectTable::Add( (intptr_t)convexMesh, this );
 	
 	_convexMesh = convexMesh;
 	_core = core;

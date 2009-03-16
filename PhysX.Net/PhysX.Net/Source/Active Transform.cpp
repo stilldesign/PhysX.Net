@@ -12,7 +12,7 @@ using namespace StillDesign::PhysX;
 ActiveTransform::ActiveTransform( NxActiveTransform activeTransform )
 {
 	_actorToWorld = Math::Mat34ToMatrix( &activeTransform.actor2World );
-	_actor = ObjectCache::GetObject<StillDesign::PhysX::Actor^>( (intptr_t)activeTransform.actor );
+	_actor = ObjectTable::GetObject<StillDesign::PhysX::Actor^>( (intptr_t)activeTransform.actor );
 }
 
 StillDesign::PhysX::Actor^ ActiveTransform::Actor::get()

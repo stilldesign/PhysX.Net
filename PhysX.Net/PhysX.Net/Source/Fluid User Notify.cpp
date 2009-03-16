@@ -34,15 +34,15 @@ InternalFluidUserNotify::InternalFluidUserNotify( gcroot<FluidUserNotify^> fluid
 
 bool InternalFluidUserNotify::onEmitterEvent( NxFluidEmitter &emitter, NxFluidEmitterEventType eventType )
 {
-	Fluid^ fluid = ObjectCache::GetObject<Fluid^>( (intptr_t)(&emitter.getFluid()) );
+	Fluid^ fluid = ObjectTable::GetObject<Fluid^>( (intptr_t)(&emitter.getFluid()) );
 	
-	FluidEmitter^ fluidEmitter = ObjectCache::GetObject<FluidEmitter^>( (intptr_t)(&emitter) );
+	FluidEmitter^ fluidEmitter = ObjectTable::GetObject<FluidEmitter^>( (intptr_t)(&emitter) );
 	
 	return _fluidUserNotify->OnEmitterEvent( fluidEmitter, (FluidEmitterEventType)eventType );
 }
 bool InternalFluidUserNotify::onEvent( NxFluid &fluid, NxFluidEventType eventType )
 {
-	Fluid^ f = ObjectCache::GetObject<Fluid^>( (intptr_t)(&fluid) );
+	Fluid^ f = ObjectTable::GetObject<Fluid^>( (intptr_t)(&fluid) );
 	
 	return _fluidUserNotify->OnEvent( f, (FluidEventType)eventType );
 }

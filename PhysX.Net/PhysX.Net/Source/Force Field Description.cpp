@@ -26,9 +26,9 @@ ForceFieldDescription::ForceFieldDescription( NxForceFieldDesc* forceFieldDesc )
 	CreateAux();
 	
 	if( forceFieldDesc->actor != NULL )
-		_actor = ObjectCache::GetObject<StillDesign::PhysX::Actor^>( (intptr_t)forceFieldDesc->actor );
+		_actor = ObjectTable::GetObject<StillDesign::PhysX::Actor^>( (intptr_t)forceFieldDesc->actor );
 	if( forceFieldDesc->kernel != NULL )
-		_kernel = ObjectCache::GetObject<ForceFieldKernel^>( (intptr_t)forceFieldDesc->kernel );
+		_kernel = ObjectTable::GetObject<ForceFieldKernel^>( (intptr_t)forceFieldDesc->kernel );
 	
 	for each( NxForceFieldShapeGroup* group in forceFieldDesc->shapeGroups )
 	{

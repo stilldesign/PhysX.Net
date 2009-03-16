@@ -4,13 +4,13 @@ namespace StillDesign
 {
 	namespace PhysX
 	{
-		private ref class ObjectCache
+		private ref class ObjectTable
 		{
 			private:
 				static System::Collections::Generic::Dictionary<intptr_t, Object^>^ _cache;
 				
 			private:
-				static ObjectCache()
+				static ObjectTable()
 				{
 					_cache = gcnew System::Collections::Generic::Dictionary<intptr_t, Object^>();
 				}

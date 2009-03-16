@@ -17,12 +17,12 @@ FluidEmitter::FluidEmitter( NxFluidEmitter* emitter )
 	
 	_fluidEmitter = emitter;
 	
-	ObjectCache::Add( (intptr_t)emitter, this );
+	ObjectTable::Add( (intptr_t)emitter, this );
 	
-	_fluid = ObjectCache::GetObject<StillDesign::PhysX::Fluid^>( (intptr_t)(&emitter->getFluid()) );
+	_fluid = ObjectTable::GetObject<StillDesign::PhysX::Fluid^>( (intptr_t)(&emitter->getFluid()) );
 	
 	if( emitter->getFrameShape() != NULL )
-		_shape = ObjectCache::GetObject<StillDesign::PhysX::Shape^>( (intptr_t)emitter->getFrameShape() );
+		_shape = ObjectTable::GetObject<StillDesign::PhysX::Shape^>( (intptr_t)emitter->getFrameShape() );
 
 	_flagsWrapper = gcnew FluidEmitterFlagsWrapper( this );
 }
@@ -64,7 +64,7 @@ FluidEmitterDescription^ FluidEmitter::SaveToDescription()
 	
 	Shape^ frameShape;
 	if( _fluidEmitter->getFrameShape() != NULL )
-		frameShape = ObjectCache::GetObject<Shape^>( (intptr_t)_fluidEmitter->getFrameShape() );
+		frameShape = ObjectTable::GetObject<Shape^>( (intptr_t)_fluidEmitter->getFrameShape() );
 	else
 		frameShape = nullptr;
 	

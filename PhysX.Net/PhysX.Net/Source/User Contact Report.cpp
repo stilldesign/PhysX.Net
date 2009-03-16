@@ -35,8 +35,8 @@ ContactPair::ContactPair( Actor^ actorA, Actor^ actorB, Vector3 normalForce, Vec
 }
 ContactPair::ContactPair( NxContactPair* contactPair )
 {
-	_actorA = ObjectCache::GetObject<Actor^>( (intptr_t)contactPair->actors[ 0 ] );
-	_actorB = ObjectCache::GetObject<Actor^>( (intptr_t)contactPair->actors[ 1 ] );
+	_actorA = ObjectTable::GetObject<Actor^>( (intptr_t)contactPair->actors[ 0 ] );
+	_actorB = ObjectTable::GetObject<Actor^>( (intptr_t)contactPair->actors[ 1 ] );
 	
 	_normalForce = Math::NxVec3ToVector3( contactPair->sumNormalForce );
 	_frictionForce = Math::NxVec3ToVector3( contactPair->sumFrictionForce );

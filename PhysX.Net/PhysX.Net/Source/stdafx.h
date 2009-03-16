@@ -104,7 +104,7 @@ bool IsInstanceOf( U u )
 
 #include "Functions.h"
 #include "Math.h"
-#include "Object Cache.h"
+#include "Object Table.h"
 #include "PhysX Exception.h"
 #include "List Base.h"
 #include "Graphics Library Wrapper.h"

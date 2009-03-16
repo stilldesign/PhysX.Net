@@ -21,13 +21,13 @@ Fluid::Fluid( NxFluid* fluid )
 {
 	Debug::Assert( fluid != NULL );
 	
-	ObjectCache::Add( (intptr_t)fluid, this );
+	ObjectTable::Add( (intptr_t)fluid, this );
 	
 	_fluid = fluid;
-	_scene = ObjectCache::GetObject<StillDesign::PhysX::Scene^>( (intptr_t)(&fluid->getScene()) );
+	_scene = ObjectTable::GetObject<StillDesign::PhysX::Scene^>( (intptr_t)(&fluid->getScene()) );
 	
 	if( fluid->getCompartment() != NULL )
-		_compartment = ObjectCache::GetObject<StillDesign::PhysX::Compartment^>( (intptr_t)fluid->getCompartment() );
+		_compartment = ObjectTable::GetObject<StillDesign::PhysX::Compartment^>( (intptr_t)fluid->getCompartment() );
 	
 	_particleWriteData = gcnew StillDesign::PhysX::ParticleData( &fluid->getParticlesWriteData() );
 	_particleCreationIdWriteData = gcnew StillDesign::PhysX::ParticleIdData( &fluid->getParticleCreationIdWriteData() );
@@ -50,13 +50,13 @@ Fluid::Fluid( NxFluid* fluid, ParticleData^ particleWriteData, ParticleIdData^ p
 {
 	Debug::Assert( fluid != NULL );
 	
-	ObjectCache::Add( (intptr_t)fluid, this );
+	ObjectTable::Add( (intptr_t)fluid, this );
 	
 	_fluid = fluid;
-	_scene = ObjectCache::GetObject<StillDesign::PhysX::Scene^>( (intptr_t)(&fluid->getScene()) );
+	_scene = ObjectTable::GetObject<StillDesign::PhysX::Scene^>( (intptr_t)(&fluid->getScene()) );
 	
 	if( fluid->getCompartment() != NULL )
-		_compartment = ObjectCache::GetObject<StillDesign::PhysX::Compartment^>( (intptr_t)fluid->getCompartment() );
+		_compartment = ObjectTable::GetObject<StillDesign::PhysX::Compartment^>( (intptr_t)fluid->getCompartment() );
 	
 	_particleWriteData = particleWriteData;
 	_particleDeletionIdWriteData = particleDeletionIdWriteData;

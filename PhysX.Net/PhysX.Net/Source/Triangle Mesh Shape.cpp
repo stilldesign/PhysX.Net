@@ -16,7 +16,7 @@ using namespace StillDesign::PhysX;
 
 TriangleMeshShape::TriangleMeshShape( NxTriangleMeshShape* triangleMeshShape ) : Shape( triangleMeshShape )
 {
-	_triangleMesh = ObjectCache::GetObject<StillDesign::PhysX::TriangleMesh^>( (intptr_t)(&triangleMeshShape->getTriangleMesh()) );
+	_triangleMesh = ObjectTable::GetObject<StillDesign::PhysX::TriangleMesh^>( (intptr_t)(&triangleMeshShape->getTriangleMesh()) );
 }
 
 TriangleMeshShapeDescription^ TriangleMeshShape::SaveToDescription()

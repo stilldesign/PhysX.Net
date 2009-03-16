@@ -52,7 +52,7 @@ Core::Core( NxPhysicsSDK* core )
 	
 	Debug::Assert( core != NULL );
 	
-	ObjectCache::Add( (intptr_t)core, this );
+	ObjectTable::Add( (intptr_t)core, this );
 	
 	_physicsSDK = core;
 	
@@ -125,10 +125,10 @@ Core::!Core()
 	
 	_isCoreCreated = false;
 	
-	if( ObjectCache::Count > 0 )
-		Trace::WriteLine( "Warning: Objects still remain in the object cache. Count: " + ObjectCache::Count );
+	if( ObjectTable::Count > 0 )
+		Trace::WriteLine( "Warning: Objects still remain in the object cache. Count: " + ObjectTable::Count );
 	
-	ObjectCache::Clear();
+	ObjectTable::Clear();
 	
 	OnDisposed( this, nullptr );
 }
@@ -150,7 +150,7 @@ void Core::CreateCore( CoreDescription^ desc, StillDesign::PhysX::UserOutputStre
 	if( _physicsSDK == NULL || error != 0 )
 		throw gcnew PhysXInitializationException( (CoreCreationError)error );
 	
-	ObjectCache::Add( (intptr_t)_physicsSDK, this );
+	ObjectTable::Add( (intptr_t)_physicsSDK, this );
 	CreateCommon();
 }
 void Core::CreateCommon()

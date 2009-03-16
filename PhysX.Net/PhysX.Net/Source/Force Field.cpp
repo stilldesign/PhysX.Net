@@ -43,20 +43,20 @@ ForceField::ForceField( NxForceField* forceField )
 {
 	Debug::Assert( forceField != NULL );
 	
-	ObjectCache::Add( (intptr_t)forceField, this );
+	ObjectTable::Add( (intptr_t)forceField, this );
 	
 	_forceField = forceField;
-	_scene = ObjectCache::GetObject<StillDesign::PhysX::Scene^>( (intptr_t)(&forceField->getScene()) );
+	_scene = ObjectTable::GetObject<StillDesign::PhysX::Scene^>( (intptr_t)(&forceField->getScene()) );
 	
 	if( forceField->getActor() != NULL )
-		_actor = ObjectCache::GetObject<StillDesign::PhysX::Actor^>( (intptr_t)forceField->getActor() );
-	_forceFieldKernel = ObjectCache::GetObject<StillDesign::PhysX::ForceFieldKernel^>( (intptr_t)forceField->getForceFieldKernel() );
+		_actor = ObjectTable::GetObject<StillDesign::PhysX::Actor^>( (intptr_t)forceField->getActor() );
+	_forceFieldKernel = ObjectTable::GetObject<StillDesign::PhysX::ForceFieldKernel^>( (intptr_t)forceField->getForceFieldKernel() );
 	
 	_shapeGroups = gcnew ElementCollection< ForceFieldShapeGroup^ >();
 	forceField->resetShapeGroupsIterator();
 	for( unsigned int x = 0; x < forceField->getNbShapeGroups(); x++ )
 	{
-		_shapeGroups->Add( ObjectCache::GetObject<ForceFieldShapeGroup^>( (intptr_t)forceField->getNextShapeGroup() ) );
+		_shapeGroups->Add( ObjectTable::GetObject<ForceFieldShapeGroup^>( (intptr_t)forceField->getNextShapeGroup() ) );
 	}
 }
 ForceField::~ForceField()

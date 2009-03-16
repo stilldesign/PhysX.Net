@@ -15,7 +15,7 @@ TriangleMesh::TriangleMesh( NxTriangleMesh* triangleMesh, StillDesign::PhysX::Co
 	Debug::Assert( triangleMesh != NULL );
 	Debug::Assert( core != nullptr );
 	
-	ObjectCache::Add( (intptr_t)triangleMesh, this );
+	ObjectTable::Add( (intptr_t)triangleMesh, this );
 	
 	_triangleMesh = triangleMesh;
 	

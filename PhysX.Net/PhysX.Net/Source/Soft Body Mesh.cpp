@@ -14,7 +14,7 @@ SoftBodyMesh::SoftBodyMesh( NxSoftBodyMesh* softBodyMesh, StillDesign::PhysX::Co
 	Debug::Assert( softBodyMesh != NULL );
 	Debug::Assert( core != nullptr );
 	
-	ObjectCache::Add( (intptr_t)softBodyMesh, this );
+	ObjectTable::Add( (intptr_t)softBodyMesh, this );
 	
 	_softBodyMesh = softBodyMesh;
 	

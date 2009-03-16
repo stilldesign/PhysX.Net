@@ -30,17 +30,17 @@ Cloth::Cloth( NxCloth* cloth, StillDesign::PhysX::MeshData^ meshData )
 	
 	_cloth = cloth;
 	
-	_scene = ObjectCache::GetObject<StillDesign::PhysX::Scene^>( (intptr_t)(&cloth->getScene()) );
+	_scene = ObjectTable::GetObject<StillDesign::PhysX::Scene^>( (intptr_t)(&cloth->getScene()) );
 	
 	_meshData = meshData;
-	_clothMesh = ObjectCache::GetObject<StillDesign::PhysX::ClothMesh^>( (intptr_t)cloth->getClothMesh() );
+	_clothMesh = ObjectTable::GetObject<StillDesign::PhysX::ClothMesh^>( (intptr_t)cloth->getClothMesh() );
 	
 	if( cloth->getCompartment() != NULL )
-		_compartment = ObjectCache::GetObject<StillDesign::PhysX::Compartment^>( (intptr_t)cloth->getCompartment() );
+		_compartment = ObjectTable::GetObject<StillDesign::PhysX::Compartment^>( (intptr_t)cloth->getCompartment() );
 	
 	this->Flags |= ClothFlag::Visualization;
 	
-	ObjectCache::Add( (intptr_t)_cloth, this );
+	ObjectTable::Add( (intptr_t)_cloth, this );
 }
 Cloth::~Cloth()
 {
@@ -257,7 +257,7 @@ Shape^ Cloth::GetVertexAttachmentShape( int vertexId )
 	if( s == NULL )
 		return nullptr;
 	else
-		return ObjectCache::GetObject<Shape^>( (intptr_t)s );
+		return ObjectTable::GetObject<Shape^>( (intptr_t)s );
 }
 Vector3 Cloth::GetVertexAttachmentPosition( int vertexId )
 {

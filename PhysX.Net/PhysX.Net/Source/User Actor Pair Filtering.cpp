@@ -38,8 +38,8 @@ void InternalUserActorPairFiltering::onActorPairs( NxActorPairFilter *filterArra
 	array<ActorPairFiltering^>^ pairs = gcnew array<ActorPairFiltering^>( arraySize );
 	for( unsigned int x = 0; x < arraySize; x++ )
 	{
-		Actor^ a = ObjectCache::GetObject<Actor^>( (intptr_t)filterArray[ x ].actor[ 0 ] );
-		Actor^ b = ObjectCache::GetObject<Actor^>( (intptr_t)filterArray[ x ].actor[ 1 ] );
+		Actor^ a = ObjectTable::GetObject<Actor^>( (intptr_t)filterArray[ x ].actor[ 0 ] );
+		Actor^ b = ObjectTable::GetObject<Actor^>( (intptr_t)filterArray[ x ].actor[ 1 ] );
 		
 		pairs[ x ] = gcnew ActorPairFiltering( a, b, filterArray[ x ].filtered );
 	}

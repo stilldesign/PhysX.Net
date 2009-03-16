@@ -15,11 +15,11 @@ Material::Material( NxMaterial* material )
 {
 	Debug::Assert( material != NULL );
 	
-	ObjectCache::Add( (intptr_t)material, this );
+	ObjectTable::Add( (intptr_t)material, this );
 	
 	_material = material;
 	
-	_scene = ObjectCache::GetObject<StillDesign::PhysX::Scene^>( (intptr_t)(&material->getScene()) );
+	_scene = ObjectTable::GetObject<StillDesign::PhysX::Scene^>( (intptr_t)(&material->getScene()) );
 }
 Material::~Material()
 {

@@ -7243,7 +7243,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\Source\Object Cache.cpp"
+				RelativePath=".\Source\Object Table.cpp"
 				>
 				<FileConfiguration
 					Name="Debug XNA 2.0|Win32"
@@ -13517,7 +13517,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Source\Object Cache.h"
+				RelativePath=".\Source\Object Table.h"
 				>
 			</File>
 			<File

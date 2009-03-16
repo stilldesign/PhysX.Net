@@ -14,11 +14,11 @@ ForceFieldShape::ForceFieldShape( NxForceFieldShape* forceFieldShape )
 {
 	Debug::Assert( forceFieldShape != NULL );
 	
-	ObjectCache::Add( (intptr_t)forceFieldShape, this );
+	ObjectTable::Add( (intptr_t)forceFieldShape, this );
 	
 	_forceFieldShape = forceFieldShape;
 	
-	_group = ObjectCache::GetObject<ForceFieldShapeGroup^>( (intptr_t)(&forceFieldShape->getShapeGroup() ) );
+	_group = ObjectTable::GetObject<ForceFieldShapeGroup^>( (intptr_t)(&forceFieldShape->getShapeGroup() ) );
 }
 ForceFieldShape::~ForceFieldShape()
 {
