@@ -54,7 +54,7 @@ namespace StillDesign
 
 			SceneDescription sceneDesc = new SceneDescription()
 			{
-				SimulationType = SimulationType.Hardware,
+				//SimulationType = SimulationType.Hardware,
 				Gravity = new Vector3( 0.0f, -9.81f, 0.0f ),
 				GroundPlaneEnabled = true
 			};

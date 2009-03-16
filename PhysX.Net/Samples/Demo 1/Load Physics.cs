@@ -85,6 +85,8 @@ namespace StillDesign
 				clothDesc.MeshData.AllocateIndices<int>( grid.Indices.Length );
 				clothDesc.MeshData.MaximumVertices = grid.Points.Length;
 				clothDesc.MeshData.MaximumIndices = grid.Indices.Length;
+				clothDesc.MeshData.NumberOfVertices = grid.Points.Length;
+				clothDesc.MeshData.NumberOfIndices = grid.Indices.Length;
 
 				_flag = _scene.CreateCloth( clothDesc );
 
