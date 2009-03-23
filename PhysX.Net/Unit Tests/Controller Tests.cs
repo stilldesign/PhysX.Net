@@ -2,7 +2,18 @@
 using System.Text;
 using System.Collections.Generic;
 using System.Linq;
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+#if GRAPHICS_XNA2 || GRAPHICS_XNA3
+using Microsoft.Xna.Framework;
+#elif GRAPHICS_MDX
+using Microsoft.DirectX;
+#elif GRAPHICS_SLIMDX
+using SlimDX;
+#else
+#error No Graphics Framework Defined
+#endif
 
 namespace StillDesign.PhysX.UnitTests
 {
@@ -75,8 +86,26 @@ namespace StillDesign.PhysX.UnitTests
 
 				boxController.Dispose();
 
+				GC.Collect();
+
 				Assert.IsTrue( boxController.IsDisposed == true );
 				Assert.IsTrue( manager.Controllers.Count == 0 );
+			}
+		}
+
+		[TestMethod]
+		public void CreateMultipleControllers()
+		{
+			using( CreateCoreAndScene() )
+			{
+				ControllerManager manager = this.Scene.CreateControllerManager();
+
+				BoxControllerDescription descA = new BoxControllerDescription( new Vector3( 1.0f ), Vector3.Zero );
+				BoxController boxControllerA = manager.CreateController( descA ) as BoxController;
+				boxControllerA.Dispose();
+
+				BoxControllerDescription descB = new BoxControllerDescription( new Vector3( 1.0f ), Vector3.Zero );
+				BoxController boxControllerB = manager.CreateController( descB ) as BoxController;
 			}
 		}
 	}
