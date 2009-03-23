@@ -22,7 +22,6 @@ using namespace System;
 using namespace StillDesign;
 using namespace StillDesign::PhysX;
 
-// Shape
 Shape::Shape( NxShape* shape )
 {
 	Debug::Assert( shape != NULL );
