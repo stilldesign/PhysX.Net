@@ -126,9 +126,11 @@ Core::!Core()
 	_isCoreCreated = false;
 	
 	if( ObjectTable::Count > 0 )
+	{
 		Trace::WriteLine( "Warning: Objects still remain in the object cache. Count: " + ObjectTable::Count );
-	
-	ObjectTable::Clear();
+		
+		ObjectTable::Clear();
+	}
 	
 	OnDisposed( this, nullptr );
 }
