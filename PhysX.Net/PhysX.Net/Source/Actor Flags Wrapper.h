@@ -1,15 +1,11 @@
-
 #pragma once
 
 #include "Actor.h"
-
-
 
 namespace StillDesign
 {
 	namespace PhysX
 	{
-
 		[System::ComponentModel::TypeConverter( System::ComponentModel::ExpandableObjectConverter::typeid )]
 		public ref class ActorFlagsWrapper
 		{
@@ -24,16 +20,17 @@ namespace StillDesign
 							_actor->ClearActorFlag( ActorFlag::name ); \
 					} \
 				}
-
+			
 			WRAPPER_PROPERTY( DisableCollision )
 			WRAPPER_PROPERTY( DisableResponse )
 			WRAPPER_PROPERTY( LockCenterOfMass )
 			WRAPPER_PROPERTY( DisableFluidCollision )
 			WRAPPER_PROPERTY( ContactModification )
 			WRAPPER_PROPERTY( ForceConeFriction )
-
+			WRAPPER_PROPERTY( UserActorPairFiltering )
+			
 			#undef WRAPPER_PROPERTY
-
+		
 		internal:
 			ActorFlagsWrapper( Actor^ actor)
 				: _actor( actor )
@@ -41,10 +38,9 @@ namespace StillDesign
 				if ( actor == nullptr )
 					throw gcnew System::ArgumentNullException( "actor" );
 			}
-
+		
 		private:
 			Actor^ _actor;
 		};
-
 	}
 }
