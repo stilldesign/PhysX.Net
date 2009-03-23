@@ -23,7 +23,9 @@ StillDesign::PhysX::Controller::Controller( NxController* controller, Controller
 	_manager = manager;
 	
 	_actor = gcnew StillDesign::PhysX::Actor( controller->getActor() );
-	//GC::SuppressFinalize( _actor );
+	
+	//ObjectTable::AddOwnership( _actor, this );
+	//ObjectTable::AddOwnership( _actor->Shapes[ 0 ], this );
 }
 StillDesign::PhysX::Controller::~Controller()
 {
@@ -42,7 +44,9 @@ StillDesign::PhysX::Controller::!Controller()
 	// The managed classes should still pass through the normal garbage collection route.
 	_actor->UnmanagedPointer = NULL;
 	_actor->Shapes[ 0 ]->UnmanagedPointer = NULL;
-	//GC::ReRegisterForFinalize( _actor );
+	
+	ObjectTable::Remove( _actor );
+	ObjectTable::Remove( _actor->Shapes[ 0 ] );
 	
 	_controller = NULL;
 	
