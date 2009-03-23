@@ -148,7 +148,7 @@ namespace StillDesign
 			DisableFluidCollision = NX_AF_FLUID_DISABLE_COLLISION,
 			ContactModification = NX_AF_CONTACT_MODIFICATION,
 			ForceConeFriction = NX_AF_FORCE_CONE_FRICTION,
-			UserActorPairFiltering = USER_ACTOR_PAIR_FILTERING
+			UserActorPairFiltering = NX_AF_USER_ACTOR_PAIR_FILTERING
 		};
 		public enum class ActorDescriptionType
 		{
