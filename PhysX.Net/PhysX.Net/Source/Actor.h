@@ -46,10 +46,8 @@ namespace StillDesign
 				ActorFlagsWrapper^ _actorFlagsWrapper;
 				BodyFlagsWrapper^ _bodyFlagsWrapper;
 				
-				//bool _disposing;
-			
 			internal:
-				Actor( NxActor* actor);
+				Actor( NxActor* actor );
 			public:
 				~Actor();
 			protected:
@@ -77,12 +75,12 @@ namespace StillDesign
 				/// <param name="shapeDescription">The descriptor for the new shape</param>
 				Shape^ CreateShape( ShapeDescription^ shapeDescription );
 				
-				/// <summary>Wakes Up the Actor Immediately</summary>
+				/// <summary>Wakes up the actor immediately</summary>
 				void WakeUp();
-				/// <summary>Wakes Up the Actor Immediately</summary>
-				/// <param name="sleepFrames">Determines How Long Until the Body is Put to Sleep</param>
+				/// <summary>Wakes up the actor immediately</summary>
+				/// <param name="sleepFrames">Determines how long until the body is put to sleep</param>
 				void WakeUp( float sleepFrames );
-				/// <summary>Puts the Actor to Sleep</summary>
+				/// <summary>Puts the actor to sleep</summary>
 				void Sleep();
 				
 				// Forces
