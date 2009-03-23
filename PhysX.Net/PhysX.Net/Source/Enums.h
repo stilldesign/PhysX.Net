@@ -147,7 +147,8 @@ namespace StillDesign
 			LockCenterOfMass = NX_AF_LOCK_COM,
 			DisableFluidCollision = NX_AF_FLUID_DISABLE_COLLISION,
 			ContactModification = NX_AF_CONTACT_MODIFICATION,
-			ForceConeFriction = NX_AF_FORCE_CONE_FRICTION
+			ForceConeFriction = NX_AF_FORCE_CONE_FRICTION,
+			UserActorPairFiltering = USER_ACTOR_PAIR_FILTERING
 		};
 		public enum class ActorDescriptionType
 		{
