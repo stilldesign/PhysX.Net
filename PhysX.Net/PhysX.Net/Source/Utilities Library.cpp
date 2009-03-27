@@ -248,6 +248,9 @@ Bounds3 UtilitiesLibrary::ComputeBounds( array<Vector3>^ vertices )
 }
 System::UInt32 UtilitiesLibrary::CRC32( array<System::Byte>^ buffer )
 {
+	if( buffer == nullptr )
+		throw gcnew ArgumentNullException( "buffer" );
+	
 	BYTE* b = (BYTE*)malloc( sizeof( BYTE ) * buffer->Length );
 	for( int x = 0; x < buffer->Length; x++ )
 	{
