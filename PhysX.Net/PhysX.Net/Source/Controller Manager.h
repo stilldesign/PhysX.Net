@@ -16,11 +16,6 @@ namespace StillDesign
 		public ref class ControllerManager : StillDesign::PhysX::IDisposable
 		{
 			public:
-				//ref class ControllerCollection : ReadOnlyElementCollection<StillDesign::PhysX::Controller^>
-				//{
-				//	
-				//};
-				
 				virtual event EventHandler^ OnDisposing;
 				virtual event EventHandler^ OnDisposed;
 				
@@ -28,7 +23,7 @@ namespace StillDesign
 				NxControllerManager* _manager;
 				StillDesign::PhysX::Scene^ _scene;
 				
-				ElementCollection< StillDesign::PhysX::Controller^ >^ _controllers;
+				ElementCollection<StillDesign::PhysX::Controller^>^ _controllers;
 				
 				Object^ _userData;
 				
@@ -47,6 +42,9 @@ namespace StillDesign
 				}
 			
 			public:
+				generic<class T>
+				where T : StillDesign::PhysX::Controller
+				T CreateController( ControllerDescription^ controllerDescription );
 				/// <summary></summary>
 				StillDesign::PhysX::Controller^ CreateController( ControllerDescription^ controllerDescription );
 				

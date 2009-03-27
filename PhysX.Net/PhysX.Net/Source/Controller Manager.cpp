@@ -52,6 +52,11 @@ bool StillDesign::PhysX::ControllerManager::IsDisposed::get()
 	return ( _manager == NULL );
 }
 
+generic<class T>
+T StillDesign::PhysX::ControllerManager::CreateController( ControllerDescription^ controllerDescription )
+{
+	return (T)CreateController( controllerDescription );
+}
 StillDesign::PhysX::Controller^ StillDesign::PhysX::ControllerManager::CreateController( ControllerDescription^ controllerDescription )
 {
 	ThrowIfDescriptionIsNullOrInvalid( controllerDescription, "controllerDescription" );
