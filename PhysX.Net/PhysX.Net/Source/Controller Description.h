@@ -12,7 +12,7 @@ namespace StillDesign
 	namespace PhysX
 	{
 		ref class Actor;
-		ref class ControllerHitReport;
+		ref class UserControllerHitReport;
 		
 		public delegate ControllerAction ControllerActionHandler();
 		
@@ -21,7 +21,7 @@ namespace StillDesign
 			private:
 				NxControllerDesc* _desc;
 				
-				ControllerHitReport^ _hitReport;
+				UserControllerHitReport^ _hitReport;
 			
 			protected:
 				ControllerDescription( NxControllerDesc* controllerDesc );
@@ -80,10 +80,10 @@ namespace StillDesign
 				}
 				
 				/// <summary></summary>
-				property ControllerHitReport^ Callback
+				property UserControllerHitReport^ Callback
 				{
-					ControllerHitReport^ get();
-					void set( ControllerHitReport^ value );
+					UserControllerHitReport^ get();
+					void set( UserControllerHitReport^ value );
 				}
 				
 			internal:

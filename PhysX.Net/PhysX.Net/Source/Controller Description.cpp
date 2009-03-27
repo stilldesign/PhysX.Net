@@ -1,7 +1,7 @@
 #include "StdAfx.h"
 
 #include "Controller Description.h"
-#include "Controller Hit Report.h"
+#include "User Controller Hit Report.h"
 
 using namespace StillDesign::PhysX;
 
@@ -93,11 +93,11 @@ void ControllerDescription::UpDirection::set( Axis value )
 	_desc->upDirection = (NxHeightFieldAxis)value;
 }
 
-ControllerHitReport^ ControllerDescription::Callback::get()
+UserControllerHitReport^ ControllerDescription::Callback::get()
 {
 	return _hitReport;
 }
-void ControllerDescription::Callback::set( ControllerHitReport^ value )
+void ControllerDescription::Callback::set( UserControllerHitReport^ value )
 {
 	_hitReport = value;
 	

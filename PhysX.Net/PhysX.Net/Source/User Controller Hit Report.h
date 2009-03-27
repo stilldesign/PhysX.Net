@@ -13,33 +13,33 @@ namespace StillDesign
 	{
 		ref class Scene;
 	
-		ref class ControllerHitReport;
+		ref class UserControllerHitReport;
 		ref class ControllerShapeHit;
 		ref class ControllersHit;
 		
-		class UserControllerHitReport : public NxUserControllerHitReport
+		class InternalUserControllerHitReport : public NxUserControllerHitReport
 		{
 			private:
-				gcroot< ControllerHitReport^ > _hitReport;
+				gcroot<UserControllerHitReport^> _hitReport;
 			
 			public:
-				UserControllerHitReport( ControllerHitReport^ hitReport );
+				InternalUserControllerHitReport( UserControllerHitReport^ hitReport );
 				
 				NxControllerAction onShapeHit( const NxControllerShapeHit &hit );
 				NxControllerAction onControllerHit( const NxControllersHit &hit );
 		};
 		
-		public ref class ControllerHitReport abstract
+		public ref class UserControllerHitReport abstract
 		{
 			private:
-				UserControllerHitReport* _hitReport;
+				InternalUserControllerHitReport* _hitReport;
 			
 			protected:
-				ControllerHitReport();
+				UserControllerHitReport();
 			public:
-				~ControllerHitReport();
+				~UserControllerHitReport();
 			protected:
-				!ControllerHitReport();
+				!UserControllerHitReport();
 				
 			public:
 				/// <summary></summary>
@@ -48,9 +48,9 @@ namespace StillDesign
 				virtual ControllerAction OnControllerHit( ControllersHit^ hit ) abstract;
 			
 			internal:
-				property UserControllerHitReport* UnmanagedPointer
+				property InternalUserControllerHitReport* UnmanagedPointer
 				{
-					UserControllerHitReport* get();
+					InternalUserControllerHitReport* get();
 				}
 		};
 	};
