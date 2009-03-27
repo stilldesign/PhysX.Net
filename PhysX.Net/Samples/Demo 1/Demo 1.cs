@@ -71,7 +71,10 @@ namespace StillDesign
 			KeyboardState keyboardState = Keyboard.GetState();
 
 			if( keyboardState.IsKeyDown( Keys.Escape ) )
-				this.Exit();
+			{
+				Shutdown();
+				return;
+			}
 
 			//
 
@@ -122,7 +125,14 @@ namespace StillDesign
 			Vector3 readOut = contactData.LongitudalDirection;
 			this.Window.Title = String.Format( "LongitudalDirection: {0:0.00},{1:0.00},{2:0.00}", readOut.X, readOut.Y, readOut.Z );
 		}
-		
+
+		private void Shutdown()
+		{
+			_core.Dispose();
+
+			this.Exit();
+		}
+
 		#region Properties
 		public Scene Scene
 		{
