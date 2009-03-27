@@ -59,13 +59,6 @@
     <OutputPath>bin\x86\Release XNA 3.0\</OutputPath>
     <DefineConstants>GRAPHICS_XNA3</DefineConstants>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug SlimDX 64|x86' ">
-    <OutputPath>bin\x86\Debug SlimDX 64\</OutputPath>
-    <DefineConstants>DEBUG;GRAPHICS_SLIMDX</DefineConstants>
-    <PlatformTarget>x86</PlatformTarget>
-    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
-    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.DirectX, Version=1.0.2902.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
@@ -104,13 +97,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Scene 3.xml" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\PhysX.Net\PhysX.Net.vcproj">
       <Project>{9E50593F-DB72-44D1-8A1D-2AE73214383E}</Project>
       <Name>StillDesign.PhysX.Net</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Scene 3.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />

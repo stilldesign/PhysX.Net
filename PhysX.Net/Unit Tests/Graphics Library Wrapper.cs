@@ -28,5 +28,13 @@ namespace StillDesign.PhysX.UnitTests
 			return Matrix.CreateTranslation( translation );
 #endif
 		}
+
+		public static Vector3 Vector3Empty
+		{
+			get
+			{
+				return new Vector3( 0, 0, 0 );
+			}
+		}
 	}
 }

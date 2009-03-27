@@ -21,6 +21,12 @@ Changed PhysX.Net to target PhysX 2.8.1.21 (January 2009)
 Fixed PhysicsStream Finalizer. Was calling itself.
 Worked on serialization
 Cleaned up comments
+Renamed ObjectCache to ObjectTable
+Added a thread lock object to all functions in the ObjectTable
+Added ActorFlag.UserActorPairFiltering
+Targeting SlimDX November 2008 SDK
+Removed Serialization from trunk
+Added Controller and Other to ControllersHit to controlls hit report
 
 [0.10.2.0 - 2008-11-15]
 Fixed bug where Fluid.ParticleWriteData would be empty
