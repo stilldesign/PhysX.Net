@@ -43,7 +43,7 @@ namespace StillDesign
 			#region Cloth (Flag)
 			{
 				// Create a Grid of Points
-				VertexGrid grid = CreateGrid( 10, 10 );
+				VertexGrid grid = VertexGrid.CreateGrid( 10, 10 );
 
 				ClothMeshDescription clothMeshDesc = new ClothMeshDescription();
 					clothMeshDesc.AllocateVertices<Vector3>( grid.Points.Length );
@@ -83,8 +83,10 @@ namespace StillDesign
 				};
 				clothDesc.MeshData.AllocatePositions<Vector3>( grid.Points.Length );
 				clothDesc.MeshData.AllocateIndices<int>( grid.Indices.Length );
+
 				clothDesc.MeshData.MaximumVertices = grid.Points.Length;
 				clothDesc.MeshData.MaximumIndices = grid.Indices.Length;
+
 				clothDesc.MeshData.NumberOfVertices = grid.Points.Length;
 				clothDesc.MeshData.NumberOfIndices = grid.Indices.Length;
 
@@ -477,38 +479,34 @@ namespace StillDesign
 			}
 			#endregion
 
+			#region Controller
 			{
 				ControllerManager manager = _scene.CreateControllerManager();
+				
+				CapsuleControllerDescription capsuleControllerDesc = new CapsuleControllerDescription( 4, 3 )
+				{
+					Callback = new ControllerHitReport()
+				};
 
-				CapsuleControllerDescription capsuleControllerDesc = new CapsuleControllerDescription( 4, 3 );
-				CapsuleController capsuleController = manager.CreateController( capsuleControllerDesc ) as CapsuleController;
-					capsuleController.Position = new Vector3( 0, 1.5f, -15 );
+				CapsuleController capsuleController = manager.CreateController<CapsuleController>( capsuleControllerDesc );
+					capsuleController.Position = new Vector3( 0, 1.5f + 2, -15 );
 					capsuleController.Actor.Name = "BoxController";
+					capsuleController.SetCollisionEnabled( true );
 			}
+			#endregion
 		}
 
 		private Vector3[] ReadVertices( XmlNode node )
 		{
-			string innerText = node.InnerText;
+			var floats = from c in node.InnerText.Split( ' ' )
+						 select Single.Parse( c );
 
-			string[] floatStrings = innerText.Split( ' ' );
-			var floats = new List<float>();
-
-			for( int x = 0; x < floatStrings.Length; x++ )
+			var vertices = new Vector3[ floats.Count() / 3 ];
+			for( int i = 0; i < floats.Count(); i += 3 )
 			{
-				float f;
-				if( Single.TryParse( floatStrings[ x ], out f ) == false )
-					continue;
-
-				floats.Add( f );
-			}
-
-			var vertices = new Vector3[ floats.Count / 3 ];
-			for( int i = 0; i < floats.Count; i += 3 )
-			{
-				float x = floats[ i + 0 ];
-				float y = floats[ i + 1 ];
-				float z = floats[ i + 2 ];
+				float x = floats.ElementAt( i + 0 );
+				float y = floats.ElementAt( i + 1 );
+				float z = floats.ElementAt( i + 2 );
 
 				vertices[ i / 3 ] = new Vector3( x, y, z );
 			}
@@ -517,84 +515,23 @@ namespace StillDesign
 		}
 		private int[] ReadTetrahedra( XmlNode node )
 		{
-			string innerText = node.InnerText;
-			string[] tetrahedraStrings = innerText.Split( new[] { " " }, StringSplitOptions.RemoveEmptyEntries );
+			var tet = from c in node.InnerText.Split( ' ' )
+					  select Int32.Parse( c );
 
-			List<int> tetrahedra = new List<int>();
-
-			for( int x = 0; x < tetrahedraStrings.Length; x++ )
-			{
-				int tet;
-				if( Int32.TryParse( tetrahedraStrings[ x ], out tet ) == false )
-					continue;
-
-				tetrahedra.Add( tet );
-			}
-
-			return tetrahedra.ToArray();
-		}
-
-		private VertexGrid CreateGrid( int rows, int columns )
-		{
-			int numVertsX = rows + 1;
-			int numVertsZ = columns + 1;
-
-			VertexGrid grid = new VertexGrid( new Vector3[ numVertsX * numVertsZ ], new int[ rows * columns * 2 * 3 ] );
-
-			{
-				for( int r = 0; r < numVertsX; r++ )
-				{
-					for( int c = 0; c < numVertsZ; c++ )
-					{
-						grid.Points[ r * numVertsZ + c ] = new Vector3( r, 0, c );
-					}
-				}
-			}
-
-			{
-				int count = 0;
-				int vIndex = 0;
-				for( int z = 0; z < columns; z++ )
-				{
-					for( int x = 0; x < rows; x++ )
-					{
-						// first triangle
-						grid.Indices[ count++ ] = vIndex;
-						grid.Indices[ count++ ] = vIndex + 1;
-						grid.Indices[ count++ ] = vIndex + numVertsX;
-
-						// second triangle
-						grid.Indices[ count++ ] = vIndex + numVertsX;
-						grid.Indices[ count++ ] = vIndex + 1;
-						grid.Indices[ count++ ] = vIndex + numVertsX + 1;
-
-						vIndex++;
-					}
-					vIndex++;
-				}
-			}
-
-			return grid;
+			return tet.ToArray();
 		}
 	}
 
-	public class VertexGrid
+	public class ControllerHitReport : UserControllerHitReport
 	{
-		public VertexGrid( Vector3[] points, int[] indices )
+		public override ControllerAction OnControllerHit( ControllersHit hit )
 		{
-			this.Points = points;
-			this.Indices = indices;
+			return ControllerAction.None;
 		}
 
-		public Vector3[] Points
+		public override ControllerAction OnShapeHit( ControllerShapeHit hit )
 		{
-			get;
-			private set;
-		}
-		public int[] Indices
-		{
-			get;
-			private set;
+			return ControllerAction.None;
 		}
 	}
 }

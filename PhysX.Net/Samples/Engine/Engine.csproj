@@ -88,6 +88,7 @@
     <Compile Include="Math.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User Output.cs" />
+    <Compile Include="Vertex Grid.cs" />
   </ItemGroup>
   <ItemGroup>
     <NestedContentProject Include="Content\Content.contentproj">
