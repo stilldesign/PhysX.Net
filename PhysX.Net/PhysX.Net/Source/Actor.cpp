@@ -195,13 +195,15 @@ void Actor::CreateShapes()
 				throw gcnew NotSupportedException( "Shape type unhandled" );
 		}
 		
-		//shape->Material = this->Scene->Materials->GetMaterialByIndex( shapes[ x ]->getMaterial() );
-		
 		_shapes->Add( shape );
 	}
 }
 
-
+generic<class T>
+T Actor::CreateShape( ShapeDescription^ shapeDescription )
+{
+	return (T)CreateShape( shapeDescription );
+}
 Shape^ Actor::CreateShape( ShapeDescription^ shapeDescription )
 {
 	if( shapeDescription == nullptr )

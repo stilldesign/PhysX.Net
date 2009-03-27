@@ -71,6 +71,9 @@ namespace StillDesign
 				/// <summary>Saves the body information of a dynamic actor</summary>
 				BodyDescription^ SaveBodyToDescription();
 				
+				generic<class T>
+				where T : Shape
+				T CreateShape( ShapeDescription^ shapeDescription );
 				/// <summary>Creates a new shape and adds it to the list of shapes of this actor</summary>
 				/// <param name="shapeDescription">The descriptor for the new shape</param>
 				Shape^ CreateShape( ShapeDescription^ shapeDescription );
