@@ -100,11 +100,11 @@ namespace StillDesign.PhysX.UnitTests
 			{
 				ControllerManager manager = this.Scene.CreateControllerManager();
 
-				BoxControllerDescription descA = new BoxControllerDescription( new Vector3( 1.0f ), Vector3.Zero );
+				BoxControllerDescription descA = new BoxControllerDescription( new Vector3( 1.0f, 1.0f, 1.0f ), GraphicsLibraryWrapper.Vector3Empty );
 				BoxController boxControllerA = manager.CreateController( descA ) as BoxController;
 				boxControllerA.Dispose();
 
-				BoxControllerDescription descB = new BoxControllerDescription( new Vector3( 1.0f ), Vector3.Zero );
+				BoxControllerDescription descB = new BoxControllerDescription( new Vector3( 1.0f, 1.0f, 1.0f ), GraphicsLibraryWrapper.Vector3Empty );
 				BoxController boxControllerB = manager.CreateController( descB ) as BoxController;
 			}
 		}
