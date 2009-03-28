@@ -32,6 +32,7 @@ namespace StillDesign
 				}
 				
 			public:
+				/// <summary>Gets or Sets an abitary 1:1 object</summary>
 				property Object^ UserData
 				{
 					Object^ get();

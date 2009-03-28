@@ -18,9 +18,16 @@ ForceFieldKernel::~ForceFieldKernel()
 }
 ForceFieldKernel::!ForceFieldKernel()
 {
+	if( this->IsDisposed == true )
+		return;
+	
+	OnDisposing( this, nullptr );
+	
 	_kernel = NULL;
 	
 	_userData = nullptr;
+	
+	OnDisposed( this, nullptr );
 }
 bool ForceFieldKernel::IsDisposed::get()
 {
@@ -33,7 +40,7 @@ Object^ ForceFieldKernel::UserData::get()
 }
 void ForceFieldKernel::UserData::set( Object^ value )
 {
-	_userData = nullptr;
+	_userData = value;
 }
 
 NxForceFieldKernel* ForceFieldKernel::UnmanagedPointer::get()
