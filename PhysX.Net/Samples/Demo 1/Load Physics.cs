@@ -18,7 +18,7 @@ namespace StillDesign
 		private void LoadPhysics()
 		{
 			// The ground plane (if created) sould be the first actor
-			_groundActor = _scene.Actors[ 0 ];
+			_groundActor = _scene.Actors.First();
 				_groundActor.Name = "Default Ground Plane";
 
 			//
