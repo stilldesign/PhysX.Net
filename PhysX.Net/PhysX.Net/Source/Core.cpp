@@ -127,7 +127,7 @@ Core::!Core()
 	
 	if( ObjectTable::Count > 0 )
 	{
-		Trace::WriteLine( "Warning: Objects still remain in the object cache. Count: " + ObjectTable::Count );
+		Console::WriteLine( "PhysX.Net - Developer info: Objects still remain in the ObjectTable. Count: " + ObjectTable::Count );
 		
 		ObjectTable::Clear();
 	}
