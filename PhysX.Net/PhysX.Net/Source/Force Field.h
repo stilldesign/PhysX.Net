@@ -25,10 +25,11 @@ namespace StillDesign
 			public:
 				ref class SamplePointForcesResult
 				{
-					public:
+					private:
 						array<Vector3>^ _forces;
 						array<Vector3>^ _torques;
 						
+					public:	
 						SamplePointForcesResult( array<Vector3>^ forces, array<Vector3>^ torques );
 						
 						property array<Vector3>^ Forces
