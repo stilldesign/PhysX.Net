@@ -17,7 +17,7 @@ using StillDesign.PhysX;
 
 using ClothVertex = Microsoft.Xna.Framework.Graphics.VertexPositionNormalTexture;
 
-namespace Cloth
+namespace StillDesign
 {
 	public class Cloth : Microsoft.Xna.Framework.Game
 	{
@@ -56,7 +56,7 @@ namespace Cloth
 		private void LoadPhysics()
 		{
 			// Create a Grid of Points
-			VertexGrid grid = CreateGrid( 10, 10 );
+			VertexGrid grid = VertexGrid.CreateGrid( 10, 10 );
 
 			ClothMeshDescription clothMeshDesc = new ClothMeshDescription();
 			clothMeshDesc.AllocateVertices<Vector3>( grid.Points.Length );
@@ -206,72 +206,9 @@ namespace Cloth
 			System.Threading.Thread.Sleep( 200 );
 		}
 
-		private VertexGrid CreateGrid( int rows, int columns )
-		{
-			int numVertsX = rows + 1;
-			int numVertsZ = columns + 1;
-
-			VertexGrid grid = new VertexGrid( new Vector3[ numVertsX * numVertsZ ], new int[ rows * columns * 2 * 3 ] );
-
-			{
-				for( int r = 0; r < numVertsX; r++ )
-				{
-					for( int c = 0; c < numVertsZ; c++ )
-					{
-						grid.Points[ r * numVertsZ + c ] = new Vector3( r, 0, c );
-					}
-				}
-			}
-
-			{
-				int count = 0;
-				int vIndex = 0;
-				for( int z = 0; z < columns; z++ )
-				{
-					for( int x = 0; x < rows; x++ )
-					{
-						// first triangle
-						grid.Indices[ count++ ] = vIndex;
-						grid.Indices[ count++ ] = vIndex + 1;
-						grid.Indices[ count++ ] = vIndex + numVertsX;
-
-						// second triangle
-						grid.Indices[ count++ ] = vIndex + numVertsX;
-						grid.Indices[ count++ ] = vIndex + 1;
-						grid.Indices[ count++ ] = vIndex + numVertsX + 1;
-
-						vIndex++;
-					}
-					vIndex++;
-				}
-			}
-
-			return grid;
-		}
-
 		private void UpdateWindowTitle()
 		{
 			_engine.Game.Window.Title = String.Format( "StillDesign.PhysX.Net - Cloth Sample - (C)ull Mode: {0}", _engine.Device.RenderState.CullMode );
-		}
-	}
-
-	public class VertexGrid
-	{
-		public VertexGrid( Vector3[] points, int[] indices )
-		{
-			this.Points = points;
-			this.Indices = indices;
-		}
-
-		public Vector3[] Points
-		{
-			get;
-			private set;
-		}
-		public int[] Indices
-		{
-			get;
-			private set;
 		}
 	}
 }

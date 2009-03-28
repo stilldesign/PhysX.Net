@@ -1,6 +1,6 @@
 using System;
 
-namespace Cloth
+namespace StillDesign
 {
 	static class Program
 	{
