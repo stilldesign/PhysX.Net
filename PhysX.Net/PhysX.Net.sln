@@ -29,9 +29,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assemblies", "Assemblies", 
 		Assemblies\NxCooking.dll = Assemblies\NxCooking.dll
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tearing Cloth", "Samples\Tearing Cloth\Tearing Cloth.csproj", "{D8A11046-1F58-4BE9-9404-F2D5D3083E0D}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 12
+		SccNumberOfProjects = 14
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs01.codeplex.com/
 		SccLocalPath0 = .
@@ -76,6 +78,14 @@ Global
 		SccProjectTopLevelParentUniqueName11 = PhysX.Net.sln
 		SccProjectName11 = Samples/Cloth/Content
 		SccLocalPath11 = Samples\\Cloth\\Content
+		SccProjectUniqueName12 = Samples\\Tearing\u0020Cloth\\Tearing\u0020Cloth.csproj
+		SccProjectTopLevelParentUniqueName12 = PhysX.Net.sln
+		SccProjectName12 = Samples/Tearing\u0020Cloth
+		SccLocalPath12 = Samples\\Tearing\u0020Cloth
+		SccProjectUniqueName13 = Samples\\Tearing\u0020Cloth\\Content\\Content.contentproj
+		SccProjectTopLevelParentUniqueName13 = PhysX.Net.sln
+		SccProjectName13 = Samples/Tearing\u0020Cloth/Content
+		SccLocalPath13 = Samples\\Tearing\u0020Cloth\\Content
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = PhysX.Net1.vsmdi
@@ -333,6 +343,48 @@ Global
 		{753B2741-C4F4-4F46-98DC-A406E58BF1B6}.Release XNA 2.0|x86.ActiveCfg = Release|x86
 		{753B2741-C4F4-4F46-98DC-A406E58BF1B6}.Release XNA 3.0|Mixed Platforms.ActiveCfg = Release|x86
 		{753B2741-C4F4-4F46-98DC-A406E58BF1B6}.Release XNA 3.0|x86.ActiveCfg = Release|x86
+		{D8A11046-1F58-4BE9-9404-F2D5D3083E0D}.Debug MDX|Mixed Platforms.ActiveCfg = Debug|x86
+		{D8A11046-1F58-4BE9-9404-F2D5D3083E0D}.Debug MDX|x86.ActiveCfg = Debug|x86
+		{D8A11046-1F58-4BE9-9404-F2D5D3083E0D}.Debug MDX|x86.Build.0 = Debug|x86
+		{D8A11046-1F58-4BE9-9404-F2D5D3083E0D}.Debug SlimDX|Mixed Platforms.ActiveCfg = Debug|x86
+		{D8A11046-1F58-4BE9-9404-F2D5D3083E0D}.Debug SlimDX|x86.ActiveCfg = Debug|x86
+		{D8A11046-1F58-4BE9-9404-F2D5D3083E0D}.Debug SlimDX|x86.Build.0 = Debug|x86
+		{D8A11046-1F58-4BE9-9404-F2D5D3083E0D}.Debug XNA 2.0|Mixed Platforms.ActiveCfg = Debug|x86
+		{D8A11046-1F58-4BE9-9404-F2D5D3083E0D}.Debug XNA 2.0|x86.ActiveCfg = Debug|x86
+		{D8A11046-1F58-4BE9-9404-F2D5D3083E0D}.Debug XNA 2.0|x86.Build.0 = Debug|x86
+		{D8A11046-1F58-4BE9-9404-F2D5D3083E0D}.Debug XNA 3.0|Mixed Platforms.ActiveCfg = Debug|x86
+		{D8A11046-1F58-4BE9-9404-F2D5D3083E0D}.Debug XNA 3.0|Mixed Platforms.Build.0 = Debug|x86
+		{D8A11046-1F58-4BE9-9404-F2D5D3083E0D}.Debug XNA 3.0|x86.ActiveCfg = Debug|x86
+		{D8A11046-1F58-4BE9-9404-F2D5D3083E0D}.Debug XNA 3.0|x86.Build.0 = Debug|x86
+		{D8A11046-1F58-4BE9-9404-F2D5D3083E0D}.Release MDX|Mixed Platforms.ActiveCfg = Release|x86
+		{D8A11046-1F58-4BE9-9404-F2D5D3083E0D}.Release MDX|x86.ActiveCfg = Release|x86
+		{D8A11046-1F58-4BE9-9404-F2D5D3083E0D}.Release MDX|x86.Build.0 = Release|x86
+		{D8A11046-1F58-4BE9-9404-F2D5D3083E0D}.Release SlimDX|Mixed Platforms.ActiveCfg = Release|x86
+		{D8A11046-1F58-4BE9-9404-F2D5D3083E0D}.Release SlimDX|x86.ActiveCfg = Release|x86
+		{D8A11046-1F58-4BE9-9404-F2D5D3083E0D}.Release SlimDX|x86.Build.0 = Release|x86
+		{D8A11046-1F58-4BE9-9404-F2D5D3083E0D}.Release XNA 2.0|Mixed Platforms.ActiveCfg = Release|x86
+		{D8A11046-1F58-4BE9-9404-F2D5D3083E0D}.Release XNA 2.0|x86.ActiveCfg = Release|x86
+		{D8A11046-1F58-4BE9-9404-F2D5D3083E0D}.Release XNA 2.0|x86.Build.0 = Release|x86
+		{D8A11046-1F58-4BE9-9404-F2D5D3083E0D}.Release XNA 3.0|Mixed Platforms.ActiveCfg = Release|x86
+		{D8A11046-1F58-4BE9-9404-F2D5D3083E0D}.Release XNA 3.0|Mixed Platforms.Build.0 = Release|x86
+		{D8A11046-1F58-4BE9-9404-F2D5D3083E0D}.Release XNA 3.0|x86.ActiveCfg = Release|x86
+		{D8A11046-1F58-4BE9-9404-F2D5D3083E0D}.Release XNA 3.0|x86.Build.0 = Release|x86
+		{12F44B8B-0424-4D72-885E-7724D8EE4991}.Debug MDX|Mixed Platforms.ActiveCfg = Debug|x86
+		{12F44B8B-0424-4D72-885E-7724D8EE4991}.Debug MDX|x86.ActiveCfg = Debug|x86
+		{12F44B8B-0424-4D72-885E-7724D8EE4991}.Debug SlimDX|Mixed Platforms.ActiveCfg = Debug|x86
+		{12F44B8B-0424-4D72-885E-7724D8EE4991}.Debug SlimDX|x86.ActiveCfg = Debug|x86
+		{12F44B8B-0424-4D72-885E-7724D8EE4991}.Debug XNA 2.0|Mixed Platforms.ActiveCfg = Debug|x86
+		{12F44B8B-0424-4D72-885E-7724D8EE4991}.Debug XNA 2.0|x86.ActiveCfg = Debug|x86
+		{12F44B8B-0424-4D72-885E-7724D8EE4991}.Debug XNA 3.0|Mixed Platforms.ActiveCfg = Debug|x86
+		{12F44B8B-0424-4D72-885E-7724D8EE4991}.Debug XNA 3.0|x86.ActiveCfg = Debug|x86
+		{12F44B8B-0424-4D72-885E-7724D8EE4991}.Release MDX|Mixed Platforms.ActiveCfg = Release|x86
+		{12F44B8B-0424-4D72-885E-7724D8EE4991}.Release MDX|x86.ActiveCfg = Release|x86
+		{12F44B8B-0424-4D72-885E-7724D8EE4991}.Release SlimDX|Mixed Platforms.ActiveCfg = Release|x86
+		{12F44B8B-0424-4D72-885E-7724D8EE4991}.Release SlimDX|x86.ActiveCfg = Release|x86
+		{12F44B8B-0424-4D72-885E-7724D8EE4991}.Release XNA 2.0|Mixed Platforms.ActiveCfg = Release|x86
+		{12F44B8B-0424-4D72-885E-7724D8EE4991}.Release XNA 2.0|x86.ActiveCfg = Release|x86
+		{12F44B8B-0424-4D72-885E-7724D8EE4991}.Release XNA 3.0|Mixed Platforms.ActiveCfg = Release|x86
+		{12F44B8B-0424-4D72-885E-7724D8EE4991}.Release XNA 3.0|x86.ActiveCfg = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -342,5 +394,6 @@ Global
 		{0B12DC8D-FFB3-4C5F-8B77-ABAC84616E5D} = {0676D34D-F39B-4C74-B95F-3CC3B06BC9B0}
 		{230CFCF6-6A4F-45EF-943E-A4A29A44161F} = {0676D34D-F39B-4C74-B95F-3CC3B06BC9B0}
 		{18000A79-3163-402E-A6F2-F050BC13EF9B} = {0676D34D-F39B-4C74-B95F-3CC3B06BC9B0}
+		{D8A11046-1F58-4BE9-9404-F2D5D3083E0D} = {0676D34D-F39B-4C74-B95F-3CC3B06BC9B0}
 	EndGlobalSection
 EndGlobal
