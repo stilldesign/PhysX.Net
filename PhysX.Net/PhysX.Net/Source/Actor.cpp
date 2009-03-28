@@ -206,8 +206,7 @@ T Actor::CreateShape( ShapeDescription^ shapeDescription )
 }
 Shape^ Actor::CreateShape( ShapeDescription^ shapeDescription )
 {
-	if( shapeDescription == nullptr )
-		throw gcnew ArgumentNullException( "shapeDescription" );
+	ThrowIfDescriptionIsNullOrInvalid( shapeDescription, "shapeDescription" );
 	
 	NxShapeType shapeType = shapeDescription->UnmanagedPointer->getType();
 	
