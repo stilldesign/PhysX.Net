@@ -144,7 +144,7 @@ namespace StillDesign
 			_visualizationEffect.End();
 		}
 
-		private Color Int32ToColor( int color )
+		public static Color Int32ToColor( int color )
 		{
 			byte a = (byte)( ( color & 0xFF000000 ) >> 32 );
 			byte r = (byte)( ( color & 0x00FF0000 ) >> 16 );
@@ -153,7 +153,7 @@ namespace StillDesign
 
 			return new Color( r, g, b, a );
 		}
-		public int ColorToArgb( Color color )
+		public static int ColorToArgb( Color color )
 		{
 			int a = (int)( color.A );
 			int r = (int)( color.R );
