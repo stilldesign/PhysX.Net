@@ -60,6 +60,7 @@ Cloth::!Cloth()
 	_meshData = nullptr;
 	_clothMesh = nullptr;
 	
+	_compartment = nullptr;
 	_scene = nullptr;
 	
 	_userData = nullptr;
