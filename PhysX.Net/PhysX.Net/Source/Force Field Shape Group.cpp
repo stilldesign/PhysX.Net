@@ -27,7 +27,7 @@ ForceFieldShapeGroup::ForceFieldShapeGroup( NxForceFieldShapeGroup* group )
 	_forceField = nullptr;
 	_scene = scene;
 	
-	_shapes = gcnew ElementCollection< ForceFieldShape^ >();
+	_shapes = gcnew ElementCollection<ForceFieldShape^>();
 }
 ForceFieldShapeGroup::~ForceFieldShapeGroup()
 {
@@ -66,14 +66,19 @@ ForceFieldShapeGroupDescription^ ForceFieldShapeGroup::SaveToDescription()
 	return gcnew ForceFieldShapeGroupDescription( desc );
 }
 
+generic<class T>
+T ForceFieldShapeGroup::CreateShape( ForceFieldShapeDescription^ forceFieldShapeDescription )
+{
+	return (T)CreateShape( forceFieldShapeDescription );
+}
 ForceFieldShape^ ForceFieldShapeGroup::CreateShape( ForceFieldShapeDescription^ forceFieldShapeDescription )
 {
 	if( forceFieldShapeDescription == nullptr )
 		throw gcnew ArgumentNullException( "forceFieldShapeDescription" );
 	if( forceFieldShapeDescription->UnmanagedPointer == NULL )
-		throw gcnew ArgumentException( "Description is disposed of" );
+		throw gcnew ArgumentException( "Description is disposed" );
 	if( forceFieldShapeDescription->IsValid() == false )
-		throw gcnew ArgumentException( "Description is invalid" );
+		throw gcnew ArgumentException( "Description is invalid", "forceFieldShapeDescription" );
 	
 	NxForceFieldShape* shape = _group->createShape( *forceFieldShapeDescription->UnmanagedPointer );
 	
