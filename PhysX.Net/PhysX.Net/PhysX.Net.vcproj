@@ -2675,6 +2675,10 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath=".\Source\Contact Pair.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Source\Controller Description.cpp"
 				>
 				<FileConfiguration
@@ -14265,6 +14269,10 @@
 			<Filter
 				Name="Reports"
 				>
+				<File
+					RelativePath=".\Source\Contact Pair.h"
+					>
+				</File>
 				<File
 					RelativePath=".\Source\Fluid User Notify.h"
 					>
