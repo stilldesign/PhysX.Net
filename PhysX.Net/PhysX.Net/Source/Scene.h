@@ -159,6 +159,9 @@ namespace StillDesign
 				Actor^ CreateActor( ActorDescription^ actorDescription );
 				/// <summary>Creates a Material in this scene</summary>
 				Material^ CreateMaterial( MaterialDescription^ materialDescription );
+				generic<class T>
+				where T : Joint
+				T CreateJoint( JointDescription^ jointDescription );
 				/// <summary>Creates a Joint in this scene</summary>
 				Joint^ CreateJoint( JointDescription^ jointDescription );
 				/// <summary>Creates a Cloth in this scene</summary>

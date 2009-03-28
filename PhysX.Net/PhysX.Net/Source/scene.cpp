@@ -456,6 +456,11 @@ Material^ Scene::CreateMaterial( MaterialDescription^ materialDescription )
 	
 	return mat;
 }
+generic<class T>
+T Scene::CreateJoint( JointDescription^ jointDescription )
+{
+	return (T)CreateJoint( jointDescription );
+}
 Joint^ Scene::CreateJoint( JointDescription^ jointDescription )
 {
 	if( jointDescription == nullptr )
