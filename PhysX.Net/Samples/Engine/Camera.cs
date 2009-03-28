@@ -24,7 +24,6 @@ namespace StillDesign
 			
 			CenterCursor();
 		}
-
 		
 		public void Update( GameTime elapsedTime )
 		{
@@ -87,7 +86,7 @@ namespace StillDesign
 		public Matrix View
 		{
 			get;
-			private set;
+			set;
 		}
 		public Matrix Projection
 		{
