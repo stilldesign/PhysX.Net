@@ -64,7 +64,7 @@ namespace StillDesign
 				static void _objectTable_OnDisposing( Object^ sender, EventArgs^ e );
 				
 			internal:
-				property System::Collections::Generic::Dictionary<intptr_t, Object^>^ Cache
+				property System::Collections::Generic::Dictionary<intptr_t, Object^>^ Objects
 				{
 					static System::Collections::Generic::Dictionary<intptr_t, Object^>^ get()
 					{
@@ -73,12 +73,12 @@ namespace StillDesign
 				}
 		};
 		
-		public ref class OwnershipObjects : System::Collections::Generic::List<Object^>
+		private ref class OwnershipObjects : System::Collections::Generic::List<Object^>
 		{
 			
 		};
 		
-		public ref class ObjectTableEventArgs : System::EventArgs
+		private ref class ObjectTableEventArgs : System::EventArgs
 		{
 			public:
 				ObjectTableEventArgs( intptr_t unmanagedObject, Object^ managedObject )
