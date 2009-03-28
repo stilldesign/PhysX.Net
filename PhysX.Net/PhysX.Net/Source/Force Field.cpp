@@ -77,6 +77,7 @@ ForceField::!ForceField()
 	_scene = nullptr;
 	_actor = nullptr;
 	_shapeGroups = nullptr;
+	_userData = nullptr;
 	
 	OnDisposed( this, nullptr );
 }
