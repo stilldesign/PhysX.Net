@@ -28,6 +28,8 @@ Targeting SlimDX November 2008 SDK
 Removed Serialization from trunk
 Added Controller and Other to ControllersHit to controlls hit report
 Changed ControllerHitReport to UserControllerHitReport
+Fixed bug where ContactPair was not observing isDeletedActor which caused crash if deleting an actor associated with a contact report
+Set _actorADeleted, _actorBDeleted variables in ContactPair via constructor
 
 [0.10.2.0 - 2008-11-15]
 Fixed bug where Fluid.ParticleWriteData would be empty
