@@ -6,9 +6,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace StillDesign.PhysX.UnitTests
 {
-	/// <summary>
-	/// Summary description for Core_Tests
-	/// </summary>
 	[TestClass]
 	public class CoreTests : TestBase
 	{
@@ -121,28 +118,42 @@ namespace StillDesign.PhysX.UnitTests
 		{
 			Core core1 = new Core();
 
-			bool threw = false;
 			try
 			{
 				Core core2 = new Core();
+				Assert.Fail();
 			}catch( PhysXException ){
-				threw = true;
-			}
 
-			Assert.IsTrue( threw );
+			}
 
 			core1.Dispose();
 		}
 
-		public void ParameterTests()
+		[TestMethod]
+		public void Parameter()
 		{
-			CreateCoreAndScene();
+			using( CreateCoreAndScene() )
+			{
+				this.Core.SetParameter( PhysicsParameter.DefaultSleepLinearVelocitySquared, 0.14f * 0.14f );
+				this.Core.SetParameter( PhysicsParameter.DefaultSleepAngularVelocitySquared, 0.15f * 0.15f );
 
-			this.Core.SetParameter( PhysicsParameter.DefaultSleepLinearVelocitySquared, 0.14f * 0.14f );
-			this.Core.SetParameter( PhysicsParameter.DefaultSleepAngularVelocitySquared, 0.15f * 0.15f );
+				Assert.IsTrue( IsWithinTolerance( this.Core.GetParameter( PhysicsParameter.DefaultSleepLinearVelocitySquared ), 0.14f * 0.14f ) );
+				Assert.IsTrue( IsWithinTolerance( this.Core.GetParameter( PhysicsParameter.DefaultSleepAngularVelocitySquared ), 0.15f * 0.15f ) );
+			}
+		}
+		private bool IsWithinTolerance( float value, float compare )
+		{
+			const float epsilon = 0.01f;
 
-			Assert.AreEqual( this.Core.GetParameter( PhysicsParameter.DefaultSleepLinearVelocitySquared ), 0.14 * 0.14f );
-			Assert.AreEqual( this.Core.GetParameter( PhysicsParameter.DefaultSleepAngularVelocitySquared ), 0.15f * 0.15f );
+			return ( value > compare - epsilon ) && ( value < compare + epsilon );
+		}
+
+		[TestMethod]
+		public void RuntimeFileChecks()
+		{
+			Type runtimeFileChecksType = Type.GetType( "StillDesign.PhysX.RuntimeFileChecks" );
+
+			
 		}
 	}
 }
