@@ -25,8 +25,10 @@ namespace StillDesign
 				void CreateActorDescription();
 				
 			public:
-				/// <summary>Is the ActorDescription valid. (Step into to diagnose)</summary>
+				/// <summary>Is the actor description valid</summary>
 				virtual bool IsValid() override;
+				/// <summary>Are the mass and density settings valid</summary>
+				virtual bool IsMassDensityValid();
 				
 			private:
 				void ShapeAdded( Object^ sender, ShapeDescription^ e );
@@ -37,6 +39,12 @@ namespace StillDesign
 				property ListBase<ShapeDescription^>^ Shapes
 				{
 					ListBase< ShapeDescription^ >^ get();
+				}
+				
+			internal:
+				property NxActorDesc* UnmanagedPointer
+				{
+					NxActorDesc* get();
 				}
 		};
 	};

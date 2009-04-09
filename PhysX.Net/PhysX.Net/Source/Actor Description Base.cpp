@@ -45,7 +45,7 @@ bool ActorDescriptionBase::IsDisposed::get()
 
 bool ActorDescriptionBase::IsValid()
 {
-	return _desc->isValid() && IsMassDensityValid();
+	return _desc->isValid();
 }
 void ActorDescriptionBase::SetToDefault()
 {
@@ -55,23 +55,6 @@ void ActorDescriptionBase::SetToDefault()
 	_compartment = nullptr;
 	
 	_userData = nullptr;
-}
-
-bool ActorDescriptionBase::IsMassDensityValid()
-{
-	if( _desc->body == NULL )
-	{
-		return true;
-	}else{
-		if( _desc->density == 0.0f && _desc->body->mass > 0.0f && _desc->body->massSpaceInertia.magnitude() > 0.0f )
-			return true;
-		if( _desc->density > 0.0f && _desc->shapes.size() > 0 && _desc->body->mass == 0.0f && _desc->body->massSpaceInertia.magnitude() == 0.0f )
-			return true;
-		if( _desc->density == 0.0f && _desc->shapes.size() > 0 && _desc->body->mass > 0.0f && _desc->body->massSpaceInertia.magnitude() == 0.0f )
-			return true;
-	}
-	
-	return false;
 }
 
 String^ ActorDescriptionBase::Name::get()
@@ -199,7 +182,7 @@ void ActorDescriptionBase::UserData::set( Object^ value )
 	_userData = value;
 }
 
-NxActorDesc* ActorDescriptionBase::UnmanagedPointer::get()
+NxActorDescBase* ActorDescriptionBase::UnmanagedPointer::get()
 {
 	return _desc;
 }

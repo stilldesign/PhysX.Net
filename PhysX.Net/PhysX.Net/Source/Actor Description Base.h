@@ -24,7 +24,7 @@ namespace StillDesign
 				virtual event EventHandler^ OnDisposed;
 				
 			private:
-				NxActorDesc* _desc;
+				NxActorDescBase* _desc;
 				
 				StillDesign::PhysX::BodyDescription^ _body;
 				StillDesign::PhysX::Compartment^ _compartment;
@@ -43,12 +43,10 @@ namespace StillDesign
 					virtual bool get();
 				}
 				
-				/// <summary>Is the Description Valid</summary>
+				/// <summary>Is the description valid</summary>
 				virtual bool IsValid();
-				/// <summary>Sets the Structure to a Default State</summary>
+				/// <summary>Sets the structure to a default state</summary>
 				virtual void SetToDefault();
-				/// <summary>Are the Mass and Density Settings Valid</summary>
-				virtual bool IsMassDensityValid();
 				
 			public:
 				property String^ Name
@@ -124,9 +122,9 @@ namespace StillDesign
 				}
 				
 			internal:
-				property NxActorDesc* UnmanagedPointer
+				property NxActorDescBase* UnmanagedPointer
 				{
-					NxActorDesc* get();
+					NxActorDescBase* get();
 				}
 		};
 	};

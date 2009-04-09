@@ -26,6 +26,9 @@ ActorDescription::ActorDescription()
 }
 ActorDescription::ActorDescription( ... array<ShapeDescription^>^ shapeDescriptions )
 {
+	if( shapeDescriptions == nullptr )
+		throw gcnew ArgumentNullException( "shapeDescriptions" );
+	
 	CreateActorDescription();
 	
 	for each( ShapeDescription^ desc in shapeDescriptions )
@@ -39,46 +42,40 @@ ActorDescription::~ActorDescription()
 }
 ActorDescription::!ActorDescription()
 {
-	_shapes->ItemAdded -= gcnew EventHandlerItem< ShapeDescription^ >( this, &ActorDescription::ShapeAdded );
-	_shapes->ItemRemoved -= gcnew EventHandlerItem< ShapeDescription^ >( this, &ActorDescription::ShapeRemoved );
+	_shapes->ItemAdded -= gcnew EventHandlerItem<ShapeDescription^>( this, &ActorDescription::ShapeAdded );
+	_shapes->ItemRemoved -= gcnew EventHandlerItem<ShapeDescription^>( this, &ActorDescription::ShapeRemoved );
 	
 	_shapes = nullptr;
 }
 void ActorDescription::CreateActorDescription()
 {
-	_shapes = gcnew ListBase< ShapeDescription^ >();
+	_shapes = gcnew ListBase<ShapeDescription^>();
 	
-	_shapes->ItemAdded += gcnew EventHandlerItem< ShapeDescription^ >( this, &ActorDescription::ShapeAdded );
-	_shapes->ItemRemoved += gcnew EventHandlerItem< ShapeDescription^ >( this, &ActorDescription::ShapeRemoved );
+	_shapes->ItemAdded += gcnew EventHandlerItem<ShapeDescription^>( this, &ActorDescription::ShapeAdded );
+	_shapes->ItemRemoved += gcnew EventHandlerItem<ShapeDescription^>( this, &ActorDescription::ShapeRemoved );
 }
 
 bool ActorDescription::IsValid()
 {
+	return this->UnmanagedPointer->isValid() && IsMassDensityValid();
+}
+bool ActorDescription::IsMassDensityValid()
+{
 	NxActorDesc* desc = this->UnmanagedPointer;
 	
-	if( ActorDescriptionBase::IsValid() == false )
-		return ActorDescriptionBase::IsValid();
-	
-	unsigned int nNonTriggerShapes = 0;
-	
-	// Static actors need nothing but a shape
-	if (!desc->body && desc->shapes.size() > 0)
-		return true;
-	
-	for (unsigned i = 0; i < desc->shapes.size(); i++)
+	if( desc->body == NULL )
 	{
-		if (!desc->shapes[i]->isValid())
-			return false;
-		if ((desc->shapes[i]->shapeFlags & NX_TRIGGER_ENABLE) == 0)
-			nNonTriggerShapes++;
+		return true;
+	}else{
+		if( desc->density == 0.0f && desc->body->mass > 0.0f && desc->body->massSpaceInertia.magnitude() > 0.0f )
+			return true;
+		if( desc->density > 0.0f && desc->shapes.size() > 0 && desc->body->mass == 0.0f && desc->body->massSpaceInertia.magnitude() == 0.0f )
+			return true;
+		if( desc->density == 0.0f && desc->shapes.size() > 0 && desc->body->mass > 0.0f && desc->body->massSpaceInertia.magnitude() == 0.0f )
+			return true;
 	}
 	
-	// If Actor is dynamic (body && !(body->flags & NX_BF_KINEMATIC) but has no solid shapes,
-	// it has to have mass and massSpaceInertia, otherwise NxScene::createActor returns 0
-	if (nNonTriggerShapes == 0 && desc->body && (!(desc->body->flags & NX_BF_KINEMATIC)) && (desc->body->mass < 0 || desc->body->massSpaceInertia.isZero()))
-		return false;
-	
-	return desc->isValid();
+	return false;
 }
 
 void ActorDescription::ShapeAdded( Object^ sender, ShapeDescription^ e )
@@ -97,7 +94,12 @@ void ActorDescription::ShapeRemoved( Object^ sender, ShapeDescription^ e )
 }
 
 
-ListBase< ShapeDescription^ >^ ActorDescription::Shapes::get()
+ListBase<ShapeDescription^>^ ActorDescription::Shapes::get()
 {
 	return _shapes;
+}
+
+NxActorDesc* ActorDescription::UnmanagedPointer::get()
+{
+	return (NxActorDesc*)ActorDescriptionBase::UnmanagedPointer::get();
 }
