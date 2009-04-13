@@ -1,4 +1,8 @@
-[0.11.0.0 - ]
+[0.12.0.0 - ]
+Cleaned up ActorDescription/Base
+Targeting SlimDX March 2009
+
+[0.11.0.0 - 2009-03-28]
 Changed RuntimeFileChecks to strip quotes from environment variable paths
 Changed version number to match next release: 0.11.0.0
 Removed duplicate simulation code in Serialization sample
