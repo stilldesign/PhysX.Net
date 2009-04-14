@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Input;
 
 using StillDesign.PhysX;
 
-namespace StillDesign
+namespace StillDesign.PhysX.Samples
 {
 	public delegate void ContactCallback( Actor a, Actor b, ContactPairFlag events );
 

@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>StillDesign</RootNamespace>
-    <AssemblyName>Demo 1</AssemblyName>
+    <RootNamespace>StillDesign.PhysX.Samples</RootNamespace>
+    <AssemblyName>Main Demo</AssemblyName>
     <XnaFrameworkVersion>v3.0</XnaFrameworkVersion>
     <XnaPlatform>Windows</XnaPlatform>
     <XnaCrossPlatformGroupID>edb29c73-7bdb-4454-8d7b-8d024327dfd4</XnaCrossPlatformGroupID>
@@ -89,7 +89,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Demo 1.cs" />
+    <Compile Include="Main Demo.cs" />
     <Compile Include="Load Physics.cs" />
     <Compile Include="Vehicle.cs" />
   </ItemGroup>
