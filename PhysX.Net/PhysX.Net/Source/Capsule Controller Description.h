@@ -20,20 +20,20 @@ namespace StillDesign
 				!CapsuleControllerDescription();
 				
 			public:
-				/// <summary></summary>
+				/// <summary>The radius of the capsule</summary>
 				property float Radius
 				{
 					float get();
 					void set( float value );
 				}
-				/// <summary></summary>
+				/// <summary>The height of the controller</summary>
 				property float Height
 				{
 					float get();
 					void set( float value );
 				}
 				
-				/// <summary></summary>
+				/// <summary>The climbing mode</summary>
 				property CapsuleClimbingMode ClimbingMode
 				{
 					CapsuleClimbingMode get();

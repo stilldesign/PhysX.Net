@@ -75,7 +75,16 @@ namespace StillDesign
 				/// <summary>Removes a force field shape group from this force field</summary>
 				bool RemoveShapeGroup( ForceFieldShapeGroup^ group );
 				
+				/// <summary>Samples the force field. Incoming points & velocities must be in world space. The velocities argument passed in as null to the overload</summary>
+				/// <param name="points">Buffer of sample points</summary>
+				/// <exception cref="System.ArgumentNullException">Thrown when the points argument is null</exception>
+				/// <exception cref="System.ArgumentException">Thrown when the velocities argument is supplied and not the same length as the points argument</exception>
 				SamplePointForcesResult^ SamplePointForces( array<Vector3>^ points );
+				/// <summary>Samples the force field. Incoming points & velocities must be in world space</summary>
+				/// <param name="points">Buffer of sample points</summary>
+				/// <param name="velocities">Buffer of velocities at the sample points, can be null</param>
+				/// <exception cref="System.ArgumentNullException">Thrown when the points argument is null</exception>
+				/// <exception cref="System.ArgumentException">Thrown when the velocities argument is supplied and not the same length as the points argument</exception>
 				SamplePointForcesResult^ SamplePointForces( array<Vector3>^ points, array<Vector3>^ velocities );
 				
 				//

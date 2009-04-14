@@ -65,11 +65,11 @@ void FluidPacket::NumberOfParticles::set( int value )
 	_fluidPacket->numParticles = value;
 }
 
-int FluidPacket::PacketID::get()
+int FluidPacket::PacketId::get()
 {
 	return _fluidPacket->packetID;
 }
-void FluidPacket::PacketID::set( int value )
+void FluidPacket::PacketId::set( int value )
 {
 	_fluidPacket->packetID = value;
 }

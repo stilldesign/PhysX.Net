@@ -68,14 +68,18 @@ namespace StillDesign
 				/// <param name="retrieveBody">Should the returned actor description contain the body description of the actor</param>
 				/// <param name="retrieveShapes">Should the returned actor description contain a list of shape descriptions of the shape of the actor</param>
 				ActorDescription^ SaveToActorDescription( bool retrieveBody, bool retrieveShapes );
-				/// <summary>Saves the body information of a dynamic actor</summary>
+				/// <summary>Saves the body information of a dynamic actor, or returns null if the actor is not dynamic</summary>
 				BodyDescription^ SaveBodyToDescription();
 				
+				/// <summary>Creates a new shape and adds it to the list of shapes of this actor</summary>
+				/// <param name="shapeDescription">The descriptor for the new shape</param>
+				/// <exception cref="System.ArgumentNullException">Thrown when the shapeDescription argument is null</exception>
 				generic<class T>
 				where T : Shape
 				T CreateShape( ShapeDescription^ shapeDescription );
 				/// <summary>Creates a new shape and adds it to the list of shapes of this actor</summary>
 				/// <param name="shapeDescription">The descriptor for the new shape</param>
+				/// <exception cref="System.ArgumentNullException">Thrown when the shapeDescription argument is null</exception>
 				Shape^ CreateShape( ShapeDescription^ shapeDescription );
 				
 				/// <summary>Wakes up the actor immediately</summary>
@@ -193,15 +197,15 @@ namespace StillDesign
 					void set( String^ value );
 				}
 				
-				/// <summary>Returns True if the Actor is Dynamic, False for Static</summary>
-				/// <remarks>If the Actor has a Body it is Dynamic. If it is null it is Static</remarks>
+				/// <summary>Returns true if the actor is dynamic, false for static</summary>
+				/// <remarks>If the actor has a body it is dynamic. If it is null, it is static</remarks>
 				property bool IsDynamic
 				{
 					bool get();
 				}
 				
 				// Shapes
-				/// <summary>Gets a Collection of Shapes Attached to this Actor</summary>
+				/// <summary>Gets a collection of shapes attached to this actor</summary>
 				property ReadOnlyList< Shape^ >^ Shapes
 				{
 					ReadOnlyList< Shape^ >^ get();
@@ -213,25 +217,25 @@ namespace StillDesign
 					StillDesign::PhysX::Compartment^ get();
 				}
 				
-				/// <summary>Gets or Sets the Global Position</summary>
+				/// <summary>Gets or Sets the global position</summary>
 				property Vector3 GlobalPosition
 				{
 					Vector3 get();
 					void set( Vector3 value );
 				}
-				/// <summary>Gets or Sets the Global Pose Matrix</summary>
+				/// <summary>Gets or Sets the global pose matrix</summary>
 				property Matrix GlobalPose
 				{
 					Matrix get();
 					void set( Matrix value );
 				}
-				/// <summary>Gets or Sets the Global Orientation/Rotation Matrix</summary>
+				/// <summary>Gets or Sets the global orientation/rotation matrix</summary>
 				property Matrix GlobalOrientation
 				{
 					Matrix get();
 					void set( Matrix value );
 				}
-				/// <summary>Gets or Sets the Global Orientation/Rotation Quaternion</summary>
+				/// <summary>Gets or Sets the global orientation/rotation quaternion</summary>
 				property Quaternion GlobalOrientationQuat
 				{
 					Quaternion get();
@@ -239,17 +243,17 @@ namespace StillDesign
 				}
 				
 				// Sleeping
-				/// <summary>Gets Whether or Not the Group is Sleeping</summary>
+				/// <summary>Gets whether or not the group is sleeping</summary>
 				property bool IsGroupSleeping
 				{
 					bool get();
 				}
-				/// <summary>Is the Body Sleeping</summary>
+				/// <summary>Is the body sleeping</summary>
 				property bool IsSleeping
 				{
 					bool get();
 				}
-				/// <summary>Gets or Sets the Linear Velocity Below Which an Actor May Go to Sleep</summary>
+				/// <summary>Gets or Sets the linear velocity below which an actor may go to sleep</summary>
 				property float SleepLinearVelocity
 				{
 					float get();

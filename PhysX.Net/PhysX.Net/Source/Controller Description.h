@@ -79,7 +79,7 @@ namespace StillDesign
 					void set( Axis value );
 				}
 				
-				/// <summary></summary>
+				/// <summary>Sets the user callback interface</summary>
 				property UserControllerHitReport^ Callback
 				{
 					UserControllerHitReport^ get();

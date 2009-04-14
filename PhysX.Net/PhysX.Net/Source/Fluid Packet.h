@@ -51,7 +51,7 @@ namespace StillDesign
 					void set( int value );
 				}
 				/// <summary>Gets or Sets the packet's Identifier</summary>
-				property int PacketID
+				property int PacketId
 				{
 					int get();
 					void set( int value );

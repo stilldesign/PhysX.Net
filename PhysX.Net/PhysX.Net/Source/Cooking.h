@@ -45,6 +45,7 @@ namespace StillDesign
 				static void InitializeCooking();
 				/// <summary>Initializes cooking</summary>
 				/// <param name="outputStream">The output stream to use</param>
+				/// <exception cref="StillDesign.PhysX.PhysXException">Thrown when cooking fails to initalize</exception>
 				static void InitializeCooking( UserOutputStream^ outputStream );
 				/// <summary>Closes cooking</summary>
 				static void CloseCooking();
