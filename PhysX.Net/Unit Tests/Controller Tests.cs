@@ -17,35 +17,12 @@ using SlimDX;
 
 namespace StillDesign.PhysX.UnitTests
 {
-	/// <summary>
-	/// Summary description for ControllerTests
-	/// </summary>
 	[TestClass]
 	public class ControllerTests : TestBase
 	{
 		public ControllerTests()
 		{
-			//
-			// TODO: Add constructor logic here
-			//
-		}
 
-		private TestContext testContextInstance;
-
-		/// <summary>
-		///Gets or sets the test context which provides
-		///information about and functionality for the current test run.
-		///</summary>
-		public TestContext TestContext
-		{
-			get
-			{
-				return testContextInstance;
-			}
-			set
-			{
-				testContextInstance = value;
-			}
 		}
 
 		#region Additional test attributes

@@ -26,20 +26,6 @@ namespace StillDesign.PhysX.UnitTests
 
 		}
 
-		private TestContext testContextInstance;
-
-		public TestContext TestContext
-		{
-			get
-			{
-				return testContextInstance;
-			}
-			set
-			{
-				testContextInstance = value;
-			}
-		}
-
 		#region Additional test attributes
 		//
 		// You can use the following additional attributes as you write your tests:

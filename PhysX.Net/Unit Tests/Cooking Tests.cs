@@ -6,35 +6,12 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace StillDesign.PhysX.UnitTests
 {
-	/// <summary>
-	/// Summary description for CookingTests
-	/// </summary>
 	[TestClass]
 	public class CookingTests : TestBase
 	{
 		public CookingTests()
 		{
-			//
-			// TODO: Add constructor logic here
-			//
-		}
 
-		private TestContext testContextInstance;
-
-		/// <summary>
-		///Gets or sets the test context which provides
-		///information about and functionality for the current test run.
-		///</summary>
-		public TestContext TestContext
-		{
-			get
-			{
-				return testContextInstance;
-			}
-			set
-			{
-				testContextInstance = value;
-			}
 		}
 
 		#region Additional test attributes

@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Text;
-using System.Collections.Generic;
 using System.Linq;
+using System.Collections.Generic;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -24,9 +23,7 @@ namespace StillDesign.PhysX.UnitTests
 	{
 		public ActorTests()
 		{
-			//
-			// TODO: Add constructor logic here
-			//
+
 		}
 
 		#region Additional test attributes
@@ -56,9 +53,10 @@ namespace StillDesign.PhysX.UnitTests
 		{
 			using( CreateCoreAndScene() )
 			{
-				ActorDescription actorDesc = new ActorDescription();
-
-				actorDesc.Shapes.Add( new BoxShapeDescription( 5, 6, 7 ) );
+				ActorDescription actorDesc = new ActorDescription()
+				{
+					Shapes = { new BoxShapeDescription( 5, 6, 7 ) }
+				};
 
 				Actor actor = this.Scene.CreateActor( actorDesc );
 
@@ -73,16 +71,18 @@ namespace StillDesign.PhysX.UnitTests
 			{
 				Actor actorA, actorB;
 				{
-					ActorDescription actorDesc = new ActorDescription();
-
-					actorDesc.Shapes.Add( new BoxShapeDescription( 5, 6, 7 ) );
+					ActorDescription actorDesc = new ActorDescription()
+					{
+						Shapes = { new BoxShapeDescription( 5, 6, 7 ) }
+					};
 
 					actorA = this.Scene.CreateActor( actorDesc );
 				}
 				{
-					ActorDescription actorDesc = new ActorDescription();
-
-					actorDesc.Shapes.Add( new BoxShapeDescription( 2, 5, 7 ) );
+					ActorDescription actorDesc = new ActorDescription()
+					{
+						Shapes = { new BoxShapeDescription( 2, 5, 7 ) }
+					};
 
 					actorB = this.Scene.CreateActor( actorDesc );
 				}
@@ -101,13 +101,15 @@ namespace StillDesign.PhysX.UnitTests
 			var shapeDescription = new SphereShapeDescription( 5 );
 			shapeDescription.Flags |= ( ShapeFlag.TriggerOnEnter | ShapeFlag.TriggerOnLeave );
 
-			var actorDesc = new ActorDescription();
-
-			actorDesc.BodyDescription = new BodyDescription( 1 );
-			actorDesc.BodyDescription.MassSpaceInertia = new Vector3( 1, 1, 1 );
-			actorDesc.BodyDescription.BodyFlags = BodyFlag.Kinematic;
-
-			actorDesc.Shapes.Add( shapeDescription );
+			var actorDesc = new ActorDescription()
+			{
+				BodyDescription = new BodyDescription( 1 )
+				{
+					MassSpaceInertia = new Vector3( 1, 1, 1 ),
+					BodyFlags = BodyFlag.Kinematic
+				},
+				Shapes = { shapeDescription }
+			};
 
 			Assert.IsTrue( actorDesc.IsValid() );
 		}
