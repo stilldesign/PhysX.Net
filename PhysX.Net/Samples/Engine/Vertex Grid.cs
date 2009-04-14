@@ -4,7 +4,7 @@ using System.Linq;
 
 using Microsoft.Xna.Framework;
 
-namespace StillDesign
+namespace StillDesign.PhysX.Samples
 {
 	public class VertexGrid
 	{

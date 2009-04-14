@@ -1,6 +1,6 @@
 using System;
 
-namespace StillDesign
+namespace StillDesign.PhysX.Samples
 {
 	static class Program
 	{

@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Content;
 
 using StillDesign.PhysX;
 
-namespace StillDesign
+namespace StillDesign.PhysX.Samples
 {
 	public partial class Demo1
 	{

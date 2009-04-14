@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StillDesign.PhysX.Net", "PhysX.Net\PhysX.Net.vcproj", "{9E50593F-DB72-44D1-8A1D-2AE73214383E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing", "Testing\Testing.csproj", "{D99B7D55-3CA8-4066-BCC2-5574A8566F17}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6122AE90-D0DA-4342-8284-AB8450A46C2C}"
 	ProjectSection(SolutionItems) = preProject
 		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
@@ -17,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sample Projects", "Sample P
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CCD Skeleton", "Samples\CCD Skeleton\CCD Skeleton.csproj", "{0B12DC8D-FFB3-4C5F-8B77-ABAC84616E5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo 1", "Samples\Demo 1\Demo 1.csproj", "{230CFCF6-6A4F-45EF-943E-A4A29A44161F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Main Sample", "Samples\Demo 1\Main Sample.csproj", "{230CFCF6-6A4F-45EF-943E-A4A29A44161F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unit Tests", "Unit Tests\Unit Tests.csproj", "{3A2594CF-7E97-49E5-B1B7-34473CF514A6}"
 EndProject
@@ -33,7 +31,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tearing Cloth", "Samples\Te
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 14
+		SccNumberOfProjects = 13
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs01.codeplex.com/
 		SccLocalPath0 = .
@@ -52,40 +50,37 @@ Global
 		SccProjectTopLevelParentUniqueName4 = PhysX.Net.sln
 		SccProjectName4 = Samples/Demo\u00201/Content
 		SccLocalPath4 = Samples\\Demo\u00201\\Content
-		SccProjectUniqueName5 = Samples\\Demo\u00201\\Demo\u00201.csproj
+		SccProjectUniqueName5 = Samples\\Engine\\Content\\Content.contentproj
 		SccProjectTopLevelParentUniqueName5 = PhysX.Net.sln
-		SccProjectName5 = Samples/Demo\u00201
-		SccLocalPath5 = Samples\\Demo\u00201
-		SccProjectUniqueName6 = Samples\\Engine\\Content\\Content.contentproj
+		SccProjectName5 = Samples/Engine/Content
+		SccLocalPath5 = Samples\\Engine\\Content
+		SccProjectUniqueName6 = Samples\\Engine\\Engine.csproj
 		SccProjectTopLevelParentUniqueName6 = PhysX.Net.sln
-		SccProjectName6 = Samples/Engine/Content
-		SccLocalPath6 = Samples\\Engine\\Content
-		SccProjectUniqueName7 = Samples\\Engine\\Engine.csproj
-		SccProjectTopLevelParentUniqueName7 = PhysX.Net.sln
-		SccProjectName7 = Samples/Engine
-		SccLocalPath7 = Samples\\Engine
-		SccProjectUniqueName8 = Testing\\Testing.csproj
-		SccProjectName8 = Testing
-		SccLocalPath8 = Testing
-		SccProjectUniqueName9 = Unit\u0020Tests\\Unit\u0020Tests.csproj
-		SccProjectName9 = Unit\u0020Tests
-		SccLocalPath9 = Unit\u0020Tests
-		SccProjectUniqueName10 = Samples\\Cloth\\Cloth.csproj
+		SccProjectName6 = Samples/Engine
+		SccLocalPath6 = Samples\\Engine
+		SccProjectUniqueName7 = Unit\u0020Tests\\Unit\u0020Tests.csproj
+		SccProjectName7 = Unit\u0020Tests
+		SccLocalPath7 = Unit\u0020Tests
+		SccProjectUniqueName8 = Samples\\Cloth\\Cloth.csproj
+		SccProjectTopLevelParentUniqueName8 = PhysX.Net.sln
+		SccProjectName8 = Samples/Cloth
+		SccLocalPath8 = Samples\\Cloth
+		SccProjectUniqueName9 = Samples\\Cloth\\Content\\Content.contentproj
+		SccProjectTopLevelParentUniqueName9 = PhysX.Net.sln
+		SccProjectName9 = Samples/Cloth/Content
+		SccLocalPath9 = Samples\\Cloth\\Content
+		SccProjectUniqueName10 = Samples\\Tearing\u0020Cloth\\Tearing\u0020Cloth.csproj
 		SccProjectTopLevelParentUniqueName10 = PhysX.Net.sln
-		SccProjectName10 = Samples/Cloth
-		SccLocalPath10 = Samples\\Cloth
-		SccProjectUniqueName11 = Samples\\Cloth\\Content\\Content.contentproj
+		SccProjectName10 = Samples/Tearing\u0020Cloth
+		SccLocalPath10 = Samples\\Tearing\u0020Cloth
+		SccProjectUniqueName11 = Samples\\Tearing\u0020Cloth\\Content\\Content.contentproj
 		SccProjectTopLevelParentUniqueName11 = PhysX.Net.sln
-		SccProjectName11 = Samples/Cloth/Content
-		SccLocalPath11 = Samples\\Cloth\\Content
-		SccProjectUniqueName12 = Samples\\Tearing\u0020Cloth\\Tearing\u0020Cloth.csproj
+		SccProjectName11 = Samples/Tearing\u0020Cloth/Content
+		SccLocalPath11 = Samples\\Tearing\u0020Cloth\\Content
+		SccProjectUniqueName12 = Samples\\Demo\u00201\\Main\u0020Sample.csproj
 		SccProjectTopLevelParentUniqueName12 = PhysX.Net.sln
-		SccProjectName12 = Samples/Tearing\u0020Cloth
-		SccLocalPath12 = Samples\\Tearing\u0020Cloth
-		SccProjectUniqueName13 = Samples\\Tearing\u0020Cloth\\Content\\Content.contentproj
-		SccProjectTopLevelParentUniqueName13 = PhysX.Net.sln
-		SccProjectName13 = Samples/Tearing\u0020Cloth/Content
-		SccLocalPath13 = Samples\\Tearing\u0020Cloth\\Content
+		SccProjectName12 = Samples/Demo\u00201
+		SccLocalPath12 = Samples\\Demo\u00201
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = PhysX.Net1.vsmdi
@@ -117,16 +112,6 @@ Global
 		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Release XNA 2.0|x86.Build.0 = Release XNA 2.0|Win32
 		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Release XNA 3.0|x86.ActiveCfg = Release XNA 3.0|Win32
 		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Release XNA 3.0|x86.Build.0 = Release XNA 3.0|Win32
-		{D99B7D55-3CA8-4066-BCC2-5574A8566F17}.Debug MDX|x86.ActiveCfg = Debug|x86
-		{D99B7D55-3CA8-4066-BCC2-5574A8566F17}.Debug SlimDX|x86.ActiveCfg = Debug|x86
-		{D99B7D55-3CA8-4066-BCC2-5574A8566F17}.Debug XNA 2.0|x86.ActiveCfg = Debug|x86
-		{D99B7D55-3CA8-4066-BCC2-5574A8566F17}.Debug XNA 3.0|x86.ActiveCfg = Debug|x86
-		{D99B7D55-3CA8-4066-BCC2-5574A8566F17}.Debug XNA 3.0|x86.Build.0 = Debug|x86
-		{D99B7D55-3CA8-4066-BCC2-5574A8566F17}.Release MDX|x86.ActiveCfg = Release|x86
-		{D99B7D55-3CA8-4066-BCC2-5574A8566F17}.Release SlimDX|x86.ActiveCfg = Release|x86
-		{D99B7D55-3CA8-4066-BCC2-5574A8566F17}.Release XNA 2.0|x86.ActiveCfg = Release|x86
-		{D99B7D55-3CA8-4066-BCC2-5574A8566F17}.Release XNA 3.0|x86.ActiveCfg = Release|x86
-		{D99B7D55-3CA8-4066-BCC2-5574A8566F17}.Release XNA 3.0|x86.Build.0 = Release|x86
 		{D126F9D4-66BB-403B-B4B6-18C3546BEDF8}.Debug MDX|x86.ActiveCfg = Debug|x86
 		{D126F9D4-66BB-403B-B4B6-18C3546BEDF8}.Debug SlimDX|x86.ActiveCfg = Debug|x86
 		{D126F9D4-66BB-403B-B4B6-18C3546BEDF8}.Debug XNA 2.0|x86.ActiveCfg = Debug|x86
@@ -193,14 +178,26 @@ Global
 		{D8A11046-1F58-4BE9-9404-F2D5D3083E0D}.Release XNA 2.0|x86.ActiveCfg = Release|x86
 		{D8A11046-1F58-4BE9-9404-F2D5D3083E0D}.Release XNA 3.0|x86.ActiveCfg = Release|x86
 		{D8A11046-1F58-4BE9-9404-F2D5D3083E0D}.Release XNA 3.0|x86.Build.0 = Release|x86
+		{8C5BD459-411A-4F60-92B0-9CC18D2F49AB}.Debug MDX|x86.ActiveCfg = Debug SlimDX 64|x86
+		{8C5BD459-411A-4F60-92B0-9CC18D2F49AB}.Debug SlimDX|x86.ActiveCfg = Debug SlimDX 64|x86
+		{8C5BD459-411A-4F60-92B0-9CC18D2F49AB}.Debug XNA 2.0|x86.ActiveCfg = Debug SlimDX 64|x86
+		{8C5BD459-411A-4F60-92B0-9CC18D2F49AB}.Debug XNA 3.0|x86.ActiveCfg = Debug SlimDX 64|x86
 		{8C5BD459-411A-4F60-92B0-9CC18D2F49AB}.Release MDX|x86.ActiveCfg = Release|x86
 		{8C5BD459-411A-4F60-92B0-9CC18D2F49AB}.Release SlimDX|x86.ActiveCfg = Release|x86
 		{8C5BD459-411A-4F60-92B0-9CC18D2F49AB}.Release XNA 2.0|x86.ActiveCfg = Release|x86
 		{8C5BD459-411A-4F60-92B0-9CC18D2F49AB}.Release XNA 3.0|x86.ActiveCfg = Release|x86
+		{9A1A2883-62D3-43C6-8F71-48015FA8E0C7}.Debug MDX|x86.ActiveCfg = Debug SlimDX 64|x86
+		{9A1A2883-62D3-43C6-8F71-48015FA8E0C7}.Debug SlimDX|x86.ActiveCfg = Debug SlimDX 64|x86
+		{9A1A2883-62D3-43C6-8F71-48015FA8E0C7}.Debug XNA 2.0|x86.ActiveCfg = Debug SlimDX 64|x86
+		{9A1A2883-62D3-43C6-8F71-48015FA8E0C7}.Debug XNA 3.0|x86.ActiveCfg = Debug SlimDX 64|x86
 		{9A1A2883-62D3-43C6-8F71-48015FA8E0C7}.Release MDX|x86.ActiveCfg = Release|x86
 		{9A1A2883-62D3-43C6-8F71-48015FA8E0C7}.Release SlimDX|x86.ActiveCfg = Release|x86
 		{9A1A2883-62D3-43C6-8F71-48015FA8E0C7}.Release XNA 2.0|x86.ActiveCfg = Release|x86
 		{9A1A2883-62D3-43C6-8F71-48015FA8E0C7}.Release XNA 3.0|x86.ActiveCfg = Release|x86
+		{6AB0CAA7-33DB-43AF-BBD2-13AB832DE077}.Debug MDX|x86.ActiveCfg = Debug SlimDX 64|x86
+		{6AB0CAA7-33DB-43AF-BBD2-13AB832DE077}.Debug SlimDX|x86.ActiveCfg = Debug SlimDX 64|x86
+		{6AB0CAA7-33DB-43AF-BBD2-13AB832DE077}.Debug XNA 2.0|x86.ActiveCfg = Debug SlimDX 64|x86
+		{6AB0CAA7-33DB-43AF-BBD2-13AB832DE077}.Debug XNA 3.0|x86.ActiveCfg = Debug SlimDX 64|x86
 		{6AB0CAA7-33DB-43AF-BBD2-13AB832DE077}.Release MDX|x86.ActiveCfg = Release|x86
 		{6AB0CAA7-33DB-43AF-BBD2-13AB832DE077}.Release SlimDX|x86.ActiveCfg = Release|x86
 		{6AB0CAA7-33DB-43AF-BBD2-13AB832DE077}.Release XNA 2.0|x86.ActiveCfg = Release|x86

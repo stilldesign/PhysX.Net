@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace StillDesign
+namespace StillDesign.PhysX.Samples
 {
 	public static class Mathematics
 	{

@@ -17,7 +17,7 @@ using StillDesign.PhysX;
 
 using ClothVertex = Microsoft.Xna.Framework.Graphics.VertexPositionNormalTexture;
 
-namespace StillDesign
+namespace StillDesign.PhysX.Samples
 {
 	public class Cloth : Microsoft.Xna.Framework.Game
 	{

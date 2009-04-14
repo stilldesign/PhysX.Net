@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework.Storage;
 
 using StillDesign.PhysX;
 
-namespace StillDesign
+namespace StillDesign.PhysX.Samples
 {
 	public class Engine
 	{

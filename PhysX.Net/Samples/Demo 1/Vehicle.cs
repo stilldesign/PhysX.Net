@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework;
 
 using StillDesign.PhysX;
 
-namespace StillDesign
+namespace StillDesign.PhysX.Samples
 {
 	public class Vehicle
 	{

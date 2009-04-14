@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle( "Cloth" )]
-[assembly: AssemblyProduct( "Cloth" )]
+[assembly: AssemblyProduct( "" )]
 [assembly: AssemblyDescription( "" )]
-[assembly: AssemblyCompany( "Microsoft" )]
+[assembly: AssemblyCompany( "StillDesign" )]
 
-[assembly: AssemblyCopyright( "Copyright © Microsoft 2009" )]
+[assembly: AssemblyCopyright( "Copyright © StillDesign 2009" )]
 [assembly: AssemblyTrademark( "" )]
 [assembly: AssemblyCulture( "" )]
 
@@ -30,4 +30,4 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion( "1.0.0.0" )]
+[assembly: AssemblyVersion( "1.0.*" )]

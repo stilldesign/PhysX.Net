@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using StillDesign.PhysX;
 
-namespace StillDesign
+namespace StillDesign.PhysX.Samples
 {
 	public class UserOutput : UserOutputStream
 	{
