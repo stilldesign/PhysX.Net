@@ -2,13 +2,23 @@
 using System.Text;
 using System.Collections.Generic;
 using System.Linq;
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+#if GRAPHICS_XNA2 || GRAPHICS_XNA3
+using Microsoft.Xna.Framework;
+using System.IO;
+#elif GRAPHICS_MDX
+using Microsoft.DirectX;
+using System.IO;
+#elif GRAPHICS_SLIMDX
+using SlimDX;
+#else
+#error No Graphics Framework Defined
+#endif
 
 namespace StillDesign.PhysX.UnitTests
 {
-	/// <summary>
-	/// Summary description for ActorTests
-	/// </summary>
 	[TestClass]
 	public class ActorTests : TestBase
 	{
@@ -17,24 +27,6 @@ namespace StillDesign.PhysX.UnitTests
 			//
 			// TODO: Add constructor logic here
 			//
-		}
-
-		private TestContext testContextInstance;
-
-		/// <summary>
-		///Gets or sets the test context which provides
-		///information about and functionality for the current test run.
-		///</summary>
-		public TestContext TestContext
-		{
-			get
-			{
-				return testContextInstance;
-			}
-			set
-			{
-				testContextInstance = value;
-			}
 		}
 
 		#region Additional test attributes
@@ -101,6 +93,23 @@ namespace StillDesign.PhysX.UnitTests
 				actorB.Dispose();
 				actorA.Dispose();
 			}
+		}
+
+		[TestMethod]
+		public void RequiredMassSpaceInertia()
+		{
+			var shapeDescription = new SphereShapeDescription( 5 );
+			shapeDescription.Flags |= ( ShapeFlag.TriggerOnEnter | ShapeFlag.TriggerOnLeave );
+
+			var actorDesc = new ActorDescription();
+
+			actorDesc.BodyDescription = new BodyDescription( 1 );
+			actorDesc.BodyDescription.MassSpaceInertia = new Vector3( 1, 1, 1 );
+			actorDesc.BodyDescription.BodyFlags = BodyFlag.Kinematic;
+
+			actorDesc.Shapes.Add( shapeDescription );
+
+			Assert.IsTrue( actorDesc.IsValid() );
 		}
 	}
 }
