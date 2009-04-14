@@ -111,43 +111,63 @@ ForceField::SamplePointForcesResult^ ForceField::SamplePointForces( array<Vector
 {
 	ThrowIfNull( points, "points" );
 	
-	int i = points->Length;
+	// Check input for validity
+	// If the velocities argument is supplied, it must be the same length as the points argument
+	if( velocities != nullptr )
+	{
+		if( velocities->Length != points->Length )
+			throw gcnew ArgumentException( "Invalid length. Both points and velocities must be the same length", "velocities" );
+	}
 	
-	NxVec3* p = new NxVec3[ i ];
+	int numberOfPoints = points->Length;
+	
+	// If the number of points request is 0, then early out and return an empty structure
+	if( numberOfPoints == 0 )
+		return gcnew SamplePointForcesResult( gcnew array<Vector3>( 0 ), gcnew array<Vector3>( 0 ) );
+	
+	// Copy points and vertices into unmanaged memory
+	NxVec3* p = new NxVec3[ numberOfPoints ];
 	{
 		pin_ptr<Vector3> b = &points[ 0 ];
-		memcpy_s( p, sizeof( Vector3 ) * i, b, i * sizeof( Vector3 ) );
+		memcpy_s( p, sizeof( Vector3 ) * numberOfPoints, b, numberOfPoints * sizeof( Vector3 ) );
 	}
 	
 	NxVec3* v;
 	if( velocities != nullptr )
 	{
-		v = new NxVec3[ i ];
+		v = new NxVec3[ numberOfPoints ];
 		{
 			pin_ptr<Vector3> b = &velocities[ 0 ];
-			memcpy_s( v, sizeof( Vector3 ) * i, b, i * sizeof( Vector3 ) );
+			memcpy_s( v, sizeof( Vector3 ) * numberOfPoints, b, numberOfPoints * sizeof( Vector3 ) );
 		}
 	}else{
 		v = NULL;
 	}
 	
-	NxVec3* forces = new NxVec3[ i ];
-	NxVec3* torques = new NxVec3[ i ];
+	NxVec3* forces = new NxVec3[ numberOfPoints ];
+	NxVec3* torques = new NxVec3[ numberOfPoints ];
 	
-	_forceField->samplePoints( i, p, v, forces, torques );
+	//
 	
-	array<Vector3>^ f = gcnew array<Vector3>( i );
-	array<Vector3>^ t = gcnew array<Vector3>( i );
+	_forceField->samplePoints( numberOfPoints, p, v, forces, torques );
+	
+	//
+	
+	
+	// Copy unmanaged memory into managed memory
+	array<Vector3>^ f = gcnew array<Vector3>( numberOfPoints );
+	array<Vector3>^ t = gcnew array<Vector3>( numberOfPoints );
 	
 	{
 		pin_ptr<Vector3> b = &f[ 0 ];
-		memcpy_s( b, sizeof( Vector3 ) * i, forces, i * sizeof( Vector3 ) );
+		memcpy_s( b, sizeof( Vector3 ) * numberOfPoints, forces, numberOfPoints * sizeof( Vector3 ) );
 	}
 	{
 		pin_ptr<Vector3> b = &t[ 0 ];
-		memcpy_s( b, sizeof( Vector3 ) * i, torques, i * sizeof( Vector3 ) );
+		memcpy_s( b, sizeof( Vector3 ) * numberOfPoints, torques, numberOfPoints * sizeof( Vector3 ) );
 	}
 	
+	// Dispose of the unmanaged memory
 	delete[] p, v, forces, torques;
 	p = v = forces = torques = NULL;
 	
