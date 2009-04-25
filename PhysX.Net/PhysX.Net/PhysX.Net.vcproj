@@ -7519,6 +7519,10 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath=".\Source\Physics Collection.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Source\Physics Stream.cpp"
 				>
 				<FileConfiguration
@@ -11827,6 +11831,14 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath=".\Source\Utilities User Notify.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Source\Utilities.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Source\Wheel Contact Data.cpp"
 				>
 				<FileConfiguration
@@ -13529,6 +13541,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Source\Physics Collection.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Source\Physics Parameters.h"
 				>
 			</File>
@@ -13550,6 +13566,10 @@
 			</File>
 			<File
 				RelativePath=".\Source\Sweep Query Hit.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Source\Utilities.h"
 				>
 			</File>
 			<Filter
