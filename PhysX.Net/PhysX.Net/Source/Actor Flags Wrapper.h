@@ -12,16 +12,30 @@ namespace StillDesign
 			private:
 				Actor^ _actor;
 				
+			internal:
+				ActorFlagsWrapper( Actor^ actor )
+				{
+					if ( actor == nullptr )
+						throw gcnew System::ArgumentNullException( "actor" );
+					
+					_actor = actor;
+				}
+				
 			public:
 				#define WRAPPER_PROPERTY( name ) \
-					property bool name { \
-						bool get() { return _actor->ReadActorFlag( ActorFlag::name ); } \
-						void set( bool value ) { \
-							if ( value ) \
-								_actor->RaiseActorFlag( ActorFlag::name ); \
-							else \
-								_actor->ClearActorFlag( ActorFlag::name ); \
-						} \
+					property bool name\
+					{\
+						bool get()\
+						{\
+							return _actor->ReadActorFlag( ActorFlag::name );\
+						}\
+						void set( bool value )\
+						{\
+							if( value )\
+								_actor->RaiseActorFlag( ActorFlag::name );\
+							else\
+								_actor->ClearActorFlag( ActorFlag::name );\
+						}\
 					}
 				
 				WRAPPER_PROPERTY( DisableCollision )
@@ -33,15 +47,6 @@ namespace StillDesign
 				WRAPPER_PROPERTY( UserActorPairFiltering )
 				
 				#undef WRAPPER_PROPERTY
-			
-			internal:
-				ActorFlagsWrapper( Actor^ actor)
-				{
-					if ( actor == nullptr )
-						throw gcnew System::ArgumentNullException( "actor" );
-					
-					_actor = actor;
-			}
 		};
 	}
 }

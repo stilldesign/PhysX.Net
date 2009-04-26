@@ -14262,10 +14262,6 @@
 				Name="Scene"
 				>
 				<File
-					RelativePath=".\Source\Collect Shapes Entity Report.h"
-					>
-				</File>
-				<File
 					RelativePath=".\Source\Scene Description.h"
 					>
 				</File>
