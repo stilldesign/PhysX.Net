@@ -12,9 +12,6 @@ using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Net;
 using Microsoft.Xna.Framework.Storage;
 
-using StillDesign;
-using StillDesign.PhysX;
-
 using ClothVertex = Microsoft.Xna.Framework.Graphics.VertexPositionNormalTexture;
 
 namespace StillDesign.PhysX.Samples

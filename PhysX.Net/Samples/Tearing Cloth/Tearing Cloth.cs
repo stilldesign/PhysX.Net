@@ -30,9 +30,13 @@ namespace StillDesign.PhysX.Samples
 
 		private BasicEffect _lighting;
 
+		private DateTime _keyboardDelay;
+
 		public TearingCloth()
 		{
 			_engine = new Engine( this );
+
+			_keyboardDelay = DateTime.MinValue;
 		}
 
 		protected override void Initialize()
@@ -47,10 +51,6 @@ namespace StillDesign.PhysX.Samples
 			base.Initialize();
 
 			LoadPhysics();
-
-			_engine.Device.RenderState.CullMode = CullMode.CullClockwiseFace;
-
-			UpdateWindowTitle();
 		}
 
 		private void LoadPhysics()
@@ -71,19 +71,19 @@ namespace StillDesign.PhysX.Samples
 				indices = grid.Indices.Length;
 
 				ClothMeshDescription clothMeshDesc = new ClothMeshDescription();
-					clothMeshDesc.AllocateVertices<Vector3>( vertices );
-					clothMeshDesc.AllocateTriangles<int>( indices / 3 );
+				clothMeshDesc.AllocateVertices<Vector3>( vertices );
+				clothMeshDesc.AllocateTriangles<int>( indices / 3 );
 
-					clothMeshDesc.VertexCount = vertices;
-					clothMeshDesc.TriangleCount = indices / 3;
+				clothMeshDesc.VertexCount = vertices;
+				clothMeshDesc.TriangleCount = indices / 3;
 
-					clothMeshDesc.VerticesStream.SetData( grid.Points );
-					clothMeshDesc.TriangleStream.SetData( grid.Indices );
+				clothMeshDesc.VerticesStream.SetData( grid.Points );
+				clothMeshDesc.TriangleStream.SetData( grid.Indices );
 
-					// We are using 32 bit integers, so make sure the 16 bit flag is removed.
-					// 32 bits are the default, so this isn't technically needed
-					clothMeshDesc.Flags &= ~MeshFlag.Indices16Bit;
-					clothMeshDesc.Flags = (MeshFlag)( (int)clothMeshDesc.Flags | (int)ClothMeshFlag.Tearable );
+				// We are using 32 bit integers, so make sure the 16 bit flag is removed.
+				// 32 bits are the default, so this isn't technically needed
+				clothMeshDesc.Flags &= ~MeshFlag.Indices16Bit;
+				clothMeshDesc.Flags = (MeshFlag)( (int)clothMeshDesc.Flags | (int)ClothMeshFlag.Tearable );
 
 				// Write the cooked data to memory
 				MemoryStream memoryStream = new MemoryStream();
@@ -219,42 +219,35 @@ namespace StillDesign.PhysX.Samples
 			//_lighting.End();
 		}
 
+		private void CreateBox()
+		{
+			Random random = new Random();
+
+			ActorDescription desc = new ActorDescription( new BoxShapeDescription( 20, 1, 1 ) )
+			{
+				BodyDescription = new BodyDescription( 10 ),
+				GlobalPose =
+					Matrix.CreateRotationY( (float)( random.NextDouble() * 2 * Math.PI ) ) *
+					Matrix.CreateTranslation( 0, 50, 0 )
+			};
+
+			Actor actor = _scene.CreateActor( desc );
+		}
+
 		private void HandleKeyboard( KeyboardState keyboardState )
 		{
 			if( keyboardState.IsKeyDown( Keys.Escape ) )
 				this.Exit();
 
-			if( keyboardState.IsKeyDown( Keys.C ) )
-				CycleCullMode();
-		}
-
-		private void CycleCullMode()
-		{
-			switch( _engine.Device.RenderState.CullMode )
+			if( keyboardState.IsKeyDown( Keys.Space ) )
 			{
-				case CullMode.CullClockwiseFace:
-					_engine.Device.RenderState.CullMode = CullMode.CullCounterClockwiseFace;
-					break;
-				case CullMode.CullCounterClockwiseFace:
-					_engine.Device.RenderState.CullMode = CullMode.None;
-					break;
-				case CullMode.None:
-					_engine.Device.RenderState.CullMode = CullMode.CullClockwiseFace;
-					break;
+				if( DateTime.Now - _keyboardDelay > TimeSpan.FromMilliseconds( 100 ) )
+				{
+					CreateBox();
 
-				default:
-					throw new Exception();
+					_keyboardDelay = DateTime.Now;
+				}
 			}
-
-			UpdateWindowTitle();
-
-			//HACK: Easy way of getting round the face that XNA doesn't support key up events
-			System.Threading.Thread.Sleep( 200 );
-		}
-
-		private void UpdateWindowTitle()
-		{
-			_engine.Game.Window.Title = String.Format( "StillDesign.PhysX.Net - Cloth Sample - (C)ull Mode: {0}", _engine.Device.RenderState.CullMode );
 		}
 	}
 }
