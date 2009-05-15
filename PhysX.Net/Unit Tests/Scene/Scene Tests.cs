@@ -15,6 +15,7 @@ using SlimDX;
 #endif
 
 using StillDesign.PhysX;
+using System.Diagnostics;
 
 namespace StillDesign.PhysX.UnitTests
 {
@@ -61,6 +62,20 @@ namespace StillDesign.PhysX.UnitTests
 		// public void MyTestCleanup() { }
 		//
 		#endregion
+
+		[TestMethod]
+		public void CreateAndDisposeManyScenes()
+		{
+			using( CreateCore() )
+			{
+				for( int x = 0; x < 20; x++ )
+				{
+					Scene scene = this.Core.CreateScene();
+
+					scene.Dispose();
+				}
+			}
+		}
 
 		#region Linear Sweep
 		[TestMethod]

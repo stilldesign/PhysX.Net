@@ -136,6 +136,10 @@ namespace StillDesign
 				property NxMaterial* UnmanagedPointer
 				{
 					NxMaterial* get();
+					void set( NxMaterial* material )
+					{
+						_material = material;
+					}
 				}
 		};
 	};

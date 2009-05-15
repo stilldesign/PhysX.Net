@@ -35,5 +35,13 @@ namespace StillDesign.PhysX.UnitTests
 		// public void MyTestCleanup() { }
 		//
 		#endregion
+
+		[TestMethod]
+		public void AllocateMeshData()
+		{
+			ClothDescription desc = new ClothDescription();
+
+			desc.MeshData.AllocateParentIndices<int>( 100 );
+		}
 	}
 }

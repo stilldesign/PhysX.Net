@@ -214,6 +214,8 @@ Scene::!Scene()
 	_userContactReport = nullptr;
 	_userTriggerReport = nullptr;
 	
+	ObjectTable::Remove( (intptr_t)_defaultMaterial->UnmanagedPointer );
+	_defaultMaterial->UnmanagedPointer = NULL;
 	_defaultMaterial = nullptr;
 	
 	_core->UnmanagedPointer->releaseScene( *_scene );
