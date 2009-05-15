@@ -89,17 +89,17 @@ Scene::Scene( NxScene* scene )
 	_scene = scene;
 	_core = ObjectTable::GetObject<StillDesign::PhysX::Core^>( (intptr_t)(&scene->getPhysicsSDK()) );
 	
-	_actors = gcnew ElementCollection< Actor^ >();
-	_materials = gcnew ElementCollection< Material^ >();
-	_joints = gcnew ElementCollection< Joint^ >();
-	_cloths = gcnew ElementCollection< Cloth^ >();
-	_forceFields = gcnew ElementCollection< ForceField^ >();
-	_controllerManagers = gcnew ElementCollection< ControllerManager^ >();
-	_fluids = gcnew ElementCollection< Fluid^ >();
-	_softBodies = gcnew ElementCollection< SoftBody^ >();
-	_compartments = gcnew ElementCollection< Compartment^ >();
-	_forceFieldLinearKernels = gcnew ElementCollection< ForceFieldLinearKernel^ >();
-	_forceFieldShapeGroups = gcnew ElementCollection< ForceFieldShapeGroup^ >();
+	_actors = gcnew ElementCollection<Actor^>();
+	_materials = gcnew ElementCollection<Material^>();
+	_joints = gcnew ElementCollection<Joint^>();
+	_cloths = gcnew ElementCollection<Cloth^>();
+	_forceFields = gcnew ElementCollection<ForceField^>();
+	_controllerManagers = gcnew ElementCollection<ControllerManager^>();
+	_fluids = gcnew ElementCollection<Fluid^>();
+	_softBodies = gcnew ElementCollection<SoftBody^>();
+	_compartments = gcnew ElementCollection<Compartment^>();
+	_forceFieldLinearKernels = gcnew ElementCollection<ForceFieldLinearKernel^>();
+	_forceFieldShapeGroups = gcnew ElementCollection<ForceFieldShapeGroup^>();
 	
 	//
 	
@@ -134,49 +134,12 @@ Scene::Scene( NxScene* scene )
 	}
 	// Joints
 	scene->resetJointIterator();
+	
 	for( unsigned int x = 0; x < scene->getNbJoints(); x++ )
 	{
 		NxJoint* joint = scene->getNextJoint();
-		Joint^ j;
 		
-		switch( joint->getType() )
-		{
-			case NX_JOINT_CYLINDRICAL:
-				j = gcnew CylindricalJoint( joint->isCylindricalJoint() );
-			break;
-			case NX_JOINT_D6:
-				j = gcnew D6Joint( joint->isD6Joint() );
-			break;
-			case NX_JOINT_DISTANCE:
-				j = gcnew DistanceJoint( joint->isDistanceJoint() );
-			break;
-			case NX_JOINT_FIXED:
-				j = gcnew FixedJoint( joint->isFixedJoint() );
-			break;
-			case NX_JOINT_POINT_IN_PLANE:
-				j = gcnew PointInPlaneJoint( joint->isPointInPlaneJoint() );
-			break;
-			case NX_JOINT_POINT_ON_LINE:
-				j = gcnew PointOnLineJoint( joint->isPointOnLineJoint() );
-			break;
-			case NX_JOINT_PRISMATIC:
-				j = gcnew PrismaticJoint( joint->isPrismaticJoint() );
-			break;
-			case NX_JOINT_PULLEY:
-				j = gcnew PulleyJoint( joint->isPulleyJoint() );
-			break;
-			case NX_JOINT_REVOLUTE:
-				j = gcnew RevoluteJoint( joint->isRevoluteJoint() );
-			break;
-			case NX_JOINT_SPHERICAL:
-				j = gcnew SphericalJoint( joint->isSphericalJoint() );
-			break;
-			
-			default:
-				throw gcnew NotSupportedException( "Invalid Joint Type" );
-		}
-		
-		_joints->Add( j );
+		AddJoint( joint );
 	}
 	// Cloths
 	for( unsigned int x = 0; x < scene->getNbCloths(); x++ )
