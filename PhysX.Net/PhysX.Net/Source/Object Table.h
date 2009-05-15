@@ -7,7 +7,7 @@ namespace StillDesign
 		ref class OwnershipObjects;
 		ref class ObjectTableEventArgs;
 		
-		private ref class ObjectTable sealed
+		public ref class ObjectTable sealed
 		{
 			public:
                 static event System::EventHandler<ObjectTableEventArgs^>^ ObjectAdded;
