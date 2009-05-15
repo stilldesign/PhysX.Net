@@ -18,8 +18,6 @@ namespace StillDesign.PhysX.UnitTests
 {
 	public abstract class TestBase
 	{
-		private static Core _core;
-
 		public TestBase()
 		{
 
@@ -34,16 +32,23 @@ namespace StillDesign.PhysX.UnitTests
 			this.Core = null;
 		}
 
-		protected Core CreateCoreAndScene()
+		protected Core CreateCore()
 		{
-			//if( _core != null )
-			//    CleanUp();
-
-			if( _core != null || PhysX.Core.IsCoreCreated == true )
+			if( this.Core != null || PhysX.Core.IsCoreCreated == true )
 				throw new Exception( "Core is still created" );
 
-			_core = this.Core = new Core();
-			this.Core.OnDisposed += new EventHandler( Core_OnDisposed );
+			this.Core = this.Core = new Core();
+			this.Core.OnDisposed += Core_OnDisposed;
+
+			return this.Core;
+		}
+		protected Core CreateCoreAndScene()
+		{
+			if( this.Core != null || PhysX.Core.IsCoreCreated == true )
+				throw new Exception( "Core is still created" );
+
+			this.Core = this.Core = new Core();
+				this.Core.OnDisposed += Core_OnDisposed;
 
 			this.Scene = this.Core.CreateScene();
 
@@ -52,7 +57,8 @@ namespace StillDesign.PhysX.UnitTests
 
 		void Core_OnDisposed( object sender, EventArgs e )
 		{
-			_core = this.Core = null;
+			this.Core = this.Core = null;
+
 			this.Scene = null;
 		}
 
