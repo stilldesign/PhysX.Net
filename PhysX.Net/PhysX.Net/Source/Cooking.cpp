@@ -82,13 +82,18 @@ bool Cooking::CookTriangleMesh( TriangleMeshDescription^ description, Stream^ st
 	NxStream* s = ms->UnmanagedPointer;
 	bool result = _cooking->NxCookTriangleMesh( *description->UnmanagedPointer, *s );
 	
-	array<Byte>^ data = gcnew array<Byte>( ms->Length );
-	pin_ptr<Byte> b = &data[ 0 ];
-	memcpy_s( b, sizeof( Byte ) * ms->Length, ms->UnmanagedPointer2->data, ms->Length );
-	
-	stream->Write( data, 0, ms->Length );
-	
-	return result;
+	if( result == false )
+	{
+		return false;
+	}else{
+		array<Byte>^ data = gcnew array<Byte>( ms->Length );
+		pin_ptr<Byte> b = &data[ 0 ];
+		memcpy_s( b, sizeof( Byte ) * ms->Length, ms->UnmanagedPointer2->data, ms->Length );
+		
+		stream->Write( data, 0, ms->Length );
+		
+		return true;
+	}
 }
 bool Cooking::CookConvexMesh( ConvexMeshDescription^ description, Stream^ stream )
 {
@@ -106,13 +111,18 @@ bool Cooking::CookConvexMesh( ConvexMeshDescription^ description, Stream^ stream
 	NxStream* s = ms->UnmanagedPointer;
 	bool result = _cooking->NxCookConvexMesh( *description->UnmanagedPointer, *s );
 	
-	array<Byte>^ data = gcnew array<Byte>( ms->Length );
-	pin_ptr<Byte> b = &data[ 0 ];
-	memcpy_s( b, sizeof( Byte ) * ms->Length, ms->UnmanagedPointer2->data, ms->Length );
-	
-	stream->Write( data, 0, ms->Length );
-	
-	return result;
+	if( result == false )
+	{
+		return false;
+	}else{
+		array<Byte>^ data = gcnew array<Byte>( ms->Length );
+		pin_ptr<Byte> b = &data[ 0 ];
+		memcpy_s( b, sizeof( Byte ) * ms->Length, ms->UnmanagedPointer2->data, ms->Length );
+		
+		stream->Write( data, 0, ms->Length );
+		
+		return true;
+	}
 }
 bool Cooking::CookClothMesh( ClothMeshDescription^ description, Stream^ stream )
 {
@@ -130,13 +140,18 @@ bool Cooking::CookClothMesh( ClothMeshDescription^ description, Stream^ stream )
 	NxStream* s = ms->UnmanagedPointer;
 	bool result = _cooking->NxCookClothMesh( *description->UnmanagedPointer, *s );
 	
-	array<Byte>^ data = gcnew array<Byte>( ms->Length );
-	pin_ptr<Byte> b = &data[ 0 ];
-	memcpy_s( b, sizeof( Byte ) * ms->Length, ms->UnmanagedPointer2->data, ms->Length );
-	
-	stream->Write( data, 0, ms->Length );
-	
-	return result;
+	if( result == false )
+	{
+		return false;
+	}else{
+		array<Byte>^ data = gcnew array<Byte>( ms->Length );
+		pin_ptr<Byte> b = &data[ 0 ];
+		memcpy_s( b, sizeof( Byte ) * ms->Length, ms->UnmanagedPointer2->data, ms->Length );
+		
+		stream->Write( data, 0, ms->Length );
+		
+		return true;
+	}
 }
 
 bool Cooking::CookSoftBodyMesh( SoftBodyMeshDescription^ description, Stream^ stream )
@@ -155,13 +170,18 @@ bool Cooking::CookSoftBodyMesh( SoftBodyMeshDescription^ description, Stream^ st
 	NxStream* s = ms->UnmanagedPointer;
 	bool result = _cooking->NxCookSoftBodyMesh( *description->UnmanagedPointer, *s );
 	
-	array<Byte>^ data = gcnew array<Byte>( ms->Length );
-	pin_ptr<Byte> b = &data[ 0 ];
-	memcpy_s( b, sizeof( Byte ) * ms->Length, ms->UnmanagedPointer2->data, ms->Length );
-	
-	stream->Write( data, 0, ms->Length );
-	
-	return result;
+	if( result == false )
+	{
+		return false;
+	}else{
+		array<Byte>^ data = gcnew array<Byte>( ms->Length );
+		pin_ptr<Byte> b = &data[ 0 ];
+		memcpy_s( b, sizeof( Byte ) * ms->Length, ms->UnmanagedPointer2->data, ms->Length );
+		
+		stream->Write( data, 0, ms->Length );
+		
+		return true;
+	}
 }
 
 CookingParameters Cooking::Parameters::get()
