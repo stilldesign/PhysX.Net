@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 #if GRAPHICS_XNA2 || GRAPHICS_XNA3
 using Microsoft.Xna.Framework;
 #elif GRAPHICS_MDX
@@ -16,6 +18,7 @@ using StillDesign.PhysX;
 
 namespace StillDesign.PhysX.UnitTests
 {
+	[TestClass]
 	public abstract class TestBase
 	{
 		public TestBase()
@@ -23,7 +26,8 @@ namespace StillDesign.PhysX.UnitTests
 
 		}
 
-		protected void CleanUp()
+		[TestCleanup()]
+		public void CleanUp()
 		{
 			if( this.Core != null )
 				this.Core.Dispose();
@@ -82,6 +86,8 @@ namespace StillDesign.PhysX.UnitTests
 
 			return this.Scene.CreateActor( actorDesc );
 		}
+
+		//
 
 		protected Core Core
 		{

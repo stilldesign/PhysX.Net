@@ -81,6 +81,7 @@
     <Compile Include="Controller Tests.cs" />
     <Compile Include="Cooking Tests.cs" />
     <Compile Include="Core Tests.cs" />
+    <Compile Include="Disposal Tests.cs" />
     <Compile Include="Fluid Tests.cs" />
     <Compile Include="Force Field Tests.cs" />
     <Compile Include="Graphics Library Wrapper.cs" />
