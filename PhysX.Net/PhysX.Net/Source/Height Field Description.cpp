@@ -32,6 +32,27 @@ bool HeightFieldDescription::IsValid()
 	return _heightFieldDesc->isValid();
 }
 
+void HeightFieldDescription::SetSamples( array<HeightFieldSample>^ value )
+{
+	SAFE_DELETE( _heightFieldDesc->samples );
+	
+	_samples = value;
+	
+	NxHeightFieldSample* samples;
+	if( value != nullptr )
+	{
+		samples = new NxHeightFieldSample[ value->Length ];
+		for( int x = 0; x < value->Length; x++ )
+		{
+			samples[ x ] = HeightFieldSample::ToUnmanaged( value[ x ] );
+		}
+	}else{
+		samples = NULL;
+	}
+	
+	_heightFieldDesc->samples = samples;
+}
+
 //
 
 int HeightFieldDescription::NumberOfRows::get()
@@ -64,26 +85,6 @@ void HeightFieldDescription::Format::set( HeightFieldFormat value )
 array<HeightFieldSample>^ HeightFieldDescription::Samples::get()
 {
 	return _samples;
-}
-void HeightFieldDescription::Samples::set( array<HeightFieldSample>^ value )
-{
-	SAFE_DELETE( _heightFieldDesc->samples );
-	
-	_samples = value;
-	
-	NxHeightFieldSample* samples;
-	if( value != nullptr )
-	{
-		samples = new NxHeightFieldSample[ value->Length ];
-		for( int x = 0; x < value->Length; x++ )
-		{
-			samples[ x ] = HeightFieldSample::ToUnmanaged( value[ x ] );
-		}
-	}else{
-		samples = NULL;
-	}
-	
-	_heightFieldDesc->samples = samples;
 }
 
 int HeightFieldDescription::SampleStrideSize::get()

@@ -27,6 +27,8 @@ namespace StillDesign
 				/// <summary>Returns true if the descriptor is valid</summary>
 				bool IsValid();
 				
+				void SetSamples( array<HeightFieldSample>^ value );
+				
 				/// <summary>Gets or Sets the number of sample rows in the height field samples array</summary>
 				property int NumberOfRows
 				{
@@ -50,7 +52,6 @@ namespace StillDesign
 				property array<HeightFieldSample>^ Samples
 				{
 					array<HeightFieldSample>^ get();
-					void set( array<HeightFieldSample>^ value );
 				}
 				/// <summary>Gets the offset in bytes between consecutive samples in the samples array</summary>
 				property int SampleStrideSize

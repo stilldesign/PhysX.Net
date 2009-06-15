@@ -81,9 +81,9 @@ namespace StillDesign.PhysX.UnitTests
 			HeightFieldDescription heightFieldDesc = new HeightFieldDescription()
 			{
 				NumberOfRows = rows,
-				NumberOfColumns = columns,
-				Samples = samples
+				NumberOfColumns = columns
 			};
+			heightFieldDesc.SetSamples( samples );
 
 			HeightField heightField = this.Core.CreateHeightField( heightFieldDesc );
 

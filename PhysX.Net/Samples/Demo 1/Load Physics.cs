@@ -290,11 +290,13 @@ namespace StillDesign.PhysX.Samples
 						// Put a z and x curve together
 						double h = Math.Sin( c ) * Math.Cos( r ) * short.MaxValue;
 
-						HeightFieldSample sample = new HeightFieldSample();
-							sample.Height = (short)h;
-							sample.MaterialIndex0 = 0;
-							sample.MaterialIndex1 = 1;
-							sample.TessellationFlag = 0;
+						HeightFieldSample sample = new HeightFieldSample()
+						{
+							Height = (short)h,
+							MaterialIndex0 = 0,
+							MaterialIndex1 = 1,
+							TessellationFlag = 0
+						};
 
 						samples[ r * columns + c ] = sample;
 					}
@@ -303,9 +305,9 @@ namespace StillDesign.PhysX.Samples
 				HeightFieldDescription heightFieldDesc = new HeightFieldDescription()
 				{
 					NumberOfRows = rows,
-					NumberOfColumns = columns,
-					Samples = samples
+					NumberOfColumns = columns
 				};
+				heightFieldDesc.SetSamples( samples );
 
 				HeightField heightField = _core.CreateHeightField( heightFieldDesc );
 				
