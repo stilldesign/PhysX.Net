@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Xml;
 using System.IO;
+using System.Text.RegularExpressions;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -391,7 +392,7 @@ namespace StillDesign.PhysX.Samples
 			#endregion
 			
 			#region SoftBody
-			if( false ) // Enable to view soft bodies, they run slowly
+			if( true ) // Enable to view soft bodies, they run slowly
 			{
 				XmlDocument doc = new XmlDocument();
 					doc.Load( "Teapot.xml" );
@@ -500,8 +501,12 @@ namespace StillDesign.PhysX.Samples
 
 		private Vector3[] ReadVertices( XmlNode node )
 		{
-			var floats = from c in node.InnerText.Split( ' ' )
-						 select Single.Parse( c );
+			var numbers = Regex.Matches( node.InnerText, @"-?\d+(\.\d+)?" );
+
+			System.Diagnostics.Debug.Assert(numbers.Count % 3 == 0);
+
+			var floats = from Match c in numbers
+						 select Single.Parse( c.Groups[ 0 ].Value );
 
 			var vertices = new Vector3[ floats.Count() / 3 ];
 			for( int i = 0; i < floats.Count(); i += 3 )
@@ -517,8 +522,10 @@ namespace StillDesign.PhysX.Samples
 		}
 		private int[] ReadTetrahedra( XmlNode node )
 		{
-			var tet = from c in node.InnerText.Split( ' ' )
-					  select Int32.Parse( c );
+			var numbers = Regex.Matches(node.InnerText, @"\d+");
+
+			var tet = from Match c in numbers
+					  select Int32.Parse(c.Groups[0].Value);
 
 			return tet.ToArray();
 		}
