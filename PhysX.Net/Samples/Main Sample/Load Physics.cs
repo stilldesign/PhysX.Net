@@ -434,10 +434,10 @@ namespace StillDesign.PhysX.Samples
 				desc.MeshData.AllocateIndices<int>( tetrahedraSingles.Length );
 
 				desc.MeshData.NumberOfVertices = vertices.Length;
-				desc.MeshData.NumberOfIndices = tetrahedraSingles.Length * 3;
+				desc.MeshData.NumberOfIndices = tetrahedraSingles.Length;
 
 				desc.MeshData.MaximumVertices = vertices.Length;
-				desc.MeshData.MaximumIndices = tetrahedraSingles.Length * 3;
+				desc.MeshData.MaximumIndices = tetrahedraSingles.Length;
 
 				SoftBody softBody = _scene.CreateSoftBody( desc );
 			}
