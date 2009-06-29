@@ -13,7 +13,7 @@ using StillDesign.PhysX;
 
 namespace StillDesign.PhysX.Samples
 {
-	public partial class Demo1
+	public partial class MainSample
 	{
 		/// <summary>Simple examples of all the PhysX bits running together</summary>
 		private void LoadPhysics()

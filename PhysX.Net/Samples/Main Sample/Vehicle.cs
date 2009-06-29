@@ -11,7 +11,7 @@ namespace StillDesign.PhysX.Samples
 	{
 		private Actor _vehicleBodyActor;
 
-		public Vehicle( Demo1 demo )
+		public Vehicle( MainSample demo )
 		{
 			// Create a 2 ton car with 4 wheels
 			BodyDescription bodyDesc = new BodyDescription()

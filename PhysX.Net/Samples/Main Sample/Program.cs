@@ -9,7 +9,7 @@ namespace StillDesign.PhysX.Samples
 		/// </summary>
 		static void Main( string[] args )
 		{
-			using( Demo1 game = new Demo1() )
+			using( MainSample game = new MainSample() )
 			{
 				game.Run();
 			}

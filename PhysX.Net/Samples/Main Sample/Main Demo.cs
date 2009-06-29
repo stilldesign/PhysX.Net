@@ -12,7 +12,7 @@ namespace StillDesign.PhysX.Samples
 {
 	public delegate void ContactCallback( Actor a, Actor b, ContactPairFlag events );
 
-	public partial class Demo1 : Game
+	public partial class MainSample : Game
 	{
 		#region Variables
 			private readonly Engine _engine;
@@ -31,7 +31,7 @@ namespace StillDesign.PhysX.Samples
 			private Vehicle _basicVehicle;
 		#endregion
 
-		public Demo1()
+		public MainSample()
 		{
 			Content.RootDirectory = "Content";
 
@@ -89,6 +89,8 @@ namespace StillDesign.PhysX.Samples
 				_basicVehicle.Turn( -0.05f );
 
 			//
+
+			
 
 			_engine.Update( gameTime );
 		}
@@ -161,11 +163,11 @@ namespace StillDesign.PhysX.Samples
 
 	public class ContactReport : UserContactReport
 	{
-		private Demo1 _demo;
+		private MainSample _demo;
 
 		private List<ContactReportPair> _contactPairs;
 
-		public ContactReport( Demo1 demo )
+		public ContactReport( MainSample demo )
 		{
 			_demo = demo;
 
@@ -227,7 +229,7 @@ namespace StillDesign.PhysX.Samples
 
 	public class Notify : UserNotify
 	{
-		public Notify( Demo1 demo )
+		public Notify( MainSample demo )
 		{
 
 		}
@@ -255,7 +257,7 @@ namespace StillDesign.PhysX.Samples
 
 	public class TriggerReport : UserTriggerReport
 	{
-		public TriggerReport( Demo1 demo )
+		public TriggerReport( MainSample demo )
 		{
 
 		}
