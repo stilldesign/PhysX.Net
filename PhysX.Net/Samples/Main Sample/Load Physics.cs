@@ -392,7 +392,7 @@ namespace StillDesign.PhysX.Samples
 			#endregion
 			
 			#region SoftBody
-			if( true ) // Enable to view soft bodies, they run slowly
+			if( false ) // Enable to view soft bodies, they run slowly
 			{
 				XmlDocument doc = new XmlDocument();
 					doc.Load( "Teapot.xml" );
