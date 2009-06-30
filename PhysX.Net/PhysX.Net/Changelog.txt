@@ -2,6 +2,7 @@
 Cleaned up ActorDescription/Base
 Targeting SlimDX March 2009
 Added Serialization code back in
+Fix for the underlying NxMeshData not being referenced by the wrapper when constructed by the SoftBodyDescription class
 
 [0.11.0.0 - 2009-03-28]
 Changed RuntimeFileChecks to strip quotes from environment variable paths
