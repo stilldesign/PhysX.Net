@@ -71,7 +71,7 @@ namespace StillDesign.PhysX.UnitTests
 				{
 					Name = String.Format( "Box {0}", x ),
 					BodyDescription = new BodyDescription( 10.0f ),
-					GlobalPose = Matrix.CreateTranslation( 100, 15 + 3 * x, 20 ),
+					GlobalPose = GraphicsLibraryWrapper.CreateTranslationMatrix( 100, 15 + 3 * x, 20 ),
 					Shapes = { boxShapeDesc }
 				};
 
@@ -154,7 +154,7 @@ namespace StillDesign.PhysX.UnitTests
 				ActorDescription actorDescA = new ActorDescription()
 				{
 					BodyDescription = new BodyDescription( 10.0f ),
-					GlobalPose = Matrix.CreateTranslation( 75, 1.5f, 55 ),
+					GlobalPose = GraphicsLibraryWrapper.CreateTranslationMatrix( 75, 1.5f, 55 ),
 					Shapes = { boxShapeDescA }
 				};
 				Actor actorA = _scene.CreateActor( actorDescA );
@@ -162,7 +162,7 @@ namespace StillDesign.PhysX.UnitTests
 				ActorDescription actorDescB = new ActorDescription()
 				{
 					BodyDescription = new BodyDescription( 10.0f ),
-					GlobalPose = Matrix.CreateTranslation( 70, 1.5f, 55 ),
+					GlobalPose = GraphicsLibraryWrapper.CreateTranslationMatrix( 70, 1.5f, 55 ),
 					Shapes = { boxShapeDescB }
 				};
 				Actor actorB = _scene.CreateActor( actorDescB );
@@ -195,7 +195,7 @@ namespace StillDesign.PhysX.UnitTests
 					ActorDescription actorDesc = new ActorDescription()
 					{
 						BodyDescription = bodyDesc,
-						GlobalPose = Matrix.CreateTranslation( 70, 25, 65 ),
+						GlobalPose = GraphicsLibraryWrapper.CreateTranslationMatrix( 70, 25, 65 ),
 						Shapes = { boxShapeDesc }
 					};
 					actorA = _scene.CreateActor( actorDesc );
@@ -206,7 +206,7 @@ namespace StillDesign.PhysX.UnitTests
 					ActorDescription actorDesc = new ActorDescription()
 					{
 						BodyDescription = new BodyDescription( 10.0f ),
-						GlobalPose = Matrix.CreateTranslation( 70, 15, 65 ),
+						GlobalPose = GraphicsLibraryWrapper.CreateTranslationMatrix( 70, 15, 65 ),
 						Shapes = { boxShapeDesc }
 					};
 					actorB = _scene.CreateActor( actorDesc );
@@ -236,7 +236,7 @@ namespace StillDesign.PhysX.UnitTests
 					DimensionX = 0.5f,
 					DimensionY = 0.5f,
 					Rate = 15,
-					RelativePose = Matrix.CreateTranslation( -40, 10, 50 ),
+					RelativePose = GraphicsLibraryWrapper.CreateTranslationMatrix( -40, 10, 50 ),
 					Shape = EmitterShape.Rectangular,
 					Type = EmitterType.ConstantFlowRate,
 					RandomAngle = 0.5f
@@ -260,7 +260,7 @@ namespace StillDesign.PhysX.UnitTests
 					
 					ActorDescription drainActorDesc = new ActorDescription()
 					{
-						GlobalPose = Matrix.CreateRotationX( 0.5f ) * Matrix.CreateTranslation( -40, 5, 52 ),
+						GlobalPose = GraphicsLibraryWrapper.CreateRotationX( 0.5f ) * GraphicsLibraryWrapper.CreateTranslationMatrix( -40, 5, 52 ),
 						Shapes =  { boxShapeDesc }
 					};
 
@@ -274,7 +274,7 @@ namespace StillDesign.PhysX.UnitTests
 
 					ActorDescription drainActorDesc = new ActorDescription()
 					{
-						GlobalPose = Matrix.CreateTranslation( -40, 0, 55 ),
+						GlobalPose = GraphicsLibraryWrapper.CreateTranslationMatrix( -40, 0, 55 ),
 						Shapes = { boxShapeDesc }
 					};
 
@@ -305,7 +305,7 @@ namespace StillDesign.PhysX.UnitTests
 				ForceFieldShapeGroup shapeGroup = _scene.CreateForceFieldShapeGroup( shapeGroupDesc );
 
 				BoxForceFieldShape boxForceFieldShape = shapeGroup.CreateShape( boxForceFieldShapeDesc ) as BoxForceFieldShape;
-					boxForceFieldShape.Pose = Matrix.CreateTranslation( 30, 5, 0 );
+				boxForceFieldShape.Pose = GraphicsLibraryWrapper.CreateTranslationMatrix( 30, 5, 0 );
 
 				ForceFieldDescription forceFieldDesc = new ForceFieldDescription()
 				{
@@ -365,7 +365,7 @@ namespace StillDesign.PhysX.UnitTests
 
 				ActorDescription actorDesc = new ActorDescription()
 				{
-					GlobalPose = Matrix.CreateTranslation( 100, 0, 0 ),
+					GlobalPose = GraphicsLibraryWrapper.CreateTranslationMatrix( 100, 0, 0 ),
 					Shapes = { heightFieldShapeDesc }
 				};
 				Actor actor = _scene.CreateActor( actorDesc );

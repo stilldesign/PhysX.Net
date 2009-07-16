@@ -29,6 +29,31 @@ namespace StillDesign.PhysX.UnitTests
 #endif
 		}
 
+		public static Matrix CreateRotationX( float angle )
+		{
+#if GRAPHICS_MDX || GRAPHICS_SLIMDX
+			return Matrix.RotationX( angle );
+#elif GRAPHICS_XNA2 || GRAPHICS_XNA3
+			return Matrix.CreateRotationX( angle );
+#endif
+		}
+		public static Matrix CreateRotationY( float angle )
+		{
+#if GRAPHICS_MDX || GRAPHICS_SLIMDX
+			return Matrix.RotationY( angle );
+#elif GRAPHICS_XNA2 || GRAPHICS_XNA3
+			return Matrix.CreateRotationY( angle );
+#endif
+		}
+		public static Matrix CreateRotationZ( float angle )
+		{
+#if GRAPHICS_MDX || GRAPHICS_SLIMDX
+			return Matrix.RotationZ( angle );
+#elif GRAPHICS_XNA2 || GRAPHICS_XNA3
+			return Matrix.CreateRotationZ( angle );
+#endif
+		}
+
 		public static Vector3 Vector3Empty
 		{
 			get
