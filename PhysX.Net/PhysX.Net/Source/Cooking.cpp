@@ -78,6 +78,9 @@ bool Cooking::CookTriangleMesh( TriangleMeshDescription^ description, Stream^ st
 	if( stream->CanWrite == false )
 		throw gcnew ArgumentException( "Stream is not writable", "stream" );
 	
+	if( _cooking == NULL )
+		throw gcnew InvalidOperationException( "The cooking library has not been initialized" );
+	
 	MemoryWriterStream^ ms = gcnew MemoryWriterStream();
 	NxStream* s = ms->UnmanagedPointer;
 	bool result = _cooking->NxCookTriangleMesh( *description->UnmanagedPointer, *s );
@@ -106,6 +109,9 @@ bool Cooking::CookConvexMesh( ConvexMeshDescription^ description, Stream^ stream
 		throw gcnew ArgumentNullException( "stream" );
 	if( stream->CanWrite == false )
 		throw gcnew ArgumentException( "Stream is not writable", "stream" );
+	
+	if( _cooking == NULL )
+		throw gcnew InvalidOperationException( "The cooking library has not been initialized" );
 	
 	MemoryWriterStream^ ms = gcnew MemoryWriterStream();
 	NxStream* s = ms->UnmanagedPointer;
@@ -136,6 +142,9 @@ bool Cooking::CookClothMesh( ClothMeshDescription^ description, Stream^ stream )
 	if( stream->CanWrite == false )
 		throw gcnew ArgumentException( "Stream is not writable", "stream" );
 	
+	if( _cooking == NULL )
+		throw gcnew InvalidOperationException( "The cooking library has not been initialized" );
+	
 	MemoryWriterStream^ ms = gcnew MemoryWriterStream();
 	NxStream* s = ms->UnmanagedPointer;
 	bool result = _cooking->NxCookClothMesh( *description->UnmanagedPointer, *s );
@@ -165,6 +174,9 @@ bool Cooking::CookSoftBodyMesh( SoftBodyMeshDescription^ description, Stream^ st
 		throw gcnew ArgumentNullException( "stream" );
 	if( stream->CanWrite == false )
 		throw gcnew ArgumentException( "Stream is not writable", "stream" );
+	
+	if( _cooking == NULL )
+		throw gcnew InvalidOperationException( "The cooking library has not been initialized" );
 	
 	MemoryWriterStream^ ms = gcnew MemoryWriterStream();
 	NxStream* s = ms->UnmanagedPointer;
