@@ -1,13 +1,32 @@
-// stdafx.h : include file for standard system include files,
-// or project specific include files that are used frequently, but
-// are changed infrequently
-//
+/*
+Copyright (c) 2009 PhysX.Net
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+*/
 
 #pragma once
 
 #pragma warning( disable : 4635 4800 4793 )
 
 #define NoGraphicsTargetSpecified #error No Graphics Target Specified
+
+// If you are using x64; change the paths below to "Program Files (x86)"
 
 #if GRAPHICS_MDX
 	#using <C:\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2902.0\Microsoft.DirectX.dll>
@@ -18,7 +37,7 @@
 #elif GRAPHICS_XNA3
 	#using <C:\Program Files\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.dll>
 #elif GRAPHICS_SLIMDX
-	#using <C:\Program Files (x86)\SlimDX SDK (March 2009)\Bin\x86\SlimDX.dll>
+	#using <C:\Program Files\SlimDX SDK (March 2009)\Bin\x86\SlimDX.dll>
 #else
 	NoGraphicsTargetSpecified
 #endif
@@ -50,11 +69,7 @@
 #endif						
 
 #ifndef _WIN32_WINDOWS		// Allow use of features specific to Windows 98 or later.
-#define _WIN32_WINDOWS 0x0410 // Change this to the appropriate value to target Windows Me or later.
-#endif
-
-#ifndef _WIN32_IE			// Allow use of features specific to IE 6.0 or later.
-#define _WIN32_IE 0x0600	// Change this to the appropriate value to target other versions of IE.
+#define _WIN32_WINDOWS 0x0501 // Windows XP
 #endif
 
 #define SAFE_DELETE(p)	{ if( (p) != NULL){ (p) = NULL; delete (p); } }
