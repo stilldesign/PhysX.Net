@@ -34,21 +34,17 @@ namespace StillDesign.PhysX.UnitTests
 
 		protected Core CreateCore()
 		{
-			if( this.Core != null || PhysX.Core.IsCoreCreated == true )
+			if( this.Core != null || PhysX.Core.IsCoreCreated )
 				throw new Exception( "Core is still created" );
 
-			this.Core = this.Core = new Core();
+			this.Core = new Core();
 			this.Core.OnDisposed += Core_OnDisposed;
 
 			return this.Core;
 		}
 		protected Core CreateCoreAndScene()
 		{
-			if( this.Core != null || PhysX.Core.IsCoreCreated == true )
-				throw new Exception( "Core is still created" );
-
-			this.Core = this.Core = new Core();
-				this.Core.OnDisposed += Core_OnDisposed;
+			CreateCore();
 
 			this.Scene = this.Core.CreateScene();
 
