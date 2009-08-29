@@ -4,10 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-#if GRAPHICS_XNA2 || GRAPHICS_XNA3
+#if GRAPHICS_XNA31
 using Microsoft.Xna.Framework;
-#elif GRAPHICS_MDX
-using Microsoft.DirectX;
 #elif GRAPHICS_SLIMDX
 using SlimDX;
 #else

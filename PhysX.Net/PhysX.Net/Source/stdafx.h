@@ -28,27 +28,15 @@ THE SOFTWARE.
 
 // If you are using x64; change the paths below to "Program Files (x86)"
 
-#if GRAPHICS_MDX
-	#using <C:\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2902.0\Microsoft.DirectX.dll>
-	#using <C:\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2902.0\Microsoft.DirectX.Direct3D.dll>
-	#using <C:\Windows\Microsoft.NET\DirectX for Managed Code\1.0.2911.0\Microsoft.DirectX.Direct3DX.dll>
-#elif GRAPHICS_XNA2
-	#using <C:\Program Files\Microsoft XNA\XNA Game Studio\v2.0\References\Windows\x86\Microsoft.Xna.Framework.dll>
-#elif GRAPHICS_XNA3
-	#using <C:\Program Files\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.dll>
+#if GRAPHICS_XNA31
+	#using <C:\Program Files\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.dll>
 #elif GRAPHICS_SLIMDX
 	#using <C:\Program Files\SlimDX SDK (March 2009)\Bin\x86\SlimDX.dll>
 #else
 	NoGraphicsTargetSpecified
 #endif
 
-#if GRAPHICS_MDX
-	#define UsingFrameworkNamespace using namespace Microsoft::DirectX;
-	#define UsingGraphicsNamespace using namespace Microsoft::DirectX::Direct3D;
-#elif GRAPHICS_XNA2
-	#define UsingFrameworkNamespace using namespace Microsoft::Xna::Framework;
-	#define UsingGraphicsNamespace using namespace Microsoft::Xna::Framework::Graphics;
-#elif GRAPHICS_XNA3
+#if GRAPHICS_XNA31
 	#define UsingFrameworkNamespace using namespace Microsoft::Xna::Framework;
 	#define UsingGraphicsNamespace using namespace Microsoft::Xna::Framework::Graphics;
 #elif GRAPHICS_SLIMDX

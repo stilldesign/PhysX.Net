@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
-
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-#if GRAPHICS_XNA2 || GRAPHICS_XNA3
+#if GRAPHICS_XNA31
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-#elif GRAPHICS_MDX
-using Microsoft.DirectX;
 #elif GRAPHICS_SLIMDX
 using SlimDX;
 #else

@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
-#if GRAPHICS_XNA2 || GRAPHICS_XNA3
+#if GRAPHICS_XNA31
 using Microsoft.Xna.Framework;
-#elif GRAPHICS_MDX
-using Microsoft.DirectX;
 #elif GRAPHICS_SLIMDX
 using SlimDX;
 #else
@@ -22,34 +19,34 @@ namespace StillDesign.PhysX.UnitTests
 		}
 		public static Matrix CreateTranslationMatrix( Vector3 translation )
 		{
-#if GRAPHICS_MDX || GRAPHICS_SLIMDX
+#if GRAPHICS_SLIMDX
 			return Matrix.Translation( translation );
-#elif GRAPHICS_XNA2 || GRAPHICS_XNA3
+#elif GRAPHICS_XNA31
 			return Matrix.CreateTranslation( translation );
 #endif
 		}
 
 		public static Matrix CreateRotationX( float angle )
 		{
-#if GRAPHICS_MDX || GRAPHICS_SLIMDX
+#if GRAPHICS_SLIMDX
 			return Matrix.RotationX( angle );
-#elif GRAPHICS_XNA2 || GRAPHICS_XNA3
+#elif GRAPHICS_XNA31
 			return Matrix.CreateRotationX( angle );
 #endif
 		}
 		public static Matrix CreateRotationY( float angle )
 		{
-#if GRAPHICS_MDX || GRAPHICS_SLIMDX
+#if GRAPHICS_SLIMDX
 			return Matrix.RotationY( angle );
-#elif GRAPHICS_XNA2 || GRAPHICS_XNA3
+#elif GRAPHICS_XNA31
 			return Matrix.CreateRotationY( angle );
 #endif
 		}
 		public static Matrix CreateRotationZ( float angle )
 		{
-#if GRAPHICS_MDX || GRAPHICS_SLIMDX
+#if GRAPHICS_SLIMDX
 			return Matrix.RotationZ( angle );
-#elif GRAPHICS_XNA2 || GRAPHICS_XNA3
+#elif GRAPHICS_XNA31
 			return Matrix.CreateRotationZ( angle );
 #endif
 		}
