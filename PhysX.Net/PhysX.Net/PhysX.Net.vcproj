@@ -1369,6 +1369,10 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath=".\Source\Constant Contact Stream.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Source\Constraint Dominance.cpp"
 				>
 				<FileConfiguration
@@ -1406,6 +1410,10 @@
 			</File>
 			<File
 				RelativePath=".\Source\Contact Pair.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Source\Contact Stream Iterator.cpp"
 				>
 			</File>
 			<File
@@ -7159,7 +7167,15 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Source\Constant Contact Stream.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Source\Constraint Dominance.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Source\Contact Stream Iterator.h"
 				>
 			</File>
 			<File

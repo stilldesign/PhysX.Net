@@ -1,6 +1,7 @@
 #include "StdAfx.h"
 
 #include "Contact Pair.h"
+#include "Constant Contact Stream.h"
 
 using namespace StillDesign::PhysX;
 
@@ -8,16 +9,26 @@ ContactPair::ContactPair()
 {
 	
 }
-ContactPair::ContactPair( Actor^ actorA, Actor^ actorB, Vector3 normalForce, Vector3 frictionForce, bool actorADeleted, bool actorBDeleted )
+//ContactPair::ContactPair( Actor^ actorA, Actor^ actorB, Vector3 normalForce, Vector3 frictionForce, bool actorADeleted, bool actorBDeleted )
+//{
+//	_actorA = actorA;
+//	_actorB = actorB;
+//	
+//	_normalForce = normalForce;
+//	_frictionForce = frictionForce;
+//	
+//	_actorADeleted = actorADeleted;
+//	_actorBDeleted = actorBDeleted;
+//	
+//	_contactStream = gcnew ConstantContactStream(  );
+//}
+ContactPair::~ContactPair()
 {
-	_actorA = actorA;
-	_actorB = actorB;
-	
-	_normalForce = normalForce;
-	_frictionForce = frictionForce;
-	
-	_actorADeleted = actorADeleted;
-	_actorBDeleted = actorBDeleted;
+	this->!ContactPair();
+}
+ContactPair::!ContactPair()
+{
+	_contactStream = nullptr;
 }
 
 ContactPair^ ContactPair::FromUnmanagedPointer( NxContactPair* contactPair )
@@ -34,7 +45,9 @@ ContactPair^ ContactPair::FromUnmanagedPointer( NxContactPair* contactPair )
 		
 		pair->_actorADeleted = contactPair->isDeletedActor[ 0 ];
 		pair->_actorBDeleted = contactPair->isDeletedActor[ 1 ];
-	
+		
+		pair->_contactStream = gcnew ConstantContactStream( &contactPair->stream );
+		
 	return pair;
 }
 
@@ -63,4 +76,9 @@ bool ContactPair::IsActorADeleted::get()
 bool ContactPair::IsActorBDeleted::get()
 {
 	return _actorBDeleted;
+}
+
+ConstantContactStream^ ContactPair::ContactStream::get()
+{
+	return _contactStream;
 }

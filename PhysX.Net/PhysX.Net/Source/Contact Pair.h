@@ -5,6 +5,7 @@ namespace StillDesign
 	namespace PhysX
 	{
 		ref class Actor;
+		ref class ConstantContactStream;
 		
 		public ref class ContactPair
 		{
@@ -16,11 +17,17 @@ namespace StillDesign
 				Vector3 _frictionForce;
 				
 				bool _actorADeleted, _actorBDeleted;
+				
+				ConstantContactStream^ _contactStream;
 			
 			internal:
 				ContactPair();
+			//private:
+			//	ContactPair( Actor^ actorA, Actor^ actorB, Vector3 normalForce, Vector3 frictionForce, bool actorADeleted, bool actorBDeleted );
+			protected:
+				~ContactPair();
 			public:
-				ContactPair( Actor^ actorA, Actor^ actorB, Vector3 normalForce, Vector3 frictionForce, bool actorADeleted, bool actorBDeleted );
+				!ContactPair();
 				
 			internal:
 				static ContactPair^ FromUnmanagedPointer( NxContactPair* contactPair );
@@ -55,6 +62,11 @@ namespace StillDesign
 				property bool IsActorBDeleted
 				{
 					bool get();
+				}
+				
+				property ConstantContactStream^ ContactStream
+				{
+					ConstantContactStream^ get();
 				}
 		};
 	};
