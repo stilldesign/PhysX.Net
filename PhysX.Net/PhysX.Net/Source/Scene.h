@@ -516,6 +516,9 @@ namespace StillDesign
 				/// <summary>Queries the Scene for a list of the NxActors whose transforms have been updated during the previous simulation step</summary>
 				array<ActiveTransform^>^ GetActiveTransforms();
 				
+				float GetForceFieldScale( short varietyIndex, short materialIndex );
+				void SetForceFieldScale( short varietyIndex, short materialIndex, float value );
+				
 			private:
 				//void Actors_onAdd( Object^ sender, Actor^ item );
 				//void Actors_onRemove( Object^ sender, Actor^ item );

@@ -1267,6 +1267,15 @@ array<ActiveTransform^>^ Scene::GetActiveTransforms()
 	return transforms;
 }
 
+float Scene::GetForceFieldScale( short varietyIndex, short materialIndex )
+{
+	return _scene->getForceFieldScale( varietyIndex, materialIndex );
+}
+void Scene::SetForceFieldScale( short varietyIndex, short materialIndex, float value )
+{
+	_scene->setForceFieldScale( varietyIndex, materialIndex, value );
+}
+
 // Properties
 
 StillDesign::PhysX::Core^ Scene::Core::get()

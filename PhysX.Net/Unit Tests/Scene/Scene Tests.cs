@@ -270,6 +270,15 @@ namespace StillDesign.PhysX.UnitTests
 				}
 			}
 		}
+
+		[TestMethod]
+		public void ForceFieldScale()
+		{
+			CreateCoreAndScene();
+
+			this.Scene.SetForceFieldScale( 0, 0, 5.2f );
+			Assert.AreEqual( 5.2f, this.Scene.GetForceFieldScale( 0, 0 ) );
+		}
 	}
 
 	public class SweepCallback : UserEntitySweepQueryHitReport
