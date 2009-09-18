@@ -494,7 +494,7 @@ namespace StillDesign
 		{
 			DisableSSE = NX_SF_DISABLE_SSE,
 			DisableCollisions = NX_SF_DISABLE_COLLISIONS,
-			SimulateSeperateThread = NX_SF_SIMULATE_SEPARATE_THREAD,
+			SimulateSeparateThread = NX_SF_SIMULATE_SEPARATE_THREAD,
 			EnableMultithread = NX_SF_ENABLE_MULTITHREAD,
 			EnableActiveTransforms = NX_SF_ENABLE_ACTIVETRANSFORMS,
 			RestrictedScene = NX_SF_RESTRICTED_SCENE,
