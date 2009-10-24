@@ -28,6 +28,10 @@ namespace StillDesign.PhysX.UnitTests
 
 			LoadPhysics();
 
+			this.Scene.Simulate( 1.0f/60.0f );
+			this.Scene.FlushStream();
+			this.Scene.FetchResults( SimulationStatus.RigidBodyFinished, true );
+
 			var joints = this.Scene.Joints.ToArray();
 			foreach( var joint in joints )
 			{
@@ -50,6 +54,12 @@ namespace StillDesign.PhysX.UnitTests
 			foreach( var h in heightFields )
 			{
 				h.Dispose();
+			}
+
+			var controllers = this.Scene.ControllerManagers[ 0 ].Controllers.ToArray();
+			foreach( var controller in controllers )
+			{
+				controller.Dispose();
 			}
 		}
 
@@ -516,21 +526,18 @@ namespace StillDesign.PhysX.UnitTests
 			//}
 			//#endregion
 
-			//#region Controller
-			//{
-			//    ControllerManager manager = _scene.CreateControllerManager();
-				
-			//    CapsuleControllerDescription capsuleControllerDesc = new CapsuleControllerDescription( 4, 3 )
-			//    {
-			//        Callback = new ControllerHitReport()
-			//    };
+			#region Controller
+			{
+				ControllerManager manager = _scene.CreateControllerManager();
 
-			//    CapsuleController capsuleController = manager.CreateController<CapsuleController>( capsuleControllerDesc );
-			//        capsuleController.Position = new Vector3( 0, 1.5f + 2, -15 );
-			//        capsuleController.Actor.Name = "BoxController";
-			//        capsuleController.SetCollisionEnabled( true );
-			//}
-			//#endregion
+				CapsuleControllerDescription capsuleControllerDesc = new CapsuleControllerDescription( 4, 3 );
+
+				CapsuleController capsuleController = manager.CreateController<CapsuleController>( capsuleControllerDesc );
+					capsuleController.Position = new Vector3( 0, 1.5f + 2, -15 );
+					capsuleController.Actor.Name = "BoxController";
+					capsuleController.SetCollisionEnabled( true );
+			}
+			#endregion
 		}
 	}
 }
