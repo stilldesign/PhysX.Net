@@ -16,6 +16,7 @@
 #include "Memory Writer Stream.h"
 #include "User Memory Writer Stream.h"
 #include "Cloth Mesh.h"
+#include "Cloth Split Pair Data.h"
 
 #include <NxCloth.h> 
 #include <NxClothDesc.h> 
@@ -23,10 +24,11 @@
 using namespace System;
 using namespace StillDesign::PhysX;
 
-Cloth::Cloth( NxCloth* cloth, StillDesign::PhysX::MeshData^ meshData )
+Cloth::Cloth( NxCloth* cloth, StillDesign::PhysX::MeshData^ meshData, ClothSplitPairData^ splitPairData )
 {
 	Debug::Assert( cloth != NULL );
 	Debug::Assert( meshData != nullptr );
+	Debug::Assert( splitPairData != nullptr );
 	
 	_cloth = cloth;
 	
@@ -37,6 +39,8 @@ Cloth::Cloth( NxCloth* cloth, StillDesign::PhysX::MeshData^ meshData )
 	
 	if( cloth->getCompartment() != NULL )
 		_compartment = ObjectTable::GetObject<StillDesign::PhysX::Compartment^>( (intptr_t)cloth->getCompartment() );
+	
+	_splitPairData = splitPairData;
 	
 	this->Flags |= ClothFlag::Visualization;
 	
@@ -282,6 +286,55 @@ void Cloth::SetVertexVelocity( int vertexId, Vector3 velocity )
 	_cloth->setVelocity( Math::Vector3ToNxVec3( velocity ), vertexId );
 }
 
+void Cloth::SetConstrainCoefficients( array<ClothConstrainCoefficients>^ constrainCoefficients )
+{
+	if( constrainCoefficients == nullptr )
+		throw gcnew ArgumentNullException( "constrainCoefficients" );
+	
+	NxClothConstrainCoefficients* c = new NxClothConstrainCoefficients[ constrainCoefficients->Length ];
+	
+	for( int x = 0; x < constrainCoefficients->Length; x++ )
+	{
+		c[ x ] = constrainCoefficients[ x ].ToUnmanaged();
+	}
+	
+	_cloth->setConstrainCoefficients( c );
+	
+	delete[] c;
+}
+void Cloth::SetConstrainPositions( array<Vector3>^ positions )
+{
+	if( positions == nullptr )
+		throw gcnew ArgumentNullException( "positions" );
+	
+	NxVec3* p = new NxVec3[ positions->Length ];
+	
+	for( int x = 0; x < positions->Length; x++ )
+	{
+		p[ x ] = Math::Vector3ToNxVec3( positions[ x ] );
+	}
+	
+	_cloth->setConstrainPositions( p );
+	
+	delete[] p;
+}
+void Cloth::SetConstrainNormals( array<Vector3>^ normals )
+{
+	if( normals == nullptr )
+		throw gcnew ArgumentNullException( "normals" );
+	
+	NxVec3* n = new NxVec3[ normals->Length ];
+	
+	for( int x = 0; x < normals->Length; x++ )
+	{
+		n[ x ] = Math::Vector3ToNxVec3( normals[ x ] );
+	}
+	
+	_cloth->setConstrainNormals( n );
+	
+	delete[] n;
+}
+
 //
 
 StillDesign::PhysX::Scene^ Cloth::Scene::get()
@@ -440,6 +493,15 @@ float Cloth::Thickness::get()
 void Cloth::Thickness::set( float value )
 {
 	_cloth->setThickness( value );
+}
+
+float Cloth::SelfCollisionThickness::get()
+{
+	return _cloth->getSelfCollisionThickness();
+}
+void Cloth::SelfCollisionThickness::set( float value )
+{
+	_cloth->setSelfCollisionThickness( value );
 }
 
 float Cloth::Density::get()
@@ -620,6 +682,20 @@ bool Cloth::IsSleeping::get()
 	return _cloth->isSleeping();
 }
 
+int Cloth::HierarchicalSolverIterations::get()
+{
+	return this->UnmanagedPointer->getHierarchicalSolverIterations();
+}
+void Cloth::HierarchicalSolverIterations::set( int value )
+{
+	this->UnmanagedPointer->setHierarchicalSolverIterations( value );
+}
+
+ClothSplitPairData^ Cloth::SplitPairData::get()
+{
+	return _splitPairData;
+}
+
 Object^ Cloth::UserData::get()
 {
 	return _userData;
@@ -634,9 +710,9 @@ NxCloth* Cloth::UnmanagedPointer::get()
 	return _cloth;
 }
 
-///////////////////
+//
 // Cloth Ray Cast Result
-///////////////////
+//
 
 ClothRaycastResult::ClothRaycastResult( bool rayHit, Vector3 hitPosition, int vertexIndex ) : RaycastResult( rayHit, hitPosition )
 {

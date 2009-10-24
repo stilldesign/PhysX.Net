@@ -273,6 +273,57 @@ void SoftBody::LoadStateFromStream( Stream^ stream )
 	_softBody->loadStateFromStream( *(MemoryReaderStream::FromStream( stream )->UnmanagedPointer) );
 }
 
+void SoftBody::SetConstrainCoefficients( array<SoftBodyConstrainCoefficients>^ constrainCoefficients )
+{
+	if( constrainCoefficients == nullptr )
+		throw gcnew ArgumentNullException( "constrainCoefficients" );
+	
+	NxSoftBodyConstrainCoefficients* c = new NxSoftBodyConstrainCoefficients[ constrainCoefficients->Length ];
+	
+	for( int x = 0; x < constrainCoefficients->Length; x++ )
+	{
+		c[ x ] = constrainCoefficients[ x ].ToUnmanaged();
+	}
+	
+	_softBody->setConstrainCoefficients( c );
+	
+	delete[] c;
+}
+void SoftBody::SetConstrainPositions( array<Vector3>^ positions )
+{
+	if( positions == nullptr )
+		throw gcnew ArgumentNullException( "positions" );
+	
+	NxVec3* p = new NxVec3[ positions->Length ];
+	
+	for( int x = 0; x < positions->Length; x++ )
+	{
+		p[ x ] = Math::Vector3ToNxVec3( positions[ x ] );
+	}
+	
+	_softBody->setConstrainPositions( p );
+	
+	delete[] p;
+}
+void SoftBody::SetConstrainNormals( array<Vector3>^ normals )
+{
+	if( normals == nullptr )
+		throw gcnew ArgumentNullException( "normals" );
+	
+	NxVec3* n = new NxVec3[ normals->Length ];
+	
+	for( int x = 0; x < normals->Length; x++ )
+	{
+		n[ x ] = Math::Vector3ToNxVec3( normals[ x ] );
+	}
+	
+	_softBody->setConstrainNormals( n );
+	
+	delete[] n;
+}
+
+//
+
 StillDesign::PhysX::Scene^ SoftBody::Scene::get()
 {
 	return _scene;
@@ -493,6 +544,15 @@ SoftBodyFlag SoftBody::Flags::get()
 void SoftBody::Flags::set( SoftBodyFlag value )
 {
 	_softBody->setFlags( (NxSoftBodyFlag)value );
+}
+
+float SoftBody::SelfCollisionThickness::get()
+{
+	return _softBody->getSelfCollisionThickness();
+}
+void SoftBody::SelfCollisionThickness::set( float value )
+{
+	_softBody->setSelfCollisionThickness( value );
 }
 
 Object^ SoftBody::UserData::get()

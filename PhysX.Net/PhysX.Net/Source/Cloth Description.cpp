@@ -10,6 +10,7 @@
 #include "Bounds.h"
 #include "Core.h"
 #include "Compartment.h"
+#include "Cloth Split Pair Data.h"
 
 #include <NxCloth.h> 
 #include <NxClothDesc.h> 
@@ -21,6 +22,8 @@ ClothDescription::ClothDescription()
 	_clothDesc = new NxClothDesc();
 	
 	_meshData = gcnew StillDesign::PhysX::MeshData( &_clothDesc->meshData );
+	
+	Create();
 }
 ClothDescription::ClothDescription( NxClothDesc* description, StillDesign::PhysX::MeshData^ meshData )
 {
@@ -32,6 +35,8 @@ ClothDescription::ClothDescription( NxClothDesc* description, StillDesign::PhysX
 		_clothMesh = ObjectTable::GetObject<StillDesign::PhysX::ClothMesh^>( (intptr_t)description->clothMesh );
 	
 	_meshData = meshData;
+	
+	Create();
 }
 ClothDescription::~ClothDescription()
 {
@@ -52,6 +57,10 @@ ClothDescription::!ClothDescription()
 	_userData = nullptr;
 	
 	OnDisposed( this, nullptr );
+}
+void ClothDescription::Create()
+{
+	_splitPairData = gcnew ClothSplitPairData( &_clothDesc->splitPairData );
 }
 bool ClothDescription::IsDisposed::get()
 {
@@ -138,6 +147,14 @@ float ClothDescription::Thickness::get()
 void ClothDescription::Thickness::set( float value )
 {
 	_clothDesc->thickness = value;
+}
+float ClothDescription::SelfCollisionThickness::get()
+{
+	return _clothDesc->selfCollisionThickness;
+}
+void ClothDescription::SelfCollisionThickness::set( float value )
+{
+	_clothDesc->selfCollisionThickness = value;
 }
 
 float ClothDescription::Density::get()
@@ -344,6 +361,29 @@ float ClothDescription::RelativeGridSpacing::get()
 void ClothDescription::RelativeGridSpacing::set( float value )
 {
 	_clothDesc->relativeGridSpacing = value;
+}
+
+int ClothDescription::HierarchicalSolverIterations::get()
+{
+	return this->UnmanagedPointer->hierarchicalSolverIterations;
+}
+void ClothDescription::HierarchicalSolverIterations::set( int value )
+{
+	this->UnmanagedPointer->hierarchicalSolverIterations = value;
+}
+
+float ClothDescription::HardStretchLimitationFactor::get()
+{
+	return this->UnmanagedPointer->hardStretchLimitationFactor;
+}
+void ClothDescription::HardStretchLimitationFactor::set( float value )
+{
+	this->UnmanagedPointer->hardStretchLimitationFactor = value;
+}
+
+ClothSplitPairData^ ClothDescription::SplitPairData::get()
+{
+	return _splitPairData;
 }
 
 Object^ ClothDescription::UserData::get()

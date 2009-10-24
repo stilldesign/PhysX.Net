@@ -4,6 +4,7 @@
 #include "Bounds.h"
 #include "IDisposable.h"
 #include "Ray.h"
+#include "Soft Body Constrain Coefficients.h"
 
 UsingFrameworkNamespace
 using namespace System;
@@ -133,6 +134,10 @@ namespace StillDesign
 				void SaveStateToStream( Stream^ stream );
 				void SaveStateToStream( Stream^ stream, bool permute );
 				void LoadStateFromStream( Stream^ stream );
+				
+				void SetConstrainCoefficients( array<SoftBodyConstrainCoefficients>^ constrainCoefficients );
+				void SetConstrainPositions( array<Vector3>^ positions );
+				void SetConstrainNormals( array<Vector3>^ normals );
 				
 				//
 				
@@ -295,6 +300,12 @@ namespace StillDesign
 				{
 					SoftBodyFlag get();
 					void set( SoftBodyFlag value );
+				}
+				/// <summary>Gets or Sets the soft body self collision thickness (must be positive). The particle diameter to use for self collision.</summary>
+				property float SelfCollisionThickness
+				{
+					float get();
+					void set( float value );
 				}
 				
 				/// <summary>Gets or Sets an arbitary 1:1 object</summary>

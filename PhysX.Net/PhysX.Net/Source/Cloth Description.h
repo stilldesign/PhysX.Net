@@ -4,7 +4,6 @@
 #include "IDisposable.h"
 
 using namespace System;
-
 UsingFrameworkNamespace
 
 namespace StillDesign
@@ -18,6 +17,7 @@ namespace StillDesign
 		value class GroupsMask;
 		value class Bounds3;
 		ref class Compartment;
+		ref class ClothSplitPairData;
 		
 		public ref class ClothDescription : StillDesign::PhysX::IDisposable
 		{
@@ -33,6 +33,8 @@ namespace StillDesign
 				
 				StillDesign::PhysX::Compartment^ _compartment;
 				
+				ClothSplitPairData^ _splitPairData;
+				
 				Object^ _userData;
 			
 			public:
@@ -43,6 +45,8 @@ namespace StillDesign
 				~ClothDescription();
 			protected:
 				!ClothDescription();
+			private:
+				void Create(); // Common constructor logic
 			public:
 				property bool IsDisposed
 				{
@@ -89,6 +93,11 @@ namespace StillDesign
 				
 				/// <summary>Gets or Sets the thickness of the cloth</summary>
 				property float Thickness
+				{
+					float get();
+					void set( float value );
+				}
+				property float SelfCollisionThickness
 				{
 					float get();
 					void set( float value );
@@ -235,6 +244,21 @@ namespace StillDesign
 				{
 					ClothFlag get();
 					void set( ClothFlag value );
+				}
+				/// <summary>Gets or Sets how many iterations of the hierarchical solver to run at each time step</summary>
+				property int HierarchicalSolverIterations
+				{
+					int get();
+					void set( int value );
+				}
+				property float HardStretchLimitationFactor
+				{
+					float get();
+					void set( float value );
+				}
+				property ClothSplitPairData^ SplitPairData
+				{
+					ClothSplitPairData^ get();
 				}
 				
 				/// <summary>Gets or Sets an arbitrary 1:1 object</summary>

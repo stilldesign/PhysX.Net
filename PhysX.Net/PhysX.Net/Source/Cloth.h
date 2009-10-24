@@ -4,6 +4,7 @@
 #include "Ray.h"
 #include "Element Collection.h"
 #include "Groups Mask.h"
+#include "Cloth Constrain Coefficients.h"
 
 using namespace System;
 UsingFrameworkNamespace
@@ -24,6 +25,8 @@ namespace StillDesign
 		ref class ClothMesh;
 		ref class Core;
 		ref class Compartment;
+		value class ClothConstrainCoefficients;
+		ref class ClothSplitPairData;
 		
 		public ref class Cloth : StillDesign::PhysX::IDisposable
 		{
@@ -41,10 +44,12 @@ namespace StillDesign
 				
 				StillDesign::PhysX::Compartment^ _compartment;
 				
+				ClothSplitPairData^ _splitPairData;
+				
 				Object^ _userData;
 			
 			internal:
-				Cloth( NxCloth* cloth, StillDesign::PhysX::MeshData^ meshData );
+				Cloth( NxCloth* cloth, StillDesign::PhysX::MeshData^ meshData, ClothSplitPairData^ splitPairData );
 			public:
 				~Cloth();
 			protected:
@@ -142,6 +147,12 @@ namespace StillDesign
 				/// <param name="velocity">New velocity of the vertex</param>
 				void SetVertexVelocity( int vertexId, Vector3 velocity );
 				
+				void SetConstrainCoefficients( array<ClothConstrainCoefficients>^ constrainCoefficients );
+				void SetConstrainPositions( array<Vector3>^ positions );
+				void SetConstrainNormals( array<Vector3>^ normals );
+				
+				//
+				
 				/// <summary>Get or Sets the Name of the Cloth</summary>
 				property String^ Name
 				{
@@ -211,6 +222,12 @@ namespace StillDesign
 				}
 				/// <summary>Get or Sets cloth thickness</summary>
 				property float Thickness
+				{
+					float get();
+					void set( float value );
+				}
+				/// <summary>Gets or Sets the cloth self collision thickness (must be positive). The particle diameter to use for self collision.</summary>
+				property float SelfCollisionThickness
 				{
 					float get();
 					void set( float value );
@@ -336,6 +353,18 @@ namespace StillDesign
 				property bool IsSleeping
 				{
 					bool get();
+				}
+				
+				/// <summary>Gets or Sets how many iterations of the hierarchical solver to run at each time step</summary>
+				property int HierarchicalSolverIterations
+				{
+					int get();
+					void set( int value );
+				}
+				
+				property ClothSplitPairData^ SplitPairData
+				{
+					ClothSplitPairData^ get();
 				}
 				
 				/// <summary>Gets or Sets an arbitrary 1:1 object</summary>

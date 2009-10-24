@@ -74,6 +74,13 @@ namespace StillDesign
 					void set( float value );
 				}
 				
+				/// <summary>Used for cooking a mesh hierarchy into the cloth mesh</summary>
+				property int NumberOfHierarchyLevels
+				{
+					int get();
+					void set( int value );
+				}
+				
 			internal:
 				property NxClothMeshDesc* UnmanagedPointer
 				{

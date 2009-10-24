@@ -239,7 +239,8 @@ namespace StillDesign
 		[Flags]
 		public enum class SoftBodyVertexFlag
 		{
-			Tearable = NX_SOFTBODY_VERTEX_TEARABLE
+			Tearable = NX_SOFTBODY_VERTEX_TEARABLE,
+			Secondary = NX_SOFTBODY_VERTEX_SECONDARY
 		};
 		
 		[Flags]
@@ -258,7 +259,9 @@ namespace StillDesign
 			ValidBounds = NX_SBF_VALIDBOUNDS,
 			FluidCollision = NX_SBF_FLUID_COLLISION,
 			DisableDynamicCCD = NX_SBF_DISABLE_DYNAMIC_CCD,
-			Adhere = NX_SBF_ADHERE
+			Adhere = NX_SBF_ADHERE,
+			HardStretchLimitation = NX_SBF_HARD_STRETCH_LIMITATION,
+			InterCollision = NX_SBF_INTER_COLLISION
 		};
 		
 		[Flags]
@@ -281,7 +284,10 @@ namespace StillDesign
 			ValidBounds = NX_CLF_VALIDBOUNDS,
 			FluidCollision = NX_CLF_FLUID_COLLISION,
 			DisableDynamicCCD = NX_CLF_DISABLE_DYNAMIC_CCD,
-			Adhere = NX_CLF_ADHERE
+			Adhere = NX_CLF_ADHERE,
+			HardStretchLimitation = NX_CLF_HARD_STRETCH_LIMITATION,
+			Untangling = NX_CLF_UNTANGLING,
+			InterCollision = NX_CLF_INTER_COLLISION
 		};
 		
 		public enum class HeightFieldFormat
@@ -501,7 +507,9 @@ namespace StillDesign
 			DisableSceneMutex = NX_SF_DISABLE_SCENE_MUTEX,
 			ForceConeFrictions = NX_SF_FORCE_CONE_FRICTION,
 			SequentialPrimart = NX_SF_SEQUENTIAL_PRIMARY,
-			FluidPerformanceHint = NX_SF_FLUID_PERFORMANCE_HINT
+			FluidPerformanceHint = NX_SF_FLUID_PERFORMANCE_HINT,
+			AlternativeFluidTriangleCollision = NX_SF_ALTERNATIVE_FLUID_TRIANGLE_COLLISION,
+			MultithreadedForcefield = NX_SF_MULTITHREADED_FORCEFIELD
 		};
 		
 		public enum class SceneQueryExecuteMode

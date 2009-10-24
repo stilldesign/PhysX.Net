@@ -107,6 +107,15 @@ void ClothMeshDescription::WeldingDistance::set( float value )
 	this->UnmanagedPointer->weldingDistance = value;
 }
 
+int ClothMeshDescription::NumberOfHierarchyLevels::get()
+{
+	return this->UnmanagedPointer->numHierarchyLevels;
+}
+void ClothMeshDescription::NumberOfHierarchyLevels::set( int value )
+{
+	this->UnmanagedPointer->numHierarchyLevels = value;
+}
+
 NxClothMeshDesc* ClothMeshDescription::UnmanagedPointer::get()
 {
 	return (NxClothMeshDesc*)SimpleTriangleMesh::UnmanagedPointer;

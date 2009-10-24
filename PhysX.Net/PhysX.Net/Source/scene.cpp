@@ -68,6 +68,7 @@
 #include "Mesh Data.h"
 #include "Soft Body Split Pair Data.h"
 #include "PhysX Exception.h"
+#include "Cloth Split Pair Data.h"
 
 #include <NxScene.h>
 #include <NxSceneDesc.h>
@@ -147,8 +148,9 @@ Scene::Scene( NxScene* scene )
 		NxCloth* cloth = scene->getCloths()[ x ];
 		
 		MeshData^ meshData = gcnew MeshData( cloth->getMeshData() );
+		ClothSplitPairData^ splitPairData = gcnew ClothSplitPairData( &cloth->getSplitPairData() );
 		
-		_cloths->Add( gcnew Cloth( cloth, meshData ) );
+		_cloths->Add( gcnew Cloth( cloth, meshData, splitPairData ) );
 	}
 	// Force Fields
 	for( unsigned int x = 0; x < scene->getNbForceFields(); x++ )
@@ -294,7 +296,9 @@ Joint^ Scene::AddJoint( NxJoint* joint )
 }
 Cloth^ Scene::AddCloth( NxCloth* cloth )
 {
-	Cloth^ c = gcnew Cloth( cloth, gcnew MeshData( cloth->getMeshData() ) );
+	ClothSplitPairData^ splitPairData = gcnew ClothSplitPairData( &cloth->getSplitPairData() );
+	
+	Cloth^ c = gcnew Cloth( cloth, gcnew MeshData( cloth->getMeshData() ), splitPairData );
 	
 	_cloths->Add( c );
 	
@@ -494,7 +498,7 @@ Cloth^ Scene::CreateCloth( ClothDescription^ clothDescription )
 	if ( cloth == NULL )
 		throw gcnew PhysXException( "Failed to create cloth" );
 	
-	Cloth^ c = gcnew Cloth( cloth, clothDescription->MeshData );
+	Cloth^ c = gcnew Cloth( cloth, clothDescription->MeshData, clothDescription->SplitPairData );
 		c->UserData = clothDescription->UserData;
 	
 	_cloths->Add( c );

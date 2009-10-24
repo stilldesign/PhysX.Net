@@ -190,6 +190,11 @@ namespace StillDesign
 					SoftBodyFlag get();
 					void set( SoftBodyFlag value );
 				}
+				property float SelfCollisionThickness
+				{
+					float get();
+					void set( float value );
+				}
 				
 				property Object^ UserData
 				{

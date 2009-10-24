@@ -326,6 +326,15 @@ void SoftBodyDescription::Flags::set( SoftBodyFlag value )
 	_desc->flags = (NxSoftBodyFlag)value;
 }
 
+float SoftBodyDescription::SelfCollisionThickness::get()
+{
+	return _desc->selfCollisionThickness;
+}
+void SoftBodyDescription::SelfCollisionThickness::set( float value )
+{
+	_desc->selfCollisionThickness = value;
+}
+
 Object^ SoftBodyDescription::UserData::get()
 {
 	return _userData;
