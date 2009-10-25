@@ -6,6 +6,7 @@ Fix for the underlying NxMeshData not being referenced by the wrapper when const
 Added contact report stream and related classes
 Updated to PhysX 2.8.3
 Added x64 version
+Target SlimDX August 2009
 
 [0.11.0.0 - 2009-03-28]
 Changed RuntimeFileChecks to strip quotes from environment variable paths
