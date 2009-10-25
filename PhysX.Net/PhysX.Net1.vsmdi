@@ -32,12 +32,12 @@
   </TestList>
   <TestList name="Core Tests" id="7c9f08c9-7516-42cd-a7c8-5a4066d44947" parentListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6">
     <TestLinks>
-      <TestLink id="7a15d82b-f85e-2713-94ad-d5cd1b4e1b66" name="Parameter" storage="unit tests\bin\x86\debug slimdx\unittests.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
       <TestLink id="6b4d5c74-71c5-ff62-226d-ed99024794d0" name="DisposeCore" storage="unit tests\bin\x86\debug slimdx\unittests.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
       <TestLink id="b17a7345-f2a2-a7c3-8ef7-3c83fc91076c" name="CreatingTwoCoresCausesException" storage="unit tests\bin\x86\debug slimdx\unittests.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
       <TestLink id="26fadb8a-3e23-4049-72e3-df71dbaeaa89" name="CoreCreation" storage="unit tests\bin\x86\debug slimdx\unittests.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
       <TestLink id="ede7d7e6-965c-5280-fe5a-13197d4d4e05" name="DisposeOfManyObjects" storage="unit tests\bin\x86\debug slimdx\unittests.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
       <TestLink id="d4edbbb6-ecba-f105-3959-6b110995a3f2" name="RuntimeFileChecks" storage="unit tests\bin\x86\debug slimdx\unittests.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+      <TestLink id="7a15d82b-f85e-2713-94ad-d5cd1b4e1b66" name="Parameter" storage="unit tests\bin\x86\debug slimdx\unittests.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
     </TestLinks>
   </TestList>
   <TestList name="Cooking Tests" id="7dfe31e2-7176-4acf-a766-c2ccefd68123" parentListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6">
