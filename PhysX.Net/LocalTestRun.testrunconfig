@@ -7,10 +7,12 @@
     </Regular>
   </CodeCoverage>
   <Deployment>
-    <DeploymentItem filename="Assemblies\NxCharacter.dll" />
-    <DeploymentItem filename="Assemblies\PhysXLoader.dll" />
+    <DeploymentItem filename="Assemblies\x86\PhysXCooking.dll" />
+    <DeploymentItem filename="Assemblies\x86\PhysXCore.dll" />
+    <DeploymentItem filename="Assemblies\x86\PhysXLoader.dll" />
+    <DeploymentItem filename="Assemblies\x86\PhysXDevice.dll" />
     <DeploymentItem filename="Unit Tests\Scene 3.xml" />
-    <DeploymentItem filename="Assemblies\NxCooking.dll" />
+    <DeploymentItem filename="Assemblies\x86\NxCharacter.dll" />
   </Deployment>
   <TestTypeSpecific>
     <WebTestRunConfiguration testTypeId="4e7599fa-5ecb-43e9-a887-cd63cf72d207">

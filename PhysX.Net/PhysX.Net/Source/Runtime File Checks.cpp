@@ -13,8 +13,10 @@ using namespace StillDesign::PhysX;
 void RuntimeFileChecks::Check()
 {
 	CheckFile( "NxCharacter.dll", gcnew array<Byte>( 16 ) NxCharacterDllMD5 );
-	CheckFile( "NxCooking.dll", gcnew array<Byte>( 16 ) NxCookingDllMD5 );
+	CheckFile( "PhysXCooking.dll", gcnew array<Byte>( 16 ) PhysXCookingDllMD5 );
 	CheckFile( "PhysXLoader.dll", gcnew array<Byte>( 16 ) PhysXLoaderDllMD5 );
+	CheckFile( "PhysXCore.dll", gcnew array<Byte>( 16 ) PhysXCoreDllMD5 );
+	CheckFile( "PhysXDevice.dll", gcnew array<Byte>( 16 ) PhysXDeviceDllMD5 );
 }
 
 void RuntimeFileChecks::CheckFile( String^ filename, array<Byte>^ knownHash )

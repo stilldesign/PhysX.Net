@@ -26,12 +26,16 @@ THE SOFTWARE.
 
 #define NoGraphicsTargetSpecified #error No Graphics Target Specified
 
-// If you are using x64; change the paths below to "Program Files (x86)"
+// If you are using a 64 bit version of Windows; change the paths below to "Program Files (x86)" or symlink the PhysX SDK dir into "Program Files"
 
 #if GRAPHICS_XNA31
 	#using <C:\Program Files\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.dll>
 #elif GRAPHICS_SLIMDX
-	#using <C:\Program Files\SlimDX SDK (March 2009)\Bin\x86\SlimDX.dll>
+	#if WIN32
+		#using <C:\Program Files\SlimDX SDK (March 2009)\Bin\x86\SlimDX.dll>
+	#elif WIN64
+		#using <C:\Program Files\SlimDX SDK (March 2009)\Bin\x64\SlimDX.dll>
+	#endif
 #else
 	NoGraphicsTargetSpecified
 #endif

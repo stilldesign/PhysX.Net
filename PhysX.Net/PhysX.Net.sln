@@ -20,17 +20,30 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cloth", "Samples\Cloth\Cloth.csproj", "{18000A79-3163-402E-A6F2-F050BC13EF9B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assemblies", "Assemblies", "{F87E2F48-E066-4169-8271-59C456C702BE}"
-	ProjectSection(SolutionItems) = preProject
-		Assemblies\NxCharacter.dll = Assemblies\NxCharacter.dll
-		Assemblies\NxCooking.dll = Assemblies\NxCooking.dll
-		Assemblies\PhysXLoader.dll = Assemblies\PhysXLoader.dll
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tearing Cloth", "Samples\Tearing Cloth\Tearing Cloth.csproj", "{D8A11046-1F58-4BE9-9404-F2D5D3083E0D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluid Blob", "Samples\Fluid Blob\Fluid Blob.csproj", "{6451C2B8-A5F1-4B03-813C-86E0C7C13733}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Main Sample", "Samples\Main Sample\Main Sample.csproj", "{230CFCF6-6A4F-45EF-943E-A4A29A44161F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "x86", "x86", "{D392E8FE-DC71-4A20-9C63-B09F8A646D71}"
+	ProjectSection(SolutionItems) = preProject
+		Assemblies\x86\NxCharacter.dll = Assemblies\x86\NxCharacter.dll
+		Assemblies\x86\PhysXCooking.dll = Assemblies\x86\PhysXCooking.dll
+		Assemblies\x86\PhysXCore.dll = Assemblies\x86\PhysXCore.dll
+		Assemblies\x86\PhysXDevice.dll = Assemblies\x86\PhysXDevice.dll
+		Assemblies\x86\PhysXLoader.dll = Assemblies\x86\PhysXLoader.dll
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "x64", "x64", "{28D3F399-3371-463D-9E3F-7C3EFE30D01B}"
+	ProjectSection(SolutionItems) = preProject
+		Assemblies\x64\NxCharacter.dll = Assemblies\x64\NxCharacter.dll
+		Assemblies\x64\PhysXCooking64.dll = Assemblies\x64\PhysXCooking64.dll
+		Assemblies\x64\PhysXCore64.dll = Assemblies\x64\PhysXCore64.dll
+		Assemblies\x64\PhysXDevice64.dll = Assemblies\x64\PhysXDevice64.dll
+		Assemblies\x64\PhysXLoader64.dll = Assemblies\x64\PhysXLoader64.dll
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
@@ -97,87 +110,149 @@ Global
 		CategoryFile = PhysX.Net1.vsmdi
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug SlimDX|x64 = Debug SlimDX|x64
 		Debug SlimDX|x86 = Debug SlimDX|x86
+		Debug XNA 3.1|x64 = Debug XNA 3.1|x64
 		Debug XNA 3.1|x86 = Debug XNA 3.1|x86
+		Release SlimDX|x64 = Release SlimDX|x64
 		Release SlimDX|x86 = Release SlimDX|x86
+		Release XNA 3.1|x64 = Release XNA 3.1|x64
 		Release XNA 3.1|x86 = Release XNA 3.1|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Debug SlimDX|x64.ActiveCfg = Debug SlimDX|x64
+		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Debug SlimDX|x64.Build.0 = Debug SlimDX|x64
 		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Debug SlimDX|x86.ActiveCfg = Debug SlimDX|Win32
 		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Debug SlimDX|x86.Build.0 = Debug SlimDX|Win32
+		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Debug XNA 3.1|x64.ActiveCfg = Debug XNA 3.1|x64
 		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Debug XNA 3.1|x86.ActiveCfg = Debug XNA 3.1|Win32
 		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Debug XNA 3.1|x86.Build.0 = Debug XNA 3.1|Win32
+		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Release SlimDX|x64.ActiveCfg = Release SlimDX|x64
+		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Release SlimDX|x64.Build.0 = Release SlimDX|x64
 		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Release SlimDX|x86.ActiveCfg = Release SlimDX|Win32
 		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Release SlimDX|x86.Build.0 = Release SlimDX|Win32
+		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Release XNA 3.1|x64.ActiveCfg = Release XNA 3.1|x64
 		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Release XNA 3.1|x86.ActiveCfg = Release XNA 3.1|Win32
 		{9E50593F-DB72-44D1-8A1D-2AE73214383E}.Release XNA 3.1|x86.Build.0 = Release XNA 3.1|Win32
+		{D126F9D4-66BB-403B-B4B6-18C3546BEDF8}.Debug SlimDX|x64.ActiveCfg = Debug|x86
 		{D126F9D4-66BB-403B-B4B6-18C3546BEDF8}.Debug SlimDX|x86.ActiveCfg = Debug|x86
+		{D126F9D4-66BB-403B-B4B6-18C3546BEDF8}.Debug XNA 3.1|x64.ActiveCfg = Debug|x86
 		{D126F9D4-66BB-403B-B4B6-18C3546BEDF8}.Debug XNA 3.1|x86.ActiveCfg = Debug|x86
 		{D126F9D4-66BB-403B-B4B6-18C3546BEDF8}.Debug XNA 3.1|x86.Build.0 = Debug|x86
+		{D126F9D4-66BB-403B-B4B6-18C3546BEDF8}.Release SlimDX|x64.ActiveCfg = Release|x86
 		{D126F9D4-66BB-403B-B4B6-18C3546BEDF8}.Release SlimDX|x86.ActiveCfg = Release|x86
+		{D126F9D4-66BB-403B-B4B6-18C3546BEDF8}.Release XNA 3.1|x64.ActiveCfg = Release|x86
 		{D126F9D4-66BB-403B-B4B6-18C3546BEDF8}.Release XNA 3.1|x86.ActiveCfg = Release|x86
 		{D126F9D4-66BB-403B-B4B6-18C3546BEDF8}.Release XNA 3.1|x86.Build.0 = Release|x86
+		{0B12DC8D-FFB3-4C5F-8B77-ABAC84616E5D}.Debug SlimDX|x64.ActiveCfg = Debug|x86
 		{0B12DC8D-FFB3-4C5F-8B77-ABAC84616E5D}.Debug SlimDX|x86.ActiveCfg = Debug|x86
+		{0B12DC8D-FFB3-4C5F-8B77-ABAC84616E5D}.Debug XNA 3.1|x64.ActiveCfg = Debug|x86
 		{0B12DC8D-FFB3-4C5F-8B77-ABAC84616E5D}.Debug XNA 3.1|x86.ActiveCfg = Debug|x86
 		{0B12DC8D-FFB3-4C5F-8B77-ABAC84616E5D}.Debug XNA 3.1|x86.Build.0 = Debug|x86
+		{0B12DC8D-FFB3-4C5F-8B77-ABAC84616E5D}.Release SlimDX|x64.ActiveCfg = Release|x86
 		{0B12DC8D-FFB3-4C5F-8B77-ABAC84616E5D}.Release SlimDX|x86.ActiveCfg = Release|x86
+		{0B12DC8D-FFB3-4C5F-8B77-ABAC84616E5D}.Release XNA 3.1|x64.ActiveCfg = Release|x86
 		{0B12DC8D-FFB3-4C5F-8B77-ABAC84616E5D}.Release XNA 3.1|x86.ActiveCfg = Release|x86
 		{0B12DC8D-FFB3-4C5F-8B77-ABAC84616E5D}.Release XNA 3.1|x86.Build.0 = Release|x86
+		{3A2594CF-7E97-49E5-B1B7-34473CF514A6}.Debug SlimDX|x64.ActiveCfg = Debug SlimDX|x64
 		{3A2594CF-7E97-49E5-B1B7-34473CF514A6}.Debug SlimDX|x86.ActiveCfg = Debug SlimDX|x86
 		{3A2594CF-7E97-49E5-B1B7-34473CF514A6}.Debug SlimDX|x86.Build.0 = Debug SlimDX|x86
+		{3A2594CF-7E97-49E5-B1B7-34473CF514A6}.Debug XNA 3.1|x64.ActiveCfg = Debug XNA 3.1|x64
 		{3A2594CF-7E97-49E5-B1B7-34473CF514A6}.Debug XNA 3.1|x86.ActiveCfg = Debug XNA 3.1|x86
 		{3A2594CF-7E97-49E5-B1B7-34473CF514A6}.Debug XNA 3.1|x86.Build.0 = Debug XNA 3.1|x86
+		{3A2594CF-7E97-49E5-B1B7-34473CF514A6}.Release SlimDX|x64.ActiveCfg = Release SlimDX|x64
 		{3A2594CF-7E97-49E5-B1B7-34473CF514A6}.Release SlimDX|x86.ActiveCfg = Release SlimDX|x86
 		{3A2594CF-7E97-49E5-B1B7-34473CF514A6}.Release SlimDX|x86.Build.0 = Release SlimDX|x86
+		{3A2594CF-7E97-49E5-B1B7-34473CF514A6}.Release XNA 3.1|x64.ActiveCfg = Release XNA 3.1|x64
 		{3A2594CF-7E97-49E5-B1B7-34473CF514A6}.Release XNA 3.1|x86.ActiveCfg = Release XNA 3.1|x86
 		{3A2594CF-7E97-49E5-B1B7-34473CF514A6}.Release XNA 3.1|x86.Build.0 = Release XNA 3.1|x86
+		{18000A79-3163-402E-A6F2-F050BC13EF9B}.Debug SlimDX|x64.ActiveCfg = Debug|x86
 		{18000A79-3163-402E-A6F2-F050BC13EF9B}.Debug SlimDX|x86.ActiveCfg = Debug|x86
+		{18000A79-3163-402E-A6F2-F050BC13EF9B}.Debug XNA 3.1|x64.ActiveCfg = Debug|x86
 		{18000A79-3163-402E-A6F2-F050BC13EF9B}.Debug XNA 3.1|x86.ActiveCfg = Debug|x86
 		{18000A79-3163-402E-A6F2-F050BC13EF9B}.Debug XNA 3.1|x86.Build.0 = Debug|x86
+		{18000A79-3163-402E-A6F2-F050BC13EF9B}.Release SlimDX|x64.ActiveCfg = Release|x86
 		{18000A79-3163-402E-A6F2-F050BC13EF9B}.Release SlimDX|x86.ActiveCfg = Release|x86
+		{18000A79-3163-402E-A6F2-F050BC13EF9B}.Release XNA 3.1|x64.ActiveCfg = Release|x86
 		{18000A79-3163-402E-A6F2-F050BC13EF9B}.Release XNA 3.1|x86.ActiveCfg = Release|x86
 		{18000A79-3163-402E-A6F2-F050BC13EF9B}.Release XNA 3.1|x86.Build.0 = Release|x86
+		{D8A11046-1F58-4BE9-9404-F2D5D3083E0D}.Debug SlimDX|x64.ActiveCfg = Debug|x86
 		{D8A11046-1F58-4BE9-9404-F2D5D3083E0D}.Debug SlimDX|x86.ActiveCfg = Debug|x86
+		{D8A11046-1F58-4BE9-9404-F2D5D3083E0D}.Debug XNA 3.1|x64.ActiveCfg = Debug|x86
 		{D8A11046-1F58-4BE9-9404-F2D5D3083E0D}.Debug XNA 3.1|x86.ActiveCfg = Debug|x86
 		{D8A11046-1F58-4BE9-9404-F2D5D3083E0D}.Debug XNA 3.1|x86.Build.0 = Debug|x86
+		{D8A11046-1F58-4BE9-9404-F2D5D3083E0D}.Release SlimDX|x64.ActiveCfg = Release|x86
 		{D8A11046-1F58-4BE9-9404-F2D5D3083E0D}.Release SlimDX|x86.ActiveCfg = Release|x86
+		{D8A11046-1F58-4BE9-9404-F2D5D3083E0D}.Release XNA 3.1|x64.ActiveCfg = Release|x86
 		{D8A11046-1F58-4BE9-9404-F2D5D3083E0D}.Release XNA 3.1|x86.ActiveCfg = Release|x86
 		{D8A11046-1F58-4BE9-9404-F2D5D3083E0D}.Release XNA 3.1|x86.Build.0 = Release|x86
+		{6451C2B8-A5F1-4B03-813C-86E0C7C13733}.Debug SlimDX|x64.ActiveCfg = Debug|x86
 		{6451C2B8-A5F1-4B03-813C-86E0C7C13733}.Debug SlimDX|x86.ActiveCfg = Debug|x86
+		{6451C2B8-A5F1-4B03-813C-86E0C7C13733}.Debug XNA 3.1|x64.ActiveCfg = Debug|x86
 		{6451C2B8-A5F1-4B03-813C-86E0C7C13733}.Debug XNA 3.1|x86.ActiveCfg = Debug|x86
 		{6451C2B8-A5F1-4B03-813C-86E0C7C13733}.Debug XNA 3.1|x86.Build.0 = Debug|x86
+		{6451C2B8-A5F1-4B03-813C-86E0C7C13733}.Release SlimDX|x64.ActiveCfg = Release|x86
 		{6451C2B8-A5F1-4B03-813C-86E0C7C13733}.Release SlimDX|x86.ActiveCfg = Release|x86
+		{6451C2B8-A5F1-4B03-813C-86E0C7C13733}.Release XNA 3.1|x64.ActiveCfg = Release|x86
 		{6451C2B8-A5F1-4B03-813C-86E0C7C13733}.Release XNA 3.1|x86.ActiveCfg = Release|x86
 		{6451C2B8-A5F1-4B03-813C-86E0C7C13733}.Release XNA 3.1|x86.Build.0 = Release|x86
+		{230CFCF6-6A4F-45EF-943E-A4A29A44161F}.Debug SlimDX|x64.ActiveCfg = Debug|x86
 		{230CFCF6-6A4F-45EF-943E-A4A29A44161F}.Debug SlimDX|x86.ActiveCfg = Debug|x86
+		{230CFCF6-6A4F-45EF-943E-A4A29A44161F}.Debug XNA 3.1|x64.ActiveCfg = Debug|x86
 		{230CFCF6-6A4F-45EF-943E-A4A29A44161F}.Debug XNA 3.1|x86.ActiveCfg = Debug|x86
 		{230CFCF6-6A4F-45EF-943E-A4A29A44161F}.Debug XNA 3.1|x86.Build.0 = Debug|x86
+		{230CFCF6-6A4F-45EF-943E-A4A29A44161F}.Release SlimDX|x64.ActiveCfg = Release|x86
 		{230CFCF6-6A4F-45EF-943E-A4A29A44161F}.Release SlimDX|x86.ActiveCfg = Release|x86
+		{230CFCF6-6A4F-45EF-943E-A4A29A44161F}.Release XNA 3.1|x64.ActiveCfg = Release|x86
 		{230CFCF6-6A4F-45EF-943E-A4A29A44161F}.Release XNA 3.1|x86.ActiveCfg = Release|x86
 		{230CFCF6-6A4F-45EF-943E-A4A29A44161F}.Release XNA 3.1|x86.Build.0 = Release|x86
+		{8C5BD459-411A-4F60-92B0-9CC18D2F49AB}.Debug SlimDX|x64.ActiveCfg = Debug SlimDX 64|x86
 		{8C5BD459-411A-4F60-92B0-9CC18D2F49AB}.Debug SlimDX|x86.ActiveCfg = Debug SlimDX 64|x86
+		{8C5BD459-411A-4F60-92B0-9CC18D2F49AB}.Debug XNA 3.1|x64.ActiveCfg = Debug SlimDX 64|x86
 		{8C5BD459-411A-4F60-92B0-9CC18D2F49AB}.Debug XNA 3.1|x86.ActiveCfg = Debug SlimDX 64|x86
+		{8C5BD459-411A-4F60-92B0-9CC18D2F49AB}.Release SlimDX|x64.ActiveCfg = Release|x86
 		{8C5BD459-411A-4F60-92B0-9CC18D2F49AB}.Release SlimDX|x86.ActiveCfg = Release|x86
+		{8C5BD459-411A-4F60-92B0-9CC18D2F49AB}.Release XNA 3.1|x64.ActiveCfg = Release|x86
 		{8C5BD459-411A-4F60-92B0-9CC18D2F49AB}.Release XNA 3.1|x86.ActiveCfg = Release|x86
+		{9A1A2883-62D3-43C6-8F71-48015FA8E0C7}.Debug SlimDX|x64.ActiveCfg = Debug SlimDX 64|x86
 		{9A1A2883-62D3-43C6-8F71-48015FA8E0C7}.Debug SlimDX|x86.ActiveCfg = Debug SlimDX 64|x86
+		{9A1A2883-62D3-43C6-8F71-48015FA8E0C7}.Debug XNA 3.1|x64.ActiveCfg = Debug SlimDX 64|x86
 		{9A1A2883-62D3-43C6-8F71-48015FA8E0C7}.Debug XNA 3.1|x86.ActiveCfg = Debug SlimDX 64|x86
+		{9A1A2883-62D3-43C6-8F71-48015FA8E0C7}.Release SlimDX|x64.ActiveCfg = Release|x86
 		{9A1A2883-62D3-43C6-8F71-48015FA8E0C7}.Release SlimDX|x86.ActiveCfg = Release|x86
+		{9A1A2883-62D3-43C6-8F71-48015FA8E0C7}.Release XNA 3.1|x64.ActiveCfg = Release|x86
 		{9A1A2883-62D3-43C6-8F71-48015FA8E0C7}.Release XNA 3.1|x86.ActiveCfg = Release|x86
+		{753B2741-C4F4-4F46-98DC-A406E58BF1B6}.Debug SlimDX|x64.ActiveCfg = Debug|x86
 		{753B2741-C4F4-4F46-98DC-A406E58BF1B6}.Debug SlimDX|x86.ActiveCfg = Debug|x86
+		{753B2741-C4F4-4F46-98DC-A406E58BF1B6}.Debug XNA 3.1|x64.ActiveCfg = Debug|x86
 		{753B2741-C4F4-4F46-98DC-A406E58BF1B6}.Debug XNA 3.1|x86.ActiveCfg = Debug|x86
+		{753B2741-C4F4-4F46-98DC-A406E58BF1B6}.Release SlimDX|x64.ActiveCfg = Release|x86
 		{753B2741-C4F4-4F46-98DC-A406E58BF1B6}.Release SlimDX|x86.ActiveCfg = Release|x86
+		{753B2741-C4F4-4F46-98DC-A406E58BF1B6}.Release XNA 3.1|x64.ActiveCfg = Release|x86
 		{753B2741-C4F4-4F46-98DC-A406E58BF1B6}.Release XNA 3.1|x86.ActiveCfg = Release|x86
+		{12F44B8B-0424-4D72-885E-7724D8EE4991}.Debug SlimDX|x64.ActiveCfg = Debug|x86
 		{12F44B8B-0424-4D72-885E-7724D8EE4991}.Debug SlimDX|x86.ActiveCfg = Debug|x86
+		{12F44B8B-0424-4D72-885E-7724D8EE4991}.Debug XNA 3.1|x64.ActiveCfg = Debug|x86
 		{12F44B8B-0424-4D72-885E-7724D8EE4991}.Debug XNA 3.1|x86.ActiveCfg = Debug|x86
+		{12F44B8B-0424-4D72-885E-7724D8EE4991}.Release SlimDX|x64.ActiveCfg = Release|x86
 		{12F44B8B-0424-4D72-885E-7724D8EE4991}.Release SlimDX|x86.ActiveCfg = Release|x86
+		{12F44B8B-0424-4D72-885E-7724D8EE4991}.Release XNA 3.1|x64.ActiveCfg = Release|x86
 		{12F44B8B-0424-4D72-885E-7724D8EE4991}.Release XNA 3.1|x86.ActiveCfg = Release|x86
+		{94EB6A95-26D3-4496-A170-424543AC0C27}.Debug SlimDX|x64.ActiveCfg = Debug|x86
 		{94EB6A95-26D3-4496-A170-424543AC0C27}.Debug SlimDX|x86.ActiveCfg = Debug|x86
+		{94EB6A95-26D3-4496-A170-424543AC0C27}.Debug XNA 3.1|x64.ActiveCfg = Debug|x86
 		{94EB6A95-26D3-4496-A170-424543AC0C27}.Debug XNA 3.1|x86.ActiveCfg = Debug|x86
+		{94EB6A95-26D3-4496-A170-424543AC0C27}.Release SlimDX|x64.ActiveCfg = Release|x86
 		{94EB6A95-26D3-4496-A170-424543AC0C27}.Release SlimDX|x86.ActiveCfg = Release|x86
+		{94EB6A95-26D3-4496-A170-424543AC0C27}.Release XNA 3.1|x64.ActiveCfg = Release|x86
 		{94EB6A95-26D3-4496-A170-424543AC0C27}.Release XNA 3.1|x86.ActiveCfg = Release|x86
+		{6AB0CAA7-33DB-43AF-BBD2-13AB832DE077}.Debug SlimDX|x64.ActiveCfg = Debug SlimDX 64|x86
 		{6AB0CAA7-33DB-43AF-BBD2-13AB832DE077}.Debug SlimDX|x86.ActiveCfg = Debug SlimDX 64|x86
+		{6AB0CAA7-33DB-43AF-BBD2-13AB832DE077}.Debug XNA 3.1|x64.ActiveCfg = Debug SlimDX 64|x86
 		{6AB0CAA7-33DB-43AF-BBD2-13AB832DE077}.Debug XNA 3.1|x86.ActiveCfg = Debug SlimDX 64|x86
+		{6AB0CAA7-33DB-43AF-BBD2-13AB832DE077}.Release SlimDX|x64.ActiveCfg = Release|x86
 		{6AB0CAA7-33DB-43AF-BBD2-13AB832DE077}.Release SlimDX|x86.ActiveCfg = Release|x86
+		{6AB0CAA7-33DB-43AF-BBD2-13AB832DE077}.Release XNA 3.1|x64.ActiveCfg = Release|x86
 		{6AB0CAA7-33DB-43AF-BBD2-13AB832DE077}.Release XNA 3.1|x86.ActiveCfg = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
@@ -190,5 +265,7 @@ Global
 		{D8A11046-1F58-4BE9-9404-F2D5D3083E0D} = {0676D34D-F39B-4C74-B95F-3CC3B06BC9B0}
 		{6451C2B8-A5F1-4B03-813C-86E0C7C13733} = {0676D34D-F39B-4C74-B95F-3CC3B06BC9B0}
 		{230CFCF6-6A4F-45EF-943E-A4A29A44161F} = {0676D34D-F39B-4C74-B95F-3CC3B06BC9B0}
+		{D392E8FE-DC71-4A20-9C63-B09F8A646D71} = {F87E2F48-E066-4169-8271-59C456C702BE}
+		{28D3F399-3371-463D-9E3F-7C3EFE30D01B} = {F87E2F48-E066-4169-8271-59C456C702BE}
 	EndGlobalSection
 EndGlobal
