@@ -27,7 +27,7 @@ TriangleMeshDescription^ TriangleMeshDescription::Create( array<T>^ triangleIndi
 	if( triangleIndices != nullptr )
 	{
 		// T (triangle index type) must be either 32 or 16 bit
-		if( sizeof( T ) != sizeof( int ) || sizeof( T ) != sizeof( short ) )
+		if( sizeof( T ) != sizeof( int ) && sizeof( T ) != sizeof( short ) )
 			throw gcnew ArgumentException( "Invalid generic parameter T. Size must be either 32 or 16 bit" );
 		
 		desc->TriangleCount = triangleIndices->Length / 3;
