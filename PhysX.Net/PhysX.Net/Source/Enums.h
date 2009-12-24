@@ -645,7 +645,9 @@ namespace StillDesign
 			InputLaterialSlipVelocity = NX_WF_INPUT_LAT_SLIPVELOCITY,
 			InputLongutudalSlipVelocity = NX_WF_INPUT_LNG_SLIPVELOCITY,
 			UnscaledSpringBehaviour = NX_WF_UNSCALED_SPRING_BEHAVIOR,
-			AxleSpeedOverride = NX_WF_AXLE_SPEED_OVERRIDE
+			AxleSpeedOverride = NX_WF_AXLE_SPEED_OVERRIDE,
+			EmulateLegacyWheel = NX_WF_EMULATE_LEGACY_WHEEL,
+			ClampedFriction = NX_WF_CLAMPED_FRICTION
 		};
 		
 		public enum class ThreadPriority
