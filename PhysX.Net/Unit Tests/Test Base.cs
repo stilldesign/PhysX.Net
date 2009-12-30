@@ -69,11 +69,22 @@ namespace StillDesign.PhysX.UnitTests
 
 		protected Actor CreateBoxActor( float x, float y, float z )
 		{
+			return CreateBoxActor( x, y, z, "Box" );
+		}
+		protected Actor CreateBoxActor( float x, float y, float z, string name )
+		{
 			ActorDescription actorDesc = new ActorDescription()
 			{
+				Name = name,
 				BodyDescription = new BodyDescription( 20 ),
 				GlobalPose = GraphicsLibraryWrapper.CreateTranslationMatrix( new Vector3( x, y, z ) ),
-				Shapes = { new BoxShapeDescription( 5, 5, 5 ) }
+				Shapes = 
+				{
+					new BoxShapeDescription( 5, 5, 5 )
+					{
+						Name = String.Format( "{0} Shape", name )
+					}
+				}
 			};
 
 			return this.Scene.CreateActor( actorDesc );

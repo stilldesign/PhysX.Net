@@ -22,22 +22,27 @@ namespace StillDesign.PhysX.UnitTests
 			CreateCoreAndScene();
 
 			// Create two boxes
-			Actor a = CreateBoxActor( 0, 10, 0 );
-			Actor b = CreateBoxActor( 0, 5, 0 );
+			// a sits on the ground, b is 10 up and c is way up at 100
+			// Simulating the scene will cause b to hit a and generate a contact report, then awhile later, c will hit b
+			Actor a = CreateBoxActor( 0, 2.5f, 0, "A" );
+			Actor b = CreateBoxActor( 0, 10, 0, "B" );
+			Actor c = CreateBoxActor( 0, 100, 0, "C" );
 
 			// Enable contact reporting
 			this.Scene.SetActorPairFlags( a, b, ContactPairFlag.All );
+			this.Scene.SetActorPairFlags( b, c, ContactPairFlag.All );
 
-			this.Scene.UserContactReport = new ContactReport( this );
+			this.Scene.UserContactReport = new ContactReport( RegisterABHit, RegisterBCHit, a.Shapes.First(), b.Shapes.First(), c.Shapes.First() );
 
-			this.ContactNotifyCalled = false;
+			this.ABContactNotifyCalled =
+			this.BCContactNotifyCalled = false;
 
 			//
 
-			// Simulate the scene for a maximum of 4 seconds, or until the contact report happens
-			float maxSimulationTime = 4;
+			// Simulate the scene for a maximum of 20 seconds, or until the contact reports happen
+			const float maxSimulationTime = 20;
 			float t = 0;
-			float step = 1.0f/60.0f;
+			const float step = 1.0f/60.0f;
 
 			while( true )
 			{
@@ -46,7 +51,7 @@ namespace StillDesign.PhysX.UnitTests
 				if( t >= maxSimulationTime )
 					break;
 
-				if( this.ContactNotifyCalled )
+				if( this.ABContactNotifyCalled && this.BCContactNotifyCalled )
 					break;
 
 				this.Scene.Simulate( step );
@@ -54,12 +59,26 @@ namespace StillDesign.PhysX.UnitTests
 				this.Scene.FetchResults( SimulationStatus.RigidBodyFinished, true );
 			}
 
-			Assert.IsTrue( this.ContactNotifyCalled, "No contact report or contact pairs, patches or points occured" );
+			Assert.IsTrue( this.ABContactNotifyCalled, "No contact report or contact pairs, patches or points occured" );
+		}
+
+		private void RegisterABHit()
+		{
+			this.ABContactNotifyCalled = true;
+		}
+		private void RegisterBCHit()
+		{
+			this.BCContactNotifyCalled = true;
 		}
 
 		//
 
-		public bool ContactNotifyCalled
+		private bool ABContactNotifyCalled
+		{
+			get;
+			set;
+		}
+		private bool BCContactNotifyCalled
 		{
 			get;
 			set;
@@ -69,9 +88,14 @@ namespace StillDesign.PhysX.UnitTests
 
 		private class ContactReport : UserContactReport
 		{
-			public ContactReport( ShapeTests test )
+			public ContactReport( Action abHitCallback, Action bcHitCallback, Shape a, Shape b, Shape c )
 			{
-				this.Test = test;
+				this.ABHitCallback = abHitCallback;
+				this.BCHitCallback = bcHitCallback;
+
+				this.A = a;
+				this.B = b;
+				this.C = c;
 			}
 
 			public override void OnContactNotify( ContactPair contactInformation, ContactPairFlag events )
@@ -85,7 +109,7 @@ namespace StillDesign.PhysX.UnitTests
 						{
 							while( iter.GoToNextPoint() )
 							{
-								// Test each of the available 'information' functions
+								// Test each of the available 'information' functions/properties
 
 								int numberOfPairs = iter.GetNumberOfPairs();
 								Shape shapeA = iter.GetShapeA();
@@ -104,7 +128,17 @@ namespace StillDesign.PhysX.UnitTests
 								int featureIndex1 = iter.GetFeatureIndex1();
 								float pointNormalForce = iter.GetPointNormalForce();
 
-								this.Test.ContactNotifyCalled = true;
+								// First collision should be AB
+								if( IsPairContacting( shapeA, A, B ) && IsPairContacting( shapeB, A, B ) )
+								{
+									ABHitCallback();
+								}
+
+								// Second collision should be BC, but only if AB has happened
+								if( IsPairContacting( shapeA, B, C ) && IsPairContacting( shapeB, B, C ) )
+								{
+									BCHitCallback();
+								}
 							}
 						}
 					}
@@ -113,7 +147,35 @@ namespace StillDesign.PhysX.UnitTests
 				Assert.IsTrue( iter.IsDisposed );
 			}
 
-			private ShapeTests Test
+			private bool IsPairContacting( Shape shape, params Shape[] compare )
+			{
+				// As PhysX can return contacting pairs in any order (i.e. AB is the same as BA)
+				// You can't simply go if( shapeA == shapeB ), you'll need; if( shapeA == shapeB || shapeB == shapeA )
+				return compare.Contains( shape );
+			}
+
+			private Action ABHitCallback
+			{
+				get;
+				set;
+			}
+			private Action BCHitCallback
+			{
+				get;
+				set;
+			}
+
+			private Shape A
+			{
+				get;
+				set;
+			}
+			private Shape B
+			{
+				get;
+				set;
+			}
+			private Shape C
 			{
 				get;
 				set;
