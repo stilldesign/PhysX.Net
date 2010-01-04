@@ -225,6 +225,44 @@ namespace StillDesign.PhysX.UnitTests
 				Assert.IsTrue( hits.Any( t => t.Shape == b.Shapes.Single() ), "One of the shapes hit must be that of Actor b" );
 			}
 		}
+		[TestMethod]
+		public void RaycastClosestShape()
+		{
+			using( CreateCoreAndScene() )
+			{
+				// On the ground, 20 units ahead
+				Actor box1 = CreateBoxActor( 0, 2.5f, 20 );
+				Actor box2 = CreateBoxActor( 0, 2.5f, 40 );
+
+				Ray ray = new Ray( new Vector3( 0, 2.5f, 0 ), new Vector3( 0, 0, 1 ) );
+				var hit = this.Scene.RaycastClosestShape( ray, ShapesType.All, 0xFFFFFFFF, float.MaxValue, RaycastBit.All, null );
+
+				// Calling RaycastClosestShape returns flags of Material | FaceNormal | Distance | Normal | Impact | Shape, so validate those variables
+				Assert.AreEqual( this.Scene.Materials[ 0 ].Index, hit.MaterialIndex ); // The shape should have the default material (index 0)
+				Assert.AreEqual( 17.5f, hit.Distance );
+				Assert.AreEqual( new Vector3( 0, 0, -1 ), hit.WorldNormal );
+				Assert.AreEqual( ray.Origin + ray.Direction * 17.5f, hit.WorldImpact );
+				Assert.AreEqual( box1.Shapes.First(), hit.Shape );
+			}
+		}
+		[TestMethod]
+		public void RaycastClosestBounds()
+		{
+			using( CreateCoreAndScene() )
+			{
+				// On the ground, 20 units ahead
+				Actor box1 = CreateBoxActor( 0, 2.5f, 20 );
+				Actor box2 = CreateBoxActor( 0, 2.5f, 40 );
+
+				Ray ray = new Ray( new Vector3( 0, 2.5f, 0 ), new Vector3( 0, 0, 1 ) );
+				var hit = this.Scene.RaycastClosestBounds( ray, ShapesType.All, 0xFFFFFFFF, float.MaxValue, RaycastBit.All, null );
+
+				// Calling RaycastClosestBounds returns flags of Distance | Impact | Shape, so validate those variables
+				Assert.AreEqual( box1.Shapes.First(), hit.Shape );
+				Assert.AreEqual( 17.5f, hit.Distance );
+				Assert.AreEqual( ray.Origin + ray.Direction * 17.5f, hit.WorldImpact );
+			}
+		}
 
 		[TestMethod]
 		public void PrimitiveProperties()

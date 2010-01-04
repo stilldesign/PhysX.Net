@@ -401,7 +401,7 @@ namespace StillDesign
 				/// <param name="maximumDistance">Max distance to check along the ray for intersecting objects</param>
 				/// <param name="hintFlags">Allows the user to specify which field of RaycastHit they are interested in. The default is 0xFFFFFFFF</param>
 				/// <param name="groupsMask">Alternative mask used to filter shapes</param>
-				int RaycastAllBounds( Ray worldRay, UserRaycastReport^ userRaycastReport, ShapesType shapesType, unsigned int groups, float maximumDistance, unsigned int hintFlags, Nullable<GroupsMask> groupsMask );
+				int RaycastAllBounds( Ray worldRay, UserRaycastReport^ userRaycastReport, ShapesType shapesType, unsigned int groups, float maximumDistance, RaycastBit hintFlags, Nullable<GroupsMask> groupsMask );
 				
 				/// <summary>Calls the report's hitCallback() method for all the shapes of type ShapeType intersected by the ray</summary>
 				/// <param name="worldRay">The ray to cast in the global frame</param>
@@ -416,7 +416,7 @@ namespace StillDesign
 				/// <param name="maximumDistance">Max distance to check along the ray for intersecting objects</param>
 				/// <param name="hintFlags">Allows the user to specify which field of RaycastHit they are interested in. The default is 0xFFFFFFFF</param>
 				/// <param name="groupsMask">Alternative mask used to filter shapes</param>
-				int RaycastAllShapes( Ray worldRay, UserRaycastReport^ userRaycastReport, ShapesType shapesType, unsigned int groups, float maximumDistance, unsigned int hintFlags, Nullable<GroupsMask> groupsMask );
+				int RaycastAllShapes( Ray worldRay, UserRaycastReport^ userRaycastReport, ShapesType shapesType, unsigned int groups, float maximumDistance, RaycastBit hintFlags, Nullable<GroupsMask> groupsMask );
 				/// <summary>Returns the shapes hit by the ray</summary>
 				/// <param name="worldRay">The ray to cast in the global frame</param>
 				/// <param name="shapesType">Choose if to raycast against static, dynamic or both types of shape</param>
@@ -433,7 +433,7 @@ namespace StillDesign
 				/// <param name="maximumDistance">Max distance to check along the ray for intersecting objects</param>
 				/// <param name="hintFlags">Allows the user to specify which field of RaycastHit they are interested in. The default is 0xFFFFFFFF</param>
 				/// <param name="groupsMask">Alternative mask used to filter shapes</param>
-				RaycastHit^ RaycastClosestBounds( Ray worldRay, ShapesType shapesType, unsigned int groups, float maximumDistance, unsigned int hintFlags, Nullable<GroupsMask> groupsMask );
+				RaycastHit^ RaycastClosestBounds( Ray worldRay, ShapesType shapesType, unsigned int groups, float maximumDistance, RaycastBit hintFlags, Nullable<GroupsMask> groupsMask );
 				
 				/// <summary>Returns the first shape of type shapeType that is hit along the ray</summary>
 				/// <param name="worldRay">The ray to cast in the global frame</param>
@@ -446,7 +446,7 @@ namespace StillDesign
 				/// <param name="maximumDistance">Max distance to check along the ray for intersecting objects</param>
 				/// <param name="hintFlags">Allows the user to specify which field of RaycastHit they are interested in. The default is 0xFFFFFFFF</param>
 				/// <param name="groupsMask">Alternative mask used to filter shapes</param>
-				RaycastHit^ RaycastClosestShape( Ray worldRay, ShapesType shapesType, unsigned int groups, float maximumDistance, unsigned int hintFlags, Nullable<GroupsMask> groupsMask );
+				RaycastHit^ RaycastClosestShape( Ray worldRay, ShapesType shapesType, unsigned int groups, float maximumDistance, RaycastBit hintFlags, Nullable<GroupsMask> groupsMask );
 #pragma endregion
 				
 #pragma region Sweep

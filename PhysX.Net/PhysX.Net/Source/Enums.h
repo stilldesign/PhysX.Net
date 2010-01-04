@@ -592,7 +592,9 @@ namespace StillDesign
 			Distance = NX_RAYCAST_DISTANCE,
 			UV = NX_RAYCAST_UV,
 			FaceNormal = NX_RAYCAST_FACE_NORMAL,
-			Material = NX_RAYCAST_MATERIAL
+			Material = NX_RAYCAST_MATERIAL,
+			
+			All = Shape | Impact | Normal | FaceIndex | Distance | UV | FaceNormal | Material
 		};
 		
 		public enum class MeshDataFlag

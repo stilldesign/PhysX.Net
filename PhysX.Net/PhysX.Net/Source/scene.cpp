@@ -1033,24 +1033,24 @@ bool Scene::RaycastAnyShape( StillDesign::PhysX::Ray worldRay, ShapesType shapeT
 #pragma region RaycastAllBounds
 int Scene::RaycastAllBounds( StillDesign::PhysX::Ray worldRay, UserRaycastReport^ userRaycastReport, ShapesType shapesType )
 {
-	return RaycastAllBounds( worldRay, userRaycastReport, shapesType, 0xFFFFFFFF, NX_MAX_F32, 0xFFFFFFFF, Nullable<GroupsMask>() );
+	return RaycastAllBounds( worldRay, userRaycastReport, shapesType, 0xFFFFFFFF, NX_MAX_F32, RaycastBit::All, Nullable<GroupsMask>() );
 }
-int Scene::RaycastAllBounds( StillDesign::PhysX::Ray worldRay, UserRaycastReport^ userRaycastReport, ShapesType shapesType, unsigned int groups, float maximumDistance, unsigned int hintFlags, Nullable<GroupsMask> groupsMask )
+int Scene::RaycastAllBounds( StillDesign::PhysX::Ray worldRay, UserRaycastReport^ userRaycastReport, ShapesType shapesType, unsigned int groups, float maximumDistance, RaycastBit hintFlags, Nullable<GroupsMask> groupsMask )
 {
-	return _scene->raycastAllBounds( (NxRay)worldRay, *userRaycastReport->UnmanagedPointer, (NxShapesType)shapesType, groups, maximumDistance, hintFlags, groupsMask.HasValue ? &((NxGroupsMask)groupsMask.Value) : NULL );
+	return _scene->raycastAllBounds( (NxRay)worldRay, *userRaycastReport->UnmanagedPointer, (NxShapesType)shapesType, groups, maximumDistance, (unsigned int)hintFlags, groupsMask.HasValue ? &((NxGroupsMask)groupsMask.Value) : NULL );
 }
 #pragma endregion
 
 #pragma region RaycastAllShapes
 int Scene::RaycastAllShapes( StillDesign::PhysX::Ray worldRay, UserRaycastReport^ userRaycastReport, ShapesType shapesType )
 {
-	return RaycastAllShapes( worldRay, userRaycastReport, shapesType, 0xFFFFFFFF, NX_MAX_F32, 0xFFFFFFFF, Nullable<GroupsMask>() );
+	return RaycastAllShapes( worldRay, userRaycastReport, shapesType, 0xFFFFFFFF, NX_MAX_F32, RaycastBit::All, Nullable<GroupsMask>() );
 }
-int Scene::RaycastAllShapes( StillDesign::PhysX::Ray worldRay, UserRaycastReport^ userRaycastReport, ShapesType shapesType, unsigned int groups, float maximumDistance, unsigned int hintFlags, Nullable<GroupsMask> groupsMask )
+int Scene::RaycastAllShapes( StillDesign::PhysX::Ray worldRay, UserRaycastReport^ userRaycastReport, ShapesType shapesType, unsigned int groups, float maximumDistance, RaycastBit hintFlags, Nullable<GroupsMask> groupsMask )
 {
 	ThrowIfNull( userRaycastReport, "userRaycastReport" );
 	
-	return _scene->raycastAllShapes( (NxRay)worldRay, *userRaycastReport->UnmanagedPointer, (NxShapesType)shapesType, groups, maximumDistance, hintFlags, groupsMask.HasValue ? &((NxGroupsMask)groupsMask.Value) : NULL );
+	return _scene->raycastAllShapes( (NxRay)worldRay, *userRaycastReport->UnmanagedPointer, (NxShapesType)shapesType, groups, maximumDistance, (unsigned int)hintFlags, groupsMask.HasValue ? &((NxGroupsMask)groupsMask.Value) : NULL );
 }
 array<RaycastHit^>^ Scene::RaycastAllShapes( StillDesign::PhysX::Ray worldRay, ShapesType shapeTypes )
 {
@@ -1065,31 +1065,31 @@ array<RaycastHit^>^ Scene::RaycastAllShapes( StillDesign::PhysX::Ray worldRay, S
 #pragma region RaycastClosestBounds
 RaycastHit^ Scene::RaycastClosestBounds( StillDesign::PhysX::Ray worldRay, ShapesType shapeTypes )
 {
-	return RaycastClosestBounds( worldRay, shapeTypes, 0xFFFFFFFF, NX_MAX_F32, 0xFFFFFFFF, Nullable<GroupsMask>() );
+	return RaycastClosestBounds( worldRay, shapeTypes, 0xFFFFFFFF, NX_MAX_F32, RaycastBit::All, Nullable<GroupsMask>() );
 }
-RaycastHit^ Scene::RaycastClosestBounds( StillDesign::PhysX::Ray worldRay, ShapesType shapeTypes, unsigned int groups, float maximumDistance, unsigned int hintFlags, Nullable<GroupsMask> groupsMask )
+RaycastHit^ Scene::RaycastClosestBounds( StillDesign::PhysX::Ray worldRay, ShapesType shapeTypes, unsigned int groups, float maximumDistance, RaycastBit hintFlags, Nullable<GroupsMask> groupsMask )
 {
 	NxGroupsMask* mask = groupsMask.HasValue ? &((NxGroupsMask)groupsMask.Value) : NULL;
 	
 	NxRaycastHit hit;
-	_scene->raycastClosestBounds( (NxRay)worldRay, (NxShapesType)shapeTypes, hit, groups, maximumDistance, hintFlags, mask );
+	_scene->raycastClosestBounds( (NxRay)worldRay, (NxShapesType)shapeTypes, hit, groups, maximumDistance, (unsigned int)hintFlags, mask );
 	
 	return (RaycastHit^)hit;
 }
 #pragma endregion
 
-#pragma region RaycastClosestBounds
+#pragma region RaycastClosestShape
 RaycastHit^ Scene::RaycastClosestShape( StillDesign::PhysX::Ray worldRay, ShapesType shapeTypes )
 {
-	return RaycastClosestShape( worldRay, shapeTypes, 0xFFFFFFFF, NX_MAX_F32, 0xFFFFFFFF, Nullable<GroupsMask>() );
+	return RaycastClosestShape( worldRay, shapeTypes, 0xFFFFFFFF, NX_MAX_F32, RaycastBit::All, Nullable<GroupsMask>() );
 }
-RaycastHit^ Scene::RaycastClosestShape( StillDesign::PhysX::Ray worldRay, ShapesType shapeTypes, unsigned int groups, float maximumDistance, unsigned int hintFlags, Nullable<GroupsMask> groupsMask )
+RaycastHit^ Scene::RaycastClosestShape( StillDesign::PhysX::Ray worldRay, ShapesType shapeTypes, unsigned int groups, float maximumDistance, RaycastBit hintFlags, Nullable<GroupsMask> groupsMask )
 {
 	NxRaycastHit h;
 	
 	NxGroupsMask* mask = groupsMask.HasValue ? &((NxGroupsMask)groupsMask.Value) : NULL;
 	
-	_scene->raycastClosestShape( (NxRay)worldRay, (NxShapesType)shapeTypes, h, groups, maximumDistance, hintFlags, mask );
+	_scene->raycastClosestShape( (NxRay)worldRay, (NxShapesType)shapeTypes, h, groups, maximumDistance, (unsigned int)hintFlags, mask );
 	
 	return (RaycastHit^)h;
 }
