@@ -193,7 +193,7 @@ namespace StillDesign
 				void Simulate( float elapsedTime );
 				/// <summary>Flush the scene's command queue for processing</summary>
 				void FlushStream();
-				void FetchResults( SimulationStatus status, bool block );
+				bool FetchResults( SimulationStatus status, bool block );
 				/// <summary>Flush internal caches</summary>
 				void FlushCaches();
 				/// <summary>Blocks all parallel raycast/overlap queries</summary>

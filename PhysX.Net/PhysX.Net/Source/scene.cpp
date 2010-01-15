@@ -665,9 +665,9 @@ void Scene::FlushStream()
 {
 	_scene->flushStream();
 }
-void Scene::FetchResults( SimulationStatus status, bool block )
+bool Scene::FetchResults( SimulationStatus status, bool block )
 {
-	_scene->fetchResults( (NxSimulationStatus)status, block );
+	return _scene->fetchResults( (NxSimulationStatus)status, block );
 }
 void Scene::FlushCaches()
 {
