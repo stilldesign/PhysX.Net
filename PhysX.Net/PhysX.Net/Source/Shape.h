@@ -188,6 +188,9 @@ namespace StillDesign
 					void set( ShapeCompartmentType value );
 				}
 				
+				/// <summary>Gets or Sets an associative object</summary>
+				property Object^ UserData;
+				
 			internal:
 				/// <summary>Gets a Pointer to the NxShape Object</summary>
 				property NxShape* UnmanagedPointer
