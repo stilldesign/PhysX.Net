@@ -20,7 +20,8 @@ SweepQueryHit::SweepQueryHit( NxSweepQueryHit* hit, Object^ userData )
 {
 	Debug::Assert( hit != NULL );
 	
-	_hit = hit;
+	_hit = new NxSweepQueryHit();
+	*_hit = *hit;
 	
 	if( hit->hitShape != NULL )
 		_hitShape = ObjectTable::GetObject<Shape^>( (intptr_t)hit->hitShape );
