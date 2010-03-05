@@ -140,23 +140,19 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\Assemblies\x86\NxCharacter.dll">
+    <Content Include="..\..\Assemblies\x86\NxCharacter.dll">
       <Link>NxCharacter.dll</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\Assemblies\x86\PhysXCooking.dll">
+    <Content Include="..\..\Assemblies\x86\PhysXCooking.dll">
       <Link>PhysXCooking.dll</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\Assemblies\x86\PhysXCore.dll">
+    <Content Include="..\..\Assemblies\x86\PhysXCore.dll">
       <Link>PhysXCore.dll</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\Assemblies\x86\PhysXDevice.dll">
-      <Link>PhysXDevice.dll</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\Assemblies\x86\PhysXLoader.dll">
+    <Content Include="..\..\Assemblies\x86\PhysXLoader.dll">
       <Link>PhysXLoader.dll</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

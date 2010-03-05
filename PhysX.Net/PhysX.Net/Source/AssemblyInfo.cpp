@@ -12,11 +12,11 @@ using namespace System::Security::Permissions;
 // associated with an assembly.
 //
 [assembly:AssemblyTitleAttribute( "PhysX.Net" )];
-[assembly:AssemblyDescriptionAttribute( ".Net Wrapper for NVIDIA PhysX 2.8.1.21" )];
+[assembly:AssemblyDescriptionAttribute( ".Net Wrapper for NVIDIA PhysX 2.8.3.21" )];
 [assembly:AssemblyConfigurationAttribute( "" )];
 [assembly:AssemblyCompanyAttribute( "StillDesign" )];
 [assembly:AssemblyProductAttribute( "PhysX.Net" )];
-[assembly:AssemblyCopyrightAttribute( "Copyright (c) StillDesign 2008" )];
+[assembly:AssemblyCopyrightAttribute( "Copyright (c) StillDesign 2010" )];
 [assembly:AssemblyTrademarkAttribute( "" )];
 [assembly:AssemblyCultureAttribute( "" )];
 

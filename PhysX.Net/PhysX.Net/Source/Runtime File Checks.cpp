@@ -1,52 +1,52 @@
 #include "StdAfx.h"
-
 #include "Runtime File Checks.h"
 
 using namespace System;
 using namespace System::Globalization;
+using namespace System::Diagnostics;
 using namespace System::IO;
 using namespace System::Reflection;
 using namespace System::Security::Cryptography;
-
 using namespace StillDesign::PhysX;
 
 void RuntimeFileChecks::Check()
 {
-	CheckFile( "NxCharacter.dll", gcnew array<Byte>( 16 ) NxCharacterDllMD5 );
-	CheckFile( "PhysXCooking.dll", gcnew array<Byte>( 16 ) PhysXCookingDllMD5 );
-	CheckFile( "PhysXLoader.dll", gcnew array<Byte>( 16 ) PhysXLoaderDllMD5 );
-	CheckFile( "PhysXCore.dll", gcnew array<Byte>( 16 ) PhysXCoreDllMD5 );
-	CheckFile( "PhysXDevice.dll", gcnew array<Byte>( 16 ) PhysXDeviceDllMD5 );
+#if _WIN64
+	CheckFile( "NxCharacter.dll" );
+	CheckFile( "PhysXCooking64.dll" );
+	CheckFile( "PhysXCore64.dll" );
+	CheckFile( "PhysXLoader64.dll" );
+#elif WIN32
+	CheckFile( "NxCharacter.dll" );
+	CheckFile( "PhysXCooking.dll" );
+	CheckFile( "PhysXCore.dll" );
+	CheckFile( "PhysXLoader.dll" );
+#endif
 }
 
-void RuntimeFileChecks::CheckFile( String^ filename, array<Byte>^ knownHash )
+void RuntimeFileChecks::CheckFile( String^ filename )
 {
-	FileStream^ stream;
+	Version^ requiredVersion = gcnew Version( RequiredDllVersion );
+	
 	try
 	{
-		MD5^ md5 = MD5::Create();
+		Version^ version = GetFileVersion( filename );
 		
-		stream = gcnew FileStream( FindLibraryPath( filename ), FileMode::Open, FileAccess::Read );
-		
-		array<Byte>^ fileHash = md5->ComputeHash( stream );
-		
-		if( CompareHash( knownHash, fileHash ) == false )
-			throw gcnew DllNotFoundException( String::Format( CultureInfo::CurrentCulture, "PhysX library \"{0}\" is missing, corrupt or has invalid version. The required version is: {1}", filename, RequiredPhysXVersion ) );
+		// Compare the file version of the DLL to the required version
+		if( version != requiredVersion )
+			throw gcnew DllNotFoundException( String::Format( "PhysX library \"{0}\" is not the correct version. Given: {1}. Required: {2}.", filename, version, requiredVersion ) );
 	}
 	catch( FileNotFoundException^ exception )
 	{
-		throw gcnew DllNotFoundException( String::Format( CultureInfo::CurrentCulture, "PhysX library \"{0}\" is missing.", filename ), exception );
-	}
-	catch( DirectoryNotFoundException^ exception )
-	{
-		throw gcnew DllNotFoundException( String::Format( CultureInfo::CurrentCulture, "PhysX library \"{0}\" is missing.", filename ), exception );
+		throw gcnew DllNotFoundException( String::Format( "PhysX library \"{0}\" is missing.", filename ), exception );
 	}
 	catch( Exception^ ex )
 	{
 		throw ex;
-	}finally{
-		if( stream != nullptr )
-			stream->Close();
+	}
+	finally
+	{
+		
 	}
 }
 
@@ -100,7 +100,7 @@ Assembly^ RuntimeFileChecks::GetBestAssembly()
 
 String^ RuntimeFileChecks::GetEnvironmentPathVariable( String^ name )
 {
-	if( String::IsNullOrEmpty( name ) == true )
+	if( String::IsNullOrEmpty( name ) )
 		throw gcnew ArgumentNullException( "name" );
 	
 	String^ variable = Environment::GetEnvironmentVariable( name );
@@ -111,19 +111,11 @@ String^ RuntimeFileChecks::GetEnvironmentPathVariable( String^ name )
 	
 	return variable;
 }
-
 #pragma pop_macro( "GetEnvironmentVariable" )
 
-bool RuntimeFileChecks::CompareHash( array<Byte>^ a, array<Byte>^ b )
+Version^ RuntimeFileChecks::GetFileVersion( String^ filename )
 {
-	if( a->Length != b->Length )
-		return false;
+	FileVersionInfo^ versionInfo = FileVersionInfo::GetVersionInfo( filename );
 	
-	for( int x = 0; x < a->Length; x++ )
-	{
-		if( a[ x ] != b[ x ] )
-			return false;
-	}
-	
-	return true;
+	return gcnew Version( versionInfo->FileMajorPart, versionInfo->FileMinorPart, versionInfo->FileBuildPart, versionInfo->FilePrivatePart );
 }
