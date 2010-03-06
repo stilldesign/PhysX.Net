@@ -30,12 +30,14 @@ namespace StillDesign
 			LinearMinimumDistance = NX_JPM_LINEAR_MINDIST
 		};
 		
+		[Flags]
 		public enum class JointFlag
 		{
 			CollisionEnabled = NX_JF_COLLISION_ENABLED,
 			Visualization = NX_JF_VISUALIZATION
 		};
 		
+		[Flags]
 		public enum class RevoluteJointFlag
 		{
 			LimitEnabled = NX_RJF_LIMIT_ENABLED,
@@ -43,12 +45,14 @@ namespace StillDesign
 			SpringEnabled = NX_RJF_SPRING_ENABLED
 		};
 		
+		[Flags]
 		public enum class PulleyJointFlag
 		{
 			IsRigid = NX_PJF_IS_RIGID,
 			MotorEnabled = NX_PJF_MOTOR_ENABLED
 		};
 		
+		[Flags]
 		public enum class DistanceJointFlag
 		{
 			EnforceMaximumDistance = NX_DJF_MAX_DISTANCE_ENABLED,
@@ -62,12 +66,14 @@ namespace StillDesign
 			Limited = NX_D6JOINT_MOTION_LIMITED,
 			Free = NX_D6JOINT_MOTION_FREE
 		};
+		[Flags]
 		public enum class D6JointFlag
 		{
 			SphericalLinearInterpolationDrive = NX_D6JOINT_SLERP_DRIVE,
 			GearEnabled = NX_D6JOINT_GEAR_ENABLED
 		};
 		
+		[Flags]
 		public enum class SphericalJointFlag
 		{
 			TwistLimitEnabled = NX_SJF_TWIST_LIMIT_ENABLED,

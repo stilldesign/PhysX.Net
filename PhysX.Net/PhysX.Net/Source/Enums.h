@@ -133,6 +133,7 @@ namespace StillDesign
 			UseUncompressedNormals = NX_CF_USE_UNCOMPRESSED_NORMALS
 		};
 		
+		[Flags]
 		public enum class QueryFlag
 		{
 			WorldSpace = NX_QUERY_WORLD_SPACE,
@@ -198,6 +199,7 @@ namespace StillDesign
 			Hardware = NX_SIMULATION_HW
 		};
 		
+		[Flags]
 		public enum class CoreCreationFlag
 		{
 			NoHardware = NX_SDKF_NO_HARDWARE
@@ -295,6 +297,7 @@ namespace StillDesign
 			S16_TM = NX_HF_S16_TM
 		};
 		
+		[Flags]
 		public enum class HeightFieldFlag
 		{
 			NoBoundaryEdges = NX_HF_NO_BOUNDARY_EDGES
@@ -335,6 +338,7 @@ namespace StillDesign
 			PPU_AutoAssign = NX_DC_PPU_AUTO_ASSIGN
 		};
 		
+		[Flags]
 		public enum class ShapePairStreamFlag
 		{ 
 			HasMatsPerPoint = NX_SF_HAS_MATS_PER_POINT,
@@ -427,9 +431,10 @@ namespace StillDesign
 			A2CrossB2 = NX_SEP_AXIS_A2_CROSS_B2
 		};
 		
+		[Flags]
 		public enum class HeightFieldTessFlag
 		{
-			Tess0thVertexShaded
+			Tess0thVertexShaded = NX_HF_0TH_VERTEX_SHARED
 		};
 		
 		public enum class CookingValue
@@ -577,6 +582,7 @@ namespace StillDesign
 			Miniball
 		};
 		
+		[Flags]
 		public enum class CapsuleShapeFlag
 		{
 			SweptShape = NX_SWEPT_SHAPE
@@ -597,10 +603,12 @@ namespace StillDesign
 			All = Shape | Impact | Normal | FaceIndex | Distance | UV | FaceNormal | Material
 		};
 		
+		[Flags]
 		public enum class MeshDataFlag
 		{
 			SixteenBitIndices = NX_MDF_16_BIT_INDICES
 		};
+		[Flags]
 		public enum class MeshDataDirtyBufferFlags
 		{
 			DirtyPositionVertices = NX_MDF_VERTICES_POS_DIRTY,
@@ -615,6 +623,7 @@ namespace StillDesign
 			Variable = NX_TIMESTEP_VARIABLE
 		};
 		
+		[Flags]
 		public enum class SoftBodyAttachmentFlag
 		{
 			Twoway = NX_SOFTBODY_ATTACHMENT_TWOWAY,
@@ -669,17 +678,20 @@ namespace StillDesign
 			OnStay = NX_TRIGGER_ON_STAY
 		};
 		
+		[Flags]
 		public enum class ClothVertexFlag
 		{
 			Attached = NX_CLOTH_VERTEX_ATTACHED,
 			Tearable = NX_CLOTH_VERTEX_TEARABLE
 		};
 		
+		[Flags]
 		public enum class ForceFieldShapeGroupFlag
 		{
 			ExcludeGroup = NX_FFSG_EXCLUDE_GROUP
 		};
 		
+		[Flags]
 		public enum class ClothMeshFlag
 		{
 			Tearable = NX_CLOTH_MESH_TEARABLE,
