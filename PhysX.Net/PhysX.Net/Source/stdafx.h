@@ -30,9 +30,9 @@ THE SOFTWARE.
 	#using <C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.dll>
 #elif GRAPHICS_SLIMDX
 	#if WIN32
-		#using <C:\Program Files (x86)\SlimDX SDK (February 2010)\Bin\x86\SlimDX.dll>
+		#using <C:\Program Files (x86)\SlimDX SDK (June 2010)\Bin\net20\x86\SlimDX.dll>
 	#elif _WIN64
-		#using <C:\Program Files (x86)\SlimDX SDK (February 2010)\Bin\x64\SlimDX.dll>
+		#using <C:\Program Files (x86)\SlimDX SDK (June 2010)\Bin\net20\x64\SlimDX.dll>
 	#endif
 #else
 	NoGraphicsTargetSpecified
