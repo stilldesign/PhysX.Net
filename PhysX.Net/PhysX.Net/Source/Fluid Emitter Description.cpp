@@ -51,6 +51,10 @@ void FluidEmitterDescription::SetToDefault()
 	_shape = nullptr;
 	_userData = nullptr;
 }
+int FluidEmitterDescription::CheckValid()
+{
+	return _fluidEmitterDesc->checkValid();
+}
 bool FluidEmitterDescription::IsValid()
 {
 	return _fluidEmitterDesc->isValid();

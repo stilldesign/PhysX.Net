@@ -1,10 +1,12 @@
 #pragma once
 
+#include "Description.h"
+
 namespace StillDesign
 {
 	namespace PhysX
 	{
-		public ref class ForceFieldLinearKernelDescription
+		public ref class ForceFieldLinearKernelDescription : Description
 		{
 			private:
 				NxForceFieldLinearKernelDesc* _desc;
@@ -19,6 +21,8 @@ namespace StillDesign
 				
 			public:
 				void SetToDefault();
+				/// <summary>Returns 0 if the current settings are valid.</summary>
+				virtual int CheckValid() override;
 				bool IsValid();
 				
 				/// <summary>Gets the Name of the descriptor</summary>

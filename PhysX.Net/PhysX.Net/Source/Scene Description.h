@@ -1,9 +1,9 @@
-
 #pragma once
 
 #include "Enums.h"
 #include "IDisposable.h"
 #include "Bounds.h"
+#include "Description.h"
 
 using namespace System;
 UsingFrameworkNamespace
@@ -21,7 +21,7 @@ namespace StillDesign
 		ref class UserContactModify;
 		ref class UserContactReport;
 		
-		public ref class SceneDescription : IDisposable
+		public ref class SceneDescription : Description, IDisposable
 		{
 			public:
 				virtual event EventHandler^ OnDisposing;
@@ -58,6 +58,8 @@ namespace StillDesign
 				
 				/// <summary>(re)sets the structure to the default (no gravity, no ground plane, collision detection on)</summary>
 				void SetToDefault();
+				/// <summary>Returns 0 if the current settings are valid.</summary>
+				virtual int CheckValid() override;
 				/// <summary></summary>
 				bool IsValid();
 				

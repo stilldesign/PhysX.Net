@@ -12,25 +12,30 @@ using namespace StillDesign::PhysX;
 void RuntimeFileChecks::Check()
 {
 #if _WIN64
-	CheckFile( "NxCharacter.dll" );
-	CheckFile( "PhysXCooking64.dll" );
-	CheckFile( "PhysXCore64.dll" );
-	CheckFile( "PhysXLoader64.dll" );
+	CheckFile( "PhysXCore64.dll", PhysXDllVersion );
+	CheckFile( "PhysXCooking64.dll", PhysXDllVersion );
+	CheckFile( "cudart64_30_9.dll", CudaDllVersion );
+	CheckFile( "PhysXDevice64.dll", PhysXDeviceDllVersion );
+	CheckFile( "PhysXLoader64.dll", PhysXDllVersion );
 #elif WIN32
-	CheckFile( "NxCharacter.dll" );
-	CheckFile( "PhysXCooking.dll" );
-	CheckFile( "PhysXCore.dll" );
-	CheckFile( "PhysXLoader.dll" );
+	CheckFile( "PhysXCore.dll", PhysXDllVersion );
+	CheckFile( "PhysXCooking.dll", PhysXDllVersion );
+	CheckFile( "cudart32_30_9.dll", CudaDllVersion );
+	CheckFile( "PhysXDevice.dll", PhysXDeviceDllVersion );
+	CheckFile( "PhysXLoader.dll", PhysXDllVersion );
 #endif
 }
 
-void RuntimeFileChecks::CheckFile( String^ filename )
+void RuntimeFileChecks::CheckFile( String^ filename, String^ requiredVersion )
 {
-	Version^ requiredVersion = gcnew Version( RequiredDllVersion );
-	
+	CheckFile( filename, gcnew Version( requiredVersion ) );
+}
+void RuntimeFileChecks::CheckFile( String^ filename, Version^ requiredVersion )
+{
 	try
 	{
-		Version^ version = GetFileVersion( filename );
+		String^ filePath = FindLibraryPath( filename );
+		Version^ version = GetFileVersion( filePath );
 		
 		// Compare the file version of the DLL to the required version
 		if( version != requiredVersion )

@@ -75,6 +75,7 @@
 #include <NxDebugRenderable.h> 
 #include <NxControllerManager.h> 
 #include <ControllerManager.h> 
+#include <NxCompartment.h>
 
 using namespace StillDesign::PhysX;
 
@@ -718,6 +719,37 @@ void Scene::ResetPollForWork()
 void Scene::ShutdownWorkerThreads()
 {
 	_scene->shutdownWorkerThreads();
+}
+
+void Scene::SimulateCompartments( float elapsedTime, array<Compartment^>^ compartments )
+{
+	SimulateCompartments( elapsedTime, compartments, false );
+}
+void Scene::SimulateCompartments( float elapsedTime, array<Compartment^>^ compartments, bool simulatePrimary )
+{
+	if( compartments == nullptr )
+		throw gcnew ArgumentNullException("compartments");
+	
+	// Get the NxCompartment pointers
+	NxCompartment** c = new NxCompartment*[ compartments->Length ];
+	for( int i = 0; i < compartments->Length; i++ )
+	{
+		Compartment^ compartment = compartments[ i ];
+		
+		if( compartment == nullptr )
+		{
+			c[ i ] = NULL;
+		}else{
+			if( compartment->IsDisposed )
+				throw gcnew InvalidOperationException( "Cannot simulate a disposed compartment" );
+			
+			c[ i ] = compartment->UnmanagedPointer;
+		}
+	}
+	
+	_scene->simulateCompartments( elapsedTime, c, simulatePrimary );
+	
+	delete[] c;
 }
 
 String^ SceneDescription::Name::get()

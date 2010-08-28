@@ -47,7 +47,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\Cooking\include&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\Foundation\include&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\NxCharacter\include&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\Physics\include&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\Physics\include\cloth&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\Physics\include\fluids&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\Physics\include\softbody&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\PhysXLoader\include&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\Tools\NxuStream2&quot;"
+				AdditionalIncludeDirectories="&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\SDKs\Cooking\include&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\SDKs\Foundation\include&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\SDKs\NxCharacter\include&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\SDKs\Physics\include&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\SDKs\Physics\include\cloth&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\SDKs\Physics\include\fluids&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\SDKs\Physics\include\softbody&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\SDKs\PhysXLoader\include&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\Tools\NxuStream2&quot;"
 				PreprocessorDefinitions="_DEBUG;GRAPHICS_SLIMDX;WIN32"
 				RuntimeLibrary="3"
 				UsePrecompiledHeader="1"
@@ -67,7 +67,7 @@
 				Name="VCLinkerTool"
 				AdditionalDependencies="NxCharacter.lib PhysXCooking.lib PhysXCore.lib PhysXLoader.lib"
 				ShowProgress="0"
-				AdditionalLibraryDirectories="&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\lib\Win32&quot;"
+				AdditionalLibraryDirectories="&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\SDKs\lib\Win32&quot;"
 				DelayLoadDLLs="NxCharacter.dll"
 				GenerateDebugInformation="true"
 				RandomizedBaseAddress="1"
@@ -143,7 +143,7 @@
 				Name="VCLinkerTool"
 				AdditionalDependencies="NxCharacter.lib PhysXCooking64.lib PhysXCore64.lib PhysXLoader64.lib"
 				ShowProgress="0"
-				AdditionalLibraryDirectories="&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\lib\win64&quot;"
+				AdditionalLibraryDirectories="&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\SDKs\lib\win64&quot;"
 				DelayLoadDLLs="NxCharacter.dll"
 				GenerateDebugInformation="true"
 				RandomizedBaseAddress="1"
@@ -197,7 +197,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\Cooking\include&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\Foundation\include&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\NxCharacter\include&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\Physics\include&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\Physics\include\cloth&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\Physics\include\fluids&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\Physics\include\softbody&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\PhysXLoader\include&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\Tools\NxuStream2&quot;"
+				AdditionalIncludeDirectories="&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\SDKs\Cooking\include&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\SDKs\Foundation\include&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\SDKs\NxCharacter\include&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\SDKs\Physics\include&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\SDKs\Physics\include\cloth&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\SDKs\Physics\include\fluids&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\SDKs\Physics\include\softbody&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\SDKs\PhysXLoader\include&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\Tools\NxuStream2&quot;"
 				PreprocessorDefinitions="GRAPHICS_SLIMDX;WIN32"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="1"
@@ -215,7 +215,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="NxCharacter.lib PhysXCooking.lib PhysXCore.lib PhysXLoader.lib"
-				AdditionalLibraryDirectories="&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\lib\Win32&quot;"
+				AdditionalLibraryDirectories="&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\SDKs\lib\Win32&quot;"
 				DelayLoadDLLs="NxCharacter.dll"
 				RandomizedBaseAddress="1"
 				DataExecutionPrevention="0"
@@ -287,7 +287,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="NxCharacter.lib PhysXCooking64.lib PhysXCore64.lib PhysXLoader64.lib"
-				AdditionalLibraryDirectories="&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\lib\win64&quot;"
+				AdditionalLibraryDirectories="&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\SDKs\lib\win64&quot;"
 				DelayLoadDLLs="NxCharacter.dll"
 				RandomizedBaseAddress="1"
 				DataExecutionPrevention="0"
@@ -341,7 +341,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\Cooking\include&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\Foundation\include&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\NxCharacter\include&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\Physics\include&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\Physics\include\cloth&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\Physics\include\fluids&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\Physics\include\softbody&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\PhysXLoader\include&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\Tools\NxuStream2&quot;"
+				AdditionalIncludeDirectories="&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\SDKs\Cooking\include&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\SDKs\Foundation\include&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\SDKs\NxCharacter\include&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\SDKs\Physics\include&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\SDKs\Physics\include\cloth&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\SDKs\Physics\include\fluids&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\SDKs\Physics\include\softbody&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\SDKs\PhysXLoader\include&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\Tools\NxuStream2&quot;"
 				PreprocessorDefinitions="_DEBUG;GRAPHICS_XNA31;WIN32"
 				RuntimeLibrary="3"
 				UsePrecompiledHeader="1"
@@ -360,7 +360,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="NxCharacter.lib PhysXCooking.lib PhysXCore.lib PhysXLoader.lib"
-				AdditionalLibraryDirectories="&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\lib\Win32&quot;"
+				AdditionalLibraryDirectories="&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\SDKs\lib\Win32&quot;"
 				DelayLoadDLLs="NxCharacter.dll"
 				GenerateDebugInformation="true"
 				RandomizedBaseAddress="1"
@@ -435,7 +435,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="NxCharacter.lib NxCooking.lib PhysXLoader.lib"
-				AdditionalLibraryDirectories="&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\lib\win64&quot;"
+				AdditionalLibraryDirectories="&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\SDKs\lib\win64&quot;"
 				DelayLoadDLLs="NxCharacter.dll"
 				GenerateDebugInformation="true"
 				RandomizedBaseAddress="1"
@@ -489,7 +489,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\Cooking\include&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\Foundation\include&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\NxCharacter\include&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\Physics\include&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\Physics\include\cloth&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\Physics\include\fluids&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\Physics\include\softbody&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\PhysXLoader\include&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\Tools\NxuStream2&quot;"
+				AdditionalIncludeDirectories="&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\SDKs\Cooking\include&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\SDKs\Foundation\include&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\SDKs\NxCharacter\include&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\SDKs\Physics\include&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\SDKs\Physics\include\cloth&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\SDKs\Physics\include\fluids&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\SDKs\Physics\include\softbody&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\SDKs\PhysXLoader\include&quot;;&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\Tools\NxuStream2&quot;"
 				PreprocessorDefinitions="GRAPHICS_XNA31;WIN32"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="1"
@@ -507,7 +507,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="NxCharacter.lib PhysXCooking.lib PhysXCore.lib PhysXLoader.lib"
-				AdditionalLibraryDirectories="&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\lib\Win32&quot;"
+				AdditionalLibraryDirectories="&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\SDKs\lib\Win32&quot;"
 				DelayLoadDLLs="NxCharacter.dll"
 				RandomizedBaseAddress="1"
 				DataExecutionPrevention="0"
@@ -579,7 +579,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="NxCharacter.lib NxCooking.lib PhysXLoader.lib"
-				AdditionalLibraryDirectories="&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.3\SDKs\lib\win64&quot;"
+				AdditionalLibraryDirectories="&quot;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\v2.8.4_win\SDKs\lib\win64&quot;"
 				DelayLoadDLLs="NxCharacter.dll"
 				RandomizedBaseAddress="1"
 				DataExecutionPrevention="0"
@@ -13518,6 +13518,10 @@
 			</File>
 			<File
 				RelativePath=".\Source\Debug Renderable.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Source\Description.h"
 				>
 			</File>
 			<File

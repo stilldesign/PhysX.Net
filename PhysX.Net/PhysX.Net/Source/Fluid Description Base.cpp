@@ -66,6 +66,10 @@ void FluidDescriptionBase::SetToDefault()
 	_compartment = nullptr;
 				
 }
+int FluidDescriptionBase::CheckValid()
+{
+	return _fluidDescBase->checkValid();
+}
 bool FluidDescriptionBase::IsValid()
 {
 	return _fluidDescBase->isValid();

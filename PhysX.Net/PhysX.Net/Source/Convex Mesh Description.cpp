@@ -58,6 +58,10 @@ bool ConvexMeshDescription::IsValid()
 {
 	return _desc->isValid();
 }
+int ConvexMeshDescription::CheckValid()
+{
+	return _desc->checkValid();
+}
 void ConvexMeshDescription::SetToDefault()
 {
 	_desc->setToDefault();

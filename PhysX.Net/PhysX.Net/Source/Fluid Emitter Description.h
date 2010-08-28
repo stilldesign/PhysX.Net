@@ -2,6 +2,7 @@
 
 #include "Enums.h"
 #include "IDisposable.h"
+#include "Description.h"
 
 using namespace System;
 UsingFrameworkNamespace
@@ -13,7 +14,7 @@ namespace StillDesign
 		ref class Shape;
 		ref class Scene;
 		
-		public ref class FluidEmitterDescription : StillDesign::PhysX::IDisposable
+		public ref class FluidEmitterDescription : Description, StillDesign::PhysX::IDisposable
 		{
 			public:
 				virtual event EventHandler^ OnDisposing;
@@ -42,6 +43,8 @@ namespace StillDesign
 				
 			public:
 				void SetToDefault();
+				/// <summary>Returns 0 if the current settings are valid.</summary>
+				virtual int CheckValid() override;
 				bool IsValid();
 				
 				/// <summary>Gets or Sets the name of the emitter</summary>

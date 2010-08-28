@@ -29,17 +29,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assemblies", "Assemblies", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "x86", "x86", "{6AE3B0C2-8088-40A7-8810-5B77E3688596}"
 	ProjectSection(SolutionItems) = preProject
+		Assemblies\x86\cudart32_30_9.dll = Assemblies\x86\cudart32_30_9.dll
 		Assemblies\x86\NxCharacter.dll = Assemblies\x86\NxCharacter.dll
 		Assemblies\x86\PhysXCooking.dll = Assemblies\x86\PhysXCooking.dll
 		Assemblies\x86\PhysXCore.dll = Assemblies\x86\PhysXCore.dll
+		Assemblies\x86\PhysXDevice.dll = Assemblies\x86\PhysXDevice.dll
 		Assemblies\x86\PhysXLoader.dll = Assemblies\x86\PhysXLoader.dll
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "x64", "x64", "{61C50BA2-F945-4024-A307-E464762927B2}"
 	ProjectSection(SolutionItems) = preProject
+		Assemblies\x64\cudart64_30_9.dll = Assemblies\x64\cudart64_30_9.dll
 		Assemblies\x64\NxCharacter.dll = Assemblies\x64\NxCharacter.dll
 		Assemblies\x64\PhysXCooking64.dll = Assemblies\x64\PhysXCooking64.dll
 		Assemblies\x64\PhysXCore64.dll = Assemblies\x64\PhysXCore64.dll
+		Assemblies\x64\PhysXDevice64.dll = Assemblies\x64\PhysXDevice64.dll
 		Assemblies\x64\PhysXLoader64.dll = Assemblies\x64\PhysXLoader64.dll
 	EndProjectSection
 EndProject
@@ -47,7 +51,7 @@ Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 15
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://tfs01.codeplex.com/
+		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs01
 		SccLocalPath0 = .
 		SccProjectUniqueName1 = PhysX.Net\\PhysX.Net.vcproj
 		SccProjectName1 = PhysX.Net
@@ -222,6 +226,14 @@ Global
 		{9A1A2883-62D3-43C6-8F71-48015FA8E0C7}.Release SlimDX|x86.ActiveCfg = Release|x86
 		{9A1A2883-62D3-43C6-8F71-48015FA8E0C7}.Release XNA 3.1|x64.ActiveCfg = Release|x86
 		{9A1A2883-62D3-43C6-8F71-48015FA8E0C7}.Release XNA 3.1|x86.ActiveCfg = Release|x86
+		{753B2741-C4F4-4F46-98DC-A406E58BF1B6}.Debug SlimDX|x64.ActiveCfg = Debug|x86
+		{753B2741-C4F4-4F46-98DC-A406E58BF1B6}.Debug SlimDX|x86.ActiveCfg = Debug|x86
+		{753B2741-C4F4-4F46-98DC-A406E58BF1B6}.Debug XNA 3.1|x64.ActiveCfg = Debug|x86
+		{753B2741-C4F4-4F46-98DC-A406E58BF1B6}.Debug XNA 3.1|x86.ActiveCfg = Debug|x86
+		{753B2741-C4F4-4F46-98DC-A406E58BF1B6}.Release SlimDX|x64.ActiveCfg = Release|x86
+		{753B2741-C4F4-4F46-98DC-A406E58BF1B6}.Release SlimDX|x86.ActiveCfg = Release|x86
+		{753B2741-C4F4-4F46-98DC-A406E58BF1B6}.Release XNA 3.1|x64.ActiveCfg = Release|x86
+		{753B2741-C4F4-4F46-98DC-A406E58BF1B6}.Release XNA 3.1|x86.ActiveCfg = Release|x86
 		{12F44B8B-0424-4D72-885E-7724D8EE4991}.Debug SlimDX|x64.ActiveCfg = Debug|x86
 		{12F44B8B-0424-4D72-885E-7724D8EE4991}.Debug SlimDX|x86.ActiveCfg = Debug|x86
 		{12F44B8B-0424-4D72-885E-7724D8EE4991}.Debug XNA 3.1|x64.ActiveCfg = Debug|x86
@@ -246,14 +258,6 @@ Global
 		{6AB0CAA7-33DB-43AF-BBD2-13AB832DE077}.Release SlimDX|x86.ActiveCfg = Release|x86
 		{6AB0CAA7-33DB-43AF-BBD2-13AB832DE077}.Release XNA 3.1|x64.ActiveCfg = Release|x86
 		{6AB0CAA7-33DB-43AF-BBD2-13AB832DE077}.Release XNA 3.1|x86.ActiveCfg = Release|x86
-		{753B2741-C4F4-4F46-98DC-A406E58BF1B6}.Debug SlimDX|x64.ActiveCfg = Debug|x86
-		{753B2741-C4F4-4F46-98DC-A406E58BF1B6}.Debug SlimDX|x86.ActiveCfg = Debug|x86
-		{753B2741-C4F4-4F46-98DC-A406E58BF1B6}.Debug XNA 3.1|x64.ActiveCfg = Debug|x86
-		{753B2741-C4F4-4F46-98DC-A406E58BF1B6}.Debug XNA 3.1|x86.ActiveCfg = Debug|x86
-		{753B2741-C4F4-4F46-98DC-A406E58BF1B6}.Release SlimDX|x64.ActiveCfg = Release|x86
-		{753B2741-C4F4-4F46-98DC-A406E58BF1B6}.Release SlimDX|x86.ActiveCfg = Release|x86
-		{753B2741-C4F4-4F46-98DC-A406E58BF1B6}.Release XNA 3.1|x64.ActiveCfg = Release|x86
-		{753B2741-C4F4-4F46-98DC-A406E58BF1B6}.Release XNA 3.1|x86.ActiveCfg = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

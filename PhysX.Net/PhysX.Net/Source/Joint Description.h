@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Joint Enums.h"
+#include "Description.h"
 
 using namespace System;
 UsingFrameworkNamespace
@@ -12,7 +13,7 @@ namespace StillDesign
 		ref class Actor;
 		ref class Actor;
 		
-		public ref class JointDescription abstract
+		public ref class JointDescription abstract : Description
 		{
 			protected:
 				NxJointDesc* _desc;
@@ -34,6 +35,8 @@ namespace StillDesign
 			
 			public:
 				virtual bool IsValid();
+				/// <summary>Returns 0 if the current settings are valid.</summary>
+				virtual int CheckValid() override;
 				/// <summary>(Re)sets the structure to the default</summary>
 				virtual void SetToDefault();
 				

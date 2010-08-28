@@ -47,6 +47,10 @@ bool ActorDescriptionBase::IsValid()
 {
 	return _desc->isValid();
 }
+int ActorDescriptionBase::CheckValid()
+{
+	return _desc->checkValid();
+}
 void ActorDescriptionBase::SetToDefault()
 {
 	_desc->setToDefault();

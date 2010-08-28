@@ -25,6 +25,10 @@ bool ControllerDescription::IsValid()
 {
 	return _desc->isValid();
 }
+int ControllerDescription::CheckValid()
+{
+	return _desc->checkValid();
+}
 void ControllerDescription::SetToDefault()
 {
 	_desc->setToDefault();

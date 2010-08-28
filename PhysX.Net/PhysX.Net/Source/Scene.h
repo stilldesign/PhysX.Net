@@ -239,6 +239,16 @@ namespace StillDesign
 				/// <summary>Release threads which are blocking to allow the SDK to be destroyed safely</summary>
 				void ShutdownWorkerThreads();
 				
+				/// <summary>Advance specified set of compartments by an elapsedTime time.</summary>
+				/// <param name="elapsedTime">Amount of time to advance simulation by. Range: (0,inf).</param>
+				/// <param name="compartments">A collection of compartments which should get simulated.</param>
+				void SimulateCompartments( float elapsedTime, array<Compartment^>^ compartments );
+				/// <summary>Advance specified set of compartments by an elapsedTime time.</summary>
+				/// <param name="elapsedTime">Amount of time to advance simulation by. Range: (0,inf).</param>
+				/// <param name="compartments">A collection of compartments which should get simulated.</param>
+				/// <param name="simulatePrimary">Simulate the primary scene along with the specified compartments.</param>
+				void SimulateCompartments( float elapsedTime, array<Compartment^>^ compartments, bool simulatePrimary );
+				
 #pragma region Overlap Testing
 				/// <summary>Returns the set of shapes overlapped by the world-space sphere</summary>
 				/// <param name="sphere">Sphere description in world space</param>

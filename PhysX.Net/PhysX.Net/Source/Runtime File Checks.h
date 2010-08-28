@@ -3,7 +3,9 @@
 using namespace System;
 using namespace System::Reflection;
 
-#define RequiredDllVersion "2.8.3.21"
+#define PhysXDllVersion "2.8.4.3"
+#define PhysXDeviceDllVersion "10.7.1.0"
+#define CudaDllVersion "6.14.11.3000"
 
 namespace StillDesign
 {
@@ -15,7 +17,8 @@ namespace StillDesign
 				static void Check();
 				
 			private:
-				static void CheckFile( String^ filename );
+				static void CheckFile( String^ filename, String^ requiredVersion );
+				static void CheckFile( String^ filename, Version^ requiredVersion );
 				
 				static String^ FindLibraryPath( System::String^ name );
 				static Assembly^ GetBestAssembly();

@@ -4,6 +4,7 @@
 #include "IDisposable.h"
 #include "Force Field Shape Group.h"
 #include "Force Field Shape Description.h"
+#include "Description.h"
 
 using namespace System;
 UsingFrameworkNamespace
@@ -18,7 +19,7 @@ namespace StillDesign
 		ref class Actor;
 		ref class ForceFieldKernel;
 		
-		public ref class ForceFieldDescription : IDisposable
+		public ref class ForceFieldDescription : Description, IDisposable
 		{
 			public:
 				// TODO: Check for disposals
@@ -64,6 +65,8 @@ namespace StillDesign
 			public:
 				/// <summary>Resets the structure to the default</summary>
 				void SetToDefault();
+				/// <summary>Returns 0 if the current settings are valid.</summary>
+				virtual int CheckValid() override;
 				/// <summary>Returns true if the descriptor is valid</summary>
 				bool IsValid();
 				

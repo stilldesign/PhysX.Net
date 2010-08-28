@@ -10,6 +10,13 @@ namespace StillDesign
 		{
 			private:
 				CoreCreationError _errorCode;
+			
+			internal:
+				PhysXInitializationException( CoreCreationError errorCode ) 
+					: PhysXException( "PhysX failed to initialize. PhysX returned the error code {0} ({1}).", (int)errorCode, errorCode )
+				{
+					_errorCode = errorCode;
+				}
 				
 			public:
 				property CoreCreationError ErrorCode
@@ -18,12 +25,6 @@ namespace StillDesign
 					{
 						return _errorCode; 
 					}
-				}
-				
-			internal:
-				PhysXInitializationException( CoreCreationError errorCode ) : PhysXException( "PhysX failed to initialize" )
-				{
-					_errorCode = errorCode;
 				}
 		};
 	}

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Enums.h"
+#include "Description.h"
 
 namespace StillDesign
 {

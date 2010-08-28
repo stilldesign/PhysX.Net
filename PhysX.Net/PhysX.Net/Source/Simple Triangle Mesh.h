@@ -2,6 +2,7 @@
 
 #include "Enums.h"
 #include "IDisposable.h"
+#include "Description.h"
 
 using namespace System;
 using namespace System::Collections::Generic;
@@ -14,7 +15,7 @@ namespace StillDesign
 	{
 		ref class PhysicsStream;
 		
-		public ref class SimpleTriangleMesh abstract : StillDesign::PhysX::IDisposable
+		public ref class SimpleTriangleMesh abstract : Description, StillDesign::PhysX::IDisposable
 		{
 			public:
 				virtual event EventHandler^ OnDisposing;
@@ -39,6 +40,7 @@ namespace StillDesign
 			
 				/// <summary>Is the Simple Triangle Mesh Valid</summary>
 				virtual bool IsValid();
+				virtual int CheckValid() override;
 				/// <summary>Sets the Simple Triangle Mesh to its Default Values</summary>
 				/// <remarks>Does Not Delete Allocated Memory</remarks>
 				virtual void SetToDefault();

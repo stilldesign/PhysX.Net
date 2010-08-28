@@ -3,12 +3,13 @@
 #include "Enums.h"
 #include "IDisposable.h"
 #include "Height Field Sample.h"
+#include "Description.h"
 
 namespace StillDesign
 {
 	namespace PhysX
 	{
-		public ref class HeightFieldDescription
+		public ref class HeightFieldDescription : Description
 		{
 			private:
 				NxHeightFieldDesc* _heightFieldDesc;
@@ -24,6 +25,8 @@ namespace StillDesign
 			public:
 				/// <summary>Resets the structure to the default</summary>
 				void SetToDefault();
+				/// <summary>Returns 0 if the current settings are valid.</summary>
+				virtual int CheckValid() override;
 				/// <summary>Returns true if the descriptor is valid</summary>
 				bool IsValid();
 				

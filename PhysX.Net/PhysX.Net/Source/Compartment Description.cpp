@@ -23,6 +23,10 @@ void CompartmentDescription::SetToDefault()
 {
 	_desc->setToDefault();
 }
+int CompartmentDescription::CheckValid()
+{
+	return _desc->checkValid();
+}
 bool CompartmentDescription::IsValid()
 {
 	return _desc->isValid();

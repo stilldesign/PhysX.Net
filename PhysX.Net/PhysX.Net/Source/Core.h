@@ -132,43 +132,57 @@ namespace StillDesign
 				/// <param name="enabled">The Physics Parameter to Set</param>
 				void SetParameter( PhysicsParameter parameter, bool enabled );
 				
+				/// <summary>Attempt to resize the GPU memory heap and mesh cache.</summary>
+				/// <param name="heapSize">Unit is MB, must be a power of two.</param>
+				/// <remarks>For the resize to be successful there must be no GPU memory currently allocated. This generally means all GPU fluids, cloths, and soft bodies must be released before calling this function.</remarks>
+				/// <returns>True if resize was successful, False otherwise.</returns>
+				bool ResizeGpuHeap( int heapSize );
+				/// <summary>Attempt to resize the GPU memory heap and mesh cache.</summary>
+				/// <param name="heapSize">Unit is MB, must be a power of two.</param>
+				/// <param name="meshCacheSize">Unit is MB, must be a power of two and smaller than gpuHeapSize. The default value (0xffffffff) sets the mesh cache size to 1/8 of the GPU heap size.</param>
+				/// <remarks>For the resize to be successful there must be no GPU memory currently allocated. This generally means all GPU fluids, cloths, and soft bodies must be released before calling this function.</remarks>
+				/// <returns>True if resize was successful, False otherwise.</returns>
+				bool ResizeGpuHeap( int heapSize, int meshCacheSize );
+				
+				//
+				
 				property bool IsCoreCreated
 				{
 					static bool get();
 				}
 				
 				/// <summary>Gets the Collection of Scenes</summary>
-				property ReadOnlyList< Scene^ >^ Scenes
+				property ReadOnlyList<Scene^>^ Scenes
 				{
 					ReadOnlyList< Scene^ >^ get();
 				}
 				/// <summary>Gets the Collection of Triangle Mesh</summary>
-				property ReadOnlyList< TriangleMesh^ >^ TriangleMeshes
+				property ReadOnlyList<TriangleMesh^>^ TriangleMeshes
 				{
 					ReadOnlyList< TriangleMesh^ >^ get();
 				}
 				/// <summary>Gets the Collection of Convex Mesh</summary>
-				property ReadOnlyList< ConvexMesh^ >^ ConvexMeshes
+				property ReadOnlyList<ConvexMesh^>^ ConvexMeshes
 				{
 					ReadOnlyList< ConvexMesh^ >^ get();
 				}
 				/// <summary>Gets the Collection of Cloth Mesh</summary>
-				property ReadOnlyList< ClothMesh^ >^ ClothMeshes
+				property ReadOnlyList<ClothMesh^>^ ClothMeshes
 				{
 					ReadOnlyList< ClothMesh^ >^ get();
 				}
 				/// <summary>Gets the Collection of Heightfield</summary>
-				property ReadOnlyList< HeightField^ >^ HeightFields
+				property ReadOnlyList<HeightField^>^ HeightFields
 				{
 					ReadOnlyList< HeightField^ >^ get();
 				}
 				/// <summary>Gets the Collection of CCD Skeletons</summary>
-				property ReadOnlyList< CCDSkeleton^ >^ CCDSkeletons
+				property ReadOnlyList<CCDSkeleton^>^ CCDSkeletons
 				{
 					ReadOnlyList< CCDSkeleton^ >^ get();
 				}
 				/// <summary>Gets the Collection of SoftBody Mesh</summary>
-				property ReadOnlyList< SoftBodyMesh^ >^ SoftBodyMeshes
+				property ReadOnlyList<SoftBodyMesh^>^ SoftBodyMeshes
 				{
 					ReadOnlyList< SoftBodyMesh^ >^ get();
 				}

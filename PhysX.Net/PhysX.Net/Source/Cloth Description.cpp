@@ -71,6 +71,10 @@ bool ClothDescription::IsValid()
 {
 	return _clothDesc->isValid();
 }
+int ClothDescription::CheckValid()
+{
+	return _clothDesc->checkValid();
+}
 void ClothDescription::SetToDefault()
 {
 	_clothDesc->setToDefault();
@@ -263,6 +267,24 @@ float ClothDescription::FromFluidResponseCoefficent::get()
 void ClothDescription::FromFluidResponseCoefficent::set( float value )
 {
 	_clothDesc->fromFluidResponseCoefficient = value;
+}
+
+float ClothDescription::CompressionLimit::get()
+{
+	return _clothDesc->compressionLimit;
+}
+void ClothDescription::CompressionLimit::set( float value )
+{
+	_clothDesc->compressionLimit = value;
+}
+
+float ClothDescription::CompressionStiffness::get()
+{
+	return _clothDesc->compressionStiffness;
+}
+void ClothDescription::CompressionStiffness::set( float value )
+{
+	_clothDesc->compressionStiffness = value;
 }
 
 float ClothDescription::MinimumAdhereVelocity::get()

@@ -2,6 +2,7 @@
 
 #include "Enums.h"
 #include "IDisposable.h"
+#include "Description.h"
 
 using namespace System;
 using namespace System::Collections::Generic;
@@ -17,7 +18,7 @@ namespace StillDesign
 		ref class ShapeDescription;
 		ref class Compartment;
 		
-		public ref class ActorDescriptionBase abstract : StillDesign::PhysX::IDisposable
+		public ref class ActorDescriptionBase abstract : Description, StillDesign::PhysX::IDisposable
 		{
 			public:
 				virtual event EventHandler^ OnDisposing;
@@ -45,6 +46,7 @@ namespace StillDesign
 				
 				/// <summary>Is the description valid</summary>
 				virtual bool IsValid();
+				virtual int CheckValid() override;
 				/// <summary>Sets the structure to a default state</summary>
 				virtual void SetToDefault();
 				

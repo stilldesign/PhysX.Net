@@ -2,6 +2,7 @@
 
 #include "Enums.h"
 #include "IDisposable.h"
+#include "Description.h"
 
 using namespace System;
 UsingFrameworkNamespace
@@ -19,7 +20,7 @@ namespace StillDesign
 		ref class ParticleIdData;
 		ref class FluidPacketData;
 		
-		public ref class FluidDescriptionBase abstract : StillDesign::PhysX::IDisposable
+		public ref class FluidDescriptionBase abstract : Description, StillDesign::PhysX::IDisposable
 		{
 			public:
 				virtual event EventHandler^ OnDisposing;
@@ -53,6 +54,8 @@ namespace StillDesign
 				
 				/// <summary>Sets the structure to the default</summary>
 				void SetToDefault();
+				/// <summary>Returns 0 if the current settings are valid.</summary>
+				virtual int CheckValid() override;
 				/// <summary>Returns true if the descriptor is valid</summary>
 				bool IsValid();
 				

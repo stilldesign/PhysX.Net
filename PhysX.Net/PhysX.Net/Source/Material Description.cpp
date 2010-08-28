@@ -28,6 +28,10 @@ bool MaterialDescription::IsValid()
 {
 	return _desc->isValid();
 }
+int MaterialDescription::CheckValid()
+{
+	return _desc->checkValid();
+}
 void MaterialDescription::SetToDefault()
 {
 	_desc->setToDefault();

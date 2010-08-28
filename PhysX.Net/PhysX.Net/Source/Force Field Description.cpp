@@ -78,6 +78,10 @@ void ForceFieldDescription::SetToDefault()
 	
 	_userData = nullptr;
 }
+int ForceFieldDescription::CheckValid()
+{
+	return _forceFieldDesc->checkValid();
+}
 bool ForceFieldDescription::IsValid()
 {
 	return _forceFieldDesc->isValid();

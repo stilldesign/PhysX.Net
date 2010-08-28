@@ -45,6 +45,10 @@ bool JointDescription::IsValid()
 {
 	return _desc->isValid();
 }
+int JointDescription::CheckValid()
+{
+	return _desc->checkValid();
+}
 void JointDescription::SetToDefault()
 {
 	_desc->setToDefault();

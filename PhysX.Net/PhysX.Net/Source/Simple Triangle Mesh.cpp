@@ -55,6 +55,10 @@ bool SimpleTriangleMesh::IsValid()
 {
 	return _triMesh->isValid();
 }
+int SimpleTriangleMesh::CheckValid()
+{
+	return _triMesh->checkValid();
+}
 void SimpleTriangleMesh::SetToDefault()
 {
 	_verticesStream = nullptr;

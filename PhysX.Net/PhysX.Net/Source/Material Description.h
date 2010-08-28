@@ -2,6 +2,7 @@
 
 #include "Material Enums.h"
 #include "Spring Description.h"
+#include "Description.h"
 
 UsingFrameworkNamespace
 
@@ -11,7 +12,7 @@ namespace StillDesign
 	{
 		ref class Material;
 		
-		public ref class MaterialDescription
+		public ref class MaterialDescription : Description
 		{
 			private:
 				NxMaterialDesc* _desc;
@@ -30,6 +31,8 @@ namespace StillDesign
 			public:
 				/// <summary>(Re)sets the structure to the default</summary>
 				void SetToDefault();
+				/// <summary>Returns 0 if the current settings are valid.</summary>
+				virtual int CheckValid() override;
 				/// <summary>Returns true if the descriptor is valid</summary>
 				bool IsValid();
 				

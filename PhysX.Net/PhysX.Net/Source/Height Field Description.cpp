@@ -27,6 +27,10 @@ void HeightFieldDescription::SetToDefault()
 	
 	_samples = nullptr;
 }
+int HeightFieldDescription::CheckValid()
+{
+	return _heightFieldDesc->checkValid();
+}
 bool HeightFieldDescription::IsValid()
 {
 	return _heightFieldDesc->isValid();

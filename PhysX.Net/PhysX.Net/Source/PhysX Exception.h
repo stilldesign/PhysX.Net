@@ -15,7 +15,7 @@ namespace StillDesign
 					
 				}
 				
-				PhysXException( String^ format, ... array<String^>^ args )
+				PhysXException( String^ format, ... array<Object^>^ args )
 					: Exception( String::Format( format, args ) )
 				{
 					

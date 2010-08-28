@@ -26,6 +26,10 @@ void ForceFieldLinearKernelDescription::SetToDefault()
 	
 	_userData = nullptr;
 }
+int ForceFieldLinearKernelDescription::CheckValid()
+{
+	return _desc->checkValid();
+}
 bool ForceFieldLinearKernelDescription::IsValid()
 {
 	return _desc->isValid();

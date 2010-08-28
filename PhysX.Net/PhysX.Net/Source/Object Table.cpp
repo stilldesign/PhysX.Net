@@ -37,7 +37,7 @@ void StillDesign::PhysX::ObjectTable::Add( intptr_t pointer, Object^ object, Obj
 				AddOwnership( object, owner );
 			
 			ObjectAdded( nullptr, gcnew ObjectTableEventArgs( pointer, object ) );
-		}catch( Exception^ ex ){
+		}catch( Exception^ ){
 			throw;
 		}
 	}finally{

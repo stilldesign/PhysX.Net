@@ -81,6 +81,10 @@ void SoftBodyMeshDescription::SetToDefault()
 	_vertexMassesStream = nullptr;
 	_vertexFlagsStream = nullptr;
 }
+int SoftBodyMeshDescription::CheckValid()
+{
+	return _desc->checkValid();
+}
 bool SoftBodyMeshDescription::IsValid()
 {
 	return _desc->isValid();

@@ -2,6 +2,7 @@
 
 #include "Enums.h"
 #include "IDisposable.h"
+#include "Description.h"
 
 using namespace System;
 UsingFrameworkNamespace
@@ -19,7 +20,7 @@ namespace StillDesign
 		ref class Compartment;
 		ref class ClothSplitPairData;
 		
-		public ref class ClothDescription : StillDesign::PhysX::IDisposable
+		public ref class ClothDescription : public Description, StillDesign::PhysX::IDisposable
 		{
 			public:
 				virtual event EventHandler^ OnDisposing;
@@ -56,6 +57,7 @@ namespace StillDesign
 			public:
 				/// <summary>Returns true if the current settings are valid</summary>
 				bool IsValid();
+				virtual int CheckValid() override;
 				/// <summary>(Re)sets the structure to the default</summary>
 				void SetToDefault();
 				
@@ -170,6 +172,18 @@ namespace StillDesign
 				}
 				/// <summary>Gets or Sets the impulse transfer from colliding fluids to this cloth</summary>
 				property float FromFluidResponseCoefficent
+				{
+					float get();
+					void set( float value );
+				}
+				/// <summary>Defines a factor up to which the cloth is weak under compression.</summary>
+				property float CompressionLimit
+				{
+					float get();
+					void set( float value );
+				}
+				/// <summary>Defines the stiffness of the cloth under compression.</summary>
+				property float CompressionStiffness
 				{
 					float get();
 					void set( float value );

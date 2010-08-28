@@ -63,6 +63,10 @@ bool ShapeDescription::IsValid()
 {
 	return _desc->isValid();
 }
+int ShapeDescription::CheckValid()
+{
+	return _desc->checkValid();
+}
 void ShapeDescription::SetToDefault()
 {
 	_desc->setToDefault();

@@ -434,6 +434,17 @@ void Core::SetParameter( PhysicsParameter parameter, bool enabled )
 	_physicsSDK->setParameter( (NxParameter)parameter, enabled ? 1.0f : 0.0f );
 }
 
+bool Core::ResizeGpuHeap( int heapSize )
+{
+	return _physicsSDK->resizeGpuHeap( heapSize );
+}
+bool Core::ResizeGpuHeap( int heapSize, int meshCacheSize )
+{
+	return _physicsSDK->resizeGpuHeap( heapSize, meshCacheSize );
+}
+
+//
+
 bool Core::IsCoreCreated::get()
 {
 	return _isCoreCreated;

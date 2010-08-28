@@ -76,6 +76,10 @@ void ForceFieldShapeGroupDescription::SetToDefault()
 	
 	_userData = nullptr;
 }
+int ForceFieldShapeGroupDescription::CheckValid()
+{
+	return _desc->checkValid();
+}
 bool ForceFieldShapeGroupDescription::IsValid()
 {
 	return _desc->isValid();

@@ -72,6 +72,10 @@ void SceneDescription::SetToDefault()
 	
 	_userData = nullptr;
 }
+int SceneDescription::CheckValid()
+{
+	return _sceneDescription->checkValid();
+}
 bool SceneDescription::IsValid()
 {
 	return _sceneDescription->isValid();

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Enums.h"
+#include "Description.h"
 
 UsingFrameworkNamespace
 
@@ -8,7 +9,7 @@ namespace StillDesign
 {
 	namespace PhysX
 	{
-		public ref class CompartmentDescription
+		public ref class CompartmentDescription : Description
 		{
 			private:
 				NxCompartmentDesc* _desc;
@@ -21,6 +22,7 @@ namespace StillDesign
 			
 			public:
 				void SetToDefault();
+				virtual int CheckValid() override;
 				/// <summary>Returns true if the descriptor is valid</summary>
 				bool IsValid();
 				

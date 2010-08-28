@@ -2,6 +2,7 @@
 
 #include "Enums.h"
 #include "Groups Mask.h"
+#include "Description.h"
 
 using namespace System;
 UsingFrameworkNamespace
@@ -14,7 +15,7 @@ namespace StillDesign
 		ref class Scene;
 		ref class CCDSkeleton;
 		
-		public ref class ShapeDescription abstract
+		public ref class ShapeDescription abstract : Description
 		{
 			protected:
 				NxShapeDesc* _desc;
@@ -32,6 +33,8 @@ namespace StillDesign
 			public:
 				/// <summary>Is the shape description valid</summary>
 				virtual bool IsValid();
+				/// <summary>Returns 0 if the current settings are valid.</summary>
+				virtual int CheckValid() override;
 				/// <summary>Resets the description to default</summary>
 				virtual void SetToDefault();
 				

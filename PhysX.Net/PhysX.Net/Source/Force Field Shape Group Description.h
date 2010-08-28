@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Force Field Shape Group.h"
+#include "Description.h"
 
 class NxForceFieldShapeGroupDesc;
 
@@ -8,7 +9,7 @@ namespace StillDesign
 {
 	namespace PhysX
 	{
-		public ref class ForceFieldShapeGroupDescription
+		public ref class ForceFieldShapeGroupDescription : Description
 		{
 			public:
 				ref class ForceFieldShapeDescriptionCollection : ListBase<ForceFieldShapeDescription^>
@@ -34,6 +35,8 @@ namespace StillDesign
 			
 			public:
 				void SetToDefault();
+				/// <summary>Returns 0 if the current settings are valid.</summary>
+				virtual int CheckValid() override;
 				bool IsValid();
 				
 				/// <summary></summary>

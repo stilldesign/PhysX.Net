@@ -25,8 +25,8 @@ namespace StillDesign
 			Enabled = NX_FF_ENABLED,
 			Hardware = NX_FF_HARDWARE,
 			PriorityMode = NX_FF_PRIORITY_MODE,
+			ProjectToPlane = NX_FF_PROJECT_TO_PLANE,
 			ForceStrictCookingFormat = NX_FF_FORCE_STRICT_COOKING_FORMAT,
-			ProjectToPlane = NX_FF_PROJECT_TO_PLANE
 		};
 		
 		[Flags]

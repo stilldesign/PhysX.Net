@@ -2,6 +2,7 @@
 
 #include "Enums.h"
 #include "IDisposable.h"
+#include "Description.h"
 
 using namespace System;
 
@@ -16,7 +17,7 @@ namespace StillDesign
 		ref class Scene;
 		ref class PhysicsStream;
 		
-		public ref class ConvexMeshDescription : IDisposable
+		public ref class ConvexMeshDescription : Description, IDisposable
 		{
 			public:
 				virtual event EventHandler^ OnDisposing;
@@ -45,6 +46,7 @@ namespace StillDesign
 			public:
 				/// <summary>Is the convex mesh description valid</summary>
 				bool IsValid();
+				virtual int CheckValid() override;
 				/// <summary>Sets the description to default</summary>
 				void SetToDefault();
 				

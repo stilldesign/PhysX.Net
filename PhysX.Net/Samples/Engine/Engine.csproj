@@ -140,6 +140,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\..\Assemblies\x86\cudart32_30_9.dll">
+      <Link>cudart32_30_9.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="..\..\Assemblies\x86\NxCharacter.dll">
       <Link>NxCharacter.dll</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -150,6 +154,10 @@
     </Content>
     <Content Include="..\..\Assemblies\x86\PhysXCore.dll">
       <Link>PhysXCore.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\Assemblies\x86\PhysXDevice.dll">
+      <Link>PhysXDevice.dll</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="..\..\Assemblies\x86\PhysXLoader.dll">

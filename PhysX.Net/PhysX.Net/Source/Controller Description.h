@@ -2,6 +2,7 @@
 
 #include "Enums.h"
 #include "Controller Enums.h"
+#include "Description.h"
 
 using namespace System;
 
@@ -16,7 +17,7 @@ namespace StillDesign
 		
 		public delegate ControllerAction ControllerActionHandler();
 		
-		public ref class ControllerDescription abstract
+		public ref class ControllerDescription abstract : Description
 		{
 			private:
 				NxControllerDesc* _desc;
@@ -33,6 +34,7 @@ namespace StillDesign
 			public:
 				/// <summary>Is the Description Settings Valid</summary>
 				bool IsValid();
+				virtual int CheckValid() override;
 				void SetToDefault();
 				
 				/// <summary>Gets the Character Controller Type</summary>

@@ -2,6 +2,7 @@
 
 #include "Enums.h"
 #include "IDisposable.h"
+#include "Description.h"
 
 class NxSoftBodyMeshDesc;
 
@@ -11,7 +12,7 @@ namespace StillDesign
 	{
 		ref class PhysicsStream;
 		
-		public ref class SoftBodyMeshDescription : StillDesign::PhysX::IDisposable
+		public ref class SoftBodyMeshDescription : Description, StillDesign::PhysX::IDisposable
 		{
 			public:
 				virtual event EventHandler^ OnDisposing;
@@ -41,6 +42,8 @@ namespace StillDesign
 				
 				/// <summary>Sets the description to default</summary>
 				void SetToDefault();
+				/// <summary>Returns 0 if the current settings are valid.</summary>
+				virtual int CheckValid() override;
 				/// <summary>Is the description valid</summary>
 				bool IsValid();
 				
