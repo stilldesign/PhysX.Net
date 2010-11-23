@@ -2,6 +2,7 @@
 
 #include "Enums.h"
 #include "IDisposable.h"
+#include "BufferData.h"
 
 using namespace System;
 UsingFrameworkNamespace
@@ -12,7 +13,7 @@ namespace StillDesign
 	{
 		ref class PhysicsStream;
 		
-		public ref class MeshData : IDisposable, ICloneable
+		public ref class MeshData : BufferData, IDisposable, ICloneable
 		{
 			public:
 				virtual event EventHandler^ OnDisposing;
@@ -30,24 +31,24 @@ namespace StillDesign
 			
 			private:
 				NxMeshData* _meshData;
-				
+
+			private:
+				// Streams to the unmanaged data
 				PhysicsStream^ _positionsStream;
 				PhysicsStream^ _normalsStream;
 				PhysicsStream^ _parentIndicesStream;
 				PhysicsStream^ _indicesStream;
 				PhysicsStream^ _dirtyBufferFlagsStream;
-				
 			public:
 				MeshData();
-			internal:
-				MeshData( NxMeshData* meshData );
-				MeshData( NxMeshData meshData );
+			
 			public:
 				~MeshData();
 			protected:
 				!MeshData();
+			internal:
+				static void DeleteBuffers(NxMeshData* meshData);
 			private:
-				//void CreateMeshData();
 				void CreateMeshData( NxMeshData* meshData );
 			public:
 				property bool IsDisposed
@@ -56,10 +57,16 @@ namespace StillDesign
 				}
 			
 			internal:
-				static NxMeshData* Clone( NxMeshData meshData );
+				/// <summary>
+				/// Constructs a new MeshData object, wraps and holds on to the unmanaged object but 
+				/// does not dispose of it, that is responsibility of the class that manages the unmanaged object.
+				/// </summary>
+				static MeshData^ FromUnmanagedPointer( NxMeshData* meshData, bool objectOwner, bool dataOwner );
+				static void Clone( NxMeshData meshData, NxMeshData* d );
 			
 			public:
-				virtual Object^ Clone();
+				virtual MeshData^ Clone();
+				virtual Object^ ICloneableClone() = ICloneable::Clone;
 				
 				/// <summary>Returns true if the current settings are valid</summary>
 				bool IsValid();

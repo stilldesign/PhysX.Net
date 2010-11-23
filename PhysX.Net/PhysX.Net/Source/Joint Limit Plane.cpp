@@ -15,7 +15,7 @@ LimitPlane::LimitPlane( Plane plane, float restitution )
 {
 	Plane p = Plane::Normalize( plane );
 	
-	_normal = Plane_GetNormal( p );
+	_normal = p.Normal;
 	
 	_d = p.D;
 	_restitution = restitution;

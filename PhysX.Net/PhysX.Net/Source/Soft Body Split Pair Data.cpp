@@ -9,24 +9,19 @@ SoftBodySplitPairData::SoftBodySplitPairData()
 	_data = new NxSoftBodySplitPairData();
 	
 	_data->numSplitPairsPtr = new NxU32();
+
 }
-SoftBodySplitPairData::SoftBodySplitPairData( NxSoftBodySplitPairData data )
+SoftBodySplitPairData^ SoftBodySplitPairData::FromUnmanaged( NxSoftBodySplitPairData* data, bool objectOwner, bool dataOwner )
 {
-	_data = new NxSoftBodySplitPairData();
+	Debug::Assert( data != NULL );
 	
-	_data->maxSplitPairs = data.maxSplitPairs;
+	SoftBodySplitPairData^ managedPairData = gcnew SoftBodySplitPairData();
+
+	managedPairData->_data = data;
+	managedPairData->ObjectOwner = objectOwner;
+	managedPairData->DataOwner = dataOwner;
 	
-	_data->numSplitPairsPtr = new NxU32();
-	if( data.numSplitPairsPtr != NULL )
-		*_data->numSplitPairsPtr = *data.numSplitPairsPtr;
-	
-	if( data.splitPairsBegin != NULL )
-	{
-		_data->splitPairsBegin = new NxSoftBodySplitPair[ data.maxSplitPairs ];
-		
-		memcpy_s( _data->splitPairsBegin, data.maxSplitPairs * sizeof( NxSoftBodySplitPair ), data.splitPairsBegin, data.maxSplitPairs * sizeof( NxSoftBodySplitPair ) );
-	}
-	_data->splitPairsByteStride = data.splitPairsByteStride;
+	return managedPairData;
 }
 SoftBodySplitPairData::~SoftBodySplitPairData()
 {
@@ -34,28 +29,130 @@ SoftBodySplitPairData::~SoftBodySplitPairData()
 }
 SoftBodySplitPairData::!SoftBodySplitPairData()
 {
-	if( _data != NULL )
+	if( this->IsDisposed )
+		return;
+
+	OnDisposing( this, EventArgs::Empty );
+
+	if( this->DataOwner )
 	{
 		SAFE_DELETE( _data->numSplitPairsPtr );
 		
-		SAFE_DELETE( _data->splitPairsBegin );
-		
+		SAFE_FREE( _data->splitPairsBegin );
+	}
+
+	if( this->ObjectOwner )
+	{
 		SAFE_DELETE( _data );
 	}
+
+	_data = NULL;
+
+	OnDisposed(this, EventArgs::Empty);
+}
+
+bool SoftBodySplitPairData::IsDisposed::get()
+{
+	return _data == NULL;
+}
+
+SoftBodySplitPairData^ SoftBodySplitPairData::Clone()
+{
+	NxSoftBodySplitPairData* data = new NxSoftBodySplitPairData();
+
+	data->maxSplitPairs = _data->maxSplitPairs;
+
+	if( _data->numSplitPairsPtr != NULL)
+	{
+		data->numSplitPairsPtr = new NxU32();
+		*data->numSplitPairsPtr = *data->numSplitPairsPtr;
+	}
+
+	if( _data->splitPairsBegin != NULL && _data->maxSplitPairs >= 0 )
+	{
+		data->splitPairsBegin = (NxSoftBodySplitPair*)malloc( _data->maxSplitPairs * sizeof(NxSoftBodySplitPair) );
+
+		int byteSize = data->maxSplitPairs * sizeof( NxSoftBodySplitPair );
+		memcpy_s( data->splitPairsBegin, byteSize, _data->splitPairsBegin, byteSize );
+	}
+
+	data->splitPairsByteStride = _data->splitPairsByteStride;
+
+	SoftBodySplitPairData^ managedPairData = gcnew SoftBodySplitPairData();
+	managedPairData->_data = data;
+
+	return managedPairData;
+}
+Object^ SoftBodySplitPairData::ICloneableClone()
+{
+	return Clone();
+}
+
+void SoftBodySplitPairData::AllocateSplitPairs( int count )
+{
+	if( count < 0 )
+		throw gcnew ArgumentOutOfRangeException( "count" );
+
+	if( _data->splitPairsBegin != NULL )
+	{
+		SAFE_FREE( _data->splitPairsBegin );
+	}
+
+	_data->splitPairsBegin = (NxSoftBodySplitPair*)malloc( count * sizeof( NxSoftBodySplitPair ) );
 }
 
 void SoftBodySplitPairData::SetToDefault()
 {
 	_data->setToDefault();
-	
-	_pairs = nullptr;
 }
 bool SoftBodySplitPairData::IsValid()
 {
 	return _data->isValid();
 }
-
-array<SoftBodySplitPair>^ SoftBodySplitPairData::SplitPairs::get()
+int SoftBodySplitPairData::CheckValid()
 {
-	return _pairs;
+	return _data->checkValid();
+}
+
+array<SoftBodySplitPair>^ SoftBodySplitPairData::GetSplitPairs()
+{
+	int count = *_data->numSplitPairsPtr;
+	array<SoftBodySplitPair>^ pairs = gcnew array<SoftBodySplitPair>( count );
+
+	for (int i = 0; i < count; i++)
+	{
+		pairs[ i ] = (SoftBodySplitPair)_data->splitPairsBegin[ i ];
+	}
+
+	return pairs;
+}
+
+Nullable<int> SoftBodySplitPairData::MaximumSplitPairs::get()
+{
+	if( _data->numSplitPairsPtr == NULL )
+		return Nullable<int>();
+
+	return Nullable<int>( *_data->numSplitPairsPtr );
+}
+void SoftBodySplitPairData::MaximumSplitPairs::set( Nullable<int> value )
+{
+	if( !value.HasValue )
+	{
+		if( _data->numSplitPairsPtr != NULL )
+		{
+			SAFE_DELETE( _data->numSplitPairsPtr );
+		}
+	}
+	else
+	{
+		if( _data->numSplitPairsPtr == NULL )
+			_data->numSplitPairsPtr = new NxU32();
+
+		*_data->numSplitPairsPtr = value.Value;
+	}
+}
+
+NxSoftBodySplitPairData* SoftBodySplitPairData::UnmanagedPointer::get()
+{
+	return _data;
 }

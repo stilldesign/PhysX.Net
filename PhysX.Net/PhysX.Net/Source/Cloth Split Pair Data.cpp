@@ -22,7 +22,7 @@ ClothSplitPairData::!ClothSplitPairData()
 	if( _data != NULL )
 	{
 		// We allocated the number of pairs memory, so delete it
-		delete _data->numSplitPairsPtr;
+		//delete _data->numSplitPairsPtr;
 		
 		// The data object was passed into us, so just set it to NULL without deleting it
 		_data = NULL;

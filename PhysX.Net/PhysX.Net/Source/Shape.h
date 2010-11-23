@@ -188,7 +188,7 @@ namespace StillDesign
 					void set( ShapeCompartmentType value );
 				}
 				
-				/// <summary>Gets or Sets an associative object</summary>
+				/// <summary>Gets or Sets an associative object.</summary>
 				property Object^ UserData;
 				
 			internal:

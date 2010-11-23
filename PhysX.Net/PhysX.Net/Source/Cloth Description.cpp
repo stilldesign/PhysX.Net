@@ -21,7 +21,10 @@ ClothDescription::ClothDescription()
 {
 	_clothDesc = new NxClothDesc();
 	
-	_meshData = gcnew StillDesign::PhysX::MeshData( &_clothDesc->meshData );
+	// The NxMeshData object of the NxClothDesc is a simple instance object that exists for the lifetime of the
+	// cloth desc. The managed wrapper class needs to own the buffers, but not the NxMeshData object. When this class
+	// is disposed, the NxMeshData object will be too.
+	_meshData = StillDesign::PhysX::MeshData::FromUnmanagedPointer( &_clothDesc->meshData, false, true );
 	
 	Create();
 }
@@ -44,7 +47,7 @@ ClothDescription::~ClothDescription()
 }
 ClothDescription::!ClothDescription()
 {
-	if( this->IsDisposed == true )
+	if( this->IsDisposed )
 		return;
 	
 	OnDisposing( this, nullptr );

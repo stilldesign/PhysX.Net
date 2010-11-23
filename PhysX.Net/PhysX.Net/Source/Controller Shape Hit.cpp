@@ -42,12 +42,12 @@ Shape^ ControllerShapeHit::Shape::get()
 
 Vector3 ControllerShapeHit::WorldPosition::get()
 {
-	return Vector3( (float)_shapeHit->worldPos.x, (float)_shapeHit->worldPos.y, (float)_shapeHit->worldPos.z );
+	return Math::NxVec3ToVector3( _shapeHit->worldPos );
 }
 
 Vector3 ControllerShapeHit::WorldNormal::get()
 {
-	return Vector3( (float)_shapeHit->worldNormal.x, (float)_shapeHit->worldNormal.y, (float)_shapeHit->worldNormal.z );
+	return Math::NxVec3ToVector3( _shapeHit->worldNormal );
 }
 
 //unsigned int ControllerShapeHit::TriangleIndex::get()

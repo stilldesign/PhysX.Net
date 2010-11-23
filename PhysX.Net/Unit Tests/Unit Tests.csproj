@@ -1,4 +1,5 @@
-﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -9,18 +10,23 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>StillDesign.PhysX.UnitTests</RootNamespace>
     <AssemblyName>UnitTests</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UpgradeBackupLocation />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug SlimDX|x86' ">
     <PlatformTarget>x86</PlatformTarget>
     <OutputPath>bin\x86\Debug SlimDX\</OutputPath>
     <DefineConstants>DEBUG;GRAPHICS_SLIMDX</DefineConstants>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug XNA 3.1|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -28,16 +34,19 @@
     <DefineConstants>TRACE;DEBUG;GRAPHICS_XNA31</DefineConstants>
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release SlimDX|x86' ">
     <PlatformTarget>x86</PlatformTarget>
     <OutputPath>bin\x86\Release SlimDX\</OutputPath>
     <DefineConstants>GRAPHICS_SLIMDX</DefineConstants>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release XNA 3.1|x86' ">
     <PlatformTarget>x86</PlatformTarget>
     <OutputPath>bin\x86\Release XNA 3.0\</OutputPath>
     <DefineConstants>GRAPHICS_XNA31</DefineConstants>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug SlimDX|x64' ">
     <OutputPath>bin\x64\Debug SlimDX\</OutputPath>
@@ -45,6 +54,7 @@
     <PlatformTarget>x64</PlatformTarget>
     <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
     <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug XNA 3.1|x64' ">
     <DebugSymbols>true</DebugSymbols>
@@ -54,6 +64,7 @@
     <PlatformTarget>x64</PlatformTarget>
     <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
     <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release SlimDX|x64' ">
     <OutputPath>bin\x64\Release SlimDX\</OutputPath>
@@ -61,6 +72,7 @@
     <PlatformTarget>x64</PlatformTarget>
     <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
     <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release XNA 3.1|x64' ">
     <OutputPath>bin\x64\Release XNA 3.1\</OutputPath>
@@ -68,9 +80,10 @@
     <PlatformTarget>x64</PlatformTarget>
     <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
     <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Xna.Framework, Version=3.1.0.0, Culture=neutral, PublicKeyToken=6d5c3888ef60e27d, processorArchitecture=x86" />
     <Reference Include="SlimDX, Version=2.0.10.43, Culture=neutral, PublicKeyToken=b1b0c32fd1ffe4f9, processorArchitecture=x86" />
     <Reference Include="System" />
@@ -108,7 +121,7 @@
     <Content Include="Scene 3.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PhysX.Net\PhysX.Net.vcproj">
+    <ProjectReference Include="..\PhysX.Net\PhysX.Net.vcxproj">
       <Project>{9E50593F-DB72-44D1-8A1D-2AE73214383E}</Project>
       <Name>StillDesign.PhysX.Net</Name>
     </ProjectReference>

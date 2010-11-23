@@ -17,6 +17,7 @@ namespace StillDesign.PhysX.Samples
 	public class Engine
 	{
 		private BasicEffect _visualizationEffect;
+		private VertexDeclaration _vertexDeclaration;
 
 		public Engine( Game game )
 		{
@@ -29,6 +30,7 @@ namespace StillDesign.PhysX.Samples
 
 		public void Initalize()
 		{
+			// Construct engine objects
 			this.Camera = new Camera( this );
 
 			_visualizationEffect = new BasicEffect( this.Device, null )
@@ -36,28 +38,29 @@ namespace StillDesign.PhysX.Samples
 				VertexColorEnabled = true
 			};
 
-			//
+			_vertexDeclaration = new VertexDeclaration( this.Device, VertexPositionColor.VertexElements );
 
+			// Construct physics objects
 			CoreDescription coreDesc = new CoreDescription();
 			UserOutput output = new UserOutput();
 
 			this.Core = new Core( coreDesc, output );
 
-			var core = this.Core;
+			Core core = this.Core;
 			core.SetParameter( PhysicsParameter.VisualizationScale, 2.0f );
 			core.SetParameter( PhysicsParameter.VisualizeCollisionShapes, true );
 			core.SetParameter( PhysicsParameter.VisualizeClothMesh, true );
 			core.SetParameter( PhysicsParameter.VisualizeJointLocalAxes, true );
 			core.SetParameter( PhysicsParameter.VisualizeJointLimits, true );
 			core.SetParameter( PhysicsParameter.VisualizeFluidPosition, true );
-			core.SetParameter( PhysicsParameter.VisualizeFluidEmitters, false ); // Slows down rendering a bit to much
+			core.SetParameter( PhysicsParameter.VisualizeFluidEmitters, false ); // Slows down rendering a bit too much
 			core.SetParameter( PhysicsParameter.VisualizeForceFields, true );
 			core.SetParameter( PhysicsParameter.VisualizeSoftBodyMesh, true );
 
 			SceneDescription sceneDesc = new SceneDescription()
 			{
 				//SimulationType = SimulationType.Hardware,
-				Gravity = new Vector3( 0.0f, -9.81f, 0.0f ),
+				Gravity = new Vector3( 0.0f, -9.81f, 0.0f ).AsPhysX(),
 				GroundPlaneEnabled = true
 			};
 
@@ -84,62 +87,68 @@ namespace StillDesign.PhysX.Samples
 		{
 			this.Device.Clear( Color.LightBlue );
 
-			this.Device.VertexDeclaration = new VertexDeclaration( this.Device, VertexPositionColor.VertexElements );
+			this.Device.VertexDeclaration = _vertexDeclaration;
 
 			_visualizationEffect.World = Matrix.Identity;
 			_visualizationEffect.View = this.Camera.View;
 			_visualizationEffect.Projection = this.Camera.Projection;
 
-			DebugRenderable data = this.Scene.GetDebugRenderable();
+			using( DebugRenderable data = this.Scene.GetDebugRenderable() )
+			{
+				DrawDebug( data );
+			}
+		}
 
+		private void DrawDebug( DebugRenderable data )
+		{
 			_visualizationEffect.Begin();
 
-				foreach( EffectPass pass in _visualizationEffect.CurrentTechnique.Passes )
+			foreach( EffectPass pass in _visualizationEffect.CurrentTechnique.Passes )
+			{
+				pass.Begin();
+
+				if( data.PointCount > 0 )
 				{
-					pass.Begin();
+					DebugPoint[] points = data.GetDebugPoints();
 
-						if( data.PointCount > 0 )
-						{
-							DebugPoint[] points = data.GetDebugPoints();
-
-							this.Device.DrawUserPrimitives<DebugPoint>( PrimitiveType.PointList, points, 0, points.Length );
-						}
-
-						if( data.LineCount > 0 )
-						{
-							DebugLine[] lines = data.GetDebugLines();
-
-							VertexPositionColor[] vertices = new VertexPositionColor[ data.LineCount * 2 ];
-							for( int x = 0; x < data.LineCount; x++ )
-							{
-								DebugLine line = lines[ x ];
-
-								vertices[ x * 2 + 0 ] = new VertexPositionColor( line.Point0, Int32ToColor( line.Color ) );
-								vertices[ x * 2 + 1 ] = new VertexPositionColor( line.Point1, Int32ToColor( line.Color ) );
-							}
-
-							this.Device.DrawUserPrimitives<VertexPositionColor>( PrimitiveType.LineList, vertices, 0, lines.Length );
-						}
-
-						if( data.TriangleCount > 0 )
-						{
-							DebugTriangle[] triangles = data.GetDebugTriangles();
-
-							VertexPositionColor[] vertices = new VertexPositionColor[ data.TriangleCount * 3 ];
-							for( int x = 0; x < data.TriangleCount; x++ )
-							{
-								DebugTriangle triangle = triangles[ x ];
-
-								vertices[ x * 3 + 0 ] = new VertexPositionColor( triangle.Point0, Int32ToColor( triangle.Color ) );
-								vertices[ x * 3 + 1 ] = new VertexPositionColor( triangle.Point1, Int32ToColor( triangle.Color ) );
-								vertices[ x * 3 + 2 ] = new VertexPositionColor( triangle.Point2, Int32ToColor( triangle.Color ) );
-							}
-
-							this.Device.DrawUserPrimitives<VertexPositionColor>( PrimitiveType.TriangleList, vertices, 0, triangles.Length );
-						}
-
-					pass.End();
+					this.Device.DrawUserPrimitives<DebugPoint>( PrimitiveType.PointList, points, 0, points.Length );
 				}
+
+				if( data.LineCount > 0 )
+				{
+					DebugLine[] lines = data.GetDebugLines();
+
+					VertexPositionColor[] vertices = new VertexPositionColor[ data.LineCount * 2 ];
+					for( int x = 0; x < data.LineCount; x++ )
+					{
+						DebugLine line = lines[ x ];
+
+						vertices[ x * 2 + 0 ] = new VertexPositionColor( line.Point0.As<Vector3>(), Int32ToColor( line.Color ) );
+						vertices[ x * 2 + 1 ] = new VertexPositionColor( line.Point1.As<Vector3>(), Int32ToColor( line.Color ) );
+					}
+
+					this.Device.DrawUserPrimitives<VertexPositionColor>( PrimitiveType.LineList, vertices, 0, lines.Length );
+				}
+
+				if( data.TriangleCount > 0 )
+				{
+					DebugTriangle[] triangles = data.GetDebugTriangles();
+
+					VertexPositionColor[] vertices = new VertexPositionColor[ data.TriangleCount * 3 ];
+					for( int x = 0; x < data.TriangleCount; x++ )
+					{
+						DebugTriangle triangle = triangles[ x ];
+
+						vertices[ x * 3 + 0 ] = new VertexPositionColor( triangle.Point0.As<Vector3>(), Int32ToColor( triangle.Color ) );
+						vertices[ x * 3 + 1 ] = new VertexPositionColor( triangle.Point1.As<Vector3>(), Int32ToColor( triangle.Color ) );
+						vertices[ x * 3 + 2 ] = new VertexPositionColor( triangle.Point2.As<Vector3>(), Int32ToColor( triangle.Color ) );
+					}
+
+					this.Device.DrawUserPrimitives<VertexPositionColor>( PrimitiveType.TriangleList, vertices, 0, triangles.Length );
+				}
+
+				pass.End();
+			}
 
 			_visualizationEffect.End();
 		}

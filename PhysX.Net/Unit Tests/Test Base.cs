@@ -22,7 +22,7 @@ namespace StillDesign.PhysX.UnitTests
 
 		}
 
-		[TestCleanup()]
+		[TestCleanup]
 		public void CleanUp()
 		{
 			if( this.Core != null )

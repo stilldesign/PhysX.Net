@@ -7,6 +7,7 @@
 UsingFrameworkNamespace
 
 using namespace StillDesign::PhysX;
+using namespace StillDesign::PhysX::MathPrimitives;
 
 Matrix StillDesign::PhysX::Math::Mat34ToMatrix( NxMat34* pose )
 {
@@ -213,6 +214,10 @@ Vector3 StillDesign::PhysX::Math::NxVec3ToVector3( NxVec3 vector )
 {
 	return Vector3( vector.x, vector.y, vector.z );
 }
+Vector3 StillDesign::PhysX::Math::NxVec3ToVector3( NxExtendedVec3 vector )
+{
+	return Vector3( (float)vector.x, (float)vector.y, (float)vector.z );
+}
 NxVec3 StillDesign::PhysX::Math::Vector3ToNxVec3( Vector3 vector )
 {
 	return NxVec3( vector.X, vector.Y, vector.Z );
@@ -229,7 +234,9 @@ NxQuat StillDesign::PhysX::Math::QuaternionNxQuat( Quaternion quat )
 
 NxPlane StillDesign::PhysX::Math::PlaneToNxPlane( Plane plane )
 {
-	return _PlaneToNxPlane( plane );
+	Vector3 normal = plane.Normal;	
+
+	return NxPlane( normal.X, normal.Y, normal.Z, plane.D );
 }
 Plane StillDesign::PhysX::Math::NxPlaneToPlane( NxPlane plane )
 {

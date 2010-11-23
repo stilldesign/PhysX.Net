@@ -1,6 +1,14 @@
 #pragma once
 
+#include "Plane.h"
+#include "Matrix.h"
+#include "Quaternion.h"
+#include "Vector3.h"
+#include "Vector4.h"
+
 UsingFrameworkNamespace
+
+using namespace StillDesign::PhysX::MathPrimitives;
 
 namespace StillDesign
 {
@@ -20,6 +28,7 @@ namespace StillDesign
 				static Vector3 QuatToEuler( NxQuat q );
 				
 				static Vector3 NxVec3ToVector3( NxVec3 vector );
+				static Vector3 NxVec3ToVector3( NxExtendedVec3 vector );
 				static NxVec3 Vector3ToNxVec3( Vector3 vector );
 				
 				static Quaternion NxQuatToQuaternion( NxQuat quat );

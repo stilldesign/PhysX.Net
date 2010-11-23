@@ -19,47 +19,6 @@ namespace StillDesign.PhysX.UnitTests
 	[TestClass]
 	public class SceneTests : TestBase
 	{
-		public SceneTests()
-		{
-			
-		}
-
-		private TestContext testContextInstance;
-
-		public TestContext TestContext
-		{
-			get
-			{
-				return testContextInstance;
-			}
-			set
-			{
-				testContextInstance = value;
-			}
-		}
-
-		#region Additional test attributes
-		//
-		// You can use the following additional attributes as you write your tests:
-		//
-		// Use ClassInitialize to run code before running the first test in the class
-		// [ClassInitialize()]
-		// public static void MyClassInitialize(TestContext testContext) { }
-		//
-		// Use ClassCleanup to run code after all tests in a class have run
-		// [ClassCleanup()]
-		// public static void MyClassCleanup() { }
-		//
-		// Use TestInitialize to run code before running each test 
-		// [TestInitialize()]
-		// public void MyTestInitialize() { }
-		//
-		// Use TestCleanup to run code after each test has run
-		// [TestCleanup()]
-		// public void MyTestCleanup() { }
-		//
-		#endregion
-
 		[TestMethod]
 		public void CreateAndDisposeManyScenes()
 		{
@@ -171,138 +130,130 @@ namespace StillDesign.PhysX.UnitTests
 		[TestMethod]
 		public void CullShapes_TwoActorsSinglePlane()
 		{
-			using( CreateCoreAndScene() )
-			{
-				var actorA = CreateBoxActor( 0, 0, 10 );
-				var actorB = CreateBoxActor( 0, 0, 100 );
+			CreateCoreAndScene();
 
-				var frustum = new[] { new Plane( 0, 0, -1, 0 ) };
-				var shapes = this.Scene.CullShapes( frustum, ShapesType.Dynamic );
+			var actorA = CreateBoxActor( 0, 0, 10 );
+			var actorB = CreateBoxActor( 0, 0, 100 );
 
-				Assert.IsTrue( shapes.Contains( actorA.Shapes.Single() ), "Shape A is missing" );
-				Assert.IsTrue( shapes.Contains( actorB.Shapes.Single() ), "Shape B is missing" );
-			}
+			var frustum = new[] { new Plane( 0, 0, -1, 0 ) };
+			var shapes = this.Scene.CullShapes( frustum, ShapesType.Dynamic );
+
+			Assert.IsTrue( shapes.Contains( actorA.Shapes.Single() ), "Shape A is missing" );
+			Assert.IsTrue( shapes.Contains( actorB.Shapes.Single() ), "Shape B is missing" );
 		}
 		[TestMethod]
 		public void CullShapes_TwoActorsTwoPlanes()
 		{
-			using( CreateCoreAndScene() )
+			CreateCoreAndScene();
+			var actorA = CreateBoxActor( 0, 0, 10 );
+			var actorB = CreateBoxActor( 0, 0, 100 );
+
 			{
-				var actorA = CreateBoxActor( 0, 0, 10 );
-				var actorB = CreateBoxActor( 0, 0, 100 );
+				var frustum = new[] { new Plane( 0, 0, -1, 0 ), new Plane( 0, 0, -1, -50 ) };
+				var shapes = this.Scene.CullShapes( frustum, ShapesType.Dynamic );
 
-				{
-					var frustum = new[] { new Plane( 0, 0, -1, 0 ), new Plane( 0, 0, -1, -50 ) };
-					var shapes = this.Scene.CullShapes( frustum, ShapesType.Dynamic );
+				Assert.IsTrue( shapes.Contains( actorA.Shapes.Single() ), "Shape A should be culled" );
+				Assert.IsTrue( shapes.Contains( actorB.Shapes.Single() ), "Shape B should be culled" );
+			}
+			{
+				var shapes = this.Scene.CullShapes( new[] { new Plane( 0, 0, 1, 150 ) }, ShapesType.Dynamic );
 
-					Assert.IsTrue( shapes.Contains( actorA.Shapes.Single() ), "Shape A should be culled" );
-					Assert.IsTrue( shapes.Contains( actorB.Shapes.Single() ), "Shape B should be culled" );
-				}
-				{
-					var shapes = this.Scene.CullShapes( new[] { new Plane( 0, 0, 1, 150 ) }, ShapesType.Dynamic );
-
-					Assert.IsTrue( shapes.Count() == 0, "No shapes should be culled" );
-				}
+				Assert.IsTrue( shapes.Count() == 0, "No shapes should be culled" );
 			}
 		}
 
 		[TestMethod]
 		public void RaycastAllShapes()
 		{
-			using( CreateCoreAndScene() )
-			{
-				Actor a = CreateBoxActor( 0, 0, 10 );
-				Actor b = CreateBoxActor( 0, 0, 50 );
-				Actor c = CreateBoxActor( 0, 10, 10 );
+			CreateCoreAndScene();
 
-				Ray ray = new Ray( new Vector3( 0, 0, 0 ), new Vector3( 0, 0, 1 ) );
+			Actor a = CreateBoxActor( 0, 0, 10 );
+			Actor b = CreateBoxActor( 0, 0, 50 );
+			Actor c = CreateBoxActor( 0, 10, 10 );
 
-				var hits = this.Scene.RaycastAllShapes( ray, ShapesType.All );
+			Ray ray = new Ray( new Vector3( 0, 0, 0 ), new Vector3( 0, 0, 1 ) );
 
-				Assert.IsTrue( hits.Length == 2, "Ray should of hit 2 boxes" );
-				Assert.IsTrue( hits.All( t => t.WorldNormal == new Vector3( 0, 0, -1 ) ), "The normals of hitting the boxes should point directly back" );
-				Assert.IsTrue( hits.Any( t => t.Shape == a.Shapes.Single() ), "One of the shapes hit must be that of Actor a" );
-				Assert.IsTrue( hits.Any( t => t.Shape == b.Shapes.Single() ), "One of the shapes hit must be that of Actor b" );
-			}
+			var hits = this.Scene.RaycastAllShapes( ray, ShapesType.All );
+
+			Assert.IsTrue( hits.Length == 2, "Ray should of hit 2 boxes" );
+			Assert.IsTrue( hits.All( t => t.WorldNormal == new Vector3( 0, 0, -1 ) ), "The normals of hitting the boxes should point directly back" );
+			Assert.IsTrue( hits.Any( t => t.Shape == a.Shapes.Single() ), "One of the shapes hit must be that of Actor a" );
+			Assert.IsTrue( hits.Any( t => t.Shape == b.Shapes.Single() ), "One of the shapes hit must be that of Actor b" );
 		}
 		[TestMethod]
 		public void RaycastClosestShape()
 		{
-			using( CreateCoreAndScene() )
-			{
-				// On the ground, 20 units ahead
-				Actor box1 = CreateBoxActor( 0, 2.5f, 20 );
-				Actor box2 = CreateBoxActor( 0, 2.5f, 40 );
+			CreateCoreAndScene();
 
-				Ray ray = new Ray( new Vector3( 0, 2.5f, 0 ), new Vector3( 0, 0, 1 ) );
-				var hit = this.Scene.RaycastClosestShape( ray, ShapesType.All, 0xFFFFFFFF, float.MaxValue, RaycastBit.All, null );
+			// On the ground, 20 units ahead
+			Actor box1 = CreateBoxActor( 0, 2.5f, 20 );
+			Actor box2 = CreateBoxActor( 0, 2.5f, 40 );
 
-				// Calling RaycastClosestShape returns flags of Material | FaceNormal | Distance | Normal | Impact | Shape, so validate those variables
-				Assert.AreEqual( this.Scene.Materials[ 0 ].Index, hit.MaterialIndex ); // The shape should have the default material (index 0)
-				Assert.AreEqual( 17.5f, hit.Distance );
-				Assert.AreEqual( new Vector3( 0, 0, -1 ), hit.WorldNormal );
-				Assert.AreEqual( ray.Origin + ray.Direction * 17.5f, hit.WorldImpact );
-				Assert.AreEqual( box1.Shapes.First(), hit.Shape );
-			}
+			Ray ray = new Ray( new Vector3( 0, 2.5f, 0 ), new Vector3( 0, 0, 1 ) );
+			var hit = this.Scene.RaycastClosestShape( ray, ShapesType.All, 0xFFFFFFFF, float.MaxValue, RaycastBit.All, null );
+
+			// Calling RaycastClosestShape returns flags of Material | FaceNormal | Distance | Normal | Impact | Shape, so validate those variables
+			Assert.AreEqual( this.Scene.Materials[ 0 ].Index, hit.MaterialIndex ); // The shape should have the default material (index 0)
+			Assert.AreEqual( 17.5f, hit.Distance );
+			Assert.AreEqual( new Vector3( 0, 0, -1 ), hit.WorldNormal );
+			Assert.AreEqual( ray.Origin + ray.Direction * 17.5f, hit.WorldImpact );
+			Assert.AreEqual( box1.Shapes.First(), hit.Shape );
 		}
 		[TestMethod]
 		public void RaycastClosestBounds()
 		{
-			using( CreateCoreAndScene() )
-			{
-				// On the ground, 20 units ahead
-				Actor box1 = CreateBoxActor( 0, 2.5f, 20 );
-				Actor box2 = CreateBoxActor( 0, 2.5f, 40 );
+			CreateCoreAndScene();
 
-				Ray ray = new Ray( new Vector3( 0, 2.5f, 0 ), new Vector3( 0, 0, 1 ) );
-				var hit = this.Scene.RaycastClosestBounds( ray, ShapesType.All, 0xFFFFFFFF, float.MaxValue, RaycastBit.All, null );
+			// On the ground, 20 units ahead
+			Actor box1 = CreateBoxActor( 0, 2.5f, 20 );
+			Actor box2 = CreateBoxActor( 0, 2.5f, 40 );
 
-				// Calling RaycastClosestBounds returns flags of Distance | Impact | Shape, so validate those variables
-				Assert.AreEqual( box1.Shapes.First(), hit.Shape );
-				Assert.AreEqual( 17.5f, hit.Distance );
-				Assert.AreEqual( ray.Origin + ray.Direction * 17.5f, hit.WorldImpact );
-			}
+			Ray ray = new Ray( new Vector3( 0, 2.5f, 0 ), new Vector3( 0, 0, 1 ) );
+			var hit = this.Scene.RaycastClosestBounds( ray, ShapesType.All, 0xFFFFFFFF, float.MaxValue, RaycastBit.All, null );
+
+			// Calling RaycastClosestBounds returns flags of Distance | Impact | Shape, so validate those variables
+			Assert.AreEqual( box1.Shapes.First(), hit.Shape );
+			Assert.AreEqual( 17.5f, hit.Distance );
+			Assert.AreEqual( ray.Origin + ray.Direction * 17.5f, hit.WorldImpact );
 		}
 
 		[TestMethod]
 		public void PrimitiveProperties()
 		{
-			using( CreateCoreAndScene() )
+			CreateCoreAndScene();
+			var primitiveProperties = from c in typeof( Scene ).GetProperties()
+									  where c.PropertyType.IsPrimitive
+									  select c;
+
+			foreach( var property in primitiveProperties )
 			{
-				var primitiveProperties = from c in typeof( Scene ).GetProperties()
-										  where c.PropertyType.IsPrimitive
-										  select c;
-
-				foreach( var property in primitiveProperties )
 				{
-					{
-						var getMethod = property.GetGetMethod();
+					var getMethod = property.GetGetMethod();
 
+					try
+					{
+						var r = getMethod.Invoke( this.Scene, null );
+					}
+					catch
+					{
+						Assert.Fail( "Property from scene failed. Property: '{0}'", getMethod.Name );
+					}
+				}
+
+				//
+
+				{
+					var setMethod = property.GetSetMethod();
+
+					if( setMethod != null )
+					{
 						try
 						{
-							var r = getMethod.Invoke( this.Scene, null );
+							setMethod.Invoke( this.Scene, new[] { Activator.CreateInstance( property.PropertyType ) } );
 						}
 						catch
 						{
-							Assert.Fail( "Property from scene failed. Property: '{0}'", getMethod.Name );
-						}
-					}
-
-					//
-
-					{
-						var setMethod = property.GetSetMethod();
-
-						if( setMethod != null )
-						{
-							try
-							{
-								setMethod.Invoke( this.Scene, new[] { Activator.CreateInstance( property.PropertyType ) } );
-							}
-							catch
-							{
-								Assert.Fail( "Property from scene failed. Property: '{0}'", setMethod.Name );
-							}
+							Assert.Fail( "Property from scene failed. Property: '{0}'", setMethod.Name );
 						}
 					}
 				}
@@ -328,10 +279,6 @@ namespace StillDesign.PhysX.UnitTests
 			return true;
 		}
 
-		public int NumberOfHits
-		{
-			get;
-			private set;
-		}
+		public int NumberOfHits { get; private set; }
 	}
 }

@@ -1,22 +1,15 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.IO;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
-using Microsoft.Xna.Framework.Net;
-using Microsoft.Xna.Framework.Storage;
 
 using ClothVertex = Microsoft.Xna.Framework.Graphics.VertexPositionNormalTexture;
 
 namespace StillDesign.PhysX.Samples
 {
-	public class Cloth : Microsoft.Xna.Framework.Game
+	public partial class Cloth : Microsoft.Xna.Framework.Game
 	{
 		private Engine _engine;
 
@@ -24,6 +17,7 @@ namespace StillDesign.PhysX.Samples
 		private Scene _scene;
 
 		private StillDesign.PhysX.Cloth _flag;
+		private MeshData _flagMeshData;
 
 		private BasicEffect _lighting;
 
@@ -50,73 +44,6 @@ namespace StillDesign.PhysX.Samples
 			UpdateWindowTitle();
 		}
 
-		private void LoadPhysics()
-		{
-			// Create a Grid of Points
-			VertexGrid grid = VertexGrid.CreateGrid( 10, 10 );
-
-			ClothMeshDescription clothMeshDesc = new ClothMeshDescription();
-			clothMeshDesc.AllocateVertices<Vector3>( grid.Points.Length );
-			clothMeshDesc.AllocateTriangles<int>( grid.Indices.Length / 3 );
-
-			clothMeshDesc.VertexCount = grid.Points.Length;
-			clothMeshDesc.TriangleCount = grid.Indices.Length / 3;
-
-			clothMeshDesc.VerticesStream.SetData( grid.Points );
-			clothMeshDesc.TriangleStream.SetData( grid.Indices );
-
-			// We are using 32 bit integers, so make sure the 16 bit flag is removed.
-			// 32 bits are the default, so this isn't technically needed
-			clothMeshDesc.Flags &= ~MeshFlag.Indices16Bit;
-
-			// Write the cooked data to memory
-			MemoryStream memoryStream = new MemoryStream();
-
-			Cooking.InitializeCooking();
-			Cooking.CookClothMesh( clothMeshDesc, memoryStream );
-			Cooking.CloseCooking();
-
-			// Need to reset the position of the stream to the beginning
-			memoryStream.Position = 0;
-
-			ClothMesh clothMesh = _core.CreateClothMesh( memoryStream );
-
-			//
-
-			ClothDescription clothDesc = new ClothDescription()
-			{
-				ClothMesh = clothMesh,
-				Flags = ClothFlag.Gravity | ClothFlag.Bending | ClothFlag.CollisionTwoway | ClothFlag.Visualization,
-				GlobalPose =
-					Matrix.CreateFromYawPitchRoll( 0, (float)Math.PI / 2.0f, (float)Math.PI / 2.0f ) *
-					Matrix.CreateTranslation( 0, 20, 0 )
-			};
-			clothDesc.MeshData.AllocatePositions<Vector3>( grid.Points.Length );
-			clothDesc.MeshData.AllocateIndices<int>( grid.Indices.Length );
-			clothDesc.MeshData.AllocateNormals<Vector3>( grid.Points.Length );
-
-			clothDesc.MeshData.MaximumVertices = grid.Points.Length;
-			clothDesc.MeshData.MaximumIndices = grid.Indices.Length;
-
-			clothDesc.MeshData.NumberOfVertices = grid.Points.Length;
-			clothDesc.MeshData.NumberOfIndices = grid.Indices.Length;
-
-			_flag = _scene.CreateCloth( clothDesc );
-
-			// Flag Pole
-			ActorDescription flagPoleActorDesc = new ActorDescription()
-			{
-				GlobalPose = Matrix.CreateTranslation( 0, 10, 0 ),
-				Shapes = { new BoxShapeDescription( 1.0f, 20.0f, 1.0f ) }
-			};
-
-			Actor flagPoleActor = _scene.CreateActor( flagPoleActorDesc );
-
-			_flag.AttachToShape( flagPoleActor.Shapes.Single(), 0 );
-			_flag.WindAcceleration = new Vector3( 10, 10, 10 );
-			_flag.BendingStiffness = 0.1f;
-		}
-
 		protected override void LoadContent()
 		{
 			_lighting = new BasicEffect( _engine.Device, null );
@@ -141,11 +68,11 @@ namespace StillDesign.PhysX.Samples
 
 			_engine.Draw();
 
-			int n = _flag.MeshData.NumberOfVertices.Value;
+			int n = _flagMeshData.NumberOfVertices.Value;
 
-			var positions = _flag.MeshData.PositionsStream.GetData<Vector3>();
-			var normals = _flag.MeshData.NormalsStream.GetData<Vector3>();
-			var indicies = _flag.MeshData.IndicesStream.GetData<int>();
+			var positions = _flagMeshData.PositionsStream.GetData<Vector3>();
+			var normals = _flagMeshData.NormalsStream.GetData<Vector3>();
+			var indicies = _flagMeshData.IndicesStream.GetData<int>();
 
 			ClothVertex[] vertices = new ClothVertex[ n ];
 
@@ -160,6 +87,8 @@ namespace StillDesign.PhysX.Samples
 			_lighting.View = _engine.Camera.View;
 			_lighting.Projection = _engine.Camera.Projection;
 			_lighting.LightingEnabled = false;
+
+			_engine.Device.VertexDeclaration = new VertexDeclaration( _engine.Device, ClothVertex.VertexElements );
 
 			_lighting.Begin();
 				foreach( var pass in _lighting.CurrentTechnique.Passes )

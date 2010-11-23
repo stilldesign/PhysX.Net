@@ -148,10 +148,9 @@ Scene::Scene( NxScene* scene )
 	{
 		NxCloth* cloth = scene->getCloths()[ x ];
 		
-		MeshData^ meshData = gcnew MeshData( cloth->getMeshData() );
 		ClothSplitPairData^ splitPairData = gcnew ClothSplitPairData( &cloth->getSplitPairData() );
 		
-		_cloths->Add( gcnew Cloth( cloth, meshData, splitPairData ) );
+		//_cloths->Add( gcnew Cloth( cloth, splitPairData ) );
 	}
 	// Force Fields
 	for( unsigned int x = 0; x < scene->getNbForceFields(); x++ )
@@ -298,11 +297,11 @@ Joint^ Scene::AddJoint( NxJoint* joint )
 Cloth^ Scene::AddCloth( NxCloth* cloth )
 {
 	ClothSplitPairData^ splitPairData = gcnew ClothSplitPairData( &cloth->getSplitPairData() );
-	
-	Cloth^ c = gcnew Cloth( cloth, gcnew MeshData( cloth->getMeshData() ), splitPairData );
-	
+
+	Cloth^ c = gcnew Cloth( cloth, splitPairData );
+
 	_cloths->Add( c );
-	
+
 	return c;
 }
 ForceField^ Scene::AddForceField( NxForceField* forceField )
@@ -347,10 +346,7 @@ ForceFieldShapeGroup^ Scene::AddForceFieldShapeGroup( NxForceFieldShapeGroup* gr
 }
 SoftBody^ Scene::AddSoftBody( NxSoftBody* softBody )
 {
-	MeshData^ meshData = gcnew MeshData( softBody->getMeshData() );
-	SoftBodySplitPairData^ splitPairData = gcnew SoftBodySplitPairData( softBody->getSplitPairData() );
-	
-	SoftBody^ s = gcnew SoftBody( softBody, meshData, splitPairData );
+	SoftBody^ s = gcnew SoftBody( softBody );
 	
 	_softBodies->Add( s );
 	
@@ -365,7 +361,9 @@ SceneDescription^ Scene::SaveToDescription()
 	if( this->UnmanagedPointer->saveToDesc( *desc->UnmanagedPointer ) == false )
 	{
 		return nullptr;
-	}else{
+	}
+	else
+	{
 		desc->UserNotify = this->UserNotify;
 		desc->FluidUserNotify = this->FluidUserNotify;
 		desc->UserContactModify = this->UserContactModify;
@@ -494,12 +492,15 @@ Cloth^ Scene::CreateCloth( ClothDescription^ clothDescription )
 	if( clothDescription->IsValid() == false )
 		throw gcnew ArgumentException( "Cloth description is invalid" );
 	
-	NxMeshData d = clothDescription->UnmanagedPointer->meshData;
 	NxCloth* cloth = _scene->createCloth( *clothDescription->UnmanagedPointer );
 	if ( cloth == NULL )
 		throw gcnew PhysXException( "Failed to create cloth" );
 	
-	Cloth^ c = gcnew Cloth( cloth, clothDescription->MeshData, clothDescription->SplitPairData );
+	// We don't want the mesh data of the cloth desc to be disposed of by the GC and
+	// delete our buffer because they now belong to the cloth object
+	clothDescription->MeshData->DataOwner = false;
+	
+	Cloth^ c = gcnew Cloth( cloth, clothDescription->SplitPairData );
 		c->UserData = clothDescription->UserData;
 	
 	_cloths->Add( c );
@@ -630,7 +631,11 @@ SoftBody^ Scene::CreateSoftBody( SoftBodyDescription^ softBodyDescription )
 	if( softBody == NULL )
 		throw gcnew PhysXException( "Failed to create soft body" );
 	
-	SoftBody^ s = gcnew SoftBody( softBody, softBodyDescription->MeshData, softBodyDescription->SplitPairData );
+	// The soft body object will use the buffers from the desc
+	softBodyDescription->MeshData->DataOwner = false;
+	softBodyDescription->SplitPairData->DataOwner = false;
+
+	SoftBody^ s = gcnew SoftBody( softBody );
 		s->UserData = softBodyDescription->UserData;
 		
 	_softBodies->Add( s );
@@ -1087,10 +1092,21 @@ int Scene::RaycastAllShapes( StillDesign::PhysX::Ray worldRay, UserRaycastReport
 array<RaycastHit^>^ Scene::RaycastAllShapes( StillDesign::PhysX::Ray worldRay, ShapesType shapeTypes )
 {
 	RaycastReport^ report = gcnew RaycastReport();
-	
-	RaycastAllShapes( worldRay, report, shapeTypes );
-	
-	return report->Hits->ToArray();
+	array<RaycastHit^>^ hits;
+
+	try
+	{
+		// Fill the report variable with raycast information
+		RaycastAllShapes( worldRay, report, shapeTypes );
+
+		hits = report->Hits->ToArray();
+	}
+	finally
+	{
+		delete report;
+	}
+
+	return hits;
 }
 #pragma endregion
 
@@ -1185,19 +1201,19 @@ array<SweepQueryHit^>^ Scene::LinearSweep( T sweepObject, Vector3 motion, SweepF
 	
 	int numberOfShapes;
 	NxSweepQueryHit* hits;
-	if( returnHits == true )
+	if( returnHits )
 	{
 		numberOfShapes = _scene->getTotalNbShapes();
 		
 		hits = new NxSweepQueryHit[ numberOfShapes ];
 		ZeroMemory( hits, sizeof( NxSweepQueryHit ) * numberOfShapes );
-	}else{
+	}
+	else
+	{
 		numberOfShapes = 0;
 	}
 	
 	NxVec3 m = StillDesign::PhysX::Math::Vector3ToNxVec3( motion );
-	
-	NxBox b = (NxBox)(Box());
 	
 	int shapesHit;
 	if( T::typeid == Box::typeid )
@@ -1205,34 +1221,36 @@ array<SweepQueryHit^>^ Scene::LinearSweep( T sweepObject, Vector3 motion, SweepF
 		Box box = (Box)sweepObject;
 		
 		shapesHit = _scene->linearOBBSweep( (NxBox)box, m, (NxU32)flags, NULL, numberOfShapes, hits, callback == nullptr ? NULL : callback->UnmanagedPointer, activeGroups, groupsMask.HasValue ? &((NxGroupsMask)groupsMask.Value) : NULL );
-	}else if( T::typeid == Capsule::typeid ){
+	}
+	else if( T::typeid == Capsule::typeid )
+	{
 		Capsule capsule = (Capsule)sweepObject;
 		
 		shapesHit = _scene->linearCapsuleSweep( (NxCapsule)capsule, m, (NxU32)flags, NULL, numberOfShapes, hits, callback == nullptr ? NULL : callback->UnmanagedPointer, activeGroups, groupsMask.HasValue ? &((NxGroupsMask)groupsMask.Value) : NULL );
-	}else{
+	}
+	else
+	{
 		throw gcnew PhysXException( "Internal error; sweep object type is unsupported" );
 	}
 	
 	// If callback is provided; we stop here no return
-	if( returnHits == false )
-	{
+	if( !returnHits )
 		return nullptr;
-	}else{
-		//// TODO Should this throw? probably not.
-		//if( shapesHit >= numberOfShapes )
-		//	throw gcnew PhysXException( "Internal error; number of returned shapes exceeds maximum shapes" );
+	
+	//// TODO Should this throw? probably not.
+	//if( shapesHit >= numberOfShapes )
+	//	throw gcnew PhysXException( "Internal error; number of returned shapes exceeds maximum shapes" );
 		
-		array<SweepQueryHit^>^ shapes = gcnew array<SweepQueryHit^>( shapesHit );
-		for( int x = 0; x < shapesHit; x++ )
-		{
-			shapes[ x ] = gcnew SweepQueryHit( &(hits[ x ]), userData );
-		}
-		
-		delete[] hits;
-		hits = NULL;
-		
-		return shapes;
+	array<SweepQueryHit^>^ shapes = gcnew array<SweepQueryHit^>( shapesHit );
+	for( int x = 0; x < shapesHit; x++ )
+	{
+		shapes[ x ] = gcnew SweepQueryHit( &(hits[ x ]), userData );
 	}
+		
+	delete[] hits;
+	hits = NULL;
+		
+	return shapes;
 }
 
 // Cull Tests

@@ -39,7 +39,6 @@ namespace StillDesign
 				
 				StillDesign::PhysX::Scene^ _scene;
 				
-				StillDesign::PhysX::MeshData^ _meshData;
 				StillDesign::PhysX::ClothMesh^ _clothMesh;
 				
 				StillDesign::PhysX::Compartment^ _compartment;
@@ -49,7 +48,7 @@ namespace StillDesign
 				Object^ _userData;
 			
 			internal:
-				Cloth( NxCloth* cloth, StillDesign::PhysX::MeshData^ meshData, ClothSplitPairData^ splitPairData );
+				Cloth( NxCloth* cloth, ClothSplitPairData^ splitPairData );
 			public:
 				~Cloth();
 			protected:
@@ -151,9 +150,13 @@ namespace StillDesign
 				void SetConstrainPositions( array<Vector3>^ positions );
 				void SetConstrainNormals( array<Vector3>^ normals );
 				
+				/// <summary>Gets a copy of the MeshData object. The buffers in meshData are used to communicate the dynamic data of the cloth back to the user.</summary>
+				StillDesign::PhysX::MeshData^ GetMeshData();
+				void SetMeshData(StillDesign::PhysX::MeshData^ meshData);
+
 				//
 				
-				/// <summary>Get or Sets the Name of the Cloth</summary>
+				/// <summary>Get or Sets the name of the cloth.</summary>
 				property String^ Name
 				{
 					String^ get();
@@ -166,11 +169,6 @@ namespace StillDesign
 					StillDesign::PhysX::Scene^ get();
 				}
 				
-				/// <summary>Gets the MeshData Which Contains the Vertices, Indices, Normals and Other Important Values</summary>
-				property StillDesign::PhysX::MeshData^ MeshData
-				{
-					StillDesign::PhysX::MeshData^ get();
-				}
 				/// <summary>Returns the corresponding cloth mesh</summary>
 				property StillDesign::PhysX::ClothMesh^ ClothMesh
 				{

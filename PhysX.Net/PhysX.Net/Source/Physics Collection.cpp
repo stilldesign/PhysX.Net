@@ -78,7 +78,7 @@ bool PhysicsCollection::InstantiateCollection( Core^ core, Scene^ scene, Nullabl
 	ThrowIfDisposed( scene, "scene" );
 	
 	NxMat34 r;
-	if( rootNode.HasValue == true )
+	if( rootNode.HasValue )
 		r = Math::MatrixToMat34( rootNode.Value );
 	
 	NXU_userNotify* n;

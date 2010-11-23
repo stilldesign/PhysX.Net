@@ -11,21 +11,21 @@ using namespace StillDesign::PhysX;
 
 MeshData::MeshData()
 {
-	_meshData = new NxMeshData();
-	//CreateMeshData();
+	_meshData = NULL;
 }
-MeshData::MeshData( NxMeshData* meshData )
+MeshData^ MeshData::FromUnmanagedPointer( NxMeshData* meshData, bool objectOwner, bool dataOwner )
 {
-	// Clone the Mesh Data
-	CreateMeshData( meshData );
-}
-MeshData::MeshData( NxMeshData meshData )
-{
-	NxMeshData* data = new NxMeshData();
-	*data = meshData;
-	
-	// Clone the Mesh Data
-	CreateMeshData( data );
+	Debug::Assert( meshData != NULL );
+
+	MeshData^ m = gcnew MeshData();
+
+	m->_meshData = meshData;
+	m->ObjectOwner = objectOwner;
+	m->DataOwner = dataOwner;
+
+	m->CreateMeshData( meshData );
+
+	return m;
 }
 MeshData::~MeshData()
 {
@@ -33,50 +33,50 @@ MeshData::~MeshData()
 }
 MeshData::!MeshData()
 {
-	if( this->IsDisposed == true )
+	if( this->IsDisposed )
 		return;
 	
-	OnDisposing( this, nullptr );
+	OnDisposing( this, EventArgs::Empty );
 	
-	if( _meshData != NULL )
+	if (this->DataOwner)
 	{
-		void* buffers[] = 
-		{
-			_meshData->verticesPosBegin,
-			_meshData->verticesNormalBegin,
-			_meshData->parentIndicesBegin,
-			_meshData->indicesBegin,
-			_meshData->numVerticesPtr,
-			_meshData->numParentIndicesPtr,
-			_meshData->numIndicesPtr
-		};
+		DeleteBuffers(_meshData);
 		
-		int count = sizeof( buffers ) / sizeof( void* );
-		for( int x = 0; x < count; x++ )
-		{
-			if( buffers[ x ] != NULL )
-				free( buffers[ x ] );
-		}
-		
-		SAFE_DELETE( _meshData->numVerticesPtr );
-		SAFE_DELETE( _meshData->numIndicesPtr );
-		
-		SAFE_DELETE( _meshData );
+		// Setting this to null will free the previously allocated char* memory
+		this->Name = nullptr;
 	}
+
+	if (this->ObjectOwner)
+		SAFE_DELETE(_meshData);
+
+	_positionsStream = 
+	_normalsStream =
+	_parentIndicesStream = 
+	_indicesStream = 
+	_dirtyBufferFlagsStream = nullptr;
+
+	_meshData = NULL;
 	
-	OnDisposed( this, nullptr );
+	OnDisposed( this, EventArgs::Empty );
+}
+void MeshData::DeleteBuffers(NxMeshData* meshData)
+{
+	void* buffers[] = 
+	{
+		meshData->verticesPosBegin,
+		meshData->verticesNormalBegin,
+		meshData->parentIndicesBegin,
+		meshData->indicesBegin,
+		meshData->dirtyBufferFlagsPtr
+	};
+
+	SAFE_FREE_MANY( buffers );
+
+	SAFE_DELETE( meshData->numVerticesPtr );
+	SAFE_DELETE( meshData->numIndicesPtr );
+	SAFE_DELETE( meshData->numParentIndicesPtr );
 }
 
-//void MeshData::CreateMeshData()
-//{
-//	_meshData = new NxMeshData();
-//	
-//	_meshData->numVerticesPtr = new NxU32();
-//	_meshData->numIndicesPtr = new NxU32();
-//	
-//	(*_meshData->numVerticesPtr) = 0;
-//	(*_meshData->numIndicesPtr) = 0;
-//}
 void MeshData::CreateMeshData( NxMeshData* meshData )
 {
 	Debug::Assert( meshData != NULL );
@@ -113,16 +113,8 @@ bool MeshData::IsDisposed::get()
 	return ( _meshData == NULL );
 }
 
-NxMeshData* MeshData::Clone( NxMeshData meshData )
+void MeshData::Clone( NxMeshData meshData, NxMeshData* d )
 {
-	Debug::Assert( meshData.numIndicesPtr != NULL );
-	Debug::Assert( meshData.numParentIndicesPtr != NULL );
-	Debug::Assert( meshData.numVerticesPtr != NULL );
-	
-	NxMeshData* d = new NxMeshData();
-	if( d == NULL )
-		throw gcnew PhysXException( "Could not allocate Mesh Data" );
-	
 	int maxVertices = meshData.maxVertices;
 	int maxIndices = meshData.maxIndices;
 	int maxParentIndices = meshData.maxParentIndices;
@@ -133,54 +125,97 @@ NxMeshData* MeshData::Clone( NxMeshData meshData )
 	
 	//
 	
-	d->numIndicesPtr = new NxU32();
-	d->numParentIndicesPtr = new NxU32();
-	d->numVerticesPtr = new NxU32();
+	// Number of indices
+	if( meshData.numIndicesPtr != NULL )
+	{
+		d->numIndicesPtr = new NxU32();
+		*d->numIndicesPtr = *meshData.numIndicesPtr;
+	}
 	
+	// Number of parent indices
+	if( meshData.numParentIndicesPtr != NULL )
+	{
+		d->numParentIndicesPtr = new NxU32();
+		*d->numParentIndicesPtr = *meshData.numParentIndicesPtr;
+	}
+	
+	// Number of vertices
+	if( meshData.numVerticesPtr != NULL )
+	{
+		d->numVerticesPtr = new NxU32();
+		*d->numVerticesPtr = *meshData.numVerticesPtr;
+	}
+	
+	// Dirty buffer flags
 	if( meshData.dirtyBufferFlagsPtr != NULL )
+	{
 		d->dirtyBufferFlagsPtr = (NxU32*)malloc( maxVertices * sizeof( NxU32 ) );
-	
-	if( meshData.indicesBegin != NULL )
-		d->indicesBegin = malloc( maxIndices * meshData.indicesByteStride );
-	
-	if( meshData.parentIndicesBegin != NULL )
-		d->parentIndicesBegin = malloc( maxParentIndices * parentIndicesStrideSize );
-	
-	if( meshData.verticesNormalBegin != NULL )
-		d->verticesNormalBegin = malloc( maxVertices * normalsStrideSize );
-	
-	if( meshData.verticesPosBegin != NULL )
-		d->verticesPosBegin = malloc( maxVertices * positionStrideSize );
-	
-	//
-	
-	*d->numIndicesPtr = *meshData.numIndicesPtr;
-	*d->numParentIndicesPtr = *meshData.numParentIndicesPtr;
-	*d->numVerticesPtr = *meshData.numVerticesPtr;
-	
-	if( meshData.dirtyBufferFlagsPtr != NULL )
 		memcpy_s( d->dirtyBufferFlagsPtr, maxVertices * sizeof( NxU32 ), meshData.dirtyBufferFlagsPtr, maxVertices * sizeof( NxU32 ) );
+	}
 	
+	// Indices
 	if( meshData.indicesBegin != NULL )
+	{
+		d->indicesBegin = malloc( maxIndices * meshData.indicesByteStride );
 		memcpy_s( d->indicesBegin, maxIndices * meshData.indicesByteStride, meshData.indicesBegin, maxIndices * meshData.indicesByteStride );
+	}
 	
+	// Parent indices
 	if( meshData.parentIndicesBegin != NULL )
+	{
+		d->parentIndicesBegin = malloc( maxParentIndices * parentIndicesStrideSize );
 		memcpy_s( d->parentIndicesBegin, maxParentIndices * parentIndicesStrideSize, meshData.parentIndicesBegin, maxParentIndices *parentIndicesStrideSize );
+	}
 	
+	// Normals
 	if( meshData.verticesNormalBegin != NULL )
+	{
+		d->verticesNormalBegin = malloc( maxVertices * normalsStrideSize );
 		memcpy_s( d->verticesNormalBegin, maxVertices * normalsStrideSize, meshData.verticesNormalBegin, maxVertices * normalsStrideSize );
+	}
 	
+	// Positions
 	if( meshData.verticesPosBegin != NULL )
+	{
+		d->verticesPosBegin = malloc( maxVertices * positionStrideSize );
 		memcpy_s( d->verticesPosBegin, maxVertices * positionStrideSize, meshData.verticesPosBegin, maxVertices * positionStrideSize );
+	}
 	
-	return d;
+	d->verticesPosByteStride = meshData.verticesPosByteStride;
+	d->verticesNormalByteStride = meshData.verticesNormalByteStride;
+	d->indicesByteStride = meshData.indicesByteStride;
+	d->parentIndicesByteStride = meshData.parentIndicesByteStride;
+	
+	d->maxVertices = meshData.maxVertices;
+	d->indicesByteStride = meshData.indicesByteStride;
+	d->maxIndices = meshData.maxIndices;
+	d->parentIndicesByteStride = meshData.parentIndicesByteStride;
+	d->maxParentIndices = meshData.maxParentIndices;
+	
+	d->flags = meshData.flags;
+	
+	if( meshData.name != NULL )
+	{
+		d->name = ToUnmanagedString(ToManagedString(meshData.name));
+	}
 }
-
-Object^ MeshData::Clone()
+MeshData^ MeshData::Clone()
 {
-	NxMeshData* data = Clone( *_meshData );
-	
-	return gcnew MeshData( data );
+	MeshData^ meshData = gcnew MeshData();
+
+	NxMeshData* d = new NxMeshData();
+
+	meshData->Clone( *_meshData, d );
+
+	meshData->_meshData = d;
+	meshData->ObjectOwner = true;
+	meshData->DataOwner = true;
+
+	return meshData;
+}
+Object^ MeshData::ICloneableClone()
+{
+	return Clone();
 }
 
 bool MeshData::IsValid()
@@ -252,12 +287,16 @@ MeshData^ MeshData::AllocateCommonMeshData( int numberOfPositions, int numberOfT
 	MeshData^ data = gcnew MeshData();
 		if( (unsigned int)(types & Type::Positions) != 0 )
 			data->AllocatePositions<Vector3>( numberOfPositions );
+			
 		if( (unsigned int)(types & Type::Normals) != 0 )
 			data->AllocateNormals<Vector3>( numberOfPositions );
+			
 		if( (unsigned int)(types & Type::ParticleIndices) != 0 )
 			data->AllocateParentIndices<int>( numberOfPositions );
+			
 		if( (unsigned int)(types & Type::DirtyFlags) != 0 )
 			data->AllocateDirtyBufferFlags( numberOfPositions );
+			
 		if( (unsigned int)(types & Type::Indices) != 0 )
 			data->AllocateIndices<int>( numberOfTriangles * 3 );
 	
@@ -272,6 +311,9 @@ String^ MeshData::Name::get()
 }
 void MeshData::Name::set( String^ value )
 {
+	if( _meshData->name != NULL )
+		System::Runtime::InteropServices::Marshal::FreeHGlobal( IntPtr((char*)_meshData->name) );
+	
 	_meshData->name = Functions::ManagedToUnmanagedString( value );
 }
 

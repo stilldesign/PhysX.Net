@@ -24,29 +24,8 @@ THE SOFTWARE.
 
 #pragma warning( disable : 4635 4800 4793 )
 
-#define NoGraphicsTargetSpecified #error No Graphics Target Specified
-
-#if GRAPHICS_XNA31
-	#using <C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.dll>
-#elif GRAPHICS_SLIMDX
-	#if WIN32
-		#using <C:\Program Files (x86)\SlimDX SDK (June 2010)\Bin\net20\x86\SlimDX.dll>
-	#elif _WIN64
-		#using <C:\Program Files (x86)\SlimDX SDK (June 2010)\Bin\net20\x64\SlimDX.dll>
-	#endif
-#else
-	NoGraphicsTargetSpecified
-#endif
-
-#if GRAPHICS_XNA31
-	#define UsingFrameworkNamespace using namespace Microsoft::Xna::Framework;
-	#define UsingGraphicsNamespace using namespace Microsoft::Xna::Framework::Graphics;
-#elif GRAPHICS_SLIMDX
-	#define UsingFrameworkNamespace using namespace SlimDX;
-	#define UsingGraphicsNamespace using namespace SlimDX::Direct3D9;
-#else
-	NoGraphicsTargetSpecified
-#endif
+#define UsingFrameworkNamespace 
+#define UsingGraphicsNamespace 
 
 // Modify the following defines if you have to target a platform prior to the ones specified below.
 // Refer to MSDN for the latest info on corresponding values for different platforms.
@@ -62,7 +41,8 @@ THE SOFTWARE.
 #define _WIN32_WINDOWS 0x0501 // Windows XP
 #endif
 
-#define SAFE_DELETE(p)	{ if( (p) != NULL){ (p) = NULL; delete (p); } }
+#define SAFE_DELETE(p) { if((p) != NULL){ delete (p); (p) = NULL; } }
+#define SAFE_FREE(p) { if((p) != NULL){ free(p); (p) = NULL; } }
 #define SAFE_FREE_MANY( void_ptrs )\
 {\
 	int count = sizeof( void_ptrs ) / sizeof( void* );\
@@ -86,6 +66,7 @@ bool IsInstanceOf( U u )
 
 #include <iostream>
 #include <stdlib.h>
+#include <memory.h>
 
 #include <vcclr.h>
 

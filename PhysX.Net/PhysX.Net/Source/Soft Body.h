@@ -40,18 +40,13 @@ namespace StillDesign
 				NxSoftBody* _softBody;
 				
 				StillDesign::PhysX::Scene^ _scene;
-				
 				StillDesign::PhysX::SoftBodyMesh^ _mesh;
-				StillDesign::PhysX::MeshData^ _meshData;
-				SoftBodySplitPairData^ _splitPairData;
-				
 				StillDesign::PhysX::Compartment^ _compartment;
-				
 				Object^ _userData;
 			
 			internal:
-				SoftBody( NxSoftBody* softBody, StillDesign::PhysX::MeshData^ meshData, SoftBodySplitPairData^ splitPairData );
-			public:
+				SoftBody( NxSoftBody* softBody );
+		public:
 				~SoftBody();
 			protected:
 				!SoftBody();
@@ -65,6 +60,14 @@ namespace StillDesign
 				/// <summary>Saves the soft body descriptor</summary>
 				SoftBodyDescription^ SaveToDescription();
 				
+				MeshData^ GetMeshData();
+				void SetMeshData( MeshData^ meshData );
+
+				/// <summary>Gets the user buffer wrapper for the soft body split pairs</summary>
+				SoftBodySplitPairData^ GetSplitPairData();
+				/// <summary>Sets the user buffer wrapper for the soft body split pairs</summary>
+				void SetSplitPairData( SoftBodySplitPairData^ data );
+
 				/// <summary>Gets the positions of the soft body</summary>
 				array<Vector3>^ GetPositions();
 				/// <summary>Sets the positions of the soft body</summary>
@@ -267,22 +270,11 @@ namespace StillDesign
 					float get();
 					void set( float value );
 				}
-				/// <summary>Gets or Sets user buffer wrapper for the soft body mesh</summary>
-				property StillDesign::PhysX::MeshData^ MeshData
-				{
-					StillDesign::PhysX::MeshData^ get();
-					void set( StillDesign::PhysX::MeshData^ value );
-				}
 				/// <summary>Gets or Sets the 128-bit mask used for collision filtering</summary>
 				property StillDesign::PhysX::GroupsMask GroupsMask
 				{
 					StillDesign::PhysX::GroupsMask get();
 					void set( StillDesign::PhysX::GroupsMask value );
-				}
-				/// <summary>Gets the user buffer wrapper for the soft body split pairs</summary>
-				property SoftBodySplitPairData^ SplitPairData
-				{
-					SoftBodySplitPairData^ get();
 				}
 				/// <summary>Gets or Sets the valid bounds of the soft body in world space</summary>
 				property Bounds3 ValidBounds

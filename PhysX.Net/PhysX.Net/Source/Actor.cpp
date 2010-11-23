@@ -62,7 +62,7 @@ Actor::~Actor()
 }
 Actor::!Actor()
 {
-	if( this->IsDisposed == true )
+	if( this->IsDisposed )
 		return;
 	
 	OnDisposing( this, nullptr );
@@ -95,13 +95,13 @@ ActorDescription^ Actor::SaveToActorDescription( bool retrieveBody, bool retriev
 	// Actor Desc
 	_actor->saveToDesc( *desc->UnmanagedPointer );
 	
-	if( retrieveBody == true )
+	if( retrieveBody )
 	{
-		if( _actor->isDynamic() == true )
+		if( _actor->isDynamic() )
 			desc->BodyDescription = this->SaveBodyToDescription();
 	}
 	
-	if( retrieveShapes == true )
+	if( retrieveShapes )
 	{
 		for each( Shape^ shape in this->Shapes )
 		{
@@ -156,9 +156,9 @@ BodyDescription^ Actor::SaveBodyToDescription()
 	}
 }
 
+// Create managed versions of the actors shapes
 void Actor::CreateShapes()
 {
-	// Populate the Collection with the Shapes the Actor Already Has
 	NxShape* const* shapes = _actor->getShapes();
 	for( unsigned int x = 0; x < _actor->getNbShapes(); x++ )
 	{
@@ -272,6 +272,9 @@ Shape^ Actor::CreateShape( ShapeDescription^ shapeDescription )
 			throw gcnew NotSupportedException( "Shape type is invalid" );
 	}
 	
+	// Copy the user data object over
+	shape->UserData = shapeDescription->UserData;
+
 	_shapes->Add( shape );
 	
 	return shape;

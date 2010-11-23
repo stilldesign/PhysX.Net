@@ -16,7 +16,7 @@ float Segment::LengthSqaured()
 {
 	Vector3 d = this->Point0 - this->Point1;
 	
-	return Vector3_LengthSquared( d );
+	return d.LengthSquared();
 }
 Vector3 Segment::ComputePoint( float t )
 {

@@ -20,11 +20,9 @@
 
 using namespace StillDesign::PhysX;
 
-SoftBody::SoftBody( NxSoftBody* softBody, StillDesign::PhysX::MeshData^ meshData, SoftBodySplitPairData^ splitPairData )
+SoftBody::SoftBody( NxSoftBody* softBody )
 {
 	Debug::Assert( softBody != NULL );
-	Debug::Assert( meshData != nullptr );
-	Debug::Assert( splitPairData != nullptr );
 	
 	ObjectTable::Add( (intptr_t)softBody, this );
 	
@@ -32,12 +30,9 @@ SoftBody::SoftBody( NxSoftBody* softBody, StillDesign::PhysX::MeshData^ meshData
 	
 	_scene = ObjectTable::GetObject<StillDesign::PhysX::Scene^>( (intptr_t)(&softBody->getScene()) );
 	_mesh = ObjectTable::GetObject<StillDesign::PhysX::SoftBodyMesh^>( (intptr_t)softBody->getSoftBodyMesh() );
-	_meshData = meshData;
 	
 	if( softBody->getCompartment() != NULL )
 		_compartment = ObjectTable::GetObject<StillDesign::PhysX::Compartment^>( (intptr_t)softBody->getCompartment() );
-	
-	_splitPairData = splitPairData;
 }
 SoftBody::~SoftBody()
 {
@@ -45,18 +40,19 @@ SoftBody::~SoftBody()
 }
 SoftBody::!SoftBody()
 {
-	if( this->IsDisposed == true )
+	if( this->IsDisposed )
 		return;
 	
 	OnDisposing( this, nullptr );
 	
+	MeshData::DeleteBuffers( &_softBody->getMeshData() );
+
 	_scene->UnmanagedPointer->releaseSoftBody( *_softBody );
 	
 	_softBody = NULL;
 	
 	_scene = nullptr;
 	_mesh = nullptr;
-	_meshData = nullptr;
 	_userData = nullptr;
 	
 	OnDisposed( this, nullptr );
@@ -70,18 +66,61 @@ SoftBodyDescription^ SoftBody::SaveToDescription()
 {
 	NxSoftBodyDesc* desc = new NxSoftBodyDesc();
 	
-	if( _softBody->saveToDesc( *desc ) == false )
+	if( !_softBody->saveToDesc( *desc ) )
 	{
 		delete desc;
 		return nullptr;
 	}
 	
-	SoftBodyDescription^ d = gcnew SoftBodyDescription( desc, this->MeshData, this->SplitPairData );
+	MeshData^ clonedMeshData = GetMeshData()->Clone();
+	SoftBodySplitPairData^ splitPairData = GetSplitPairData()->Clone();
+
+	SoftBodyDescription^ d = gcnew SoftBodyDescription( desc, clonedMeshData, splitPairData );
 		d->SoftBodyMesh = this->SoftBodyMesh;
 		d->Compartment = this->Compartment;
 		d->UserData = this->UserData;
+		d->UnmanagedPointer->meshData = *clonedMeshData->UnmanagedPointer;
 	
 	return d;
+}
+
+MeshData^ SoftBody::GetMeshData()
+{
+	// Clone the returned NxMeshData object and store it in a pointer
+	// Reason for this is that the object returned from NxSoftBody::getMeshData will be deleted
+	// as soon as we leave this scope
+	NxMeshData currentMeshData = _softBody->getMeshData();
+	NxMeshData* longTermMeshData = new NxMeshData();
+
+	*longTermMeshData = currentMeshData;
+
+	// The managed MeshData class should take ownership of the unmanaged pointer
+	// This means it is responsible for deleting the unmanaged pointer
+	// Do not own the data, the SoftBody will delete that
+	return MeshData::FromUnmanagedPointer( longTermMeshData, true, false );
+}
+void SoftBody::SetMeshData(MeshData^ meshData)
+{
+	if (meshData == nullptr)
+		throw gcnew ArgumentNullException("meshData");
+	if (meshData->IsDisposed)
+		throw gcnew ArgumentException("The mesh data object is disposed of", "meshData");
+
+	_softBody->setMeshData( *meshData->UnmanagedPointer );
+}
+
+SoftBodySplitPairData^ SoftBody::GetSplitPairData()
+{
+	return SoftBodySplitPairData::FromUnmanaged( &_softBody->getSplitPairData(), false, false );
+}
+void SoftBody::SetSplitPairData( SoftBodySplitPairData^ data )
+{
+	if (data == nullptr)
+		throw gcnew ArgumentNullException("data");
+	if (data->IsDisposed)
+		throw gcnew ArgumentException("The split pair data object is disposed of", "data");
+
+	_softBody->setSplitPairData( *data->UnmanagedPointer );
 }
 
 // Positions
@@ -492,20 +531,6 @@ void SoftBody::SleepLinearVelocity::set( float value )
 	_softBody->setSleepLinearVelocity( value );
 }
 
-StillDesign::PhysX::MeshData^ SoftBody::MeshData::get()
-{
-	return _meshData;
-}
-void SoftBody::MeshData::set( StillDesign::PhysX::MeshData^ value )
-{
-	if( value == nullptr )
-		throw gcnew ArgumentException( "MeshData cannot be null" );
-	
-	_softBody->setMeshData( *value->UnmanagedPointer );
-	
-	_meshData = value;
-}
-
 StillDesign::PhysX::GroupsMask SoftBody::GroupsMask::get()
 {
 	return (StillDesign::PhysX::GroupsMask)_softBody->getGroupsMask();
@@ -513,11 +538,6 @@ StillDesign::PhysX::GroupsMask SoftBody::GroupsMask::get()
 void SoftBody::GroupsMask::set( StillDesign::PhysX::GroupsMask value )
 {
 	_softBody->setGroupsMask( (NxGroupsMask)value );
-}
-
-SoftBodySplitPairData^ SoftBody::SplitPairData::get()
-{
-	return _splitPairData;
 }
 
 Bounds3 SoftBody::ValidBounds::get()

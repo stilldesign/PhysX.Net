@@ -29,7 +29,7 @@ bool Sphere::IsValid()
 }
 bool Sphere::Contains( Vector3 point )
 {
-	return Vector3_LengthSquared( ( this->Center - point ) ) <= this->Radius*this->Radius;
+	return ( this->Center - point ).LengthSquared() <= this->Radius*this->Radius;
 }
 bool Sphere::Contains( Sphere sphere )
 {
@@ -40,12 +40,12 @@ bool Sphere::Contains( Sphere sphere )
 	// So r is always positive or null now
 	float r = this->Radius - sphere.Radius;
 	
-	return Vector3_LengthSquared( ( this->Center - sphere.Center ) ) < r*r;
+	return ( this->Center - sphere.Center ).LengthSquared() < r*r;
 }
 
 bool Sphere::Intersects( Sphere sphere )
 {
 	float r = this->Radius + sphere.Radius;
 	
-	return Vector3_LengthSquared( ( this->Center - sphere.Center ) ) < r*r;
+	return ( this->Center - sphere.Center ).LengthSquared() < r*r;
 }

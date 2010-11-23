@@ -16,6 +16,10 @@ namespace StillDesign
 				
 				static void OutputString( const char* string );
 				
+				/// <summary>A very specific method to copy an unmanaged struct containing floats to a managed version.</summary>
+				generic<typename T> where T : value class
+				static T CloneFloatStruct( float numOfFloats, void* p_unmanaged );
+
 				////[EditorBrowsable(EditorBrowsableState.Never)]
 				//static int GetTypeSize( Type^ typeSize );
 				//static int GetObjectSize( Object^ object );

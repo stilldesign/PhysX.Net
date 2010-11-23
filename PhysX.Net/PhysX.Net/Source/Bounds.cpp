@@ -40,13 +40,13 @@ Bounds3::operator Bounds3( NxBounds3 bounds )
 
 void Bounds3::Include( Vector3 vector )
 {
-	this->Min = Vector3_Minimize( this->Min, vector );
-	this->Max = Vector3_Maximize( this->Max, vector );
+	this->Min = Vector3::Minimize( this->Min, vector );
+	this->Max = Vector3::Maximize( this->Max, vector );
 }
 void Bounds3::Combine( Bounds3 bounds )
 {
-	this->Min = Vector3_Minimize( bounds.Min, this->Min );
-	this->Max = Vector3_Maximize( bounds.Max, this->Max );
+	this->Min = Vector3::Minimize( bounds.Min, this->Min );
+	this->Max = Vector3::Maximize( bounds.Max, this->Max );
 }
 void Bounds3::BoundsOfOBB( Matrix orientation, Vector3 translation, Vector3 halfDimensions )
 {
@@ -63,7 +63,7 @@ void Bounds3::BoundsOfOBB( Matrix orientation, Vector3 translation, Vector3 half
 }
 void Bounds3::Transform( Matrix orientation, Vector3 translation )
 {
-	Vector3 center = Vector3_Transform( this->Center, orientation ) + translation;
+	Vector3 center = Vector3::TransformCoordinate( this->Center, orientation ) + translation;
 	
 	this->BoundsOfOBB( orientation, center, this->Extents );
 }
@@ -150,5 +150,5 @@ Vector3 Bounds3::Extents::get()
 
 bool Bounds3::IsEmpty::get()
 {
-	return Vector3_LengthSquared( this->Size ) == 0;
+	return this->Size.LengthSquared() == 0;
 }

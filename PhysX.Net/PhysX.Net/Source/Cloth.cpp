@@ -24,17 +24,15 @@
 using namespace System;
 using namespace StillDesign::PhysX;
 
-Cloth::Cloth( NxCloth* cloth, StillDesign::PhysX::MeshData^ meshData, ClothSplitPairData^ splitPairData )
+Cloth::Cloth( NxCloth* cloth, ClothSplitPairData^ splitPairData )
 {
 	Debug::Assert( cloth != NULL );
-	Debug::Assert( meshData != nullptr );
 	Debug::Assert( splitPairData != nullptr );
 	
 	_cloth = cloth;
 	
 	_scene = ObjectTable::GetObject<StillDesign::PhysX::Scene^>( (intptr_t)(&cloth->getScene()) );
 	
-	_meshData = meshData;
 	_clothMesh = ObjectTable::GetObject<StillDesign::PhysX::ClothMesh^>( (intptr_t)cloth->getClothMesh() );
 	
 	if( cloth->getCompartment() != NULL )
@@ -52,16 +50,17 @@ Cloth::~Cloth()
 }
 Cloth::!Cloth()
 {
-	if( this->IsDisposed == true )
+	if( this->IsDisposed )
 		return;
 	
 	OnDisposing( this, nullptr );
 	
+	MeshData::DeleteBuffers( &_cloth->getMeshData() );
+
 	_scene->UnmanagedPointer->releaseCloth( *_cloth );
 	
 	_cloth = NULL;
 	
-	_meshData = nullptr;
 	_clothMesh = nullptr;
 	
 	_compartment = nullptr;
@@ -88,7 +87,11 @@ ClothDescription^ Cloth::SaveToDescription()
 		return nullptr;
 	}
 	
-	ClothDescription^ clothDesc = gcnew ClothDescription( desc, this->MeshData );
+	NxMeshData* clonedMeshData = new NxMeshData();
+	MeshData::Clone( desc->meshData, clonedMeshData );
+	MeshData^ meshData = MeshData::FromUnmanagedPointer( clonedMeshData, true, true );
+
+	ClothDescription^ clothDesc = gcnew ClothDescription( desc, meshData );
 		clothDesc->ClothMesh = this->ClothMesh;
 		clothDesc->Compartment = this->Compartment;
 		clothDesc->UserData = this->UserData;
@@ -351,9 +354,29 @@ void Cloth::Name::set( String^ value )
 	_cloth->setName( Functions::ManagedToUnmanagedString( value ) );
 }
 
-StillDesign::PhysX::MeshData^ Cloth::MeshData::get()
+StillDesign::PhysX::MeshData^ Cloth::GetMeshData()
 {
-	return _meshData;
+	// Clone the returned NxMeshData object and store it in a pointer
+	// Reason for this is that the object returned from NxCloth::getMeshData will be deleted
+	// as soon as we leave this scope
+	NxMeshData currentMeshData = _cloth->getMeshData();
+	NxMeshData* longTermMeshData = new NxMeshData();
+
+	*longTermMeshData = currentMeshData;
+
+	// The managed MeshData class should take ownership of the unmanaged pointer
+	// This means it is responsible for deleting the unmanaged pointer
+	// Do not own the data, the Cloth will delete that
+	return MeshData::FromUnmanagedPointer(longTermMeshData, true, false);
+}
+void Cloth::SetMeshData(StillDesign::PhysX::MeshData^ meshData)
+{
+	if (meshData == nullptr)
+		throw gcnew ArgumentNullException("meshData");
+	if (meshData->IsDisposed)
+		throw gcnew ArgumentException("The mesh data object is disposed of", "meshData");
+
+	_cloth->setMeshData(*meshData->UnmanagedPointer);
 }
 
 StillDesign::PhysX::ClothMesh^ Cloth::ClothMesh::get()

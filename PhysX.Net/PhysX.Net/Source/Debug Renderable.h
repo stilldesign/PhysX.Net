@@ -91,9 +91,9 @@ namespace StillDesign
 				!DebugRenderable();
 			
 			public:
-				array< DebugPoint >^ GetDebugPoints();
-				array< DebugLine >^ GetDebugLines();
-				array< DebugTriangle >^ GetDebugTriangles();
+				array<DebugPoint>^ GetDebugPoints();
+				array<DebugLine>^ GetDebugLines();
+				array<DebugTriangle>^ GetDebugTriangles();
 				
 				/// <summary>Gets the Number of Points to Render</summary>
 				property int PointCount

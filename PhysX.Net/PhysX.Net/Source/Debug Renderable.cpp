@@ -37,10 +37,10 @@ DebugRenderable::~DebugRenderable()
 }
 DebugRenderable::!DebugRenderable()
 {
-	SAFE_DELETE( _debugRenderable );
+	_debugRenderable = NULL;
 }
 
-array< DebugPoint >^ DebugRenderable::GetDebugPoints()
+array<DebugPoint>^ DebugRenderable::GetDebugPoints()
 {
 	array<DebugPoint>^ points = gcnew array<DebugPoint>( this->PointCount );
 	
@@ -57,7 +57,7 @@ array< DebugPoint >^ DebugRenderable::GetDebugPoints()
 	
 	return points;
 }
-array< DebugLine >^ DebugRenderable::GetDebugLines()
+array<DebugLine>^ DebugRenderable::GetDebugLines()
 {
 	array<DebugLine>^ lines = gcnew array<DebugLine>( this->LineCount );
 	
@@ -77,7 +77,7 @@ array< DebugLine >^ DebugRenderable::GetDebugLines()
 	
 	return lines;
 }
-array< DebugTriangle >^ DebugRenderable::GetDebugTriangles()
+array<DebugTriangle>^ DebugRenderable::GetDebugTriangles()
 {
 	array<DebugTriangle>^ triangles = gcnew array<DebugTriangle>( this->TriangleCount );
 	

@@ -1,15 +1,12 @@
 using System;
-using System.Linq;
 using System.Collections.Generic;
-using System.Xml;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
-
-using Microsoft.Xna.Framework;
+using System.Xml;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Content;
-
 using StillDesign.PhysX;
+using StillDesign.PhysX.MathPrimitives;
 
 namespace StillDesign.PhysX.Samples
 {
@@ -33,14 +30,14 @@ namespace StillDesign.PhysX.Samples
 				{
 					Name = String.Format( "Box {0}", x ),
 					BodyDescription = new BodyDescription( 10.0f ),
-					GlobalPose = Matrix.CreateTranslation( 100, 15 + 3 * x, 20 ),
+					GlobalPose = Matrix.Translation( 100, 15 + 3 * x, 20 ),
 					Shapes = { boxShapeDesc }
 				};
 
 				Actor actor = _scene.CreateActor( actorDesc );
 			}
 			#endregion
-
+			
 			#region Cloth (Flag)
 			{
 				// Create a Grid of Points
@@ -79,8 +76,8 @@ namespace StillDesign.PhysX.Samples
 					ClothMesh = clothMesh,
 					Flags = ClothFlag.Gravity | ClothFlag.Bending | ClothFlag.CollisionTwoway | ClothFlag.Visualization,
 					GlobalPose =
-						Matrix.CreateFromYawPitchRoll( 0, (float)Math.PI / 2.0f, (float)Math.PI / 2.0f ) *
-						Matrix.CreateTranslation( 0, 20, 0 )
+						Matrix.RotationYawPitchRoll( 0, (float)Math.PI / 2.0f, (float)Math.PI / 2.0f ) *
+						Matrix.Translation( 0, 20, 0 )
 				};
 				clothDesc.MeshData.AllocatePositions<Vector3>( grid.Points.Length );
 				clothDesc.MeshData.AllocateIndices<int>( grid.Indices.Length );
@@ -96,7 +93,7 @@ namespace StillDesign.PhysX.Samples
 				// Flag Pole
 				ActorDescription flagPoleActorDesc = new ActorDescription()
 				{
-					GlobalPose = Matrix.CreateTranslation( 0, 10, 0 ),
+					GlobalPose = Matrix.Translation( 0, 10, 0 ),
 					Shapes = { new BoxShapeDescription( 1.0f, 20.0f, 1.0f ) }
 				};
 
@@ -116,7 +113,7 @@ namespace StillDesign.PhysX.Samples
 				ActorDescription actorDescA = new ActorDescription()
 				{
 					BodyDescription = new BodyDescription( 10.0f ),
-					GlobalPose = Matrix.CreateTranslation( 75, 1.5f, 55 ),
+					GlobalPose = Matrix.Translation( 75, 1.5f, 55 ),
 					Shapes = { boxShapeDescA }
 				};
 				Actor actorA = _scene.CreateActor( actorDescA );
@@ -124,7 +121,7 @@ namespace StillDesign.PhysX.Samples
 				ActorDescription actorDescB = new ActorDescription()
 				{
 					BodyDescription = new BodyDescription( 10.0f ),
-					GlobalPose = Matrix.CreateTranslation( 70, 1.5f, 55 ),
+					GlobalPose = Matrix.Translation( 70, 1.5f, 55 ),
 					Shapes = { boxShapeDescB }
 				};
 				Actor actorB = _scene.CreateActor( actorDescB );
@@ -144,7 +141,7 @@ namespace StillDesign.PhysX.Samples
 				RevoluteJoint revoluteJoint = _scene.CreateJoint( revoluteJointDesc ) as RevoluteJoint;
 			}
 			#endregion
-
+			
 			#region Prismatic Joint with Limit
 			{
 				Actor actorA, actorB;
@@ -157,7 +154,7 @@ namespace StillDesign.PhysX.Samples
 					ActorDescription actorDesc = new ActorDescription()
 					{
 						BodyDescription = bodyDesc,
-						GlobalPose = Matrix.CreateTranslation( 70, 25, 65 ),
+						GlobalPose = Matrix.Translation( 70, 25, 65 ),
 						Shapes = { boxShapeDesc }
 					};
 					actorA = _scene.CreateActor( actorDesc );
@@ -168,7 +165,7 @@ namespace StillDesign.PhysX.Samples
 					ActorDescription actorDesc = new ActorDescription()
 					{
 						BodyDescription = new BodyDescription( 10.0f ),
-						GlobalPose = Matrix.CreateTranslation( 70, 15, 65 ),
+						GlobalPose = Matrix.Translation( 70, 15, 65 ),
 						Shapes = { boxShapeDesc }
 					};
 					actorB = _scene.CreateActor( actorDesc );
@@ -189,6 +186,7 @@ namespace StillDesign.PhysX.Samples
 			}
 			#endregion
 			
+			/*
 			#region Fluid
 			{
 				const int maximumParticles = 1000;
@@ -198,7 +196,7 @@ namespace StillDesign.PhysX.Samples
 					DimensionX = 0.5f,
 					DimensionY = 0.5f,
 					Rate = 15,
-					RelativePose = Matrix.CreateTranslation( -40, 10, 50 ),
+					RelativePose = Matrix.Translation( -40, 10, 50 ),
 					Shape = EmitterShape.Rectangular,
 					Type = EmitterType.ConstantFlowRate,
 					RandomAngle = 0.5f
@@ -222,7 +220,7 @@ namespace StillDesign.PhysX.Samples
 					
 					ActorDescription drainActorDesc = new ActorDescription()
 					{
-						GlobalPose = Matrix.CreateRotationX( 0.5f ) * Matrix.CreateTranslation( -40, 5, 52 ),
+						GlobalPose = Matrix.RotationX( 0.5f ) * Matrix.Translation( -40, 5, 52 ),
 						Shapes =  { boxShapeDesc }
 					};
 
@@ -236,7 +234,7 @@ namespace StillDesign.PhysX.Samples
 
 					ActorDescription drainActorDesc = new ActorDescription()
 					{
-						GlobalPose = Matrix.CreateTranslation( -40, 0, 55 ),
+						GlobalPose = Matrix.Translation( -40, 0, 55 ),
 						Shapes = { boxShapeDesc }
 					};
 
@@ -244,7 +242,8 @@ namespace StillDesign.PhysX.Samples
 				}
 			}
 			#endregion
-			
+			*/
+
 			#region Force Field
 			{
 				BoxForceFieldShapeDescription boxForceFieldShapeDesc = new BoxForceFieldShapeDescription()
@@ -267,7 +266,7 @@ namespace StillDesign.PhysX.Samples
 				ForceFieldShapeGroup shapeGroup = _scene.CreateForceFieldShapeGroup( shapeGroupDesc );
 
 				BoxForceFieldShape boxForceFieldShape = shapeGroup.CreateShape( boxForceFieldShapeDesc ) as BoxForceFieldShape;
-					boxForceFieldShape.Pose = Matrix.CreateTranslation( 30, 5, 0 );
+					boxForceFieldShape.Pose = Matrix.Translation( 30, 5, 0 );
 
 				ForceFieldDescription forceFieldDesc = new ForceFieldDescription()
 				{
@@ -327,7 +326,7 @@ namespace StillDesign.PhysX.Samples
 
 				ActorDescription actorDesc = new ActorDescription()
 				{
-					GlobalPose = Matrix.CreateTranslation( 100, 0, 0 ),
+					GlobalPose = Matrix.Translation( 100, 0, 0 ),
 					Shapes = { heightFieldShapeDesc }
 				};
 				Actor actor = _scene.CreateActor( actorDesc );
@@ -335,60 +334,7 @@ namespace StillDesign.PhysX.Samples
 			#endregion
 			
 			#region Convex Mesh
-			{
-				ModelMesh mesh = _torusModel.Meshes.First();
-
-				Matrix[] transforms = new Matrix[ _torusModel.Bones.Count ];
-				_torusModel.CopyAbsoluteBoneTransformsTo( transforms );
-
-				// Gets the vertices from the mesh
-				VertexPositionNormalTexture[] vertices = new VertexPositionNormalTexture[ mesh.MeshParts[ 0 ].NumVertices ];
-				mesh.VertexBuffer.GetData<VertexPositionNormalTexture>( vertices );
-
-				//
-
-				// Allocate memory for the points and triangles
-				var convexMeshDesc = new ConvexMeshDescription()
-				{
-				    PointCount = vertices.Length
-				};
-				convexMeshDesc.Flags |= ConvexFlag.ComputeConvex;
-				convexMeshDesc.AllocatePoints<Vector3>( vertices.Length );
-
-				// Write in the points and triangles
-				// We only want the Position component of the vertex. Also scale down the mesh
-				foreach( VertexPositionNormalTexture vertex in vertices )
-				{
-					Vector3 position = Vector3.Transform( vertex.Position, Matrix.CreateScale( 0.1f, 0.1f, 0.1f ) * transforms[ 0 ] );
-
-				    convexMeshDesc.PointsStream.Write( position );
-				}
-
-				//
-
-				// Cook to memory or to a file
-				MemoryStream stream = new MemoryStream();
-				//FileStream stream = new FileStream( @"Convex Mesh.cooked", FileMode.CreateNew );
-
-				Cooking.InitializeCooking( new ConsoleOutputStream() );
-				Cooking.CookConvexMesh( convexMeshDesc, stream );
-				Cooking.CloseCooking();
-
-				stream.Position = 0;
-
-				ConvexMesh convexMesh = _core.CreateConvexMesh( stream );
-
-				ConvexShapeDescription convexShapeDesc = new ConvexShapeDescription( convexMesh );
-
-				ActorDescription actorDesc = new ActorDescription()
-				{
-				    BodyDescription = new BodyDescription( 10.0f ),
-					GlobalPose = Matrix.CreateTranslation( 30, 30, 0 )
-				};
-			    actorDesc.Shapes.Add( convexShapeDesc );
-
-				_torusActor = _scene.CreateActor( actorDesc );
-			}
+			_torusActor = Convex.LoadConvexMesh( _scene, _torusModel );
 			#endregion
 			
 			#region SoftBody
@@ -425,7 +371,7 @@ namespace StillDesign.PhysX.Samples
 
 				SoftBodyDescription desc = new SoftBodyDescription()
 				{
-					GlobalPose = Matrix.CreateTranslation( -30, 20, -30 ),
+					GlobalPose = Matrix.Translation( -30, 20, -30 ),
 					SoftBodyMesh = softBodyMesh
 				};
 				desc.Flags |= SoftBodyFlag.Visualization;
@@ -451,7 +397,7 @@ namespace StillDesign.PhysX.Samples
 				
 				ActorDescription actorDesc = new ActorDescription()
 				{
-					GlobalPose = Matrix.CreateTranslation( -30, 20, 0 ),
+					GlobalPose = Matrix.Translation( -30, 20, 0 ),
 					BodyDescription = new BodyDescription( 10.0f ),
 					Name = "Report Capsule",
 					Shapes = { capsuleShapeDesc }
@@ -471,7 +417,7 @@ namespace StillDesign.PhysX.Samples
 
 				ActorDescription actorDesc = new ActorDescription()
 				{
-					GlobalPose = Matrix.CreateTranslation( -30, 4, 0 ),
+					GlobalPose = Matrix.Translation( -30, 4, 0 ),
 					Shapes = { boxShapeDesc }
 				};
 				_scene.CreateActor( actorDesc );

@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Linq;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-
 using StillDesign.PhysX;
+
+using Vector3 = StillDesign.PhysX.MathPrimitives.Vector3;
+using Matrix = StillDesign.PhysX.MathPrimitives.Matrix;
 
 namespace StillDesign.PhysX.Samples
 {
@@ -14,22 +16,22 @@ namespace StillDesign.PhysX.Samples
 
 	public partial class MainSample : Game
 	{
-		#region Variables
-			private readonly Engine _engine;
+		private readonly Engine _engine;
 
-			private Core _core;
-			private Scene _scene;
+		private Core _core;
+		private Scene _scene;
 
-			private Cloth _flag;
+		private Cloth _flag;
 
-			private Actor _contactReportActor;
-			private Actor _groundActor;
+		private Actor _contactReportActor;
+		private Actor _groundActor;
 
-			private Model _torusModel;
-			private Actor _torusActor;
+		private Model _torusModel;
+		private Actor _torusActor;
 
-			private Vehicle _basicVehicle;
-		#endregion
+		private Vehicle _basicVehicle;
+
+		//
 
 		public MainSample()
 		{
@@ -103,7 +105,7 @@ namespace StillDesign.PhysX.Samples
 			
 			// Draw the torus knot
 			{
-				Matrix[] transforms = new Matrix[ _torusModel.Bones.Count ];
+				var transforms = new Microsoft.Xna.Framework.Matrix[ _torusModel.Bones.Count ];
 				_torusModel.CopyAbsoluteBoneTransformsTo( transforms );
 
 				foreach( ModelMesh mesh in _torusModel.Meshes )
@@ -112,9 +114,14 @@ namespace StillDesign.PhysX.Samples
 					{
 						effect.EnableDefaultLighting();
 
-						effect.World = Matrix.CreateScale( 0.1f, 0.1f, 0.1f ) * transforms[ mesh.ParentBone.Index ] * _torusActor.GlobalPose;
-						effect.View = _engine.Camera.View;
-						effect.Projection = _engine.Camera.Projection;
+						//Matrix world = 
+						//    Matrix.Scaling( 0.1f, 0.1f, 0.1f ) *
+						//    transforms[ mesh.ParentBone.Index ].AsPhysX() *
+						//    _torusActor.GlobalPose;
+
+						//effect.World = world.As<Microsoft.Xna.Framework.Matrix>();
+						//effect.View = _engine.Camera.View;
+						//effect.Projection = _engine.Camera.Projection;
 					}
 
 					mesh.Draw();
@@ -122,10 +129,10 @@ namespace StillDesign.PhysX.Samples
 			}
 
 			// Display basic info about the vehicle
-			WheelContactData contactData = _basicVehicle.LeftFront.GetContactData();
+			//WheelContactData contactData = _basicVehicle.LeftFront.GetContactData();
 
-			Vector3 readOut = contactData.LongitudalDirection;
-			this.Window.Title = String.Format( "LongitudalDirection: {0:0.00},{1:0.00},{2:0.00}", readOut.X, readOut.Y, readOut.Z );
+			//Vector3 readOut = contactData.LongitudalDirection;
+			//this.Window.Title = String.Format( "LongitudalDirection: {0:0.00},{1:0.00},{2:0.00}", readOut.X, readOut.Y, readOut.Z );
 		}
 
 		private void Shutdown()
@@ -135,7 +142,8 @@ namespace StillDesign.PhysX.Samples
 			this.Exit();
 		}
 
-		#region Properties
+		//
+
 		public Scene Scene
 		{
 			get
@@ -157,115 +165,6 @@ namespace StillDesign.PhysX.Samples
 			{
 				return _contactReportActor;
 			}
-		}
-		#endregion
-	}
-
-	public class ContactReport : UserContactReport
-	{
-		private MainSample _demo;
-
-		private List<ContactReportPair> _contactPairs;
-
-		public ContactReport( MainSample demo )
-		{
-			_demo = demo;
-
-			// Associate the pairs with a function
-			_contactPairs = new List<ContactReportPair>()
-			{
-				{ new ContactReportPair( _demo.ContactReportActor, _demo.GroundActor, CapsuleAndGroundPlaneContact ) }
-			};
-		}
-
-		// PhysX calls OnContactNotify is the base class which you then provide the implementation for
-		public override void OnContactNotify( ContactPair contactInformation, ContactPairFlag events )
-		{
-			Actor a = contactInformation.ActorA;
-			Actor b = contactInformation.ActorB;
-
-			// This shouldn't be O(n)
-			foreach( ContactReportPair pair in _contactPairs )
-			{
-				if( ( pair.ActorA == a || pair.ActorA == b ) && ( pair.ActorB == a || pair.ActorB == b ) )
-				{
-					pair.Callback( a, b, events );
-				}
-			}
-		}
-
-		private void CapsuleAndGroundPlaneContact( Actor a, Actor b, ContactPairFlag events )
-		{
-			// The capsule hit the ground, add some bounce
-			// Can be done with materials, but this just an example to demonstrate contact report
-			_demo.ContactReportActor.AddForce( new Vector3( 0, 5000, 0 ), ForceMode.Force );
-		}
-	}
-	public class ContactReportPair
-	{
-		public ContactReportPair( Actor a, Actor b, ContactCallback callback )
-		{
-			this.ActorA = a;
-			this.ActorB = b;
-			this.Callback = callback;
-		}
-
-		public Actor ActorA
-		{
-			get;
-			private set;
-		}
-		public Actor ActorB
-		{
-			get;
-			private set;
-		}
-		public ContactCallback Callback
-		{
-			get;
-			private set;
-		}
-	}
-
-	public class Notify : UserNotify
-	{
-		public Notify( MainSample demo )
-		{
-
-		}
-
-		public override bool OnSleep( Actor[] actors )
-		{
-			foreach( Actor actor in actors )
-			{
-				Console.WriteLine( "Actor '{0}' Went to Sleep at {1}", actor.Name == null ? String.Empty : actor.Name, DateTime.Now.ToShortTimeString() );
-			}
-
-			return true;
-		}
-
-		public override bool OnJointBreak( float breakingForce, Joint brokenJoint )
-		{
-			return true;
-		}
-
-		public override bool OnWake( Actor[] actors )
-		{
-			return true;
-		}
-	}
-
-	public class TriggerReport : UserTriggerReport
-	{
-		public TriggerReport( MainSample demo )
-		{
-
-		}
-
-		public override void OnTrigger( Shape triggerShape, Shape otherShape, TriggerFlag status )
-		{
-			// A trigger occured, just report the names the actors of the shapes that contacted
-			Console.WriteLine( String.Format( "'{0}' and '{1}' Triggered with Type '{2}'", triggerShape.Actor.Name, otherShape.Actor.Name, status ) );
 		}
 	}
 }

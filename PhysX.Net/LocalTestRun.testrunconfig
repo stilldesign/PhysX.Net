@@ -1,11 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <TestRunConfiguration name="Local Test Run" id="56993ca8-648e-4b9c-a6e3-60c7ffd8e697" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2006">
   <Description>This is a default test run configuration for a local test run.</Description>
-  <CodeCoverage enabled="true" keyFile="E:\Development\StillDesign\Keys\PublicPrivateKeyFile.snk">
-    <Regular>
-      <CodeCoverageItem binaryFile="PhysX.Net\bin\Debug XNA 3.0\StillDesign.PhysX.Net.dll" pdbFile="PhysX.Net\bin\Debug XNA 3.0\StillDesign.PhysX.Net.pdb" instrumentInPlace="true" />
-    </Regular>
-  </CodeCoverage>
+  <CodeCoverage keyFile="E:\Development\StillDesign\Keys\PublicPrivateKeyFile.snk" />
   <Deployment>
     <DeploymentItem filename="Assemblies\x86\PhysXCooking.dll" />
     <DeploymentItem filename="Assemblies\x86\PhysXCore.dll" />

@@ -114,7 +114,11 @@ namespace StillDesign
 					ShapeCompartmentType get();
 					void set( ShapeCompartmentType value );
 				}
-			
+				
+				/// <summary>Gets or Sets an associative object.</summary>
+				/// <remarks>This object is assigned to the Shape object when it is created.</remarks>
+				property Object^ UserData;
+
 			internal:
 				property NxShapeDesc* UnmanagedPointer
 				{

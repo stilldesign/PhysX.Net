@@ -17,6 +17,7 @@ void RuntimeFileChecks::Check()
 	CheckFile( "cudart64_30_9.dll", CudaDllVersion );
 	CheckFile( "PhysXDevice64.dll", PhysXDeviceDllVersion );
 	CheckFile( "PhysXLoader64.dll", PhysXDllVersion );
+	CheckFile( "NxCharacter64.dll", PhysXDllVersion );
 #elif WIN32
 	CheckFile( "PhysXCore.dll", PhysXDllVersion );
 	CheckFile( "PhysXCooking.dll", PhysXDllVersion );

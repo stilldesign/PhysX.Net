@@ -2,6 +2,7 @@
 
 #include "Enums.h"
 #include "Bounds.h"
+#include "Description.h"
 
 UsingFrameworkNamespace
 using namespace System;
@@ -16,7 +17,7 @@ namespace StillDesign
 		ref class Compartment;
 		ref class SoftBodySplitPairData;
 		
-		public ref class SoftBodyDescription
+		public ref class SoftBodyDescription : Description
 		{
 			private:
 				NxSoftBodyDesc* _desc;
@@ -41,6 +42,7 @@ namespace StillDesign
 			public:
 				void SetToDefault();
 				bool IsValid();
+				virtual int CheckValid() override;
 				
 				/// <summary>Gets or Sets cooked soft body mesh</summary>
 				property StillDesign::PhysX::SoftBodyMesh^ SoftBodyMesh
