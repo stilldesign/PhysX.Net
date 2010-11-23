@@ -3,8 +3,6 @@
 #include "IDisposable.h"
 
 using namespace System;
-UsingFrameworkNamespace
-
 class NxClothMesh;
 
 namespace StillDesign

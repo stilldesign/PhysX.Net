@@ -4,8 +4,6 @@
 #include "IDisposable.h"
 
 using namespace System;
-UsingFrameworkNamespace
-
 class NxMaterial;
 class NxMaterialDesc;
 

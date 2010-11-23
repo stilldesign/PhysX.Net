@@ -1,7 +1,5 @@
 #pragma once
 
-UsingFrameworkNamespace
-
 struct NxActiveTransform;
 
 namespace StillDesign

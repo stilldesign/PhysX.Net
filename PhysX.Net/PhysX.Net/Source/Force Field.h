@@ -6,8 +6,6 @@
 #include "Element Collection.h"
 
 using namespace System;
-UsingFrameworkNamespace
-
 class NxForceField;
 
 namespace StillDesign

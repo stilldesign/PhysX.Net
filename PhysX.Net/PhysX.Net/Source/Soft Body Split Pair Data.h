@@ -3,8 +3,6 @@
 #include "Soft Body Split Pair.h"
 #include "BufferData.h"
 #include "Physics Stream.h"
-
-UsingFrameworkNamespace
 using namespace System;
 
 namespace StillDesign

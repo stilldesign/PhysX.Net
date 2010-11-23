@@ -5,8 +5,6 @@
 #include "Description.h"
 
 using namespace System;
-UsingFrameworkNamespace
-
 class NxFluidDescBase;
 
 namespace StillDesign

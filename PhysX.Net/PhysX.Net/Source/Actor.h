@@ -8,8 +8,6 @@
 using namespace System;
 using namespace System::Collections::Generic;
 
-UsingFrameworkNamespace
-
 namespace StillDesign
 {
 	namespace PhysX

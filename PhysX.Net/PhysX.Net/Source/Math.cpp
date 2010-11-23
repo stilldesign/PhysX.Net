@@ -4,8 +4,6 @@
 #include <NxMat34.h>
 #include <NxQuat.h>
 
-UsingFrameworkNamespace
-
 using namespace StillDesign::PhysX;
 using namespace StillDesign::PhysX::MathPrimitives;
 

@@ -3,8 +3,6 @@
 #include "Enums.h"
 #include "Simple Triangle Mesh.h"
 
-UsingFrameworkNamespace
-
 namespace StillDesign
 {
 	namespace PhysX

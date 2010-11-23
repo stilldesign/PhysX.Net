@@ -5,8 +5,6 @@
 #include "Scene.h"
 #include "Force Field Linear Kernel Description.h"
 
-UsingFrameworkNamespace
-
 using namespace StillDesign::PhysX;
 
 ForceFieldLinearKernel::ForceFieldLinearKernel( NxForceFieldLinearKernel* kernel ) : ForceFieldKernel( kernel )

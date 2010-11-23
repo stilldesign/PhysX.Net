@@ -8,8 +8,6 @@
 
 using namespace StillDesign::PhysX;
 
-UsingFrameworkNamespace
-
 ConvexForceFieldShape::ConvexForceFieldShape( NxConvexForceFieldShape* convexForceFieldShape, StillDesign::PhysX::ConvexMesh^ convexMesh ) : ForceFieldShape( convexForceFieldShape )
 {
 	Debug::Assert( convexForceFieldShape != NULL );

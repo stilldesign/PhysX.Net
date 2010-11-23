@@ -7,8 +7,6 @@ using namespace System;
 using namespace System::Globalization;
 
 using namespace StillDesign::PhysX;
-UsingFrameworkNamespace
-
 Bounds3::Bounds3( Vector3 size )
 {
 	this->Min = -size * 0.5f;

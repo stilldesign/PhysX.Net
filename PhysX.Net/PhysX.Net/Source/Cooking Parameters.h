@@ -2,8 +2,6 @@
 
 #include "Enums.h"
 
-UsingFrameworkNamespace
-
 namespace StillDesign
 {
 	namespace PhysX

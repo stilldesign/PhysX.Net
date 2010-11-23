@@ -3,8 +3,6 @@
 #include "Enums.h"
 #include "IDisposable.h"
 
-UsingFrameworkNamespace
-
 namespace StillDesign
 {
 	namespace PhysX

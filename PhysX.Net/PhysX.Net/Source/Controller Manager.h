@@ -4,8 +4,6 @@
 #include "Element Collection.h"
 
 using namespace System;
-UsingFrameworkNamespace
-
 namespace StillDesign
 {
 	namespace PhysX

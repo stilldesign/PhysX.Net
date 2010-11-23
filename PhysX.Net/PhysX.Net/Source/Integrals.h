@@ -1,7 +1,5 @@
 #pragma once 
 
-UsingFrameworkNamespace
-
 namespace StillDesign
 {
 	namespace PhysX

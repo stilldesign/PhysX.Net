@@ -2,8 +2,6 @@
 
 #include "Joint.h"
 
-UsingFrameworkNamespace
-
 class NxD6Joint;
 
 namespace StillDesign

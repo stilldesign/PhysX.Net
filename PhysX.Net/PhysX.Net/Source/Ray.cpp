@@ -4,8 +4,6 @@
 #include "Math.h"
 
 #include <NxRay.h>
-
-UsingFrameworkNamespace
 using namespace StillDesign::PhysX;
 
 // Ray

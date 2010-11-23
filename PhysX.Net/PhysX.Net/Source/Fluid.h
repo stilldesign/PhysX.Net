@@ -8,8 +8,6 @@
 #include "Fluid Emitter.h"
 
 using namespace System;
-UsingFrameworkNamespace
-
 class NxFluid;
 
 namespace StillDesign

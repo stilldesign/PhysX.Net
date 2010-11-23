@@ -3,8 +3,6 @@
 #include "Actor.h"
 
 using namespace System;
-UsingFrameworkNamespace
-
 using namespace StillDesign::PhysX;
 
 class NxContactReport;

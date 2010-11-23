@@ -5,8 +5,6 @@
 
 using namespace StillDesign::PhysX;
 
-UsingFrameworkNamespace
-
 HeightFieldShapeDescription::HeightFieldShapeDescription() : ShapeDescription( new NxHeightFieldShapeDesc() )
 {
 	

@@ -5,8 +5,6 @@
 #include "IDisposable.h"
 
 using namespace System;
-UsingFrameworkNamespace
-
 class NxForceFieldShape;
 
 namespace StillDesign

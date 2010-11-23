@@ -6,8 +6,6 @@
 #include "Joint Limit Description.h"
 #include "Joint Limit Pair Description.h"
 
-UsingFrameworkNamespace
-
 namespace StillDesign
 {
 	namespace PhysX

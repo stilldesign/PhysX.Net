@@ -5,8 +5,6 @@
 #include "IDisposable.h"
 #include "Ray.h"
 #include "Soft Body Constrain Coefficients.h"
-
-UsingFrameworkNamespace
 using namespace System;
 using namespace System::Runtime::InteropServices;
 

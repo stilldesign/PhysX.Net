@@ -3,8 +3,6 @@
 #include "Simple Triangle Mesh.h"
 
 using namespace System;
-UsingFrameworkNamespace
-
 class NxClothMeshDesc;
 
 namespace StillDesign

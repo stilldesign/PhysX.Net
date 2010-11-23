@@ -6,8 +6,6 @@
 
 using namespace StillDesign::PhysX;
 
-UsingFrameworkNamespace
-
 UserActorPairFiltering::UserActorPairFiltering( )
 {
 	_internalUserActorPairFiltering = new InternalUserActorPairFiltering( this );

@@ -3,8 +3,6 @@
 #include "Enums.h"
 #include "Bounds.h"
 #include "Description.h"
-
-UsingFrameworkNamespace
 using namespace System;
 
 namespace StillDesign

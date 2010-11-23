@@ -5,8 +5,6 @@
 
 using namespace System;
 
-UsingFrameworkNamespace
-
 class NxCapsuleController;
 
 namespace StillDesign

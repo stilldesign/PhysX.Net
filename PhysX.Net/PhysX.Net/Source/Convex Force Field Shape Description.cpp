@@ -7,8 +7,6 @@
 
 using namespace StillDesign::PhysX;
 
-UsingFrameworkNamespace
-
 ConvexForceFieldShapeDescription::ConvexForceFieldShapeDescription() : ForceFieldShapeDescription( new NxConvexForceFieldShapeDesc() )
 {
 	

@@ -7,8 +7,6 @@
 #include "Description.h"
 
 using namespace System;
-UsingFrameworkNamespace
-
 class NxForceFieldDesc;
 
 namespace StillDesign

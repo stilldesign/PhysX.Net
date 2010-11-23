@@ -1,7 +1,5 @@
 #pragma once
 
-UsingFrameworkNamespace
-
 #include "Shape Description.h"
 
 namespace StillDesign

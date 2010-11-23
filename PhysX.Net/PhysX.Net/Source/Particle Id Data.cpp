@@ -5,8 +5,6 @@
 #include "Physics Stream.h"
 
 using namespace StillDesign::PhysX;
-UsingFrameworkNamespace
-
 ParticleIdData::ParticleIdData()
 {
 	_data = new NxParticleIdData();

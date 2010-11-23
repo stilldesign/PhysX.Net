@@ -7,8 +7,6 @@ using namespace System;
 using namespace System::Collections::Generic;
 using namespace System::Runtime::InteropServices;
 
-UsingFrameworkNamespace
-
 namespace StillDesign
 {
 	namespace PhysX

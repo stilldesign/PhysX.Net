@@ -7,8 +7,6 @@
 #include "Cloth Constrain Coefficients.h"
 
 using namespace System;
-UsingFrameworkNamespace
-
 namespace StillDesign
 {
 	namespace PhysX

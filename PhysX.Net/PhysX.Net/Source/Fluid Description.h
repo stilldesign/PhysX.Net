@@ -3,8 +3,6 @@
 #include "Fluid Description Base.h"
 
 using namespace System;
-UsingFrameworkNamespace
-
 class NxFluidDesc;
 
 namespace StillDesign

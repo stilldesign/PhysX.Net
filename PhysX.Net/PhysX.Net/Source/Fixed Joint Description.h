@@ -2,8 +2,6 @@
 
 #include "Joint Description.h"
 
-UsingFrameworkNamespace
-
 namespace StillDesign
 {
 	namespace PhysX

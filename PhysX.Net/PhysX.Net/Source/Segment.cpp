@@ -2,8 +2,6 @@
 
 #include "Segment.h"
 
-UsingFrameworkNamespace
-
 using namespace StillDesign::PhysX;
 
 Segment::Segment( Vector3 point0, Vector3 point1 )

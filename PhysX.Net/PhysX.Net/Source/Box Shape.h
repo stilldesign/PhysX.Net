@@ -2,8 +2,6 @@
 
 #include "Shape.h"
 
-UsingFrameworkNamespace
-
 namespace StillDesign
 {
 	namespace PhysX

@@ -4,8 +4,6 @@
 #include "Enums.h"
 #include "Height Field Sample.h"
 
-UsingFrameworkNamespace
-
 namespace StillDesign
 {
 	namespace PhysX

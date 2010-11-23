@@ -4,8 +4,6 @@
 #include "Description.h"
 
 using namespace System;
-UsingFrameworkNamespace
-
 namespace StillDesign
 {
 	namespace PhysX

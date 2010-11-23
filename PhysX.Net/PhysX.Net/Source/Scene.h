@@ -24,8 +24,6 @@
 using namespace System;
 using namespace System::Collections::Generic;
 
-UsingFrameworkNamespace
-
 class NxScene;
 
 namespace StillDesign

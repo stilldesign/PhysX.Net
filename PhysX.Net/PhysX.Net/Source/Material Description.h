@@ -4,8 +4,6 @@
 #include "Spring Description.h"
 #include "Description.h"
 
-UsingFrameworkNamespace
-
 namespace StillDesign
 {
 	namespace PhysX

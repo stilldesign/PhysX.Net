@@ -1,7 +1,5 @@
 #pragma once
 
-UsingFrameworkNamespace
-
 class NxDebugRenderable;
 
 namespace StillDesign

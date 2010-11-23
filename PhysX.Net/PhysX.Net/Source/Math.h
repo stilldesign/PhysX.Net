@@ -6,8 +6,6 @@
 #include "Vector3.h"
 #include "Vector4.h"
 
-UsingFrameworkNamespace
-
 using namespace StillDesign::PhysX::MathPrimitives;
 
 namespace StillDesign

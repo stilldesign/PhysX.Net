@@ -5,8 +5,6 @@
 #include "Actor.h"
 #include "Core.h"
 #include "Height Field Shape Description.h"
-
-UsingFrameworkNamespace
 using namespace StillDesign::PhysX;
 
 HeightFieldShape::HeightFieldShape( NxHeightFieldShape* heightFieldShape ) : Shape( heightFieldShape )

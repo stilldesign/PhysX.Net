@@ -6,9 +6,6 @@
 
 using namespace System;
 
-UsingFrameworkNamespace
-UsingGraphicsNamespace
-
 namespace StillDesign
 {
 	namespace PhysX
