@@ -5,7 +5,7 @@
 using namespace System;
 using namespace StillDesign::PhysX;
 
-CookingParameters::operator NxCookingParams( CookingParameters parameters )
+NxCookingParams CookingParameters::ToUnmanaged( CookingParameters parameters )
 {
 	NxCookingParams p;
 		p.hintCollisionSpeed = (parameters.ResourceType == CookingResourceType::Performance ? true : false);
@@ -14,7 +14,7 @@ CookingParameters::operator NxCookingParams( CookingParameters parameters )
 	
 	return p;
 }
-CookingParameters::operator CookingParameters( NxCookingParams parameters )
+CookingParameters CookingParameters::ToManaged( NxCookingParams parameters )
 {
 	CookingParameters p;
 		p.ResourceType = (parameters.hintCollisionSpeed ? CookingResourceType::Performance : CookingResourceType::LessMemory);
@@ -22,31 +22,4 @@ CookingParameters::operator CookingParameters( NxCookingParams parameters )
 		p.Platform = (StillDesign::PhysX::Platform)parameters.targetPlatform;
 	
 	return p;
-}
-
-StillDesign::PhysX::Platform CookingParameters::Platform::get()
-{
-	return _platform;
-}
-void CookingParameters::Platform::set( StillDesign::PhysX::Platform value )
-{
-	_platform = value;
-}
-
-float CookingParameters::SkinWidth::get()
-{
-	return _skinWidth;
-}
-void CookingParameters::SkinWidth::set( float value )
-{
-	_skinWidth = value;
-}
-
-CookingResourceType CookingParameters::ResourceType::get()
-{
-	return _resourceType;
-}
-void CookingParameters::ResourceType::set( CookingResourceType value )
-{
-	_resourceType = value;
 }

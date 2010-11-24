@@ -8,34 +8,19 @@ namespace StillDesign
 	{
 		public value class CookingParameters
 		{
-			private:
-				StillDesign::PhysX::Platform _platform;
-				CookingResourceType _resourceType;
-				float _skinWidth;
-			
 			internal:
-				static explicit operator NxCookingParams( CookingParameters parameters );
-				static explicit operator CookingParameters( NxCookingParams parameters );
+				static NxCookingParams ToUnmanaged( CookingParameters parameters );
+				static CookingParameters ToManaged( NxCookingParams parameters );
 			
 			public:	
-				/// <summary></summary>
-				property StillDesign::PhysX::Platform Platform
-				{
-					StillDesign::PhysX::Platform get();
-					void set( StillDesign::PhysX::Platform value );
-				}
-				/// <summary></summary>
-				property float SkinWidth
-				{
-					float get();
-					void set( float value );
-				}
-				/// <summary></summary>
-				property CookingResourceType ResourceType
-				{
-					CookingResourceType get();
-					void set( CookingResourceType value );
-				}
+				/// <summary>Hint to choose speed or less memory for collision structures.</summary>
+				property StillDesign::PhysX::Platform Platform;
+
+				/// <summary>Skin width for convexes.</summary>
+				property float SkinWidth;
+
+				/// <summary>Target platform.</summary>
+				property CookingResourceType ResourceType;
 		};
 	};
 };

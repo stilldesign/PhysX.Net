@@ -198,11 +198,11 @@ bool Cooking::CookSoftBodyMesh( SoftBodyMeshDescription^ description, Stream^ st
 
 CookingParameters Cooking::Parameters::get()
 {
-	return (CookingParameters)_cooking->NxGetCookingParams();
+	return CookingParameters::ToManaged(_cooking->NxGetCookingParams());
 }
 void Cooking::Parameters::set( CookingParameters value )
 {
-	_cooking->NxSetCookingParams( (NxCookingParams)value );
+	_cooking->NxSetCookingParams( CookingParameters::ToUnmanaged( value ) );
 }
 
 NxCookingInterface* Cooking::UnmanagedPointer::get()
