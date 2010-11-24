@@ -27,7 +27,7 @@ TriangleMesh::~TriangleMesh()
 }
 TriangleMesh::!TriangleMesh()
 {
-	if( this->IsDisposed == true )
+	if( this->IsDisposed )
 		return;
 	
 	OnDisposing( this, nullptr );

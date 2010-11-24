@@ -30,7 +30,7 @@ StillDesign::PhysX::ControllerManager::~ControllerManager()
 }
 StillDesign::PhysX::ControllerManager::!ControllerManager()
 {
-	if( this->IsDisposed == true )
+	if( this->IsDisposed )
 		return;
 	
 	OnDisposing( this, nullptr );

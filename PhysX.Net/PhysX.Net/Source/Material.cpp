@@ -27,7 +27,7 @@ Material::~Material()
 }
 Material::!Material()
 {
-	if( this->IsDisposed == true || this->Index == 0 )
+	if( this->IsDisposed || this->Index == 0 )
 		return;
 	
 	OnDisposing( this, nullptr );

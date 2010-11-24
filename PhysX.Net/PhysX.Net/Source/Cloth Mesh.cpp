@@ -27,7 +27,7 @@ ClothMesh::~ClothMesh()
 }
 ClothMesh::!ClothMesh()
 {
-	if( this->IsDisposed == true )
+	if( this->IsDisposed )
 		return;
 	
 	OnDisposing( this, nullptr );

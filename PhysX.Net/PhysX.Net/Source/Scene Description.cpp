@@ -27,7 +27,7 @@ SceneDescription::~SceneDescription()
 }
 SceneDescription::!SceneDescription()
 {
-	if( this->IsDisposed == true )
+	if( this->IsDisposed )
 		return;
 	
 	OnDisposing( this, nullptr );

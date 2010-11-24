@@ -25,7 +25,7 @@ ClothMeshDescription::~ClothMeshDescription()
 }
 ClothMeshDescription::!ClothMeshDescription()
 {
-	if( this->IsDisposed == true )
+	if( this->IsDisposed )
 		return;
 	
 	const void* buffers[] = 

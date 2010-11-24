@@ -24,7 +24,7 @@ HeightField::~HeightField()
 }
 HeightField::!HeightField()
 {
-	if( this->IsDisposed == true )
+	if( this->IsDisposed )
 		return;
 	
 	OnDisposing( this, nullptr );
