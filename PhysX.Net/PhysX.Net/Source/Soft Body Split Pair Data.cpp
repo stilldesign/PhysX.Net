@@ -5,6 +5,7 @@
 using namespace StillDesign::PhysX;
 
 SoftBodySplitPairData::SoftBodySplitPairData()
+	: BufferData( true, true )
 {
 	_data = new NxSoftBodySplitPairData();
 	

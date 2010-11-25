@@ -19,14 +19,11 @@ FluidDescriptionBase::FluidDescriptionBase( NxFluidDescBase* fluidDescription )
 	
 	_fluidDescBase = fluidDescription;
 	
-	_initialParticleData = gcnew ParticleData( &fluidDescription->initialParticleData );
-	_particleWriteData = gcnew ParticleData( &fluidDescription->particlesWriteData );
-	_particleDeletionIdWriteData = gcnew ParticleIdData( &fluidDescription->particleDeletionIdWriteData );
-	_particleCreationIdWriteData = gcnew ParticleIdData( &fluidDescription->particleCreationIdWriteData );
-	_fluidPacketData = gcnew StillDesign::PhysX::FluidPacketData( &fluidDescription->fluidPacketData );
-	
-	//_fluidDescBase->initialParticleData = *_initialParticleData->UnmanagedPointer;
-	//_fluidDescBase->particlesWriteData = *_particleWriteData->UnmanagedPointer;
+	_initialParticleData = gcnew ParticleData( &fluidDescription->initialParticleData, false, true );
+	_particleWriteData = gcnew ParticleData( &fluidDescription->particlesWriteData, false, true );
+	_particleDeletionIdWriteData = gcnew ParticleIdData( &fluidDescription->particleDeletionIdWriteData, false, true );
+	_particleCreationIdWriteData = gcnew ParticleIdData( &fluidDescription->particleCreationIdWriteData, false, true );
+	_fluidPacketData = gcnew StillDesign::PhysX::FluidPacketData( &fluidDescription->fluidPacketData, false, true );	
 }
 FluidDescriptionBase::~FluidDescriptionBase()
 {

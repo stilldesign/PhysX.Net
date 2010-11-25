@@ -1,6 +1,7 @@
 #pragma once
 
 #include "IDisposable.h"
+#include "BufferData.h"
 
 namespace StillDesign
 {
@@ -8,7 +9,7 @@ namespace StillDesign
 	{
 		ref class PhysicsStream;
 		
-		public ref class ParticleIdData : IDisposable
+		public ref class ParticleIdData : BufferData, IDisposable
 		{
 			public:
 				virtual event EventHandler^ OnDisposing;
@@ -22,7 +23,7 @@ namespace StillDesign
 			public:
 				ParticleIdData();
 			internal:
-				ParticleIdData( NxParticleIdData* data );
+				ParticleIdData( NxParticleIdData* data, bool objectOwner, bool dataOwner );
 			public:
 				~ParticleIdData();
 			protected:
@@ -32,11 +33,13 @@ namespace StillDesign
 				{
 					virtual bool get();
 				}
-			
-			public:
+				
 				void SetToDefault();
 				bool IsValid();
 				
+				static ParticleIdData^ Clone( ParticleIdData^ data );
+				static NxParticleIdData* Clone( NxParticleIdData data );
+
 				PhysicsStream^ AllocateIds( int size, int strideSize );
 				generic<typename T> where T : ValueType PhysicsStream^ AllocateIds( int numberOfIds );
 				

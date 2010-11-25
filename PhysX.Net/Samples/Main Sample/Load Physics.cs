@@ -186,7 +186,6 @@ namespace StillDesign.PhysX.Samples
 			}
 			#endregion
 			
-			/*
 			#region Fluid
 			{
 				const int maximumParticles = 1000;
@@ -242,7 +241,6 @@ namespace StillDesign.PhysX.Samples
 				}
 			}
 			#endregion
-			*/
 
 			#region Force Field
 			{

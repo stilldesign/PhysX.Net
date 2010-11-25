@@ -20,7 +20,7 @@ void StillDesign::PhysX::Functions::OutputString( const char* string )
 }
 
 generic<typename T>
-T StillDesign::PhysX::Functions::CloneFloatStruct( float numOfFloats, void* p_unmanaged )
+T StillDesign::PhysX::Functions::CloneFloatStruct( int numOfFloats, void* p_unmanaged )
 {
 	int size = numOfFloats * sizeof(float);
 

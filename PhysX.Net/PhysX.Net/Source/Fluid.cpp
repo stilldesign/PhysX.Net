@@ -29,12 +29,12 @@ Fluid::Fluid( NxFluid* fluid )
 	if( fluid->getCompartment() != NULL )
 		_compartment = ObjectTable::GetObject<StillDesign::PhysX::Compartment^>( (intptr_t)fluid->getCompartment() );
 	
-	_particleWriteData = gcnew StillDesign::PhysX::ParticleData( &fluid->getParticlesWriteData() );
-	_particleCreationIdWriteData = gcnew StillDesign::PhysX::ParticleIdData( &fluid->getParticleCreationIdWriteData() );
-	_particleDeletionIdWriteData = gcnew StillDesign::PhysX::ParticleIdData( &fluid->getParticleDeletionIdWriteData() );
-	_fluidPacketData = gcnew StillDesign::PhysX::FluidPacketData( &fluid->getFluidPacketData() );
+	_particleWriteData = gcnew StillDesign::PhysX::ParticleData( &fluid->getParticlesWriteData(), false, true );
+	_particleCreationIdWriteData = gcnew StillDesign::PhysX::ParticleIdData( &fluid->getParticleCreationIdWriteData(), false, true );
+	_particleDeletionIdWriteData = gcnew StillDesign::PhysX::ParticleIdData( &fluid->getParticleDeletionIdWriteData(), false, true );
+	_fluidPacketData = gcnew StillDesign::PhysX::FluidPacketData( &fluid->getFluidPacketData(), false, true );
 	
-	_fluidEmitters = gcnew ElementCollection< FluidEmitter^ >();
+	_fluidEmitters = gcnew ElementCollection<FluidEmitter^>();
 	for( unsigned int x = 0; x < fluid->getNbEmitters(); x++ )
 	{
 		NxFluidEmitter* emitter = fluid->getEmitters()[ x ];

@@ -1,13 +1,20 @@
 #pragma once
 
+#include "BufferData.h"
+#include "IDisposable.h"
+
 namespace StillDesign
 {
 	namespace PhysX
 	{
 		ref class PhysicsStream;
 		
-		public ref class FluidPacketData
+		public ref class FluidPacketData : BufferData, IDisposable
 		{
+			public:
+				virtual event EventHandler^ OnDisposing;
+				virtual event EventHandler^ OnDisposed;
+
 			private:
 				NxFluidPacketData* _fluidPacketData;
 				
@@ -16,13 +23,21 @@ namespace StillDesign
 			public:
 				FluidPacketData();
 			internal:
-				FluidPacketData( NxFluidPacketData* fluidPacketData );
+				FluidPacketData( NxFluidPacketData* fluidPacketData, bool objectOwner, bool dataOwner );
 			public:
 				~FluidPacketData();
 			protected:
 				!FluidPacketData();
+			public:
+				property bool IsDisposed
+				{
+					virtual bool get();
+				}
 			
 			public:
+				static FluidPacketData^ Clone( FluidPacketData^ data );
+				static NxFluidPacketData* Clone( NxFluidPacketData data );
+
 				void SetToDefault();
 				bool IsValid();
 				

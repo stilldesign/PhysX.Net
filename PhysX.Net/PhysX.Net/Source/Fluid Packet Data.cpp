@@ -6,6 +6,7 @@
 using namespace StillDesign::PhysX;
 
 FluidPacketData::FluidPacketData()
+	: BufferData( true, true )
 {
 	_fluidPacketData = new NxFluidPacketData();
 	Debug::Assert( _fluidPacketData != NULL );
@@ -13,10 +14,11 @@ FluidPacketData::FluidPacketData()
 	_fluidPacketData->numFluidPacketsPtr = new NxU32();
 	Debug::Assert( _fluidPacketData->numFluidPacketsPtr != NULL );
 }
-FluidPacketData::FluidPacketData( NxFluidPacketData* data )
+FluidPacketData::FluidPacketData( NxFluidPacketData* data, bool objectOwner, bool dataOwner )
+	: BufferData( objectOwner, dataOwner )
 {
 	Debug::Assert( data != NULL );
-	
+
 	if( data->numFluidPacketsPtr != NULL )
 	{
 		if( *data->numFluidPacketsPtr < 0 )
@@ -32,15 +34,59 @@ FluidPacketData::~FluidPacketData()
 }
 FluidPacketData::!FluidPacketData()
 {
-	if( _fluidPacketData != NULL )
+	if( this->IsDisposed )
+		return;
+	
+	OnDisposing( this, EventArgs::Empty );
+
+	if( this->DataOwner )
 	{
 		if( _fluidPacketData->numFluidPacketsPtr != NULL )
 			delete _fluidPacketData->numFluidPacketsPtr;
 	}
 	
-	SAFE_DELETE( _fluidPacketData );
+	if( this->ObjectOwner )
+	{
+		SAFE_DELETE( _fluidPacketData );
+	}
 	
 	_packetsStream = nullptr;
+	
+	OnDisposed( this, EventArgs::Empty );
+}
+
+bool FluidPacketData::IsDisposed::get()
+{
+	return ( _fluidPacketData == NULL );
+}
+
+FluidPacketData^ FluidPacketData::Clone( FluidPacketData^ data )
+{
+	if( data == nullptr )
+		return nullptr;
+
+	if( data->UnmanagedPointer == NULL )
+		return gcnew FluidPacketData();
+	else
+		return gcnew FluidPacketData( Clone( *data->UnmanagedPointer ), true, true );
+}
+NxFluidPacketData* FluidPacketData::Clone( NxFluidPacketData data )
+{
+	NxFluidPacketData* d = new NxFluidPacketData();
+
+	if( data.numFluidPacketsPtr != NULL )
+	{
+		int n = *data.numFluidPacketsPtr;
+
+		*d->numFluidPacketsPtr = n;
+
+		int size = sizeof(NxFluidPacket) * n;
+
+		d->bufferFluidPackets = (NxFluidPacket*)malloc( size );
+		memcpy( d->bufferFluidPackets, data.bufferFluidPackets, size );
+	}
+
+	return d;
 }
 
 void FluidPacketData::SetToDefault()

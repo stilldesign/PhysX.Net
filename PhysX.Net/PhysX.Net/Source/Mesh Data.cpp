@@ -10,6 +10,7 @@ using namespace System;
 using namespace StillDesign::PhysX;
 
 MeshData::MeshData()
+	: BufferData( true, true )
 {
 	_meshData = NULL;
 }

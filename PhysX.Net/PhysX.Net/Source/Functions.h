@@ -18,7 +18,7 @@ namespace StillDesign
 				
 				/// <summary>A very specific method to copy an unmanaged struct containing floats to a managed version.</summary>
 				generic<typename T> where T : value class
-				static T CloneFloatStruct( float numOfFloats, void* p_unmanaged );
+				static T CloneFloatStruct( int numOfFloats, void* p_unmanaged );
 
 				////[EditorBrowsable(EditorBrowsableState.Never)]
 				//static int GetTypeSize( Type^ typeSize );

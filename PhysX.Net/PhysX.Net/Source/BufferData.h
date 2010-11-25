@@ -8,12 +8,12 @@ namespace StillDesign
 	{
 		public ref class BufferData abstract
 		{
-		protected:
-			BufferData();
+			protected:
+				BufferData( bool objectOwner, bool dataOwner );
 
-		internal:
-			property bool ObjectOwner;
-			property bool DataOwner;
+			internal:
+				property bool ObjectOwner;
+				property bool DataOwner;
 		};
 	};
 };

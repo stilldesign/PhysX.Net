@@ -5,17 +5,24 @@
 #include "Physics Stream.h"
 
 using namespace StillDesign::PhysX;
+
 ParticleIdData::ParticleIdData()
+	: BufferData( true, true )
 {
 	_data = new NxParticleIdData();
+		_data->setToDefault();
 		_data->numIdsPtr = new NxU32();
 }
-ParticleIdData::ParticleIdData( NxParticleIdData* data )
+ParticleIdData::ParticleIdData( NxParticleIdData* data, bool objectOwner, bool dataOwner )
+	: BufferData( objectOwner, dataOwner )
 {
 	Debug::Assert( data != NULL );
 	
 	_data = data;
 	
+	this->ObjectOwner = objectOwner;
+	this->DataOwner = dataOwner;
+
 	if( data->numIdsPtr != NULL )
 	{
 		if( *data->numIdsPtr < 0 )
@@ -36,10 +43,17 @@ ParticleIdData::!ParticleIdData()
 	
 	OnDisposing( this, nullptr );
 	
-	SAFE_DELETE( _data->numIdsPtr );
+	if( this->DataOwner )
+	{
+		SAFE_DELETE( _data->numIdsPtr );
 	
-	SAFE_DELETE( _data->bufferId );
-	SAFE_DELETE( _data );
+		SAFE_DELETE( _data->bufferId );
+	}
+
+	if( this->ObjectOwner )
+	{
+		SAFE_DELETE( _data );
+	}
 	
 	_idsStream = nullptr;
 	
@@ -63,6 +77,44 @@ void ParticleIdData::SetToDefault()
 bool ParticleIdData::IsValid()
 {
 	return _data->isValid();
+}
+
+ParticleIdData^ ParticleIdData::Clone( ParticleIdData^ data )
+{
+	if( data == nullptr )
+		return nullptr;
+
+	return gcnew ParticleIdData( Clone( *data->UnmanagedPointer ), true, true );
+}
+NxParticleIdData* ParticleIdData::Clone( NxParticleIdData data )
+{
+	NxParticleIdData* id = new NxParticleIdData();
+
+	if( data.numIdsPtr != NULL )
+	{
+		int n = *data.numIdsPtr;
+
+		id->numIdsPtr = new NxU32();
+		*id->numIdsPtr = n;
+
+		int size = sizeof(NxU32) * n;
+
+		id->bufferId = (NxU32*)malloc( size );
+		memcpy( id->bufferId, data.bufferId, size );
+	}
+
+	id->bufferIdByteStride = data.bufferIdByteStride;
+
+	if( data.name != NULL )
+	{
+		int size = sizeof(char) * strlen(data.name);
+		char* name = (char*)malloc( size );
+		strcpy_s( name, size, data.name );
+
+		id->name = name;
+	}
+
+	return id;
 }
 
 PhysicsStream^ ParticleIdData::AllocateIds( int size, int strideSize )

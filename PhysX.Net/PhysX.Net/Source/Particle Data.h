@@ -1,6 +1,7 @@
 #pragma once
 
 #include "IDisposable.h"
+#include "BufferData.h"
 
 using namespace System;
 
@@ -12,7 +13,7 @@ namespace StillDesign
 	{
 		ref class PhysicsStream;
 		
-		public ref class ParticleData : StillDesign::PhysX::IDisposable
+		public ref class ParticleData : BufferData, StillDesign::PhysX::IDisposable
 		{
 			public:
 				[Flags]
@@ -44,8 +45,7 @@ namespace StillDesign
 			public:
 				ParticleData();
 			internal:
-				//ParticleData( NxParticleData data );
-				ParticleData( NxParticleData* data );
+				ParticleData( NxParticleData* data, bool objectOwner, bool dataOwner );
 			public:
 				~ParticleData();
 			protected:
@@ -63,8 +63,11 @@ namespace StillDesign
 				bool IsValid();
 				
 			internal:
-				static ParticleData^ FromUnmanagedPointer( NxParticleData* particleData );
-				
+				static ParticleData^ FromUnmanagedPointer( NxParticleData* particleData, bool objectOwner, bool dataOwner );
+
+				static NxParticleData* Clone( NxParticleData particleData );
+				static ParticleData^ Clone( ParticleData^ particleData );
+
 			public:
 				/// <summary>Allocates memory for the particle positions</summary>
 				/// <param name="numberOfParticles">The number of particles to allocate</param>

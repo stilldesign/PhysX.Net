@@ -69,6 +69,9 @@
 #include "Soft Body Split Pair Data.h"
 #include "PhysX Exception.h"
 #include "Cloth Split Pair Data.h"
+#include "Particle Data.h"
+#include "Particle Id Data.h"
+#include "Fluid Packet Data.h"
 
 #include <NxScene.h>
 #include <NxSceneDesc.h>
@@ -541,8 +544,7 @@ StillDesign::PhysX::ControllerManager^ Scene::CreateControllerManager()
 }
 Fluid^ Scene::CreateFluid( FluidDescription^ fluidDescription )
 {
-	if( fluidDescription == nullptr )
-		throw gcnew ArgumentNullException( "fluidDescription" );
+	ThrowIfNull( fluidDescription, "fluidDescription" );
 	if( fluidDescription->IsValid() == false )
 		throw gcnew ArgumentException( "Fluid description is invalid" );
 	
@@ -551,7 +553,12 @@ Fluid^ Scene::CreateFluid( FluidDescription^ fluidDescription )
 	if( f == NULL )
 		throw gcnew PhysXException( "Failed to create fluid" );
 	
-	Fluid^ fluid = gcnew Fluid( f, fluidDescription->ParticleWriteData, fluidDescription->ParticleDeletionIdWriteData, fluidDescription->ParticleCreationIdWriteData, fluidDescription->FluidPacketData );
+	ParticleData^ particleWriteData = ParticleData::Clone( fluidDescription->ParticleWriteData );
+	ParticleIdData^ particleDeletionIdWriteData = ParticleIdData::Clone( fluidDescription->ParticleDeletionIdWriteData );
+	ParticleIdData^ particleCreationIdWriteData = ParticleIdData::Clone( fluidDescription->ParticleCreationIdWriteData );
+	FluidPacketData^ fluidPacketData = FluidPacketData::Clone( fluidDescription->FluidPacketData );
+
+	Fluid^ fluid = gcnew Fluid( f, particleWriteData, particleDeletionIdWriteData, particleCreationIdWriteData, fluidPacketData );
 		fluid->UserData = fluidDescription->UserData;
 	
 	_fluids->Add( fluid );

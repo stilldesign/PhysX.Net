@@ -9,48 +9,15 @@
 using namespace StillDesign::PhysX;
 
 ParticleData::ParticleData()
+	: BufferData( true, true )
 {
 	_data = new NxParticleData();
 		_data->setToDefault();
 	
 	_data->numParticlesPtr = NULL;
 }
-//ParticleData::ParticleData( NxParticleData data )
-//{
-//	_data = new NxParticleData();
-//	*_data = data;
-//	
-//	if( _data->numParticlesPtr != NULL )
-//	{
-//		int c = *_data->numParticlesPtr;
-//		
-//		_data->numParticlesPtr = new NxU32();
-//		*_data->numParticlesPtr = c;
-//		
-//		if( _data->bufferPos != NULL )
-//			_positionBuffer = gcnew PhysicsStream( (BYTE*)_data->bufferPos, _data->bufferPosByteStride * c );
-//		
-//		if( _data->bufferVel != NULL )
-//			_velocityBuffer = gcnew PhysicsStream( (BYTE*)_data->bufferVel, _data->bufferVelByteStride * c );
-//	
-//		if( _data->bufferLife != NULL )
-//			_lifeBuffer = gcnew PhysicsStream( (BYTE*)_data->bufferLife, _data->bufferLifeByteStride * c );
-//		
-//		if( _data->bufferDensity != NULL )
-//			_densityBuffer = gcnew PhysicsStream( (BYTE*)_data->bufferDensity, _data->bufferDensityByteStride * c );
-//		
-//		if( _data->bufferId != NULL )
-//			_idBuffer = gcnew PhysicsStream( (BYTE*)_data->bufferId, _data->bufferIdByteStride * c );
-//		
-//		if( _data->bufferFlag != NULL )
-//			_flagBuffer = gcnew PhysicsStream( (BYTE*)_data->bufferFlag, _data->bufferFlagByteStride * c );
-//		
-//		if( _data->bufferCollisionNormal != NULL )
-//			_collisionNormalBuffer = gcnew PhysicsStream( (BYTE*)_data->bufferCollisionNormal, _data->bufferCollisionNormalByteStride * c );
-//		
-//	}
-//}
-ParticleData::ParticleData( NxParticleData* data )
+ParticleData::ParticleData( NxParticleData* data, bool objectOwner, bool dataOwner )
+	: BufferData( objectOwner, dataOwner )
 {
 	Debug::Assert( data != NULL );
 	
@@ -88,7 +55,10 @@ ParticleData::~ParticleData()
 }
 ParticleData::!ParticleData()
 {
-	if( _data != NULL )
+	if( this->IsDisposed )
+		return;
+
+	if( this->DataOwner )
 	{
 		SAFE_DELETE( _data->numParticlesPtr );
 		
@@ -105,7 +75,10 @@ ParticleData::!ParticleData()
 		
 		SAFE_DELETE( _data->numParticlesPtr );
 		SAFE_FREE_MANY( buffers );
-		
+	}
+
+	if( this->ObjectOwner )
+	{
 		SAFE_DELETE( _data );
 	}
 	
@@ -153,9 +126,91 @@ bool ParticleData::IsValid()
 	return _data->isValid();
 }
 
-ParticleData^ ParticleData::FromUnmanagedPointer( NxParticleData* particleData )
+ParticleData^ ParticleData::FromUnmanagedPointer( NxParticleData* particleData, bool objectOwner, bool dataOwner )
 {
-	return gcnew ParticleData( particleData );
+	return gcnew ParticleData( particleData, objectOwner, dataOwner );
+}
+NxParticleData* ParticleData::Clone( NxParticleData particleData )
+{
+	NxParticleData* data = new NxParticleData();
+
+	// We can only clone the buffers if we know how long they are
+	if( particleData.numParticlesPtr != NULL )
+	{
+		int n = *particleData.numParticlesPtr;
+
+		data->numParticlesPtr = new NxU32();
+		*data->numParticlesPtr = n;
+
+		// Pos
+		if( particleData.bufferPos != NULL )
+		{
+			data->bufferPos = (NxF32*)malloc( n * particleData.bufferPosByteStride );
+			memcpy( data->bufferPos, particleData.bufferPos, n * particleData.bufferPosByteStride );
+		}
+
+		// Vel
+		if( particleData.bufferVel != NULL )
+		{
+			data->bufferVel = (NxF32*)malloc( n * particleData.bufferVelByteStride );
+			memcpy( data->bufferVel, particleData.bufferVel, n * particleData.bufferVelByteStride );
+		}
+
+		// Life
+		if( particleData.bufferLife != NULL )
+		{
+			data->bufferLife = (NxF32*)malloc( n * particleData.bufferLifeByteStride );
+			memcpy( data->bufferLife, particleData.bufferLife, n * particleData.bufferLifeByteStride );
+		}
+
+		// Density
+		if( particleData.bufferDensity != NULL )
+		{
+			data->bufferDensity = (NxF32*)malloc( n * particleData.bufferDensityByteStride );
+			memcpy( data->bufferDensity, particleData.bufferDensity, n * particleData.bufferDensityByteStride );
+		}
+
+		// ID
+		if( particleData.bufferId != NULL )
+		{
+			data->bufferId = (NxU32*)malloc( n * particleData.bufferIdByteStride );
+			memcpy( data->bufferId, particleData.bufferId, n * particleData.bufferIdByteStride );
+		}
+
+		// Flag
+		if( particleData.bufferFlag != NULL )
+		{
+			data->bufferFlag = (NxU32*)malloc( n * particleData.bufferFlagByteStride );
+			memcpy( data->bufferFlag, particleData.bufferFlag, n * particleData.bufferFlagByteStride );
+		}
+
+		// Normal
+		if( particleData.bufferCollisionNormal != NULL )
+		{
+			data->bufferCollisionNormal = (NxF32*)malloc( n * particleData.bufferCollisionNormalByteStride );
+			memcpy( data->bufferCollisionNormal, particleData.bufferCollisionNormal, n * particleData.bufferCollisionNormalByteStride );
+		}
+	}
+
+	if( particleData.name != NULL )
+	{
+		int size = sizeof(char) * strlen(particleData.name);
+		char* name = (char*)malloc( size );
+		strcpy_s( name, size, particleData.name );
+
+		data->name = name;
+	}
+
+	return data;
+}
+ParticleData^ ParticleData::Clone( ParticleData^ particleData )
+{
+	if( particleData == nullptr )
+		return nullptr;
+
+	NxParticleData* clone = Clone( *particleData->UnmanagedPointer );
+
+	return gcnew ParticleData( clone, true, true );
 }
 
 generic<typename T> PhysicsStream^ ParticleData::AllocatePositionBuffer( int numberOfParticles )

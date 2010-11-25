@@ -3,8 +3,8 @@
 
 using namespace StillDesign::PhysX;
 
-BufferData::BufferData()
+BufferData::BufferData( bool objectOwner, bool dataOwner )
 {
-	ObjectOwner = false;
-	DataOwner = false;
+	this->ObjectOwner = false;
+	this->DataOwner = false;
 }
