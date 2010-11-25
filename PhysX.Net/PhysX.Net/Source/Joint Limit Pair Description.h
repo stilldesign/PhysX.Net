@@ -2,18 +2,12 @@
 
 #include "Joint Limit Description.h"
 
-using namespace System;
-
 namespace StillDesign
 {
 	namespace PhysX
 	{
 		public value class JointLimitPairDescription
 		{
-			private:
-				JointLimitDescription _low;
-				JointLimitDescription _high;
-			
 			public:
 				JointLimitPairDescription( JointLimitDescription low, JointLimitDescription high );
 			
@@ -23,17 +17,9 @@ namespace StillDesign
 				
 			public:
 				/// <summary></summary>
-				property JointLimitDescription Low
-				{
-					JointLimitDescription get();
-					void set( JointLimitDescription value );
-				}
+				property JointLimitDescription Low;
 				/// <summary></summary>
-				property JointLimitDescription High
-				{
-					JointLimitDescription get();
-					void set( JointLimitDescription value );
-				}
+				property JointLimitDescription High;
 		};
 	};
 };

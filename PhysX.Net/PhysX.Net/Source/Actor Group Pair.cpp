@@ -1,8 +1,7 @@
 #include "StdAfx.h"
-
-#include <Nxp.h> 
-
 #include "Actor Group Pair.h"
+
+#include <Nxp.h>
 
 using namespace StillDesign::PhysX;
 
@@ -23,30 +22,4 @@ ActorGroupPair::operator NxActorGroupPair( ActorGroupPair actorGroupPair )
 		p.flags = actorGroupPair.Flags;
 	
 	return p;
-}
-
-short ActorGroupPair::Group0::get()
-{
-	return _group0;
-}
-void ActorGroupPair::Group0::set( short value )
-{
-	_group0 = value;
-}
-
-short ActorGroupPair::Group1::get()
-{
-	return _group1;
-}
-void ActorGroupPair::Group1::set( short value )
-{
-	_group1 = value;
-}
-int ActorGroupPair::Flags::get()
-{
-	return _flags;
-}
-void ActorGroupPair::Flags::set( int value )
-{
-	_flags = value;
 }

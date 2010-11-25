@@ -9,8 +9,8 @@ using namespace StillDesign::PhysX;
 
 JointLimitPairDescription::JointLimitPairDescription( JointLimitDescription low, JointLimitDescription high )
 {
-	_low = low;
-	_high = high;
+	this->Low = low;
+	this->High = high;
 }
 
 JointLimitPairDescription::operator JointLimitPairDescription( NxJointLimitPairDesc jointLimitPairDesc )
@@ -28,22 +28,4 @@ JointLimitPairDescription::operator NxJointLimitPairDesc( JointLimitPairDescript
 		desc.high = (NxJointLimitDesc)jointLimitPairDescription.High;
 	
 	return desc;
-}
-
-JointLimitDescription JointLimitPairDescription::Low::get()
-{
-	return _low;
-}
-void JointLimitPairDescription::Low::set( JointLimitDescription value )
-{
-	_low = value;
-}
-
-JointLimitDescription JointLimitPairDescription::High::get()
-{
-	return _high;
-}
-void JointLimitPairDescription::High::set( JointLimitDescription value )
-{
-	_high = value;
 }

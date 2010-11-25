@@ -1,5 +1,4 @@
 #include "StdAfx.h"
-
 #include "Joint Limit Soft Description.h"
 
 #include <NxJointLimitSoftDesc.h> 
@@ -8,10 +7,10 @@ using namespace StillDesign::PhysX;
 
 JointLimitSoftDescription::JointLimitSoftDescription( float value, float restitution, float spring, float damping )
 {
-	_value = value;
-	_restitution = restitution;
-	_spring = spring;
-	_damping = damping;
+	this->Value = value;
+	this->Restitution = restitution;
+	this->Spring = spring;
+	this->Damping = damping;
 }
 
 JointLimitSoftDescription JointLimitSoftDescription::FromUnmanaged( NxJointLimitSoftDesc jointLimitSoftDesc )
@@ -33,40 +32,4 @@ NxJointLimitSoftDesc JointLimitSoftDescription::ToUnmanaged( JointLimitSoftDescr
 		desc.value = jointLimitSoftDescription.Value;
 	
 	return desc;
-}
-
-float JointLimitSoftDescription::Value::get()
-{
-	return _value;
-}
-void JointLimitSoftDescription::Value::set( float value )
-{
-	_value = value;
-}
-
-float JointLimitSoftDescription::Restitution::get()
-{
-	return _restitution;
-}
-void JointLimitSoftDescription::Restitution::set( float value )
-{
-	_restitution = value;
-}
-
-float JointLimitSoftDescription::Spring::get()
-{
-	return _spring;
-}
-void JointLimitSoftDescription::Spring::set( float value )
-{
-	_spring = value;
-}
-
-float JointLimitSoftDescription::Damping::get()
-{
-	return _damping;
-}
-void JointLimitSoftDescription::Damping::set( float value )
-{
-	_damping = value;
 }

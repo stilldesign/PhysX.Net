@@ -8,9 +8,6 @@ namespace StillDesign
 	{
 		public value class JointLimitSoftDescription
 		{
-			private:
-				float _value, _restitution, _spring, _damping;
-			
 			public:
 				JointLimitSoftDescription( float value, float restitution, float spring, float damping );
 			
@@ -20,29 +17,13 @@ namespace StillDesign
 				
 			public:
 				/// <summary></summary>
-				property float Value
-				{
-					float get();
-					void set( float value );
-				}
+				property float Value;
 				/// <summary></summary>
-				property float Restitution
-				{
-					float get();
-					void set( float value );
-				}
+				property float Restitution;
 				/// <summary></summary>
-				property float Spring
-				{
-					float get();
-					void set( float value );
-				}
+				property float Spring;
 				/// <summary></summary>
-				property float Damping
-				{
-					float get();
-					void set( float value );
-				}
+				property float Damping;
 		};
 	};
 };
