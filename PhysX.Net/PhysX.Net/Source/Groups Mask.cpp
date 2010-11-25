@@ -32,39 +32,3 @@ GroupsMask::operator NxGroupsMask( GroupsMask groupsMask )
 	
 	return g;
 }
-
-unsigned int GroupsMask::Bits0::get()
-{
-	return _bits0;
-}
-void GroupsMask::Bits0::set( unsigned int value )
-{
-	_bits0 = value;
-}
-
-unsigned int GroupsMask::Bits1::get()
-{
-	return _bits1;
-}
-void GroupsMask::Bits1::set( unsigned int value )
-{
-	_bits1 = value;
-}
-
-unsigned int GroupsMask::Bits2::get()
-{
-	return _bits2;
-}
-void GroupsMask::Bits2::set( unsigned int value )
-{
-	_bits2 = value;
-}
-
-unsigned int GroupsMask::Bits3::get()
-{
-	return _bits3;
-}
-void GroupsMask::Bits3::set( unsigned int value )
-{
-	_bits3 = value;
-}

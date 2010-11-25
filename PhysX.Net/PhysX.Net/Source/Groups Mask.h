@@ -6,12 +6,9 @@ namespace StillDesign
 {
 	namespace PhysX
 	{
-		/// <summary>128-bit Mask Used for Collision Filtering.</summary>
+		/// <summary>128-bit mask used for collision filtering.</summary>
 		public value class GroupsMask
 		{
-			private:
-				unsigned int _bits0, _bits1, _bits2, _bits3;
-			
 			public:
 				GroupsMask( unsigned int bits0, unsigned int bits1, unsigned int bits2, unsigned int bits3 );
 				
@@ -20,26 +17,10 @@ namespace StillDesign
 				static explicit operator NxGroupsMask( GroupsMask groupsMask );
 				
 			public:
-				property unsigned int Bits0
-				{
-					unsigned int get();
-					void set( unsigned int value );
-				}
-				property unsigned int Bits1
-				{
-					unsigned int get();
-					void set( unsigned int value );
-				}
-				property unsigned int Bits2
-				{
-					unsigned int get();
-					void set( unsigned int value );
-				}
-				property unsigned int Bits3
-				{
-					unsigned int get();
-					void set( unsigned int value );
-				}
+				property unsigned int Bits0;
+				property unsigned int Bits1;
+				property unsigned int Bits2;
+				property unsigned int Bits3;
 		};
 	};
 };
