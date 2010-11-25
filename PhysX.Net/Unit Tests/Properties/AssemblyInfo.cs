@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle( "TestProject" )]
+[assembly: AssemblyTitle( "StillDesign.PhysX.UnitTests" )]
 [assembly: AssemblyDescription( "" )]
 [assembly: AssemblyConfiguration( "" )]
-[assembly: AssemblyCompany( "stillDesign" )]
-[assembly: AssemblyProduct( "TestProject" )]
-[assembly: AssemblyCopyright( "Copyright © stillDesign 2008" )]
+[assembly: AssemblyCompany( "StillDesign" )]
+[assembly: AssemblyProduct( "StillDesign.PhysX" )]
+[assembly: AssemblyCopyright( "Copyright © StillDesign 2008" )]
 [assembly: AssemblyTrademark( "" )]
 [assembly: AssemblyCulture( "" )]
 

@@ -2,19 +2,27 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-#if GRAPHICS_XNA31
-using Microsoft.Xna.Framework;
-#elif GRAPHICS_SLIMDX
-using SlimDX;
-#else
-#error No Graphics Framework Defined
-#endif
-
 using StillDesign.PhysX;
+using StillDesign.PhysX.MathPrimitives;
 
 namespace StillDesign.PhysX.UnitTests
 {
 	[TestClass]
+#if x86
+	[DeploymentItem( @"Assemblies\x86\cudart32_30_9.dll" )]
+	[DeploymentItem( @"Assemblies\x86\NxCharacter.dll" )]
+	[DeploymentItem( @"Assemblies\x86\PhysXCooking.dll" )]
+	[DeploymentItem( @"Assemblies\x86\PhysXCore.dll" )]
+	[DeploymentItem( @"Assemblies\x86\PhysXDevice.dll" )]
+	[DeploymentItem( @"Assemblies\x86\PhysXLoader.dll" )]
+#elif x64
+	[DeploymentItem( @"Assemblies\x64\cudart32_30_9.dll" )]
+	[DeploymentItem( @"Assemblies\x64\NxCharacter.dll" )]
+	[DeploymentItem( @"Assemblies\x64\PhysXCooking.dll" )]
+	[DeploymentItem( @"Assemblies\x64\PhysXCore.dll" )]
+	[DeploymentItem( @"Assemblies\x64\PhysXDevice.dll" )]
+	[DeploymentItem( @"Assemblies\x64\PhysXLoader.dll" )]
+#endif
 	public abstract class TestBase
 	{
 		public TestBase()
@@ -77,7 +85,7 @@ namespace StillDesign.PhysX.UnitTests
 			{
 				Name = name,
 				BodyDescription = new BodyDescription( 20 ),
-				GlobalPose = GraphicsLibraryWrapper.CreateTranslationMatrix( new Vector3( x, y, z ) ),
+				GlobalPose = Matrix.Translation( new Vector3( x, y, z ) ),
 				Shapes = 
 				{
 					new BoxShapeDescription( 5, 5, 5 )

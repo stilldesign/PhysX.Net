@@ -1,58 +1,14 @@
 ﻿using System;
-using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-#if GRAPHICS_XNA31
-using Microsoft.Xna.Framework;
-#elif GRAPHICS_SLIMDX
-using SlimDX;
-#else
-#error No Graphics Framework Defined
-#endif
+using StillDesign.PhysX.MathPrimitives;
 
 namespace StillDesign.PhysX.UnitTests
 {
 	[TestClass]
 	public class HeightfieldTests : TestBase
 	{
-		public HeightfieldTests()
-		{
-
-		}
-
-		public TestContext TestContext
-		{
-			get;
-			set;
-		}
-
-		[ClassInitialize()]
-		public static void MyClassInitialize( TestContext testContext )
-		{
-
-		}
-
-		[ClassCleanup()]
-		public static void MyClassCleanup()
-		{
-
-		}
-
-		[TestInitialize()]
-		public void MyTestInitialize()
-		{
-			CreateCoreAndScene();
-		}
-
-		[TestCleanup()]
-		public void MyTestCleanup()
-		{
-			if( this.Core != null )
-				this.Core.Dispose();
-		}
-
 		public void CreateHeightfieldTest()
 		{
 			int rows = 25;
@@ -66,11 +22,13 @@ namespace StillDesign.PhysX.UnitTests
 					// Put a z and x curve together
 					double h = Math.Sin( c ) * Math.Cos( r ) * short.MaxValue;
 
-					HeightFieldSample sample = new HeightFieldSample();
-					sample.Height = (short)h;
-					sample.MaterialIndex0 = 0;
-					sample.MaterialIndex1 = 1;
-					sample.TessellationFlag = 0;
+					HeightFieldSample sample = new HeightFieldSample()
+					{
+						Height = (short)h,
+						MaterialIndex0 = 0,
+						MaterialIndex1 = 1,
+						TessellationFlag = 0
+					};
 
 					samples[ r * columns + c ] = sample;
 				}
@@ -100,7 +58,7 @@ namespace StillDesign.PhysX.UnitTests
 
 			ActorDescription actorDesc = new ActorDescription()
 			{
-				GlobalPose = GraphicsLibraryWrapper.CreateTranslationMatrix( 100, 0, 0 ),
+				GlobalPose = Matrix.Translation( 100, 0, 0 ),
 				Shapes = { heightFieldShapeDesc }
 			};
 

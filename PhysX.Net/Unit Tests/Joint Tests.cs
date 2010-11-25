@@ -1,49 +1,14 @@
 ﻿using System;
-using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-#if GRAPHICS_XNA31
-using Microsoft.Xna.Framework;
-#elif GRAPHICS_SLIMDX
-using SlimDX;
-#else
-#error No Graphics Framework Defined
-#endif
-using StillDesign.PhysX;
+using StillDesign.PhysX.MathPrimitives;
 
 namespace StillDesign.PhysX.UnitTests
 {
 	[TestClass]
 	public class JointTests : TestBase
 	{
-		public JointTests()
-		{
-
-		}
-
-		#region Additional test attributes
-		//
-		// You can use the following additional attributes as you write your tests:
-		//
-		// Use ClassInitialize to run code before running the first test in the class
-		// [ClassInitialize()]
-		// public static void MyClassInitialize(TestContext testContext) { }
-		//
-		// Use ClassCleanup to run code after all tests in a class have run
-		// [ClassCleanup()]
-		// public static void MyClassCleanup() { }
-		//
-		// Use TestInitialize to run code before running each test 
-		// [TestInitialize()]
-		// public void MyTestInitialize() { }
-		//
-		// Use TestCleanup to run code after each test has run
-		// [TestCleanup()]
-		// public void MyTestCleanup() { }
-		//
-		#endregion
-
 		[TestMethod]
 		public void CreateDistanceJoint()
 		{
