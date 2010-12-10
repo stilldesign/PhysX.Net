@@ -17,6 +17,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluid Blob", "Samples\Fluid
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Main Sample", "Samples\Main Sample\Main Sample.csproj", "{230CFCF6-6A4F-45EF-943E-A4A29A44161F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1A34D519-3B53-4E1E-90CE-0161FB82DE27}"
+	ProjectSection(SolutionItems) = preProject
+		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
+		PhysX.Net.vsmdi = PhysX.Net.vsmdi
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 8
@@ -38,6 +44,7 @@ Global
 		SccLocalPath2 = Samples\\CCD\u0020Skeleton
 		SccProvider2 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccProjectUniqueName3 = Unit\u0020Tests\\Unit\u0020Tests.csproj
+		SccProjectName3 = Unit\u0020Tests
 		SccAuxPath3 = https://tfs.codeplex.com/tfs/tfs01
 		SccLocalPath3 = Unit\u0020Tests
 		SccProvider3 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
@@ -63,7 +70,7 @@ Global
 		SccProvider7 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
-		CategoryFile = PhysX.Net1.vsmdi
+		CategoryFile = PhysX.Net.vsmdi
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -92,14 +99,14 @@ Global
 		{0B12DC8D-FFB3-4C5F-8B77-ABAC84616E5D}.Release|x64.ActiveCfg = Release|x86
 		{0B12DC8D-FFB3-4C5F-8B77-ABAC84616E5D}.Release|x86.ActiveCfg = Release|x86
 		{0B12DC8D-FFB3-4C5F-8B77-ABAC84616E5D}.Release|x86.Build.0 = Release|x86
-		{3A2594CF-7E97-49E5-B1B7-34473CF514A6}.Debug|x64.ActiveCfg = Debug SlimDX|x64
-		{3A2594CF-7E97-49E5-B1B7-34473CF514A6}.Debug|x64.Build.0 = Debug SlimDX|x64
-		{3A2594CF-7E97-49E5-B1B7-34473CF514A6}.Debug|x86.ActiveCfg = Debug SlimDX|x86
-		{3A2594CF-7E97-49E5-B1B7-34473CF514A6}.Debug|x86.Build.0 = Debug SlimDX|x86
-		{3A2594CF-7E97-49E5-B1B7-34473CF514A6}.Release|x64.ActiveCfg = Release SlimDX|x64
-		{3A2594CF-7E97-49E5-B1B7-34473CF514A6}.Release|x64.Build.0 = Release SlimDX|x64
-		{3A2594CF-7E97-49E5-B1B7-34473CF514A6}.Release|x86.ActiveCfg = Release SlimDX|x86
-		{3A2594CF-7E97-49E5-B1B7-34473CF514A6}.Release|x86.Build.0 = Release SlimDX|x86
+		{3A2594CF-7E97-49E5-B1B7-34473CF514A6}.Debug|x64.ActiveCfg = Debug|x64
+		{3A2594CF-7E97-49E5-B1B7-34473CF514A6}.Debug|x64.Build.0 = Debug|x64
+		{3A2594CF-7E97-49E5-B1B7-34473CF514A6}.Debug|x86.ActiveCfg = Debug|x86
+		{3A2594CF-7E97-49E5-B1B7-34473CF514A6}.Debug|x86.Build.0 = Debug|x86
+		{3A2594CF-7E97-49E5-B1B7-34473CF514A6}.Release|x64.ActiveCfg = Release|x64
+		{3A2594CF-7E97-49E5-B1B7-34473CF514A6}.Release|x64.Build.0 = Release|x64
+		{3A2594CF-7E97-49E5-B1B7-34473CF514A6}.Release|x86.ActiveCfg = Release|x86
+		{3A2594CF-7E97-49E5-B1B7-34473CF514A6}.Release|x86.Build.0 = Release|x86
 		{18000A79-3163-402E-A6F2-F050BC13EF9B}.Debug|x64.ActiveCfg = Debug|x86
 		{18000A79-3163-402E-A6F2-F050BC13EF9B}.Debug|x86.ActiveCfg = Debug|x86
 		{18000A79-3163-402E-A6F2-F050BC13EF9B}.Debug|x86.Build.0 = Debug|x86

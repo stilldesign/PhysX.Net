@@ -20,9 +20,6 @@ ParticleIdData::ParticleIdData( NxParticleIdData* data, bool objectOwner, bool d
 	
 	_data = data;
 	
-	this->ObjectOwner = objectOwner;
-	this->DataOwner = dataOwner;
-
 	if( data->numIdsPtr != NULL )
 	{
 		if( *data->numIdsPtr < 0 )

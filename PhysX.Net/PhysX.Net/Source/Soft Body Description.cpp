@@ -18,7 +18,7 @@ SoftBodyDescription::SoftBodyDescription()
 {
 	_desc = new NxSoftBodyDesc();
 	
-	//_meshData = gcnew StillDesign::PhysX::MeshData( &_desc->meshData );
+	_meshData = StillDesign::PhysX::MeshData::FromUnmanagedPointer( &_desc->meshData, false, true );
 	_splitPairData = gcnew SoftBodySplitPairData();
 }
 SoftBodyDescription::SoftBodyDescription( NxSoftBodyDesc* desc, StillDesign::PhysX::MeshData^ meshData, StillDesign::PhysX::SoftBodySplitPairData^ splitPairData )
