@@ -18,7 +18,7 @@ namespace StillDesign.PhysX.Samples
 		{
 			Content.RootDirectory = "Content";
 
-			_engine = new Engine( this );
+			_engine = new Engine(this);
 		}
 
 		protected override void Initialize()
@@ -43,19 +43,19 @@ namespace StillDesign.PhysX.Samples
 
 		}
 
-		protected override void Update( GameTime gameTime )
+		protected override void Update(GameTime gameTime)
 		{
-			if( Keyboard.GetState().IsKeyDown( Keys.Escape ) == true )
+			if (Keyboard.GetState().IsKeyDown(Keys.Escape))
 				this.Exit();
 
-			base.Update( gameTime );
+			base.Update(gameTime);
 
-			_engine.Update( gameTime );
+			_engine.Update(gameTime);
 		}
 
-		protected override void Draw( GameTime gameTime )
+		protected override void Draw(GameTime gameTime)
 		{
-			base.Draw( gameTime );
+			base.Draw(gameTime);
 
 			_engine.Draw();
 		}

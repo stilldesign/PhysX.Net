@@ -1,11 +1,9 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CCD Skeleton", "CCD Skeleton\CCD Skeleton.csproj", "{0B12DC8D-FFB3-4C5F-8B77-ABAC84616E5D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cloth", "Cloth\Cloth.csproj", "{18000A79-3163-402E-A6F2-F050BC13EF9B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Main Sample", "Demo 1\Main Sample.csproj", "{230CFCF6-6A4F-45EF-943E-A4A29A44161F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Engine", "Engine\Engine.csproj", "{D126F9D4-66BB-403B-B4B6-18C3546BEDF8}"
 EndProject
@@ -13,11 +11,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tearing Cloth", "Tearing Cl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluid Blob", "Fluid Blob\Fluid Blob.csproj", "{6451C2B8-A5F1-4B03-813C-86E0C7C13733}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Main Sample", "Main Sample\Main Sample.csproj", "{230CFCF6-6A4F-45EF-943E-A4A29A44161F}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 13
+		SccNumberOfProjects = 12
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://tfs01.codeplex.com/
+		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs01
 		SccLocalPath0 = .
 		SccProjectUniqueName1 = CCD\u0020Skeleton\\CCD\u0020Skeleton.csproj
 		SccProjectName1 = CCD\u0020Skeleton
@@ -47,20 +47,16 @@ Global
 		SccProjectTopLevelParentUniqueName8 = Tearing\u0020Cloth\\Tearing\u0020Cloth.csproj
 		SccProjectName8 = Tearing\u0020Cloth/Content
 		SccLocalPath8 = Tearing\u0020Cloth\\Content
-		SccProjectUniqueName9 = Demo\u00201\\Main\u0020Sample.csproj
-		SccProjectName9 = Demo\u00201
-		SccLocalPath9 = Demo\u00201
-		SccProjectUniqueName10 = Demo\u00201\\Content\\Content.contentproj
-		SccProjectTopLevelParentUniqueName10 = Demo\u00201\\Main\u0020Sample.csproj
-		SccProjectName10 = Demo\u00201/Content
-		SccLocalPath10 = Demo\u00201\\Content
-		SccProjectUniqueName11 = Fluid\u0020Blob\\Fluid\u0020Blob.csproj
-		SccProjectName11 = Fluid\u0020Blob
-		SccLocalPath11 = Fluid\u0020Blob
-		SccProjectUniqueName12 = Fluid\u0020Blob\\Content\\Content.contentproj
-		SccProjectTopLevelParentUniqueName12 = Fluid\u0020Blob\\Fluid\u0020Blob.csproj
-		SccProjectName12 = Fluid\u0020Blob/Content
-		SccLocalPath12 = Fluid\u0020Blob\\Content
+		SccProjectUniqueName9 = Fluid\u0020Blob\\Fluid\u0020Blob.csproj
+		SccProjectName9 = Fluid\u0020Blob
+		SccLocalPath9 = Fluid\u0020Blob
+		SccProjectUniqueName10 = Fluid\u0020Blob\\Content\\Content.contentproj
+		SccProjectTopLevelParentUniqueName10 = Fluid\u0020Blob\\Fluid\u0020Blob.csproj
+		SccProjectName10 = Fluid\u0020Blob/Content
+		SccLocalPath10 = Fluid\u0020Blob\\Content
+		SccProjectUniqueName11 = Main\u0020Sample\\Main\u0020Sample.csproj
+		SccProjectName11 = Main\u0020Sample
+		SccLocalPath11 = Main\u0020Sample
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -75,10 +71,6 @@ Global
 		{18000A79-3163-402E-A6F2-F050BC13EF9B}.Debug|x86.Build.0 = Debug|x86
 		{18000A79-3163-402E-A6F2-F050BC13EF9B}.Release|x86.ActiveCfg = Release|x86
 		{18000A79-3163-402E-A6F2-F050BC13EF9B}.Release|x86.Build.0 = Release|x86
-		{230CFCF6-6A4F-45EF-943E-A4A29A44161F}.Debug|x86.ActiveCfg = Debug|x86
-		{230CFCF6-6A4F-45EF-943E-A4A29A44161F}.Debug|x86.Build.0 = Debug|x86
-		{230CFCF6-6A4F-45EF-943E-A4A29A44161F}.Release|x86.ActiveCfg = Release|x86
-		{230CFCF6-6A4F-45EF-943E-A4A29A44161F}.Release|x86.Build.0 = Release|x86
 		{D126F9D4-66BB-403B-B4B6-18C3546BEDF8}.Debug|x86.ActiveCfg = Debug|x86
 		{D126F9D4-66BB-403B-B4B6-18C3546BEDF8}.Debug|x86.Build.0 = Debug|x86
 		{D126F9D4-66BB-403B-B4B6-18C3546BEDF8}.Release|x86.ActiveCfg = Release|x86
@@ -91,18 +83,10 @@ Global
 		{6451C2B8-A5F1-4B03-813C-86E0C7C13733}.Debug|x86.Build.0 = Debug|x86
 		{6451C2B8-A5F1-4B03-813C-86E0C7C13733}.Release|x86.ActiveCfg = Release|x86
 		{6451C2B8-A5F1-4B03-813C-86E0C7C13733}.Release|x86.Build.0 = Release|x86
-		{9A1A2883-62D3-43C6-8F71-48015FA8E0C7}.Debug|x86.ActiveCfg = Debug|x86
-		{9A1A2883-62D3-43C6-8F71-48015FA8E0C7}.Release|x86.ActiveCfg = Release|x86
-		{753B2741-C4F4-4F46-98DC-A406E58BF1B6}.Debug|x86.ActiveCfg = Debug|x86
-		{753B2741-C4F4-4F46-98DC-A406E58BF1B6}.Release|x86.ActiveCfg = Release|x86
-		{6AB0CAA7-33DB-43AF-BBD2-13AB832DE077}.Debug|x86.ActiveCfg = Debug|x86
-		{6AB0CAA7-33DB-43AF-BBD2-13AB832DE077}.Release|x86.ActiveCfg = Release|x86
-		{8C5BD459-411A-4F60-92B0-9CC18D2F49AB}.Debug|x86.ActiveCfg = Debug|x86
-		{8C5BD459-411A-4F60-92B0-9CC18D2F49AB}.Release|x86.ActiveCfg = Release|x86
-		{12F44B8B-0424-4D72-885E-7724D8EE4991}.Debug|x86.ActiveCfg = Debug|x86
-		{12F44B8B-0424-4D72-885E-7724D8EE4991}.Release|x86.ActiveCfg = Release|x86
-		{94EB6A95-26D3-4496-A170-424543AC0C27}.Debug|x86.ActiveCfg = Debug|x86
-		{94EB6A95-26D3-4496-A170-424543AC0C27}.Release|x86.ActiveCfg = Release|x86
+		{230CFCF6-6A4F-45EF-943E-A4A29A44161F}.Debug|x86.ActiveCfg = Debug|x86
+		{230CFCF6-6A4F-45EF-943E-A4A29A44161F}.Debug|x86.Build.0 = Debug|x86
+		{230CFCF6-6A4F-45EF-943E-A4A29A44161F}.Release|x86.ActiveCfg = Release|x86
+		{230CFCF6-6A4F-45EF-943E-A4A29A44161F}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
