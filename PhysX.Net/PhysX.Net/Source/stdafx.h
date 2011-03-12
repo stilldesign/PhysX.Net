@@ -90,7 +90,6 @@ bool IsInstanceOf( U u )
 #include "Object Table.h"
 #include "PhysX Exception.h"
 #include "List Base.h"
-#include "Graphics Library Wrapper.h"
 
 #define _CRT_SECURE_NO_DEPRECATE
 
