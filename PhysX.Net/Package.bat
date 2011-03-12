@@ -1,5 +1,6 @@
 
 cd E:\Development\PhysX.Net\PhysX.Net
+E:
 
 cd Package
 rd Working /S /Q
@@ -31,4 +32,7 @@ md Package\Working\Samples
 robocopy Samples Package\Working\Samples /E /XF *.suo *.vssscc *.cachefile *.user *.vspscc *.pdb /XD obj Release
 
 cd Package\Working
+
+attrib "Samples\PhysX.Net Samples.sln" -R
+..\..\Tools\StripSourceControl "Samples\PhysX.Net Samples.sln"
 ..\..\Tools\7-Zip\7z.exe a "PhysX 0.12.0.0.zip" .
