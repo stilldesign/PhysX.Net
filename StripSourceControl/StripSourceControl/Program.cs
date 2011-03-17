@@ -16,7 +16,9 @@ namespace StripSourceControl
 			foreach (string arg in args)
 			{
 				if (arg.EndsWith(".sln"))
-				    StripFromSolution(arg);
+					StripFromSolution(arg);
+				else if (arg.EndsWith(".csproj"))
+					StripFromProject(arg);
 			}
 		}
 
@@ -52,6 +54,26 @@ namespace StripSourceControl
 			}
 
 			File.WriteAllText(slnPath, sln.ToString(), Encoding.UTF8);
+		}
+
+		private static void StripFromProject(string projPath)
+		{
+			if (!File.Exists(projPath))
+				return;
+
+			StringBuilder proj = new StringBuilder();
+			StringReader reader = new StringReader(File.ReadAllText(projPath));
+
+			string line;
+			while ((line = reader.ReadLine()) != null)
+			{
+				if (line.Trim().StartsWith("<Scc"))
+					continue;
+
+				proj.AppendLine(line);
+			}
+
+			File.WriteAllText(projPath, proj.ToString(), Encoding.UTF8);
 		}
 	}
 }
