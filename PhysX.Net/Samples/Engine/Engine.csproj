@@ -140,6 +140,13 @@
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>IF EXIST "$(SolutionDir)PhysX.Net\bin\x86\Debug\StillDesign.PhysX.Net.dll" xcopy "$(SolutionDir)PhysX.Net\bin\x86\Debug\StillDesign.PhysX.Net.dll" "$(SolutionDir)\Samples\Assemblies" /Y /C</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
 			 Other similar extension points exist, see Microsoft.Common.targets.
 	<Target Name="BeforeBuild">

@@ -112,8 +112,13 @@
       </KeyFile>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy  "$(TargetPath)" "$(SolutionDir)Samples\Assemblies" /Y</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
+    <CustomBuildStep>
+      <Command>
+      </Command>
+    </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Midl>
@@ -193,7 +198,8 @@
       </KeyFile>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy  "$(TargetPath)" "$(SolutionDir)Samples\Assemblies" /Y</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

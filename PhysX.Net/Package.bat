@@ -45,6 +45,6 @@ attrib * -R /S /D
 ..\..\Tools\StripSourceControl "PhysX.Net 0.12.0.0\Samples\Fluid Blob\Fluid Blob.csproj"
 ..\..\Tools\StripSourceControl "PhysX.Net 0.12.0.0\Samples\Main Sample\Main Sample.csproj"
 ..\..\Tools\StripSourceControl "PhysX.Net 0.12.0.0\Samples\Tearing Cloth\Tearing Cloth.csproj"
-..\..\Tools\7-Zip\7z.exe a "PhysX 0.12.0.0.zip" .
+..\..\Tools\7-Zip\7z.exe a "PhysX.Net 0.12.0.0.zip" .
 
 cd ..\..
