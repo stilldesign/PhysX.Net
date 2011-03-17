@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CCD Skeleton", "CCD Skeleton\CCD Skeleton.csproj", "{0B12DC8D-FFB3-4C5F-8B77-ABAC84616E5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cloth", "Cloth\Cloth.csproj", "{18000A79-3163-402E-A6F2-F050BC13EF9B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Engine", "Engine\Engine.csproj", "{D126F9D4-66BB-403B-B4B6-18C3546BEDF8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tearing Cloth", "Tearing Cloth\Tearing Cloth.csproj", "{D8A11046-1F58-4BE9-9404-F2D5D3083E0D}"
@@ -15,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Main Sample", "Main Sample\
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 12
+		SccNumberOfProjects = 10
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs01
 		SccLocalPath0 = .
@@ -26,37 +24,30 @@ Global
 		SccProjectTopLevelParentUniqueName2 = CCD\u0020Skeleton\\CCD\u0020Skeleton.csproj
 		SccProjectName2 = CCD\u0020Skeleton/Content
 		SccLocalPath2 = CCD\u0020Skeleton\\Content
-		SccProjectUniqueName3 = Cloth\\Cloth.csproj
-		SccProjectName3 = Cloth
-		SccLocalPath3 = Cloth
-		SccProjectUniqueName4 = Cloth\\Content\\Content.contentproj
-		SccProjectTopLevelParentUniqueName4 = Cloth\\Cloth.csproj
-		SccProjectName4 = Cloth/Content
-		SccLocalPath4 = Cloth\\Content
-		SccProjectUniqueName5 = Engine\\Engine.csproj
-		SccProjectName5 = Engine
-		SccLocalPath5 = Engine
-		SccProjectUniqueName6 = Engine\\Content\\Content.contentproj
-		SccProjectTopLevelParentUniqueName6 = Engine\\Engine.csproj
-		SccProjectName6 = Engine/Content
-		SccLocalPath6 = Engine\\Content
-		SccProjectUniqueName7 = Tearing\u0020Cloth\\Tearing\u0020Cloth.csproj
-		SccProjectName7 = Tearing\u0020Cloth
-		SccLocalPath7 = Tearing\u0020Cloth
-		SccProjectUniqueName8 = Tearing\u0020Cloth\\Content\\Content.contentproj
-		SccProjectTopLevelParentUniqueName8 = Tearing\u0020Cloth\\Tearing\u0020Cloth.csproj
-		SccProjectName8 = Tearing\u0020Cloth/Content
-		SccLocalPath8 = Tearing\u0020Cloth\\Content
-		SccProjectUniqueName9 = Fluid\u0020Blob\\Fluid\u0020Blob.csproj
-		SccProjectName9 = Fluid\u0020Blob
-		SccLocalPath9 = Fluid\u0020Blob
-		SccProjectUniqueName10 = Fluid\u0020Blob\\Content\\Content.contentproj
-		SccProjectTopLevelParentUniqueName10 = Fluid\u0020Blob\\Fluid\u0020Blob.csproj
-		SccProjectName10 = Fluid\u0020Blob/Content
-		SccLocalPath10 = Fluid\u0020Blob\\Content
-		SccProjectUniqueName11 = Main\u0020Sample\\Main\u0020Sample.csproj
-		SccProjectName11 = Main\u0020Sample
-		SccLocalPath11 = Main\u0020Sample
+		SccProjectUniqueName3 = Engine\\Engine.csproj
+		SccProjectName3 = Engine
+		SccLocalPath3 = Engine
+		SccProjectUniqueName4 = Engine\\Content\\Content.contentproj
+		SccProjectTopLevelParentUniqueName4 = Engine\\Engine.csproj
+		SccProjectName4 = Engine/Content
+		SccLocalPath4 = Engine\\Content
+		SccProjectUniqueName5 = Tearing\u0020Cloth\\Tearing\u0020Cloth.csproj
+		SccProjectName5 = Tearing\u0020Cloth
+		SccLocalPath5 = Tearing\u0020Cloth
+		SccProjectUniqueName6 = Tearing\u0020Cloth\\Content\\Content.contentproj
+		SccProjectTopLevelParentUniqueName6 = Tearing\u0020Cloth\\Tearing\u0020Cloth.csproj
+		SccProjectName6 = Tearing\u0020Cloth/Content
+		SccLocalPath6 = Tearing\u0020Cloth\\Content
+		SccProjectUniqueName7 = Fluid\u0020Blob\\Fluid\u0020Blob.csproj
+		SccProjectName7 = Fluid\u0020Blob
+		SccLocalPath7 = Fluid\u0020Blob
+		SccProjectUniqueName8 = Fluid\u0020Blob\\Content\\Content.contentproj
+		SccProjectTopLevelParentUniqueName8 = Fluid\u0020Blob\\Fluid\u0020Blob.csproj
+		SccProjectName8 = Fluid\u0020Blob/Content
+		SccLocalPath8 = Fluid\u0020Blob\\Content
+		SccProjectUniqueName9 = Main\u0020Sample\\Main\u0020Sample.csproj
+		SccProjectName9 = Main\u0020Sample
+		SccLocalPath9 = Main\u0020Sample
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -67,10 +58,6 @@ Global
 		{0B12DC8D-FFB3-4C5F-8B77-ABAC84616E5D}.Debug|x86.Build.0 = Debug|x86
 		{0B12DC8D-FFB3-4C5F-8B77-ABAC84616E5D}.Release|x86.ActiveCfg = Release|x86
 		{0B12DC8D-FFB3-4C5F-8B77-ABAC84616E5D}.Release|x86.Build.0 = Release|x86
-		{18000A79-3163-402E-A6F2-F050BC13EF9B}.Debug|x86.ActiveCfg = Debug|x86
-		{18000A79-3163-402E-A6F2-F050BC13EF9B}.Debug|x86.Build.0 = Debug|x86
-		{18000A79-3163-402E-A6F2-F050BC13EF9B}.Release|x86.ActiveCfg = Release|x86
-		{18000A79-3163-402E-A6F2-F050BC13EF9B}.Release|x86.Build.0 = Release|x86
 		{D126F9D4-66BB-403B-B4B6-18C3546BEDF8}.Debug|x86.ActiveCfg = Debug|x86
 		{D126F9D4-66BB-403B-B4B6-18C3546BEDF8}.Debug|x86.Build.0 = Debug|x86
 		{D126F9D4-66BB-403B-B4B6-18C3546BEDF8}.Release|x86.ActiveCfg = Release|x86
