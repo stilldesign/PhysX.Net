@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration( "" )]
 [assembly: AssemblyCompany( "StillDesign" )]
 [assembly: AssemblyProduct( "StillDesign.PhysX" )]
-[assembly: AssemblyCopyright( "Copyright © StillDesign 2008" )]
+[assembly: AssemblyCopyright("Copyright © StillDesign 2011")]
 [assembly: AssemblyTrademark( "" )]
 [assembly: AssemblyCulture( "" )]
 

@@ -22,10 +22,10 @@ md "Assemblies\x64"
 md "Assemblies\x64\Debug"
 md "Assemblies\x64\Release"
 
-#msbuild PhysX.Net.sln /p:Configuration=Debug;Platform=x86
-#msbuild PhysX.Net.sln /p:Configuration=Release;Platform=x86
-#msbuild PhysX.Net.sln /p:Configuration=Debug;Platform=x64
-#msbuild PhysX.Net.sln /p:Configuration=Release;Platform=x64
+msbuild PhysX.Net.sln /p:Configuration=Debug;Platform=x86
+msbuild PhysX.Net.sln /p:Configuration=Release;Platform=x86
+msbuild PhysX.Net.sln /p:Configuration=Debug;Platform=x64
+msbuild PhysX.Net.sln /p:Configuration=Release;Platform=x64
 
 xcopy "PhysX.Net\bin\x86\Debug\StillDesign.PhysX.Net.dll" "Package\Working\Assemblies\x86\Debug"
 xcopy "PhysX.Net\bin\x86\Debug\StillDesign.PhysX.Net.pdb" "Package\Working\Assemblies\x86\Debug"
