@@ -8,13 +8,13 @@ namespace StillDesign.PhysX.Samples
 {
 	partial class CCDSkeletonSample
 	{
-		private void LoadPhysics()
+		protected override void LoadPhysics(Scene scene)
 		{
 			CCDSkeleton ccdSkeletonForBox;
 
 			// Create a CCD Skeleton
 			{
-				Vector3 size = new Vector3( 5, 5, 5 );
+				Vector3 size = new Vector3(5, 5, 5);
 
 				int[] indices =
 				{
@@ -45,20 +45,20 @@ namespace StillDesign.PhysX.Samples
 				};
 
 				TriangleMeshDescription triangleMeshDesc = new TriangleMeshDescription();
-				triangleMeshDesc.AllocateVertices<Vector3>( vertices.Length );
-				triangleMeshDesc.AllocateTriangles<int>( indices.Length );
+				triangleMeshDesc.AllocateVertices<Vector3>(vertices.Length);
+				triangleMeshDesc.AllocateTriangles<int>(indices.Length);
 
-				triangleMeshDesc.VerticesStream.SetData( vertices );
-				triangleMeshDesc.TriangleStream.SetData( indices );
+				triangleMeshDesc.VerticesStream.SetData(vertices);
+				triangleMeshDesc.TriangleStream.SetData(indices);
 
 				triangleMeshDesc.VertexCount = vertices.Length;
 				triangleMeshDesc.TriangleCount = indices.Length / 3;
 
-				ccdSkeletonForBox = _core.CreateCCDSkeleton( triangleMeshDesc );
+				ccdSkeletonForBox = scene.Core.CreateCCDSkeleton(triangleMeshDesc);
 
 				// Enable CCD and CCD Visualization
-				_core.SetParameter( PhysicsParameter.ContinuousCollisionDetection, true );
-				_core.SetParameter( PhysicsParameter.VisualizeContinuousCollisionDetectionTests, true );
+				scene.Core.SetParameter(PhysicsParameter.ContinuousCollisionDetection, true);
+				scene.Core.SetParameter(PhysicsParameter.VisualizeContinuousCollisionDetectionTests, true);
 			}
 
 			// Create a large 2 polygon triangle mesh plane
@@ -83,21 +83,21 @@ namespace StillDesign.PhysX.Samples
 				triangleMeshDesc.TriangleCount = indices.Length / 3;
 				triangleMeshDesc.VertexCount = vertices.Length;
 
-				triangleMeshDesc.AllocateTriangles<int>( triangleMeshDesc.TriangleCount );
-				triangleMeshDesc.AllocateVertices<Vector3>( triangleMeshDesc.VertexCount );
+				triangleMeshDesc.AllocateTriangles<int>(triangleMeshDesc.TriangleCount);
+				triangleMeshDesc.AllocateVertices<Vector3>(triangleMeshDesc.VertexCount);
 
-				triangleMeshDesc.TriangleStream.SetData( indices );
-				triangleMeshDesc.VerticesStream.SetData( vertices );
+				triangleMeshDesc.TriangleStream.SetData(indices);
+				triangleMeshDesc.VerticesStream.SetData(vertices);
 
 				TriangleMesh triangleMesh;
-				using( MemoryStream s = new MemoryStream() )
+				using (MemoryStream s = new MemoryStream())
 				{
 					Cooking.InitializeCooking();
-					Cooking.CookTriangleMesh( triangleMeshDesc, s );
+					Cooking.CookTriangleMesh(triangleMeshDesc, s);
 					Cooking.CloseCooking();
 
 					s.Position = 0;
-					triangleMesh = _core.CreateTriangleMesh( s );
+					triangleMesh = scene.Core.CreateTriangleMesh(s);
 				}
 
 				TriangleMeshShapeDescription triangleMeshShapeDesc = new TriangleMeshShapeDescription()
@@ -111,25 +111,25 @@ namespace StillDesign.PhysX.Samples
 					Shapes = { triangleMeshShapeDesc }
 				};
 
-				Actor actor = _scene.CreateActor( actorDesc );
+				Actor actor = scene.CreateActor(actorDesc);
 			}
 
 			// Make 20 boxes fall down
-			for( int x = 0; x < 20; x++ )
+			for (int x = 0; x < 20; x++)
 			{
-				BoxShapeDescription boxShapeDesc = new BoxShapeDescription( 2, 3, 8 );
+				BoxShapeDescription boxShapeDesc = new BoxShapeDescription(2, 3, 8);
 				// Assign the CCD Skeleton to the shape
 				boxShapeDesc.CCDSkeleton = ccdSkeletonForBox;
 
 				ActorDescription actorDesc = new ActorDescription()
 				{
-					Name = String.Format( "Box {0}", x ),
-					BodyDescription = new BodyDescription( 10.0f ),
-					GlobalPose = Matrix.Translation( 0, 15 + 3 * x, 0 ),
+					Name = String.Format("Box {0}", x),
+					BodyDescription = new BodyDescription(10.0f),
+					GlobalPose = Matrix.Translation(0, 15 + 3 * x, 0),
 					Shapes = { boxShapeDesc }
 				};
 
-				Actor actor = _scene.CreateActor( actorDesc );
+				Actor actor = scene.CreateActor(actorDesc);
 			}
 		}
 	}

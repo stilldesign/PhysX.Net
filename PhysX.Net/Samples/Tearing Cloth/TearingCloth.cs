@@ -2,72 +2,36 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
+using System.Windows.Forms;
+using SlimDX;
 
 namespace StillDesign.PhysX.Samples
 {
-	public partial class TearingCloth : Microsoft.Xna.Framework.Game
+	public partial class TearingCloth : Sample
 	{
-		private Engine _engine;
-
-		private Core _core;
-		private Scene _scene;
-
 		private Cloth _cloth;
-
-		private BasicEffect _lighting;
 
 		private DateTime _keyboardDelay;
 
 		public TearingCloth()
 		{
-			_engine = new Engine( this );
-
 			_keyboardDelay = DateTime.MinValue;
-		}
 
-		protected override void Initialize()
-		{
-			_engine.Initalize();
-
-			// For convenience
-			_core = _engine.Core;
-			_scene = _engine.Scene;
-
-			// Initalize the content
-			base.Initialize();
-
-			LoadPhysics();
+			Run();
 		}
 
 		protected override void LoadContent()
 		{
-			_lighting = new BasicEffect( _engine.Device, null );
-
-			_engine.Camera.View = Matrix.CreateLookAt( new Vector3( 0, 20, 30 ), new Vector3( 0, 20, 0 ), new Vector3( 0, 1, 0 ) );
-		}
-		protected override void UnloadContent()
-		{
-
+			Engine.Camera.View = Matrix.LookAtLH(new Vector3(0, 30, -40), new Vector3(0, 20, 0), new Vector3(0, 1, 0));
 		}
 
-		protected override void Update( GameTime gameTime )
+		protected override void Update(TimeSpan elapsed)
 		{
-			HandleKeyboard( Keyboard.GetState() );
-
-			_engine.Update( gameTime );
-
-			base.Update( gameTime );
+			ProcessKeyboard();
 		}
 
-		protected override void Draw( GameTime gameTime )
+		protected override void Draw()
 		{
-			base.Draw( gameTime );
-
-			_engine.Draw();
-
 			//int n = _cloth.MeshData.NumberOfVertices.Value;
 
 			//var positions = _cloth.MeshData.PositionsStream.GetData<Vector3>();
@@ -98,14 +62,11 @@ namespace StillDesign.PhysX.Samples
 			//_lighting.End();
 		}
 
-		private void HandleKeyboard( KeyboardState keyboardState )
+		private void ProcessKeyboard()
 		{
-			if( keyboardState.IsKeyDown( Keys.Escape ) )
-				this.Exit();
-
-			if( keyboardState.IsKeyDown( Keys.Space ) )
+			if (Engine.Keyboard.IsKeyDown(Keys.Space))
 			{
-				if( DateTime.Now - _keyboardDelay > TimeSpan.FromMilliseconds( 100 ) )
+				if (DateTime.Now - _keyboardDelay > TimeSpan.FromMilliseconds(100))
 				{
 					CreateBox();
 

@@ -7,12 +7,9 @@ namespace StillDesign.PhysX.Samples
 		/// <summary>
 		/// The main entry point for the application.
 		/// </summary>
-		static void Main( string[] args )
+		static void Main(string[] args)
 		{
-			using( MainSample game = new MainSample() )
-			{
-				game.Run();
-			}
+			new MainSample();
 		}
 	}
 }

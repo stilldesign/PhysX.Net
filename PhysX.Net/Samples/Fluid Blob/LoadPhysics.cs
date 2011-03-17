@@ -7,7 +7,7 @@ namespace StillDesign.PhysX.Samples
 {
 	partial class FluidBlob
 	{
-		private void LoadPhysics()
+		protected override void LoadPhysics(Scene scene)
 		{
 			// Create a simple fluid description with fluids and visualization enabled
 			FluidDescription fluidDesc = new FluidDescription()
@@ -55,7 +55,7 @@ namespace StillDesign.PhysX.Samples
 			fluidDesc.ParticleWriteData.AllocatePositionBuffer<Vector3>( particlePositions.Count );
 			fluidDesc.ParticleWriteData.NumberOfParticles = particlePositions.Count;
 
-			Fluid fluid = this.Engine.Scene.CreateFluid( fluidDesc );
+			Fluid fluid = scene.CreateFluid(fluidDesc);
 
 			//
 
@@ -68,7 +68,7 @@ namespace StillDesign.PhysX.Samples
 					Matrix.Translation( 0, 5, 0 )
 			};
 
-			Actor ramp = this.Engine.Scene.CreateActor( rampDesc );
+			Actor ramp = scene.CreateActor(rampDesc);
 		}
 	}
 }

@@ -9,18 +9,22 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CCD Skeleton", "Samples\CCD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unit Tests", "Unit Tests\Unit Tests.csproj", "{3A2594CF-7E97-49E5-B1B7-34473CF514A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cloth", "Samples\Cloth\Cloth.csproj", "{18000A79-3163-402E-A6F2-F050BC13EF9B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tearing Cloth", "Samples\Tearing Cloth\Tearing Cloth.csproj", "{D8A11046-1F58-4BE9-9404-F2D5D3083E0D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluid Blob", "Samples\Fluid Blob\Fluid Blob.csproj", "{6451C2B8-A5F1-4B03-813C-86E0C7C13733}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Main Sample", "Samples\Main Sample\Main Sample.csproj", "{230CFCF6-6A4F-45EF-943E-A4A29A44161F}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1A34D519-3B53-4E1E-90CE-0161FB82DE27}"
 	ProjectSection(SolutionItems) = preProject
 		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
+		Package.bat = Package.bat
 		PhysX.Net.vsmdi = PhysX.Net.vsmdi
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Main Sample", "Samples\Main Sample\Main Sample.csproj", "{230CFCF6-6A4F-45EF-943E-A4A29A44161F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assemblies", "Assemblies", "{B7A2A90B-1F56-484F-9B21-4E531DA0AFDE}"
+	ProjectSection(SolutionItems) = preProject
+		Samples\Assemblies\SlimDX.dll = Samples\Assemblies\SlimDX.dll
 	EndProjectSection
 EndProject
 Global
@@ -30,44 +34,26 @@ Global
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs01
 		SccProjectUniqueName0 = PhysX.Net\\PhysX.Net.vcxproj
 		SccProjectName0 = PhysX.Net
-		SccAuxPath0 = https://tfs.codeplex.com/tfs/tfs01
 		SccLocalPath0 = PhysX.Net
-		SccProvider0 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccProjectUniqueName1 = Samples\\Engine\\Engine.csproj
 		SccProjectName1 = Samples/Engine
-		SccAuxPath1 = https://tfs.codeplex.com/tfs/tfs01
 		SccLocalPath1 = Samples\\Engine
-		SccProvider1 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccProjectUniqueName2 = Samples\\CCD\u0020Skeleton\\CCD\u0020Skeleton.csproj
 		SccProjectName2 = Samples/CCD\u0020Skeleton
-		SccAuxPath2 = https://tfs.codeplex.com/tfs/tfs01
 		SccLocalPath2 = Samples\\CCD\u0020Skeleton
-		SccProvider2 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccProjectUniqueName3 = Unit\u0020Tests\\Unit\u0020Tests.csproj
-		SccProjectName3 = Unit\u0020Tests
-		SccAuxPath3 = https://tfs.codeplex.com/tfs/tfs01
-		SccLocalPath3 = Unit\u0020Tests
-		SccProvider3 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccProjectUniqueName4 = Samples\\Cloth\\Cloth.csproj
-		SccProjectName4 = Samples/Cloth
-		SccAuxPath4 = https://tfs.codeplex.com/tfs/tfs01
-		SccLocalPath4 = Samples\\Cloth
-		SccProvider4 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccProjectUniqueName5 = Samples\\Tearing\u0020Cloth\\Tearing\u0020Cloth.csproj
-		SccProjectName5 = Samples/Tearing\u0020Cloth
-		SccAuxPath5 = https://tfs.codeplex.com/tfs/tfs01
-		SccLocalPath5 = Samples\\Tearing\u0020Cloth
-		SccProvider5 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccProjectUniqueName6 = Samples\\Fluid\u0020Blob\\Fluid\u0020Blob.csproj
-		SccProjectName6 = Samples/Fluid\u0020Blob
-		SccAuxPath6 = https://tfs.codeplex.com/tfs/tfs01
-		SccLocalPath6 = Samples\\Fluid\u0020Blob
-		SccProvider6 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccProjectUniqueName7 = Samples\\Main\u0020Sample\\Main\u0020Sample.csproj
-		SccProjectName7 = Samples/Main\u0020Sample
-		SccAuxPath7 = https://tfs.codeplex.com/tfs/tfs01
-		SccLocalPath7 = Samples\\Main\u0020Sample
-		SccProvider7 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName3 = Samples\\Tearing\u0020Cloth\\Tearing\u0020Cloth.csproj
+		SccProjectName3 = Samples/Tearing\u0020Cloth
+		SccLocalPath3 = Samples\\Tearing\u0020Cloth
+		SccProjectUniqueName4 = Samples\\Fluid\u0020Blob\\Fluid\u0020Blob.csproj
+		SccProjectName4 = Samples/Fluid\u0020Blob
+		SccLocalPath4 = Samples\\Fluid\u0020Blob
+		SccProjectUniqueName5 = Unit\u0020Tests\\Unit\u0020Tests.csproj
+		SccProjectName5 = Unit\u0020Tests
+		SccLocalPath5 = Unit\u0020Tests
+		SccProjectUniqueName6 = Samples\\Main\u0020Sample\\Main\u0020Sample.csproj
+		SccProjectName6 = Samples/Main\u0020Sample
+		SccLocalPath6 = Samples\\Main\u0020Sample
+		SccLocalPath7 = .
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = PhysX.Net.vsmdi
@@ -107,12 +93,6 @@ Global
 		{3A2594CF-7E97-49E5-B1B7-34473CF514A6}.Release|x64.Build.0 = Release|x64
 		{3A2594CF-7E97-49E5-B1B7-34473CF514A6}.Release|x86.ActiveCfg = Release|x86
 		{3A2594CF-7E97-49E5-B1B7-34473CF514A6}.Release|x86.Build.0 = Release|x86
-		{18000A79-3163-402E-A6F2-F050BC13EF9B}.Debug|x64.ActiveCfg = Debug|x86
-		{18000A79-3163-402E-A6F2-F050BC13EF9B}.Debug|x86.ActiveCfg = Debug|x86
-		{18000A79-3163-402E-A6F2-F050BC13EF9B}.Debug|x86.Build.0 = Debug|x86
-		{18000A79-3163-402E-A6F2-F050BC13EF9B}.Release|x64.ActiveCfg = Release|x86
-		{18000A79-3163-402E-A6F2-F050BC13EF9B}.Release|x86.ActiveCfg = Release|x86
-		{18000A79-3163-402E-A6F2-F050BC13EF9B}.Release|x86.Build.0 = Release|x86
 		{D8A11046-1F58-4BE9-9404-F2D5D3083E0D}.Debug|x64.ActiveCfg = Debug|x86
 		{D8A11046-1F58-4BE9-9404-F2D5D3083E0D}.Debug|x86.ActiveCfg = Debug|x86
 		{D8A11046-1F58-4BE9-9404-F2D5D3083E0D}.Debug|x86.Build.0 = Debug|x86

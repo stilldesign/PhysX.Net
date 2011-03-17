@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using SlimDX;
 
 namespace StillDesign.PhysX.Samples
 {
@@ -13,6 +14,16 @@ namespace StillDesign.PhysX.Samples
 				return max;
 
 			return value;
+		}
+
+		public static Vector3 DirectionFromViewMatrix(Matrix viewMatrix)
+		{
+			return Vector3.Normalize(new Vector3(viewMatrix.M13, viewMatrix.M23, viewMatrix.M33));
+		}
+
+		public static Vector3 DecomposeToPosition(Matrix matrix)
+		{
+			return new Vector3(matrix.M41, matrix.M42, matrix.M43);
 		}
 	}
 }

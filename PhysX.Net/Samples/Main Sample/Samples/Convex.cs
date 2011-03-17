@@ -2,72 +2,70 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Microsoft.Xna.Framework.Graphics;
+using SlimDX.Direct3D10;
 using StillDesign.PhysX.MathPrimitives;
 
 namespace StillDesign.PhysX.Samples
 {
-	public static class Convex
+	public static class ConvexSample
 	{
-		public static Actor LoadConvexMesh( Scene scene, Model model )
+		public static Model ActorWithConvexShape(Scene scene, Device device)
 		{
-			Core core = scene.Core;
+			return ConvexSample.LoadConvexMesh(scene, device);
+		}
 
-			ModelMesh mesh = model.Meshes.First();
+		public static Model LoadConvexMesh(Scene scene, Device device)
+		{
+			var torusModel = ColladaLoader.Load(@"Resources\Torus.DAE", device);
 
-			var transforms = new Microsoft.Xna.Framework.Matrix[ model.Bones.Count ];
-			model.CopyAbsoluteBoneTransformsTo( transforms );
-
-			// Gets the vertices from the mesh
-			VertexPositionNormalTexture[] vertices = new VertexPositionNormalTexture[ mesh.MeshParts[ 0 ].NumVertices ];
-			mesh.VertexBuffer.GetData<VertexPositionNormalTexture>( vertices );
-
-			//
+			var core = scene.Core;
 
 			// Allocate memory for the points and triangles
 			var convexMeshDesc = new ConvexMeshDescription()
 			{
-				PointCount = vertices.Length
+				PointCount = torusModel.VertexPositions.Length
 			};
 			convexMeshDesc.Flags |= ConvexFlag.ComputeConvex;
-			convexMeshDesc.AllocatePoints<Vector3>( vertices.Length );
+			convexMeshDesc.AllocatePoints<Vector3>(torusModel.VertexPositions.Length);
 
 			// Write in the points and triangles
-			// We only want the Position component of the vertex. Also scale down the mesh
-			foreach( VertexPositionNormalTexture vertex in vertices )
+			// We only want the Position component of the vertex. Also scale down the mesh.
+			foreach (var vertex in torusModel.VertexPositions)
 			{
-				var t = Microsoft.Xna.Framework.Matrix.CreateScale( 0.1f, 0.1f, 0.1f ) * transforms[ 0 ];
-				var position = Microsoft.Xna.Framework.Vector3.Transform( vertex.Position, t );
+				var t = SlimDX.Matrix.Scaling(0.1f, 0.1f, 0.1f);
+				var position = SlimDX.Vector3.TransformCoordinate(vertex, t);
 
-				convexMeshDesc.PointsStream.Write( position );
+				convexMeshDesc.PointsStream.Write(position);
 			}
 
 			//
 
 			// Cook to memory or to a file
 			ConvexMesh convexMesh;
-			using( MemoryStream stream = new MemoryStream() )
+			using (var stream = new MemoryStream())
 			{
 				//FileStream stream = new FileStream( @"Convex Mesh.cooked", FileMode.CreateNew );
 
-				Cooking.InitializeCooking( new ConsoleOutputStream() );
-				Cooking.CookConvexMesh( convexMeshDesc, stream );
+				Cooking.InitializeCooking(new ConsoleOutputStream());
+				Cooking.CookConvexMesh(convexMeshDesc, stream);
 				Cooking.CloseCooking();
 
 				stream.Position = 0;
 
-				convexMesh = core.CreateConvexMesh( stream );
+				convexMesh = core.CreateConvexMesh(stream);
 			}
-			ConvexShapeDescription convexShapeDesc = new ConvexShapeDescription( convexMesh );
+			var convexShapeDesc = new ConvexShapeDescription(convexMesh);
 
-			ActorDescription actorDesc = new ActorDescription()
+			var actorDesc = new ActorDescription()
 			{
-				BodyDescription = new BodyDescription( 10.0f ),
-				GlobalPose = Matrix.Translation( 30, 30, 0 )
+				BodyDescription = new BodyDescription(10.0f),
+				GlobalPose = Matrix.Translation(30, 30, 0)
 			};
-			actorDesc.Shapes.Add( convexShapeDesc );
+			actorDesc.Shapes.Add(convexShapeDesc);
 
-			return scene.CreateActor( actorDesc );
+			var actor = scene.CreateActor(actorDesc);
+
+			return torusModel;
 		}
 	}
 }

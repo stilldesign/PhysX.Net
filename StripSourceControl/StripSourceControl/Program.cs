@@ -51,7 +51,7 @@ namespace StripSourceControl
 				sln.AppendLine(line);
 			}
 
-			File.WriteAllText(slnPath, sln.ToString());
+			File.WriteAllText(slnPath, sln.ToString(), Encoding.UTF8);
 		}
 	}
 }

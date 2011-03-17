@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using SlimDX;
 
 namespace StillDesign.PhysX
 {
 	public static class MathExtension
 	{
-		public static PhysX.MathPrimitives.Vector3 AsPhysX( this Microsoft.Xna.Framework.Vector3 vector )
+		public static PhysX.MathPrimitives.Vector3 AsPhysX(this Vector3 vector)
 		{
-			return new MathPrimitives.Vector3( vector.X, vector.Y, vector.Z );
+			return new MathPrimitives.Vector3(vector.X, vector.Y, vector.Z);
 		}
 
-		public static PhysX.MathPrimitives.Matrix AsPhysX( this Microsoft.Xna.Framework.Matrix m )
+		public static PhysX.MathPrimitives.Matrix AsPhysX(this Matrix m)
 		{
 			return new MathPrimitives.Matrix
 			(
