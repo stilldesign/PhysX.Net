@@ -4,7 +4,7 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using StillDesign.PhysX.MathPrimitives;
 
-namespace StillDesign.PhysX.UnitTests
+namespace StillDesign.PhysX.Tests
 {
 	[TestClass]
 	public class FluidTests : TestBase

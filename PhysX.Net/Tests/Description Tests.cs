@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace StillDesign.PhysX.UnitTests
+namespace StillDesign.PhysX.Tests
 {
 	[TestClass]
 	public class DescriptionTests : TestBase

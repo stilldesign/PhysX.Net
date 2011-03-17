@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace StillDesign.PhysX.UnitTests
+namespace StillDesign.PhysX.Tests
 {
 	[TestClass]
-	public class CompartmentTests : TestBase
+	public class CookingTests : TestBase
 	{
-		public CompartmentTests()
+		public CookingTests()
 		{
 
 		}
@@ -35,5 +35,11 @@ namespace StillDesign.PhysX.UnitTests
 		// public void MyTestCleanup() { }
 		//
 		#endregion
+
+		[TestMethod]
+		public void InitializeCooking()
+		{
+			Cooking.InitializeCooking();
+		}
 	}
 }

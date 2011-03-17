@@ -4,14 +4,23 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace StillDesign.PhysX.UnitTests
+namespace StillDesign.PhysX.Tests
 {
+	/// <summary>
+	/// Summary description for Scene_Description
+	/// </summary>
 	[TestClass]
-	public class CookingTests : TestBase
+	public class SceneDescriptionTests
 	{
-		public CookingTests()
+		public SceneDescriptionTests()
 		{
 
+		}
+
+		public TestContext TestContext
+		{
+			get;
+			set;
 		}
 
 		#region Additional test attributes
@@ -37,9 +46,21 @@ namespace StillDesign.PhysX.UnitTests
 		#endregion
 
 		[TestMethod]
-		public void InitializeCooking()
+		public void MaximumBounds()
 		{
-			Cooking.InitializeCooking();
+			SceneDescription sceneDesc = new SceneDescription();
+
+			try
+			{
+				sceneDesc.MaximumBounds = null;
+				sceneDesc.MaximumBounds = new Bounds3( -10000.0f, -10000.0f, -10000.0f, 10000.0f, 10000.0f, 10000.0f );
+				sceneDesc.MaximumBounds = new Bounds3( -10000.0f, -10000.0f, -10000.0f, 10000.0f, 10000.0f, 10000.0f );
+				sceneDesc.MaximumBounds = null;
+			}
+			catch
+			{
+				Assert.Fail( "Setting SceneDescription.MaximumBounds Failed" );
+			}
 		}
 	}
 }
