@@ -166,7 +166,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Physics\" />
+    
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

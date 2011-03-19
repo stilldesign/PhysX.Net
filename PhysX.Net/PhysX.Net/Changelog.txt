@@ -21,6 +21,7 @@ New 2.8.4 methods and properties -
 	Scene.SimulateCompartments
 PhysXInitializationException reports failure reason in message
 Removed dependencies on graphics libraries
+Changed samples to use SlimDX and DirectX 10
 
 [0.11.0.0 - 2009-03-28]
 Changed RuntimeFileChecks to strip quotes from environment variable paths
