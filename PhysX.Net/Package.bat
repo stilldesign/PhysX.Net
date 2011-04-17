@@ -1,20 +1,13 @@
 
-cd E:\Development\PhysX.Net\PhysX.Net
-E:
+cd F:\Development\PhysX.Net\PhysX.Net
+F:
 
 cd Package
 rd Working /S /Q
 md Working
 cd Working
 md "PhysX.Net 0.12.0.0"
-cd ..\..
-
-# Samples
-md "Package\Working\PhysX.Net 0.12.0.0\Samples"
-robocopy Samples "Package\Working\PhysX.Net 0.12.0.0\Samples" /E /XF *.suo *.vssscc *.cachefile *.user *.vspscc *.pdb /XD obj Release
-md "Package\Working\PhysX.Net 0.12.0.0\Assemblies"
-robocopy Assemblies "Package\Working\PhysX.Net 0.12.0.0\Assemblies" /E
-
+cd "PhysX.Net 0.12.0.0"
 md "Assemblies"
 md "Assemblies\x86"
 md "Assemblies\x86\Debug"
@@ -22,6 +15,13 @@ md "Assemblies\x86\Release"
 md "Assemblies\x64"
 md "Assemblies\x64\Debug"
 md "Assemblies\x64\Release"
+cd ..\..\..
+
+# Samples
+md "Package\Working\PhysX.Net 0.12.0.0\Samples"
+robocopy Samples "Package\Working\PhysX.Net 0.12.0.0\Samples" /E /XF *.suo *.vssscc *.cachefile *.user *.vspscc *.pdb /XD obj Release
+md "Package\Working\PhysX.Net 0.12.0.0\Assemblies"
+robocopy Assemblies "Package\Working\PhysX.Net 0.12.0.0\Assemblies" /E
 
 msbuild PhysX.Net.sln /p:Configuration=Debug;Platform=x86
 msbuild PhysX.Net.sln /p:Configuration=Release;Platform=x86
