@@ -3,8 +3,8 @@
 using namespace System;
 using namespace System::Reflection;
 
-#define PhysXDllVersion "2.8.4.4"
-#define PhysXDeviceDllVersion "10.7.1.0"
+#define PhysXDllVersion "2.8.4.5"
+#define PhysXDeviceDllVersion "11.2.25.0"
 #define CudaDllVersion "6.14.11.3000"
 
 namespace StillDesign

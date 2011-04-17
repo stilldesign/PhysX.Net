@@ -22,6 +22,8 @@ New 2.8.4 methods and properties -
 PhysXInitializationException reports failure reason in message
 Removed dependencies on graphics libraries
 Changed samples to use SlimDX and DirectX 10
+Changed PhysX.Net to target .NET 4.0 and CRT10
+Cleaned up NX Utility build warnings
 
 [0.11.0.0 - 2009-03-28]
 Changed RuntimeFileChecks to strip quotes from environment variable paths

@@ -9,7 +9,14 @@ namespace StillDesign.PhysX.Samples
 		/// </summary>
 		static void Main(string[] args)
 		{
-			new TearingCloth();
+			try
+			{
+				new TearingCloth();
+			}
+			catch(Exception ex)
+			{
+				System.Windows.Forms.MessageBox.Show(ex.Message, "PhysX.Net Initalization Error");
+			}
 		}
 	}
 }

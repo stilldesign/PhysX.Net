@@ -68,7 +68,7 @@ namespace StillDesign.PhysX.Samples
 
 			Device device;
 			SwapChain swapChain;
-			Device.CreateWithSwapChain(adapter, DriverType.Hardware, DeviceCreationFlags.Debug, swapChainDesc, out device, out swapChain);
+			Device.CreateWithSwapChain(adapter, DriverType.Hardware, DeviceCreationFlags.None, swapChainDesc, out device, out swapChain);
 			_swapChain = swapChain;
 			GraphicsDevice = device;
 
