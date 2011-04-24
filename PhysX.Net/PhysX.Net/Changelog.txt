@@ -3,7 +3,7 @@ Cleaned up ActorDescription/Base
 Added Serialization code back in (not complete though)
 Fix for the underlying NxMeshData not being referenced by the wrapper when constructed by the SoftBodyDescription class
 Added contact report stream and related classes
-Targeting PhysX 2.8.4.4 (x86 and x64)
+Targeting PhysX 2.8.4.5 (x86 and x64)
 Enum spelling
 Added Cloth Split Pairs
 Added various Cloth and SoftBody properties
