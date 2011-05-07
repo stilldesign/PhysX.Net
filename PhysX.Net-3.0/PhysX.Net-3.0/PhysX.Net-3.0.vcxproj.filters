@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Material">
+      <UniqueIdentifier>{17f86cfc-8b32-4330-bc8b-8b9f62ba8bb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Scene">
+      <UniqueIdentifier>{3a05c3fa-fd61-4c0c-8dde-ee657b2a3b93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Physics">
+      <UniqueIdentifier>{4adf2038-6f1a-4180-b571-b2cd029f28a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\MathPrimitives">
+      <UniqueIdentifier>{d9dadecd-2eb5-43dc-b667-0e92244b9785}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\MathPrimitives">
+      <UniqueIdentifier>{a45c4bf0-fdca-4743-bc68-7d7f91ac1698}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Material">
+      <UniqueIdentifier>{f7c8a522-33de-405f-b764-36efbee72362}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scene">
+      <UniqueIdentifier>{8e661dc2-721a-41d7-8d2e-cc3c03153e61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Physics">
+      <UniqueIdentifier>{748369bf-a648-492f-881d-d5da10ff037f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Util">
+      <UniqueIdentifier>{be5ca47b-4035-4a2d-ac78-ecb08a3eda7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\MathUtil">
+      <UniqueIdentifier>{50ece70b-6226-4d1b-a0fc-97a01df20b90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Exception">
+      <UniqueIdentifier>{60986a5d-ee0e-453e-a34f-af2d437213c2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\StdAfx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Material.h">
+      <Filter>Header Files\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\MaterialEnum.h">
+      <Filter>Header Files\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Scene.h">
+      <Filter>Header Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SceneDesc.h">
+      <Filter>Header Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Physics.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Vector2.h">
+      <Filter>Header Files\MathPrimitives</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Vector3.h">
+      <Filter>Header Files\MathPrimitives</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Vector4.h">
+      <Filter>Header Files\MathPrimitives</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Quaternion.h">
+      <Filter>Header Files\MathPrimitives</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Matrix.h">
+      <Filter>Header Files\MathPrimitives</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Plane.h">
+      <Filter>Header Files\MathPrimitives</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\MathUtil.h">
+      <Filter>Header Files\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Util.h">
+      <Filter>Header Files\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\TolerancesScale.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\PhysXException.h">
+      <Filter>Header Files\Exception</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SceneCreationException.h">
+      <Filter>Header Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SceneFlag.h">
+      <Filter>Header Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="IDisposable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\Material.cpp">
+      <Filter>Source Files\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Scene.cpp">
+      <Filter>Source Files\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SceneDesc.cpp">
+      <Filter>Source Files\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Physics.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Vector2.cpp">
+      <Filter>Source Files\MathPrimitives</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Vector3.cpp">
+      <Filter>Source Files\MathPrimitives</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Vector4.cpp">
+      <Filter>Source Files\MathPrimitives</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Quaternion.cpp">
+      <Filter>Source Files\MathPrimitives</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Matrix.cpp">
+      <Filter>Source Files\MathPrimitives</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Plane.cpp">
+      <Filter>Source Files\MathPrimitives</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Util.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MathUtil.cpp">
+      <Filter>Source Files\MathUtil</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\TolerancesScale.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

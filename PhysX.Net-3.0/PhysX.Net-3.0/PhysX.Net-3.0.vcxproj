@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{FB145A7D-CDF2-417D-A006-F7591481D609}</ProjectGuid>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <Keyword>ManagedCProj</Keyword>
+    <RootNamespace>PhysXNet30</RootNamespace>
+    <SccProjectName>SAK</SccProjectName>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CLRSupport>true</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CLRSupport>true</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CLRSupport>true</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CLRSupport>true</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\Program Files %28x86%29\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\vehicle;C:\Program Files %28x86%29\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\pxtask\include;C:\Program Files %28x86%29\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\pvd;C:\Program Files %28x86%29\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\particles;C:\Program Files %28x86%29\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\gpu;C:\Program Files %28x86%29\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\geometry;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\extensions;C:\Program Files %28x86%29\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\deformable;C:\Program Files %28x86%29\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\cooking;C:\Program Files %28x86%29\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\common;C:\Program Files %28x86%29\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\characterkinematic;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\foundation;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files %28x86%29\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\lib\win32;$(LibraryPath)</LibraryPath>
+    <OutDir>$(ProjectDir)bin\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)bin\$(Configuration)\Intermediate\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\Program Files %28x86%29\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\vehicle;C:\Program Files %28x86%29\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\pxtask\include;C:\Program Files %28x86%29\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\pvd;C:\Program Files %28x86%29\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\particles;C:\Program Files %28x86%29\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\gpu;C:\Program Files %28x86%29\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\geometry;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\extensions;C:\Program Files %28x86%29\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\deformable;C:\Program Files %28x86%29\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\cooking;C:\Program Files %28x86%29\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\common;C:\Program Files %28x86%29\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\characterkinematic;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\foundation;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files %28x86%29\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\lib\win32;$(LibraryPath)</LibraryPath>
+    <OutDir>$(ProjectDir)bin\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)bin\$(Configuration)\Intermediate\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(ProjectDir)bin\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)bin\$(Configuration)\Intermediate\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(ProjectDir)bin\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)bin\$(Configuration)\Intermediate\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>Foundation.lib;PhysX3Common.lib;PhysX3CharacterKinematic.lib;PhysX3Vehicle.lib;PhysX3Cooking_x86.lib;PhysX3_x86.lib;PhysX3Extensions.lib;LowLevel.lib;GeomUtils.lib;SceneQuery.lib;PvdRuntime.lib;RepX3.lib;PxTask.lib;PhysX3Gpu_x86.lib;PhysX3MetaData.lib;PhysXProfileSDK.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>Foundation.lib;PhysX3Common.lib;PhysX3CharacterKinematic.lib;PhysX3Vehicle.lib;PhysX3Cooking_x86.lib;PhysX3_x86.lib;PhysX3Extensions.lib;LowLevel.lib;GeomUtils.lib;SceneQuery.lib;PvdRuntime.lib;RepX3.lib;PxTask.lib;PhysX3Gpu_x86.lib;PhysX3MetaData.lib;PhysXProfileSDK.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="IDisposable.h" />
+    <ClInclude Include="Source\Material.h" />
+    <ClInclude Include="Source\MaterialEnum.h" />
+    <ClInclude Include="Source\MathUtil.h" />
+    <ClInclude Include="Source\Matrix.h" />
+    <ClInclude Include="Source\Physics.h" />
+    <ClInclude Include="Source\PhysXException.h" />
+    <ClInclude Include="Source\Plane.h" />
+    <ClInclude Include="Source\Quaternion.h" />
+    <ClInclude Include="Source\Scene.h" />
+    <ClInclude Include="Source\SceneCreationException.h" />
+    <ClInclude Include="Source\SceneDesc.h" />
+    <ClInclude Include="Source\SceneFlag.h" />
+    <ClInclude Include="Source\StdAfx.h" />
+    <ClInclude Include="Source\TolerancesScale.h" />
+    <ClInclude Include="Source\Util.h" />
+    <ClInclude Include="Source\Vector2.h" />
+    <ClInclude Include="Source\Vector3.h" />
+    <ClInclude Include="Source\Vector4.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\Material.cpp" />
+    <ClCompile Include="Source\MathUtil.cpp" />
+    <ClCompile Include="Source\Matrix.cpp" />
+    <ClCompile Include="Source\Physics.cpp" />
+    <ClCompile Include="Source\Plane.cpp" />
+    <ClCompile Include="Source\Quaternion.cpp" />
+    <ClCompile Include="Source\Scene.cpp" />
+    <ClCompile Include="Source\SceneDesc.cpp" />
+    <ClCompile Include="Source\TolerancesScale.cpp" />
+    <ClCompile Include="Source\Util.cpp" />
+    <ClCompile Include="Source\Vector2.cpp" />
+    <ClCompile Include="Source\Vector3.cpp" />
+    <ClCompile Include="Source\Vector4.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
