@@ -42,6 +42,9 @@ namespace StillDesign.PhysX.Samples
 
 		private void InitalizeGraphics()
 		{
+			if (Window.RenderCanvasHandle == IntPtr.Zero)
+				throw new InvalidOperationException("Window handle cannot be zero");
+
 			SwapChainDescription swapChainDesc = new SwapChainDescription()
 			{
 				BufferCount = 1,
