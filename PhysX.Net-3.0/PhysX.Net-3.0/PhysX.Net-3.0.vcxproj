@@ -142,7 +142,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="IDisposable.h" />
     <ClInclude Include="Source\ActiveTransform.h" />
     <ClInclude Include="Source\Actor.h" />
     <ClInclude Include="Source\ActorDesc.h" />
@@ -202,6 +201,7 @@
     <ClInclude Include="Source\HeightFieldGeometry.h" />
     <ClInclude Include="Source\HeightFieldSample.h" />
     <ClInclude Include="Source\HullPolygon.h" />
+    <ClInclude Include="Source\IDisposable.h" />
     <ClInclude Include="Source\Joint.h" />
     <ClInclude Include="Source\JointEnum.h" />
     <ClInclude Include="Source\JointLimit.h" />

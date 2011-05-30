@@ -225,9 +225,6 @@
     <ClInclude Include="Source\ObjectTable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IDisposable.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Source\SceneQueryFilterData.h">
       <Filter>Header Files\Scene</Filter>
     </ClInclude>
@@ -575,6 +572,9 @@
     </ClInclude>
     <ClInclude Include="Source\DeformableMeshDesc.h">
       <Filter>Header Files\Deformable</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\IDisposable.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
