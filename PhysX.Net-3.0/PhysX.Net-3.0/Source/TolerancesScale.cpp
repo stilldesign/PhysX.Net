@@ -12,7 +12,7 @@ PxTolerancesScale TolerancesScale::ToUnmanaged(TolerancesScale scale)
 
 	return s;
 }
-TolerancesScale TolerancesScale::FromUnmanaged(PxTolerancesScale scale)
+TolerancesScale TolerancesScale::ToManaged(PxTolerancesScale scale)
 {
 	TolerancesScale s;
 		s.Length = scale.length;

@@ -2,19 +2,29 @@
 #include "SceneDesc.h"
 #include "TolerancesScale.h"
 #include <PxSceneDesc.h>
+#include <PxDefaultSimulationFilterShader.h>
+#include <PxDefaultCpuDispatcher.h>
+#include <PxCpuDispatcher.h>
 
 using namespace PhysX;
 using namespace PhysX::MathPrimitives;
 
 SceneDesc::SceneDesc()
 {
-	PxTolerancesScale scale;
+	_sceneDesc = new PxSceneDesc(PxTolerancesScale());
 
-	_sceneDesc = new PxSceneDesc(scale);
+	Init();
 }
-SceneDesc::SceneDesc(TolerancesScale tolerancesScale)
+SceneDesc::SceneDesc(PhysX::TolerancesScale tolerancesScale)
 {
 	_sceneDesc = new PxSceneDesc(TolerancesScale::ToUnmanaged(tolerancesScale));
+
+	Init();
+}
+void SceneDesc::Init()
+{
+	_sceneDesc->filterShader = PxDefaultSimulationFilterShader;
+	_sceneDesc->cpuDispatcher = new CpuDis(); //PxDefaultCpuDispatcherCreate(1);
 }
 SceneDesc::~SceneDesc()
 {
@@ -27,6 +37,18 @@ SceneDesc::!SceneDesc()
 bool SceneDesc::Disposed::get()
 {
 	return _sceneDesc == NULL;
+}
+
+bool SceneDesc::IsValid()
+{
+	return _sceneDesc->isValid();
+}
+void SceneDesc::SetToDefault([Optional] Nullable<PhysX::TolerancesScale> tolerancesScale)
+{
+	if (tolerancesScale.HasValue)
+		_sceneDesc->setToDefault(PhysX::TolerancesScale::ToUnmanaged(tolerancesScale.Value));
+	else
+		_sceneDesc->setToDefault(PxTolerancesScale());
 }
 
 Vector3 SceneDesc::Gravity::get()

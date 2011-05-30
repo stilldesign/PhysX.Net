@@ -1,14 +1,24 @@
 #pragma once
 
 #include <PxSceneDesc.h>
-#include "SceneFlag.h"
+#include "SceneEnum.h"
+#include "TolerancesScale.h"
+#include <PxCpuDispatcher.h>
+#include <PxTask.h>
 
 using namespace PhysX::MathPrimitives;
 
 namespace PhysX
 {
-	value class TolerancesScale;
-		
+	class CpuDis : public physx::pxtask::CpuDispatcher
+	{
+		public:
+			virtual void submitTask( physx::pxtask::BaseTask& task )
+			{
+				
+			}
+	};
+
 	public ref class SceneDesc : IDisposable
 	{
 		public:
@@ -22,7 +32,10 @@ namespace PhysX
 
 		public:
 			SceneDesc();
-			SceneDesc(TolerancesScale tolerancesScale);
+			SceneDesc(PhysX::TolerancesScale tolerancesScale);
+		private:
+			void Init();
+		public:
 			~SceneDesc();
 		protected:
 			!SceneDesc();
@@ -32,6 +45,9 @@ namespace PhysX
 			{
 				virtual bool get();
 			}
+
+			bool IsValid();
+			void SetToDefault([Optional] Nullable<TolerancesScale> tolerancesScale);
 
 			/// <summary>
 			/// Gravity vector.

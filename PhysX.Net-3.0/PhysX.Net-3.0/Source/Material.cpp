@@ -1,11 +1,18 @@
 #include "StdAfx.h"
 #include "Material.h"
+#include "Physics.h"
 
 using namespace PhysX;
 
-Material::Material(PxMaterial* Material)
+Material::Material(PxMaterial* material, PhysX::Physics^ owner)
 {
-	_material = Material;
+	if (material == NULL)
+		throw gcnew ArgumentNullException("material");
+	ThrowIfNullOrDisposed(owner, "owner");
+
+	_material = material;
+
+	ObjectTable::Add((intptr_t)_material, this, owner);
 }
 Material::~Material()
 {
@@ -13,11 +20,15 @@ Material::~Material()
 }
 Material::!Material()
 {
+	OnDisposing(this, nullptr);
+
 	if (Disposed)
 		return;
 
 	_material->release();
 	_material = NULL;
+
+	OnDisposed(this, nullptr);
 }
 
 bool Material::Disposed::get()
@@ -109,15 +120,6 @@ CombineMode Material::RestitutionCombineMode::get()
 void Material::RestitutionCombineMode::set(CombineMode value)
 {
 	_material->setRestitutionCombineMode(ToUnmanagedEnum(PxCombineMode, value));
-}
-
-Object^ Material::UserData::get()
-{
-	return _userData;
-}
-void Material::UserData::set(Object^ value)
-{
-	_userData = value;
 }
 
 PxMaterial* Material::UnmanagedPointer::get()

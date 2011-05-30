@@ -13,7 +13,7 @@ namespace PhysX
 	{
 		internal:
 			static PxTolerancesScale ToUnmanaged(TolerancesScale scale);
-			static TolerancesScale FromUnmanaged(PxTolerancesScale scale);
+			static TolerancesScale ToManaged(PxTolerancesScale scale);
 
 		public:
 			/// <summary>

@@ -1,7 +1,5 @@
 #pragma once
 
-using namespace System;
-
 namespace PhysX
 {
 	public ref class PhysXException : public Exception

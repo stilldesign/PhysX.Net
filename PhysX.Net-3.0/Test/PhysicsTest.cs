@@ -14,15 +14,35 @@ namespace PhysX.Test
 		[TestMethod]
 		public void CreateAndDisposePhysicsInstance()
 		{
-			var physics = new Physics();
+			Physics physics;
+			using (physics = new Physics())
+			{
+				GC.Collect();
 
-			GC.Collect();
-
-			Assert.IsFalse(physics.Disposed);
-
-			physics.Dispose();
+				Assert.IsFalse(physics.Disposed);
+			}
 
 			Assert.IsTrue(physics.Disposed);
+		}
+
+		[TestMethod]
+		public void ThrowsExceptionOnDuplicateInstantiation()
+		{
+			try
+			{
+				using (var physics = new Physics())
+				{
+					using (var physics2 = new Physics())
+					{
+
+					}
+				}
+				Assert.Fail("Creating multiple physics instances should throw an exception");
+			}
+			catch (PhysicsAlreadyInstantiatedException)
+			{
+
+			}
 		}
 	}
 }

@@ -2,19 +2,25 @@
 
 #include <PxMaterial.h>
 #include "MaterialEnum.h"
+#include "PhysicsEnum.h"
 
 using namespace PhysX::MathPrimitives;
 
 namespace PhysX
 {
-	public ref class Material
+	ref class Physics;
+
+	public ref class Material : IDisposable
 	{
+		public:
+			virtual event EventHandler^ OnDisposing;
+			virtual event EventHandler^ OnDisposed;
+
 		private:
 			PxMaterial* _material;
-			Object^ _userData;
 
 		internal:
-			Material(PxMaterial* material);
+			Material(PxMaterial* material, PhysX::Physics^ owner);
 		public:
 			~Material();
 		protected:
@@ -23,7 +29,7 @@ namespace PhysX
 		public:
 			property bool Disposed
 			{
-				bool get();
+				virtual bool get();
 			}
 
 			/// <summary>Gets or sets the coefficient of dynamic friction.</summary>
@@ -85,11 +91,7 @@ namespace PhysX
 			}
 
 			/// <summary>Gets or sets an object, usually to create a 1:1 relationship with a user object.</summary>
-			property Object^ UserData
-			{
-				Object^ get();
-				void set( Object^ value );
-			}
+			property Object^ UserData;
 
 		internal:
 			property PxMaterial* UnmanagedPointer

@@ -26,6 +26,7 @@
 #include "Vector4.h"
 
 using System::Runtime::InteropServices::OutAttribute;
+using namespace System::Diagnostics;
 
 namespace PhysX
 {
@@ -91,6 +92,7 @@ namespace PhysX
 				/// Initializes a new instance of the <see cref="Vector2"/> class.
 				/// </summary>
 				/// <param name="value">The value that will be assigned to all components.</param>
+				[DebuggerStepThrough]
 				Vector2(float value);
 
 				/// <summary>
@@ -98,6 +100,7 @@ namespace PhysX
 				/// </summary>
 				/// <param name="x">Initial value for the X component of the vector.</param>
 				/// <param name="y">Initial value for the Y component of the vector.</param>
+				[DebuggerStepThrough]
 				Vector2(float x, float y);
 
 				/// <summary>

@@ -40,11 +40,89 @@
     <Filter Include="Header Files\Util">
       <UniqueIdentifier>{be5ca47b-4035-4a2d-ac78-ecb08a3eda7a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\MathUtil">
-      <UniqueIdentifier>{50ece70b-6226-4d1b-a0fc-97a01df20b90}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Exception">
       <UniqueIdentifier>{60986a5d-ee0e-453e-a34f-af2d437213c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Actor">
+      <UniqueIdentifier>{d2cb17ea-38ec-4214-ac1d-baafbcdacf13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Actor">
+      <UniqueIdentifier>{2c8ae563-840c-4468-ab2d-4c1cfb75890d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Shape">
+      <UniqueIdentifier>{98e455d0-1880-4758-bab9-147f3f8a0be4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shape">
+      <UniqueIdentifier>{28e110ec-b182-4f5a-bf3b-0ca7845c99a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Geometry">
+      <UniqueIdentifier>{c484afff-21f6-40d7-abff-361360e912cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Geometry">
+      <UniqueIdentifier>{fb8ec61a-46a1-4adb-8181-ba3ff3d9075b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Vehicle">
+      <UniqueIdentifier>{4aa7e5f6-2947-45aa-9f08-9337975ba053}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Vehicle">
+      <UniqueIdentifier>{9be9d8cc-3d8a-4969-9ea3-e0b1a20ffde5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Util">
+      <UniqueIdentifier>{fa848684-e6b1-4ca8-a295-0c58720adfea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Common">
+      <UniqueIdentifier>{b4af46a4-b6e3-40ae-bffc-bd478bfe61ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Common">
+      <UniqueIdentifier>{6dde0dbe-2472-40d8-af2a-574cb222523e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Cooking">
+      <UniqueIdentifier>{e9165ccc-0a1c-4c5a-aea3-6e7fd5623d92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Character">
+      <UniqueIdentifier>{4c5e5d20-0d28-4f93-a94b-2ee51a2552ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Character">
+      <UniqueIdentifier>{6e3a256f-6b12-48ec-a157-082e189e588b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Stream">
+      <UniqueIdentifier>{8e004b5d-75ca-4155-ba88-92a310940805}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Stream">
+      <UniqueIdentifier>{7f976a7e-9cf5-4601-86c7-94c138182066}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GeometryUtils">
+      <UniqueIdentifier>{8eece835-01d2-4d9e-9271-a8ae587f6b95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GeometryUtils">
+      <UniqueIdentifier>{8703e23e-fdae-4ad4-a777-3adec577e5bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Particle">
+      <UniqueIdentifier>{58644f13-525f-4cc9-8588-971759e346cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Particle">
+      <UniqueIdentifier>{6e35ac8b-f6fd-470d-a1be-3456cd5ca348}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\HeightField">
+      <UniqueIdentifier>{dbadac83-d225-41e3-a635-eeee68db1366}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\HeightField">
+      <UniqueIdentifier>{eb431815-bf35-4ea8-98dc-15b6f153db45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Joint">
+      <UniqueIdentifier>{3a1697a4-af4d-4e0c-8193-ddee1dff2714}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Joint">
+      <UniqueIdentifier>{edc34022-2f9f-4ead-95b8-7c86a6d15e4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Deformable">
+      <UniqueIdentifier>{ae072758-923f-47c7-a95d-c388a4d39771}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Deformable">
+      <UniqueIdentifier>{f9dda23b-411c-482b-b678-4f44d52137f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Cooking">
+      <UniqueIdentifier>{c832b73c-e5f5-4619-9ea9-8e8538b0b434}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -99,11 +177,404 @@
     <ClInclude Include="Source\SceneCreationException.h">
       <Filter>Header Files\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Source\SceneFlag.h">
+    <ClInclude Include="Source\RigidActor.h">
+      <Filter>Header Files\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Actor.h">
+      <Filter>Header Files\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ActorEnum.h">
+      <Filter>Header Files\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SceneEnum.h">
       <Filter>Header Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Bounds3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Shape.h">
+      <Filter>Header Files\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GeometryEnum.h">
+      <Filter>Header Files\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ShapeFlag.h">
+      <Filter>Header Files\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Geometry.h">
+      <Filter>Header Files\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\BoxGeometry.h">
+      <Filter>Header Files\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SphereGeometry.h">
+      <Filter>Header Files\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CapsuleGeometry.h">
+      <Filter>Header Files\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\PlaneGeometry.h">
+      <Filter>Header Files\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ShapeCreationException.h">
+      <Filter>Header Files\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SceneQueryHit.h">
+      <Filter>Header Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ObjectTable.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="IDisposable.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SceneQueryFilterData.h">
+      <Filter>Header Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FilterData.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Vehicle4W.h">
+      <Filter>Header Files\Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Vehicle4WSimpleSetup.h">
+      <Filter>Header Files\Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleChassisData.h">
+      <Filter>Header Files\Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleGraph.h">
+      <Filter>Header Files\Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleEnum.h">
+      <Filter>Header Files\Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleGraphDesc.h">
+      <Filter>Header Files\Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleAckermannGeometryData.h">
+      <Filter>Header Files\Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleDifferential4WData.h">
+      <Filter>Header Files\Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleEngineData.h">
+      <Filter>Header Files\Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FixedSizeLookupTable.h">
+      <Filter>Header Files\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FixedSizeLookupTablePair.h">
+      <Filter>Header Files\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleGearsData.h">
+      <Filter>Header Files\Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleAutoBoxData.h">
+      <Filter>Header Files\Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleClutchData.h">
+      <Filter>Header Files\Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleTyreLoadFilterData.h">
+      <Filter>Header Files\Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleSuspensionData.h">
+      <Filter>Header Files\Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleGraphChannelDesc.h">
+      <Filter>Header Files\Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleKeySmoothingData.h">
+      <Filter>Source Files\Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehiclePadSmoothingData.h">
+      <Filter>Header Files\Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleRawInputData.h">
+      <Filter>Header Files\Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleWheelData.h">
+      <Filter>Header Files\Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleTyreData.h">
+      <Filter>Header Files\Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CookingEnum.h">
+      <Filter>Header Files\Cooking</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ActiveTransform.h">
+      <Filter>Header Files\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CharacterEnum.h">
+      <Filter>Header Files\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\PhysicsEnum.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Controller.h">
+      <Filter>Header Files\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\BoxController.h">
+      <Filter>Header Files\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CapsuleController.h">
+      <Filter>Header Files\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ControllerShapeHit.h">
+      <Filter>Header Files\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Stream.h">
+      <Filter>Header Files\Stream</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\BoxControllerDesc.h">
+      <Filter>Header Files\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ControllerDesc.h">
+      <Filter>Header Files\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ControllerShapeDesc.h">
+      <Filter>Header Files\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CapsuleControllerDesc.h">
+      <Filter>Header Files\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ControllersHit.h">
+      <Filter>Header Files\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\UserControllerHitReport.h">
+      <Filter>Header Files\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ControllerManager.h">
+      <Filter>Header Files\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\RigidBody.h">
+      <Filter>Header Files\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\RigidDynamic.h">
+      <Filter>Header Files\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SolverIterationCounts.h">
+      <Filter>Header Files\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\TriangleMeshGeometry.h">
+      <Filter>Header Files\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\MeshScale.h">
+      <Filter>Header Files\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\TriangleMesh.h">
+      <Filter>Header Files\GeometryUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\PhysicsAlreadyInstantiatedException.h">
+      <Filter>Header Files\Exception</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\RigidStatic.h">
+      <Filter>Header Files\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ParticleSystem.h">
+      <Filter>Header Files\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ParticleBase.h">
+      <Filter>Header Files\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ParticleCreationData.h">
+      <Filter>Header Files\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ParticleEnum.h">
+      <Filter>Header Files\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\LockedData.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ParticleReadData.h">
+      <Filter>Header Files\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ErrorCallback.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\RaycastHit.h">
+      <Filter>Header Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SceneQueryImpactHit.h">
+      <Filter>Header Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\MultipleRaycastHitResult.h">
+      <Filter>Header Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ConstraintDominance.h">
+      <Filter>Header Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HeightField.h">
+      <Filter>Header Files\HeightField</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HeightFieldEnum.h">
+      <Filter>Header Files\HeightField</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ContactPointAux.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Joint.h">
+      <Filter>Header Files\Joint</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\JointEnum.h">
+      <Filter>Header Files\Joint</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\D6Joint.h">
+      <Filter>Header Files\Joint</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\JointLimit.h">
+      <Filter>Header Files\Joint</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\JointLimitParameters.h">
+      <Filter>Header Files\Joint</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\JointLimitPair.h">
+      <Filter>Header Files\Joint</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\JointLimitCone.h">
+      <Filter>Header Files\Joint</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\D6JointDrive.h">
+      <Filter>Header Files\Joint</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DistanceJoint.h">
+      <Filter>Header Files\Joint</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FixedJoint.h">
+      <Filter>Header Files\Joint</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\PrismaticJoint.h">
+      <Filter>Header Files\Joint</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\RevoluteJoint.h">
+      <Filter>Header Files\Joint</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SphericalJoint.h">
+      <Filter>Header Files\Joint</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Aggregate.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Articulation.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ArticulationLink.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ArticulationJoint.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SimulationStatistics.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SceneSweepOperationObject.h">
+      <Filter>Header Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SweepHit.h">
+      <Filter>Header Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CommonEnum.h">
+      <Filter>Header Files\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ParticleFluid.h">
+      <Filter>Header Files\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ParticleFluidReadData.h">
+      <Filter>Header Files\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ParticleBaseDesc.h">
+      <Filter>Header Files\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ActorDesc.h">
+      <Filter>Header Files\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ParticleFluidDesc.h">
+      <Filter>Header Files\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DeformableConstrainCoefficients.h">
+      <Filter>Header Files\Deformable</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Deformable.h">
+      <Filter>Header Files\Deformable</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DeformableEnum.h">
+      <Filter>Header Files\Deformable</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DeformableDesc.h">
+      <Filter>Header Files\Deformable</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DeformableMesh.h">
+      <Filter>Header Files\Deformable</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\MemoryStream.h">
+      <Filter>Header Files\Stream</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HeightFieldDesc.h">
+      <Filter>Header Files\HeightField</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ParticleSystemDesc.h">
+      <Filter>Header Files\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ConstraintDesc.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HeightFieldGeometry.h">
+      <Filter>Header Files\HeightField</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HeightFieldSample.h">
+      <Filter>Header Files\HeightField</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\BitAndData.h">
+      <Filter>Header Files\MathPrimitives</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SceneQueryHitObject.h">
+      <Filter>Header Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ConvexMesh.h">
+      <Filter>Header Files\GeometryUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ConvexMeshMassInformation.h">
+      <Filter>Header Files\GeometryUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HullPolygon.h">
+      <Filter>Header Files\GeometryUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\TriggerPair.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FailedToCreateObjectException.h">
+      <Filter>Header Files\Exception</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DeformableReadData.h">
+      <Filter>Header Files\Deformable</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DeformablePrimitiveSplitPair.h">
+      <Filter>Header Files\Deformable</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ConvexMeshDesc.h">
+      <Filter>Header Files\Cooking</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CookingParams.h">
+      <Filter>Header Files\Cooking</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Cooking.h">
+      <Filter>Header Files\Cooking</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Foundation.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SimpleTriangleMesh.h">
+      <Filter>Header Files\GeometryUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GeometryUtilEnum.h">
+      <Filter>Header Files\GeometryUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\TriangleMeshDesc.h">
+      <Filter>Header Files\Cooking</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DeformableMeshDesc.h">
+      <Filter>Header Files\Deformable</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -137,14 +608,353 @@
     <ClCompile Include="Source\Plane.cpp">
       <Filter>Source Files\MathPrimitives</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Util.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\MathUtil.cpp">
-      <Filter>Source Files\MathUtil</Filter>
-    </ClCompile>
     <ClCompile Include="Source\TolerancesScale.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\RigidActor.cpp">
+      <Filter>Source Files\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Actor.cpp">
+      <Filter>Source Files\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Bounds3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Shape.cpp">
+      <Filter>Source Files\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Geometry.cpp">
+      <Filter>Source Files\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\BoxGeometry.cpp">
+      <Filter>Source Files\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SphereGeometry.cpp">
+      <Filter>Source Files\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CapsuleGeometry.cpp">
+      <Filter>Source Files\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\PlaneGeometry.cpp">
+      <Filter>Source Files\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ObjectTable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SceneQueryHit.cpp">
+      <Filter>Source Files\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SceneQueryFilterData.cpp">
+      <Filter>Source Files\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FilterData.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Vehicle4W.cpp">
+      <Filter>Source Files\Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Util.cpp">
+      <Filter>Source Files\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Vehicle4WSimpleSetup.cpp">
+      <Filter>Source Files\Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VehicleChassisData.cpp">
+      <Filter>Source Files\Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VehicleGraph.cpp">
+      <Filter>Source Files\Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VehicleGraphDesc.cpp">
+      <Filter>Source Files\Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VehicleAckermannGeometryData.cpp">
+      <Filter>Source Files\Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VehicleDifferential4WData.cpp">
+      <Filter>Source Files\Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VehicleEngineData.cpp">
+      <Filter>Source Files\Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FixedSizeLookupTable.cpp">
+      <Filter>Source Files\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VehicleGearsData.cpp">
+      <Filter>Source Files\Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VehicleAutoBoxData.cpp">
+      <Filter>Source Files\Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VehicleClutchData.cpp">
+      <Filter>Source Files\Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VehicleTyreLoadFilterData.cpp">
+      <Filter>Source Files\Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VehicleSuspensionData.cpp">
+      <Filter>Source Files\Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VehicleGraphChannelDesc.cpp">
+      <Filter>Source Files\Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VehicleKeySmoothingData.cpp">
+      <Filter>Header Files\Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VehiclePadSmoothingData.cpp">
+      <Filter>Source Files\Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VehicleRawInputData.cpp">
+      <Filter>Source Files\Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VehicleWheelData.cpp">
+      <Filter>Source Files\Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VehicleTyreData.cpp">
+      <Filter>Source Files\Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ActiveTransform.cpp">
+      <Filter>Source Files\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Controller.cpp">
+      <Filter>Source Files\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\BoxController.cpp">
+      <Filter>Source Files\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CapsuleController.cpp">
+      <Filter>Source Files\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ControllerShapeHit.cpp">
+      <Filter>Source Files\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Stream.cpp">
+      <Filter>Source Files\Stream</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\StdAfx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ControllerDesc.cpp">
+      <Filter>Source Files\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\BoxControllerDesc.cpp">
+      <Filter>Source Files\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CapsuleControllerDesc.cpp">
+      <Filter>Source Files\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ControllersHit.cpp">
+      <Filter>Source Files\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\UserControllerHitReport.cpp">
+      <Filter>Source Files\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ControllerManager.cpp">
+      <Filter>Source Files\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\RigidBody.cpp">
+      <Filter>Source Files\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\RigidDynamic.cpp">
+      <Filter>Source Files\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MeshScale.cpp">
+      <Filter>Source Files\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\TriangleMeshGeometry.cpp">
+      <Filter>Source Files\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\TriangleMesh.cpp">
+      <Filter>Source Files\GeometryUtils</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\RigidStatic.cpp">
+      <Filter>Source Files\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ParticleBase.cpp">
+      <Filter>Source Files\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ParticleSystem.cpp">
+      <Filter>Source Files\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ParticleCreationData.cpp">
+      <Filter>Source Files\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\LockedData.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ParticleReadData.cpp">
+      <Filter>Source Files\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ErrorCallback.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\AssemblyInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\RaycastHit.cpp">
+      <Filter>Source Files\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ConstraintDominance.cpp">
+      <Filter>Source Files\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HeightField.cpp">
+      <Filter>Source Files\HeightField</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ContactPointAux.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Joint.cpp">
+      <Filter>Source Files\Joint</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\D6Joint.cpp">
+      <Filter>Source Files\Joint</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\JointLimitParameters.cpp">
+      <Filter>Source Files\Joint</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\JointLimit.cpp">
+      <Filter>Source Files\Joint</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\JointLimitPair.cpp">
+      <Filter>Source Files\Joint</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\JointLimitCone.cpp">
+      <Filter>Source Files\Joint</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\D6JointDrive.cpp">
+      <Filter>Source Files\Joint</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DistanceJoint.cpp">
+      <Filter>Source Files\Joint</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FixedJoint.cpp">
+      <Filter>Source Files\Joint</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\PrismaticJoint.cpp">
+      <Filter>Source Files\Joint</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\RevoluteJoint.cpp">
+      <Filter>Source Files\Joint</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SphericalJoint.cpp">
+      <Filter>Source Files\Joint</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Aggregate.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Articulation.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SimulationStatistics.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SceneSweepOperationObject.cpp">
+      <Filter>Source Files\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SweepHit.cpp">
+      <Filter>Source Files\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SceneQueryImpactHit.cpp">
+      <Filter>Source Files\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CommonEnum.cpp">
+      <Filter>Source Files\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ParticleFluid.cpp">
+      <Filter>Source Files\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ParticleFluidReadData.cpp">
+      <Filter>Source Files\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ActorDesc.cpp">
+      <Filter>Source Files\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ParticleBaseDesc.cpp">
+      <Filter>Source Files\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ParticleFluidDesc.cpp">
+      <Filter>Source Files\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DeformableConstrainCoefficients.cpp">
+      <Filter>Source Files\Deformable</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Deformable.cpp">
+      <Filter>Source Files\Deformable</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DeformableDesc.cpp">
+      <Filter>Source Files\Deformable</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DeformableMesh.cpp">
+      <Filter>Source Files\Deformable</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MemoryStream.cpp">
+      <Filter>Source Files\Stream</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HeightFieldDesc.cpp">
+      <Filter>Source Files\HeightField</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ParticleSystemDesc.cpp">
+      <Filter>Source Files\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ConstraintDesc.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HeightFieldGeometry.cpp">
+      <Filter>Source Files\HeightField</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\BitAndData.cpp">
+      <Filter>Source Files\MathPrimitives</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HeightFieldSample.cpp">
+      <Filter>Source Files\HeightField</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SceneQueryHitObject.cpp">
+      <Filter>Source Files\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ConvexMesh.cpp">
+      <Filter>Source Files\GeometryUtils</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HullPolygon.cpp">
+      <Filter>Source Files\GeometryUtils</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MathUtil.cpp">
+      <Filter>Source Files\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\TriggerPair.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ArticulationLink.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ArticulationJoint.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DeformableReadData.cpp">
+      <Filter>Source Files\Deformable</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DeformablePrimitiveSplitPair.cpp">
+      <Filter>Source Files\Deformable</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ConvexMeshDesc.cpp">
+      <Filter>Source Files\Cooking</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CookingParams.cpp">
+      <Filter>Source Files\Cooking</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Cooking.cpp">
+      <Filter>Source Files\Cooking</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SimpleTriangleMesh.cpp">
+      <Filter>Source Files\GeometryUtils</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DeformableMeshDesc.cpp">
+      <Filter>Source Files\Deformable</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Foundation.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\TriangleMeshDesc.cpp">
+      <Filter>Source Files\Cooking</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
