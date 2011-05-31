@@ -19,7 +19,7 @@ namespace PhysX.Test
 
 				var desc = new BoxControllerDesc()
 				{
-					Extents = new MathPrimitives.Vector3(5, 5, 5),
+					Extents = new Math.Vector3(5, 5, 5),
 					Material = material
 				};
 

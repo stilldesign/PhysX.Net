@@ -36,7 +36,8 @@ Shape^ RigidActor::CreateShape(Geometry^ geometry, Material^ material, [Optional
 	if (s == NULL)
 		throw gcnew ShapeCreationException("Failed to create shape");
 
-	//delete geom;
+	// PxGeometry instances are created when we call ToUnmanaged()
+	SAFE_DELETE(geom);
 
 	Shape^ shape = gcnew Shape(s, this);
 

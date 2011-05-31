@@ -43,7 +43,7 @@ namespace PhysX.Test
 				for (int c = 0; c < columns; c++)
 				{
 					// Put a z and x curve together
-					double h = Math.Sin(c) * Math.Cos(r) * short.MaxValue;
+					double h = System.Math.Sin(c) * System.Math.Cos(r) * short.MaxValue;
 
 					var sample = new HeightFieldSample()
 					{

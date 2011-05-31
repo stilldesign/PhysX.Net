@@ -7,14 +7,14 @@ namespace PhysX.Samples.Engine
 {
 	public static class MathExtension
 	{
-		public static PhysX.MathPrimitives.Vector3 AsPhysX(this Vector3 vector)
+		public static PhysX.Math.Vector3 AsPhysX(this Vector3 vector)
 		{
-			return new MathPrimitives.Vector3(vector.X, vector.Y, vector.Z);
+			return new Math.Vector3(vector.X, vector.Y, vector.Z);
 		}
 
-		public static PhysX.MathPrimitives.Matrix AsPhysX(this Matrix m)
+		public static PhysX.Math.Matrix AsPhysX(this Matrix m)
 		{
-			return new MathPrimitives.Matrix
+			return new Math.Matrix
 			(
 				m.M11, m.M12, m.M13, m.M14,
 				m.M21, m.M22, m.M23, m.M24,

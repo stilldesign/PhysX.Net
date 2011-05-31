@@ -18,7 +18,7 @@ HullPolygon^ HullPolygon::ToManaged(PxHullPolygon hullPolygon)
 	HullPolygon^ hp = gcnew HullPolygon();
 		hp->IndexBase = hullPolygon.mIndexBase;
 		hp->NumberOfVertices = hullPolygon.mNbVerts;
-		hp->Plane = PhysX::MathPrimitives::Plane(hullPolygon.mPlane[0], hullPolygon.mPlane[1], hullPolygon.mPlane[2], hullPolygon.mPlane[3]);
+		hp->Plane = PhysX::Math::Plane(hullPolygon.mPlane[0], hullPolygon.mPlane[1], hullPolygon.mPlane[2], hullPolygon.mPlane[3]);
 
 	return hp;
 }

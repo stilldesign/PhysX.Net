@@ -20,6 +20,15 @@ BoxGeometry::BoxGeometry(Vector3 halfExtents)
 	this->HalfExtents = halfExtents;
 }
 
+Vector3 BoxGeometry::Size::get()
+{
+	return this->HalfExtents * 2;
+}
+void BoxGeometry::Size::set(Vector3 value)
+{
+	this->HalfExtents = value * 0.5f;
+}
+
 PxGeometry* BoxGeometry::ToUnmanaged()
 {
 	PxVec3 v = MathUtil::Vector3ToPxVec3(this->HalfExtents);

@@ -2,7 +2,7 @@
 #include "MathUtil.h"
 
 using namespace PhysX;
-using namespace PhysX::MathPrimitives;
+using namespace PhysX::Math;
 using namespace physx::pubfnd3;
 
 Matrix MathUtil::PxTransformToMatrix(PxTransform* transform)
@@ -25,7 +25,7 @@ PxTransform MathUtil::MatrixToPxTransform(Matrix matrix)
 	return t;
 }
 
-MathPrimitives::Matrix MathUtil::PxMat33ToMatrix(physx::pubfnd3::PxMat33* matrix)
+PhysX::Math::Matrix MathUtil::PxMat33ToMatrix(physx::pubfnd3::PxMat33* matrix)
 {
 	Matrix m = Matrix::Identity;
 
@@ -72,11 +72,11 @@ PxVec3 MathUtil::Vector3ToPxVec3(Vector3 vector)
 	return PxVec3(vector.X, vector.Y, vector.Z);
 }
 
-MathPrimitives::Vector3 MathUtil::PxExtendedVec3ToVector3(PxExtendedVec3 vector)
+PhysX::Math::Vector3 MathUtil::PxExtendedVec3ToVector3(PxExtendedVec3 vector)
 {
 	return Vector3((float)vector.x, (float)vector.y, (float)vector.z);
 }
-PxExtendedVec3 MathUtil::Vector3ToPxExtendedVec3(MathPrimitives::Vector3 vector)
+PxExtendedVec3 MathUtil::Vector3ToPxExtendedVec3(PhysX::Math::Vector3 vector)
 {
 return PxExtendedVec3(vector.X, vector.Y, vector.Z);
 }

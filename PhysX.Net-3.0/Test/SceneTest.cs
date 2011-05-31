@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PhysX;
-using PhysX.MathPrimitives;
+using PhysX.Math;
 
 namespace PhysX.Test
 {

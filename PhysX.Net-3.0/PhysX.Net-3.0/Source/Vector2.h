@@ -30,7 +30,7 @@ using namespace System::Diagnostics;
 
 namespace PhysX
 {
-	namespace MathPrimitives
+	namespace Math
 	{
 		value class Quaternion;
 		value class Matrix;

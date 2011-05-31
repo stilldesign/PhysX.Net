@@ -12,7 +12,7 @@ namespace PhysX
 			static HullPolygon^ ToManaged(PxHullPolygon hullPolygon);
 
 		public:
-			property PhysX::MathPrimitives::Plane Plane;
+			property PhysX::Math::Plane Plane;
 			property int NumberOfVertices;
 			property int IndexBase;
 	};

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using PhysX.MathPrimitives;
+using PhysX.Math;
 
 namespace PhysX.Test
 {

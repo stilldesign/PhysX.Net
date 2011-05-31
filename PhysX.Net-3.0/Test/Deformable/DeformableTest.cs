@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Xml;
-using PhysX.MathPrimitives;
 using System.IO;
+using System.Linq;
+using System.Xml;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PhysX.Math;
 
 namespace PhysX.Test
 {

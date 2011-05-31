@@ -6,7 +6,7 @@ using namespace System::Diagnostics;
 
 namespace PhysX
 {
-	namespace MathPrimitives
+	namespace Math
 	{
 		value class Vector2;
 		value class Vector4;

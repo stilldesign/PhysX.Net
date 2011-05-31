@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Interop;
+using System.Windows.Input;
 
 namespace PhysX.Samples
 {
@@ -26,7 +27,18 @@ namespace PhysX.Samples
 		{
 			this.Width = (int)(SystemParameters.PrimaryScreenWidth * 0.85);
 			this.Height = (int)(SystemParameters.PrimaryScreenHeight * 0.85);
+
+			this.Left = (SystemParameters.PrimaryScreenWidth / 2) - (this.Width / 2);
+			this.Top = (SystemParameters.PrimaryScreenHeight / 2) - (this.Height / 2);
 		}
+
+		private void Window_KeyUp(object sender, KeyEventArgs e)
+		{
+			if (e.Key == Key.Escape)
+				Close();
+		}
+
+		//
 
 		public IntPtr RenderCanvasHandle
 		{

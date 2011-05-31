@@ -18,7 +18,7 @@ namespace PhysX.Samples.Engine
 
 			this.Viewport = new Viewport(0, 0, (int)_engine.Window.Width, (int)_engine.Window.Height);
 			this.View = Matrix.LookAtLH(new Vector3(0, 20, -90), new Vector3(0, 20, 0), new Vector3(0, 1, 0));
-			this.Projection = Matrix.PerspectiveFovLH((float)(Math.PI / 4.0), Viewport.AspectRatio(), 0.5f, 10000);
+			this.Projection = Matrix.PerspectiveFovLH((float)(System.Math.PI / 4.0), Viewport.AspectRatio(), 0.5f, 10000);
 
 			CenterCursor();
 		}

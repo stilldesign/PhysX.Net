@@ -21,5 +21,15 @@ namespace PhysX
 
 		public:
 			property Vector3 HalfExtents;
+
+			/// <summary>
+			/// Gets or sets the size of the box.
+			/// This property is simply a helper which returns HalfExtents * 2 and the inverse when setting.
+			/// </summary>
+			property Vector3 Size
+			{
+				Vector3 get();
+				void set(Vector3 value);
+			}
 	};
 };

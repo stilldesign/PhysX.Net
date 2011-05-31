@@ -7,7 +7,7 @@
 
 using namespace System::Globalization;
 using namespace PhysX;
-using namespace PhysX::MathPrimitives;
+using namespace PhysX::Math;
 
 generic<typename T>
 T Matrix::As()

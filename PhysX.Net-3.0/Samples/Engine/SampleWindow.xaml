@@ -1,7 +1,8 @@
 ﻿<Window x:Class="PhysX.Samples.SampleWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="SampleWindow" Height="300" Width="300">
+        Title="PhysX.Net Sample" Height="300" Width="300" Icon="/PhysX.Samples.Engine;component/Images/SamplesIcon.png"
+        KeyUp="Window_KeyUp">
     <Grid>
         
     </Grid>

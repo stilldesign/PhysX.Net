@@ -7,7 +7,7 @@
 #include <PxCpuDispatcher.h>
 
 using namespace PhysX;
-using namespace PhysX::MathPrimitives;
+using namespace PhysX::Math;
 
 SceneDesc::SceneDesc()
 {

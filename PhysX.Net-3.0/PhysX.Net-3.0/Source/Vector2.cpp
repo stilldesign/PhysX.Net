@@ -28,7 +28,7 @@
 using namespace System;
 using namespace System::Globalization;
 using namespace PhysX;
-using namespace PhysX::MathPrimitives;
+using namespace PhysX::Math;
 
 Vector2::Vector2( float value )
 {

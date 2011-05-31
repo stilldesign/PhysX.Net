@@ -32,7 +32,7 @@
 using namespace System;
 using namespace System::Globalization;
 using namespace PhysX;
-using namespace PhysX::MathPrimitives;
+using namespace PhysX::Math;
 
 Vector4::Vector4( float value )
 {

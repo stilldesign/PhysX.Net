@@ -6,7 +6,7 @@
 #include "Quaternion.h"
 
 using namespace PhysX;
-using namespace PhysX::MathPrimitives;
+using namespace PhysX::Math;
 using namespace System::Globalization;
 
 generic<typename T>

@@ -4,7 +4,7 @@
 #include "MaterialEnum.h"
 #include "PhysicsEnum.h"
 
-using namespace PhysX::MathPrimitives;
+using namespace PhysX::Math;
 
 namespace PhysX
 {

@@ -52,7 +52,7 @@ using namespace System::Runtime::InteropServices;
 
 // Our namespaces
 using namespace PhysX;
-using namespace PhysX::MathPrimitives;
+using namespace PhysX::Math;
 
 // Native PhysX namespaces
 using namespace physx;

@@ -27,7 +27,7 @@
 
 namespace PhysX
 {
-	namespace MathPrimitives
+	namespace Math
 	{
 		value class Matrix;
 		value class Quaternion;

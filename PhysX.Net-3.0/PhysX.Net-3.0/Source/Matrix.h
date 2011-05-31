@@ -2,7 +2,7 @@
 
 namespace PhysX
 {
-	namespace MathPrimitives
+	namespace Math
 	{
 		value class Plane;
 		value class Vector3;

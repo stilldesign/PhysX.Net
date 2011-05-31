@@ -166,7 +166,7 @@ namespace PhysX.Samples.Engine
 			var sceneDesc = new SceneDesc()
 			{
 				//SimulationType = SimulationType.Hardware,
-				Gravity = new MathPrimitives.Vector3(0, -9.81f, 0),
+				Gravity = new Math.Vector3(0, -9.81f, 0),
 				//GroundPlaneEnabled = true
 			};
 

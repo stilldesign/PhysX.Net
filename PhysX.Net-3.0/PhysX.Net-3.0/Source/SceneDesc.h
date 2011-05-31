@@ -6,7 +6,7 @@
 #include <PxCpuDispatcher.h>
 #include <PxTask.h>
 
-using namespace PhysX::MathPrimitives;
+using namespace PhysX::Math;
 
 namespace PhysX
 {

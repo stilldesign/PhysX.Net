@@ -5,7 +5,7 @@
 
 namespace PhysX
 {
-	namespace MathPrimitives
+	namespace Math
 	{
 		[System::Serializable]
 		[System::Runtime::InteropServices::StructLayout( System::Runtime::InteropServices::LayoutKind::Sequential )]
