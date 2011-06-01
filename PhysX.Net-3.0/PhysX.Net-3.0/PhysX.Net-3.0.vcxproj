@@ -71,7 +71,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\vehicle;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\pxtask\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\particles;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\geometry;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\extensions;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\cooking;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\common;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\characterkinematic;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\foundation;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\deformable;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\Samples\SampleFramework\framework\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXProfileSDK\sdk\include;C:\Program Files %28x86%29\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXVisualDebuggerSDK\PVDCommLayer\Public;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\vehicle;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\pxtask\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\particles;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\geometry;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\extensions;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\cooking;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\common;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\characterkinematic;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\foundation;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\deformable;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\lib\win32;$(LibraryPath)</LibraryPath>
     <OutDir>$(ProjectDir)bin\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)bin\$(Configuration)\Intermediate\</IntDir>
@@ -102,7 +102,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>PxTask.lib;Foundation.lib;PhysX3Common.lib;PhysX3CharacterKinematic.lib;PhysX3Vehicle.lib;PhysX3Cooking_x86.lib;PhysX3_x86.lib;PhysX3Extensions.lib;LowLevel.lib;GeomUtils.lib;SceneQuery.lib;PvdRuntime.lib;RepX3.lib;PhysX3Gpu_x86.lib;PhysX3MetaData.lib;PhysXProfileSDK.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Foundation.lib;PhysX3Common.lib;PhysX3CharacterKinematic.lib;PhysX3Vehicle.lib;PhysX3Cooking_x86.lib;PhysX3_x86.lib;PhysX3Extensions.lib;LowLevel.lib;GeomUtils.lib;SceneQuery.lib;PvdRuntime.lib;RepX3.lib;PhysX3Gpu_x86.lib;PhysX3MetaData.lib;PhysXProfileSDK.lib;PxTask.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
       <IgnoreSpecificDefaultLibraries>LIBCMT</IgnoreSpecificDefaultLibraries>
     </Link>
@@ -177,6 +177,10 @@
     <ClInclude Include="Source\CookingParams.h" />
     <ClInclude Include="Source\D6Joint.h" />
     <ClInclude Include="Source\D6JointDrive.h" />
+    <ClInclude Include="Source\DebugLine.h" />
+    <ClInclude Include="Source\DebugPoint.h" />
+    <ClInclude Include="Source\DebugText.h" />
+    <ClInclude Include="Source\DebugTriangle.h" />
     <ClInclude Include="Source\Deformable.h" />
     <ClInclude Include="Source\DeformableConstrainCoefficients.h" />
     <ClInclude Include="Source\DeformableDesc.h" />
@@ -187,6 +191,7 @@
     <ClInclude Include="Source\DeformableReadData.h" />
     <ClInclude Include="Source\DistanceJoint.h" />
     <ClInclude Include="Source\ErrorCallback.h" />
+    <ClInclude Include="Source\ExtensionEnum.h" />
     <ClInclude Include="Source\FailedToCreateObjectException.h" />
     <ClInclude Include="Source\FilterData.h" />
     <ClInclude Include="Source\FixedJoint.h" />
@@ -236,6 +241,7 @@
     <ClInclude Include="Source\PrismaticJoint.h" />
     <ClInclude Include="Source\Quaternion.h" />
     <ClInclude Include="Source\RaycastHit.h" />
+    <ClInclude Include="Source\RenderBuffer.h" />
     <ClInclude Include="Source\RevoluteJoint.h" />
     <ClInclude Include="Source\RigidActor.h" />
     <ClInclude Include="Source\RigidBody.h" />
@@ -291,6 +297,7 @@
     <ClInclude Include="Source\VehicleTyreData.h" />
     <ClInclude Include="Source\VehicleTyreLoadFilterData.h" />
     <ClInclude Include="Source\VehicleWheelData.h" />
+    <ClInclude Include="Source\VisualDebugger\Connection.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\ActiveTransform.cpp" />
@@ -322,6 +329,10 @@
     <ClCompile Include="Source\CookingParams.cpp" />
     <ClCompile Include="Source\D6Joint.cpp" />
     <ClCompile Include="Source\D6JointDrive.cpp" />
+    <ClCompile Include="Source\DebugLine.cpp" />
+    <ClCompile Include="Source\DebugPoint.cpp" />
+    <ClCompile Include="Source\DebugText.cpp" />
+    <ClCompile Include="Source\DebugTriangle.cpp" />
     <ClCompile Include="Source\Deformable.cpp" />
     <ClCompile Include="Source\DeformableConstrainCoefficients.cpp" />
     <ClCompile Include="Source\DeformableDesc.cpp" />
@@ -358,6 +369,7 @@
     <ClCompile Include="Source\ParticleSystemDesc.cpp" />
     <ClCompile Include="Source\PrismaticJoint.cpp" />
     <ClCompile Include="Source\RaycastHit.cpp" />
+    <ClCompile Include="Source\RenderBuffer.cpp" />
     <ClCompile Include="Source\RevoluteJoint.cpp" />
     <ClCompile Include="Source\RigidBody.cpp" />
     <ClCompile Include="Source\RigidDynamic.cpp" />
@@ -397,6 +409,7 @@
     <ClCompile Include="Source\VehicleTyreData.cpp" />
     <ClCompile Include="Source\VehicleTyreLoadFilterData.cpp" />
     <ClCompile Include="Source\VehicleWheelData.cpp" />
+    <ClCompile Include="Source\VisualDebugger\Connection.cpp" />
     <ClInclude Include="Source\GeometryEnum.h" />
     <ClCompile Include="Source\BoxGeometry.cpp" />
     <ClCompile Include="Source\CapsuleGeometry.cpp" />
@@ -427,6 +440,9 @@
     <Reference Include="mscorlib" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Changelog.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

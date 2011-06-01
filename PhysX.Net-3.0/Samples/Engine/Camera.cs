@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Drawing;
+using System.Runtime.InteropServices;
 using System.Windows.Input;
 using SlimDX;
 using SlimDX.Direct3D10;
-using System.Runtime.InteropServices;
+using System.Drawing;
 
 namespace PhysX.Samples.Engine
 {
@@ -25,8 +25,10 @@ namespace PhysX.Samples.Engine
 
 		public void Update(TimeSpan elapsedTime)
 		{
-			var mousePos = Mouse.GetPosition(null) - new System.Windows.Point(_engine.Window.Left, _engine.Window.Top);
-			SetCursorPos((int)mousePos.X, (int)mousePos.Y);
+			Point p;
+			GetCursorPos(out p);
+
+			var mousePos = p - new Size((int)_engine.Window.Left, (int)_engine.Window.Top);
 
 			Vector2 cursorPosition = new Vector2((float)mousePos.X, (float)mousePos.Y);
 			Vector2 mouseCenter = new Vector2((int)_engine.Window.Width / 2, (int)_engine.Window.Height / 2);
@@ -47,7 +49,7 @@ namespace PhysX.Samples.Engine
 			Vector3 newForward = Vector3.TransformNormal(Vector3.UnitZ, cameraRotation);
 
 			double elapsed = elapsedTime.TotalSeconds; // Elapsed time since last frame in seconds
-			const double speed = 20.0; // 20 distance units per second
+			const double speed = 40.0; // 40 distance units per second
 			float distance = (float)(speed * elapsed); // d = vt
 
 			// The amount of movement * the direction of movement, then rotate that along the direction we are looking
@@ -88,12 +90,28 @@ namespace PhysX.Samples.Engine
 
 		public Viewport Viewport { get; set; }
 
+		public Vector3 Position
+		{
+			get
+			{
+				Matrix viewI = Matrix.Invert(this.View);
+
+				return new Vector3(viewI.M41, viewI.M42, viewI.M43);
+			}
+		}
+		public Vector3 Direction
+		{
+			get
+			{
+				return Vector3.Normalize(new Vector3(View.M13, View.M23, View.M33));
+			}
+		}
+
 		//
 
 		[DllImport("user32.dll")]
 		static extern bool SetCursorPos(int X, int Y);
-		//[DllImport("user32.dll")]
-		//[return: MarshalAs(UnmanagedType.Bool)]
-		//static extern bool GetCursorPos(out MS.Win32.POINT lpPoint);
+		[DllImport("user32.dll")]
+		public static extern bool GetCursorPos(out System.Drawing.Point pt);
 	}
 }

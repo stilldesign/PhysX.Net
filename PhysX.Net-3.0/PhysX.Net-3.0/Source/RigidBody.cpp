@@ -36,71 +36,57 @@ void RigidBody::ClearTorque(ForceMode mode, bool wake)
 	this->UnmanagedPointer->clearTorque(ToUnmanagedEnum(PxForceMode, mode), wake);
 }
 
-bool RigidBody::UpdateMassAndInertia(RigidBody^ body, float density, [Optional] Nullable<Vector3> massLocalPose)
+bool RigidBody::UpdateMassAndInertia(float density, [Optional] Nullable<Vector3> massLocalPose)
 {
-	ThrowIfNullOrDisposed(body, "body");
-
 	PxVec3* mlp = (massLocalPose.HasValue ? &MathUtil::Vector3ToPxVec3(massLocalPose.Value) : NULL);
-	return PxRigidBodyExt::updateMassAndInertia(*body->UnmanagedPointer, density, mlp);
+	return PxRigidBodyExt::updateMassAndInertia(*this->UnmanagedPointer, density, mlp);
 }
 
-bool RigidBody::SetMassAndUpdateInertia(RigidBody^ body, float mass, [Optional] Nullable<Vector3> massLocalPose)
+bool RigidBody::SetMassAndUpdateInertia(float mass, [Optional] Nullable<Vector3> massLocalPose)
 {
-	ThrowIfNullOrDisposed(body, "body");
-
 	PxVec3* mlp = (massLocalPose.HasValue ? &MathUtil::Vector3ToPxVec3(massLocalPose.Value) : NULL);
-	return PxRigidBodyExt::setMassAndUpdateInertia(*body->UnmanagedPointer, mass, mlp);
+	return PxRigidBodyExt::setMassAndUpdateInertia(*this->UnmanagedPointer, mass, mlp);
 }
 
-void RigidBody::AddForceAtPosition(RigidBody^ body, Vector3 force, Vector3 position)
+void RigidBody::AddForceAtPosition(Vector3 force, Vector3 position)
 {
-	AddForceAtPosition(body, force, position, ForceMode::Force, true);
+	AddForceAtPosition(force, position, ForceMode::Force, true);
 }
-void RigidBody::AddForceAtPosition(RigidBody^ body, Vector3 force, Vector3 position, ForceMode forceMode, bool wakeUp)
+void RigidBody::AddForceAtPosition(Vector3 force, Vector3 position, ForceMode forceMode, bool wakeUp)
 {
-	ThrowIfNullOrDisposed(body, "body");
-
-	PxRigidBodyExt::addForceAtPos(*body->UnmanagedPointer, MathUtil::Vector3ToPxVec3(force), MathUtil::Vector3ToPxVec3(position), ToUnmanagedEnum(PxForceMode, forceMode), wakeUp);
+	PxRigidBodyExt::addForceAtPos(*this->UnmanagedPointer, MathUtil::Vector3ToPxVec3(force), MathUtil::Vector3ToPxVec3(position), ToUnmanagedEnum(PxForceMode, forceMode), wakeUp);
 }
 
-void RigidBody::AddForceAtLocalPosition(RigidBody^ body, Vector3 force, Vector3 position)
+void RigidBody::AddForceAtLocalPosition(Vector3 force, Vector3 position)
 {
-	AddForceAtLocalPosition(body, force, position, ForceMode::Force, true);
+	AddForceAtLocalPosition(force, position, ForceMode::Force, true);
 }
-void RigidBody::AddForceAtLocalPosition(RigidBody^ body, Vector3 force, Vector3 position, ForceMode forceMode, bool wakeUp)
+void RigidBody::AddForceAtLocalPosition(Vector3 force, Vector3 position, ForceMode forceMode, bool wakeUp)
 {
-	ThrowIfNullOrDisposed(body, "body");
-
-	PxRigidBodyExt::addForceAtLocalPos(*body->UnmanagedPointer, MathUtil::Vector3ToPxVec3(force), MathUtil::Vector3ToPxVec3(position), ToUnmanagedEnum(PxForceMode, forceMode), wakeUp);
+	PxRigidBodyExt::addForceAtLocalPos(*this->UnmanagedPointer, MathUtil::Vector3ToPxVec3(force), MathUtil::Vector3ToPxVec3(position), ToUnmanagedEnum(PxForceMode, forceMode), wakeUp);
 }
 
-void RigidBody::AddLocalForceAtPosition(RigidBody^ body, Vector3 force, Vector3 position)
+void RigidBody::AddLocalForceAtPosition(Vector3 force, Vector3 position)
 {
-	AddLocalForceAtPosition(body, force, position, ForceMode::Force, true);
+	AddLocalForceAtPosition(force, position, ForceMode::Force, true);
 }
-void RigidBody::AddLocalForceAtPosition(RigidBody^ body, Vector3 force, Vector3 position, ForceMode forceMode, bool wakeUp)
+void RigidBody::AddLocalForceAtPosition(Vector3 force, Vector3 position, ForceMode forceMode, bool wakeUp)
 {
-	ThrowIfNullOrDisposed(body, "body");
-
-	PxRigidBodyExt::addForceAtLocalPos(*body->UnmanagedPointer, MathUtil::Vector3ToPxVec3(force), MathUtil::Vector3ToPxVec3(position), ToUnmanagedEnum(PxForceMode, forceMode), wakeUp);
+	PxRigidBodyExt::addForceAtLocalPos(*this->UnmanagedPointer, MathUtil::Vector3ToPxVec3(force), MathUtil::Vector3ToPxVec3(position), ToUnmanagedEnum(PxForceMode, forceMode), wakeUp);
 }
 
-void RigidBody::AddLocalForceAtLocalPosition(RigidBody^ body, Vector3 force, Vector3 position)
+void RigidBody::AddLocalForceAtLocalPosition(Vector3 force, Vector3 position)
 {
-	AddLocalForceAtLocalPosition(body, force, position, ForceMode::Force, true);
+	AddLocalForceAtLocalPosition(force, position, ForceMode::Force, true);
 }
-void RigidBody::AddLocalForceAtLocalPosition(RigidBody^ body, Vector3 force, Vector3 position, ForceMode forceMode, bool wakeUp)
+void RigidBody::AddLocalForceAtLocalPosition(Vector3 force, Vector3 position, ForceMode forceMode, bool wakeUp)
 {
-	ThrowIfNullOrDisposed(body, "body");
-
-	PxRigidBodyExt::addLocalForceAtLocalPos(*body->UnmanagedPointer, MathUtil::Vector3ToPxVec3(force), MathUtil::Vector3ToPxVec3(position), ToUnmanagedEnum(PxForceMode, forceMode), wakeUp);
+	PxRigidBodyExt::addLocalForceAtLocalPos(*this->UnmanagedPointer, MathUtil::Vector3ToPxVec3(force), MathUtil::Vector3ToPxVec3(position), ToUnmanagedEnum(PxForceMode, forceMode), wakeUp);
 }
 
-Vector3 RigidBody::GetPointVelocity(RigidBody^ body, Vector3 point)
+Vector3 RigidBody::GetPointVelocity(Vector3 point)
 {
-	ThrowIfNullOrDisposed(body, "body");
-
-	PxVec3 v = PxRigidBodyExt::getPointVelocity(*body->UnmanagedPointer, MathUtil::Vector3ToPxVec3(point));
+	PxVec3 v = PxRigidBodyExt::getPointVelocity(*this->UnmanagedPointer, MathUtil::Vector3ToPxVec3(point));
 
 	return MathUtil::PxVec3ToVector3(v);
 }

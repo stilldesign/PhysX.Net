@@ -13,12 +13,15 @@ namespace PhysX.Samples
 			{
 				var rigidActor = scene.Physics.CreateRigidDynamic();
 
-				var material = scene.Physics.CreateMaterial(0.4f, 0.1f, 0.2f);
+				var material = scene.Physics.CreateMaterial(0.7f, 0.7f, 0.1f);
 
-				var boxGeom = new BoxGeometry(5, 5, 5);
+				var boxGeom = new BoxGeometry(2, 2, 2);
 				var boxShape = rigidActor.CreateShape(boxGeom, material);
 
 				rigidActor.GlobalPose = Matrix.Translation(0, 10 + i * boxGeom.Size.Y, 0);
+				rigidActor.SetMassAndUpdateInertia(10);
+
+				scene.AddActor(rigidActor);
 			}
 		}
 	}

@@ -49,7 +49,7 @@ PhysX::Scene^ Joint::Scene::get()
 	return _scene;
 }
 
-PhysX::Actor^ Joint::GetActor0::get()
+PhysX::Actor^ Joint::Actor0::get()
 {
 	PxRigidActor* a0 = NULL;
 	PxRigidActor* a1 = NULL;
@@ -60,7 +60,7 @@ PhysX::Actor^ Joint::GetActor0::get()
 
 	return ObjectTable::GetObject<Actor^>((intptr_t)a0);
 }
-PhysX::Actor^ Joint::GetActor1::get()
+PhysX::Actor^ Joint::Actor1::get()
 {
 	PxRigidActor* a0 = NULL;
 	PxRigidActor* a1 = NULL;

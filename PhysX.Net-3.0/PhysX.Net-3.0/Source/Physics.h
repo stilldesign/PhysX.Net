@@ -1,5 +1,6 @@
 #pragma once
 
+#include "ExtensionEnum.h"
 #include <PxPhysics.h>
 #include <PxDistanceJoint.h>
 #include <PxRigidDynamic.h>
@@ -27,6 +28,11 @@ namespace PhysX
 	ref class Foundation;
 	ref class Cooking;
 	ref class CookingParams;
+	
+	namespace VisualDebugger
+	{
+		ref class Connection;
+	};
 
 	/// <summary>
 	/// Abstract singleton factory class used for instancing objects in the Physics SDK.
@@ -75,6 +81,24 @@ namespace PhysX
 			{
 				virtual bool get();
 			}
+
+			//
+
+			/// <summary>
+			/// Connect to pvd using a network socket. This blocks for at most inTimeoutInMillisecondsbefore returning a new connection (or nothing). PVD needs to be started before this call is made.
+			/// </summary>
+			/// <param name="host">Host in x.x.x.x network notation.</param>
+			/// <param name="port">Port to connect to. The default is 5425.</param>
+			/// <param name="timeout">How long to block waiting for a new connection.</param>
+			/// <param name="checkApi">
+			/// Whether to check the PVD network calls to ensure that if someone defines a property to be a
+			/// float, a float is actually sent. This is extremely useful when creating new objects and
+			/// implementing new debugger bindings.
+			/// </param>
+			/// <param name="flags">The type information you want sent over the connection.</param>
+			VisualDebugger::Connection^ ConnectToRemoteDebugger(String^ host, [Optional] Nullable<int> port, [Optional] Nullable<TimeSpan> timeout, [Optional] Nullable<bool> checkApi, [Optional] Nullable<RemoteDebuggerConnectionFlags> flags);
+
+			//
 
 			property bool Instantiated
 			{

@@ -54,14 +54,14 @@ namespace PhysX
 			/// <summary>
 			/// Gets the first actor for this joint.
 			/// </summary>
-			property PhysX::Actor^ GetActor0
+			property PhysX::Actor^ Actor0
 			{
 				PhysX::Actor^ get();
 			}
 			/// <summary>
 			/// Gets the second actor for this joint.
 			/// </summary>
-			property PhysX::Actor^ GetActor1
+			property PhysX::Actor^ Actor1
 			{
 				PhysX::Actor^ get();
 			}

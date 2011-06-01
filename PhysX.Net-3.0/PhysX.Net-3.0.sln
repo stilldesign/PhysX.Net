@@ -34,9 +34,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Engine", "Samples\Engine\En
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainSample", "Samples\MainSample\MainSample.csproj", "{F5BB194F-90B4-4435-8A07-1AA754A9F509}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{E1E0C505-3069-4E15-980D-1C87F241C7F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RigidBodiesSample", "Samples\RigidBodiesSample\RigidBodiesSample.csproj", "{B6FCBC86-7674-47F8-9A95-E4B8B7FD44C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JointsSample", "Samples\JointsSample\JointsSample.csproj", "{36BAE136-2AA3-4292-BC2D-666A6A239FEB}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 5
+		SccNumberOfProjects = 7
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs01
 		SccLocalPath0 = .
@@ -47,11 +53,21 @@ Global
 		SccProjectName2 = Test
 		SccLocalPath2 = Test
 		SccProjectUniqueName3 = Samples\\Engine\\Engine.csproj
+		SccProjectTopLevelParentUniqueName3 = PhysX.Net-3.0.sln
 		SccProjectName3 = Samples/Engine
 		SccLocalPath3 = Samples\\Engine
 		SccProjectUniqueName4 = Samples\\MainSample\\MainSample.csproj
+		SccProjectTopLevelParentUniqueName4 = PhysX.Net-3.0.sln
 		SccProjectName4 = Samples/MainSample
 		SccLocalPath4 = Samples\\MainSample
+		SccProjectUniqueName5 = Samples\\RigidBodiesSample\\RigidBodiesSample.csproj
+		SccProjectTopLevelParentUniqueName5 = PhysX.Net-3.0.sln
+		SccProjectName5 = Samples/RigidBodiesSample
+		SccLocalPath5 = Samples\\RigidBodiesSample
+		SccProjectUniqueName6 = Samples\\JointsSample\\JointsSample.csproj
+		SccProjectTopLevelParentUniqueName6 = PhysX.Net-3.0.sln
+		SccProjectName6 = Samples/JointsSample
+		SccLocalPath6 = Samples\\JointsSample
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = PhysX.Net-3.0.vsmdi
@@ -91,6 +107,18 @@ Global
 		{F5BB194F-90B4-4435-8A07-1AA754A9F509}.Release|x64.ActiveCfg = Release|x86
 		{F5BB194F-90B4-4435-8A07-1AA754A9F509}.Release|x86.ActiveCfg = Release|x86
 		{F5BB194F-90B4-4435-8A07-1AA754A9F509}.Release|x86.Build.0 = Release|x86
+		{B6FCBC86-7674-47F8-9A95-E4B8B7FD44C0}.Debug|x64.ActiveCfg = Debug|x86
+		{B6FCBC86-7674-47F8-9A95-E4B8B7FD44C0}.Debug|x86.ActiveCfg = Debug|x86
+		{B6FCBC86-7674-47F8-9A95-E4B8B7FD44C0}.Debug|x86.Build.0 = Debug|x86
+		{B6FCBC86-7674-47F8-9A95-E4B8B7FD44C0}.Release|x64.ActiveCfg = Release|x86
+		{B6FCBC86-7674-47F8-9A95-E4B8B7FD44C0}.Release|x86.ActiveCfg = Release|x86
+		{B6FCBC86-7674-47F8-9A95-E4B8B7FD44C0}.Release|x86.Build.0 = Release|x86
+		{36BAE136-2AA3-4292-BC2D-666A6A239FEB}.Debug|x64.ActiveCfg = Debug|x86
+		{36BAE136-2AA3-4292-BC2D-666A6A239FEB}.Debug|x86.ActiveCfg = Debug|x86
+		{36BAE136-2AA3-4292-BC2D-666A6A239FEB}.Debug|x86.Build.0 = Debug|x86
+		{36BAE136-2AA3-4292-BC2D-666A6A239FEB}.Release|x64.ActiveCfg = Release|x86
+		{36BAE136-2AA3-4292-BC2D-666A6A239FEB}.Release|x86.ActiveCfg = Release|x86
+		{36BAE136-2AA3-4292-BC2D-666A6A239FEB}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -98,5 +126,9 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{B3BDE269-6BA3-41F2-A9DF-06B55DDD64B1} = {C30E53D2-3E99-40D6-9A1F-10316660BD96}
 		{2397F90D-2DDE-4F56-B9B8-9A50494CD181} = {C30E53D2-3E99-40D6-9A1F-10316660BD96}
+		{F5BB194F-90B4-4435-8A07-1AA754A9F509} = {E1E0C505-3069-4E15-980D-1C87F241C7F3}
+		{B6FCBC86-7674-47F8-9A95-E4B8B7FD44C0} = {E1E0C505-3069-4E15-980D-1C87F241C7F3}
+		{36BAE136-2AA3-4292-BC2D-666A6A239FEB} = {E1E0C505-3069-4E15-980D-1C87F241C7F3}
+		{D126F9D4-66BB-403B-B4B6-18C3546BEDF8} = {E1E0C505-3069-4E15-980D-1C87F241C7F3}
 	EndGlobalSection
 EndGlobal

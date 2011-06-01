@@ -25,6 +25,7 @@
 #include "SceneSweepOperationObject.h"
 #include "SweepHit.h"
 #include "FailedToCreateObjectException.h"
+#include "RenderBuffer.h"
 #include <PxFixedJoint.h>
 
 using namespace PhysX;
@@ -69,7 +70,7 @@ bool Scene::Disposed::get()
 
 SceneDesc^ Scene::SaveToDesc()
 {
-	SceneDesc^ desc = gcnew SceneDesc();
+	SceneDesc^ desc = gcnew SceneDesc(TolerancesScale());
 	
 	if (!this->UnmanagedPointer->saveToDesc(*desc->UnmanagedPointer))
 		return nullptr;
@@ -82,6 +83,15 @@ SceneDesc^ Scene::SaveToDesc()
 PhysX::Physics^ Scene::Physics::get()
 {
 	return _physics;
+}
+
+RenderBuffer^ Scene::GetRenderBuffer()
+{
+	const PxRenderBuffer& buffer = this->UnmanagedPointer->getRenderBuffer();
+
+	auto b = RenderBuffer::ToManaged(buffer);
+
+	return b;
 }
 
 SimulationStatistics^ Scene::GetSimulationStatistics()
@@ -179,6 +189,7 @@ Joint^ Scene::CreateJoint(JointType type, RigidActor^ actor0, Matrix localFrame0
 
 			auto fixedJoint = joint = gcnew FixedJoint(fixed, this);
 		}
+		break;
 
 		case JointType::Prismatic:
 		{
@@ -296,6 +307,10 @@ float Scene::GetVisualizationParameter(VisualizationParameter param)
 bool Scene::SetVisualizationParameter(VisualizationParameter param, float value)
 {
 	return _scene->setVisualizationParameter((PxVisualizationParameter::Enum)(PxU32)param, value);
+}
+bool Scene::SetVisualizationParameter(VisualizationParameter param, bool value)
+{
+	return SetVisualizationParameter(param, value ? 1.0f : 0.0f);
 }
 
 Bounds3 Scene::VisualizationCullingBox::get()

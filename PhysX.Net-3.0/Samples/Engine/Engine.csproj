@@ -84,20 +84,20 @@
   <ItemGroup>
     <Compile Include="Camera.cs" />
     <Compile Include="Color.cs" />
-    <Compile Include="Engine.cs" />
+    <Compile Include="Engine\Engine.cs" />
     <Compile Include="Extensions\ViewportExtensions.cs" />
-    <Compile Include="Sample.cs" />
+    <Compile Include="Sample\Sample.cs" />
     <Compile Include="Keyboard.cs" />
-    <Compile Include="Math.cs" />
-    <Compile Include="MathExtension.cs" />
+    <Compile Include="Math\Math.cs" />
+    <Compile Include="Math\MathExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SampleWindow.xaml.cs">
+    <Compile Include="Sample\SampleWindow.xaml.cs">
       <DependentUpon>SampleWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserOutput.cs" />
-    <Compile Include="VertexGrid.cs" />
-    <Compile Include="VertexPositionColor.cs" />
-    <Compile Include="VisualizationEffect.cs" />
+    <Compile Include="ErrorOutput.cs" />
+    <Compile Include="Engine\VertexGrid.cs" />
+    <Compile Include="Engine\VertexPositionColor.cs" />
+    <Compile Include="Engine\VisualizationEffect.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Shaders\VisualizationEffect.fx">
@@ -110,7 +110,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="SampleWindow.xaml">
+    <Page Include="Sample\SampleWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -128,7 +128,7 @@
     </Content>
     <Content Include="..\..\Assemblies\x86\PhysX3Gpu_x86.dll">
       <Link>PhysX3Gpu_x86.dll</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\..\Assemblies\x86\PhysX3_x86.dll">
       <Link>PhysX3_x86.dll</Link>
@@ -136,7 +136,7 @@
     </Content>
     <Content Include="..\..\Assemblies\x86\PxTaskCuda.dll">
       <Link>PxTaskCuda.dll</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Resource Include="Images\SamplesIcon.png" />
   </ItemGroup>

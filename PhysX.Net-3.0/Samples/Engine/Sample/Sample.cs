@@ -43,8 +43,8 @@ namespace PhysX.Samples
 		}
 		protected void Shutdown()
 		{
-			if (Engine.Core != null && !Engine.Core.Disposed)
-				Engine.Core.Dispose();
+			if (Engine.Physics != null && !Engine.Physics.Disposed)
+				Engine.Physics.Dispose();
 
 			Environment.Exit(0);
 		}

@@ -1,6 +1,7 @@
 #include "StdAfx.h"
 #include "SceneDesc.h"
 #include "TolerancesScale.h"
+#include "Physics.h"
 #include <PxSceneDesc.h>
 #include <PxDefaultSimulationFilterShader.h>
 #include <PxDefaultCpuDispatcher.h>
@@ -9,22 +10,17 @@
 using namespace PhysX;
 using namespace PhysX::Math;
 
-SceneDesc::SceneDesc()
+SceneDesc::SceneDesc([Optional] Nullable<PhysX::TolerancesScale> tolerancesScale)
 {
-	_sceneDesc = new PxSceneDesc(PxTolerancesScale());
+	if (!Physics::Instantiated)
+		throw gcnew InvalidOperationException("To create a SceneDesc instance you first must create a Physics instance. Internally this allows PxInitExtensions to be called.");
 
-	Init();
-}
-SceneDesc::SceneDesc(PhysX::TolerancesScale tolerancesScale)
-{
-	_sceneDesc = new PxSceneDesc(TolerancesScale::ToUnmanaged(tolerancesScale));
+	PxTolerancesScale ts = tolerancesScale.HasValue ? TolerancesScale::ToUnmanaged(tolerancesScale.Value) : PxTolerancesScale();
 
-	Init();
-}
-void SceneDesc::Init()
-{
+	_sceneDesc = new PxSceneDesc(ts);
+
 	_sceneDesc->filterShader = PxDefaultSimulationFilterShader;
-	_sceneDesc->cpuDispatcher = new CpuDis(); //PxDefaultCpuDispatcherCreate(1);
+	_sceneDesc->cpuDispatcher = PxDefaultCpuDispatcherCreate(1);
 }
 SceneDesc::~SceneDesc()
 {
@@ -32,7 +28,7 @@ SceneDesc::~SceneDesc()
 }
 SceneDesc::!SceneDesc()
 {
-	
+	SAFE_DELETE(_sceneDesc);
 }
 bool SceneDesc::Disposed::get()
 {

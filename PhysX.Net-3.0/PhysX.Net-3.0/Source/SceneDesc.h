@@ -5,20 +5,12 @@
 #include "TolerancesScale.h"
 #include <PxCpuDispatcher.h>
 #include <PxTask.h>
+#include <PxDefaultCpuDispatcher.h>
 
 using namespace PhysX::Math;
 
 namespace PhysX
 {
-	class CpuDis : public physx::pxtask::CpuDispatcher
-	{
-		public:
-			virtual void submitTask( physx::pxtask::BaseTask& task )
-			{
-				
-			}
-	};
-
 	public ref class SceneDesc : IDisposable
 	{
 		public:
@@ -31,11 +23,7 @@ namespace PhysX
 			PxSceneDesc* _sceneDesc;
 
 		public:
-			SceneDesc();
-			SceneDesc(PhysX::TolerancesScale tolerancesScale);
-		private:
-			void Init();
-		public:
+			SceneDesc([Optional] Nullable<PhysX::TolerancesScale> tolerancesScale);
 			~SceneDesc();
 		protected:
 			!SceneDesc();

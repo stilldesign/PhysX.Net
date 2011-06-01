@@ -32,6 +32,8 @@ namespace PhysX
 				virtual bool get();
 			}
 
+			virtual String^ ToString() override;
+
 			/// <summary>Gets or sets the coefficient of dynamic friction.</summary>
 			property float DynamicFriction
 			{

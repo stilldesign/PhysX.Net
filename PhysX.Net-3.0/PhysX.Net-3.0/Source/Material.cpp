@@ -36,6 +36,10 @@ bool Material::Disposed::get()
 	return _material == NULL;
 }
 
+String^ Material::ToString()
+{
+	return String::Format("Material. Dynamic Friction: {0:0.0#} Static Friction: {1:0.0#} Restitution: {2:0.0#}", DynamicFriction, StaticFriction, Restitution);
+}
 
 float Material::DynamicFriction::get()
 {

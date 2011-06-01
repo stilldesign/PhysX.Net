@@ -1,4 +1,4 @@
-#pragma one
+#pragma once
 
 #include "HeightField.h"
 #include "GeometryEnum.h"

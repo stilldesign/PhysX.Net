@@ -22,11 +22,14 @@
 #include "Foundation.h"
 #include "CookingParams.h"
 #include "Cooking.h"
+#include "VisualDebugger/Connection.h"
 
 #include <PxDefaultAllocator.h>
 #include <PxDefaultErrorCallback.h>
 #include <PxBoxGeometry.h>
 #include <PxParticleSystemDesc.h> 
+#include <PxExtensionsAPI.h>
+#include <PvdConnection.h>
 
 using namespace PhysX;
 
@@ -52,9 +55,9 @@ Physics::Physics([Optional] ErrorCallback^ errorCallback)
 	_allocator = new PxDefaultAllocator();
 	_errorCallback = (errorCallback == nullptr ? gcnew DefaultErrorCallback() : errorCallback);
 
-	_physics = PxCreatePhysics(PX_PHYSICS_VERSION, *_allocator, *_errorCallback->UnmanagedPointer, PxTolerancesScale());
+	_physics = PxCreatePhysics(PX_PHYSICS_VERSION, *_allocator, *_errorCallback->UnmanagedPointer, PxTolerancesScale(), true);
 
-	if(_physics == NULL)
+	if (_physics == NULL)
 		throw gcnew Exception("Failed to create physics instance");
 
 	PostInit();
@@ -81,6 +84,9 @@ void Physics::PostInit()
 	ObjectTable::Add((intptr_t)_physics, this, nullptr);
 
 	//
+
+	if (!PxInitExtensions(*_physics))
+		throw gcnew InvalidOperationException("Failed to initalize PhysX extensions");
 
 	_foundation = gcnew PhysX::Foundation(&_physics->getFoundation(), this);
 
@@ -112,11 +118,35 @@ Physics::!Physics()
 
 	SAFE_DELETE(_allocator);
 
+	PxCloseExtensions();
+
 	OnDisposed(this, nullptr);
 }
 bool Physics::Disposed::get()
 {
 	return _physics == NULL;
+}
+
+VisualDebugger::Connection^ Physics::ConnectToRemoteDebugger(String^ host, [Optional] Nullable<int> port, [Optional] Nullable<TimeSpan> timeout, [Optional] Nullable<bool> checkApi, [Optional] Nullable<RemoteDebuggerConnectionFlags> flags)
+{
+	if (host == nullptr)
+		throw gcnew ArgumentNullException("host");
+	if (timeout.HasValue && timeout.Value < TimeSpan::Zero)
+		throw gcnew ArgumentOutOfRangeException("Timeout cannot be less than zero", "timeout");
+
+	int p = port.GetValueOrDefault(5425);
+	int to = (int)timeout.GetValueOrDefault(TimeSpan::FromSeconds(10)).TotalMilliseconds;
+	bool chkapi = checkApi.GetValueOrDefault(false);
+	RemoteDebuggerConnectionFlags f = flags.GetValueOrDefault(RemoteDebuggerConnectionFlags::Unknown);
+
+	auto h = Util::ToUnmanagedString(host);
+
+	PVD::PvdConnection* connection = PxExtensionVisualDebugger::connect(_physics->getPvdConnectionManager(), h, p, to, chkapi, ToUnmanagedEnum2(PxDebuggerConnectionFlags, f));
+	
+	if (connection == NULL)
+		return nullptr;
+
+	return gcnew VisualDebugger::Connection(connection, this);
 }
 
 bool Physics::Instantiated::get()
@@ -132,7 +162,9 @@ PhysX::Foundation^ Physics::Foundation::get()
 #pragma region Scene
 Scene^ Physics::CreateScene()
 {
-	return CreateScene(gcnew SceneDesc());
+	auto sceneDesc = gcnew SceneDesc(TolerancesScale());
+
+	return CreateScene(sceneDesc);
 }
 Scene^ Physics::CreateScene(SceneDesc^ sceneDesc)
 {

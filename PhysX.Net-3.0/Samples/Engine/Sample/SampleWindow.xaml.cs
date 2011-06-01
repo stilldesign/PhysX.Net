@@ -47,5 +47,13 @@ namespace PhysX.Samples
 				return new WindowInteropHelper(this).Handle;
 			}
 		}
+
+		public Size RenderCanvasSize
+		{
+			get
+			{
+				return new Size(uxRenderCanvas.ActualWidth, uxRenderCanvas.ActualHeight);
+			}
+		}
 	}
 }

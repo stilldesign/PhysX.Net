@@ -124,6 +124,27 @@
     <Filter Include="Source Files\Cooking">
       <UniqueIdentifier>{c832b73c-e5f5-4619-9ea9-8e8538b0b434}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Common\RenderBuffer">
+      <UniqueIdentifier>{5c6cf2c3-3936-4595-b6c1-9796ecd84488}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Common\RenderBuffer">
+      <UniqueIdentifier>{6542a4d5-769b-422f-b070-79d93eaac31e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Extensions">
+      <UniqueIdentifier>{8795f52a-0658-4ec8-b8a8-62db9f9d5057}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\VisualDebugger">
+      <UniqueIdentifier>{2602b37b-8b4f-4a21-876a-8321da1986a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\VisualDebugger\Connection">
+      <UniqueIdentifier>{309df86b-0346-4ddf-af82-ac9d8a9c7be6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\VisualDebugger">
+      <UniqueIdentifier>{bb2c6a06-cca8-4601-9908-3db72a01b58c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\VisualDebugger\Connection">
+      <UniqueIdentifier>{9c4a3a2d-5d4e-4b3d-84a8-5a2dd9013117}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\StdAfx.h">
@@ -576,6 +597,27 @@
     <ClInclude Include="Source\IDisposable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Source\RenderBuffer.h">
+      <Filter>Header Files\Common\RenderBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DebugTriangle.h">
+      <Filter>Header Files\Common\RenderBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DebugPoint.h">
+      <Filter>Header Files\Common\RenderBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DebugLine.h">
+      <Filter>Header Files\Common\RenderBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DebugText.h">
+      <Filter>Header Files\Common\RenderBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ExtensionEnum.h">
+      <Filter>Header Files\Extensions</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VisualDebugger\Connection.h">
+      <Filter>Header Files\VisualDebugger\Connection</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Material.cpp">
@@ -956,5 +998,26 @@
     <ClCompile Include="Source\TriangleMeshDesc.cpp">
       <Filter>Source Files\Cooking</Filter>
     </ClCompile>
+    <ClCompile Include="Source\DebugTriangle.cpp">
+      <Filter>Source Files\Common\RenderBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DebugPoint.cpp">
+      <Filter>Source Files\Common\RenderBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DebugLine.cpp">
+      <Filter>Source Files\Common\RenderBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DebugText.cpp">
+      <Filter>Source Files\Common\RenderBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\RenderBuffer.cpp">
+      <Filter>Source Files\Common\RenderBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VisualDebugger\Connection.cpp">
+      <Filter>Source Files\VisualDebugger\Connection</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Changelog.txt" />
   </ItemGroup>
 </Project>

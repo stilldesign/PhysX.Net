@@ -13,11 +13,10 @@ namespace PhysX.Test
 		[TestMethod]
 		public void CreateAndDisposeSceneInstance()
 		{
-			var sceneDesc = new SceneDesc();
-			sceneDesc.IsValid();
-
 			using (var physics = new Physics(new ErrorOutput()))
 			{
+				var sceneDesc = new SceneDesc();
+
 				Scene scene;
 				using (scene = physics.CreateScene(sceneDesc))
 				{

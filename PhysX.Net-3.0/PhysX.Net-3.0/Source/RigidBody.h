@@ -45,10 +45,9 @@ namespace PhysX
 			/// <summary>
 			/// Computation of mass properties for a rigid body actor.
 			/// </summary>
-			/// <param name="body">The the rigid body for which to set the mass and centre of mass local pose properties.</param>
 			/// <param name="density">The density of the body. Used to compute the mass of the body. The density must be greater than 0.</param>
 			/// <param name="massLocalPose">The center of mass relative to the actor frame. If set to null then (0,0,0) is assumed.</param>
-			bool UpdateMassAndInertia(RigidBody^ body, float density, [Optional] Nullable<Vector3> massLocalPose);
+			bool UpdateMassAndInertia(float density, [Optional] Nullable<Vector3> massLocalPose);
 
 			/// <summary>
 			/// Computation of mass properties for a rigid body actor.
@@ -56,82 +55,73 @@ namespace PhysX
 			/// <param name="body">The the rigid body for which to set the mass and centre of mass local pose properties.</param>
 			/// <param name="mass">The mass of the body. Must be greater than 0.</param>
 			/// <param name="massLocalPose">The center of mass relative to the actor frame. If set to null then (0,0,0) is assumed.</param>
-			bool SetMassAndUpdateInertia(RigidBody^ body, float mass, [Optional] Nullable<Vector3> massLocalPose);
+			bool SetMassAndUpdateInertia(float mass, [Optional] Nullable<Vector3> massLocalPose);
 
 			/// <summary>
 			/// Applies a force (or impulse) defined in the global coordinate frame, acting at a particular point in global coordinates, to the actor.
 			/// </summary>
-			/// <param name="body">The rigid body to apply the force to.</param>
 			/// <param name="force">Force/impulse to add, defined in the global frame. Range: force vector.</param>
 			/// <param name="position">Position in the global frame to add the force at. Range: position vector.</param>
-			void AddForceAtPosition(RigidBody^ body, Vector3 force, Vector3 position);
+			void AddForceAtPosition(Vector3 force, Vector3 position);
 			/// <summary>
 			/// Applies a force (or impulse) defined in the global coordinate frame, acting at a particular point in global coordinates, to the actor.
 			/// </summary>
-			/// <param name="body">The rigid body to apply the force to.</param>
 			/// <param name="force">Force/impulse to add, defined in the global frame. Range: force vector.</param>
 			/// <param name="position">Position in the global frame to add the force at. Range: position vector.</param>
 			/// <param name="forceMode">The mode to use when applying the force/impulse (see ForceMode).</param>
 			/// <param name="wakeUp">Specify if the call should wake up the actor.</param>
-			void AddForceAtPosition(RigidBody^ body, Vector3 force, Vector3 position, ForceMode forceMode, bool wakeUp);
+			void AddForceAtPosition(Vector3 force, Vector3 position, ForceMode forceMode, bool wakeUp);
 
 			/// <summary>
 			/// Applies a force (or impulse) defined in the global coordinate frame, acting at a particular point in local coordinates, to the actor.
 			/// </summary>
-			/// <param name="body">The rigid body to apply the force to.</param>
 			/// <param name="force">Force/impulse to add, defined in the global frame. Range: force vector.</param>
 			/// <param name="position">Position in the global frame to add the force at. Range: position vector.</param>
-			void AddForceAtLocalPosition(RigidBody^ body, Vector3 force, Vector3 position);
+			void AddForceAtLocalPosition(Vector3 force, Vector3 position);
 			/// <summary>
 			/// Applies a force (or impulse) defined in the global coordinate frame, acting at a particular point in local coordinates, to the actor.
 			/// </summary>
-			/// <param name="body">The rigid body to apply the force to.</param>
 			/// <param name="force">Force/impulse to add, defined in the global frame. Range: force vector.</param>
 			/// <param name="position">Position in the global frame to add the force at. Range: position vector.</param>
 			/// <param name="forceMode">The mode to use when applying the force/impulse (see ForceMode).</param>
 			/// <param name="wakeUp">Specify if the call should wake up the actor.</param>
-			void AddForceAtLocalPosition(RigidBody^ body, Vector3 force, Vector3 position, ForceMode forceMode, bool wakeUp);
+			void AddForceAtLocalPosition(Vector3 force, Vector3 position, ForceMode forceMode, bool wakeUp);
 
 			/// <summary>
 			/// Applies a force (or impulse) defined in the actor local coordinate frame, acting at a particular point in global coordinates, to the actor.
 			/// </summary>
-			/// <param name="body">The rigid body to apply the force to.</param>
 			/// <param name="force">Force/impulse to add, defined in the local frame. Range: force vector.</param>
 			/// <param name="position">Position in the global frame to add the force at. Range: position vector.</param>
-			void AddLocalForceAtPosition(RigidBody^ body, Vector3 force, Vector3 position);
+			void AddLocalForceAtPosition(Vector3 force, Vector3 position);
 			/// <summary>
 			/// Applies a force (or impulse) defined in the actor local coordinate frame, acting at a particular point in global coordinates, to the actor.
 			/// </summary>
-			/// <param name="body">The rigid body to apply the force to.</param>
 			/// <param name="force">Force/impulse to add, defined in the local frame. Range: force vector.</param>
 			/// <param name="position">Position in the global frame to add the force at. Range: position vector.</param>
 			/// <param name="forceMode">The mode to use when applying the force/impulse (see ForceMode).</param>
 			/// <param name="wakeUp">Specify if the call should wake up the actor.</param>
-			void AddLocalForceAtPosition(RigidBody^ body, Vector3 force, Vector3 position, ForceMode forceMode, bool wakeUp);
+			void AddLocalForceAtPosition(Vector3 force, Vector3 position, ForceMode forceMode, bool wakeUp);
 
 			/// <summary>
 			/// Applies a force (or impulse) defined in the actor local coordinate frame, acting at a particular point in local coordinates, to the actor.
 			/// </summary>
-			/// <param name="body">The rigid body to apply the force to.</param>
 			/// <param name="force">Force/impulse to add, defined in the local frame. Range: force vector.</param>
 			/// <param name="position">Position in the global frame to add the force at. Range: position vector.</param>
-			void AddLocalForceAtLocalPosition(RigidBody^ body, Vector3 force, Vector3 position);
+			void AddLocalForceAtLocalPosition(Vector3 force, Vector3 position);
 			/// <summary>
 			/// Applies a force (or impulse) defined in the actor local coordinate frame, acting at a particular point in local coordinates, to the actor.
 			/// </summary>
-			/// <param name="body">The rigid body to apply the force to.</param>
 			/// <param name="force">Force/impulse to add, defined in the local frame. Range: force vector.</param>
 			/// <param name="position">Position in the global frame to add the force at. Range: position vector.</param>
 			/// <param name="forceMode">The mode to use when applying the force/impulse (see ForceMode).</param>
 			/// <param name="wakeUp">Specify if the call should wake up the actor.</param>
-			void AddLocalForceAtLocalPosition(RigidBody^ body, Vector3 force, Vector3 position, ForceMode forceMode, bool wakeUp);
+			void AddLocalForceAtLocalPosition(Vector3 force, Vector3 position, ForceMode forceMode, bool wakeUp);
 
 			/// <summary>
 			/// Computes the velocity of a point given in world coordinates if it were attached to the specified body and moving with it.
 			/// </summary>
-			/// <param name="body">The rigid body the point is attached to.</param>
 			/// <param name="point">Point we wish to determine the velocity for, defined in the global frame. Range: position vector.</param>
-			Vector3 GetPointVelocity(RigidBody^ body, Vector3 point);
+			Vector3 GetPointVelocity(Vector3 point);
 
 			//
 

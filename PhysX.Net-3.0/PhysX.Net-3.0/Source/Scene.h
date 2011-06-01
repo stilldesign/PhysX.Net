@@ -26,6 +26,7 @@ namespace PhysX
 	ref class Aggregate;
 	ref class SweepHit;
 	ref class SceneSweepOperationObject;
+	ref class RenderBuffer;
 
 	/// <summary>
 	/// A scene is a collection of bodies, deformables, particle systems and constraints which can interact.
@@ -76,6 +77,13 @@ namespace PhysX
 			{
 				PhysX::Physics^ get();
 			}
+
+			/// <summary
+			/// Retrieves the render buffer.
+			/// This will contain the results of any active visualization for this scene.
+			/// Note: Do not use this method while the simulation is running. Calls to this method while result in undefined behaviour.
+			/// </summary>
+			RenderBuffer^ GetRenderBuffer();
 
 			/// <summary>Call this method to retrieve statistics for the current simulation step.</summary>
 			SimulationStatistics^ GetSimulationStatistics();
@@ -206,6 +214,10 @@ namespace PhysX
 			/// Function that lets you set debug visualization parameters. 
 			/// </summary>
 			bool SetVisualizationParameter(VisualizationParameter param, float value);
+			/// <summary>
+			/// Function that lets you set debug visualization parameters. 
+			/// </summary>
+			bool SetVisualizationParameter(VisualizationParameter param, bool value);
 
 			property Bounds3 VisualizationCullingBox
 			{

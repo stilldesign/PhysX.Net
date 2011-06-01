@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="PhysX.Net Sample" Height="300" Width="300" Icon="/PhysX.Samples.Engine;component/Images/SamplesIcon.png"
         KeyUp="Window_KeyUp">
-    <Grid>
+    <Grid x:Name="uxRenderCanvas">
         
     </Grid>
 </Window>
