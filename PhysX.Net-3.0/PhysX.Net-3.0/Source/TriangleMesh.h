@@ -19,7 +19,7 @@ namespace PhysX
 			PxTriangleMesh* _triangleMesh;
 			Physics^ _physics;
 
-		protected:
+		public:
 			TriangleMesh(PxTriangleMesh* triangleMesh, PhysX::Physics^ physics);
 		public:
 			~TriangleMesh();

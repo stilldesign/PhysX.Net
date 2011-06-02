@@ -42,14 +42,25 @@ bool Cooking::Disposed::get()
 
 bool Cooking::CookTriangleMesh(TriangleMeshDesc^ desc, System::IO::Stream^ stream)
 {
-	throw gcnew NotImplementedException();
-	/*ThrowIfNull(desc, "desc");
+	ThrowIfDescriptionIsNullOrInvalid(desc, "desc");
 	ThrowIfNull(stream, "stream");
 
-	MemoryStream s;
-	s.storeBuffer(stream->PositionPointer, stream->Length);
+	PxTriangleMeshDesc d = TriangleMeshDesc::ToUnmanaged(desc);
 
-	return _cooking->cookTriangleMesh(TriangleMeshDesc::ToUnmanaged(desc), s);*/
+	// TODO: TriangleMeshDesc.IsValid()
+	if(!d.isValid())
+		throw gcnew ArgumentException("The triangle mesh description is invalid");
+
+	MemoryStream memoryStream;
+	bool result = _cooking->cookTriangleMesh(d, memoryStream);
+
+	Util::CopyIntoStream(memoryStream, stream);
+
+	delete[] d.points.data;
+	delete[] d.triangles.data;
+	delete[] d.materialIndices.data;
+
+	return result;
 }
 
 bool Cooking::CookConvexMesh(ConvexMeshDesc^ desc, System::IO::Stream^ stream)

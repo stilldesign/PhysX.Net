@@ -13,7 +13,7 @@ MemoryStream::MemoryStream(const PxU8* memory, int size)
 	assert(_memory != NULL);
 	assert(size >= 0);
 
-	_capacity = size;
+	_capacity = sizeof(PxU8) * size;
 	_memory = _seek = memory;
 }
 MemoryStream::MemoryStream(long byteSize)

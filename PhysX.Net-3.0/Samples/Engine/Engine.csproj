@@ -86,6 +86,8 @@
     <Compile Include="Color.cs" />
     <Compile Include="Engine\Engine.cs" />
     <Compile Include="Extensions\ViewportExtensions.cs" />
+    <Compile Include="Geometry\ColladaLoader.cs" />
+    <Compile Include="Geometry\Model.cs" />
     <Compile Include="Sample\Sample.cs" />
     <Compile Include="Keyboard.cs" />
     <Compile Include="Math\Math.cs" />

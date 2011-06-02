@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using PhysX.Samples;
 using PhysX.Math;
+using PhysX.Samples.Engine;
+using System.IO;
 
 namespace PhysX.Samples.RigidBodiesSample
 {
@@ -45,7 +47,7 @@ namespace PhysX.Samples.RigidBodiesSample
 				var sphereGeom = new SphereGeometry(radius: 2);
 				var boxShape = rigidActor.CreateShape(sphereGeom, material);
 
-				rigidActor.GlobalPose = Matrix.Translation(-10, 10 + i * (sphereGeom.Radius * 2 + 0.5f), 0);
+				rigidActor.GlobalPose = Matrix.Translation(-10, 30 + i * (sphereGeom.Radius * 2 + 0.5f), 0);
 				rigidActor.SetMassAndUpdateInertia(10);
 
 				scene.AddActor(rigidActor);
@@ -59,7 +61,7 @@ namespace PhysX.Samples.RigidBodiesSample
 				var capsuleGeom = new CapsuleGeometry(radius: 2, halfHeight: 2);
 				var boxShape = rigidActor.CreateShape(capsuleGeom, material);
 
-				rigidActor.GlobalPose = Matrix.Translation(0, 10 + i * (capsuleGeom.HalfHeight + capsuleGeom.Radius + 0.5f), 0);
+				rigidActor.GlobalPose = Matrix.Translation(0, 30 + i * (capsuleGeom.HalfHeight + capsuleGeom.Radius + 0.5f), 0);
 				rigidActor.SetMassAndUpdateInertia(10);
 
 				scene.AddActor(rigidActor);
@@ -89,13 +91,52 @@ namespace PhysX.Samples.RigidBodiesSample
 
 				rigidActor.CreateShape(heightFieldGeom, material);
 
-				rigidActor.GlobalPose = Matrix.Translation(30, 10, -32.5f);
+				rigidActor.GlobalPose = Matrix.Translation(30, 30, -32.5f);
+
+				scene.AddActor(rigidActor);
+			}
+
+			// Triangle Mesh
+			{
+				var colladaLoader = new ColladaLoader();
+				var bunny = colladaLoader.Load(@"Teapot.DAE", this.Engine.GraphicsDevice);
+
+				var triangleMeshDesc = new TriangleMeshDesc()
+				{
+					Flags = (MeshFlag)0,
+					Triangles = bunny.Indices,
+					Points = bunny.VertexPositions
+				};
+
+				var cooking = scene.Physics.CreateCooking();
+
+				var stream = new MemoryStream();
+				bool cookResult = cooking.CookTriangleMesh(triangleMeshDesc, stream);
+
+				stream.Position = 0;
+
+				var triangleMesh = scene.Physics.CreateTriangleMesh(stream);
+
+				var triangleMeshGeom = new TriangleMeshGeometry(triangleMesh)
+				{
+					Scale = new MeshScale(new Vector3(0.3f, 0.3f, 0.3f), Quaternion.Identity)
+				};
+
+				var rigidActor = scene.Physics.CreateRigidStatic();
+
+				// TODO: The Shape created here is now also an owner of the TriangleMesh object,
+				// this needs to be incorp into the ObjectTable ownership logic
+				rigidActor.CreateShape(triangleMeshGeom, material);
+
+				rigidActor.GlobalPose = 
+					Matrix.RotationX(-(float)System.Math.PI / 2) *
+					Matrix.Translation(0, 10, 0);
 
 				scene.AddActor(rigidActor);
 			}
 		}
 
-		private static HeightFieldSample[] CreateSampleGrid(int rows, int columns)
+		private HeightFieldSample[] CreateSampleGrid(int rows, int columns)
 		{
 			const float height = 2;
 

@@ -12,34 +12,37 @@ namespace PhysX
 	{
 		private:
 			Array^ _triangles;
-			bool _is16BitTriangles;
-
-			array<Vector3>^ _positions;
 
 		public:
 			SimpleTriangleMesh();
 
 		internal:
-			static SimpleTriangleMesh^ ToManaged(PxSimpleTriangleMesh desc);
-			static PxSimpleTriangleMesh ToUnmanaged(SimpleTriangleMesh^ desc);
+			void PopulateUnmanaged(PxSimpleTriangleMesh& mesh);
+
+			static SimpleTriangleMesh^ ToManaged(PxSimpleTriangleMesh mesh);
+			static PxSimpleTriangleMesh ToUnmanaged(SimpleTriangleMesh^ mesh);
 
 		public:
+			void SetToDefault();
+			bool IsValid();
+
+			/// <summary>
+			/// Gets whether the triangles are stored as short or int values.
+			/// </summary>
+			bool Is16BitTriangleIndices();
+
 			generic<typename T> where T : value class
 			array<T>^ GetTriangles();
 			generic<typename T> where T : value class
 			void SetTriangles(array<T>^ triangles);
 
-			array<Vector3>^ GetPositions();
-			void SetPositions(array<Vector3>^ positions);
+			property array<Vector3>^ Points;
+			property Array^ Triangles
+			{
+				Array^ get();
+				void set(Array^ value);
+			}
 
 			property MeshFlag Flags;
-
-			/// <summary>
-			/// Gets whether the triangles are stored as short or int values.
-			/// </summary>
-			property bool Is16BitTriangles
-			{
-				bool get();
-			}
 	};
 };

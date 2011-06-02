@@ -18,6 +18,9 @@ namespace PhysX
 			static PxTriangleMeshDesc ToUnmanaged(TriangleMeshDesc^ desc);
 
 		public:
+			void SetToDefault();
+			bool IsValid();
+
 			property array<short>^ MaterialIndices;
 
 			property float ConvexEdgeThreshold;

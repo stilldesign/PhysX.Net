@@ -19,13 +19,36 @@ PxTriangleMeshDesc TriangleMeshDesc::ToUnmanaged(TriangleMeshDesc^ desc)
 {
 	PxTriangleMeshDesc d;
 
-	auto i = PxTypedStridedData<PxMaterialTableIndex>();
-	i.data = new PxMaterialTableIndex[desc->MaterialIndices->Length];
+	desc->PopulateUnmanaged(d);
 
-	d.materialIndices = i;
-	Util::AsUnmanagedArray<short>(desc->MaterialIndices, (void*)i.data, desc->MaterialIndices->Length);
-
+	if (desc->MaterialIndices != nullptr)
+	{
+		auto i = PxTypedStridedData<PxMaterialTableIndex>();
+		i.data = new PxMaterialTableIndex[desc->MaterialIndices->Length];
+		
+		d.materialIndices = i;
+		Util::AsUnmanagedArray<short>(desc->MaterialIndices, (void*)i.data, desc->MaterialIndices->Length);
+	}
+	
 	d.convexEdgeThreshold = desc->ConvexEdgeThreshold;
 
 	return d;
+}
+
+void TriangleMeshDesc::SetToDefault()
+{
+	SimpleTriangleMesh::SetToDefault();
+	ConvexEdgeThreshold			= 0.001f;
+}
+bool TriangleMeshDesc::IsValid()
+{
+	if(Points->Length < 3) 	//at least 1 trig's worth of points
+		return false;
+	if ((!Triangles) && (Points->Length%3))		// Non-indexed mesh => we must ensure the geometry defines an implicit number of triangles // i.e. numVertices can't be divided by 3
+		return false;
+	//add more validity checks here
+	//if (MaterialIndices.data && MaterialIndices.stride < sizeof(PxMaterialTableIndex))
+	//	return false;
+
+	return SimpleTriangleMesh::IsValid();
 }

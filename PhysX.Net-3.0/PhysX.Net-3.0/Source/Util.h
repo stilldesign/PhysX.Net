@@ -1,5 +1,6 @@
 #pragma once
 
+#include "MemoryStream.h"
 #include <PxStrideIterator.h>
 
 using namespace System;
@@ -37,5 +38,10 @@ namespace PhysX
 
 			generic<typename T> where T : value class
 			static PrimitiveTypeSize Is16Or32Bit();
+			static PrimitiveTypeSize Is16Or32Bit(Type^ type);
+
+			static MemoryStream* StreamToUnmanagedMemoryStream(System::IO::Stream^ stream);
+			static System::IO::MemoryStream^ UnmanagedMemoryStreamToStream(MemoryStream& memoryStream);
+			static void CopyIntoStream(MemoryStream& memoryStream, System::IO::Stream^ stream);
 	};
 };

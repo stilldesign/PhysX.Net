@@ -63,6 +63,7 @@ namespace PhysX
 			List<DeformableMesh^>^ _deformableMeshes;
 			List<HeightField^>^ _heightFields;
 			List<Cooking^>^ _cooks;
+			List<TriangleMesh^>^ _triangleMeshes;
 
 			Physics(PxPhysics* physics);
 		public:
@@ -149,6 +150,16 @@ namespace PhysX
 			{
 				IEnumerable<Material^>^ get();
 			}
+			#pragma endregion
+
+			#pragma region Material
+			/// <summary>
+			/// Creates a triangle mesh object.
+			/// This can then be instanced into PxShape objects.
+			/// </summary>
+			/// <param name="stream">The triangle mesh stream.</param>
+			/// <returns>The new triangle mesh.</returns>
+			TriangleMesh^ CreateTriangleMesh(System::IO::Stream^ stream);
 			#pragma endregion
 
 			#pragma region HeightField

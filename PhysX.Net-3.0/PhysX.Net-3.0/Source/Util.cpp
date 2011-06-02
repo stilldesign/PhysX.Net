@@ -1,5 +1,6 @@
 #include "StdAfx.h"
 #include "Util.h"
+#include "MemoryStream.h"
 
 using namespace PhysX;
 
@@ -75,10 +76,71 @@ char* Util::ToUnmanagedString(String^ string)
 generic<typename T> where T : value class
 PrimitiveTypeSize Util::Is16Or32Bit()
 {
-	if (T::typeid == short::typeid || T::typeid == unsigned short::typeid)
+	return Is16Or32Bit(T::typeid);
+}
+PrimitiveTypeSize Util::Is16Or32Bit(Type^ type)
+{
+	ThrowIfNull(type, "type");
+
+	if (type == short::typeid || type == unsigned short::typeid)
 		return PrimitiveTypeSize::Bit16;
-	else if (T::typeid == int::typeid || T::typeid == unsigned int::typeid)
+	else if (type == int::typeid || type == unsigned int::typeid)
 		return PrimitiveTypeSize::Bit32;
 	else
 		return (PrimitiveTypeSize)0;
+}
+
+MemoryStream* Util::StreamToUnmanagedMemoryStream(System::IO::Stream^ stream)
+{
+	ThrowIfNull(stream, "stream");
+	if (!stream->CanRead)
+		throw gcnew ArgumentException("Cannot read from stream");
+	if (stream->Length > 0xFFFFFFFF) // Max 32 bit (somewhat arbitary, but nothing will ever allocate this much)
+		throw gcnew OutOfMemoryException("Trying to allocation too much memory");
+
+	int streamSize = (int)stream->Length;
+
+	if (streamSize == 0)
+		return new MemoryStream(0);
+
+	const PxU8* memoryStreamPtr = (const PxU8*)malloc(streamSize * sizeof(PxU8));
+	ZeroMemory((void*)memoryStreamPtr, streamSize);
+
+	array<Byte>^ buffer = gcnew array<Byte>(streamSize);
+	stream->Read(buffer, 0, streamSize);
+	pin_ptr<Byte> b = &buffer[0];
+
+	memcpy_s((void*)memoryStreamPtr, streamSize, b, streamSize);
+
+	return new MemoryStream(memoryStreamPtr, streamSize);
+}
+System::IO::MemoryStream^ Util::UnmanagedMemoryStreamToStream(MemoryStream& memoryStream)
+{
+	auto stream = gcnew System::IO::MemoryStream();
+
+	CopyIntoStream(memoryStream, stream);
+
+	return stream;
+}
+void Util::CopyIntoStream(MemoryStream& memoryStream, System::IO::Stream^ stream)
+{
+	ThrowIfNull(stream, "stream");
+	if (memoryStream.GetMemory() == NULL)
+		throw gcnew ArgumentException("Cannot read from stream");
+	if (memoryStream.getMemorySize() > 0xFFFFFFFF)
+		throw gcnew OutOfMemoryException("Trying to allocation too much memory");
+
+	int streamSize = (int)memoryStream.getMemorySize();
+
+	if (streamSize == 0)
+		return;
+
+	const PxU8* memoryPtr = memoryStream.GetMemory();
+
+	array<Byte>^ buffer = gcnew array<Byte>(streamSize);
+	pin_ptr<Byte> b = &buffer[0];
+
+	memcpy_s(b, streamSize, memoryPtr, streamSize);
+
+	stream->Write(buffer, 0, streamSize);
 }

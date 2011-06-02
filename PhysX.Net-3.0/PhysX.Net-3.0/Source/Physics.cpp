@@ -22,6 +22,7 @@
 #include "Foundation.h"
 #include "CookingParams.h"
 #include "Cooking.h"
+#include "TriangleMesh.h"
 #include "VisualDebugger/Connection.h"
 
 #include <PxDefaultAllocator.h>
@@ -76,6 +77,7 @@ void Physics::Init()
 	_deformableMeshes = gcnew List<DeformableMesh^>();
 	_heightFields = gcnew List<HeightField^>();
 	_cooks = gcnew List<Cooking^>();
+	_triangleMeshes = gcnew List<TriangleMesh^>();
 
 	_instantiated = true;
 }
@@ -224,6 +226,34 @@ HeightField^ Physics::CreateHeightField(HeightFieldDesc^ desc)
 	_heightFields->Add(heightField);
 
 	return heightField;
+}
+#pragma endregion
+
+#pragma region Material
+TriangleMesh^ Physics::CreateTriangleMesh(System::IO::Stream^ stream)
+{
+	try
+	{
+		// TODO: Memory leak
+		MemoryStream* ms = Util::StreamToUnmanagedMemoryStream(stream);
+
+		PxTriangleMesh* triangleMesh = _physics->createTriangleMesh(*ms);
+
+		if (triangleMesh == NULL)
+			throw gcnew FailedToCreateObjectException("Failed to create triangle mesh");
+	
+		auto t = gcnew TriangleMesh(triangleMesh, this);
+
+		_triangleMeshes->Add(t);
+
+		//delete ms;
+
+		return t;
+	}
+	finally
+	{
+		//delete[] ms.GetMemory();
+	}
 }
 #pragma endregion
 
