@@ -25,16 +25,11 @@ namespace PhysX.Samples.Engine
 
 		public void Update(TimeSpan elapsedTime)
 		{
-			Point p;
-			GetCursorPos(out p);
-
-			var mousePos = p - new Size((int)_engine.Window.Left, (int)_engine.Window.Top);
-
-			Vector2 cursorPosition = new Vector2((float)mousePos.X, (float)mousePos.Y);
-			Vector2 mouseCenter = new Vector2((int)_engine.Window.Width / 2, (int)_engine.Window.Height / 2);
-			Vector2 delta = cursorPosition - mouseCenter;
+			Vector2 delta = GetMouseDelta();
 			Vector2 deltaDampened = delta * 0.0005f;
 			CenterCursor();
+
+			this.MouseDelta = delta;
 
 			// Should perhaps extract the yaw and pitch from the current direction of the camera
 			_cameraYaw += deltaDampened.X;
@@ -75,6 +70,19 @@ namespace PhysX.Samples.Engine
 			this.View = Matrix.LookAtLH(newPosition, newPosition + newForward, Vector3.UnitY);
 		}
 
+		private Vector2 GetMouseDelta()
+		{
+			Point p;
+			GetCursorPos(out p);
+
+			var mousePos = p - new Size((int)_engine.Window.Left, (int)_engine.Window.Top);
+
+			Vector2 cursorPosition = new Vector2(mousePos.X, mousePos.Y);
+			Vector2 mouseCenter = new Vector2((float)_engine.Window.Width / 2, (float)_engine.Window.Height / 2);
+
+			return cursorPosition - mouseCenter;
+		}
+
 		private void CenterCursor()
 		{
 			Point l = new Point((int)_engine.Window.Left, (int)_engine.Window.Top);
@@ -106,6 +114,12 @@ namespace PhysX.Samples.Engine
 				return Vector3.Normalize(new Vector3(View.M13, View.M23, View.M33));
 			}
 		}
+
+		/// <summary>
+		/// Gets the change in mouse position (in pixels).
+		/// This value is updated each frame.
+		/// </summary>
+		public Vector2 MouseDelta { get; private set; }
 
 		//
 

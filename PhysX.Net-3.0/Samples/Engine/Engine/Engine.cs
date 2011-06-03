@@ -33,8 +33,6 @@ namespace PhysX.Samples.Engine
 		private RasterizerState _rasterizerState;
 		private BlendState _blendState;
 
-		private VertexPositionColor[] _grid;
-
 		public Engine()
 		{
 			Window = new SampleWindow();
@@ -49,7 +47,7 @@ namespace PhysX.Samples.Engine
 			Mouse.SetCursor(Cursors.None);
 		}
 
-		void _keyboard_OnKeyDown(object sender, KeyEventArgs e)
+		private void _keyboard_OnKeyDown(object sender, KeyEventArgs e)
 		{
 			if (e.Key == Key.Space)
 			{
@@ -160,8 +158,6 @@ namespace PhysX.Samples.Engine
 				CullMode = CullMode.None
 			};
 			_rasterizerState = RasterizerState.FromDescription(device, rasterDesc);
-
-			CreateGrid();
 		}
 		private void CreateDepthStencil()
 		{
@@ -247,6 +243,7 @@ namespace PhysX.Samples.Engine
 		public void Run()
 		{
 			Window.Show();
+			Window.Focus();
 			//Application.DoEvents();
 
 			Stopwatch timer = new Stopwatch();
@@ -270,6 +267,8 @@ namespace PhysX.Samples.Engine
 		private bool _fetchedResults = true;
 		private void Update(TimeSpan elapsed)
 		{
+			this.FrameTime = elapsed;
+
 			// Update Physics
 			if (_fetchedResults)
 				this.Scene.Simulate((float)elapsed.TotalSeconds);
@@ -303,9 +302,6 @@ namespace PhysX.Samples.Engine
 			pass.Apply();
 
 			DrawDebug(this.Scene.GetRenderBuffer());
-			DrawWorldAxis();
-			//DrawGrid();
-			//DrawCubes();
 
 			if (OnDraw != null)
 				OnDraw(this, null);
@@ -366,82 +362,6 @@ namespace PhysX.Samples.Engine
 				DrawVertices(vertices, PrimitiveTopology.TriangleList);
 			}
 		}
-		private void DrawWorldAxis()
-		{
-			var vertices = new[] 
-		    {
-		        // X
-		        new VertexPositionColor(new Vector3(0, 0, 0), new Color(1, 0, 0)),
-		        new VertexPositionColor(new Vector3(5, 0, 0), new Color(1, 0, 0)),
-													   	  
-		        // Y								   	  
-		        new VertexPositionColor(new Vector3(0, 0, 0), new Color(0, 1, 0)),
-		        new VertexPositionColor(new Vector3(0, 5, 0), new Color(0, 1, 0)),
-													   	  
-		        // Z								   	  
-		        new VertexPositionColor(new Vector3(0, 0, 0), new Color(0, 0, 1)),
-		        new VertexPositionColor(new Vector3(0, 0, 5), new Color(0, 0, 1)),
-		    };
-
-			DrawVertices(vertices, PrimitiveTopology.LineList);
-		}
-		private void DrawGrid()
-		{
-			DrawVertices(_grid, PrimitiveTopology.LineList);
-		}
-		private void CreateGrid()
-		{
-			const int n = 20;
-			const float size = 100;
-			const float scale = 2.0f;
-			const float finalSize = size * scale;
-
-			// Number of vertices is: n
-			// * 2 = Line is 2 vertices
-			// * 2 = Lines left and right
-			// * Vertical and Horizontal
-			int k = (n * 2) * 2 * 2;
-			var vertices = new VertexPositionColor[k];
-
-			// Trim off the last sticky out bit
-			float trimmedSize = finalSize - (((size / n) * scale));
-
-			int j = 0;
-			for (int i = 0; i < k; i += 8)
-			{
-				// Grid line coord
-				float s = ((size / n) * scale) * j++;
-
-				// Left and right
-				var r0 = new VertexPositionColor(s, 0, -trimmedSize);
-				var r1 = new VertexPositionColor(s, 0, trimmedSize);
-				var l0 = new VertexPositionColor(-s, 0, -trimmedSize);
-				var l1 = new VertexPositionColor(-s, 0, trimmedSize);
-
-				vertices[i + 0] = r0;
-				vertices[i + 1] = r1;
-				vertices[i + 2] = l0;
-				vertices[i + 3] = l1;
-
-				// Top and bottom
-				var t0 = new VertexPositionColor(-trimmedSize, 0, s);
-				var t1 = new VertexPositionColor(trimmedSize, 0, s);
-				var b0 = new VertexPositionColor(-trimmedSize, 0, -s);
-				var b1 = new VertexPositionColor(trimmedSize, 0, -s);
-
-				vertices[i + 4] = t0;
-				vertices[i + 5] = t1;
-				vertices[i + 6] = b0;
-				vertices[i + 7] = b1;
-			}
-
-			for (int i = 0; i < vertices.Length; i++)
-			{
-				vertices[i].Color = Color.Parse("#FFF");
-			}
-
-			_grid = vertices;
-		}
 
 		private void PopulatePrimitivesBuffer(VertexPositionColor[] vertices)
 		{
@@ -489,5 +409,7 @@ namespace PhysX.Samples.Engine
 				return _keyboard;
 			}
 		}
+
+		public TimeSpan FrameTime { get; private set; }
 	}
 }

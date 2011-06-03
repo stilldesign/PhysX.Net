@@ -25,7 +25,7 @@ namespace PhysX.Samples
 				return;
 			}
 
-			Update(elapsed);
+			UpdateSample(elapsed);
 		}
 		protected void DrawEngine()
 		{
@@ -34,8 +34,24 @@ namespace PhysX.Samples
 
 		protected abstract void LoadContent();
 		protected abstract void LoadPhysics(Scene scene);
+		private void UpdateSample(TimeSpan elapsed)
+		{
+			ProcessKeyboard(Engine.Keyboard.PressedKeys.ToArray());
+
+			ProcessMouse(Engine.Camera.MouseDelta.X, Engine.Camera.MouseDelta.Y);
+
+			Update(elapsed);
+		}
 		protected abstract void Update(TimeSpan elapsed);
 		protected abstract void Draw();
+		protected virtual void ProcessKeyboard(Key[] pressedKeys)
+		{
+
+		}
+		protected virtual void ProcessMouse(float deltaX, float deltaY)
+		{
+
+		}
 
 		protected void Run()
 		{
@@ -52,5 +68,21 @@ namespace PhysX.Samples
 		//
 
 		protected PhysX.Samples.Engine.Engine Engine { get; private set; }
+
+		public TimeSpan FrameTime
+		{
+			get
+			{
+				return Engine.FrameTime;
+			}
+		}
+
+		public Scene Scene
+		{
+			get
+			{
+				return Engine.Scene;
+			}
+		}
 	}
 }

@@ -20,8 +20,8 @@ namespace PhysX
 		internal:
 			virtual PxControllerDesc ToUnmanaged() abstract;
 
-			static void AssignToUnmanaged(ControllerDesc^ desc, PxControllerDesc* d);
-			static void AssignToManaged(PxControllerDesc* d, ControllerDesc^ desc);
+			static void AssignToUnmanaged(ControllerDesc^ desc, PxControllerDesc& d);
+			static void AssignToManaged(PxControllerDesc& d, ControllerDesc^ desc);
 
 		protected:
 			ControllerDesc(ControllerShapeType type);
@@ -99,20 +99,20 @@ namespace PhysX
 			///// </summary>
 			//property PhysX::DominanceGroup^ DominanceGroup;
 
-			/// <summary>
-			/// Gets or sets the simulation filter data for the character controller.
-			/// </summary>
-			property FilterData^ ControllerSimulationFilterData;
+			///// <summary>
+			///// Gets or sets the simulation filter data for the character controller.
+			///// </summary>
+			//property FilterData ControllerSimulationFilterData;
 
 			///// <summary>
 			///// The collision shapes of the character controller (for now support only 1 shape).
 			///// </summary>
 			//property ControllerShapeDesc^ ShapeDesc;
 
-			/// <summary>
-			/// Gets or sets the initial pose of the character controller.
-			/// </summary>
-			property Matrix GlobalPose;
+			///// <summary>
+			///// Gets or sets the initial pose of the character controller.
+			///// </summary>
+			//property Matrix GlobalPose;
 
 			/// <summary>
 			/// Gets or sets the density for proxy shape.

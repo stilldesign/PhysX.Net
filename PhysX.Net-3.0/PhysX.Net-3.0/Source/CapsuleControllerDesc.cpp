@@ -12,7 +12,7 @@ PxCapsuleControllerDesc CapsuleControllerDesc::ToUnmanaged(CapsuleControllerDesc
 	PxCapsuleControllerDesc d;
 
 	// Populate the base classes properties
-	ControllerDesc::AssignToUnmanaged(desc, &d);
+	ControllerDesc::AssignToUnmanaged(desc, d);
 
 	// Assign our specific properties
 	d.radius = desc->Radius;
@@ -26,7 +26,7 @@ CapsuleControllerDesc^ CapsuleControllerDesc::ToManaged(PxCapsuleControllerDesc 
 	CapsuleControllerDesc^ d = gcnew CapsuleControllerDesc();
 
 	// Populate the base classes properties
-	ControllerDesc::AssignToManaged(&desc, d);
+	ControllerDesc::AssignToManaged(desc, d);
 
 	// Assign our specific properties
 	d->Radius = desc.radius;

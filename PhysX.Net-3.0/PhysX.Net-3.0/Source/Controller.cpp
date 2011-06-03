@@ -2,14 +2,16 @@
 #include "Controller.h"
 #include "ControllerManager.h"
 
-Controller::Controller(PxController* controller, PhysX::ControllerManager^ controllerManager)
+Controller::Controller(PxController* controller, PhysX::ControllerManager^ owner)
 {
 	if (controller == NULL)
 		throw gcnew ArgumentNullException("controller");
-	ThrowIfNull(controllerManager, "controllerManager");
+	ThrowIfNull(owner, "owner");
 
 	_controller = controller;
-	_controllerManager = controllerManager;
+	_controllerManager = owner;
+
+	ObjectTable::Add((intptr_t)controller, this, owner);
 }
 Controller::~Controller()
 {
@@ -17,6 +19,8 @@ Controller::~Controller()
 }
 Controller::!Controller()
 {
+	OnDisposing(this, nullptr);
+
 	if (Disposed)
 		return;
 
@@ -24,6 +28,8 @@ Controller::!Controller()
 	_controller = NULL;
 
 	UserData = nullptr;
+
+	OnDisposed(this, nullptr);
 }
 bool Controller::Disposed::get()
 {

@@ -23,7 +23,7 @@ namespace PhysX
 			PhysX::ControllerManager^ _controllerManager;
 
 		protected:
-			Controller(PxController* controller, PhysX::ControllerManager^ controllerManager);
+			Controller(PxController* controller, PhysX::ControllerManager^ owner);
 		public:
 			~Controller();
 		protected:
