@@ -250,7 +250,7 @@ namespace StillDesign.PhysX.Samples
 				var points = data.GetDebugPoints();
 
 				var vertices = new VertexPositionColor[points.Length];
-				for (int i = 0; i < data.LineCount; i++)
+				for (int i = 0; i < data.PointCount; i++)
 				{
 					var point = points[i];
 
