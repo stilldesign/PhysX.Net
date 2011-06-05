@@ -77,43 +77,26 @@ bool Cooking::CookConvexMesh(ConvexMeshDesc^ desc, System::IO::Stream^ stream)
 
 bool Cooking::CookDeformableMesh(DeformableMeshDesc^ desc, System::IO::Stream^ stream)
 {
-	if (desc == nullptr)
-		throw gcnew ArgumentNullException("desc");
-	//if (!desc->IsValid())
-	//	throw gcnew ArgumentException("Description is invalid");
+	ThrowIfDescriptionIsNullOrInvalid(desc, "desc");
+	ThrowIfNull(stream, "stream");
 
-	if (stream == nullptr)
-		throw gcnew ArgumentNullException("stream");
-	if (!stream->CanWrite)
-		throw gcnew ArgumentException("Stream is not writable", "stream");
+	PxDeformableMeshDesc d = DeformableMeshDesc::ToUnmanaged(desc);
 
-	if (_cooking == NULL)
-		throw gcnew InvalidOperationException("The cooking library has not been initialized");
+	// TODO: DeformableMeshDesc.IsValid()
+	if(!d.isValid())
+		throw gcnew ArgumentException("The deformable mesh description is invalid");
 
-	auto d = DeformableMeshDesc::ToUnmanaged(desc);
+	MemoryStream memoryStream;
+	bool result = _cooking->cookDeformableMesh(d, memoryStream);
 
-	bool valid = d.isValid();
+	Util::CopyIntoStream(memoryStream, stream);
 
-	MemoryStream ms;
-	auto s = ms.GetMemory();
+	delete[] d.vertices;
+	delete[] d.primitives;
+	delete[] d.vertexMasses;
+	delete[] d.vertexFlags;
 
-	if (ms.getMemorySize() > 0xFFFFFFFF)
-		throw gcnew OutOfMemoryException("Trying to allocation too much memory");
-
-	bool result = _cooking->cookDeformableMesh(d, ms);
-
-	if (!result)
-		return false;
-
-	int m = (int)ms.getMemorySize();
-
-	array<Byte>^ data = gcnew array<Byte>((int)ms.getMemorySize());
-	pin_ptr<Byte> b = &data[0];
-	memcpy_s(b, m, ms.GetMemory(), m);
-
-	stream->Write(data, 0, m);
-
-	return true;
+	return result;
 }
 
 CookingParams^ Cooking::Parameters::get()

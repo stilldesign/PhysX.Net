@@ -21,6 +21,9 @@ namespace PhysX
 			static DeformableMeshDesc^ ToManaged(PxDeformableMeshDesc desc);
 
 		public:
+			void SetToDefault();
+			bool IsValid();
+
 			/// <summary>
 			/// Pointer to the first primitive vertex index tuple.
 			/// </summary>

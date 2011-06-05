@@ -78,8 +78,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Program Files %28x86%29\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\vehicle;C:\Program Files %28x86%29\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\pxtask\include;C:\Program Files %28x86%29\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\pvd;C:\Program Files %28x86%29\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\particles;C:\Program Files %28x86%29\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\gpu;C:\Program Files %28x86%29\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\geometry;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\extensions;C:\Program Files %28x86%29\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\deformable;C:\Program Files %28x86%29\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\cooking;C:\Program Files %28x86%29\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\common;C:\Program Files %28x86%29\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\characterkinematic;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\foundation;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Program Files %28x86%29\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\lib\win32;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\Samples\SampleFramework\framework\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXProfileSDK\sdk\include;C:\Program Files %28x86%29\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXVisualDebuggerSDK\PVDCommLayer\Public;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\vehicle;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\pxtask\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\particles;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\geometry;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\extensions;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\cooking;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\common;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\characterkinematic;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\foundation;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\deformable;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files %28x86%29\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\lib\win64;$(LibraryPath)</LibraryPath>
     <OutDir>$(ProjectDir)bin\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)bin\$(Configuration)\Intermediate\</IntDir>
   </PropertyGroup>
@@ -87,11 +87,15 @@
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(ProjectDir)bin\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)bin\$(Configuration)\Intermediate\</IntDir>
+    <IncludePath>C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\Samples\SampleFramework\framework\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXProfileSDK\sdk\include;C:\Program Files %28x86%29\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXVisualDebuggerSDK\PVDCommLayer\Public;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\vehicle;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\pxtask\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\particles;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\geometry;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\extensions;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\cooking;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\common;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\characterkinematic;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\foundation;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\deformable;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\lib\win32;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(ProjectDir)bin\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)bin\$(Configuration)\Intermediate\</IntDir>
+    <LibraryPath>C:\Program Files %28x86%29\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\lib\win64;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\Samples\SampleFramework\framework\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXProfileSDK\sdk\include;C:\Program Files %28x86%29\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXVisualDebuggerSDK\PVDCommLayer\Public;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\vehicle;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\pxtask\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\particles;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\geometry;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\extensions;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\cooking;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\common;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\characterkinematic;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\foundation;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0\SDKs\PhysXAPI\deformable;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -112,33 +116,36 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PrecompiledHeader>Create</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>Foundation.lib;PhysX3Common.lib;PhysX3CharacterKinematic.lib;PhysX3Vehicle.lib;PhysX3Cooking_x86.lib;PhysX3_x86.lib;PhysX3Extensions.lib;LowLevel.lib;GeomUtils.lib;SceneQuery.lib;PvdRuntime.lib;RepX3.lib;PxTask.lib;PhysX3Gpu_x86.lib;PhysX3MetaData.lib;PhysXProfileSDK.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Foundation.lib;PhysX3Common.lib;PhysX3CharacterKinematic.lib;PhysX3Vehicle.lib;PhysX3Cooking_x64.lib;PhysX3_x64.lib;PhysX3Extensions.lib;LowLevel.lib;GeomUtils.lib;SceneQuery.lib;PvdRuntime.lib;RepX3.lib;PhysX3Gpu_x64.lib;PhysX3MetaData.lib;PhysXProfileSDK.lib;PxTask.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>LIBCMT</IgnoreSpecificDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>Use</PrecompiledHeader>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>
-      </AdditionalDependencies>
+      <AdditionalDependencies>Foundation.lib;PhysX3Common.lib;PhysX3CharacterKinematic.lib;PhysX3Vehicle.lib;PhysX3Cooking_x86.lib;PhysX3_x86.lib;PhysX3Extensions.lib;LowLevel.lib;GeomUtils.lib;SceneQuery.lib;PvdRuntime.lib;RepX3.lib;PhysX3Gpu_x86.lib;PhysX3MetaData.lib;PhysXProfileSDK.lib;PxTask.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>LIBCMT</IgnoreSpecificDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>Use</PrecompiledHeader>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>
-      </AdditionalDependencies>
+      <AdditionalDependencies>Foundation.lib;PhysX3Common.lib;PhysX3CharacterKinematic.lib;PhysX3Vehicle.lib;PhysX3Cooking_x64.lib;PhysX3_x64.lib;PhysX3Extensions.lib;LowLevel.lib;GeomUtils.lib;SceneQuery.lib;PvdRuntime.lib;RepX3.lib;PhysX3Gpu_x64.lib;PhysX3MetaData.lib;PhysXProfileSDK.lib;PxTask.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>LIBCMT</IgnoreSpecificDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -150,6 +157,7 @@
     <ClInclude Include="Source\Articulation.h" />
     <ClInclude Include="Source\ArticulationJoint.h" />
     <ClInclude Include="Source\ArticulationLink.h" />
+    <ClInclude Include="Source\Attachment.h" />
     <ClInclude Include="Source\BitAndData.h" />
     <ClInclude Include="Source\Bounds3.h" />
     <ClInclude Include="Source\BoxController.h" />
@@ -308,6 +316,7 @@
     <ClCompile Include="Source\ArticulationJoint.cpp" />
     <ClCompile Include="Source\ArticulationLink.cpp" />
     <ClCompile Include="Source\AssemblyInfo.cpp" />
+    <ClCompile Include="Source\Attachment.cpp" />
     <ClCompile Include="Source\BitAndData.cpp" />
     <ClCompile Include="Source\Bounds3.cpp" />
     <ClCompile Include="Source\BoxController.cpp" />
@@ -382,6 +391,9 @@
     <ClCompile Include="Source\SphericalJoint.cpp" />
     <ClCompile Include="Source\StdAfx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Source\Stream.cpp" />
     <ClCompile Include="Source\SweepHit.cpp" />

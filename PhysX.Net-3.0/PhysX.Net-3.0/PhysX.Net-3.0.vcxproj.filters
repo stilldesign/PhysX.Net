@@ -618,6 +618,9 @@
     <ClInclude Include="Source\VisualDebugger\Connection.h">
       <Filter>Header Files\VisualDebugger\Connection</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Attachment.h">
+      <Filter>Header Files\Deformable</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Material.cpp">
@@ -1015,6 +1018,9 @@
     </ClCompile>
     <ClCompile Include="Source\VisualDebugger\Connection.cpp">
       <Filter>Source Files\VisualDebugger\Connection</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Attachment.cpp">
+      <Filter>Source Files\Deformable</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

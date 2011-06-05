@@ -23,6 +23,8 @@
 #include "CookingParams.h"
 #include "Cooking.h"
 #include "TriangleMesh.h"
+#include "Attachment.h"
+#include "Shape.h"
 #include "VisualDebugger/Connection.h"
 
 #include <PxDefaultAllocator.h>
@@ -365,6 +367,34 @@ Cooking^ Physics::CreateCooking([Optional] CookingParams^ parameters)
 	_cooks->Add(c);
 
 	return c;
+}
+
+Attachment^ Physics::CreateAttachment(Deformable^ deformable, Shape^ shape, array<int>^ vertexIndices, array<Vector3>^ positions, array<int>^ flags)
+{
+	ThrowIfNullOrDisposed(deformable, "deformable");
+	//ThrowIfNullOrDisposed(shape, "shape");
+	ThrowIfNull(vertexIndices, "vertexIndices");
+	ThrowIfNull(positions, "positions");
+	ThrowIfNull(flags, "flags");
+
+	if (vertexIndices->Length != positions->Length || positions->Length != flags->Length)
+		throw gcnew ArgumentException("The array arguments must all be the same length");
+
+	PxShape* s = (shape == nullptr ? NULL : shape->UnmanagedPointer);
+
+	int n = vertexIndices->Length;
+
+	// TODO: Return null?
+	if (n == 0)
+		return nullptr;
+
+	pin_ptr<int> vi = &vertexIndices[0];
+	pin_ptr<Vector3> p = &positions[0];
+	pin_ptr<int> f = &flags[0];
+
+	auto attachment = _physics->createAttachment(*deformable->UnmanagedPointer, s, n, (PxU32*)vi, (PxVec3*)p, (PxU32*)f);
+
+	return gcnew Attachment(attachment, this);
 }
 #pragma endregion
 

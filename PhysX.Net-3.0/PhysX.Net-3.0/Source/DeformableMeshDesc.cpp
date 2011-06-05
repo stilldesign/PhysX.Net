@@ -107,6 +107,16 @@ DeformableMeshDesc^ DeformableMeshDesc::ToManaged(PxDeformableMeshDesc desc)
 	return d;
 }
 
+void DeformableMeshDesc::SetToDefault()
+{
+	// TODO: Implement
+}
+bool DeformableMeshDesc::IsValid()
+{
+	// TODO: Implement
+	return true;
+}
+
 generic<typename T> where T : value class
 array<T>^ DeformableMeshDesc::GetPrimitives()
 {

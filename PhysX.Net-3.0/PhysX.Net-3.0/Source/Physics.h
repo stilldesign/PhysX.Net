@@ -28,6 +28,8 @@ namespace PhysX
 	ref class Foundation;
 	ref class Cooking;
 	ref class CookingParams;
+	ref class Attachment;
+	ref class Shape;
 	
 	namespace VisualDebugger
 	{
@@ -232,6 +234,16 @@ namespace PhysX
 			/// Create an instance of the cooking interface.
 			/// </summary>
 			Cooking^ CreateCooking([Optional] CookingParams^ parameters);
+
+			/// <summary>
+			/// Creates a deformable attachment.
+			/// </summary>
+			/// <param name="deformable">The deformable to attach.</param>
+			/// <param name="shape">The shape to attach to ('0' for static attachments).</param>
+			/// <param name="vertexIndices">The indices of the vertices to attach.</param>
+			/// <param name="positions">The attachment positions in shape-local coordinates or world space for world attachments.</param>
+			/// <param name="flags">Flags for each attached vertex: One or two way interaction, tearable or non-tearable.</param>
+			Attachment^ CreateAttachment(Deformable^ deformable, Shape^ shape, array<int>^ vertexIndices, array<Vector3>^ positions, array<int>^ flags);
 			#pragma endregion
 
 			//

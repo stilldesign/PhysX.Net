@@ -42,9 +42,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JointsSample", "Samples\Joi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CharacterSample", "Samples\CharacterSample\CharacterSample.csproj", "{876281DD-2748-4C1C-81FC-2CC8BE31C27F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClothSample", "Samples\ClothSample\ClothSample.csproj", "{B3EFE92A-7B73-44F5-B91D-93BC37AE429F}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 8
+		SccNumberOfProjects = 9
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs01
 		SccLocalPath0 = .
@@ -74,6 +76,10 @@ Global
 		SccProjectTopLevelParentUniqueName7 = PhysX.Net-3.0.sln
 		SccProjectName7 = Samples/CharacterSample
 		SccLocalPath7 = Samples\\CharacterSample
+		SccProjectUniqueName8 = Samples\\ClothSample\\ClothSample.csproj
+		SccProjectTopLevelParentUniqueName8 = PhysX.Net-3.0.sln
+		SccProjectName8 = Samples/ClothSample
+		SccLocalPath8 = Samples\\ClothSample
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = PhysX.Net-3.0.vsmdi
@@ -131,6 +137,12 @@ Global
 		{876281DD-2748-4C1C-81FC-2CC8BE31C27F}.Release|x64.ActiveCfg = Release|x86
 		{876281DD-2748-4C1C-81FC-2CC8BE31C27F}.Release|x86.ActiveCfg = Release|x86
 		{876281DD-2748-4C1C-81FC-2CC8BE31C27F}.Release|x86.Build.0 = Release|x86
+		{B3EFE92A-7B73-44F5-B91D-93BC37AE429F}.Debug|x64.ActiveCfg = Debug|x86
+		{B3EFE92A-7B73-44F5-B91D-93BC37AE429F}.Debug|x86.ActiveCfg = Debug|x86
+		{B3EFE92A-7B73-44F5-B91D-93BC37AE429F}.Debug|x86.Build.0 = Debug|x86
+		{B3EFE92A-7B73-44F5-B91D-93BC37AE429F}.Release|x64.ActiveCfg = Release|x86
+		{B3EFE92A-7B73-44F5-B91D-93BC37AE429F}.Release|x86.ActiveCfg = Release|x86
+		{B3EFE92A-7B73-44F5-B91D-93BC37AE429F}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -143,5 +155,6 @@ Global
 		{B6FCBC86-7674-47F8-9A95-E4B8B7FD44C0} = {E1E0C505-3069-4E15-980D-1C87F241C7F3}
 		{36BAE136-2AA3-4292-BC2D-666A6A239FEB} = {E1E0C505-3069-4E15-980D-1C87F241C7F3}
 		{876281DD-2748-4C1C-81FC-2CC8BE31C27F} = {E1E0C505-3069-4E15-980D-1C87F241C7F3}
+		{B3EFE92A-7B73-44F5-B91D-93BC37AE429F} = {E1E0C505-3069-4E15-980D-1C87F241C7F3}
 	EndGlobalSection
 EndGlobal
