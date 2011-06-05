@@ -11,6 +11,8 @@ using SlimDX.DXGI;
 
 using Buffer = SlimDX.Direct3D10.Buffer;
 using Device = SlimDX.Direct3D10.Device;
+using System.Reflection;
+using System.IO;
 
 namespace PhysX.Samples.Engine
 {
@@ -181,7 +183,11 @@ namespace PhysX.Samples.Engine
 		}
 		private void LoadVisualizationEffect()
 		{
-			var effect = Effect.FromFile(this.GraphicsDevice, @"Shaders\VisualizationEffect.fx", "fx_4_0", ShaderFlags.None, EffectFlags.None, null, null);
+			string engineDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
+			string visEffectFile = Path.Combine(engineDir, @"Shaders\VisualizationEffect.fx");
+
+			var effect = Effect.FromFile(this.GraphicsDevice, visEffectFile, "fx_4_0", ShaderFlags.None, EffectFlags.None, null, null);
 
 			_visualizationEffect = new VisualizationEffect()
 			{
