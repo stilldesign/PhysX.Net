@@ -34,7 +34,7 @@ namespace PhysX.Test
 			if (this.Physics != null || PhysX.Physics.Instantiated)
 				throw new Exception("Physics is still created");
 
-			this.Physics = new Physics();
+			this.Physics = new Physics(checkRuntimeFiles: true);
 			this.Physics.OnDisposed += Physics_OnDisposed;
 
 			return this.Physics;

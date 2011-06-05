@@ -116,7 +116,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN64;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
     </ClCompile>
     <Link>
@@ -140,7 +140,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN64;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
     </ClCompile>
     <Link>
@@ -256,6 +256,7 @@
     <ClInclude Include="Source\RigidBody.h" />
     <ClInclude Include="Source\RigidDynamic.h" />
     <ClInclude Include="Source\RigidStatic.h" />
+    <ClInclude Include="Source\RuntimeFileChecks.h" />
     <ClInclude Include="Source\Scene.h" />
     <ClInclude Include="Source\SceneCreationException.h" />
     <ClInclude Include="Source\SceneDesc.h" />
@@ -384,6 +385,7 @@
     <ClCompile Include="Source\RigidBody.cpp" />
     <ClCompile Include="Source\RigidDynamic.cpp" />
     <ClCompile Include="Source\RigidStatic.cpp" />
+    <ClCompile Include="Source\RuntimeFileChecks.cpp" />
     <ClCompile Include="Source\SceneQueryHitObject.cpp" />
     <ClCompile Include="Source\SceneQueryImpactHit.cpp" />
     <ClCompile Include="Source\SceneSweepOperationObject.cpp" />

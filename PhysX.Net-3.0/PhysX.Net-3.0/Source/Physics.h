@@ -70,23 +70,28 @@ namespace PhysX
 			Physics(PxPhysics* physics);
 		public:
 			static Physics();
-			Physics([Optional] ErrorCallback^ errorCallback);
-		private:
-			void Init();
-			void PostInit();
+
+			/// <summary>Creates a new instance of the Physics class.</summary>
+			/// <param name="errorCallback">An implementation of the error callback class.</param>
+			/// <param name="checkRuntimeFiles">Should the PhysX runtime files be checked.</param>
+			Physics([Optional] ErrorCallback^ errorCallback, [Optional] bool checkRuntimeFiles);
 		public:
 			~Physics();
 		protected:
 			!Physics();
-
 		public:
 			property bool Disposed
 			{
 				virtual bool get();
 			}
 
+		private:
+			void Init();
+			void PostInit();
+
 			//
 
+		public:
 			/// <summary>
 			/// Connect to pvd using a network socket. This blocks for at most inTimeoutInMillisecondsbefore returning a new connection (or nothing). PVD needs to be started before this call is made.
 			/// </summary>

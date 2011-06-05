@@ -25,6 +25,7 @@
 #include "TriangleMesh.h"
 #include "Attachment.h"
 #include "Shape.h"
+#include "RuntimeFileChecks.h"
 #include "VisualDebugger/Connection.h"
 
 #include <PxDefaultAllocator.h>
@@ -51,8 +52,11 @@ Physics::Physics(PxPhysics* physics)
 
 	PostInit();
 }
-Physics::Physics([Optional] ErrorCallback^ errorCallback)
+Physics::Physics([Optional] ErrorCallback^ errorCallback, [Optional] bool checkRuntimeFiles)
 {
+	if (checkRuntimeFiles)
+		RuntimeFileChecks::Check();
+
 	Init();
 
 	_allocator = new PxDefaultAllocator();
@@ -65,6 +69,33 @@ Physics::Physics([Optional] ErrorCallback^ errorCallback)
 
 	PostInit();
 }
+Physics::~Physics()
+{
+	this->!Physics();
+}
+Physics::!Physics()
+{
+	OnDisposing(this, nullptr);
+
+	if (Disposed)
+		return;
+
+	_physics->release();
+	_physics = NULL;
+
+	_instantiated = false;
+
+	SAFE_DELETE(_allocator);
+
+	PxCloseExtensions();
+
+	OnDisposed(this, nullptr);
+}
+bool Physics::Disposed::get()
+{
+	return _physics == NULL;
+}
+
 void Physics::Init()
 {
 	if (_instantiated)
@@ -95,7 +126,7 @@ void Physics::PostInit()
 	_foundation = gcnew PhysX::Foundation(&_physics->getFoundation(), this);
 
 	//
-	
+
 	// Populate objects the exist in the physics object already
 	PxMaterial** materials = new PxMaterial*[_physics->getNbMaterials()];
 	_physics->getMaterials(materials, _physics->getNbMaterials());
@@ -103,32 +134,6 @@ void Physics::PostInit()
 	{
 		_materials->Add(gcnew Material(materials[i], this));
 	}
-}
-Physics::~Physics()
-{
-	this->!Physics();
-}
-Physics::!Physics()
-{
-	OnDisposing(this, nullptr);
-
-	if (Disposed)
-		return;
-
-	_physics->release();
-	_physics = NULL;
-
-	_instantiated = false;
-
-	SAFE_DELETE(_allocator);
-
-	PxCloseExtensions();
-
-	OnDisposed(this, nullptr);
-}
-bool Physics::Disposed::get()
-{
-	return _physics == NULL;
 }
 
 VisualDebugger::Connection^ Physics::ConnectToRemoteDebugger(String^ host, [Optional] Nullable<int> port, [Optional] Nullable<TimeSpan> timeout, [Optional] Nullable<bool> checkApi, [Optional] Nullable<RemoteDebuggerConnectionFlags> flags)

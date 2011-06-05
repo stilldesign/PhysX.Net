@@ -621,6 +621,9 @@
     <ClInclude Include="Source\Attachment.h">
       <Filter>Header Files\Deformable</Filter>
     </ClInclude>
+    <ClInclude Include="Source\RuntimeFileChecks.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Material.cpp">
@@ -1021,6 +1024,9 @@
     </ClCompile>
     <ClCompile Include="Source\Attachment.cpp">
       <Filter>Source Files\Deformable</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\RuntimeFileChecks.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

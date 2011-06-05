@@ -12,7 +12,7 @@ using namespace System::Security::Permissions;
 // associated with an assembly.
 //
 [assembly:AssemblyTitleAttribute("PhysX.Net for NVIDIA PhysX 3.0")];
-[assembly:AssemblyDescriptionAttribute(".NET Wrapper for NVIDIA PhysX 3.0.0.1")];
+[assembly:AssemblyDescriptionAttribute(".NET Wrapper for NVIDIA PhysX 3.0.1.1")];
 [assembly:AssemblyConfigurationAttribute("")];
 [assembly:AssemblyCompanyAttribute("StillDesign")];
 [assembly:AssemblyProductAttribute("PhysX.Net")];

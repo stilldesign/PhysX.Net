@@ -130,7 +130,7 @@
     </Content>
     <Content Include="..\..\Assemblies\x86\PhysX3Gpu_x86.dll">
       <Link>PhysX3Gpu_x86.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="..\..\Assemblies\x86\PhysX3_x86.dll">
       <Link>PhysX3_x86.dll</Link>
@@ -138,7 +138,7 @@
     </Content>
     <Content Include="..\..\Assemblies\x86\PxTaskCuda.dll">
       <Link>PxTaskCuda.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Resource Include="Images\SamplesIcon.png" />
   </ItemGroup>

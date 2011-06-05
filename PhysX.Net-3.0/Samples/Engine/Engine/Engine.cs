@@ -200,8 +200,8 @@ namespace PhysX.Samples.Engine
 
 			// Construct physics objects
 			ErrorOutput errorOutput = new ErrorOutput();
-
-			this.Physics = new Physics(errorOutput);
+			
+			this.Physics = new Physics(errorOutput, checkRuntimeFiles: true);
 
 			var sceneDesc = new SceneDesc()
 			{
