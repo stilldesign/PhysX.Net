@@ -27,6 +27,7 @@
     <SccAuxPath>SAK</SccAuxPath>
     <SccLocalPath>SAK</SccLocalPath>
     <SccProvider>SAK</SccProvider>
+    <ProjectName>PhysX.Net</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -73,27 +74,27 @@
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\Samples\SampleFramework\framework\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXProfileSDK\sdk\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXVisualDebuggerSDK\PVDCommLayer\Public;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXAPI\vehicle;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXAPI\pxtask\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXAPI\particles;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXAPI\geometry;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXAPI\extensions;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXAPI\cooking;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXAPI\common;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXAPI\characterkinematic;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXAPI\foundation;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXAPI;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXAPI\deformable;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\lib\win32;$(LibraryPath)</LibraryPath>
-    <OutDir>$(ProjectDir)bin\$(Configuration)\</OutDir>
-    <IntDir>$(ProjectDir)bin\$(Configuration)\Intermediate\</IntDir>
+    <OutDir>$(ProjectDir)bin\x86\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)bin\x86\$(Configuration)\Intermediate\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\Samples\SampleFramework\framework\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXProfileSDK\sdk\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXVisualDebuggerSDK\PVDCommLayer\Public;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXAPI\vehicle;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXAPI\pxtask\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXAPI\particles;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXAPI\geometry;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXAPI\extensions;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXAPI\cooking;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXAPI\common;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXAPI\characterkinematic;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXAPI\foundation;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXAPI;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXAPI\deformable;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\lib\win64;$(LibraryPath)</LibraryPath>
-    <OutDir>$(ProjectDir)bin\$(Configuration)\</OutDir>
-    <IntDir>$(ProjectDir)bin\$(Configuration)\Intermediate\</IntDir>
+    <OutDir>$(ProjectDir)bin\x64\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)bin\x64\$(Configuration)\Intermediate\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(ProjectDir)bin\$(Configuration)\</OutDir>
-    <IntDir>$(ProjectDir)bin\$(Configuration)\Intermediate\</IntDir>
+    <OutDir>$(ProjectDir)bin\x86\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)bin\x86\$(Configuration)\Intermediate\</IntDir>
     <IncludePath>C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\Samples\SampleFramework\framework\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXProfileSDK\sdk\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXVisualDebuggerSDK\PVDCommLayer\Public;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXAPI\vehicle;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXAPI\pxtask\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXAPI\particles;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXAPI\geometry;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXAPI\extensions;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXAPI\cooking;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXAPI\common;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXAPI\characterkinematic;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXAPI\foundation;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXAPI;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXAPI\deformable;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\lib\win32;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(ProjectDir)bin\$(Configuration)\</OutDir>
-    <IntDir>$(ProjectDir)bin\$(Configuration)\Intermediate\</IntDir>
+    <OutDir>$(ProjectDir)bin\x64\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)bin\x64\$(Configuration)\Intermediate\</IntDir>
     <LibraryPath>C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\lib\win64;$(LibraryPath)</LibraryPath>
     <IncludePath>C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\Samples\SampleFramework\framework\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXProfileSDK\sdk\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXVisualDebuggerSDK\PVDCommLayer\Public;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXAPI\vehicle;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXAPI\pxtask\include;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXAPI\particles;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXAPI\geometry;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXAPI\extensions;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXAPI\cooking;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXAPI\common;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXAPI\characterkinematic;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXAPI\foundation;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXAPI;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.0.1\SDKs\PhysXAPI\deformable;$(IncludePath)</IncludePath>
   </PropertyGroup>

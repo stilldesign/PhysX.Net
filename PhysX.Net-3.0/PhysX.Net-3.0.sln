@@ -1,14 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PhysX.Net-3.0", "PhysX.Net-3.0\PhysX.Net-3.0.vcxproj", "{FB145A7D-CDF2-417D-A006-F7591481D609}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PhysX.Net", "PhysX.Net-3.0\PhysX.Net-3.0.vcxproj", "{FB145A7D-CDF2-417D-A006-F7591481D609}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{27CD93B0-2E6E-42D3-B44A-43EAF972337E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{70C15685-AF4C-41C1-9C9C-55B242A8154C}"
 	ProjectSection(SolutionItems) = preProject
 		Local.testsettings = Local.testsettings
-		PhysX.Net-3.0.vsmdi = PhysX.Net-3.0.vsmdi
+		Package.bat = Package.bat
+		PhysX.Net.vsmdi = PhysX.Net.vsmdi
 		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
 	EndProjectSection
 EndProject
@@ -82,7 +83,7 @@ Global
 		SccLocalPath8 = Samples\\ClothSample
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
-		CategoryFile = PhysX.Net-3.0.vsmdi
+		CategoryFile = PhysX.Net.vsmdi
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
