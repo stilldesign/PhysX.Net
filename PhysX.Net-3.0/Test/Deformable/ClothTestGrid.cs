@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using PhysX.Math;
 
-namespace PhysX.Samples.ClothSample
+namespace PhysX.Test
 {
-	public class VertexGrid
+	public class ClothTestGrid
 	{
-		public VertexGrid(int rows, int columns)
+		public ClothTestGrid(int rows, int columns)
 		{
 			CreateGrid(rows, columns);
 		}

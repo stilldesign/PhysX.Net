@@ -26,6 +26,8 @@
 #include "Attachment.h"
 #include "Shape.h"
 #include "RuntimeFileChecks.h"
+#include "ParticleFluidDesc.h"
+#include "ParticleFluid.h"
 #include "VisualDebugger/Connection.h"
 
 #include <PxDefaultAllocator.h>
@@ -105,7 +107,6 @@ void Physics::Init()
 	_materials = gcnew List<Material^>();
 	_rigidActors = gcnew List<RigidActor^>();
 	_particleSystems = gcnew List<ParticleSystem^>();
-	_particleFluids = gcnew List<ParticleFluid^>();
 	_deformables = gcnew List<Deformable^>();
 	_deformableMeshes = gcnew List<DeformableMesh^>();
 	_heightFields = gcnew List<HeightField^>();
@@ -297,7 +298,7 @@ IEnumerable<RigidActor^>^ Physics::RigidActors::get()
 }
 #pragma endregion
 
-#pragma region Particles
+#pragma region Particle System
 ParticleSystem^ Physics::CreateParticleSystem(ParticleSystemDesc^ desc)
 {
 	ThrowIfDescriptionIsNullOrInvalid(desc, "desc");
@@ -316,14 +317,40 @@ IEnumerable<ParticleSystem^>^ Physics::ParticleSystems::get()
 }
 #pragma endregion
 
+#pragma region Particle Fluid
+ParticleFluid^ Physics::CreateParticleFluid(ParticleFluidDesc^ desc)
+{
+	ThrowIfDescriptionIsNullOrInvalid(desc, "desc");
+
+	PxParticleFluidDesc d = ParticleFluidDesc::ToUnmanaged(desc);
+
+	PxParticleFluid* particleFluid = _physics->createParticleFluid(d);
+
+	if (particleFluid == NULL)
+		throw gcnew FailedToCreateObjectException("Failed to create particle fluid");
+
+	return gcnew ParticleFluid(particleFluid, this);
+}
+
+array<ParticleFluid^>^ Physics::ParticleFluids::get()
+{
+	return ObjectTable::GetObjectsOfType<ParticleFluid^>();
+}
+#pragma endregion
+
 #pragma region Deformable
 Deformable^ Physics::CreateDeformable(DeformableDesc^ desc)
 {
 	ThrowIfDescriptionIsNullOrInvalid(desc, "desc");
 
-	auto d = _physics->createDeformable(DeformableDesc::ToUnmanaged(desc));
+	PxDeformableDesc desc_ = DeformableDesc::ToUnmanaged(desc);
 
-	auto deformable = gcnew Deformable(d, desc->DeformableMesh, this);
+	auto deformable_ = _physics->createDeformable(desc_);
+
+	if (deformable_ == NULL)
+		throw gcnew FailedToCreateObjectException("Failed to create deformable");
+
+	auto deformable = gcnew Deformable(deformable_, desc->DeformableMesh, this);
 
 	_deformables->Add(deformable);
 
@@ -382,10 +409,10 @@ Attachment^ Physics::CreateAttachment(Deformable^ deformable, Shape^ shape, arra
 	ThrowIfNull(positions, "positions");
 	ThrowIfNull(flags, "flags");
 
-	if (vertexIndices->Length != positions->Length || positions->Length != flags->Length)
-		throw gcnew ArgumentException("The array arguments must all be the same length");
+	//if (vertexIndices->Length != positions->Length || positions->Length != flags->Length)
+	//	throw gcnew ArgumentException("The array arguments must all be the same length");
 
-	PxShape* s = (shape == nullptr ? NULL : shape->UnmanagedPointer);
+	PxShape* s = GetPointerOrNull(shape);
 
 	int n = vertexIndices->Length;
 
@@ -393,11 +420,20 @@ Attachment^ Physics::CreateAttachment(Deformable^ deformable, Shape^ shape, arra
 	if (n == 0)
 		return nullptr;
 
-	pin_ptr<int> vi = &vertexIndices[0];
-	pin_ptr<Vector3> p = &positions[0];
-	pin_ptr<int> f = &flags[0];
+	//pin_ptr<int> vi = &vertexIndices[0];
+	//pin_ptr<Vector3> p = &positions[0];
+	//pin_ptr<int> f = &flags[0];
 
-	auto attachment = _physics->createAttachment(*deformable->UnmanagedPointer, s, n, (PxU32*)vi, (PxVec3*)p, (PxU32*)f);
+	PxU32* vi = new PxU32[vertexIndices->Length];
+	Util::AsUnmanagedArray(vertexIndices, (void*)vi, vertexIndices->Length);
+
+	PxVec3* p = new PxVec3[positions->Length];
+	Util::AsUnmanagedArray(positions, (void*)p, positions->Length);
+
+	PxU32* f = new PxU32[flags->Length];
+	Util::AsUnmanagedArray(flags, (void*)f, flags->Length);
+
+	auto attachment = _physics->createAttachment(*deformable->UnmanagedPointer, s, n, vi, p, f);
 
 	return gcnew Attachment(attachment, this);
 }

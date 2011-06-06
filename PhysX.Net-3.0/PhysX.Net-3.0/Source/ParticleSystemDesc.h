@@ -13,8 +13,8 @@ namespace PhysX
 		public:
 			ParticleSystemDesc([Optional] Nullable<TolerancesScale> scale);
 
-			void SetToDefault(TolerancesScale scale);
-			bool IsValid();
+			virtual void SetToDefault([Optional] Nullable<TolerancesScale> scale) override;
+			virtual bool IsValid() override;
 
 		internal:
 			static PxParticleSystemDesc ToUnmanaged(ParticleSystemDesc^ desc);

@@ -29,7 +29,7 @@ namespace PhysX
 			/// <summary>
 			/// Gets whether the triangles are stored as short or int values.
 			/// </summary>
-			bool Is16BitTriangleIndices();
+			Nullable<bool> Is16BitTriangleIndices();
 
 			generic<typename T> where T : value class
 			array<T>^ GetTriangles();

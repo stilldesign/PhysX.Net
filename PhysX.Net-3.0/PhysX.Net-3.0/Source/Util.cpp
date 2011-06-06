@@ -59,6 +59,9 @@ void Util::AsUnmanagedArray(array<T>^ arr, void* dest, int requiredCount)
 	if (requiredCount != -1 && arr->Length != requiredCount)
 		throw gcnew ArgumentException(String::Format("Array argument is not of the required length {0}", requiredCount));
 
+	if (arr->Length == 0)
+		return;
+
 	pin_ptr<T> arrPin = &arr[0];
 
 	memcpy_s(dest, arr->Length * sizeof(T), arrPin, arr->Length * sizeof(T));
@@ -88,6 +91,25 @@ PrimitiveTypeSize Util::Is16Or32Bit(Type^ type)
 		return PrimitiveTypeSize::Bit32;
 	else
 		return (PrimitiveTypeSize)0;
+}
+Nullable<bool> Util::Is16Or32Bit(Array^ values)
+{
+	if (values == nullptr)
+		return Nullable<bool>();
+
+	Type^ type = values->GetType();
+
+	if (!type->HasElementType || Util::Is16Or32Bit(type->GetElementType()) == (PrimitiveTypeSize)0)
+		return Nullable<bool>();
+
+	PrimitiveTypeSize t = Util::Is16Or32Bit(type->GetElementType());
+
+	if (t == PrimitiveTypeSize::Bit16)
+		return true;
+	else if (t == PrimitiveTypeSize::Bit32)
+		return false;
+
+	return Nullable<bool>();
 }
 
 MemoryStream* Util::StreamToUnmanagedMemoryStream(System::IO::Stream^ stream)

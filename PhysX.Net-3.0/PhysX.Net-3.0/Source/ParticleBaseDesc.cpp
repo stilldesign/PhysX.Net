@@ -50,3 +50,25 @@ void ParticleBaseDesc::PopulateUnmanaged(PxParticleBaseDesc& desc)
 	desc.particleBaseFlags = ToUnmanagedEnum(PxParticleBaseFlag, this->ParticleBaseFlags);
 	desc.particleReadDataFlags = ToUnmanagedEnum(PxParticleReadDataFlag, this->ParticleReadDataFlags);
 }
+
+void ParticleBaseDesc::SetToDefault([Optional] Nullable<TolerancesScale> scale)
+{
+	MaximumParticles			= 32767;
+	MaximumMotionDistance		= 0.06f;
+	ContactOffset				= 0.008f;
+	RestOffset					= 0.004f;
+	GridSize					= 0.6f;
+	ParticleMass				= 0.001f;
+	Damping						= 0.0f;
+	ExternalAcceleration		= Vector3::Zero;
+	ProjectionPlaneNormal		= Vector3::UnitZ;
+	ProjectionPlaneDistance		= 0.0f;
+	Restitution					= 0.5f;
+	DynamicFriction				= 0.05f;
+	StaticFriction				= 0.0f;
+
+	SimulationFilterData		.SetToDefault();
+
+	ParticleBaseFlags			= ParticleBaseFlag::Enabled;
+	ParticleReadDataFlags		= ParticleReadDataFlag::PositionBuffer | ParticleReadDataFlag::FlagsBuffer;
+}

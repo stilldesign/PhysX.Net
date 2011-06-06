@@ -39,13 +39,13 @@ namespace PhysX.Test
 
 			return this.Physics;
 		}
-		protected Physics CreatePhysicsAndScene()
+		protected Scene CreatePhysicsAndScene()
 		{
 			CreatePhysics();
 
 			this.Scene = this.Physics.CreateScene();
 
-			return this.Physics;
+			return this.Scene;
 		}
 
 		void Physics_OnDisposed(object sender, EventArgs e)

@@ -130,6 +130,23 @@ intptr_t PhysX::ObjectTable::GetObject(Object^ object)
 	}
 }
 
+generic<typename T>
+array<T>^ ObjectTable::GetObjectsOfType()
+{
+	List<T>^ objects = gcnew List<T>();
+
+	for each (Object^ obj in _objectTable->Values)
+	{
+		if (obj == nullptr)
+			continue;
+
+		if (obj->GetType() == T::typeid)
+			objects->Add((T)obj);
+	}
+
+	return objects->ToArray();
+}
+
 bool PhysX::ObjectTable::Contains(intptr_t pointer)
 {
 	Monitor::Enter(_syncObject);

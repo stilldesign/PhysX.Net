@@ -3,7 +3,7 @@
 
 DeformableMeshDesc::DeformableMeshDesc()
 {
-	_is16BitPrimitives = false;
+	
 }
 
 PxDeformableMeshDesc DeformableMeshDesc::ToUnmanaged(DeformableMeshDesc^ desc)
@@ -12,16 +12,41 @@ PxDeformableMeshDesc DeformableMeshDesc::ToUnmanaged(DeformableMeshDesc^ desc)
 
 	PxDeformableMeshDesc d;
 	
-	void* primitives;	
-	if (desc->Is16BitPrimitives)
+	void* primitives;
+	if (desc->Primitives != nullptr)
 	{
-		primitives = new short[desc->_primitives->Length];
-		Util::AsUnmanagedArray<short>((array<short>^)desc->_primitives, (void*)primitives, desc->_primitives->Length);
+		Nullable<bool> is16BitPrims = desc->Is16BitPrimitives();
+		if (!is16BitPrims.HasValue)
+			throw gcnew InvalidOperationException("Primitves must be a generic array of either 16 or 32 bit integers");
+
+		if (is16BitPrims.Value)
+		{
+			primitives = new short[desc->_primitives->Length];
+			Util::AsUnmanagedArray<short>((array<short>^)desc->_primitives, (void*)primitives, desc->_primitives->Length);
+
+			if (desc->PrimitiveType == DeformablePrimitiveType::Triangle)
+				d.primitiveStrideBytes = sizeof(short) * 3;
+			else if(desc->PrimitiveType == DeformablePrimitiveType::Tetrahedron)
+				d.primitiveStrideBytes = sizeof(short) * 4;
+			else
+				d.primitiveStrideBytes = 0;
+		}
+		else
+		{
+			primitives = new int[desc->_primitives->Length];
+			Util::AsUnmanagedArray<int>((array<int>^)desc->_primitives, (void*)primitives, desc->_primitives->Length);
+
+			if (desc->PrimitiveType == DeformablePrimitiveType::Triangle)
+				d.primitiveStrideBytes = sizeof(int) * 3;
+			else if(desc->PrimitiveType == DeformablePrimitiveType::Tetrahedron)
+				d.primitiveStrideBytes = sizeof(int) * 4;
+			else
+				d.primitiveStrideBytes = 0;
+		}
 	}
 	else
 	{
-		primitives = new int[desc->_primitives->Length];
-		Util::AsUnmanagedArray<int>((array<int>^)desc->_primitives, (void*)primitives, desc->_primitives->Length);
+		primitives = NULL;
 	}
 
 	PxVec3* vertices;
@@ -63,7 +88,6 @@ PxDeformableMeshDesc DeformableMeshDesc::ToUnmanaged(DeformableMeshDesc^ desc)
 	d.numVertices = desc->NumberOfVertices;
 	d.numPrimitives = desc->NumberOfPrimitives;
 	d.vertexStrideBytes = sizeof(PxVec3);
-	d.primitiveStrideBytes = (desc->Is16BitPrimitives ? sizeof(short) : sizeof(int)) * 3;
 	d.vertices = vertices;
 	d.primitives = primitives;
 	d.vertexMassStrideBytes = sizeof(float);
@@ -82,13 +106,11 @@ DeformableMeshDesc^ DeformableMeshDesc::ToManaged(PxDeformableMeshDesc desc)
 
 	if (desc.primitiveStrideBytes == sizeof(short))
 	{
-		d->_is16BitPrimitives = true;
-		d->_primitives = Util::AsManagedArray<short>(desc.primitives, desc.numPrimitives);
+		d->Primitives = Util::AsManagedArray<short>(desc.primitives, desc.numPrimitives);
 	}
 	else if (desc.primitiveStrideBytes == sizeof(int))
 	{
-		d->_is16BitPrimitives = false;
-		d->_primitives = Util::AsManagedArray<int>(desc.primitives, desc.numPrimitives);
+		d->Primitives = Util::AsManagedArray<int>(desc.primitives, desc.numPrimitives);
 	}
 	else
 	{
@@ -125,19 +147,26 @@ array<T>^ DeformableMeshDesc::GetPrimitives()
 generic<typename T> where T : value class
 void DeformableMeshDesc::SetPrimitives(array<T>^ primitives)
 {
-	auto t = Util::Is16Or32Bit<T>();
-
-	if (t == PrimitiveTypeSize::Bit16)
-		_is16BitPrimitives = true;
-	else if (t == PrimitiveTypeSize::Bit32)
-		_is16BitPrimitives = false;
-	else
-		throw gcnew InvalidOperationException("Primitives indices must be either short or int (signed or unsigned)");
-
-	_primitives = primitives;
+	Primitives = primitives;
 }
 
-bool DeformableMeshDesc::Is16BitPrimitives::get()
+Nullable<bool> DeformableMeshDesc::Is16BitPrimitives()
 {
-	return _is16BitPrimitives;
+	return Util::Is16Or32Bit(_primitives);
+}
+
+Array^ DeformableMeshDesc::Primitives::get()
+{
+	return _primitives;
+}
+void DeformableMeshDesc::Primitives::set(Array^ value)
+{
+	// If primitives are supplied, check that they are in the correct format (either [u]short or [u]int)
+	if (value != nullptr)
+	{
+		if (!Util::Is16Or32Bit(value).HasValue)
+			throw gcnew ArgumentException("Primitives must be a generic array of either 16 or 32 bit integers");
+	}
+
+	_primitives = value;
 }

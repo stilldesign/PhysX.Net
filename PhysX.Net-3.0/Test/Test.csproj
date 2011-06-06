@@ -55,6 +55,8 @@
   <ItemGroup>
     <Compile Include="Controller\BoxControllerTest.cs" />
     <Compile Include="Controller\CapsuleControllerTest.cs" />
+    <Compile Include="Deformable\ClothTestGrid.cs" />
+    <Compile Include="Deformable\DeformableMeshDescTest.cs" />
     <Compile Include="Deformable\DeformableTest.cs" />
     <Compile Include="Geometry\Model.cs" />
     <Compile Include="HeightField\HeightFieldTest.cs" />

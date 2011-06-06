@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("PhysX.Net Cloth Sample")]
+[assembly: AssemblyTitle("PhysX.Net Fluid Sample")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("StillDesign")]
-[assembly: AssemblyProduct("PhysX.Net Cloth Sample")]
+[assembly: AssemblyProduct("PhysX.Net Fluid Sample")]
 [assembly: AssemblyCopyright("Copyright © StillDesign 2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("ac7d9ece-fcbb-490e-a5c8-7f8ed7e70646")]
+[assembly: Guid("bd54794e-f03d-4a79-9936-300688a7d081")]
 
 // Version information for an assembly consists of the following four values:
 //

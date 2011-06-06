@@ -17,6 +17,8 @@ namespace PhysX
 			static FilterData ToManaged(PxFilterData data);
 
 		public:
+			void SetToDefault();
+
 			property unsigned int Word0;
 			property unsigned int Word1;
 			property unsigned int Word2;

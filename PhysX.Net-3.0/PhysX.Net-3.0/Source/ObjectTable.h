@@ -43,7 +43,10 @@ namespace PhysX
 			generic<typename T>
 			static T GetObject(intptr_t pointer);
 			static intptr_t GetObject(Object^ object);
-				
+			
+			generic<typename T> where T : ref class
+			static array<T>^ GetObjectsOfType();
+
 			static bool Contains(intptr_t pointer);
 			static bool Contains(Object^ object);
 				

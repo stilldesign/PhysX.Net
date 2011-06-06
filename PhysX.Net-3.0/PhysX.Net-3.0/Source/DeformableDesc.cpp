@@ -36,8 +36,8 @@ void DeformableDesc::SetToDefault()
 	this->HierarchicalSolverIterations = 2;
 	this->WakeUpCounter = PX_SLEEP_INTERVAL;
 	this->SleepLinearVelocity = -1.0f;
-	this->ExternalAcceleration = Vector3(0.0f, 0.0f, 0.0f);
-	this->WindAcceleration = Vector3(0.0f, 0.0f, 0.0f);
+	this->ExternalAcceleration = Vector3::Zero;
+	this->WindAcceleration = Vector3::Zero;
 	this->RelativeGridSpacing = 0.4f;
 	this->SimulationFilterData = FilterData();
 	this->MaximumPrimitiveSplitPairs = 0;
@@ -83,6 +83,7 @@ PxDeformableDesc DeformableDesc::ToUnmanaged(DeformableDesc^ desc)
 	d.stretchingStiffness = desc->StretchingStiffness;
 	d.validBounds = Bounds3::ToUnmanaged(desc->ValidBounds);
 	d.volumeStiffness = desc->VolumeStiffness;
+	d.windAcceleration = MathUtil::Vector3ToPxVec3(desc->WindAcceleration);
 
 	return d;
 }

@@ -281,6 +281,8 @@ namespace PhysX.Samples.Engine
 
 			_fetchedResults = this.Scene.FetchResults(block: true);
 
+			//_fetchedResults = false;
+
 			this.Camera.Update(elapsed);
 
 			if (OnUpdate != null)

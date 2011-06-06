@@ -11,7 +11,6 @@ namespace PhysX
 	{
 		private:
 			Array^ _primitives;
-			bool _is16BitPrimitives;
 
 		public:
 			DeformableMeshDesc();
@@ -35,15 +34,23 @@ namespace PhysX
 			generic<typename T> where T : value class
 			void SetPrimitives(array<T>^ primitives);
 		
-			property bool Is16BitPrimitives
-			{
-				bool get();
-			}
+			Nullable<bool> Is16BitPrimitives();
+
+			//
 
 			/// <summary>
 			/// The type of primitives the mesh is composed of.
 			/// </summary>
 			property DeformablePrimitiveType PrimitiveType;
+
+			/// <summary>
+			/// Gets or sets the primitives.
+			/// </summary>
+			property Array^ Primitives
+			{
+				Array^ get();
+				void set(Array^ value);
+			}
 
 			/// <summary>
 			/// Number of vertices.

@@ -7,7 +7,7 @@ ParticleSystemDesc::ParticleSystemDesc([Optional] Nullable<TolerancesScale> scal
 	
 }
 
-void ParticleSystemDesc::SetToDefault(TolerancesScale scale)
+void ParticleSystemDesc::SetToDefault([Optional] Nullable<TolerancesScale> scale)
 {
 	
 }

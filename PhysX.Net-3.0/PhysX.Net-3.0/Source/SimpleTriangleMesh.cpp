@@ -14,24 +14,38 @@ void SimpleTriangleMesh::PopulateUnmanaged(PxSimpleTriangleMesh& mesh)
 	p.count = this->Points->Length;
 	p.stride = sizeof(PxVec3);
 	Util::AsUnmanagedArray(this->Points, (void*)p.data, this->Points->Length);
+	mesh.points = p;
 
-	PxBoundedData t;
-	t.count = this->Triangles->Length / 3;
-	if (this->Is16BitTriangleIndices())
+	if (this->Triangles != nullptr)
 	{
-		t.data = new short[this->Triangles->Length];
-		t.stride = sizeof(short) * 3;
-		Util::AsUnmanagedArray<short>((array<short>^)this->Triangles, (void*)t.data, this->Triangles->Length);
+		Nullable<bool> is16BitTris = this->Is16BitTriangleIndices();
+		if (!is16BitTris.HasValue)
+			throw gcnew InvalidOperationException("Triangles must be a generic array of either 16 or 32 bit integers");
+
+		PxBoundedData t;
+		t.count = this->Triangles->Length / 3;
+		if (is16BitTris.Value)
+		{
+			t.data = new short[this->Triangles->Length];
+			t.stride = sizeof(short) * 3;
+			Util::AsUnmanagedArray<short>((array<short>^)this->Triangles, (void*)t.data, this->Triangles->Length);
+		}
+		else
+		{
+			t.data = new int[this->Triangles->Length];
+			t.stride = sizeof(int) * 3;
+			Util::AsUnmanagedArray<int>((array<int>^)this->Triangles, (void*)t.data, this->Triangles->Length);
+		}
+
+		mesh.triangles = t;
 	}
 	else
 	{
-		t.data = new int[this->Triangles->Length];
-		t.stride = sizeof(int) * 3;
-		Util::AsUnmanagedArray<int>((array<int>^)this->Triangles, (void*)t.data, this->Triangles->Length);
+		mesh.triangles.data = NULL;
+		mesh.triangles.count = 0;
+		mesh.triangles.stride = 0;
 	}
 
-	mesh.points = p;
-	mesh.triangles = t;
 	mesh.flags = ToUnmanagedEnum(PxMeshFlag, this->Flags);
 }
 
@@ -69,21 +83,9 @@ bool SimpleTriangleMesh::IsValid()
 	return true;
 }
 
-bool SimpleTriangleMesh::Is16BitTriangleIndices()
+Nullable<bool> SimpleTriangleMesh::Is16BitTriangleIndices()
 {
-	Type^ type = Triangles->GetType();
-
-	if (!type->HasElementType || Util::Is16Or32Bit(type->GetElementType()) == (PrimitiveTypeSize)0)
-		throw gcnew ArgumentException("Triangles must be a generic array of either 16 or 32 bit integers");
-
-	PrimitiveTypeSize t = Util::Is16Or32Bit(type->GetElementType());
-
-	if (t == PrimitiveTypeSize::Bit16)
-		return true;
-	else if (t == PrimitiveTypeSize::Bit32)
-		return false;
-	else
-		throw gcnew InvalidOperationException("Triangles indices must be either short or int (signed or unsigned)");
+	return Util::Is16Or32Bit(this->Triangles);
 }
 
 generic<typename T> where T : value class
@@ -97,12 +99,7 @@ array<T>^ SimpleTriangleMesh::GetTriangles()
 generic<typename T> where T : value class
 void SimpleTriangleMesh::SetTriangles(array<T>^ triangles)
 {
-	auto t = Util::Is16Or32Bit<T>();
-
-	if (t == (PrimitiveTypeSize)0)
-		throw gcnew InvalidOperationException("Triangles indices must be either short or int (signed or unsigned)");
-
-	_triangles = triangles;
+	this->Triangles = triangles;
 }
 
 Array^ SimpleTriangleMesh::Triangles::get()
@@ -111,7 +108,7 @@ Array^ SimpleTriangleMesh::Triangles::get()
 }
 void SimpleTriangleMesh::Triangles::set(Array^ value)
 {
-	// If triangles are supplied, check they are in the correct format ([u]short or [u]int)
+	// If triangles are supplied, check that they are in the correct format (either [u]short or [u]int)
 	if (value != nullptr)
 	{
 		Type^ type = value->GetType();

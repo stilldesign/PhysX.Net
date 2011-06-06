@@ -21,6 +21,9 @@ namespace PhysX
 			void PopulateUnmanaged(PxParticleBaseDesc& desc);
 
 		public:
+			virtual void SetToDefault([Optional] Nullable<TolerancesScale> scale);
+			virtual bool IsValid() abstract;
+
 			/// <summary>
 			/// Gets or sets the maximal number of particles for the particle system used in the simulation.
 			/// </summary>

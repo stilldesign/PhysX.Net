@@ -21,6 +21,9 @@ namespace PhysX
 			static ParticleFluidDesc^ ToManaged(PxParticleFluidDesc desc);
 
 		public:
+			virtual void SetToDefault([Optional] Nullable<TolerancesScale> scale) override;
+			virtual bool IsValid() override;
+
 			/// <summary>
 			/// Gets or sets the typical particle distance of particles in the rest state (relaxed).
 			/// Defines the particle resolution of the fluid.

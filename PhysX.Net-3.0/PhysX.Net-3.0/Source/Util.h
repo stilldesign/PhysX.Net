@@ -39,6 +39,7 @@ namespace PhysX
 			generic<typename T> where T : value class
 			static PrimitiveTypeSize Is16Or32Bit();
 			static PrimitiveTypeSize Is16Or32Bit(Type^ type);
+			static Nullable<bool> Is16Or32Bit(Array^ values);
 
 			static MemoryStream* StreamToUnmanagedMemoryStream(System::IO::Stream^ stream);
 			static System::IO::MemoryStream^ UnmanagedMemoryStreamToStream(MemoryStream& memoryStream);

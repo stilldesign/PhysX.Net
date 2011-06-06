@@ -30,6 +30,7 @@ namespace PhysX
 	ref class CookingParams;
 	ref class Attachment;
 	ref class Shape;
+	ref class ParticleFluidDesc;
 	
 	namespace VisualDebugger
 	{
@@ -60,7 +61,6 @@ namespace PhysX
 			List<Material^>^ _materials;
 			List<RigidActor^>^ _rigidActors;
 			List<ParticleSystem^>^ _particleSystems;
-			List<ParticleFluid^>^ _particleFluids;
 			List<Deformable^>^ _deformables;
 			List<DeformableMesh^>^ _deformableMeshes;
 			List<HeightField^>^ _heightFields;
@@ -217,7 +217,19 @@ namespace PhysX
 			#pragma endregion
 
 			#pragma region Particle Fluid
+			/// <summary>
+			/// Creates a particle fluid.
+			/// </summary>
+			/// <param name="desc">Description of the particle system object to create.</param>
+			ParticleFluid^ CreateParticleFluid(ParticleFluidDesc^ desc);
 
+			/// <summary>
+			/// Gets the particle fluids.
+			/// </summary>
+			property array<ParticleFluid^>^ ParticleFluids
+			{
+				array<ParticleFluid^>^ get();
+			}
 			#pragma endregion
 
 			#pragma region Deformable

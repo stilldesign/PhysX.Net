@@ -29,3 +29,11 @@ FilterData FilterData::ToManaged(PxFilterData data)
 
 	return d;
 }
+
+void FilterData::SetToDefault()
+{
+	Word0 = 0;
+	Word1 = 0;
+	Word2 = 0;
+	Word3 = 0;
+}

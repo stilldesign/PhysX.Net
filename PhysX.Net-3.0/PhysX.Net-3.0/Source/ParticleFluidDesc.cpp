@@ -4,7 +4,7 @@
 ParticleFluidDesc::ParticleFluidDesc([Optional] Nullable<TolerancesScale> scale)
 	 : ParticleBaseDesc(ActorType::ParticleFluid, scale)
 {
-	
+	SetToDefault(scale);
 }
 
 void ParticleFluidDesc::PopulateManaged(PxParticleFluidDesc& desc)
@@ -39,4 +39,19 @@ ParticleFluidDesc^ ParticleFluidDesc::ToManaged(PxParticleFluidDesc desc)
 	d->PopulateManaged(desc);
 
 	return d;
+}
+
+void ParticleFluidDesc::SetToDefault([Optional] Nullable<TolerancesScale> scale)
+{
+	ParticleBaseDesc::SetToDefault(scale);
+
+	RestParticleDistance		= 0.02f;
+	Stiffness					= 20.0f;
+	Viscosity					= 6.0f;
+}
+bool ParticleFluidDesc::IsValid()
+{
+	auto d = ToUnmanaged(this);
+
+	return d.isValid();
 }
