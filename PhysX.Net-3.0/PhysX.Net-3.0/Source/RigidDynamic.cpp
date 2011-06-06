@@ -95,7 +95,7 @@ RigidDynamicFlags RigidDynamic::Flags::get()
 }
 void RigidDynamic::Flags::set(RigidDynamicFlags value)
 {
-	ToUnmanagedEnum2(PxRigidDynamicFlags, value);
+	this->UnmanagedPointer->setRigidDynamicFlags(ToUnmanagedEnum2(PxRigidDynamicFlags, value));
 }
 
 PxRigidDynamic* RigidDynamic::UnmanagedPointer::get()
