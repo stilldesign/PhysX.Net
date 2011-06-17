@@ -180,6 +180,7 @@
     <ClInclude Include="Source\ControllersHit.h" />
     <ClInclude Include="Source\ConvexMesh.h" />
     <ClInclude Include="Source\ConvexMeshDesc.h" />
+    <ClInclude Include="Source\ConvexMeshGeometry.h" />
     <ClInclude Include="Source\ConvexMeshMassInformation.h" />
     <ClInclude Include="Source\Cooking.h" />
     <ClInclude Include="Source\CookingEnum.h" />
@@ -288,7 +289,9 @@
     <ClInclude Include="Source\Vector3.h" />
     <ClInclude Include="Source\Vector4.h" />
     <ClInclude Include="Source\Vehicle4W.h" />
+    <ClInclude Include="Source\Vehicle4WSetupDesc.h" />
     <ClInclude Include="Source\Vehicle4WSimpleSetup.h" />
+    <ClInclude Include="Source\Vehicle4WSimulationData.h" />
     <ClInclude Include="Source\VehicleAckermannGeometryData.h" />
     <ClInclude Include="Source\VehicleAutoBoxData.h" />
     <ClInclude Include="Source\VehicleChassisData.h" />
@@ -303,10 +306,13 @@
     <ClInclude Include="Source\VehicleKeySmoothingData.h" />
     <ClInclude Include="Source\VehiclePadSmoothingData.h" />
     <ClInclude Include="Source\VehicleRawInputData.h" />
+    <ClInclude Include="Source\VehicleSimpleSetup.h" />
     <ClInclude Include="Source\VehicleSuspensionData.h" />
+    <ClInclude Include="Source\VehicleSuspensionRaycastResult.h" />
     <ClInclude Include="Source\VehicleTyreData.h" />
     <ClInclude Include="Source\VehicleTyreLoadFilterData.h" />
     <ClInclude Include="Source\VehicleWheelData.h" />
+    <ClInclude Include="Source\VehicleWheelValues.h" />
     <ClInclude Include="Source\VisualDebugger\Connection.h" />
   </ItemGroup>
   <ItemGroup>
@@ -336,6 +342,7 @@
     <ClCompile Include="Source\ControllersHit.cpp" />
     <ClCompile Include="Source\ConvexMesh.cpp" />
     <ClCompile Include="Source\ConvexMeshDesc.cpp" />
+    <ClCompile Include="Source\ConvexMeshGeometry.cpp" />
     <ClCompile Include="Source\Cooking.cpp" />
     <ClCompile Include="Source\CookingParams.cpp" />
     <ClCompile Include="Source\D6Joint.cpp" />
@@ -406,7 +413,9 @@
     <ClCompile Include="Source\TriggerPair.cpp" />
     <ClCompile Include="Source\UserControllerHitReport.cpp" />
     <ClCompile Include="Source\Vehicle4W.cpp" />
+    <ClCompile Include="Source\Vehicle4WSetupDesc.cpp" />
     <ClCompile Include="Source\Vehicle4WSimpleSetup.cpp" />
+    <ClCompile Include="Source\Vehicle4WSimulationData.cpp" />
     <ClCompile Include="Source\VehicleAckermannGeometryData.cpp" />
     <ClCompile Include="Source\VehicleAutoBoxData.cpp" />
     <ClCompile Include="Source\VehicleChassisData.cpp" />
@@ -420,10 +429,13 @@
     <ClCompile Include="Source\VehicleKeySmoothingData.cpp" />
     <ClCompile Include="Source\VehiclePadSmoothingData.cpp" />
     <ClCompile Include="Source\VehicleRawInputData.cpp" />
+    <ClCompile Include="Source\VehicleSimpleSetup.cpp" />
     <ClCompile Include="Source\VehicleSuspensionData.cpp" />
+    <ClCompile Include="Source\VehicleSuspensionRaycastResult.cpp" />
     <ClCompile Include="Source\VehicleTyreData.cpp" />
     <ClCompile Include="Source\VehicleTyreLoadFilterData.cpp" />
     <ClCompile Include="Source\VehicleWheelData.cpp" />
+    <ClCompile Include="Source\VehicleWheelValues.cpp" />
     <ClCompile Include="Source\VisualDebugger\Connection.cpp" />
     <ClInclude Include="Source\GeometryEnum.h" />
     <ClCompile Include="Source\BoxGeometry.cpp" />

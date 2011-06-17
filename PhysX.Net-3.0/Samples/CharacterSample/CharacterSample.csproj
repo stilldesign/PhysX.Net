@@ -62,7 +62,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\PhysX.Net-3.0\PhysX.Net-3.0.vcxproj">
       <Project>{FB145A7D-CDF2-417D-A006-F7591481D609}</Project>
-      <Name>PhysX.Net-3.0</Name>
+      <Name>PhysX.Net</Name>
     </ProjectReference>
     <ProjectReference Include="..\Engine\Engine.csproj">
       <Project>{D126F9D4-66BB-403B-B4B6-18C3546BEDF8}</Project>

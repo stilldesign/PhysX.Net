@@ -11,7 +11,8 @@ namespace PhysX
 	public ref class VehicleDifferential4WData
 	{
 		internal:
-			PxVehicleDifferential4WData ToUnmanaged(VehicleDifferential4WData data);
+			static PxVehicleDifferential4WData ToUnmanaged(VehicleDifferential4WData^ data);
+			static VehicleDifferential4WData^ ToManaged(PxVehicleDifferential4WData data);
 
 		public:
 			/// <summary>

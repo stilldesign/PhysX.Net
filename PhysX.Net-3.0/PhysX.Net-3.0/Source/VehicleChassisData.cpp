@@ -11,3 +11,12 @@ PxVehicleChassisData VehicleChassisData::ToUnmanaged(VehicleChassisData^ data)
 
 	return d;
 }
+VehicleChassisData^ VehicleChassisData::ToManaged(PxVehicleChassisData data)
+{
+	VehicleChassisData^ d = gcnew VehicleChassisData();
+		d->CMOffset = MathUtil::PxVec3ToVector3(data.mCMOffset);
+		d->Mass = data.mMass;
+		d->MOI = MathUtil::PxVec3ToVector3(data.mMOI);
+
+	return d;
+}

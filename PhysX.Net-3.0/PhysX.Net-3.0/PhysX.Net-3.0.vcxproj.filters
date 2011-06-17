@@ -624,6 +624,24 @@
     <ClInclude Include="Source\RuntimeFileChecks.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Vehicle4WSetupDesc.h">
+      <Filter>Header Files\Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Vehicle4WSimulationData.h">
+      <Filter>Header Files\Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleWheelValues.h">
+      <Filter>Header Files\Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleSuspensionRaycastResult.h">
+      <Filter>Header Files\Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleSimpleSetup.h">
+      <Filter>Header Files\Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ConvexMeshGeometry.h">
+      <Filter>Header Files\Geometry</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Material.cpp">
@@ -1027,6 +1045,24 @@
     </ClCompile>
     <ClCompile Include="Source\RuntimeFileChecks.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Vehicle4WSetupDesc.cpp">
+      <Filter>Source Files\Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Vehicle4WSimulationData.cpp">
+      <Filter>Source Files\Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VehicleWheelValues.cpp">
+      <Filter>Source Files\Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VehicleSuspensionRaycastResult.cpp">
+      <Filter>Source Files\Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VehicleSimpleSetup.cpp">
+      <Filter>Source Files\Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ConvexMeshGeometry.cpp">
+      <Filter>Source Files\Geometry</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

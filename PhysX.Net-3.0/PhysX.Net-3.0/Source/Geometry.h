@@ -6,7 +6,6 @@
 namespace PhysX
 {
 	/// <summary>
-	/// A geometry object.
 	/// A geometry object defines the characteristics of a spatial object, but without any information about its placement in the world.
 	/// </summary>
 	public ref class Geometry abstract
@@ -18,6 +17,7 @@ namespace PhysX
 			Geometry(GeometryType type);
 		
 		internal:
+			// TODO: Change to ref return object instead
 			virtual PxGeometry* ToUnmanaged() abstract;
 
 		public:

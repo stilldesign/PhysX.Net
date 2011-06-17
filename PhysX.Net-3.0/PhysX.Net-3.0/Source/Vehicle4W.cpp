@@ -1,9 +1,23 @@
 #include "StdAfx.h"
 #include "Vehicle4W.h"
+#include "Physics.h"
+#include "Vehicle4WSetupDesc.h"
+#include "Geometry.h"
+#include "RigidDynamic.h"
+#include "Vehicle4WSimulationData.h"
+#include "Material.h"
+#include "VehicleSuspensionRaycastResult.h"
 
-Vehicle4W::Vehicle4W(PxVehicle4W* vehicle)
+Vehicle4W::Vehicle4W(PxVehicle4W* vehicle, PhysX::Physics^ owner)
 {
+	if (vehicle == NULL)
+		throw gcnew ArgumentNullException("vehicle");
+	ThrowIfNullOrDisposed(owner, "owner");
+
 	_vehicle = vehicle;
+	_physics = owner;
+
+	ObjectTable::Add((intptr_t)_vehicle, this, owner);
 }
 Vehicle4W::~Vehicle4W()
 {
@@ -11,16 +25,195 @@ Vehicle4W::~Vehicle4W()
 }
 Vehicle4W::!Vehicle4W()
 {
+	OnDisposing(this, nullptr);
+
 	if (Disposed)
 		return;
 
 	_vehicle = NULL;
+	_physics = nullptr;
+
+	OnDisposed(this, nullptr);
 }
 
 bool Vehicle4W::Disposed::get()
 {
 	return _vehicle == NULL;
 }
+
+PhysX::Physics^ Vehicle4W::Physics::get()
+{
+	return _physics;
+}
+
+void Vehicle4W::Initalize(PhysX::Physics^ physics)
+{
+	ThrowIfNullOrDisposed(physics, "physics");
+
+	PxInitVehicles(*physics->UnmanagedPointer);
+}
+Vehicle4W^ Vehicle4W::Setup(Vehicle4WSetupDesc^ description)
+{
+	ThrowIfNull(description, "description");
+
+	auto simData = Vehicle4WSimulationData::ToUnmanaged(description->SimulationData);
+	auto qryFilterData = FilterData::ToUnmanaged(description->VehicleQueryFilterData);
+	auto wheelCollFilterData = FilterData::ToUnmanaged(description->WheelCollisionFilterData);
+
+	PxGeometry** geometries = new PxGeometry*[description->Geometries->Length];
+	PxTransform* transforms = new PxTransform[description->Geometries->Length];
+	for (int i = 0; i < description->Geometries->Length; i++)
+	{
+		geometries[i] = description->Geometries[i]->ChassisGeometry->ToUnmanaged();
+		transforms[i] = MathUtil::MatrixToPxTransform(description->Geometries[i]->ChassisLocalPose);
+	}
+	
+	PxGeometry& fl = *description->FrontLeftWheelGeometry->ToUnmanaged();
+	PxGeometry& fr = *description->FrontRightWheelGeometry->ToUnmanaged();
+	PxGeometry& rl = *description->RearLeftWheelGeometry->ToUnmanaged();
+	PxGeometry& rr = *description->RearRightWheelGeometry->ToUnmanaged();
+
+	auto vehActor = GetPointerOrNull(description->VehicleActor);
+
+	auto wheelMat = description->WheelMaterial->UnmanagedPointer;
+	auto chasMat = description->ChassisMaterial->UnmanagedPointer;
+	auto chasCollFilterData = FilterData::ToUnmanaged(description->ChassisCollisionFilterData);
+
+	//
+
+	PxVehicle4W* vehicle = NULL;
+	
+	PxVehicle4WSetup
+	(
+		simData,
+		qryFilterData,
+		vehActor,
+		fl, fr, rl, rr,
+		wheelMat,
+		wheelCollFilterData,
+		*geometries,
+		transforms,
+		description->Geometries->Length,
+		chasMat,
+		chasCollFilterData,
+		description->Physics->UnmanagedPointer,
+		vehicle
+	);
+
+	delete &fl;
+	delete &fr;
+	delete &rl;
+	delete &rr;
+
+	return gcnew Vehicle4W(vehicle, description->Physics);
+}
+
+FilterData Vehicle4W::SetupVehicleShapeQueryFilterData(int vehicleIndex)
+{
+	PxFilterData fd;
+	PxSetupVehicleShapeQueryFilterData(vehicleIndex, &fd);
+
+	return FilterData::ToManaged(fd);
+}
+
+void Vehicle4W::SetAnalogInputs(float acceleration, float brake, float handbrake, float steer, bool gearup, bool geardown)
+{
+	PxVehicle4WSetAnalogInputs(acceleration, brake, handbrake, steer, gearup, geardown, *_vehicle);
+}
+
+void Vehicle4W::StartGearChange(int targetGear)
+{
+	PxVehicle4WStartGearChange(targetGear, *_vehicle);
+}
+
+void Vehicle4W::ForceGearChange(int targetGear)
+{
+	PxVehicle4WForceGearChange(targetGear, *_vehicle);
+}
+
+float Vehicle4W::ComputeForwardSpeed()
+{
+	return PxVehicle4WComputeForwardSpeed(*_vehicle);
+}
+
+float Vehicle4W::ComputeSidewaysSpeed()
+{
+	return PxVehicle4WComputeSidewaysSpeed(*_vehicle);
+}
+
+void Vehicle4W::SetToRestState()
+{
+	PxVehicle4WSetToRestState(*_vehicle);
+}
+
+array<Shape^>^ Vehicle4W::GetChassisShapes()
+{
+	int numOfShapes = PxVehicle4WGetNumChassisShapes(*_vehicle);
+
+	PxShape** chassisShapes = new PxShape*[numOfShapes];
+	PxVehicle4WGetChassisShapes(*_vehicle, chassisShapes, numOfShapes);
+
+	array<Shape^>^ cs = gcnew array<Shape^>(numOfShapes);
+	for (int i = 0; i < numOfShapes; i++)
+	{
+		cs[i] = ObjectTable::GetObject<Shape^>((intptr_t)chassisShapes[i]);
+	}
+
+	return cs;
+}
+
+float Vehicle4W::GetWheelRotationSpeed(int wheelIndex)
+{
+	return PxVehicle4WGetWheelRotationSpeed(*_vehicle, wheelIndex);
+}
+
+float Vehicle4W::GetWheelRotationAngle(int wheelIndex)
+{
+return PxVehicle4WGetWheelRotationAngle(*_vehicle, wheelIndex);
+}
+
+float Vehicle4W::GetSuspensionJounce(int suspensionIndex)
+{
+	return PxVehicle4WGetSuspJounce(*_vehicle, suspensionIndex);
+}
+
+float Vehicle4W::GetTyreLongSlip(int tyreIndex)
+{
+	return PxVehicle4WGetTyreLongSlip(*_vehicle, tyreIndex);
+}
+
+float Vehicle4W::GetTyreLaterialSlip(int tyreIndex)
+{
+	return PxVehicle4WGetTyreLatSlip(*_vehicle, tyreIndex);
+}
+
+float Vehicle4W::GetTyreFriction(int tyreIndex)
+{
+	return PxVehicle4WGetTyreFriction(*_vehicle, tyreIndex);
+}
+
+int Vehicle4W::GetTyreDrivableSurfaceType(int tyreIndex)
+{
+	return PxVehicle4WGetTyreDrivableSurfaceType(*_vehicle, tyreIndex);
+}
+
+VehicleSuspensionRaycastResult^ Vehicle4W::GetSuspensionRaycast(int suspensionIndex)
+{
+	PxVec3 start;
+	PxVec3 dir;
+	float length;
+
+	PxVehicle4WGetSuspRaycast(*_vehicle, suspensionIndex, start, dir, length);
+
+	auto result = gcnew VehicleSuspensionRaycastResult();
+		result->Start = MathUtil::PxVec3ToVector3(start);
+		result->Direction = MathUtil::PxVec3ToVector3(dir);
+		result->Length = length;
+
+	return result;
+}
+
+//
 
 bool Vehicle4W::UseAutoGears::get()
 {
@@ -182,6 +375,79 @@ float Vehicle4W::AutoBoxSwitchTime::get()
 void Vehicle4W::AutoBoxSwitchTime::set(float value)
 {
 	_vehicle->mAutoBoxSwitchTime = value;
+}
+
+float Vehicle4W::AppliedAcceleration::get()
+{
+	return PxVehicle4WGetAppliedAccel(*_vehicle);
+}
+
+float Vehicle4W::AppliedBrake::get()
+{
+	return PxVehicle4WGetAppliedBrake(*_vehicle);
+}
+
+float Vehicle4W::AppliedHandbrake::get()
+{
+	return PxVehicle4WGetAppliedHandbrake(*_vehicle);
+}
+
+float Vehicle4W::AppliedSteer::get()
+{
+	return PxVehicle4WGetAppliedSteer(*_vehicle);
+}
+
+bool Vehicle4W::AppliedGearup::get()
+{
+	return PxVehicle4WGetAppliedGearup(*_vehicle);
+}
+
+bool Vehicle4W::AppliedGeardown::get()
+{
+	return PxVehicle4WGetAppliedGeardown(*_vehicle);
+}
+
+bool Vehicle4W::IsInAir::get()
+{
+	return PxVehicle4WIsInAir(*_vehicle);
+}
+
+Shape^ Vehicle4W::FrontLeftWheelShape::get()
+{
+	PxShape* shape = PxVehicle4WGetFrontLeftWheelShape(*_vehicle);
+
+	return ObjectTable::GetObject<Shape^>((intptr_t)shape);
+}
+
+Shape^ Vehicle4W::FrontRightWheelShape::get()
+{
+	PxShape* shape = PxVehicle4WGetFrontRightWheelShape(*_vehicle);
+
+	return ObjectTable::GetObject<Shape^>((intptr_t)shape);
+}
+
+Shape^ Vehicle4W::RearLeftWheelShape::get()
+{
+	PxShape* shape = PxVehicle4WGetRearLeftWheelShape(*_vehicle);
+
+	return ObjectTable::GetObject<Shape^>((intptr_t)shape);
+}
+
+Shape^ Vehicle4W::RearRightWheelShape::get()
+{
+	PxShape* shape = PxVehicle4WGetRearRightWheelShape(*_vehicle);
+
+	return ObjectTable::GetObject<Shape^>((intptr_t)shape);
+}
+
+int Vehicle4W::NumberOfChassisShapes::get()
+{
+	return PxVehicle4WGetNumChassisShapes(*_vehicle);
+}
+
+float Vehicle4W::EngineRotationSpeed::get()
+{
+	return PxVehicle4WGetEngineRotationSpeed(*_vehicle);
 }
 
 PxVehicle4W* Vehicle4W::UnmanagedPointer::get()

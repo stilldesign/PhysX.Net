@@ -7,7 +7,7 @@ namespace PhysX
 	public ref class VehicleAutoBoxData
 	{
 		internal:
-			static VehicleAutoBoxData^ FromUnmanaged(PxVehicleAutoBoxData data);
+			static VehicleAutoBoxData^ ToManaged(PxVehicleAutoBoxData data);
 			static PxVehicleAutoBoxData ToUnmanaged(VehicleAutoBoxData^ data);
 
 		public:

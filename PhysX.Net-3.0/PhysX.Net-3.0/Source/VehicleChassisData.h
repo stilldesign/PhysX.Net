@@ -8,6 +8,7 @@ namespace PhysX
 	{
 		internal:
 			static PxVehicleChassisData ToUnmanaged(VehicleChassisData^ data);
+			static VehicleChassisData^ ToManaged(PxVehicleChassisData data);
 
 		public:
 			property Vector3 MOI;

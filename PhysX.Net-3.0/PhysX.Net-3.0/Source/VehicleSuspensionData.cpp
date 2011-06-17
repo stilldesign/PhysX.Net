@@ -1,7 +1,7 @@
 #include "StdAfx.h"
 #include "VehicleSuspensionData.h"
 
-PxVehicleSuspensionData VehicleSuspensionData::FromManaged(VehicleSuspensionData^ data)
+PxVehicleSuspensionData VehicleSuspensionData::ToUnmanaged(VehicleSuspensionData^ data)
 {
 	PxVehicleSuspensionData d;
 		d.mSpringStrength = data->SpringStrength;

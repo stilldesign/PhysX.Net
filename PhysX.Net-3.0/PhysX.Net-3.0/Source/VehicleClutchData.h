@@ -7,7 +7,7 @@ namespace PhysX
 	public ref class VehicleClutchData
 	{
 		internal:
-			static VehicleClutchData^ FromUnmanaged(PxVehicleClutchData data);
+			static VehicleClutchData^ ToManaged(PxVehicleClutchData data);
 			static PxVehicleClutchData ToUnmanaged(VehicleClutchData^ data);
 
 		public:

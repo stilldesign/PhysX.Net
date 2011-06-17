@@ -19,7 +19,7 @@ namespace PhysX
 	public ref class VehicleTyreLoadFilterData
 	{
 		internal:
-			static VehicleTyreLoadFilterData^ FromUnmanaged(PxVehicleTyreLoadFilterData data);
+			static VehicleTyreLoadFilterData^ ToManaged(PxVehicleTyreLoadFilterData data);
 			static PxVehicleTyreLoadFilterData ToUnmanaged(VehicleTyreLoadFilterData^ data);
 
 		public:

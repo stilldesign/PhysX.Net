@@ -1,7 +1,7 @@
 #include "StdAfx.h"
 #include "VehicleClutchData.h"
 
-VehicleClutchData^ VehicleClutchData::FromUnmanaged(PxVehicleClutchData data)
+VehicleClutchData^ VehicleClutchData::ToManaged(PxVehicleClutchData data)
 {
 	VehicleClutchData^ d = gcnew VehicleClutchData();
 		d->Strength = data.mStrength;

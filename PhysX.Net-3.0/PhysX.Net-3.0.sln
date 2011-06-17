@@ -47,9 +47,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClothSample", "Samples\Clot
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluidSample", "Samples\FluidSample\FluidSample.csproj", "{F8164306-BE0D-4165-AE47-127DFEA652D4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleSample", "Samples\VehicleSample\VehicleSample.csproj", "{9DADC745-6D7C-4655-83C1-EDABC205FAEA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assemblies", "Assemblies", "{C73EE67B-B5F9-4D48-99A6-A7A07EED1509}"
+	ProjectSection(SolutionItems) = preProject
+		Samples\Assemblies\SlimDX.dll = Samples\Assemblies\SlimDX.dll
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 10
+		SccNumberOfProjects = 11
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs01
 		SccLocalPath0 = .
@@ -87,6 +94,10 @@ Global
 		SccProjectTopLevelParentUniqueName9 = PhysX.Net-3.0.sln
 		SccProjectName9 = Samples/FluidSample
 		SccLocalPath9 = Samples\\FluidSample
+		SccProjectUniqueName10 = Samples\\VehicleSample\\VehicleSample.csproj
+		SccProjectTopLevelParentUniqueName10 = PhysX.Net-3.0.sln
+		SccProjectName10 = Samples/VehicleSample
+		SccLocalPath10 = Samples\\VehicleSample
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = PhysX.Net.vsmdi
@@ -154,6 +165,12 @@ Global
 		{F8164306-BE0D-4165-AE47-127DFEA652D4}.Release|x64.ActiveCfg = Release|x86
 		{F8164306-BE0D-4165-AE47-127DFEA652D4}.Release|x86.ActiveCfg = Release|x86
 		{F8164306-BE0D-4165-AE47-127DFEA652D4}.Release|x86.Build.0 = Release|x86
+		{9DADC745-6D7C-4655-83C1-EDABC205FAEA}.Debug|x64.ActiveCfg = Debug|x86
+		{9DADC745-6D7C-4655-83C1-EDABC205FAEA}.Debug|x86.ActiveCfg = Debug|x86
+		{9DADC745-6D7C-4655-83C1-EDABC205FAEA}.Debug|x86.Build.0 = Debug|x86
+		{9DADC745-6D7C-4655-83C1-EDABC205FAEA}.Release|x64.ActiveCfg = Release|x86
+		{9DADC745-6D7C-4655-83C1-EDABC205FAEA}.Release|x86.ActiveCfg = Release|x86
+		{9DADC745-6D7C-4655-83C1-EDABC205FAEA}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -168,5 +185,7 @@ Global
 		{876281DD-2748-4C1C-81FC-2CC8BE31C27F} = {E1E0C505-3069-4E15-980D-1C87F241C7F3}
 		{B3EFE92A-7B73-44F5-B91D-93BC37AE429F} = {E1E0C505-3069-4E15-980D-1C87F241C7F3}
 		{F8164306-BE0D-4165-AE47-127DFEA652D4} = {E1E0C505-3069-4E15-980D-1C87F241C7F3}
+		{9DADC745-6D7C-4655-83C1-EDABC205FAEA} = {E1E0C505-3069-4E15-980D-1C87F241C7F3}
+		{C73EE67B-B5F9-4D48-99A6-A7A07EED1509} = {E1E0C505-3069-4E15-980D-1C87F241C7F3}
 	EndGlobalSection
 EndGlobal

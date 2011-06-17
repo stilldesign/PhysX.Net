@@ -7,8 +7,8 @@ namespace PhysX
 	public ref class VehicleSuspensionData
 	{
 		internal:
-			PxVehicleSuspensionData FromManaged(VehicleSuspensionData^ data);
-			VehicleSuspensionData^ ToManaged(PxVehicleSuspensionData data);
+			static PxVehicleSuspensionData ToUnmanaged(VehicleSuspensionData^ data);
+			static VehicleSuspensionData^ ToManaged(PxVehicleSuspensionData data);
 
 		public:
 			/// <summary>

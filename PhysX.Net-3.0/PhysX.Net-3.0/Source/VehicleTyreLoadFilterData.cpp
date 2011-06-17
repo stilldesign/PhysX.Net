@@ -1,7 +1,7 @@
 #include "StdAfx.h"
 #include "VehicleTyreLoadFilterData.h"
 
-VehicleTyreLoadFilterData^ VehicleTyreLoadFilterData::FromUnmanaged(PxVehicleTyreLoadFilterData data)
+VehicleTyreLoadFilterData^ VehicleTyreLoadFilterData::ToManaged(PxVehicleTyreLoadFilterData data)
 {
 	VehicleTyreLoadFilterData^ d = gcnew VehicleTyreLoadFilterData();
 		d->MinNormalisedLoad = data.mMinNormalisedLoad;

@@ -1,7 +1,7 @@
 #include "StdAfx.h"
 #include "VehicleAutoBoxData.h"
 
-VehicleAutoBoxData^ VehicleAutoBoxData::FromUnmanaged(PxVehicleAutoBoxData data)
+VehicleAutoBoxData^ VehicleAutoBoxData::ToManaged(PxVehicleAutoBoxData data)
 {
 	VehicleAutoBoxData^ d = gcnew VehicleAutoBoxData();
 		d->UpRatios = Util::AsManagedArray<float>(data.mUpRatios, PxVehicleGearsData::eMAX_NUM_GEAR_RATIOS);
