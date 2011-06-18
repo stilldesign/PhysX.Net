@@ -11,7 +11,7 @@ namespace PhysX.Test
 		[TestMethod]
 		public void CreateAndDisposeHeightField()
 		{
-			using (CreatePhysicsAndScene())
+			using (var core = CreatePhysicsAndScene())
 			{
 				const int rows = 25, columns = 25;
 				var samples = CreateSampleGrid(rows, columns);
@@ -24,7 +24,7 @@ namespace PhysX.Test
 				};
 
 				HeightField heightField;
-				using (heightField = Physics.CreateHeightField(heightFieldDesc))
+				using (heightField = core.Physics.CreateHeightField(heightFieldDesc))
 				{
 					Assert.IsNotNull(heightField);
 					Assert.IsFalse(heightField.Disposed);

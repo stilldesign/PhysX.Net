@@ -23,69 +23,57 @@ namespace PhysX.Test
 		[TestCleanup]
 		public void CleanUp()
 		{
-			this.Scene = null;
-			this.Physics = null;
-
 			ObjectTable.Clear();
 		}
 
-		protected Physics CreatePhysics()
+		private Physics CreatePhysics()
 		{
-			if (this.Physics != null || PhysX.Physics.Instantiated)
+			if (Physics.Instantiated)
 				throw new Exception("Physics is still created");
 
-			this.Physics = new Physics(checkRuntimeFiles: true);
-			this.Physics.OnDisposed += Physics_OnDisposed;
+			var physics = new Physics(checkRuntimeFiles: true);
 
-			return this.Physics;
+			return physics;
 		}
-		protected Scene CreatePhysicsAndScene()
+		protected PhysicsAndSceneTestUnit CreatePhysicsAndScene()
 		{
-			CreatePhysics();
+			var physics = CreatePhysics();
 
-			this.Scene = this.Physics.CreateScene();
+			var scene = physics.CreateScene();
 
-			return this.Scene;
+			return new PhysicsAndSceneTestUnit()
+			{
+				Physics = physics,
+				Scene = scene
+			};
 		}
 
-		void Physics_OnDisposed(object sender, EventArgs e)
-		{
-			this.Physics = this.Physics = null;
-
-			this.Scene = null;
-		}
-
-		protected void Update()
+		protected void Update(Scene scene)
 		{
 			// Update Physics
 			// Note: These 3 need to called together otherwise the unit test hosting process crashes
-			this.Scene.Simulate(1.0f / 60.0f);
+			scene.Simulate(1.0f / 60.0f);
 			//this.Scene.FlushStream();
-			this.Scene.FetchResults();
+			scene.FetchResults();
 		}
 
-		protected RigidDynamic CreateBoxActor(float sizeX, float sizeY, float sizeZ, string name = "Box")
+		protected RigidDynamic CreateBoxActor(Scene scene, float sizeX, float sizeY, float sizeZ)
 		{
-			return CreateBoxActor(new Vector3(5, 5, 5), new Vector3(sizeX, sizeY, sizeZ));
+			return CreateBoxActor(scene, new Vector3(5, 5, 5), new Vector3(sizeX, sizeY, sizeZ));
 		}
-		protected RigidDynamic CreateBoxActor(Vector3 size, Vector3 position)
+		protected RigidDynamic CreateBoxActor(Scene scene, Vector3 size, Vector3 position)
 		{
-			var material = this.Physics.CreateMaterial(0.5f, 0.5f, 0.1f);
+			var material = scene.Physics.CreateMaterial(0.5f, 0.5f, 0.1f);
 
-			var rigid = this.Physics.CreateRigidDynamic();
+			var rigid = scene.Physics.CreateRigidDynamic();
 
 			var shape = rigid.CreateShape(new BoxGeometry(size / 2), material);
 
 			rigid.GlobalPose = Matrix.Translation(position);
 
-			this.Scene.AddActor(rigid);
+			scene.AddActor(rigid);
 
 			return rigid;
 		}
-
-		//
-
-		protected Physics Physics { get; private set; }
-		protected Scene Scene { get; private set; }
 	}
 }

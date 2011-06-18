@@ -15,7 +15,7 @@ namespace PhysX.Test
 		[TestMethod]
 		public void CreateAndDisposeDeformable()
 		{
-			using (CreatePhysicsAndScene())
+			using (var core = CreatePhysicsAndScene())
 			{
 				var model = ReadVerticesAndTrianglesFromColladaDoc(@"Resources\Teapot.DAE");
 
@@ -28,13 +28,13 @@ namespace PhysX.Test
 				};
 				meshDesc.SetPrimitives(model.Indices);
 
-				var cook = this.Physics.CreateCooking();
+				var cook = core.Physics.CreateCooking();
 
 				var cookedMeshStream = new MemoryStream();
 
 				cook.CookDeformableMesh(meshDesc, cookedMeshStream);
 
-				var mesh = this.Physics.CreateDeformableMesh(cookedMeshStream);
+				var mesh = core.Physics.CreateDeformableMesh(cookedMeshStream);
 
 				var desc = new DeformableDesc()
 				{
@@ -44,7 +44,7 @@ namespace PhysX.Test
 				};
 
 				Deformable deformable;
-				using (deformable = this.Physics.CreateDeformable(desc))
+				using (deformable = core.Physics.CreateDeformable(desc))
 				{
 					Assert.IsFalse(deformable.Disposed);
 				}

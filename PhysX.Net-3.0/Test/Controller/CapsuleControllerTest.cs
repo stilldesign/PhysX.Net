@@ -11,11 +11,11 @@ namespace PhysX.Test
 		[TestMethod]
 		public void CreateAndDisposeCapsuleController()
 		{
-			using (CreatePhysicsAndScene())
+			using (var core = CreatePhysicsAndScene())
 			{
-				var controllerManager = Scene.CreateControllerManager();
+				var controllerManager = core.Scene.CreateControllerManager();
 
-				var material = this.Physics.CreateMaterial(0.1f, 0.1f, 0.1f);
+				var material = core.Physics.CreateMaterial(0.1f, 0.1f, 0.1f);
 
 				var desc = new BoxControllerDesc()
 				{

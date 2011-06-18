@@ -60,7 +60,8 @@
     <Compile Include="SceneTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PhysicsTest.cs" />
-    <Compile Include="Test.cs" />
+    <Compile Include="Test\PhysicsAndSceneTestUnit.cs" />
+    <Compile Include="Test\Test.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PhysX.Net-3.0\PhysX.Net-3.0.vcxproj">

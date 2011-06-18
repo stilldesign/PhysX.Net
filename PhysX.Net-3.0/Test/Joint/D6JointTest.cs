@@ -12,11 +12,11 @@ namespace PhysX.Test
 		[TestMethod]
 		public void CreateAndDisposeD6Joint()
 		{
-			using (CreatePhysicsAndScene())
+			using (var core = CreatePhysicsAndScene())
 			{
-				var box = CreateBoxActor(5, 5, 5);
+				var box = CreateBoxActor(core.Scene, 5, 5, 5);
 
-				using (var d6 = this.Scene.CreateJoint<D6Joint>(box, Matrix.Identity, null, Matrix.Identity))
+				using (var d6 = core.Scene.CreateJoint<D6Joint>(box, Matrix.Identity, null, Matrix.Identity))
 				{
 
 				}

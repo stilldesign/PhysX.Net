@@ -33,24 +33,24 @@ namespace PhysX.Test
 		[TestMethod]
 		public void SetGravity()
 		{
-			using (CreatePhysicsAndScene())
+			using (var core = CreatePhysicsAndScene())
 			{
-				this.Scene.Gravity = new Vector3(0, -9.81f, 0);
+				core.Scene.Gravity = new Vector3(0, -9.81f, 0);
 
-				Assert.AreEqual(new Vector3(0, -9.81f, 0), this.Scene.Gravity);
+				Assert.AreEqual(new Vector3(0, -9.81f, 0), core.Scene.Gravity);
 			}
 		}
 
 		[TestMethod]
 		public void RaycastAny()
 		{
-			using (CreatePhysicsAndScene())
+			using (var core = CreatePhysicsAndScene())
 			{
 				// On the ground, 20 units ahead
-				var box1 = CreateBoxActor(0, 0, 20);
-				var box2 = CreateBoxActor(0, 0, 40);
+				var box1 = CreateBoxActor(core.Scene, 0, 0, 20);
+				var box2 = CreateBoxActor(core.Scene, 0, 0, 40);
 
-				var hit = this.Scene.RaycastAny(new Vector3(0, 0, 0), new Vector3(0, 0, 1), 10000);
+				var hit = core.Scene.RaycastAny(new Vector3(0, 0, 0), new Vector3(0, 0, 1), 10000);
 
 				// Calling RaycastAny returns flags of Material | FaceNormal | Distance | Normal | Impact | Shape, so validate those variables
 				Assert.IsNotNull(hit);
@@ -65,16 +65,16 @@ namespace PhysX.Test
 		[TestMethod]
 		public void RaycastSingle()
 		{
-			using (CreatePhysicsAndScene())
+			using (var core = CreatePhysicsAndScene())
 			{
 				// Just up from the ground, 20 units ahead
-				var box1 = CreateBoxActor(0, 2, 20);
-				var box2 = CreateBoxActor(0, 2, 40);
+				var box1 = CreateBoxActor(core.Scene, 0, 2, 20);
+				var box2 = CreateBoxActor(core.Scene, 0, 2, 40);
 
 				Vector3 origin = new Vector3(0, 2, 0);
 				Vector3 direction = new Vector3(0, 0, 1);
 
-				var hit = this.Scene.RaycastSingle(origin, direction, 10000, SceneQueryFlags.Distance | SceneQueryFlags.BlockingHit | SceneQueryFlags.Normal);
+				var hit = core.Scene.RaycastSingle(origin, direction, 10000, SceneQueryFlags.Distance | SceneQueryFlags.BlockingHit | SceneQueryFlags.Normal);
 
 				Assert.IsNotNull(hit);
 				Assert.AreEqual(17.5f, hit.Distance);

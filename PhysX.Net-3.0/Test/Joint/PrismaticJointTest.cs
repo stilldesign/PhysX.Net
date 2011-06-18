@@ -12,11 +12,11 @@ namespace PhysX.Test
 		[TestMethod]
 		public void CreateAndDisposePrismaticJoint()
 		{
-			using (CreatePhysicsAndScene())
+			using (var core = CreatePhysicsAndScene())
 			{
-				var box = CreateBoxActor(5, 5, 5);
+				var box = CreateBoxActor(core.Scene, 5, 5, 5);
 
-				using (var prismaticJoint = this.Scene.CreateJoint<PrismaticJoint>(box, Matrix.Identity, null, Matrix.Identity))
+				using (var prismaticJoint = core.Scene.CreateJoint<PrismaticJoint>(box, Matrix.Identity, null, Matrix.Identity))
 				{
 
 				}
