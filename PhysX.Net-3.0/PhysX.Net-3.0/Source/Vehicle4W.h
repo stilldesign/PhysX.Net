@@ -18,7 +18,7 @@ namespace PhysX
 	public ref class Vehicle4W : IDisposable
 	{
 		public:
-			const literal int MaximumNumberOfChassisShapes = PX_MAX_NUM_CHASSIS_SHAPES;
+			literal int MaximumNumberOfChassisShapes = PX_MAX_NUM_CHASSIS_SHAPES;
 
 		public:
 			/// <summary>Raised before any disposing is performed.</summary>
