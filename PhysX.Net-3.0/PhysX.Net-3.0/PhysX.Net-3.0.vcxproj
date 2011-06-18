@@ -217,6 +217,8 @@
     <ClInclude Include="Source\HeightFieldSample.h" />
     <ClInclude Include="Source\HullPolygon.h" />
     <ClInclude Include="Source\IDisposable.h" />
+    <ClInclude Include="Source\IObservable.h" />
+    <ClInclude Include="Source\IObserver.h" />
     <ClInclude Include="Source\Joint.h" />
     <ClInclude Include="Source\JointEnum.h" />
     <ClInclude Include="Source\JointLimit.h" />
@@ -232,6 +234,10 @@
     <ClInclude Include="Source\MeshScale.h" />
     <ClInclude Include="Source\MultipleRaycastHitResult.h" />
     <ClInclude Include="Source\ObjectTable.h" />
+    <ClInclude Include="Source\Observable.h" />
+    <ClInclude Include="Source\ObservableEnum.h" />
+    <ClInclude Include="Source\ObservableInstance.h" />
+    <ClInclude Include="Source\Observer.h" />
     <ClInclude Include="Source\ParticleBase.h" />
     <ClInclude Include="Source\ParticleBaseDesc.h" />
     <ClInclude Include="Source\ParticleCreationData.h" />
@@ -376,6 +382,9 @@
     <ClCompile Include="Source\LockedData.cpp" />
     <ClCompile Include="Source\MemoryStream.cpp" />
     <ClCompile Include="Source\MeshScale.cpp" />
+    <ClCompile Include="Source\Observable.cpp" />
+    <ClCompile Include="Source\ObservableInstance.cpp" />
+    <ClCompile Include="Source\Observer.cpp" />
     <ClCompile Include="Source\ParticleBase.cpp" />
     <ClCompile Include="Source\ParticleBaseDesc.cpp" />
     <ClCompile Include="Source\ParticleCreationData.cpp" />

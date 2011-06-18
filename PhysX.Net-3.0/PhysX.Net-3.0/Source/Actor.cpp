@@ -1,6 +1,7 @@
 #include "StdAfx.h"
 #include "Actor.h"
 #include "Physics.h"
+#include "ObservableInstance.h"
 
 using namespace PhysX;
 
@@ -35,6 +36,11 @@ Actor::!Actor()
 bool Actor::Disposed::get()
 {
 	return _actor == NULL;
+}
+
+ObservableInstance^ Actor::GetObservableInstance()
+{
+	return gcnew ObservableInstance(_actor);
 }
 
 //

@@ -3,6 +3,7 @@
 #include <PxActor.h>
 #include "ActorEnum.h"
 #include "Bounds3.h"
+#include "IObservable.h"
 
 namespace PhysX
 {
@@ -14,7 +15,7 @@ namespace PhysX
 	///	The actor is owned by and contained in a <see cref="Scene" />.
 	/// See <see cref="ActorDesc" /> for a more detailed description of the parameters which can be set when creating an actor.
 	/// </summary>
-	public ref class Actor abstract : IDisposable
+	public ref class Actor abstract : IDisposable, IObservable
 	{
 		public:
 			/// <summary>Raised before any disposing is performed.</summary>
@@ -38,6 +39,8 @@ namespace PhysX
 			{
 				virtual bool get();
 			}
+
+			virtual ObservableInstance^ GetObservableInstance() override;
 
 			//
 

@@ -50,6 +50,7 @@
     <Compile Include="Deformable\DeformableTest.cs" />
     <Compile Include="Geometry\Model.cs" />
     <Compile Include="HeightField\HeightFieldTest.cs" />
+    <Compile Include="ObservableTest.cs" />
     <Compile Include="ParticleTest.cs" />
     <Compile Include="ErrorOutput.cs" />
     <Compile Include="Joint\PrismaticJointTest.cs" />
