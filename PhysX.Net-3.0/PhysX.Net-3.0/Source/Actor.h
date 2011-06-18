@@ -40,7 +40,7 @@ namespace PhysX
 				virtual bool get();
 			}
 
-			virtual ObservableInstance^ GetObservableInstance() override;
+			virtual ObservableInstance^ GetObservableInstance();
 
 			//
 

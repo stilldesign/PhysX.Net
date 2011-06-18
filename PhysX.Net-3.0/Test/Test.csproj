@@ -61,6 +61,7 @@
     <Compile Include="SceneTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PhysicsTest.cs" />
+    <Compile Include="Serialization\CollectionTest.cs" />
     <Compile Include="Test\PhysicsAndSceneTestUnit.cs" />
     <Compile Include="Test\Test.cs" />
   </ItemGroup>

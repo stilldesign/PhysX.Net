@@ -28,6 +28,7 @@
 #include "RuntimeFileChecks.h"
 #include "ParticleFluidDesc.h"
 #include "ParticleFluid.h"
+#include "Collection.h"
 #include "VisualDebugger/Connection.h"
 
 #include <PxDefaultAllocator.h>
@@ -243,7 +244,7 @@ TriangleMesh^ Physics::CreateTriangleMesh(System::IO::Stream^ stream)
 	try
 	{
 		// TODO: Memory leak
-		MemoryStream* ms = Util::StreamToUnmanagedMemoryStream(stream);
+		InternalMemoryStream* ms = Util::StreamToUnmanagedMemoryStream(stream);
 
 		PxTriangleMesh* triangleMesh = _physics->createTriangleMesh(*ms);
 
@@ -359,7 +360,9 @@ Deformable^ Physics::CreateDeformable(DeformableDesc^ desc)
 
 DeformableMesh^ Physics::CreateDeformableMesh(System::IO::Stream^ stream)
 {
-	//ThrowIfNullOrDisposed(stream, "stream");
+	ThrowIfNull(stream, "stream");
+	if (!stream->CanWrite)
+		throw gcnew ArgumentException("Cannot write to stream");
 
 	int m = (int)stream->Length;
 
@@ -370,7 +373,7 @@ DeformableMesh^ Physics::CreateDeformableMesh(System::IO::Stream^ stream)
 	stream->Read(buffer, 0, m);
 	Util::AsUnmanagedArray(buffer, (void*)streamCopy, m);
 
-	MemoryStream s;
+	InternalMemoryStream s;
 	s.storeBuffer(streamCopy, m);
 	s.ResetSeek();
 
@@ -436,6 +439,30 @@ Attachment^ Physics::CreateAttachment(Deformable^ deformable, Shape^ shape, arra
 	auto attachment = _physics->createAttachment(*deformable->UnmanagedPointer, s, n, vi, p, f);
 
 	return gcnew Attachment(attachment, this);
+}
+#pragma endregion
+
+#pragma region Collection
+Collection^ Physics::CreateCollection()
+{
+	auto collection = _physics->createCollection();
+
+	return gcnew Collection(collection, this);
+}
+
+void Physics::ReleaseCollection(Collection^ collection)
+{
+	ThrowIfNullOrDisposed(collection, "collection");
+
+	_physics->releaseCollection(collection->UnmanagedPointer);
+}
+
+void Physics::AddCollection(Collection^ collection, Scene^ scene)
+{
+	ThrowIfNullOrDisposed(collection, "collection");
+	ThrowIfNullOrDisposed(scene, "scene");
+
+	_physics->addCollection(*collection->UnmanagedPointer, scene->UnmanagedPointer);
 }
 #pragma endregion
 

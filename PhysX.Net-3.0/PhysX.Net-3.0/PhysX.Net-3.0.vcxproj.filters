@@ -151,6 +151,12 @@
     <Filter Include="Source Files\Observable">
       <UniqueIdentifier>{a4546760-3b60-4eeb-b2fa-6457e3436d0f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Serialization">
+      <UniqueIdentifier>{ec579394-84f6-4cb5-a828-b12b2d151c28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Serialization">
+      <UniqueIdentifier>{d414a886-479a-4c1d-a336-08e093e8ad5c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\StdAfx.h">
@@ -666,6 +672,12 @@
     <ClInclude Include="Source\ObservableInstance.h">
       <Filter>Header Files\Observable</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Collection.h">
+      <Filter>Header Files\Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\InternalSerialStream.h">
+      <Filter>Header Files\Serialization</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Material.cpp">
@@ -1096,6 +1108,12 @@
     </ClCompile>
     <ClCompile Include="Source\ObservableInstance.cpp">
       <Filter>Source Files\Observable</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Collection.cpp">
+      <Filter>Source Files\Serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\InternalSerialStream.cpp">
+      <Filter>Source Files\Serialization</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

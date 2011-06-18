@@ -1,0 +1,58 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.IO;
+
+namespace PhysX.Test.Serialization
+{
+	[TestClass]
+	public class CollectionTest : Test
+	{
+		[TestMethod]
+		public void SerializeCollection()
+		{
+			using (var core = CreatePhysicsAndScene())
+			{
+				CreateBoxActor(core.Scene, 5, 5, 5);
+
+				var collection = core.Physics.CreateCollection();
+
+				collection.CollectPhysicsForExport(core.Physics);
+
+				using (var serializeStream = new MemoryStream())
+				{
+					collection.Serialize(serializeStream);
+
+					serializeStream.Flush();
+
+					Assert.IsTrue(serializeStream.Length > 0);
+				}
+			}
+		}
+
+		[TestMethod]
+		public void DeserializeCollection()
+		{
+			using (var core = CreatePhysicsAndScene())
+			{
+				CreateBoxActor(core.Scene, 5, 5, 5);
+
+				var collection = core.Physics.CreateCollection();
+
+				using (var serializeStream = new MemoryStream())
+				{
+					collection.CollectPhysicsForExport(core.Physics);
+
+					collection.Serialize(serializeStream);
+					serializeStream.Flush();
+					serializeStream.Position = 0;
+
+					bool result = collection.Deserialize(serializeStream);
+
+					Assert.IsTrue(result);
+				}
+			}
+		}
+	}
+}

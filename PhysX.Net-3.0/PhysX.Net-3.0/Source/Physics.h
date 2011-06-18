@@ -31,6 +31,7 @@ namespace PhysX
 	ref class Attachment;
 	ref class Shape;
 	ref class ParticleFluidDesc;
+	ref class Collection;
 	
 	namespace VisualDebugger
 	{
@@ -263,7 +264,29 @@ namespace PhysX
 			Attachment^ CreateAttachment(Deformable^ deformable, Shape^ shape, array<int>^ vertexIndices, array<Vector3>^ positions, array<int>^ flags);
 			#pragma endregion
 
-			//
+			#pragma region Collection
+			/// <summary>
+			/// Creates a collection object.
+			/// Objects can only be serialized or deserialized through a collection. For serialization, users must add
+			/// objects to the collection and serialize the collection as a whole. For deserialization, the system
+			/// gives back a collection of deserialized objects to users.
+			/// </summary>
+			Collection^ CreateCollection();
+
+			/// <summary>
+			/// Deletes a collection object.
+			/// This function only deletes the collection object, i.e. the container class. It doesn't delete objects
+			/// that are part of the collection.
+			/// </summary>
+			void ReleaseCollection(Collection^ collection);
+
+			/// <summary>
+			/// Adds collected objects to a scene.
+			/// This function adds all objects contained in the input collection to the input scene.
+			/// This is typically used after deserializing the collection, to populate the scene with deserialized objects.
+			/// </summary>
+			void AddCollection(Collection^ collection, Scene^ scene);
+			#pragma endregion
 
 		internal:
 			property PxPhysics* UnmanagedPointer

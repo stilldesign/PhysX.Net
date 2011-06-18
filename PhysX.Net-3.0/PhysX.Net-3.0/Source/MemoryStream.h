@@ -46,3 +46,5 @@ class MemoryStream : public PxStream
 			_seek = _memory;
 		}
 };
+
+typedef MemoryStream InternalMemoryStream;
