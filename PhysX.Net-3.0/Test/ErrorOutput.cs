@@ -17,5 +17,13 @@ namespace PhysX.Test
 		{
 			_errors.Add(string.Format("Code: {0}, Message: {1}", errorCode, message));
 		}
+
+		public override string ToString()
+		{
+			if (_errors.Count == 0)
+				return "No errors";
+			else
+				return string.Format("{0} errors. Last error: {1}", _errors.Count, _errors[_errors.Count - 1]);
+		}
 	}
 }
