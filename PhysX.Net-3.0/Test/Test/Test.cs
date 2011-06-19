@@ -26,25 +26,28 @@ namespace PhysX.Test
 			ObjectTable.Clear();
 		}
 
-		private Physics CreatePhysics()
+		private Physics CreatePhysics(ErrorCallback errorCallback = null)
 		{
 			if (Physics.Instantiated)
 				throw new Exception("Physics is still created");
 
-			var physics = new Physics(checkRuntimeFiles: true);
+			var physics = new Physics(errorCallback, checkRuntimeFiles: true);
 
 			return physics;
 		}
 		protected PhysicsAndSceneTestUnit CreatePhysicsAndScene()
 		{
-			var physics = CreatePhysics();
+			var errors = new ErrorLog();
+
+			var physics = CreatePhysics(errors);
 
 			var scene = physics.CreateScene();
 
 			return new PhysicsAndSceneTestUnit()
 			{
 				Physics = physics,
-				Scene = scene
+				Scene = scene,
+				ErrorOutput = errors
 			};
 		}
 

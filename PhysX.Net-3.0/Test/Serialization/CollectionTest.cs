@@ -34,6 +34,8 @@ namespace PhysX.Test.Serialization
 		[TestMethod]
 		public void DeserializeCollection()
 		{
+			byte[] serialzedScene;
+
 			using (var core = CreatePhysicsAndScene())
 			{
 				CreateBoxActor(core.Scene, 5, 5, 5);
@@ -46,6 +48,19 @@ namespace PhysX.Test.Serialization
 
 					collection.Serialize(serializeStream);
 					serializeStream.Flush();
+					serializeStream.Position = 0;
+
+					serialzedScene = serializeStream.ToArray();
+				}
+			}
+
+			using (var core = CreatePhysicsAndScene())
+			{
+				var collection = core.Physics.CreateCollection();
+
+				using (var serializeStream = new MemoryStream())
+				{
+					serializeStream.Write(serialzedScene, 0, serialzedScene.Length);
 					serializeStream.Position = 0;
 
 					bool result = collection.Deserialize(serializeStream);

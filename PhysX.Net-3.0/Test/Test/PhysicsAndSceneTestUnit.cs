@@ -8,6 +8,7 @@ namespace PhysX.Test
 	{
 		public Physics Physics { get; set; }
 		public Scene Scene { get; set; }
+		public ErrorLog ErrorOutput { get; set; }
 
 		#region IDisposable Members
 
@@ -18,6 +19,7 @@ namespace PhysX.Test
 
 			Physics = null;
 			Scene = null;
+			ErrorOutput = null;
 		}
 
 		#endregion
