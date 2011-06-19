@@ -78,12 +78,21 @@ bool Collection::Deserialize(System::IO::Stream^ stream)
 	if (n <= 0)
 		return false;
 
+	// Read the entire contents of the stream to a managed byte array
 	array<Byte>^ data = gcnew array<Byte>(n);
 	stream->Read(data, 0, n);
-
+	// Pin the first element
 	pin_ptr<Byte> d = &data[0];
+
+	// Allocate a (16 byte) aligned block of memory and copy in the stream data
+	void* j = _aligned_malloc(n, 128);
+	memcpy_s(j, n, d, n);
 	
-	bool result = _collection->deserialize(d, NULL, NULL);
+	// Deserialize
+	bool result = _collection->deserialize(j, NULL, NULL);
+
+	// Free up the unmanaged memory
+	_aligned_free(j);
 
 	return result;
 }
