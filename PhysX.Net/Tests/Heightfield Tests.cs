@@ -9,6 +9,7 @@ namespace StillDesign.PhysX.Tests
 	[TestClass]
 	public class HeightfieldTests : TestBase
 	{
+		[TestMethod]
 		public void CreateHeightfieldTest()
 		{
 			int rows = 25;
@@ -41,28 +42,31 @@ namespace StillDesign.PhysX.Tests
 			};
 			heightFieldDesc.SetSamples( samples );
 
-			HeightField heightField = this.Core.CreateHeightField( heightFieldDesc );
-
-			//
-
-			HeightFieldShapeDescription heightFieldShapeDesc = new HeightFieldShapeDescription()
+			using (CreateCoreAndScene())
 			{
-				HeightField = heightField,
-				HoleMaterial = 2,
-				// The max height of our samples is short.MaxValue and we want it to be 1
-				HeightScale = 1.0f / (float)short.MaxValue,
-				RowScale = 3,
-				ColumnScale = 3
-			};
-			heightFieldShapeDesc.LocalPosition = new Vector3( -0.5f * rows * 1 * heightFieldShapeDesc.RowScale, 0, -0.5f * columns * 1 * heightFieldShapeDesc.ColumnScale );
+				HeightField heightField = this.Core.CreateHeightField(heightFieldDesc);
 
-			ActorDescription actorDesc = new ActorDescription()
-			{
-				GlobalPose = Matrix.Translation( 100, 0, 0 ),
-				Shapes = { heightFieldShapeDesc }
-			};
+				//
 
-			Actor actor = this.Scene.CreateActor( actorDesc );
+				HeightFieldShapeDescription heightFieldShapeDesc = new HeightFieldShapeDescription()
+				{
+					HeightField = heightField,
+					HoleMaterial = 2,
+					// The max height of our samples is short.MaxValue and we want it to be 1
+					HeightScale = 1.0f / (float)short.MaxValue,
+					RowScale = 3,
+					ColumnScale = 3
+				};
+				heightFieldShapeDesc.LocalPosition = new Vector3(-0.5f * rows * 1 * heightFieldShapeDesc.RowScale, 0, -0.5f * columns * 1 * heightFieldShapeDesc.ColumnScale);
+
+				ActorDescription actorDesc = new ActorDescription()
+				{
+					GlobalPose = Matrix.Translation(100, 0, 0),
+					Shapes = { heightFieldShapeDesc }
+				};
+
+				Actor actor = this.Scene.CreateActor(actorDesc);
+			}
 		}
 
 		public void ReadHeightfieldDataBack()
