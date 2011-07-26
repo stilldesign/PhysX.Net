@@ -59,14 +59,26 @@ Fluid::Fluid( NxFluid* fluid, ParticleData^ particleWriteData, ParticleIdData^ p
 		_compartment = ObjectTable::GetObject<StillDesign::PhysX::Compartment^>( (intptr_t)fluid->getCompartment() );
 	
 	_particleWriteData = particleWriteData;
+	if( particleWriteData != nullptr)
+		_fluid->setParticlesWriteData(*particleWriteData->UnmanagedPointer);
+
 	_particleDeletionIdWriteData = particleDeletionIdWriteData;
+	if( particleDeletionIdWriteData != nullptr)
+		_fluid->setParticleDeletionIdWriteData(*particleDeletionIdWriteData->UnmanagedPointer);
+
 	_particleCreationIdWriteData = particleCreationIdWriteData;
+	if( particleCreationIdWriteData != nullptr)
+		_fluid->setParticleCreationIdWriteData(*particleCreationIdWriteData->UnmanagedPointer);
+
 	_fluidPacketData = fluidPacketData;
+	if( fluidPacketData != nullptr)
+		_fluid->setFluidPacketData(*fluidPacketData->UnmanagedPointer);
 	
-	_fluidEmitters = gcnew ElementCollection< FluidEmitter^ >();
+	_fluidEmitters = gcnew ElementCollection<FluidEmitter^>();
 	for( unsigned int x = 0; x < fluid->getNbEmitters(); x++ )
 	{
 		NxFluidEmitter* emitter = fluid->getEmitters()[ x ];
+		
 		if( emitter == NULL )
 			continue;
 		

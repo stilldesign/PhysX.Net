@@ -148,6 +148,7 @@ NxParticleData* ParticleData::Clone( NxParticleData particleData )
 			data->bufferPos = (NxF32*)malloc( n * particleData.bufferPosByteStride );
 			memcpy( data->bufferPos, particleData.bufferPos, n * particleData.bufferPosByteStride );
 		}
+		data->bufferPosByteStride = particleData.bufferPosByteStride;
 
 		// Vel
 		if( particleData.bufferVel != NULL )
@@ -155,6 +156,7 @@ NxParticleData* ParticleData::Clone( NxParticleData particleData )
 			data->bufferVel = (NxF32*)malloc( n * particleData.bufferVelByteStride );
 			memcpy( data->bufferVel, particleData.bufferVel, n * particleData.bufferVelByteStride );
 		}
+		data->bufferVelByteStride = particleData.bufferVelByteStride;
 
 		// Life
 		if( particleData.bufferLife != NULL )
@@ -162,6 +164,7 @@ NxParticleData* ParticleData::Clone( NxParticleData particleData )
 			data->bufferLife = (NxF32*)malloc( n * particleData.bufferLifeByteStride );
 			memcpy( data->bufferLife, particleData.bufferLife, n * particleData.bufferLifeByteStride );
 		}
+		data->bufferLifeByteStride = particleData.bufferLifeByteStride;
 
 		// Density
 		if( particleData.bufferDensity != NULL )
@@ -169,6 +172,7 @@ NxParticleData* ParticleData::Clone( NxParticleData particleData )
 			data->bufferDensity = (NxF32*)malloc( n * particleData.bufferDensityByteStride );
 			memcpy( data->bufferDensity, particleData.bufferDensity, n * particleData.bufferDensityByteStride );
 		}
+		data->bufferDensityByteStride = particleData.bufferDensityByteStride;
 
 		// ID
 		if( particleData.bufferId != NULL )
@@ -176,6 +180,7 @@ NxParticleData* ParticleData::Clone( NxParticleData particleData )
 			data->bufferId = (NxU32*)malloc( n * particleData.bufferIdByteStride );
 			memcpy( data->bufferId, particleData.bufferId, n * particleData.bufferIdByteStride );
 		}
+		data->bufferIdByteStride = particleData.bufferIdByteStride;
 
 		// Flag
 		if( particleData.bufferFlag != NULL )
@@ -183,6 +188,7 @@ NxParticleData* ParticleData::Clone( NxParticleData particleData )
 			data->bufferFlag = (NxU32*)malloc( n * particleData.bufferFlagByteStride );
 			memcpy( data->bufferFlag, particleData.bufferFlag, n * particleData.bufferFlagByteStride );
 		}
+		data->bufferFlagByteStride = particleData.bufferFlagByteStride;
 
 		// Normal
 		if( particleData.bufferCollisionNormal != NULL )
@@ -190,6 +196,7 @@ NxParticleData* ParticleData::Clone( NxParticleData particleData )
 			data->bufferCollisionNormal = (NxF32*)malloc( n * particleData.bufferCollisionNormalByteStride );
 			memcpy( data->bufferCollisionNormal, particleData.bufferCollisionNormal, n * particleData.bufferCollisionNormalByteStride );
 		}
+		data->bufferCollisionNormalByteStride = particleData.bufferCollisionNormalByteStride;
 	}
 
 	if( particleData.name != NULL )

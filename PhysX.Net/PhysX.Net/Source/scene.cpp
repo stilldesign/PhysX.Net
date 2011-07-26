@@ -545,18 +545,21 @@ StillDesign::PhysX::ControllerManager^ Scene::CreateControllerManager()
 Fluid^ Scene::CreateFluid( FluidDescription^ fluidDescription )
 {
 	ThrowIfNull( fluidDescription, "fluidDescription" );
-	if( fluidDescription->IsValid() == false )
+	if( !fluidDescription->IsValid() )
 		throw gcnew ArgumentException( "Fluid description is invalid" );
 	
-	NxFluid* f = _scene->createFluid( *fluidDescription->UnmanagedPointer );
-
-	if( f == NULL )
-		throw gcnew PhysXException( "Failed to create fluid" );
-	
+	// Clone the data and size of the fluid description buffers so that we fully own the underlying
+	// object and data (i.e. we can dispose of it when we need)
+	// We must clone these objects before we create the fluid object as that resets values in the data objects
 	ParticleData^ particleWriteData = ParticleData::Clone( fluidDescription->ParticleWriteData );
 	ParticleIdData^ particleDeletionIdWriteData = ParticleIdData::Clone( fluidDescription->ParticleDeletionIdWriteData );
 	ParticleIdData^ particleCreationIdWriteData = ParticleIdData::Clone( fluidDescription->ParticleCreationIdWriteData );
 	FluidPacketData^ fluidPacketData = FluidPacketData::Clone( fluidDescription->FluidPacketData );
+
+	NxFluid* f = _scene->createFluid( *fluidDescription->UnmanagedPointer );
+
+	if( f == NULL )
+		throw gcnew PhysXException( "Failed to create fluid" );
 
 	Fluid^ fluid = gcnew Fluid( f, particleWriteData, particleDeletionIdWriteData, particleCreationIdWriteData, fluidPacketData );
 		fluid->UserData = fluidDescription->UserData;
