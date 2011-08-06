@@ -356,6 +356,9 @@ void Cloth::Name::set( String^ value )
 
 StillDesign::PhysX::MeshData^ Cloth::GetMeshData()
 {
+	if (_meshData != nullptr)
+		return _meshData;
+
 	// Clone the returned NxMeshData object and store it in a pointer
 	// Reason for this is that the object returned from NxCloth::getMeshData will be deleted
 	// as soon as we leave this scope
@@ -367,7 +370,9 @@ StillDesign::PhysX::MeshData^ Cloth::GetMeshData()
 	// The managed MeshData class should take ownership of the unmanaged pointer
 	// This means it is responsible for deleting the unmanaged pointer
 	// Do not own the data, the Cloth will delete that
-	return MeshData::FromUnmanagedPointer(longTermMeshData, true, false);
+	_meshData = MeshData::FromUnmanagedPointer(longTermMeshData, true, false);
+
+	return _meshData;
 }
 void Cloth::SetMeshData(StillDesign::PhysX::MeshData^ meshData)
 {
