@@ -44,6 +44,8 @@ namespace StillDesign
 				ClothSplitPairData^ _splitPairData;
 				
 				Object^ _userData;
+
+				MeshData^ _meshData;
 			
 			internal:
 				Cloth( NxCloth* cloth, ClothSplitPairData^ splitPairData );
