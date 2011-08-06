@@ -78,6 +78,7 @@ namespace StillDesign
 				generic<typename T> where T : ValueType PhysicsStream^ AllocateParentIndices( int numberOfParentIndices );
 				PhysicsStream^ AllocateParentIndices( int size, int strideSize );
 				generic<typename T> where T : ValueType PhysicsStream^ AllocateIndices( int numberOfIndices );
+				generic<typename T> where T : ValueType PhysicsStream^ AllocateIndices( int numberOfIndices, bool assignBitSizeFlag );
 				PhysicsStream^ AllocateIndices( int size, int strideSize );
 				PhysicsStream^ AllocateDirtyBufferFlags( int numberOfDirtyBufferFlags );
 				

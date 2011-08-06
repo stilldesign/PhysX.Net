@@ -269,9 +269,21 @@ PhysicsStream^ MeshData::AllocateParentIndices( int size, int strideSize )
 }
 generic<typename T> PhysicsStream^ MeshData::AllocateIndices( int numberOfIndices )
 {
+	return AllocateIndices<T>(numberOfIndices, true);
+}
+generic<typename T> PhysicsStream^ MeshData::AllocateIndices( int numberOfIndices, bool assignBitSizeFlag )
+{
+	if (assignBitSizeFlag)
+	{
+		if (sizeof(T) == sizeof(int))
+			this->Flags ^= MeshDataFlag::SixteenBitIndices;
+		else if(sizeof(T) == sizeof(short))
+			this->Flags |= MeshDataFlag::SixteenBitIndices;
+	}
+
 	return AllocateIndices( sizeof( T ) * numberOfIndices, sizeof( T ) );
 }
-PhysicsStream^ MeshData::AllocateIndices( int size, int strideSize )
+PhysicsStream^ MeshData::AllocateIndices(int size, int strideSize)
 {
 	StdPhysicsStreamAlloc( _indicesStream, _meshData->indicesBegin, _meshData->indicesByteStride );
 }
