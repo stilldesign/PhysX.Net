@@ -1,3 +1,6 @@
+[0.12.1.0 - ]
+Target PhysX 2.8.4.6
+
 [0.12.0.0 - ]
 Cleaned up ActorDescription/Base
 Added Serialization code back in (not complete though)
