@@ -153,6 +153,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="resource.h" />
     <ClInclude Include="Source\ActiveTransform.h" />
     <ClInclude Include="Source\Actor.h" />
     <ClInclude Include="Source\ActorDesc.h" />
@@ -486,6 +487,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Changelog.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Version.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
