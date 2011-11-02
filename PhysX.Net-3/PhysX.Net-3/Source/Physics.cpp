@@ -30,6 +30,7 @@
 #include "ParticleFluid.h"
 #include "Collection.h"
 #include "VisualDebugger/Connection.h"
+#include "ConvexMesh.h"
 
 #include <PxDefaultAllocator.h>
 #include <PxDefaultErrorCallback.h>
@@ -113,6 +114,7 @@ void Physics::Init()
 	_heightFields = gcnew List<HeightField^>();
 	_cooks = gcnew List<Cooking^>();
 	_triangleMeshes = gcnew List<TriangleMesh^>();
+	_convexMeshes = gcnew List<ConvexMesh^>();
 
 	_instantiated = true;
 }
@@ -238,7 +240,7 @@ HeightField^ Physics::CreateHeightField(HeightFieldDesc^ desc)
 }
 #pragma endregion
 
-#pragma region Material
+#pragma region Triangle Mesh
 TriangleMesh^ Physics::CreateTriangleMesh(System::IO::Stream^ stream)
 {
 	try
@@ -258,6 +260,34 @@ TriangleMesh^ Physics::CreateTriangleMesh(System::IO::Stream^ stream)
 		//delete ms;
 
 		return t;
+	}
+	finally
+	{
+		//delete[] ms.GetMemory();
+	}
+}
+#pragma endregion
+
+#pragma region Convex Mesh
+ConvexMesh^ Physics::CreateConvexMesh(System::IO::Stream^ stream)
+{
+	try
+	{
+		// TODO: Memory leak
+		InternalMemoryStream* ms = Util::StreamToUnmanagedMemoryStream(stream);
+
+		PxConvexMesh* convexMesh = _physics->createConvexMesh(*ms);
+
+		if (convexMesh == NULL)
+			throw gcnew FailedToCreateObjectException("Failed to create convex mesh");
+	
+		auto cm = gcnew ConvexMesh(convexMesh, this);
+
+		_convexMeshes->Add(cm);
+
+		//delete ms;
+
+		return cm;
 	}
 	finally
 	{

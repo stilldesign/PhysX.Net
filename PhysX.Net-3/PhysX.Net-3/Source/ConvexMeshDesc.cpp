@@ -6,6 +6,11 @@ ConvexMeshDesc::ConvexMeshDesc()
 	_is16BitTriangles = false;
 }
 
+bool ConvexMeshDesc::IsValid()
+{
+	return true;
+}
+
 ConvexMeshDesc^ ConvexMeshDesc::ToManaged(PxConvexMeshDesc desc)
 {
 	auto d = gcnew ConvexMeshDesc();
@@ -29,6 +34,8 @@ PxConvexMeshDesc ConvexMeshDesc::ToUnmanaged(ConvexMeshDesc^ desc)
 	PxBoundedData p;
 	p.data = new PxVec3[desc->_positions->Length];
 	Util::AsUnmanagedArray(desc->_positions, (void*)p.data, desc->_positions->Length);
+	p.count = desc->_positions->Length;
+	p.stride = sizeof(Vector3);
 
 	PxBoundedData t;
 	if (desc->Is16BitTriangles)
@@ -41,6 +48,8 @@ PxConvexMeshDesc ConvexMeshDesc::ToUnmanaged(ConvexMeshDesc^ desc)
 		t.data = new int[desc->_triangles->Length];
 		Util::AsUnmanagedArray<int>((array<int>^)desc->_triangles, (void*)t.data, desc->_triangles->Length);
 	}
+	t.count = desc->_triangles->Length / 3;
+	t.stride = (desc->Is16BitTriangles ? sizeof(short) : sizeof(int)) * 3;
 
 	d.points = p;
 	d.triangles = t;

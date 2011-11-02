@@ -26,6 +26,26 @@ namespace PhysX.Samples.RigidBodiesSample
 			var material = scene.Physics.CreateMaterial(0.7f, 0.7f, 0.1f);
 
 			// Boxes
+			CreateBoxes(scene, material);
+
+			// Spheres
+			CreateSpheres(scene, material);
+
+			// Capsule
+			CreateCapsules(scene, material);
+
+			// HeightField
+			CreateHeightField(scene, material);
+
+			// Triangle Mesh
+			CreateTriangleMesh(scene, material);
+
+			// Convex mesh
+			CreateConvexMesh(scene, material);
+		}
+
+		private static void CreateBoxes(Scene scene, Material material)
+		{
 			for (int i = 0; i < 10; i++)
 			{
 				var rigidActor = scene.Physics.CreateRigidDynamic();
@@ -38,8 +58,10 @@ namespace PhysX.Samples.RigidBodiesSample
 
 				scene.AddActor(rigidActor);
 			}
+		}
 
-			// Spheres
+		private static void CreateSpheres(Scene scene, Material material)
+		{
 			for (int i = 0; i < 10; i++)
 			{
 				var rigidActor = scene.Physics.CreateRigidDynamic();
@@ -52,8 +74,10 @@ namespace PhysX.Samples.RigidBodiesSample
 
 				scene.AddActor(rigidActor);
 			}
+		}
 
-			// Capsule
+		private static void CreateCapsules(Scene scene, Material material)
+		{
 			for (int i = 0; i < 10; i++)
 			{
 				var rigidActor = scene.Physics.CreateRigidDynamic();
@@ -66,74 +90,113 @@ namespace PhysX.Samples.RigidBodiesSample
 
 				scene.AddActor(rigidActor);
 			}
+		}
 
-			// HeightField
+		private void CreateHeightField(Scene scene, Material material)
+		{
+			const int rows = 25, columns = 25;
+			const float scale = 3;
+
+			var samples = CreateSampleGrid(rows, columns);
+
+			var heightFieldDesc = new HeightFieldDesc()
 			{
-				const int rows = 25, columns = 25;
-				const float scale = 3;
+				NumberOfRows = rows,
+				NumberOfColumns = columns,
+				Samples = samples
+			};
 
-				var samples = CreateSampleGrid(rows, columns);
+			HeightField heightField = scene.Physics.CreateHeightField(heightFieldDesc);
 
-				var heightFieldDesc = new HeightFieldDesc()
-				{
-					NumberOfRows = rows,
-					NumberOfColumns = columns,
-					Samples = samples
-				};
+			//
 
-				HeightField heightField = scene.Physics.CreateHeightField(heightFieldDesc);
+			var rigidActor = scene.Physics.CreateRigidStatic();
 
-				//
+			var heightFieldGeom = new HeightFieldGeometry(heightField, MeshGeometryFlag.DoubleSided, 1, scale, scale);
 
-				var rigidActor = scene.Physics.CreateRigidStatic();
+			rigidActor.CreateShape(heightFieldGeom, material);
 
-				var heightFieldGeom = new HeightFieldGeometry(heightField, MeshGeometryFlag.DoubleSided, 1, scale, scale);
+			rigidActor.GlobalPose = Matrix.Translation(30, 30, -32.5f);
 
-				rigidActor.CreateShape(heightFieldGeom, material);
+			scene.AddActor(rigidActor);
+		}
 
-				rigidActor.GlobalPose = Matrix.Translation(30, 30, -32.5f);
+		private void CreateTriangleMesh(Scene scene, Material material)
+		{
+			var colladaLoader = new ColladaLoader();
+			var bunny = colladaLoader.Load(@"Teapot.DAE", this.Engine.GraphicsDevice);
 
-				scene.AddActor(rigidActor);
-			}
-
-			// Triangle Mesh
+			var triangleMeshDesc = new TriangleMeshDesc()
 			{
-				var colladaLoader = new ColladaLoader();
-				var bunny = colladaLoader.Load(@"Teapot.DAE", this.Engine.GraphicsDevice);
+				Flags = (MeshFlag)0,
+				Triangles = bunny.Indices,
+				Points = bunny.VertexPositions
+			};
 
-				var triangleMeshDesc = new TriangleMeshDesc()
-				{
-					Flags = (MeshFlag)0,
-					Triangles = bunny.Indices,
-					Points = bunny.VertexPositions
-				};
+			var cooking = scene.Physics.CreateCooking();
 
-				var cooking = scene.Physics.CreateCooking();
+			var stream = new MemoryStream();
+			bool cookResult = cooking.CookTriangleMesh(triangleMeshDesc, stream);
 
-				var stream = new MemoryStream();
-				bool cookResult = cooking.CookTriangleMesh(triangleMeshDesc, stream);
+			stream.Position = 0;
 
-				stream.Position = 0;
+			var triangleMesh = scene.Physics.CreateTriangleMesh(stream);
 
-				var triangleMesh = scene.Physics.CreateTriangleMesh(stream);
+			var triangleMeshGeom = new TriangleMeshGeometry(triangleMesh)
+			{
+				Scale = new MeshScale(new Vector3(0.3f, 0.3f, 0.3f), Quaternion.Identity)
+			};
 
-				var triangleMeshGeom = new TriangleMeshGeometry(triangleMesh)
-				{
-					Scale = new MeshScale(new Vector3(0.3f, 0.3f, 0.3f), Quaternion.Identity)
-				};
+			var rigidActor = scene.Physics.CreateRigidStatic();
 
-				var rigidActor = scene.Physics.CreateRigidStatic();
+			// TODO: The Shape created here is now also an owner of the TriangleMesh object,
+			// this needs to be incorp into the ObjectTable ownership logic
+			rigidActor.CreateShape(triangleMeshGeom, material);
 
-				// TODO: The Shape created here is now also an owner of the TriangleMesh object,
-				// this needs to be incorp into the ObjectTable ownership logic
-				rigidActor.CreateShape(triangleMeshGeom, material);
+			rigidActor.GlobalPose =
+				Matrix.RotationX(-(float)System.Math.PI / 2) *
+				Matrix.Translation(0, 10, 0);
 
-				rigidActor.GlobalPose = 
-					Matrix.RotationX(-(float)System.Math.PI / 2) *
-					Matrix.Translation(0, 10, 0);
+			scene.AddActor(rigidActor);
+		}
 
-				scene.AddActor(rigidActor);
-			}
+		private void CreateConvexMesh(Scene scene, Material material)
+		{
+			var colladaLoader = new ColladaLoader();
+			var bunny = colladaLoader.Load(@"Teapot.DAE", this.Engine.GraphicsDevice);
+
+			var convexMeshDesc = new ConvexMeshDesc()
+			{
+				Flags = ConvexFlag.ComputeConvex
+			};
+			convexMeshDesc.SetPositions(bunny.VertexPositions);
+			convexMeshDesc.SetTriangles(bunny.Indices);
+
+			var cooking = scene.Physics.CreateCooking();
+
+			var stream = new MemoryStream();
+			bool cookResult = cooking.CookConvexMesh(convexMeshDesc, stream);
+
+			stream.Position = 0;
+
+			var convexMesh = scene.Physics.CreateConvexMesh(stream);
+
+			var convexMeshGeom = new ConvexMeshGeometry(convexMesh)
+			{
+				Scale = new MeshScale(new Vector3(0.3f, 0.3f, 0.3f), Quaternion.Identity)
+			};
+
+			var rigidActor = scene.Physics.CreateRigidDynamic();
+
+			// TODO: The Shape created here is now also an owner of the ConvexMesh object,
+			// this needs to be incorp into the ObjectTable ownership logic
+			rigidActor.CreateShape(convexMeshGeom, material);
+
+			rigidActor.GlobalPose =
+				Matrix.RotationX(-(float)System.Math.PI / 2) *
+				Matrix.Translation(0, 80, 0);
+
+			scene.AddActor(rigidActor);
 		}
 
 		private HeightFieldSample[] CreateSampleGrid(int rows, int columns)

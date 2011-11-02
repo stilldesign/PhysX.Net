@@ -18,6 +18,8 @@ namespace PhysX
 		public:
 			ConvexMeshDesc();
 
+			bool IsValid();
+
 		internal:
 			static ConvexMeshDesc^ ToManaged(PxConvexMeshDesc desc);
 			static PxConvexMeshDesc ToUnmanaged(ConvexMeshDesc^ desc);

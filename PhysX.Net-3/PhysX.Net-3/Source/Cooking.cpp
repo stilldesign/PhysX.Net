@@ -47,7 +47,6 @@ bool Cooking::CookTriangleMesh(TriangleMeshDesc^ desc, System::IO::Stream^ strea
 
 	PxTriangleMeshDesc d = TriangleMeshDesc::ToUnmanaged(desc);
 
-	// TODO: TriangleMeshDesc.IsValid()
 	if(!d.isValid())
 		throw gcnew ArgumentException("The triangle mesh description is invalid");
 
@@ -65,14 +64,23 @@ bool Cooking::CookTriangleMesh(TriangleMeshDesc^ desc, System::IO::Stream^ strea
 
 bool Cooking::CookConvexMesh(ConvexMeshDesc^ desc, System::IO::Stream^ stream)
 {
-	throw gcnew NotImplementedException();
-	/*ThrowIfNull(desc, "desc");
+	ThrowIfDescriptionIsNullOrInvalid(desc, "desc");
 	ThrowIfNull(stream, "stream");
 
-	MemoryStream s;
-	s.storeBuffer(stream->PositionPointer, stream->Length);
+	PxConvexMeshDesc d = ConvexMeshDesc::ToUnmanaged(desc);
 
-	return _cooking->cookConvexMesh(ConvexMeshDesc::ToUnmanaged(desc), s);*/
+	if(!d.isValid())
+		throw gcnew ArgumentException("The convex mesh description is invalid");
+
+	MemoryStream memoryStream;
+	bool result = _cooking->cookConvexMesh(d, memoryStream);
+
+	Util::CopyIntoStream(memoryStream, stream);
+
+	delete[] d.points.data;
+	delete[] d.triangles.data;
+
+	return result;
 }
 
 bool Cooking::CookDeformableMesh(DeformableMeshDesc^ desc, System::IO::Stream^ stream)

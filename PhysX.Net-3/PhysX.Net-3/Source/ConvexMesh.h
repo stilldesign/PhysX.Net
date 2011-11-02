@@ -21,7 +21,7 @@ namespace PhysX
 			PxConvexMesh* _convexMesh;
 			Physics^ _physics;
 
-		protected:
+		internal:
 			ConvexMesh(PxConvexMesh* convexMesh, PhysX::Physics^ physics);
 		public:
 			~ConvexMesh();

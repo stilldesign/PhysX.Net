@@ -32,6 +32,7 @@ namespace PhysX
 	ref class Shape;
 	ref class ParticleFluidDesc;
 	ref class Collection;
+	ref class ConvexMesh;
 	
 	namespace VisualDebugger
 	{
@@ -67,6 +68,7 @@ namespace PhysX
 			List<HeightField^>^ _heightFields;
 			List<Cooking^>^ _cooks;
 			List<TriangleMesh^>^ _triangleMeshes;
+			List<ConvexMesh^>^ _convexMeshes;
 
 			Physics(PxPhysics* physics);
 		public:
@@ -160,7 +162,7 @@ namespace PhysX
 			}
 			#pragma endregion
 
-			#pragma region Material
+			#pragma region Triangle Mesh
 			/// <summary>
 			/// Creates a triangle mesh object.
 			/// This can then be instanced into PxShape objects.
@@ -168,6 +170,16 @@ namespace PhysX
 			/// <param name="stream">The triangle mesh stream.</param>
 			/// <returns>The new triangle mesh.</returns>
 			TriangleMesh^ CreateTriangleMesh(System::IO::Stream^ stream);
+			#pragma endregion
+
+			#pragma region Convex Mesh
+			/// <summary>
+			/// Creates a convex mesh object.
+			/// This can then be instanced into PxShape objects.
+			/// </summary>
+			/// <param name="stream">The stream to load the convex mesh from.</param>
+			/// <returns>The new convex mesh.</returns>
+			ConvexMesh^ CreateConvexMesh(System::IO::Stream^ stream);
 			#pragma endregion
 
 			#pragma region HeightField
