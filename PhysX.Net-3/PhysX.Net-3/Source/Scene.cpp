@@ -78,6 +78,11 @@ SceneDesc^ Scene::SaveToDesc()
 	return desc;
 }
 
+void Scene::SetFlag(SceneFlag flag, bool value)
+{
+	this->UnmanagedPointer->setFlag(ToUnmanagedEnum(PxSceneFlag, flag), value);
+}
+
 //
 
 PhysX::Physics^ Scene::Physics::get()
@@ -569,10 +574,6 @@ void Scene::DynamicTreeRebuildRateHint::set(int value)
 SceneFlag Scene::Flags::get()
 {
 	return ToManagedEnum(SceneFlag, _scene->getFlags());
-}
-void Scene::Flags::set(SceneFlag value)
-{
-	
 }
 
 PxScene* Scene::UnmanagedPointer::get()

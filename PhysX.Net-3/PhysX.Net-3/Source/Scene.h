@@ -68,6 +68,13 @@ namespace PhysX
 			/// </returns>
 			SceneDesc^ SaveToDesc();
 			
+			/// <summary>
+			/// Sets a scene flag. You can only set one flag at a time.
+			/// Only the below flags are mutable. Trying to change the others will result in an error:
+			/// SceneFlag.SweptIntegration
+			/// </summary>
+			void SetFlag(SceneFlag flag, bool value);
+
 			//
 
 			/// <summary>
@@ -361,7 +368,6 @@ namespace PhysX
 			property SceneFlag Flags
 			{
 				SceneFlag get();
-				void set(SceneFlag value);
 			}
 
 			/// <summary>
