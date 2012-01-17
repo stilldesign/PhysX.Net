@@ -359,23 +359,34 @@ RaycastHit^ Scene::RaycastSingle(Vector3 origin, Vector3 direction, float distan
 array<RaycastHit^>^ Scene::RaycastMultiple(Vector3 origin, Vector3 direction, float distance, SceneQueryFlags outputFlags, int hitBufferSize, [Optional] Nullable<SceneQueryFilterData> filterData)
 {
 	PxRaycastHit* h = new PxRaycastHit[hitBufferSize];
-	bool blockingHit;
+	bool blockingHit = false;
 	PxSceneQueryFilterData filter = (filterData.HasValue ? SceneQueryFilterData::ToUnmanaged(filterData.Value) : PxSceneQueryFilterData());
 
-	int hitCount = _scene->raycastMultiple(MathUtil::Vector3ToPxVec3(origin), MathUtil::Vector3ToPxVec3(direction), distance, ToUnmanagedEnum(PxSceneQueryFlag, outputFlags), h, hitBufferSize, blockingHit, filter);
+	int hitCount = _scene->raycastMultiple
+	(
+		MathUtil::Vector3ToPxVec3(origin), 
+		MathUtil::Vector3ToPxVec3(direction), 
+		distance, 
+		ToUnmanagedEnum(PxSceneQueryFlag, outputFlags), 
+		h, 
+		hitBufferSize, 
+		blockingHit, 
+		filter
+	);
 
-	delete[] h;
-
-	if (!blockingHit)
+	if (hitCount == -1)
 		return nullptr;
 
-	hitCount = hitCount	== -1 ? hitBufferSize : hitCount;
+	int n = hitCount < hitBufferSize ? hitCount : hitBufferSize;
 
-	array<RaycastHit^>^ hits = gcnew array<RaycastHit^>(hitBufferSize);
-	for (int i = 0; i < hitCount; i++)
+	auto hits = gcnew array<RaycastHit^>(n);
+	for (int i = 0; i < n; i++)
 	{
 		hits[i] = RaycastHit::ToManaged(*(h + i));
 	}
+
+	delete[] h;
+	h = NULL;
 
 	return hits;
 }
