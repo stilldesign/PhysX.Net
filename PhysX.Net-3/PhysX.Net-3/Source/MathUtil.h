@@ -23,5 +23,8 @@ namespace PhysX
 			static physx::pubfnd3::PxQuat QuaternionPxQuat(Math::Quaternion quat);
 
 			static bool IsMultipleOf(int num, int divisor);
+
+			const static float Pi = 3.1415926535897932384626433832795f;
+			const static float PiOver2 = Pi/2.0f;
 	};
 };
