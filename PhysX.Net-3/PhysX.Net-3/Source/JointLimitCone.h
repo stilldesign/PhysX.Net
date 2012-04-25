@@ -9,25 +9,31 @@ namespace PhysX
 	/// </summary>
 	public ref class JointLimitCone : JointLimitParameters
 	{
-		internal:
-			static JointLimitCone^ ToManaged(PxJointLimitCone* parameters);
-			static PxJointLimitCone ToUnmanaged(JointLimitCone^ parameters);
+	public:
+		JointLimitCone();
+		JointLimitCone(float yLimitAngle, float zLimitAngle, float limitContactDistance);
 
-		public:
-			/// <summary>
-			/// The angle from the Y axis of the constraint frame position beyond which the limit is active.
-			/// Unit: Angular: Radians Range: Angular: (0,PI)
-			/// Default: PI/2
-			/// </summary>
-			property float YLimitAngle;
+	internal:
+		static JointLimitCone^ ToManaged(PxJointLimitCone* parameters);
+		static PxJointLimitCone ToUnmanaged(JointLimitCone^ parameters);
 
-			/// <summary>
-			/// The angle from the Z-axis of the constraint frame beyond which the limit is active.
-			/// Unit: Angular: Radians Range: Angular: (0,PI)
-			/// Default: PI/2
-			/// </summary>
-			property float ZLimitAngle;
+	public:
+		bool IsValid();
 
-			property float LimitContactDistance;
+		/// <summary>
+		/// The angle from the Y axis of the constraint frame position beyond which the limit is active.
+		/// Unit: Angular: Radians Range: Angular: (0,PI)
+		/// Default: PI/2
+		/// </summary>
+		property float YLimitAngle;
+
+		/// <summary>
+		/// The angle from the Z-axis of the constraint frame beyond which the limit is active.
+		/// Unit: Angular: Radians Range: Angular: (0,PI)
+		/// Default: PI/2
+		/// </summary>
+		property float ZLimitAngle;
+
+		property float LimitContactDistance;
 	};
 };

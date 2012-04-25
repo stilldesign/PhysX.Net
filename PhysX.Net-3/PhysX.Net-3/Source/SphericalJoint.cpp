@@ -9,13 +9,21 @@ SphericalJoint::SphericalJoint(PxSphericalJoint* joint, PhysX::Scene^ owner)
 
 }
 
-JointLimitCone^ SphericalJoint::LimitCone::get()
+JointLimitCone^ SphericalJoint::GetLimitCone()
 {
-	return JointLimitCone::ToManaged(&this->UnmanagedPointer->getLimitCone());
+	auto limitCone = this->UnmanagedPointer->getLimitCone();
+
+	return JointLimitCone::ToManaged(&limitCone);
 }
-void SphericalJoint::LimitCone::set(JointLimitCone^ value)
+void SphericalJoint::SetLimitCone(JointLimitCone^ limitCone)
 {
-	this->UnmanagedPointer->setLimitCone(JointLimitCone::ToUnmanaged(value));
+	ThrowIfNull(limitCone);
+	if (!limitCone->IsValid())
+		throw gcnew ArgumentException("The limit cone is invalid", "limitCone");
+
+	auto lc = JointLimitCone::ToUnmanaged(limitCone);
+
+	this->UnmanagedPointer->setLimitCone(lc);
 }
 
 SphericalJointFlag SphericalJoint::Flags::get()
@@ -24,7 +32,8 @@ SphericalJointFlag SphericalJoint::Flags::get()
 }
 void SphericalJoint::Flags::set(SphericalJointFlag value)
 {
-	this->UnmanagedPointer->setSphericalJointFlags(ToUnmanagedEnum(PxSphericalJointFlag, value));
+	auto f = ToUnmanagedEnum(PxSphericalJointFlag, value);
+	this->UnmanagedPointer->setSphericalJointFlags(f);
 }
 
 float SphericalJoint::ProjectionLinearTolerance::get()

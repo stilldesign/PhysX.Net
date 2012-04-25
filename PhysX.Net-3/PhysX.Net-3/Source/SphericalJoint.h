@@ -17,13 +17,13 @@ namespace PhysX
 
 		public:
 			/// <summary>
-			/// Gets or sets the limit cone.
+			/// Gets a copy of the limit cone.
 			/// </summary>
-			property JointLimitCone^ LimitCone
-			{
-				JointLimitCone^ get();
-				void set(JointLimitCone^ value);
-			}
+			JointLimitCone^ GetLimitCone();
+			/// <summary>
+			/// Sets the limit cone using the values supplied in the argument.
+			/// </summary>
+			void SetLimitCone(JointLimitCone^ limitCone);
 
 			/// <summary>
 			/// Gets or sets flags specific to the spherical joint.
