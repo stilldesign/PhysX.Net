@@ -59,7 +59,7 @@ array<PhysX::Observer^>^ ObservableExtensions::GetObservers(PhysX::IObservable^ 
 		observers[i] = gcnew PhysX::Observer(o[i]);
 	}
 
-	delete o;
+	delete[] o;
 
 	return observers;
 }
