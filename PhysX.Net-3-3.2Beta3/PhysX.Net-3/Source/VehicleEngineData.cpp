@@ -6,20 +6,22 @@ PxVehicleEngineData VehicleEngineData::ToUnmanaged(VehicleEngineData^ data)
 	ThrowIfNull(data, "data");
 
 	PxVehicleEngineData d;
-		d.mDisengagedClutchDampingRate = data->DisengagedClutchDampingRate;
-		d.mEngagedClutchDampingRate = data->EngagedClutchDampingRate;
-		d.mMaxOmega = data->MaxOmega;
 		d.mPeakTorque = data->PeakTorque;
+		d.mMaxOmega = data->MaxOmega;
+		d.mDampingRateFullThrottle = data->DampingRateFullThrottle;
+		d.mDampingRateZeroThrottleClutchEngaged = data->DampingRateZeroThrottleClutchEngaged;
+		d.mDampingRateZeroThrottleClutchDisengaged = data->DampingRateZeroThrottleClutchDisengaged;
 
 	return d;
 }
 VehicleEngineData^ VehicleEngineData::ToManaged(PxVehicleEngineData data)
 {
-	VehicleEngineData^ d = gcnew VehicleEngineData();
-		d->DisengagedClutchDampingRate = data.mDisengagedClutchDampingRate;
-		d->EngagedClutchDampingRate = data.mEngagedClutchDampingRate;
-		d->MaxOmega = data.mMaxOmega;
+	auto d = gcnew VehicleEngineData();
 		d->PeakTorque = data.mPeakTorque;
+		d->MaxOmega = data.mMaxOmega;
+		d->DampingRateFullThrottle = data.mDampingRateFullThrottle;
+		d->DampingRateZeroThrottleClutchEngaged = data.mDampingRateZeroThrottleClutchEngaged;
+		d->DampingRateZeroThrottleClutchDisengaged = data.mDampingRateZeroThrottleClutchDisengaged;
 
 	return d;
 }

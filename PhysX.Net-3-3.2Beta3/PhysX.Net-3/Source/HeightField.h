@@ -5,6 +5,7 @@
 namespace PhysX
 {
 	ref class Physics;
+	ref class Serializable;
 
 	/// <summary>
 	/// A height field class.
@@ -41,6 +42,11 @@ namespace PhysX
 			/// Retrieves the material table index of given triangle. 
 			/// </summary>
 			short GetTriangleMaterialIndex(int triangleIndex);
+
+			/// <summary>
+			/// Gets an object which is responsible for serialization of this type.
+			/// </summary>
+			Serializable^ AsSerializable();
 
 			//
 

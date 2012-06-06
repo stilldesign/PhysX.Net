@@ -16,6 +16,7 @@ namespace PhysX
 		public:
 			SimpleTriangleMesh();
 
+
 		internal:
 			void PopulateUnmanaged(PxSimpleTriangleMesh& mesh);
 

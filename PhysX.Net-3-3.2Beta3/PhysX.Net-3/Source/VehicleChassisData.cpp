@@ -1,22 +1,23 @@
 #include "StdAfx.h"
-
 #include "VehicleChassisData.h"
 
 PxVehicleChassisData VehicleChassisData::ToUnmanaged(VehicleChassisData^ data)
 {
+	ThrowIfNull(data, "data");
+
 	PxVehicleChassisData d;
-		d.mMOI = MathUtil::Vector3ToPxVec3(data->MOI);
+		d.mMOI = MathUtil::Vector3ToPxVec3(data->MomentOfInertia);
 		d.mMass = data->Mass;
-		d.mCMOffset = MathUtil::Vector3ToPxVec3(data->CMOffset);
+		d.mCMOffset = MathUtil::Vector3ToPxVec3(data->CenterOfMassOffset);
 
 	return d;
 }
 VehicleChassisData^ VehicleChassisData::ToManaged(PxVehicleChassisData data)
 {
-	VehicleChassisData^ d = gcnew VehicleChassisData();
-		d->CMOffset = MathUtil::PxVec3ToVector3(data.mCMOffset);
+	auto d = gcnew VehicleChassisData();
+		d->MomentOfInertia = MathUtil::PxVec3ToVector3(data.mMOI);
 		d->Mass = data.mMass;
-		d->MOI = MathUtil::PxVec3ToVector3(data.mMOI);
+		d->CenterOfMassOffset = MathUtil::PxVec3ToVector3(data.mCMOffset);
 
 	return d;
 }

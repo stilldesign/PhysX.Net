@@ -1,6 +1,7 @@
 #pragma once
 
-#include "ExtensionEnum.h"
+#include "ClothEnum.h"
+#include "ClothParticle.h"
 #include <PxPhysics.h>
 #include <PxDistanceJoint.h>
 #include <PxRigidDynamic.h>
@@ -17,14 +18,10 @@ namespace PhysX
 	ref class RigidActor;
 	ref class ParticleSystem;
 	ref class ErrorCallback;
-	ref class DeformableMesh;
 	ref class Stream;
-	ref class Deformable;
-	ref class DeformableDesc;
 	ref class HeightFieldDesc;
 	ref class HeightField;
 	ref class ParticleFluid;
-	ref class ParticleSystemDesc;
 	ref class Foundation;
 	ref class Cooking;
 	ref class CookingParams;
@@ -33,10 +30,19 @@ namespace PhysX
 	ref class ParticleFluidDesc;
 	ref class Collection;
 	ref class ConvexMesh;
+	ref class Constraint;
+	ref class ConstraintConnector;
+	ref class ConstraintShaderTable;
+	ref class OutputStream;
+	ref class VehicleSDK;
+	ref class Cloth;
+	ref class ClothFabric;
+	ref class ClothCollisionData;
 	
 	namespace VisualDebugger
 	{
 		ref class Connection;
+		ref class ConnectionManager;
 	};
 
 	/// <summary>
@@ -54,30 +60,18 @@ namespace PhysX
 			static bool _instantiated;
 
 			PxPhysics* _physics;
-			PxAllocatorCallback* _allocator;
-			ErrorCallback^ _errorCallback;
 
 			Foundation^ _foundation;
 
-			List<Scene^>^ _scenes;
-			List<Material^>^ _materials;
-			List<RigidActor^>^ _rigidActors;
-			List<ParticleSystem^>^ _particleSystems;
-			List<Deformable^>^ _deformables;
-			List<DeformableMesh^>^ _deformableMeshes;
-			List<HeightField^>^ _heightFields;
-			List<Cooking^>^ _cooks;
-			List<TriangleMesh^>^ _triangleMeshes;
-			List<ConvexMesh^>^ _convexMeshes;
+			VehicleSDK^ _vehicleSDK;
 
-			Physics(PxPhysics* physics);
+			PhysX::VisualDebugger::ConnectionManager^ _connectionManager;
+
 		public:
 			static Physics();
 
 			/// <summary>Creates a new instance of the Physics class.</summary>
-			/// <param name="errorCallback">An implementation of the error callback class.</param>
-			/// <param name="checkRuntimeFiles">Should the PhysX runtime files be checked.</param>
-			Physics([Optional] ErrorCallback^ errorCallback, [Optional] bool checkRuntimeFiles);
+			Physics(PhysX::Foundation^ foundation, [Optional] bool checkRuntimeFiles);
 		public:
 			~Physics();
 		protected:
@@ -90,32 +84,17 @@ namespace PhysX
 
 		private:
 			void Init();
-			void PostInit();
-
-			//
+			void PostInit(Foundation^ owner);
 
 		public:
-			/// <summary>
-			/// Connect to pvd using a network socket. This blocks for at most inTimeoutInMillisecondsbefore returning a new connection (or nothing). PVD needs to be started before this call is made.
-			/// </summary>
-			/// <param name="host">Host in x.x.x.x network notation.</param>
-			/// <param name="port">Port to connect to. The default is 5425.</param>
-			/// <param name="timeout">How long to block waiting for a new connection.</param>
-			/// <param name="checkApi">
-			/// Whether to check the PVD network calls to ensure that if someone defines a property to be a
-			/// float, a float is actually sent. This is extremely useful when creating new objects and
-			/// implementing new debugger bindings.
-			/// </param>
-			/// <param name="flags">The type information you want sent over the connection.</param>
-			VisualDebugger::Connection^ ConnectToRemoteDebugger(String^ host, [Optional] Nullable<int> port, [Optional] Nullable<TimeSpan> timeout, [Optional] Nullable<bool> checkApi, [Optional] Nullable<RemoteDebuggerConnectionFlags> flags);
-
-			//
-
 			property bool Instantiated
 			{
 				static bool get();
 			}
 
+			/// <summary>
+			///	Gets the parent foundation of the physics instance.
+			/// </summary>
 			property PhysX::Foundation^ Foundation
 			{
 				PhysX::Foundation^ get();
@@ -217,8 +196,11 @@ namespace PhysX
 			/// <summary>
 			/// Creates a particle system.
 			/// </summary>
-			/// <param name="desc">Description of the particle system object to create. See <see cref="ParticleSystemDesc" />.</param>
-			ParticleSystem^ CreateParticleSystem(ParticleSystemDesc^ desc);
+			ParticleSystem^ CreateParticleSystem(int maxParticles);
+			/// <summary>
+			/// Creates a particle system.
+			/// </summary>
+			ParticleSystem^ CreateParticleSystem(int maxParticles, bool perParticleRestOffset);
 
 			/// <summary>
 			///	Gets the particle systems.
@@ -233,8 +215,14 @@ namespace PhysX
 			/// <summary>
 			/// Creates a particle fluid.
 			/// </summary>
-			/// <param name="desc">Description of the particle system object to create.</param>
-			ParticleFluid^ CreateParticleFluid(ParticleFluidDesc^ desc);
+			/// <param name="maximumParticles">The maximum number of particles that may be placed in the particle fluid.</param>
+			ParticleFluid^ CreateParticleFluid(int maximumParticles);
+			/// <summary>
+			/// Creates a particle fluid.
+			/// </summary>
+			/// <param name="maximumParticles">The maximum number of particles that may be placed in the particle fluid.</param>
+			/// <param name="perParticleRestOffset">Whether the ParticleFluid supports perParticleRestOffset.</param>
+			ParticleFluid^ CreateParticleFluid(int maximumParticles, bool perParticleRestOffset);
 
 			/// <summary>
 			/// Gets the particle fluids.
@@ -245,35 +233,11 @@ namespace PhysX
 			}
 			#pragma endregion
 
-			#pragma region Deformable
-			/// <summary>
-			/// Creates a deformable.
-			/// </summary>
-			/// <param name="desc">Description of the deformable object to create.</param>
-			Deformable^ CreateDeformable(DeformableDesc^ desc);
-
-			/// <summary>
-			/// Creates a deformable mesh from a cooked deformable mesh stored in a stream.
-			/// Stream has to be created with PxCookDeformableMesh().
-			/// </summary>
-			DeformableMesh^ CreateDeformableMesh(System::IO::Stream^ stream);
-			#pragma endregion
-
 			#pragma region Cooking
 			/// <summary>
 			/// Create an instance of the cooking interface.
 			/// </summary>
 			Cooking^ CreateCooking([Optional] CookingParams^ parameters);
-
-			/// <summary>
-			/// Creates a deformable attachment.
-			/// </summary>
-			/// <param name="deformable">The deformable to attach.</param>
-			/// <param name="shape">The shape to attach to ('0' for static attachments).</param>
-			/// <param name="vertexIndices">The indices of the vertices to attach.</param>
-			/// <param name="positions">The attachment positions in shape-local coordinates or world space for world attachments.</param>
-			/// <param name="flags">Flags for each attached vertex: One or two way interaction, tearable or non-tearable.</param>
-			Attachment^ CreateAttachment(Deformable^ deformable, Shape^ shape, array<int>^ vertexIndices, array<Vector3>^ positions, array<int>^ flags);
 			#pragma endregion
 
 			#pragma region Collection
@@ -298,6 +262,86 @@ namespace PhysX
 			/// This is typically used after deserializing the collection, to populate the scene with deserialized objects.
 			/// </summary>
 			void AddCollection(Collection^ collection, Scene^ scene);
+			#pragma endregion
+
+			#pragma region Remote Debugger
+			/// <summary>
+			/// The factory manager allows notifications when a new connection to pvd is made.
+			/// It also allows the users to specify a scheme to handle the read-side of a
+			/// network connection. By default, the SDK specifies that a thread gets launched
+			/// which blocks reading on the network socket.
+			/// </summary>
+			property PhysX::VisualDebugger::ConnectionManager^ PvdConnectionManager
+			{
+				PhysX::VisualDebugger::ConnectionManager^ get();
+			}
+
+			/// <summary>
+			/// The factory manager allows notifications when a new connection to pvd is made.
+			/// It also allows the users to specify a scheme to handle the read-side of a
+			/// network connection. By default, the SDK specifies that a thread gets launched
+			/// which blocks reading on the network socket.
+			/// </summary>
+			/// <remarks>This property is simply an alias to Physics.PvdConnectionManager.</remarks>
+			property PhysX::VisualDebugger::ConnectionManager^ RemoteDebugger
+			{
+				PhysX::VisualDebugger::ConnectionManager^ get();
+			}
+			#pragma endregion
+
+			#pragma region Vehicle
+			property PhysX::VehicleSDK^ VehicleSDK
+			{
+				PhysX::VehicleSDK^ get();
+			}
+			#pragma endregion
+
+			Constraint^ CreateConstraint(RigidActor^ actor0, RigidActor^ actor1, ConstraintConnector^ connector, ConstraintShaderTable^ shaders, int dataSize);
+
+			void GetSDKMetaData(System::IO::Stream^ stream);
+
+			#pragma region Cloth
+			/// <summary>
+			/// Creates a cloth.
+			/// </summary>
+			/// <param name="globalPose">The world space transform of the cloth.</param>
+			/// <param name="fabric">The fabric the cloth should use.</param>
+			/// <param name="particles">Particle definition buffer. The size of the buffer has to match the number of points of the cloth mesh which elements must match with the provided.</param>
+			/// <param name="collisionData">Collision information.</param>
+			/// <param name="flags">Cloth flags.</param>
+			Cloth^ CreateCloth(Matrix globalPose, ClothFabric^ fabric, array<ClothParticle>^ particles, ClothCollisionData^ collisionData, ClothFlag flags);
+
+			/// <summary>
+			/// Gets cloths.
+			/// </summary>
+			property IEnumerable<Cloth^>^ Cloths
+			{
+				IEnumerable<Cloth^>^ get();
+			}
+
+			/// <summary>
+			/// Creates a cloth fabric object.
+			/// This can then be instanced into PxCloth objects.
+			/// </summary>
+			/// <param name="cookedStream">The stream to load the cloth fabric from.</param>
+			ClothFabric^ CreateClothFabric(System::IO::Stream^ cookedStream);
+			/// <summary>
+			/// Creates a cloth fabric object from particle connectivity and restlength information.
+			/// This can then be instanced into PxCloth objects.
+			/// Note: We recommended using PxCooking.cookClothFabric() to create cloth fabrics from meshes and then
+			/// using createClothFabric(const PxInputStream& stream). This method should only be used if you need
+			/// to provide fully customized particle fiber/connectivity information for your fabric or if you did
+			/// custom cloth fabric serialization and want to deserialize.
+			/// </summary>
+			ClothFabric^ CreateClothFabric(int numberOfParticles, array<int>^ phases, array<ClothFabricPhaseType>^ phaseTypes, array<float>^ restValues, array<int>^ sets, array<int>^ fibers, array<int>^ indices);
+
+			/// <summary>
+			/// Gets cloth fabrics.
+			/// </summary>
+			property IEnumerable<ClothFabric^>^ ClothFabrics
+			{
+				IEnumerable<ClothFabric^>^ get();
+			}
 			#pragma endregion
 
 		internal:

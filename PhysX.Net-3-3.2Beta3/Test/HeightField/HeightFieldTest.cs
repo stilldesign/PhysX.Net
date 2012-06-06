@@ -11,10 +11,10 @@ namespace PhysX.Test
 		[TestMethod]
 		public void CreateAndDisposeHeightField()
 		{
-			using (var core = CreatePhysicsAndScene())
+			using (var physics = CreatePhysicsAndScene())
 			{
 				const int rows = 25, columns = 25;
-				var samples = CreateSampleGrid(rows, columns);
+				var samples = HeightFieldTestUtil.CreateSampleGrid(rows, columns);
 
 				var heightFieldDesc = new HeightFieldDesc()
 				{
@@ -24,7 +24,7 @@ namespace PhysX.Test
 				};
 
 				HeightField heightField;
-				using (heightField = core.Physics.CreateHeightField(heightFieldDesc))
+				using (heightField = physics.Physics.CreateHeightField(heightFieldDesc))
 				{
 					Assert.IsNotNull(heightField);
 					Assert.IsFalse(heightField.Disposed);
@@ -34,27 +34,70 @@ namespace PhysX.Test
 			}
 		}
 
-		private static HeightFieldSample[] CreateSampleGrid(int rows, int columns)
+		[TestMethod]
+		public void MultipleDisposeCallsDoNotCauseAnException()
 		{
-			var samples = new HeightFieldSample[rows * columns];
-
-			for (int r = 0; r < rows; r++)
+			using (var physics = CreatePhysicsAndScene())
 			{
-				for (int c = 0; c < columns; c++)
-				{
-					// Put a z and x curve together
-					double h = System.Math.Sin(c) * System.Math.Cos(r) * short.MaxValue;
+				const int rows = 25, columns = 25;
+				var samples = HeightFieldTestUtil.CreateSampleGrid(rows, columns);
 
-					var sample = new HeightFieldSample()
+				var heightFieldDesc = new HeightFieldDesc()
+				{
+					NumberOfRows = rows,
+					NumberOfColumns = columns,
+					Samples = samples
+				};
+
+				HeightField heightField = physics.Physics.CreateHeightField(heightFieldDesc);
+
+				Assert.IsFalse(heightField.Disposed);
+
+				// Dispose
+				heightField.Dispose();
+				Assert.IsTrue(heightField.Disposed);
+
+				// Dispose again
+				heightField.Dispose();
+				Assert.IsTrue(heightField.Disposed);
+			}
+		}
+
+		[TestMethod]
+		public void MultipleInstancesAreValid()
+		{
+			using (var physics = CreatePhysicsAndScene())
+			{
+				// A
+				{
+					const int rows = 25, columns = 25;
+					var samples = HeightFieldTestUtil.CreateSampleGrid(rows, columns);
+
+					var heightFieldDesc = new HeightFieldDesc()
 					{
-						Height = (short)h
+						NumberOfRows = rows,
+						NumberOfColumns = columns,
+						Samples = samples
 					};
 
-					samples[r * columns + c] = sample;
+					HeightField heightField = physics.Physics.CreateHeightField(heightFieldDesc);
+				}
+
+				// B
+				{
+					const int rows = 25, columns = 25;
+					var samples = HeightFieldTestUtil.CreateSampleGrid(rows, columns);
+
+					var heightFieldDesc = new HeightFieldDesc()
+					{
+						NumberOfRows = rows,
+						NumberOfColumns = columns,
+						Samples = samples
+					};
+
+					HeightField heightField = physics.Physics.CreateHeightField(heightFieldDesc);
 				}
 			}
-
-			return samples;
 		}
 	}
 }

@@ -9,6 +9,7 @@
 #include "CapsuleControllerDesc.h"
 #include "Physics.h"
 #include "FailedToCreateObjectException.h"
+#include "ObstacleContext.h"
 #include <PxBoxController.h> 
 #include <PxCapsuleController.h> 
 
@@ -46,7 +47,7 @@ PhysX::ControllerManager::!ControllerManager()
 }
 bool PhysX::ControllerManager::Disposed::get()
 {
-	return _manager == NULL;
+	return (_manager == NULL);
 }
 
 generic<class T>
@@ -103,10 +104,19 @@ Controller^ ControllerManager::CreateController(ControllerDesc^ controllerDesc)
 	return controller;
 }
 
-void PhysX::ControllerManager::UpdateControllers()
+void PhysX::ControllerManager::ComputeInteractions(TimeSpan elapsedTime)
 {
-	_manager->updateControllers();
+	_manager->computeInteractions((float)elapsedTime.TotalSeconds);
 }
+
+ObstacleContext^ PhysX::ControllerManager::CreateObstacleContext()
+{
+	PxObstacleContext* oc = _manager->createObstacleContext();
+
+	return gcnew ObstacleContext(oc, this);
+}
+
+//
 
 PhysX::Scene^ ControllerManager::Scene::get()
 {
@@ -116,6 +126,11 @@ PhysX::Scene^ ControllerManager::Scene::get()
 IEnumerable<Controller^>^ ControllerManager::Controllers::get()
 {
 	return _controllers;
+}
+
+IEnumerable<ObstacleContext^>^ ControllerManager::ObstacleContexts::get()
+{
+	return ObjectTable::GetObjectsOfOwnerAndType<ObstacleContext^>(this);
 }
 
 PxControllerManager* ControllerManager::UnmanagedPointer::get()

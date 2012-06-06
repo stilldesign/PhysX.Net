@@ -2,6 +2,7 @@
 #include <PxHeightField.h> 
 #include "HeightField.h"
 #include "Physics.h"
+#include "Serializable.h"
 
 HeightField::HeightField(PxHeightField* heightField, PhysX::Physics^ owner)
 {
@@ -33,8 +34,15 @@ HeightField::!HeightField()
 
 bool HeightField::Disposed::get()
 {
-	return _heightField == NULL;
+	return (_heightField == NULL);
 }
+
+Serializable^ HeightField::AsSerializable()
+{
+	return gcnew Serializable(_heightField);
+}
+
+//
 
 PhysX::Physics^ HeightField::Physics::get()
 {

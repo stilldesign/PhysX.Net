@@ -1,6 +1,6 @@
 #pragma once
 
-#include <PxVehicle.h>
+#include <PxVehicleComponents.h>
 
 namespace PhysX
 {

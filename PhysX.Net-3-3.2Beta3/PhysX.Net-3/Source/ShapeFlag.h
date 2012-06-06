@@ -14,7 +14,6 @@ namespace PhysX
 		TriggerShape = PxShapeFlag::eTRIGGER_SHAPE,
 		Visualization = PxShapeFlag::eVISUALIZATION,
 		ParticleDrain = PxShapeFlag::ePARTICLE_DRAIN,
-		DeformableDrain = PxShapeFlag::eDEFORMABLE_DRAIN,
 		UseSweptBounds = PxShapeFlag::eUSE_SWEPT_BOUNDS
 	};
 };

@@ -1,6 +1,8 @@
 #include "StdAfx.h"
 #include "RigidDynamic.h"
 #include "SolverIterationCounts.h"
+#include "Physics.h"
+#include <PxSimpleFactory.h>
 
 RigidDynamic::RigidDynamic(PxRigidDynamic* rigidDynamic, PhysX::Physics^ owner)
 	: RigidBody(rigidDynamic, owner)
@@ -8,33 +10,31 @@ RigidDynamic::RigidDynamic(PxRigidDynamic* rigidDynamic, PhysX::Physics^ owner)
 	
 }
 
-/// <summary>
-/// Moves kinematically controlled dynamic actors through the game world.
-/// </summary>
-void RigidDynamic::MoveKinematic(Matrix destination)
+void RigidDynamic::SetKinematicTarget(Matrix destination)
 {
-
+	this->UnmanagedPointer->setKinematicTarget(MathUtil::MatrixToPxTransform(destination));
 }
 
-/// <summary>
-/// Wakes up the actor if it is sleeping.
-/// </summary>
 void RigidDynamic::WakeUp([Optional] Nullable<float> wakeCounterValue)
 {
+	float w = wakeCounterValue.GetValueOrDefault(PX_SLEEP_INTERVAL);
 
+	this->UnmanagedPointer->wakeUp(w);
 }
 
-/// <summary>
-/// Forces the actor to sleep.
-/// </summary>
 void RigidDynamic::PutToSleep()
 {
-
+	this->UnmanagedPointer->putToSleep();
 }
 
-String^ RigidDynamic::ToString()
+RigidDynamic^ RigidDynamic::CloneDynamic(Matrix transform)
 {
-	return String::Format("Rigid dynamic actor");
+	PxRigidDynamic* rigidDynamic = PxCloneDynamic(
+		*this->Physics->UnmanagedPointer, 
+		MathUtil::MatrixToPxTransform(transform),
+		*this->UnmanagedPointer);
+
+	return gcnew RigidDynamic(rigidDynamic, this->Physics);
 }
 
 //

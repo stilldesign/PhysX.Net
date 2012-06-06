@@ -3,7 +3,7 @@
 
 SceneSweepOperationObject::SceneSweepOperationObject(PhysX::Geometry^ geometry, Matrix pose, [Optional] Nullable<PhysX::FilterData> filterData)
 {
-	this->Geometry = Geometry;
+	this->Geometry = geometry;
 	this->Pose = pose;
 	this->FilterData = filterData;
 }

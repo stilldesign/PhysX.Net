@@ -1,6 +1,7 @@
 #include "StdAfx.h"
 #include "TriangleMesh.h"
 #include "Physics.h"
+#include "Serializable.h"
 #include <PxTriangleMesh.h> 
 
 TriangleMesh::TriangleMesh(PxTriangleMesh* triangleMesh, PhysX::Physics^ physics)
@@ -33,12 +34,17 @@ TriangleMesh::!TriangleMesh()
 }
 bool TriangleMesh::Disposed::get()
 {
-	return _triangleMesh == NULL;
+	return (_triangleMesh == NULL);
 }
 
 PhysX::Physics^ TriangleMesh::Physics::get()
 {
 	return _physics;
+}
+
+Serializable^ TriangleMesh::AsSerializable()
+{
+	return gcnew Serializable(_triangleMesh);
 }
 
 array<Vector3>^ TriangleMesh::GetVertices()

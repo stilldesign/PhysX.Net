@@ -3,17 +3,19 @@
 
 VehicleKeySmoothingData^ VehicleKeySmoothingData::ToManaged(PxVehicleKeySmoothingData desc)
 {
-	VehicleKeySmoothingData^ d = gcnew VehicleKeySmoothingData();
-		d->RiseRates = Util::AsManagedArray<float>(&desc.mRiseRates, PxVehicleControlInputs::eMAX_NUM_VEHICLE_ANALOG_INPUTS);
-		d->FallRates = Util::AsManagedArray<float>(&desc.mFallRates, PxVehicleControlInputs::eMAX_NUM_VEHICLE_ANALOG_INPUTS);
+	auto d = gcnew VehicleKeySmoothingData();
+		d->RiseRates = Util::AsManagedArray<float>(&desc.mRiseRates, PxVehicleDriveDynData::eMAX_NUM_ANALOG_INPUTS);
+		d->FallRates = Util::AsManagedArray<float>(&desc.mFallRates, PxVehicleDriveDynData::eMAX_NUM_ANALOG_INPUTS);
 
 	return d;
 }
 PxVehicleKeySmoothingData VehicleKeySmoothingData::ToUnmanaged(VehicleKeySmoothingData^ desc)
 {
+	ThrowIfNull(desc, "desc");
+
 	PxVehicleKeySmoothingData d;
-		Util::AsUnmanagedArray(desc->RiseRates, &d.mRiseRates, PxVehicleControlInputs::eMAX_NUM_VEHICLE_ANALOG_INPUTS);
-		Util::AsUnmanagedArray(desc->FallRates, &d.mFallRates, PxVehicleControlInputs::eMAX_NUM_VEHICLE_ANALOG_INPUTS);
+		Util::AsUnmanagedArray(desc->RiseRates, &d.mRiseRates, PxVehicleDriveDynData::eMAX_NUM_ANALOG_INPUTS);
+		Util::AsUnmanagedArray(desc->FallRates, &d.mFallRates, PxVehicleDriveDynData::eMAX_NUM_ANALOG_INPUTS);
 
 	return d;
 }

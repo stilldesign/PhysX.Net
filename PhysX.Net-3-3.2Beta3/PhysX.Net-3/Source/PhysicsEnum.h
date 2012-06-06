@@ -119,6 +119,7 @@ namespace PhysX
 		/// called while the actors of this collision pair are in contact.
 		/// Note: Only takes effect if the colliding actors are rigid bodies.
 		/// </summary>
+		[Obsolete]
 		NotifyTouchPersists = PxPairFlag::eNOTIFY_TOUCH_PERSISTS,
 
 		/// <summary>
@@ -154,62 +155,9 @@ namespace PhysX
 		NotifyThresholdForceLost = PxPairFlag::eNOTIFY_THRESHOLD_FORCE_LOST,
 
 		/// <summary>
-		/// 
+		/// Provide contact points in contact reports for this collision pair.
 		/// </summary>
 		NotifyContactPoints = PxPairFlag::eNOTIFY_CONTACT_POINTS,
-
-		/// <summary>
-		/// Provide contact points in contact reports for this collision pair.
-		/// Note: Only takes effect if the colliding actors are rigid bodies.
-		/// </summary>
-		NotifyContactForces = PxPairFlag::eNOTIFY_CONTACT_FORCES,
-
-		/// <summary>
-		/// Provide contact forces per contact point in contact reports for this collision pair.
-		/// Note: Only takes effect if the colliding actors are rigid bodies.
-		/// </summary>
-		NotifyContactForcePerPoint = PxPairFlag::eNOTIFY_CONTACT_FORCE_PER_POINT,
-
-		/// <summary>
-		/// Provide feature indices per contact point in contact reports for this collision pair.
-		/// Note: Only takes effect if the colliding actors are rigid bodies.
-		/// </summary>
-		NotifyContactFeatureIndicesPerPoint = PxPairFlag::eNOTIFY_CONTACT_FEATURE_INDICES_PER_POINT,
-
-		/// <summary>
-		/// Enables swept contact generation for this pair. While more costly, with swept contact
-		/// generation objects pressed into eachother will not tunnel through eachother.
-		/// It is best used for pairs involving important small or thin objects.
-		/// Note: Non-static shapes of the pair should have PxShapeFlag::eUSE_SWEPT_BOUNDS specified
-		/// for this feature to work correctly.
-		/// </summary>
-		
-		SweptContactGeneration = PxPairFlag::eSWEPT_CONTACT_GENERATION,
-
-		/// <summary>
-		/// A less expensive approximation of eSWEPT_INTEGRATION_FULL, where the rotational motion of the
-		/// objects is neglected. Should be used when performance is of the essence, for objects where
-		/// angular motion is unlikely to lead to tunneling.
-		/// Note: The scene must have PxSceneFlag::eENABLE_SWEPT_INTEGRATION enabled to use this feature.
-		/// Non-static shapes of the pair should have PxShapeFlag::eUSE_SWEPT_BOUNDS specified for this
-		/// feature to work correctly.
-		/// </summary>
-		SweptIntegrationLinear = PxPairFlag::eSWEPT_INTEGRATION_LINEAR,
-
-		/// <summary>
-		/// Enables swept integration for this pair. Pairs which have this feature enabled check whether the
-		/// motion of the involved shapes during integration intersect, thus preventing shapes from tunneling
-		/// through eachother. Kinematic motion is taken into account, but movement due to repositioning
-		/// by the user is not.
-		/// 
-		/// Once the shapes come into contact, no further swept integration checks are performed until they separate.
-		/// For small objects which continue to have a tendency to interpenetrate after the first high velocity impact,
-		/// eSWEPT_CONTACT_GENERATION should also be specified to prevent subsequent tunneling.
-		/// The user should consider the less expensive version eSWEPT_INTEGRATION_LINEAR where applicable.
-		/// Note: The scene must have PxSceneFlag::eENABLE_SWEPT_INTEGRATION enabled to use this feature.
-		/// Non-static shapes of the pair should have PxShapeFlag::eUSE_SWEPT_BOUNDS specified for this feature to work correctly.
-		/// </summary>
-		SweptIntegrationFull = PxPairFlag::eSWEPT_INTEGRATION_FULL,
 
 		/// <summary>
 		/// Provided default flag to do simple contact processing for this collision pair.

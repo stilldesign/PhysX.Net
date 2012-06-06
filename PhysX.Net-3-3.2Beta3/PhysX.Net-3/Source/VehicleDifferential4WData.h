@@ -1,7 +1,7 @@
 #pragma once
 
 #include "VehicleEnum.h"
-#include <PxVehicle.h>
+#include <PxVehicleComponents.h> 
 
 namespace PhysX
 {

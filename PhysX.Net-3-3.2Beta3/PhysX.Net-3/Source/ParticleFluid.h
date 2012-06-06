@@ -5,7 +5,6 @@
 namespace PhysX
 {
 	ref class ParticleFluidReadData;
-	ref class ParticleFluidDesc;
 
 	/// <summary>
 	/// The particle fluid class represents the main module for particle based fluid simulation.
@@ -14,18 +13,14 @@ namespace PhysX
 	/// </summary>
 	public ref class ParticleFluid : ParticleBase
 	{
-		public:
-			ParticleFluid(PxParticleFluid* particleFluid, PhysX::Physics^ physics);
+		internal:
+			ParticleFluid(PxParticleFluid* particleFluid, PhysX::Physics^ owner);
 
+		public:
 			/// <summary>
 			/// Locks the particle data and provides the data descriptor for accessing the particles including fluid particle densities.
 			/// </summary>
 			ParticleFluidReadData^ LockParticleFluidReadData();
-
-			/// <summary>
-			/// Saves the particle system descriptor.
-			/// </summary>
-			ParticleFluidDesc^ SaveToDesc();
 
 			//
 
@@ -53,6 +48,15 @@ namespace PhysX
 			property float RestParticleDistance
 			{
 				float get();
+				void set(float value);
+			}
+
+			/// <summary>
+			/// Gets the name of dynamic type.
+			/// </summary>
+			property String^ ConcreteTypeName
+			{
+				String^ get();
 			}
 
 		internal:

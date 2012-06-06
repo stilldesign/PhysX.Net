@@ -1,6 +1,6 @@
 #pragma once
 
-#include <PxVehicleUtils.h>
+#include <PxVehicleUtilControl.h> 
 
 namespace PhysX
 {
@@ -10,7 +10,7 @@ namespace PhysX
 	public ref class VehiclePadSmoothingData
 	{
 		public:
-			static const int MaximumNumberOfVehicleAnalogInputs = PxVehicleControlInputs::eMAX_NUM_VEHICLE_ANALOG_INPUTS;
+			static const int MaximumNumberOfVehicleAnalogInputs = PxVehicleDriveDynData::eMAX_NUM_ANALOG_INPUTS;
 
 		internal:
 			static VehiclePadSmoothingData^ ToManaged(PxVehiclePadSmoothingData desc);

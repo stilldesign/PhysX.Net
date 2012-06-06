@@ -7,16 +7,6 @@
 namespace PhysX
 {
 	/// <summary>
-	/// Specifies which axis is the "up" direction.
-	/// </summary>
-	public enum class CCTUpAxis
-	{
-		X = PxCCTUpAxis::eX, 
-		Y = PxCCTUpAxis::eY, 
-		Z = PxCCTUpAxis::eZ
-	};
-
-	/// <summary>
 	/// Multiclient behavior bit flags for clients.
 	/// </summary>
 	public enum class ClientBehaviorBit

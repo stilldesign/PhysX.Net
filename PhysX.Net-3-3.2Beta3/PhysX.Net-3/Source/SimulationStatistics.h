@@ -28,11 +28,6 @@ namespace PhysX
 				ParticleSystem = PxSimulationStatistics::ePARTICLE_SYSTEM, 
 
 				/// <summary>
-				/// A volume belonging to a deformable.
-				/// </summary>
-				Deformable = PxSimulationStatistics::eDEFORMABLE, 
-
-				/// <summary>
 				/// A volume belonging to a rigid body object.
 				/// </summary>
 				VolumnCount = PxSimulationStatistics::eVOLUME_COUNT 
@@ -48,11 +43,6 @@ namespace PhysX
 				/// Discrete contact pairs do not have the PairFlag.SweptContactGeneration flag set.
 				/// </summary>
 				DiscreteContactPairs = PxSimulationStatistics::eDISCRETE_CONTACT_PAIRS,
-
-				/// <summary>
-				/// Shape pairs processed as swept contact generation pairs for the current simulation step.
-				/// </summary>
-				SweptContactPairs = PxSimulationStatistics::eSWEPT_CONTACT_PAIRS,
 
 				/// <summary>
 				/// Shape pairs processed as swept integration pairs for the current simulation step.

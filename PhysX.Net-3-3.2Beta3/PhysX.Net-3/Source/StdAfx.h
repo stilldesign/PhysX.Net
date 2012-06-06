@@ -20,14 +20,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-// HACK: Doesn't link in debug mode unless this value is hacked into place
-//_ITERATOR_DEBUG_LEVEL = 0 (in release mode)
-//_ITERATOR_DEBUG_LEVEL = 1 (in release mode if _SECURE_SCL is defined)
-//_ITERATOR_DEBUG_LEVEL = 2 (in debug mode)
-#if _DEBUG
-#define _ITERATOR_DEBUG_LEVEL 0
-#endif
-
 #define WIN32_LEAN_AND_MEAN
 #include <Windows.h>
 #include <vcclr.h>
@@ -44,7 +36,6 @@ THE SOFTWARE.
 
 // Native PhysX namespaces
 using namespace physx;
-using namespace physx::pubfnd3; // Math/Primitive types namespace
 
 // .NET namespaces
 using namespace System;
@@ -53,6 +44,7 @@ using namespace System::Linq;
 using namespace System::Diagnostics;
 using namespace System::Runtime::InteropServices;
 
+#include "OperationFailedException.h"
 #include "Util.h"
 #include "Vector2.h"
 #include "Vector3.h"
@@ -76,7 +68,10 @@ using namespace PhysX::Math;
 
 #define GetPointerOrNull(obj) (obj == nullptr ? NULL : obj->UnmanagedPointer)
 
-#define ThrowIfNull( var, varName )\
+#define MV(v) (MathUtil::PxVec3ToVector3(v))
+#define UV(v) (MathUtil::Vector3ToPxVec3(v))
+
+#define ThrowIfNull(var, varName)\
 {\
 	if (var == nullptr)\
 		throw gcnew ArgumentNullException(varName);\
@@ -106,3 +101,7 @@ bool IsInstanceOf(U u)
 {
 	return dynamic_cast<T>(u) != nullptr;
 }
+
+// HACK: This file is required to be included here and not later on in another file otherwise we get
+// horrible linker errors (PxGeometry has already been defined)
+#include <PxShape.h>

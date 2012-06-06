@@ -5,6 +5,7 @@
 namespace PhysX
 {
 	ref class Scene;
+	ref class Serializable;
 
 	/// <summary>
 	/// 
@@ -31,6 +32,11 @@ namespace PhysX
 			{
 				virtual bool get();
 			}
+
+			/// <summary>
+			/// Gets an object which is responsible for serialization of this type.
+			/// </summary>
+			Serializable^ AsSerializable();
 
 			//
 

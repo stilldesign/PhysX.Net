@@ -2,6 +2,7 @@
 #include "Actor.h"
 #include "Physics.h"
 #include "ObservableInstance.h"
+#include "Serializable.h"
 
 using namespace PhysX;
 
@@ -35,12 +36,22 @@ Actor::!Actor()
 
 bool Actor::Disposed::get()
 {
-	return _actor == NULL;
+	return (_actor == NULL);
 }
 
 ObservableInstance^ Actor::GetObservableInstance()
 {
 	return gcnew ObservableInstance(_actor);
+}
+
+Serializable^ Actor::AsSerializable()
+{
+	return gcnew Serializable(_actor);
+}
+
+String^ Actor::ToString()
+{
+	return this->Name;
 }
 
 //
@@ -53,6 +64,18 @@ PhysX::Physics^ Actor::Physics::get()
 ActorType Actor::Type::get()
 {
 	return ToManagedEnum(ActorType, _actor->getType());
+}
+
+String^ Actor::Name::get()
+{
+	return Util::ToManagedString(_actor->getName());
+}
+void Actor::Name::set(String^ value)
+{
+	if (_actor->getName() != NULL)
+		Marshal::FreeHGlobal(IntPtr((char*)_actor->getName()));
+
+	_actor->setName(Util::ToUnmanagedString(value));
 }
 
 Bounds3 Actor::WorldBounds::get()

@@ -21,7 +21,7 @@ void HeightFieldDesc::SetToDefault()
 {
 	NumberOfColumns				= 0;
 	NumberOfRows				= 0;
-	Format						= HeightFieldFormat::S16_TM;
+	Format						= HeightFieldFormat::Signed16BitIntegersWithTriangleMaterials;
 	Thickness					= -1.0f;
 	ConvexEdgeThreshold			= 0.0f;
 }

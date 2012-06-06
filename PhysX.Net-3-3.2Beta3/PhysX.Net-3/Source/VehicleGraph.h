@@ -1,6 +1,6 @@
 #pragma once
 
-#include <PxVehicleUtils.h>
+#include <PxVehicleUtilTelemetry.h>
 
 namespace PhysX
 {

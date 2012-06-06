@@ -3,6 +3,7 @@
 #include "Scene.h"
 #include "Actor.h"
 #include "Articulation.h"
+#include "Serializable.h"
 #include <PxAggregate.h> 
 
 Aggregate::Aggregate(PxAggregate* aggregate, PhysX::Scene^ owner)
@@ -13,7 +14,6 @@ Aggregate::Aggregate(PxAggregate* aggregate, PhysX::Scene^ owner)
 
 	_aggregate = aggregate;
 	_scene = owner;
-	_actors = gcnew List<Actor^>();
 
 	ObjectTable::Add((intptr_t)aggregate, this, owner);
 }
@@ -25,25 +25,25 @@ Aggregate::!Aggregate()
 {
 	OnDisposing(this, nullptr);
 
-	if (Disposed)
+	if (this->Disposed)
 		return;
 
 	_aggregate->release();
 	_aggregate = NULL;
+
+	_scene = nullptr;
 
 	OnDisposed(this, nullptr);
 }
 
 bool Aggregate::Disposed::get()
 {
-	return _aggregate == NULL;
+	return (_aggregate == NULL);
 }
 
 bool Aggregate::AddActor(Actor^ actor)
 {
 	ThrowIfNullOrDisposed(actor, "actor");
-
-	_actors->Add(actor);
 
 	return _aggregate->addActor(*actor->UnmanagedPointer);
 }
@@ -51,8 +51,6 @@ bool Aggregate::AddActor(Actor^ actor)
 bool Aggregate::RemoveActor(Actor^ actor)
 {
 	ThrowIfNullOrDisposed(actor, "actor");
-
-	_actors->Remove(actor);
 
 	return _aggregate->removeActor(*actor->UnmanagedPointer);
 }
@@ -73,32 +71,47 @@ bool Aggregate::RemoveArticulation(Articulation^ articulation)
 
 Actor^ Aggregate::GetActor(int index)
 {
-	PxActor* a = _aggregate->getActor(index);
+	int actorCount = _aggregate->getNbActors();
 
-	if (a == NULL)
-		return nullptr;
+	if (index < 0 || index >= actorCount)
+		throw gcnew ArgumentOutOfRangeException(String::Format("The index argument must be between 0 and the number of actors (currently {0})", actorCount));
 
-	return ObjectTable::GetObject<Actor^>((intptr_t)a);
+	PxActor** actors = new PxActor*[1];
+
+	_aggregate->getActors(actors, 1, index);
+
+	return ObjectTable::GetObject<Actor^>((intptr_t)actors[0]);
 }
+array<Actor^>^ Aggregate::GetActors()
+{
+	int actorCount = _aggregate->getNbActors();
+	PxActor** actors = new PxActor*[actorCount];
+
+	_aggregate->getActors(actors, actorCount, 0);
+
+	return ObjectTable::GetObjects<Actor^>((intptr_t*)actors, actorCount);
+}
+
+Serializable^ Aggregate::AsSerializable()
+{
+	return gcnew Serializable(_aggregate);
+}
+
+//
 
 PhysX::Scene^ Aggregate::Scene::get()
 {
 	return _scene;
 }
 
-int Aggregate::MaximumSize::get()
+int Aggregate::MaximumNumberOfActors::get()
 {
-	return _aggregate->getMaxSize();
+	return _aggregate->getMaxNbActors();
 }
 
-int Aggregate::CurrentSize::get()
+int Aggregate::NumberOfActors::get()
 {
-	return _aggregate->getCurrentSize();
-}
-
-IEnumerable<Actor^>^ Aggregate::Actors::get()
-{
-	return _actors;
+	return _aggregate->getNbActors();
 }
 
 bool Aggregate::SelfCollision::get()

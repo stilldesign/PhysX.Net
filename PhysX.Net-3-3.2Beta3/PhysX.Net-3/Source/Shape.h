@@ -8,6 +8,15 @@
 namespace PhysX
 {
 	ref class Actor;
+	ref class Geometry;
+	ref class Serializable;
+	ref class BoxGeometry;
+	ref class SphereGeometry;
+	ref class CapsuleGeometry;
+	ref class PlaneGeometry;
+	ref class ConvexMeshGeometry;
+	ref class TriangleMeshGeometry;
+	ref class HeightFieldGeometry;
 
 	/// <summary>
 	/// Abstract class for collision shapes.
@@ -40,11 +49,26 @@ namespace PhysX
 			}
 
 			/// <summary>
+			/// Gets an object which is responsible for serialization of this type.
+			/// </summary>
+			Serializable^ AsSerializable();
+
+			BoxGeometry^ GetBoxGeometry();
+			SphereGeometry^ GetSphereGeometry();
+			CapsuleGeometry^ GetCapsuleGeometry();
+			PlaneGeometry^ GetPlaneGeometry();
+			ConvexMeshGeometry^ GetConvexMeshGeometry();
+			TriangleMeshGeometry^ GetTriangleMeshGeometry();
+			HeightFieldGeometry^ GetHeightFieldGeometry();
+
+			//
+
+			/// <summary>
 			/// Get the geometry type of the shape.
 			/// </summary>
-			property GeometryType Type
+			property PhysX::GeometryType GeometryType
 			{
-				GeometryType get();
+				PhysX::GeometryType get();
 			}
 
 			/// <summary>
@@ -53,6 +77,23 @@ namespace PhysX
 			property PhysX::Actor^ Actor
 			{
 				PhysX::Actor^ get();
+			}
+
+			/// <summary>
+			/// Retrieves the world space pose of the shape.
+			/// </summary>
+			property Matrix GlobalPose
+			{
+				Matrix get();
+			}
+
+			/// <summary>
+			/// Gets or set the name of the shape.
+			/// </summary>
+			property String^ Name
+			{
+				String^ get();
+				void set(String^ value);
 			}
 
 			/// <summary>

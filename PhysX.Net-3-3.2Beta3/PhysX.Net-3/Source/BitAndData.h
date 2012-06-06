@@ -36,8 +36,9 @@ namespace PhysX
 			Byte GetData() { return _data & ~BitMask; }
 			void SetBit() { _data |= BitMask; }
 			void ClearBit() { _data &= ~BitMask; }
-			Byte IsBitSet()	{ return _data & BitMask; }
+			bool IsBitSet()	{ return _data & BitMask; }
 
+		internal:
 			static PxBitAndByte ToUnmanaged(BitAndByte b);
 	};
 };

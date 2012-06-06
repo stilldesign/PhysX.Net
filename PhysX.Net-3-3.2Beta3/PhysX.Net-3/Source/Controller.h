@@ -6,6 +6,8 @@
 namespace PhysX
 {
 	ref class ControllerManager;
+	ref class ControllerFilters;
+	ref class ObstacleContext;
 
 	/// <summary>
 	/// Base class for character controllers.
@@ -35,8 +37,8 @@ namespace PhysX
 				virtual bool get();
 			}
 
-			void Move(Vector3 displacement);
-			void Move(Vector3 displacement, int activeGroups, float minimumDistance, ControllerFlag collisionFlags, float sharpness);
+			void Move(Vector3 displacement, TimeSpan elapsedTime);
+			void Move(Vector3 displacement, TimeSpan elapsedTime, float minimumDistance, ControllerFilters^ filters, [Optional] ObstacleContext^ obstacles);
 
 			/// <summary>
 			/// The character controller uses caching in order to speed up collision testing, this caching
@@ -94,9 +96,10 @@ namespace PhysX
 			/// <summary>
 			/// Gets or sets the 'up' direction.
 			/// </summary>
-			property CCTUpAxis UpDirection
+			property Vector3 UpDirection
 			{
-				CCTUpAxis get();
+				Vector3 get();
+				void set(Vector3 value);
 			}
 
 			/// <summary>

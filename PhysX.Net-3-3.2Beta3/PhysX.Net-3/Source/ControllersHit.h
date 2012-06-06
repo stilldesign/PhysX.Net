@@ -1,5 +1,6 @@
 #pragma once
 
+#include "CctHit.h"
 #include <PxController.h> 
 
 namespace PhysX
@@ -9,18 +10,13 @@ namespace PhysX
 	/// <summary>
 	/// Describe a controller hit. Passed to OnControllerHit().
 	/// </summary>
-	public ref class ControllersHit
+	public ref class ControllersHit : CctHit
 	{
 		internal:
-			static PxControllersHit ToUnmanaged(ControllersHit^ hit);
+			//static PxControllersHit ToUnmanaged(ControllersHit^ hit);
 			static ControllersHit^ ToManaged(PxControllersHit hit);
 
 		public:
-			/// <summary>
-			/// Current controller.
-			/// </summary>
-			property PhysX::Controller^ Controller;
-
 			/// <summary>
 			/// Touched controller.
 			/// </summary>

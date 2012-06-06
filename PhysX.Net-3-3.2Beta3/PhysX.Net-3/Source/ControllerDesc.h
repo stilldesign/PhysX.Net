@@ -52,7 +52,7 @@ namespace PhysX
 			/// <summary>
 			/// Gets or sets the 'up' direction.
 			/// </summary>
-			property CCTUpAxis UpDirection;
+			property Vector3 UpDirection;
 
 			/// <summary>
 			/// Gets or sets the contact offset used by the controller.

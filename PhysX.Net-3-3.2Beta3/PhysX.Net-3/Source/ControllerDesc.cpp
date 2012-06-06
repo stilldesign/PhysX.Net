@@ -26,7 +26,7 @@ void ControllerDesc::AssignToUnmanaged(ControllerDesc^ desc, PxControllerDesc& d
 	//d.globalPose = MathUtil::MatrixToPxTransform(desc->GlobalPose);
 	d.slopeLimit = desc->SlopeLimit;
 	d.stepOffset = desc->StepOffset;
-	d.upDirection = ToUnmanagedEnum(PxCCTUpAxis, desc->UpDirection);
+	d.upDirection = MathUtil::Vector3ToPxVec3(desc->UpDirection);
 }
 void ControllerDesc::AssignToManaged(PxControllerDesc& d, ControllerDesc^ desc)
 {
@@ -40,5 +40,5 @@ void ControllerDesc::AssignToManaged(PxControllerDesc& d, ControllerDesc^ desc)
 	desc->Position = MathUtil::PxExtendedVec3ToVector3(d.position);
 	desc->SlopeLimit = d.slopeLimit;
 	desc->StepOffset = d.stepOffset;
-	desc->UpDirection = ToManagedEnum(CCTUpAxis, d.upDirection);
+	desc->UpDirection = MathUtil::PxVec3ToVector3(d.upDirection);
 }

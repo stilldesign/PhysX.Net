@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using SlimDX;
 using System.Windows.Input;
 using PhysX.Samples.Engine;
+using SlimDX;
 
 namespace PhysX.Samples.CharacterSample
 {
@@ -40,7 +40,7 @@ namespace PhysX.Samples.CharacterSample
 				Height = 4,
 				Radius = 1,
 				Material = material,
-				UpDirection = CCTUpAxis.Y,
+				UpDirection = new Math.Vector3(0, 1, 0),
 				Position = new Math.Vector3(0, 2, 0)
 			};
 
@@ -119,19 +119,13 @@ namespace PhysX.Samples.CharacterSample
 			Vector3 d = Vector3.Normalize(moveDelta);
 
 			// Move the controller in the intended direction * a speed multiplier
-			_controller.Move(d.AsPhysX() * _controllerSpeed);
-
-			// Tell PhysX to update the controllers
-			_controller.ControllerManager.UpdateControllers();
+			_controller.Move(d.AsPhysX() * _controllerSpeed, this.Engine.FrameTime);
 		}
 		protected override void ProcessMouse(float deltaX, float deltaY)
 		{
 			// Add on (either positive or negative) a rotation amount based on the mouse movement
 			// This value will be used to create rotation matrices in the above function
 			_rotation += deltaX * 0.001f;
-
-			// Tell PhysX to update the controllers
-			_controller.ControllerManager.UpdateControllers();
 		}
 
 		protected override void Draw()

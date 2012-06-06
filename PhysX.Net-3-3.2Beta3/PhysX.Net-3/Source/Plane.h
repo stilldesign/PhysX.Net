@@ -11,6 +11,9 @@ namespace PhysX
 		[System::Runtime::InteropServices::StructLayout( System::Runtime::InteropServices::LayoutKind::Sequential )]
 		public value class Plane
 		{
+			internal:
+				static PxPlane ToUnmanaged(Plane plane);
+
 			public:
 				generic<typename T> where T : value class
 				T As();

@@ -1,6 +1,7 @@
 #pragma once
 
-#include <PxVehicleUtils.h>
+#include <PxVehicleUtilControl.h> 
+#include <PxVehicleDrive.h>
 
 namespace PhysX
 {
@@ -10,7 +11,7 @@ namespace PhysX
 	public ref class VehicleKeySmoothingData
 	{
 		public:
-			static const int MaximumNumberOfVehicleAnalogInputs = PxVehicleControlInputs::eMAX_NUM_VEHICLE_ANALOG_INPUTS;
+			literal int MaximumNumberOfVehicleAnalogInputs = PxVehicleDriveDynData::eMAX_NUM_ANALOG_INPUTS;
 
 		internal:
 			static VehicleKeySmoothingData^ ToManaged(PxVehicleKeySmoothingData desc);

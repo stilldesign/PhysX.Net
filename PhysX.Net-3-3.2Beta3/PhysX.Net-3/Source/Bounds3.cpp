@@ -22,12 +22,12 @@ Bounds3::Bounds3(float minX, float minY, float minZ, float maxX, float maxY, flo
 	this->Max = Vector3(maxX, maxY, maxZ);
 }
 
-physx::pubfnd3::PxBounds3 Bounds3::ToUnmanaged(Bounds3 bounds)
+PxBounds3 Bounds3::ToUnmanaged(Bounds3 bounds)
 {
 	PxVec3 min = MathUtil::Vector3ToPxVec3(bounds.Min);
 	PxVec3 max = MathUtil::Vector3ToPxVec3(bounds.Max);
 
-	physx::pubfnd3::PxBounds3 b(min, max);
+	PxBounds3 b(min, max);
 	
 	return b;
 }

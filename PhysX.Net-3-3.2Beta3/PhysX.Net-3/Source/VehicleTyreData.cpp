@@ -1,29 +1,29 @@
 #include "StdAfx.h"
 #include "VehicleTyreData.h"
 
-VehicleTyreData^ VehicleTyreData::ToManaged(PxVehicleTyreData tyreData)
+VehicleTireData^ VehicleTireData::ToManaged(PxVehicleTireData tireData)
 {
-	VehicleTyreData^ d = gcnew VehicleTyreData();
-		d->LateralStiffnessX = tyreData.mLatStiffX;
-		d->LateralStiffnessY = tyreData.mLatStiffY;
-		d->LongitudinalStiffness = tyreData.mLongitudinalStiffness;
-		d->CamberStiffness = tyreData.mCamberStiffness;
-		// TODO: array of arrays
-		//d->FrictionVsSlipGraph = tyreData.mFrictionVsSlipGraph;
-		d->Type = tyreData.mType;
+	auto d = gcnew VehicleTireData();
+		d->LateralStiffnessX = tireData.mLatStiffX;
+		d->LateralStiffnessY = tireData.mLatStiffY;
+		d->LongitudinalStiffnessPerUnitGravity = tireData.mLongitudinalStiffnessPerUnitGravity;
+		d->CamberStiffness = tireData.mCamberStiffness;
+		//Util::AsUnmanagedArray(d->FrictionVsSlipGraph, &tireData.mFrictionVsSlipGraph, 3*2);
+		d->Type = tireData.mType;
 
 	return d;
 }
-PxVehicleTyreData VehicleTyreData::ToUnmanaged(VehicleTyreData^ tyreData)
+PxVehicleTireData VehicleTireData::ToUnmanaged(VehicleTireData^ tireData)
 {
-	PxVehicleTyreData d;
-		d.mLatStiffX = tyreData->LateralStiffnessX;
-		d.mLatStiffY = tyreData->LateralStiffnessY;
-		d.mLongitudinalStiffness = tyreData->LongitudinalStiffness;
-		d.mCamberStiffness = tyreData->CamberStiffness;
-		// TODO: array of arrays
-		//d->FrictionVsSlipGraph = tyreData.mFrictionVsSlipGraph;
-		d.mType = tyreData->Type;
+	ThrowIfNull(tireData, "tireData");
+
+	PxVehicleTireData d;
+		d.mLatStiffX = tireData->LateralStiffnessX;
+		d.mLatStiffY = tireData->LateralStiffnessY;
+		d.mLongitudinalStiffnessPerUnitGravity = tireData->LongitudinalStiffnessPerUnitGravity;
+		d.mCamberStiffness = tireData->CamberStiffness;
+		//d->FrictionVsSlipGraph = Util::AsManagedArray(&tireData.mFrictionVsSlipGraph[0][0], 3*2);
+		d.mType = tireData->Type;
 
 	return d;
 }

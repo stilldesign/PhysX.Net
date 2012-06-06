@@ -1,7 +1,6 @@
 #include "StdAfx.h"
 #include "Collection.h"
 #include "Physics.h"
-#include "InternalSerialStream.h"
 #include "Scene.h"
 #include <PxExtensionsAPI.h>
 #include <PxSerialFramework.h> 
@@ -28,7 +27,7 @@ Collection::!Collection()
 	if (Disposed)
 		return;
 
-	this->Physics->UnmanagedPointer->releaseCollection(_collection);
+	this->Physics->UnmanagedPointer->releaseCollection(*_collection);
 	_collection = NULL;
 
 	_physics = nullptr;
@@ -47,25 +46,22 @@ void Collection::Serialize(System::IO::Stream^ stream)
 	if (!stream->CanWrite)
 		throw gcnew ArgumentException("Cannot write to stream", "stream");
 
-	InternalSerialStream s;
-	InternalMemoryStream* m = s.GetMemoryStream();
+	PxDefaultMemoryOutputStream s;
 
 	_collection->serialize(s);
 
-	size_t n = m->getMemorySize();
+	PxU32 size = s.getSize();
 
-	if (n <= 0)
+	if (size <= 0)
 		return;
 
-	m->ResetSeek();
+	PxU8* data = s.getData();
 
-	const PxU8* data = m->GetMemory();
-
-	array<Byte>^ buffer = gcnew array<Byte>(n);
+	array<Byte>^ buffer = gcnew array<Byte>(size);
 	pin_ptr<Byte> b = &buffer[0];
-	memcpy_s(b, n, (void*)data, n);
+	memcpy_s(b, size, (void*)data, size);
 
-	stream->Write(buffer, 0, n);
+	stream->Write(buffer, 0, size);
 }
 bool Collection::Deserialize(System::IO::Stream^ stream)
 {
@@ -84,7 +80,7 @@ bool Collection::Deserialize(System::IO::Stream^ stream)
 	// Pin the first element
 	pin_ptr<Byte> d = &data[0];
 
-	// Allocate a (16 byte) aligned block of memory and copy in the stream data
+	// Allocate a 128 byte aligned block of memory and copy in the stream data
 	void* j = _aligned_malloc(n, 128);
 	memcpy_s(j, n, d, n);
 	

@@ -9,7 +9,7 @@ namespace PhysX
 	ref class Stream;
 	ref class TriangleMeshDesc;
 	ref class ConvexMeshDesc;
-	ref class DeformableMeshDesc;
+	ref class ClothMeshDesc;
 
 	public ref class Cooking : IDisposable
 	{
@@ -56,11 +56,12 @@ namespace PhysX
 			bool CookConvexMesh(ConvexMeshDesc^ desc, System::IO::Stream^ stream);
 
 			/// <summary>
-			/// Cooks a triangle / tetrahedron mesh to a DeformableMesh.
+			/// Cooks a triangle mesh to a cloth fabric.
 			/// </summary>
-			/// <param name="desc">The deformable mesh descriptor on which the generation of the cooked mesh depends.</param>
-			/// <param name="stream">The stream the cooked mesh is written to.</param>
-			bool CookDeformableMesh(DeformableMeshDesc^ desc, System::IO::Stream^ stream);
+			/// <param name="desc">The cloth mesh descriptor on which the generation of the cooked mesh depends.</param>
+			/// <param name="gravityDirection">A normalized vector which specifies the direction of gravity. This information allows the cooker to generate a fabric with higher quality simulation behavior.</param>
+			/// <param name="stream">The stream the cooked fabric is written to.</param>
+			bool CookClothFabric(ClothMeshDesc^ desc, Vector3 gravityDirection, System::IO::Stream^ stream);
 
 			//
 

@@ -60,7 +60,7 @@ namespace PhysX
 			/// </summary>
 			/// <param name="positions">Structure describing positions for position updates. (Has to be consistent with numParticles).</param>
 			/// <param name="indexBuffer">Structure describing indices of particles that should be updated. (Has to be consistent with numParticles).</param>
-			void SetPositions(array<Vector3>^ positions, array<PxU32>^ indexBuffer);
+			void SetPositions(array<Vector3>^ positions, array<int>^ indexBuffer);
 
 			/// <summary>
 			/// Sets particle velocities.
@@ -70,7 +70,7 @@ namespace PhysX
 			/// </summary>
 			/// <param name="positions">Structure describing indices of particles that should be updated. (Has to be consistent with numParticles).</param>
 			/// <param name="indexBuffer">Structure describing velocities for velocity updates. (Has to be consistent with numParticles).</param>
-			void SetVelocities(array<Vector3>^ positions, array<PxU32>^ indexBuffer);
+			void SetVelocities(array<Vector3>^ positions, array<int>^ indexBuffer);
 
 			/// <summary>
 			/// Sets particle rest offsets.
@@ -80,7 +80,7 @@ namespace PhysX
 			/// </summary>
 			/// <param name="positions">Structure describing indices of particles that should be updated. (Has to be consistent with numParticles).</param>
 			/// <param name="indexBuffer">Structure describing indices of particles that should be updated. (Has to be consistent with numParticles).</param>
-			void SetRestOffsets(array<Vector3>^ positions, array<PxU32>^ indexBuffer);
+			void SetRestOffsets(array<Vector3>^ positions, array<int>^ indexBuffer);
 
 			/// <summary>
 			/// Set forces to be applied to the particles when the simulation starts.
@@ -89,7 +89,7 @@ namespace PhysX
 			/// <param name="forceBuffer">Structure describing values for particle updates depending on forceMode. (Has to be consistent with numParticles).</param>
 			/// <param name="indexBuffer">Structure describing indices of particles that should be updated. (Has to be consistent with numParticles).</param>
 			/// <param name="forceMode">Describes type of update.</param>
-			void AddForces(array<Vector3>^ positions, array<PxU32>^ indexBuffer, ForceMode forceMode);
+			void AddForces(array<Vector3>^ positions, array<int>^ indexBuffer, ForceMode forceMode);
 
 			/// <summary>
 			/// Gets or sets the particle system damping (must be nonnegative).

@@ -1,12 +1,10 @@
 #include "StdAfx.h"
-#include <PxCooking.h> 
 #include "Cooking.h"
 #include "Foundation.h"
 #include "TriangleMeshDesc.h"
-#include "MemoryStream.h"
 #include "ConvexMeshDesc.h"
-#include "DeformableMeshDesc.h"
-#include "MemoryStream.h"
+#include "ClothMeshDesc.h"
+#include <PxCooking.h> 
 
 Cooking::Cooking(PxCooking* cooking, PhysX::Foundation^ owner)
 {
@@ -50,10 +48,10 @@ bool Cooking::CookTriangleMesh(TriangleMeshDesc^ desc, System::IO::Stream^ strea
 	if(!d.isValid())
 		throw gcnew ArgumentException("The triangle mesh description is invalid");
 
-	MemoryStream memoryStream;
-	bool result = _cooking->cookTriangleMesh(d, memoryStream);
+	PxDefaultMemoryOutputStream cookedStream;
+	bool result = _cooking->cookTriangleMesh(d, cookedStream);
 
-	Util::CopyIntoStream(memoryStream, stream);
+	Util::CopyIntoStream(&cookedStream, stream);
 
 	delete[] d.points.data;
 	delete[] d.triangles.data;
@@ -72,10 +70,12 @@ bool Cooking::CookConvexMesh(ConvexMeshDesc^ desc, System::IO::Stream^ stream)
 	if(!d.isValid())
 		throw gcnew ArgumentException("The convex mesh description is invalid");
 
-	MemoryStream memoryStream;
-	bool result = _cooking->cookConvexMesh(d, memoryStream);
+	PxDefaultMemoryOutputStream cookedStream;
+	bool result = _cooking->cookConvexMesh(d, cookedStream);
 
-	Util::CopyIntoStream(memoryStream, stream);
+	// Copy the cooked data into the managed stream (only if the cooked stream actually has data)
+	if (result)
+		Util::CopyIntoStream(&cookedStream, stream);
 
 	delete[] d.points.data;
 	delete[] d.triangles.data;
@@ -83,29 +83,30 @@ bool Cooking::CookConvexMesh(ConvexMeshDesc^ desc, System::IO::Stream^ stream)
 	return result;
 }
 
-bool Cooking::CookDeformableMesh(DeformableMeshDesc^ desc, System::IO::Stream^ stream)
+bool Cooking::CookClothFabric(ClothMeshDesc^ desc, Vector3 gravityDirection, System::IO::Stream^ stream)
 {
 	ThrowIfDescriptionIsNullOrInvalid(desc, "desc");
 	ThrowIfNull(stream, "stream");
 
-	PxDeformableMeshDesc d = DeformableMeshDesc::ToUnmanaged(desc);
+	PxClothMeshDesc d = ClothMeshDesc::ToUnmanaged(desc);
 
-	// TODO: DeformableMeshDesc.IsValid()
 	if(!d.isValid())
-		throw gcnew ArgumentException("The deformable mesh description is invalid");
+		throw gcnew ArgumentException("The cloth mesh description is invalid");
 
-	MemoryStream memoryStream;
-	bool result = _cooking->cookDeformableMesh(d, memoryStream);
+	PxDefaultMemoryOutputStream cookedStream;
+	bool result = _cooking->cookClothFabric(d, UV(gravityDirection), cookedStream);
 
-	Util::CopyIntoStream(memoryStream, stream);
+	Util::CopyIntoStream(&cookedStream, stream);
 
-	delete[] d.vertices;
-	delete[] d.primitives;
-	delete[] d.vertexMasses;
-	delete[] d.vertexFlags;
+	delete[] d.points.data;
+	delete[] d.triangles.data;
+	delete[] d.edgeFlags;
+	delete[] d.vertFlags;
 
 	return result;
 }
+
+//
 
 CookingParams^ Cooking::Parameters::get()
 {

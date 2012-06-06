@@ -17,6 +17,7 @@ namespace PhysX
 
 		internal:
 			virtual PxGeometry* ToUnmanaged() override;
+			static PlaneGeometry^ ToManaged(PxPlaneGeometry plane);
 
 		public:
 			

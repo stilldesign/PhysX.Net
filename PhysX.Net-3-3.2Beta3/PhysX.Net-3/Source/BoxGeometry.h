@@ -18,6 +18,7 @@ namespace PhysX
 
 		internal:
 			virtual PxGeometry* ToUnmanaged() override;
+			static BoxGeometry^ ToManaged(PxBoxGeometry box);
 
 		public:
 			property Vector3 HalfExtents;

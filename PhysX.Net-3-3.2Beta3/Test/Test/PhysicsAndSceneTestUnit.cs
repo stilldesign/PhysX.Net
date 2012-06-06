@@ -6,6 +6,7 @@ namespace PhysX.Test
 {
 	public class PhysicsAndSceneTestUnit : System.IDisposable
 	{
+		public Foundation Foundation { get; set; }
 		public Physics Physics { get; set; }
 		public Scene Scene { get; set; }
 		public ErrorLog ErrorOutput { get; set; }
@@ -14,9 +15,10 @@ namespace PhysX.Test
 
 		public void Dispose()
 		{
-			if (Physics != null && !Physics.Disposed)
-				Physics.Dispose();
+			if (Foundation != null && !Foundation.Disposed)
+				Foundation.Dispose();
 
+			Foundation = null;
 			Physics = null;
 			Scene = null;
 			ErrorOutput = null;

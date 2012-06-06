@@ -1,11 +1,14 @@
 #include "StdAfx.h"
-#include <PxJoint.h>
-#include <PxRigidActor.h>
+#include "Constraint.h"
 #include "Joint.h"
 #include "Scene.h"
 #include "Actor.h"
+#include "Serializable.h"
 
-Joint::Joint(PxJoint* joint, JointType type, PhysX::Scene^ owner)
+#include <PxJoint.h>
+#include <PxRigidActor.h>
+
+Joint::Joint(PxJoint* joint, PhysX::Scene^ owner)
 {
 	if (joint == NULL)
 		throw gcnew ArgumentNullException("joint");
@@ -13,7 +16,13 @@ Joint::Joint(PxJoint* joint, JointType type, PhysX::Scene^ owner)
 
 	_joint = joint;
 	_scene = owner;
-	_type = type;
+
+	// Constraint
+	//PxConstraint* constraint = _joint->getConstraint();
+	//if (!ObjectTable::Contains((intptr_t)constraint))
+	//{
+	//	PhysX::Constraint^ c = gcnew PhysX::Constraint(constraint, this);
+	//}
 
 	ObjectTable::Add((intptr_t)joint, this, owner);
 }
@@ -25,23 +34,35 @@ Joint::!Joint()
 {
 	OnDisposing(this, nullptr);
 
-	if (Disposed)
+	if (this->Disposed)
 		return;
 
 	_joint->release();
 	_joint = NULL;
+
+	_scene = nullptr;
 
 	OnDisposed(this, nullptr);
 }
 
 bool Joint::Disposed::get()
 {
-	return _joint == NULL;
+	return (_joint == NULL);
+}
+
+Serializable^ Joint::AsSerializable()
+{
+	return gcnew Serializable(_joint);
+}
+
+PhysX::Constraint^ Joint::Constraint::get()
+{
+	return ObjectTable::GetObject<PhysX::Constraint^>((intptr_t)_joint->getConstraint());
 }
 
 JointType Joint::Type::get()
 {
-	return _type;
+	return ToManagedEnum(JointType, _joint->getType());
 }
 
 PhysX::Scene^ Joint::Scene::get()
@@ -135,11 +156,9 @@ String^ Joint::Name::get()
 }
 void Joint::Name::set(String^ value)
 {
-	const char* name = _joint->getName();
-
-	if (name != NULL)
-		delete name;
-
+	if (_joint->getName() != NULL)
+		Marshal::FreeHGlobal(IntPtr((char*)_joint->getName()));
+	
 	_joint->setName(Util::ToUnmanagedString(value));
 }
 

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <PxVehicle.h>
+#include <PxVehicleComponents.h> 
 
 namespace PhysX
 {
@@ -11,6 +11,8 @@ namespace PhysX
 	{
 		public:
 			static const int MaximumNumberOfGearRatios = PxVehicleGearsData::eMAX_NUM_GEAR_RATIOS;
+
+			VehicleGearsData();
 
 		internal:
 			static PxVehicleGearsData ToUnmanaged(VehicleGearsData^ gearsData);

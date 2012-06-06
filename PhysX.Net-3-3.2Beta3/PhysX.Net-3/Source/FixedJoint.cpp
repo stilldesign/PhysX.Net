@@ -3,7 +3,7 @@
 #include "FixedJoint.h"
 
 FixedJoint::FixedJoint(PxFixedJoint* joint, PhysX::Scene^ owner)
-	: Joint(joint, JointType::Fixed, owner)
+	: Joint(joint, owner)
 {
 	
 }

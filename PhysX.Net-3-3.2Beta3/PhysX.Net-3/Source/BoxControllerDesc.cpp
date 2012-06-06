@@ -15,7 +15,9 @@ PxBoxControllerDesc BoxControllerDesc::ToUnmanaged(BoxControllerDesc^ desc)
 	ControllerDesc::AssignToUnmanaged(desc, d);
 
 	// Assign our specific properties
-	d.extents = MathUtil::Vector3ToPxVec3(desc->Extents);
+	d.halfForwardExtent = desc->HalfForwardExtent;
+	d.halfHeight = desc->HalfHeight;
+	d.halfSideExtent = desc->HalfSideExtent;
 
 	return d;
 }
@@ -27,7 +29,9 @@ BoxControllerDesc^ BoxControllerDesc::ToManaged(PxBoxControllerDesc desc)
 	ControllerDesc::AssignToManaged(desc, d);
 
 	// Assign our specific properties
-	d->Extents = MathUtil::PxVec3ToVector3(desc.extents);
+	d->HalfForwardExtent = desc.halfForwardExtent;
+	d->HalfHeight = desc.halfHeight;
+	d->HalfSideExtent = desc.halfSideExtent;
 
 	return d;
 }
@@ -46,4 +50,15 @@ bool BoxControllerDesc::IsValid()
 	auto d = ToUnmanaged(this);
 
 	return d.isValid();
+}
+
+Vector3 BoxControllerDesc::Extents::get()
+{
+	return Vector3(HalfSideExtent, HalfHeight, HalfForwardExtent);
+}
+void BoxControllerDesc::Extents::set(Vector3 value)
+{
+	HalfSideExtent = value.X;
+	HalfHeight = value.Y;
+	HalfForwardExtent = value.Z;
 }

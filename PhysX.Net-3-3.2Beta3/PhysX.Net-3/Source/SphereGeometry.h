@@ -14,9 +14,12 @@ namespace PhysX
 		public:
 			SphereGeometry();
 			SphereGeometry(float radius);
+		internal:
+			SphereGeometry(PxSphereGeometry geom);
 
 		internal:
 			virtual PxGeometry* ToUnmanaged() override;
+			static SphereGeometry^ ToManaged(PxSphereGeometry sphere);
 
 		public:
 			property float Radius;

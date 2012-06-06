@@ -7,6 +7,7 @@ namespace PhysX
 	ref class Scene;
 	ref class Controller;
 	ref class ControllerDesc;
+	ref class ObstacleContext;
 
 	/// <summary>
 	/// Manages an array of character controllers.
@@ -49,10 +50,27 @@ namespace PhysX
 			/// <param name="controllerDesc"></param>
 			Controller^ CreateController(ControllerDesc^ controllerDesc);
 
-			/// <summary>Updates the exposed position from the filtered position of all controllers.</summary>
-			void UpdateControllers();
+			/// <summary>
+			/// Computes character-character interactions.
+			/// This function is an optional helper to properly resolve interactions between characters, in
+			/// case they overlap (which can happen for gameplay reasons, etc).
+			/// You should call this once per frame, before your PxController::move() calls. The function will
+			/// not move the characters directly, but it will compute overlap information for each character
+			/// that will be used in the next move() call.
+			/// You need to provide a proper time value here so that interactions are resolved in a way that do
+			/// not depend on the framerate.
+			/// If you only have one character in the scene, or if you can guarantee your characters will never
+			/// overlap, then you do not need to call this function.
+			/// </summary>
+			/// <param name="elapsedTime">Elapsed time since last call.</param>
+			void ComputeInteractions(TimeSpan elapsedTime);
 
 			//RenderBuffer^ GetRenderBuffer();
+
+			/// <summary>
+			/// Creates an obstacle context.
+			/// </summary>
+			ObstacleContext^ CreateObstacleContext();
 
 			//
 
@@ -62,10 +80,20 @@ namespace PhysX
 				PhysX::Scene^ get();
 			}
 
-			/// <summary>Gets the Collection of Controller</summary>
+			/// <summary>
+			/// Gets the collection of controller.
+			/// </summary>
 			property IEnumerable<Controller^>^ Controllers
 			{
 				IEnumerable<Controller^>^ get();
+			}
+
+			/// <summary>
+			/// Gets the collection of obstacle contexts.
+			/// </summary>
+			property IEnumerable<ObstacleContext^>^ ObstacleContexts
+			{
+				IEnumerable<ObstacleContext^>^ get();
 			}
 
 			/// <summary></summary>

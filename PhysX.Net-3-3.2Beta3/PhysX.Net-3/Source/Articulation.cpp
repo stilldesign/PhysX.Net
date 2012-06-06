@@ -2,6 +2,7 @@
 #include "Articulation.h"
 #include "Scene.h"
 #include "Bounds3.h"
+#include "Serializable.h"
 #include <PxArticulation.h> 
 
 Articulation::Articulation(PxArticulation* articulation, PhysX::Scene^ owner)
@@ -34,8 +35,15 @@ Articulation::!Articulation()
 
 bool Articulation::Disposed::get()
 {
-	return _articulation == NULL;
+	return (_articulation == NULL);
 }
+
+Serializable^ Articulation::AsSerializable()
+{
+	return gcnew Serializable(_articulation);
+}
+
+//
 
 PhysX::Scene^ Articulation::Scene::get()
 {

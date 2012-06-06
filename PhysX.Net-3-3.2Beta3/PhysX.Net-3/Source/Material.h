@@ -9,6 +9,7 @@ using namespace PhysX::Math;
 namespace PhysX
 {
 	ref class Physics;
+	ref class Serializable;
 
 	public ref class Material : IDisposable
 	{
@@ -32,16 +33,15 @@ namespace PhysX
 				virtual bool get();
 			}
 
+			/// <summary>
+			/// Gets an object which is responsible for serialization of this type.
+			/// </summary>
+			Serializable^ AsSerializable();
+
 			virtual String^ ToString() override;
 
 			/// <summary>Gets or sets the coefficient of dynamic friction.</summary>
 			property float DynamicFriction
-			{
-				float get();
-				void set(float value);
-			}
-			/// <summary>Gets or sets the dynamic friction coefficient for the V direction.</summary>
-			property float DynamicFrictionV
 			{
 				float get();
 				void set(float value);
@@ -52,25 +52,12 @@ namespace PhysX
 				float get();
 				void set(float value);
 			}
-			/// <summary>Gets or sets the static friction coefficient along the secondary (V) axis.</summary>
-			property float StaticFrictionV
-			{
-				float get();
-				void set(float value);
-			}
-				
+			
 			/// <summary>Gets or sets the coefficient of restitution.</summary>
 			property float Restitution
 			{
 				float get();
 				void set(float value);
-			}
-			
-			/// <summary>Gets or sets the shape space direction (unit vector) of anisotropy.</summary>
-			property Vector3 DirectionOfAnisotropy
-			{
-				Vector3 get();
-				void set(Vector3 value);
 			}
 				
 			/// <summary>Get or sets the material flags (a combination of <see cref="MaterialFlag" />).</summary>
@@ -90,6 +77,11 @@ namespace PhysX
 			{
 				CombineMode get();
 				void set(CombineMode value);
+			}
+
+			property String^ ConcreteTypeName
+			{
+				String^ get();
 			}
 
 			/// <summary>Gets or sets an object, usually to create a 1:1 relationship with a user object.</summary>

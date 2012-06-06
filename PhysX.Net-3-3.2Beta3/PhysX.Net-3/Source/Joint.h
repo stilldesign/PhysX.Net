@@ -1,11 +1,14 @@
 #pragma once
 
 #include "JointEnum.h"
+#include "ConstraintEnum.h"
 
 namespace PhysX
 {
 	ref class Scene;
 	ref class Actor;
+	ref class Constraint;
+	ref class Serializable;
 	
 	public ref class Joint abstract : IDisposable
 	{
@@ -16,10 +19,9 @@ namespace PhysX
 		private:
 			PxJoint* _joint;
 			PhysX::Scene^ _scene;
-			JointType _type;
 
 		internal:
-			Joint(PxJoint* joint, JointType type, PhysX::Scene^ owner);
+			Joint(PxJoint* joint, PhysX::Scene^ owner);
 		public:
 			~Joint();
 		protected:
@@ -31,7 +33,21 @@ namespace PhysX
 				virtual bool get();
 			}
 
+			/// <summary>
+			/// Gets an object which is responsible for serialization of this type.
+			/// </summary>
+			Serializable^ AsSerializable();
+
 			//
+
+			/// <summary>
+			/// Retrieves the PxConstraint corresponding to this joint.
+			/// This can be used to determine, among other things, the force applied at the joint.
+			/// </summary>
+			property PhysX::Constraint^ Constraint
+			{
+				PhysX::Constraint^ get();
+			}
 
 			/// <summary>
 			/// Gets the joint type.

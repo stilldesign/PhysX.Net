@@ -25,7 +25,14 @@ void ParticleReadData::SetValidParticleBitmap(array<int>^ bitmap)
 
 array<Vector3>^ ParticleReadData::GetPositionBuffer()
 {
-	return Util::AsManagedArray<Vector3>((void*)this->UnmanagedPointer->positionBuffer.ptr(), this->UnmanagedPointer->numValidParticles);
+	const PxVec3* p = this->UnmanagedPointer->positionBuffer.ptr();
+
+	if (p == NULL)
+		return nullptr;
+
+	int n = this->UnmanagedPointer->numValidParticles;
+
+	return Util::AsManagedArray<Vector3>((void*)p, n);
 }
 void ParticleReadData::SetPositionBuffer(array<Vector3>^ value)
 {
@@ -34,6 +41,7 @@ void ParticleReadData::SetPositionBuffer(array<Vector3>^ value)
 
 array<Vector3>^ ParticleReadData::GetVelocityBuffer()
 {
+	// TODO: Null checks
 	return Util::AsManagedArray<Vector3>((void*)this->UnmanagedPointer->velocityBuffer.ptr(), this->UnmanagedPointer->numValidParticles);
 }
 void ParticleReadData::SetVelocityBuffer(array<Vector3>^ value)

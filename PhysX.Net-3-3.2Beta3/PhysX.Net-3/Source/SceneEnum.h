@@ -9,12 +9,79 @@ namespace PhysX
 {
 	public enum class SceneFlag
 	{
+		/// <summary>
+		/// Used to disable use of SSE in the solver.
+		/// SSE is detected at runtime(on appropriate platforms) and used if present by default.
+		/// However use of SSE can be disabled, even if present, using this flag.
+		/// </summary>
 		DisableSSE = PxSceneFlag::eDISABLE_SSE,
+		/// <summary>
+		/// Enable Active Transform Notification.
+		/// This flag enables the the Active Transform Notification feature for a scene. This feature
+		/// defaults to disabled. When disabled, the function PxScene::getActiveTransforms() will
+		/// always return a NULL list.
+		/// Note: There may be a performance penalty for enabling the Active Transform Notification,
+		/// hence this flag should only be enabled if the application intends to use the feature.
+		/// Default: False 
+		/// </summary>
 		EnableActiveTransforms = PxSceneFlag::eENABLE_ACTIVETRANSFORMS,
+		/// <summary>
+		/// Enables a second broad phase check after integration that makes it possible to prevent objects
+		/// from tunneling through eachother. eSWEPT_INTEGRATION_LINEAR requires this flag to be specified.
+		/// Note: For this feature to be effective for shapes that can move at a significant velocity, the
+		/// user should raise the flag PxShapeFlag::eUSE_SWEPT_BOUNDS for them.
+		/// </summary>
 		SweptIntegration = PxSceneFlag::eENABLE_SWEPT_INTEGRATION,
+		/// <summary>
+		/// Enable adaptive forces to accelerate convergence of the solver.
+		/// Note that this flag is not mutable, and must be set in PxSceneDesc at scene creation.
+		/// Default: true 
+		/// </summary>
 		AdaptiveForce = PxSceneFlag::eADAPTIVE_FORCE,
+		/// <summary>
+		/// Enable contact pair filtering between kinematic and static rigid bodies.
+		/// By default contacts between kinematic and static rigid bodies are
+		/// suppressed (see PxFilterFlag::eSUPPRESS) and don't get reported to the filter
+		/// mechanism. Raise this flag if these pairs should go through the filtering pipeline nonetheless.
+		/// Note that this flag is not mutable, and must be set in PxSceneDesc at scene creation.
+		/// Default: false 
+		/// </summary>
 		EnableKinematicStaticPairs = PxSceneFlag::eENABLE_KINEMATIC_STATIC_PAIRS,
-		EnableKinematicPairs = PxSceneFlag::eENABLE_KINEMATIC_PAIRS
+		/// <summary>
+		/// Enable contact pair filtering between kinematic rigid bodies.
+		/// By default contacts between kinematic bodies are
+		/// suppressed (see PxFilterFlag::eSUPPRESS) and don't get reported to the
+		/// filter mechanism. Raise this flag if these pairs should go through the filtering pipeline nonetheless.
+		/// Note that this flag is not mutable, and must be set in PxSceneDesc at scene creation.
+		/// Default: false 
+		/// </summary>
+		EnableKinematicPairs = PxSceneFlag::eENABLE_KINEMATIC_PAIRS,
+		/// <summary>
+		/// Enable one directional per-contact friction model.
+		/// Note that this flag is not mutable, and must be set in PxSceneDesc at scene creation.
+		/// Default: false 
+		/// </summary>
+		EnableOneDirectionFriction = PxSceneFlag::eENABLE_ONE_DIRECTIONAL_FRICTION,
+		/// <summary>
+		/// Enable two directional per-contact friction model.
+		/// Note that this flag is not mutable, and must be set in PxSceneDesc at scene creation.
+		/// Default: false 
+		/// </summary>
+		EnableTwoDirectionalFriction = PxSceneFlag::eENABLE_TWO_DIRECTIONAL_FRICTION,
+		/// <summary>
+		/// Enable GJK-based distance collision detection system.
+		/// Note that this flag is not mutable, and must be set in PxSceneDesc at scene creation.
+		/// In order to use this system, we need to register the system in the PxCreatePhysics
+		/// Default: false 
+		/// </summary>
+		EnablePcm = PxSceneFlag::eENABLE_PCM,
+		/// <summary>
+		/// Disable contact report buffer resize. Once the contact buffer is full, the rest of
+		/// the contact reports will not be buffered and sent. 
+		/// Note that this flag is not mutable, and must be set in PxSceneDesc at scene creation.
+		/// Default: false 
+		/// </summary>
+		DisableContactReportBufferSize = PxSceneFlag::eDISABLE_CONTACT_REPORT_BUFFER_RESIZE
 	};
 
 	public enum class VisualizationParameter
@@ -146,42 +213,6 @@ namespace PhysX
 		/// ParticleSystem maximum motion distance visualization.
 		/// </summary>
 		ParticleSystemMaxMotionDistance = PxVisualizationParameter::ePARTICLE_SYSTEM_MAX_MOTION_DISTANCE,
-		///// <summary>
-		///// ParticleSystem drain shape visualization.
-		///// </summary>
-		//ParticleSystemDrains = PxVisualizationParameter::ePARTICLE_SYSTEM_DRAINS,
-		/// <summary>
-		/// Deformable mesh visualization.
-		/// </summary>
-		DeformableMesh = PxVisualizationParameter::eDEFORMABLE_MESH,
-		/// <summary>
-		/// Deformable attachments visualization.
-		/// </summary>
-		DeformableAttachments = PxVisualizationParameter::eDEFORMABLE_ATTACHMENTS,
-		/// <summary>
-		/// Deformable collisions visualization.
-		/// </summary>
-		DeformableCollisions = PxVisualizationParameter::eDEFORMABLE_COLLISIONS,
-		/// <summary>
-		/// Deformable self-collisions visualization.
-		/// </summary>
-		DeformableSelfCollisions = PxVisualizationParameter::eDEFORMABLE_SELFCOLLISIONS,
-		/// <summary>
-		/// Deformable sleeping visualization.
-		/// </summary>
-		DeformableSleep = PxVisualizationParameter::eDEFORMABLE_SLEEP,
-		/// <summary>
-		/// Deformable tearing visualization.
-		/// </summary>
-		DeformableTearing = PxVisualizationParameter::eDEFORMABLE_TEARING,
-		/// <summary>
-		/// Deformable valid bounds visualization.
-		/// </summary>
-		DeformableValidBounds = PxVisualizationParameter::eDEFORMABLE_VALIDBOUNDS,
-		/// <summary>
-		/// Deformable shapes visualization.
-		/// </summary>
-		DeformableShapes = PxVisualizationParameter::eDEFORMABLE_SHAPES,
 		/// <summary>
 		/// Debug visualization culling.
 		/// </summary>
@@ -195,8 +226,10 @@ namespace PhysX
 		Distance = PxSceneQueryFlag::eDISTANCE,
 		UV = PxSceneQueryFlag::eUV,
 		InitialOverlap = PxSceneQueryFlag::eINITIAL_OVERLAP,
+		InitialOverlapKeep = PxSceneQueryFlag::eINITIAL_OVERLAP_KEEP,
 		TouchingHit = PxSceneQueryFlag::eTOUCHING_HIT,
-		BlockingHit = PxSceneQueryFlag::eBLOCKING_HIT
+		BlockingHit = PxSceneQueryFlag::eBLOCKING_HIT,
+		All = Impact | Normal | Distance | UV | InitialOverlap | InitialOverlapKeep | TouchingHit | BlockingHit
 	};
 
 	/// <summary>

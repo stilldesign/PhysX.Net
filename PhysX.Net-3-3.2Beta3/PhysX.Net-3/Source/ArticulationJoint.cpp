@@ -1,6 +1,7 @@
 #include "StdAfx.h"
 #include "ArticulationJoint.h"
 #include "Scene.h"
+#include "Serializable.h"
 
 ArticulationJoint::ArticulationJoint(PxArticulationJoint* joint, PhysX::Scene^ owner)
 {
@@ -31,7 +32,12 @@ ArticulationJoint::!ArticulationJoint()
 
 bool ArticulationJoint::Disposed::get()
 {
-	return _joint == NULL;
+	return (_joint == NULL);
+}
+
+Serializable^ ArticulationJoint::AsSerializable()
+{
+	return gcnew Serializable(_joint);
 }
 
 PhysX::Scene^ ArticulationJoint::Scene::get()
@@ -63,7 +69,7 @@ Quaternion ArticulationJoint::TargetOrientation::get()
 }
 void ArticulationJoint::TargetOrientation::set(Quaternion value)
 {
-	_joint->setTargetOrientation(MathUtil::QuaternionPxQuat(value));
+	_joint->setTargetOrientation(MathUtil::QuaternionToPxQuat(value));
 }
 
 Vector3 ArticulationJoint::TargetVelocity::get()

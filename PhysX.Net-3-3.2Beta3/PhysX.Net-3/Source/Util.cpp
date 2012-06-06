@@ -1,6 +1,5 @@
 #include "StdAfx.h"
 #include "Util.h"
-#include "MemoryStream.h"
 
 using namespace PhysX;
 
@@ -34,8 +33,8 @@ array<T>^ Util::AsManagedArray(void* memory, int count)
 	if (memory == NULL)
 		throw gcnew ArgumentNullException("memory");
 
-	if (count < 0)
-		count = 0;
+	if (count <= 0)
+		return gcnew array<T>(0);
 
 	array<T>^ arr = gcnew array<T>(count);
 
@@ -62,9 +61,12 @@ void Util::AsUnmanagedArray(array<T>^ arr, void* dest, int requiredCount)
 	if (arr->Length == 0)
 		return;
 
+	int s = sizeof(T);
+	int n = arr->Length;
+
 	pin_ptr<T> arrPin = &arr[0];
 
-	memcpy_s(dest, arr->Length * sizeof(T), arrPin, arr->Length * sizeof(T));
+	memcpy_s(dest, n * s, arrPin, n * s);
 }
 
 String^ Util::ToManagedString(const char* string)
@@ -112,20 +114,26 @@ Nullable<bool> Util::Is16Or32Bit(Array^ values)
 	return Nullable<bool>();
 }
 
-MemoryStream* Util::StreamToUnmanagedMemoryStream(System::IO::Stream^ stream)
+PxDefaultMemoryInputData* Util::StreamToUnmanagedInputStream(System::IO::Stream^ stream)
 {
 	ThrowIfNull(stream, "stream");
 	if (!stream->CanRead)
-		throw gcnew ArgumentException("Cannot read from stream");
-	if (stream->Length > 0xFFFFFFFF) // Max 32 bit (somewhat arbitary, but nothing will ever allocate this much)
-		throw gcnew OutOfMemoryException("Trying to allocation too much memory");
+		throw gcnew ArgumentException("Cannot read from stream", "stream");
+	if (stream->Length > 0xFFFFFFFF) // Max 32 bit (4 GB) (somewhat arbitary, but nothing will ever allocate this much)
+		throw gcnew OutOfMemoryException("Trying to allocation too much memory, the max is 4 GB");
 
 	int streamSize = (int)stream->Length;
 
 	if (streamSize == 0)
-		return new MemoryStream(0);
+		return new PxDefaultMemoryInputData(NULL, 0);
 
-	const PxU8* memoryStreamPtr = (const PxU8*)malloc(streamSize * sizeof(PxU8));
+	PxU8* memoryStreamPtr = (PxU8*)malloc(streamSize * sizeof(PxU8));
+
+	auto data = new PxDefaultMemoryInputData(memoryStreamPtr, streamSize);
+
+	if (memoryStreamPtr == NULL)
+		throw gcnew InvalidOperationException("Failed to allocate memory used for cloning managed stream");
+
 	ZeroMemory((void*)memoryStreamPtr, streamSize);
 
 	array<Byte>^ buffer = gcnew array<Byte>(streamSize);
@@ -133,36 +141,38 @@ MemoryStream* Util::StreamToUnmanagedMemoryStream(System::IO::Stream^ stream)
 	pin_ptr<Byte> b = &buffer[0];
 
 	memcpy_s((void*)memoryStreamPtr, streamSize, b, streamSize);
-
-	return new MemoryStream(memoryStreamPtr, streamSize);
+	
+	return data;
 }
-System::IO::MemoryStream^ Util::UnmanagedMemoryStreamToStream(MemoryStream& memoryStream)
+//System::IO::MemoryStream^ Util::UnmanagedMemoryStreamToStream(MemoryStream& memoryStream)
+//{
+//	auto stream = gcnew System::IO::MemoryStream();
+//
+//	CopyIntoStream(memoryStream, stream);
+//
+//	return stream;
+//}
+void Util::CopyIntoStream(PxDefaultMemoryOutputStream* from, System::IO::Stream^ to)
 {
-	auto stream = gcnew System::IO::MemoryStream();
-
-	CopyIntoStream(memoryStream, stream);
-
-	return stream;
-}
-void Util::CopyIntoStream(MemoryStream& memoryStream, System::IO::Stream^ stream)
-{
-	ThrowIfNull(stream, "stream");
-	if (memoryStream.GetMemory() == NULL)
-		throw gcnew ArgumentException("Cannot read from stream");
-	if (memoryStream.getMemorySize() > 0xFFFFFFFF)
+	if (from->getData() == NULL)
+		throw gcnew ArgumentException("Cannot read from unmanaged stream, its memory is null", "from");
+	if (from->getSize() > 0xFFFFFFFF)
 		throw gcnew OutOfMemoryException("Trying to allocation too much memory");
+	ThrowIfNull(to, "stream");
+	if (!to->CanWrite)
+		throw gcnew ArgumentException("Cannot write to destination stream", "to");
 
-	int streamSize = (int)memoryStream.getMemorySize();
+	int streamSize = (int)from->getSize();
 
-	if (streamSize == 0)
+	if (streamSize <= 0)
 		return;
 
-	const PxU8* memoryPtr = memoryStream.GetMemory();
+	PxU8* fromData = from->getData();
 
 	array<Byte>^ buffer = gcnew array<Byte>(streamSize);
 	pin_ptr<Byte> b = &buffer[0];
 
-	memcpy_s(b, streamSize, memoryPtr, streamSize);
+	memcpy_s(b, streamSize, fromData, streamSize);
 
-	stream->Write(buffer, 0, streamSize);
+	to->Write(buffer, 0, streamSize);
 }

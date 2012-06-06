@@ -24,3 +24,14 @@ PxGeometry* ConvexMeshGeometry::ToUnmanaged()
 
 	return convexMesh;
 }
+ConvexMeshGeometry^ ConvexMeshGeometry::ToManaged(PxConvexMeshGeometry convexMesh)
+{
+	ConvexMeshGeometry^ cm = gcnew ConvexMeshGeometry();
+
+	cm->Scale = MeshScale::ToManaged(convexMesh.scale);
+	cm->ConvexMesh = convexMesh.convexMesh == NULL ? 
+		nullptr : 
+		ObjectTable::GetObject<PhysX::ConvexMesh^>((intptr_t)convexMesh.convexMesh);
+
+	return cm;
+}

@@ -21,7 +21,14 @@ ParticleReadData^ ParticleBase::LockParticleReadData()
 
 int ParticleBase::CreateParticles(ParticleCreationData^ creationData)
 {
-	return this->UnmanagedPointer->createParticles(ParticleCreationData::ToUnmanaged(creationData));
+	ThrowIfNull(creationData, "creationData");
+
+	PxParticleCreationData data = ParticleCreationData::ToUnmanaged(creationData);
+
+	if (!data.isValid())
+		throw gcnew ArgumentException("Particle creation data is invalid", "creationData");
+
+	return this->UnmanagedPointer->createParticles(data);
 }
 
 void ParticleBase::ReleaseParticles()
@@ -41,7 +48,7 @@ void ParticleBase::ReleaseParticles(int numberOfParticles, [Optional] array<PxU3
 	this->UnmanagedPointer->releaseParticles(numberOfParticles, i);
 }
 
-void ParticleBase::SetPositions(array<Vector3>^ positions, array<PxU32>^ indexBuffer)
+void ParticleBase::SetPositions(array<Vector3>^ positions, array<int>^ indexBuffer)
 {
 	ThrowIfNull(positions, "positions");
 	ThrowIfNull(indexBuffer, "indexBuffer");
@@ -52,15 +59,15 @@ void ParticleBase::SetPositions(array<Vector3>^ positions, array<PxU32>^ indexBu
 	Util::AsUnmanagedArray(positions, p);
 	const PxStrideIterator<PxVec3> pos(p);
 
-	pin_ptr<PxU32> b = &indexBuffer[0];
-	const PxStrideIterator<PxU32> i(b);
+	pin_ptr<int> b = &indexBuffer[0];
+	const PxStrideIterator<PxU32> i((PxU32*)b);
 
 	this->UnmanagedPointer->setPositions(positions->Length, i, pos);
 
 	free(p);
 }
 
-void ParticleBase::SetVelocities(array<Vector3>^ velocities, array<PxU32>^ indexBuffer)
+void ParticleBase::SetVelocities(array<Vector3>^ velocities, array<int>^ indexBuffer)
 {
 	ThrowIfNull(velocities, "velocities");
 	ThrowIfNull(indexBuffer, "indexBuffer");
@@ -71,15 +78,15 @@ void ParticleBase::SetVelocities(array<Vector3>^ velocities, array<PxU32>^ index
 	Util::AsUnmanagedArray(velocities, v);
 	const PxStrideIterator<PxVec3> vel(v);
 
-	pin_ptr<PxU32> b = &indexBuffer[0];
-	const PxStrideIterator<PxU32> i(b);
+	pin_ptr<int> b = &indexBuffer[0];
+	const PxStrideIterator<PxU32> i((PxU32*)b);
 
 	this->UnmanagedPointer->setVelocities(velocities->Length, i, vel);
 
 	free(v);
 }
 
-void ParticleBase::SetRestOffsets(array<Vector3>^ restOffsets, array<PxU32>^ indexBuffer)
+void ParticleBase::SetRestOffsets(array<Vector3>^ restOffsets, array<int>^ indexBuffer)
 {
 	ThrowIfNull(restOffsets, "restOffsets");
 	ThrowIfNull(indexBuffer, "indexBuffer");
@@ -90,15 +97,15 @@ void ParticleBase::SetRestOffsets(array<Vector3>^ restOffsets, array<PxU32>^ ind
 	Util::AsUnmanagedArray(restOffsets, r);
 	const PxStrideIterator<float> rest(r);
 
-	pin_ptr<PxU32> b = &indexBuffer[0];
-	const PxStrideIterator<PxU32> i(b);
+	pin_ptr<int> b = &indexBuffer[0];
+	const PxStrideIterator<PxU32> i((PxU32*)b);
 
 	this->UnmanagedPointer->setRestOffsets(restOffsets->Length, i, rest);
 
 	free(r);
 }
 
-void ParticleBase::AddForces(array<Vector3>^ forces, array<PxU32>^ indexBuffer, ForceMode forceMode)
+void ParticleBase::AddForces(array<Vector3>^ forces, array<int>^ indexBuffer, ForceMode forceMode)
 {
 	ThrowIfNull(forces, "forces");
 	ThrowIfNull(indexBuffer, "indexBuffer");
@@ -109,8 +116,8 @@ void ParticleBase::AddForces(array<Vector3>^ forces, array<PxU32>^ indexBuffer, 
 	Util::AsUnmanagedArray(forces, f);
 	const PxStrideIterator<PxVec3> fi(f);
 
-	pin_ptr<PxU32> b = &indexBuffer[0];
-	const PxStrideIterator<PxU32> i(b);
+	pin_ptr<int> b = &indexBuffer[0];
+	const PxStrideIterator<PxU32> i((PxU32*)b);
 
 	this->UnmanagedPointer->addForces(forces->Length, i, fi, ToUnmanagedEnum(PxForceMode, forceMode));
 
@@ -164,6 +171,9 @@ float ParticleBase::Restitution::get()
 }
 void ParticleBase::Restitution::set(float value)
 {
+	if (value < 0 || value > 1)
+		throw gcnew ArgumentOutOfRangeException("value", "Restitution must be between 0 and 1 inc.");
+
 	this->UnmanagedPointer->setRestitution(value);
 }
 
@@ -173,6 +183,9 @@ float ParticleBase::DynamicFriction::get()
 }
 void ParticleBase::DynamicFriction::set(float value)
 {
+	if (value < 0 || value > 1)
+		throw gcnew ArgumentOutOfRangeException("value", "Dynamic friction must be between 0 and 1 inc.");
+
 	this->UnmanagedPointer->setDynamicFriction(value);
 }
 

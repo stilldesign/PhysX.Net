@@ -31,9 +31,9 @@ namespace PhysX
 		ParticleFluid = PxActorType::ePARTICLE_FLUID,
 
 		/// <summary>
-		/// A deformable.
+		/// A cloth.
 		/// </summary>
-		Deformable = PxActorType::eDEFORMABLE,
+		Cloth = PxActorType::eCLOTH,
 
 		/// <summary>
 		/// An articulation link.
@@ -86,9 +86,9 @@ namespace PhysX
 		ParticleFluid = PxActorTypeSelectionFlag::ePARTICLE_FLUID,
 		
 		/// <summary>
-		/// A deformable.
+		/// A cloth.
 		/// </summary>
-		Deformable = PxActorTypeSelectionFlag::eDEFORMABLE
+		Cloth = PxActorTypeSelectionFlag::eCLOTH
 	};
 
 	/// <summary>

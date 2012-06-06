@@ -28,21 +28,13 @@ namespace PhysX.Samples.FluidSample
 			// The number of particles we want along one of the three dimensions
 			const int d = 15;
 
-			// Create a column of fluid particles
-			var desc = new ParticleFluidDesc()
-			{
-				Flags = ActorFlag.Visualization,
-				// x * y * z dimensions worth of particles
-				MaximumParticles = d * d * d
-			};
-
 			// Create the particle fluid
-			var particleFluid = scene.Physics.CreateParticleFluid(desc);
+			var particleFluid = scene.Physics.CreateParticleFluid(d * d * d);
 
 			//
 
 			// Create an array to hold the positions of the particles
-			var particlePositions = new Vector3[desc.MaximumParticles];
+			var particlePositions = new Vector3[particleFluid.MaximumParticles];
 
 			var blobOffset = -new Vector3(d) * 0.5f;
 
@@ -62,8 +54,9 @@ namespace PhysX.Samples.FluidSample
 			// Add the particles
 			var particleCreateDesc = new ParticleCreationData()
 			{
-				NumberOfParticles = desc.MaximumParticles,
-				PositionBuffer = particlePositions
+				NumberOfParticles = particleFluid.MaximumParticles,
+				PositionBuffer = particlePositions,
+				IndexBuffer = Enumerable.Range(0, particlePositions.Length).ToArray()
 			};
 
 			int numCreated = particleFluid.CreateParticles(particleCreateDesc);

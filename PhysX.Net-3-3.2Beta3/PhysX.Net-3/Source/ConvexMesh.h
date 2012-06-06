@@ -5,6 +5,7 @@ namespace PhysX
 	ref class Physics;
 	ref class ConvexMeshMassInformation;
 	ref class HullPolygon;
+	ref class Serializable;
 
 	/// <summary>
 	/// A convex mesh.
@@ -43,6 +44,11 @@ namespace PhysX
 			/// Returns the mass properties of the mesh.
 			/// </summary>
 			ConvexMeshMassInformation^ GetMassInformation();
+
+			/// <summary>
+			/// Gets an object which is responsible for serialization of this type.
+			/// </summary>
+			Serializable^ AsSerializable();
 
 			//
 

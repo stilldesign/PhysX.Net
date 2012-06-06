@@ -1,64 +1,37 @@
 #pragma once
 
-#include <PxVehicle.h>
+#include <PxVehicleComponents.h> 
 
 namespace PhysX
 {
 	/// <summary>
 	/// 
 	/// </summary>
-	public ref class VehicleAckermannGeometryData : IDisposable
+	public ref class VehicleAckermannGeometryData
 	{
-		public:
-			/// <summary>Raised before any disposing is performed.</summary>
-			virtual event EventHandler^ OnDisposing;
-			/// <summary>Raised once all disposing is performed.</summary>
-			virtual event EventHandler^ OnDisposed;
+	internal:
+		static VehicleAckermannGeometryData^ ToManaged(PxVehicleAckermannGeometryData data);
+		static PxVehicleAckermannGeometryData ToUnmanaged(VehicleAckermannGeometryData^ data);
 
-		private:
-			PxVehicleAckermannGeometryData* _data;
+	public:
+		/// <summary>
+		/// Accuracy of Ackermann steer calculation. Range: (0,1).
+		/// </summary>
+		property float Accuracy;
 
-			VehicleAckermannGeometryData(PxVehicleAckermannGeometryData* data);
-		public:
-			~VehicleAckermannGeometryData();
-		protected:
-			!VehicleAckermannGeometryData();
+		/// <summary>
+		/// Distance between centre-point of the two front wheels, specified in m. Range: (0,inf).
+		/// </summary>
+		property float FrontWidth;
 
-		public:
-			property bool Disposed
-			{
-				virtual bool get();
-			}
+		/// <summary>
+		/// Distance between center-point of the two rear wheels, specified in m. Range: (0,inf).
+		/// </summary>
+		property float RearWidth;
 
-			/// <summary>
-			/// Accuracy of Ackermann steer calculation. Range: (0,1).
-			/// </summary>
-			property float Accuracy
-			{
-				float get();
-				void set(float value);
-			}
-
-			/// <summary>
-			/// Distance between centre-point of the two front wheels, specified in m. Range: (0,inf).
-			/// </summary>
-			property float FrontWidth
-			{
-				float get();
-			}
-
-			/// <summary>
-			/// Distance between centre of front axle and centre of rear axle, specified in m. Range: (0,inf).
-			/// </summary>
-			property float AxleSeparation
-			{
-				float get();
-			}
-
-		internal:
-			property PxVehicleAckermannGeometryData* UnmanagedPointer
-			{
-				PxVehicleAckermannGeometryData* get();
-			}
+		/// <summary>
+		/// Distance between centre of front axle and centre of rear axle, specified in m. Range: (0,inf).
+		/// </summary>
+		property float AxleSeparation;
 	};
 };

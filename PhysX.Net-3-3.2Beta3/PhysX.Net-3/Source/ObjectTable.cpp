@@ -4,231 +4,163 @@
 #include "PhysXException.h"
 
 using namespace System::Threading;
+using namespace System::Linq;
 
-void ObjectTable::Add(intptr_t pointer, PhysX::IDisposable^ object, PhysX::IDisposable^ owner)
+ObjectTable::ObjectTable()
+{
+
+}
+
+// Add
+generic<typename T>
+void ObjectTable::Add(intptr_t pointer, T object, PhysX::IDisposable^ owner)
 {
 	if (pointer == NULL)
-		throw gcnew PhysXException("Invalid pointer added to Object Table", "pointer");
+		throw gcnew PhysXException("Invalid pointer added to Object Table", "object");
 	if (object == nullptr)
-		throw gcnew ArgumentNullException("Invalid pointer added to Object Table", "pointer");
+		throw gcnew ArgumentNullException("Invalid pointer added to Object Table", "owner");
 	
-	Monitor::Enter(_syncObject);
+	// Make sure we have not constructed a new managed object around an unmanaged pointer more than once
+	// This leads to a case where one of the objects will be disposed, and the other(s) unaware of this and thus
+	// holding on to broken pointers.
+	// Unmanaged objects should only be wrapped once, then retrieved from the ObjectTable each time after.
+	EnsureUnmanagedObjectIsOnlyWrappedOnce(pointer, object->GetType());
+
+	AddObjectOwner(object, owner);
+	AddOwnerTypeLookup<T>(owner, object);
+		
 	try
 	{
-		object->OnDisposing += gcnew EventHandler(&ObjectTable::disposableObject_OnDisposing);
-
-		_ownership->Add(object, owner);
-		
-		try
-		{
-			_objectTable->Add(pointer, object);
-		}
-		catch(Exception^)
-		{
-			throw;
-		}
-
-		ObjectAdded(nullptr, gcnew ObjectTableEventArgs(pointer, object));
+		_objectTable->Add(pointer, object);
 	}
-	finally
+	catch (Exception^)
 	{
-		Monitor::Exit(_syncObject);
+		throw;
 	}
+
+	ObjectAdded(nullptr, gcnew ObjectTableEventArgs(pointer, object));
 }
 
-bool PhysX::ObjectTable::Remove(intptr_t pointer)
+void ObjectTable::AddObjectOwner(PhysX::IDisposable^ object, PhysX::IDisposable^ owner)
 {
-	Monitor::Enter(_syncObject);
-	try
-	{
-		Object^ object = _objectTable[pointer];
-		
-		if (IsInstanceOf<PhysX::IDisposable^>(object))
-		{
-			IDisposable^ disposableObject = dynamic_cast<PhysX::IDisposable^>(object);
-			
-			// Unbind the OnDisposing event
-			disposableObject->OnDisposing -= gcnew EventHandler(&ObjectTable::disposableObject_OnDisposing);
-		}
-		
-		// Remove the table item
-		bool result = _objectTable->Remove(pointer);
-		
-		ObjectRemoved(nullptr, gcnew ObjectTableEventArgs(pointer, object));
-		
-		return result;
-	}
-	finally
-	{
-		Monitor::Exit(_syncObject);
-	}
-}
-bool PhysX::ObjectTable::Remove(Object^ object)
-{
-	Monitor::Enter(_syncObject);
-	try
-	{
-		for each(KeyValuePair<intptr_t, Object^>^ pair in _objectTable)
-		{
-			if(pair->Value == object)
-				return Remove(pair->Key);
-		}
-		
-		return false;
-	}
-	finally
-	{
-		Monitor::Exit(_syncObject);
-	}
-}
+	if (object == nullptr)
+		throw gcnew ArgumentNullException("object");
 
-void PhysX::ObjectTable::Clear()
-{
-	Monitor::Enter(_syncObject);
-	try
-	{
-		_objectTable->Clear();
-		_ownership->Clear();
-	}
-	finally
-	{
-		Monitor::Exit(_syncObject);
-	}
-}
+	object->OnDisposing += gcnew EventHandler(&ObjectTable::disposableObject_OnDisposing);
 
+	_ownership->Add(object, owner);
+}
 generic<typename T>
-T PhysX::ObjectTable::GetObject(intptr_t pointer)
+
+void ObjectTable::AddOwnerTypeLookup(Object^ owner, T object)
 {
-	Monitor::Enter(_syncObject);
-	try
+	if (object == nullptr)
+		throw gcnew ArgumentNullException("object");
+
+	Type^ type = object->GetType();
+
+	auto key = ObjectTableOwnershipType(owner, type);
+
+	if (!_ownerTypeLookup->ContainsKey(key))
 	{
-		return (T)_objectTable[ pointer ];
+		_ownerTypeLookup->Add(key, gcnew List<Object^>());
 	}
-	finally
-	{
-		Monitor::Exit(_syncObject);
-	}
-}
-intptr_t PhysX::ObjectTable::GetObject(Object^ object)
-{
-	Monitor::Enter(_syncObject);
-	try
-	{
-		for each(KeyValuePair<intptr_t, Object^>^ pair in _objectTable)
-		{
-			if(pair->Value == object)
-			{
-				return pair->Key;
-			}
-		}
-		
-		throw gcnew Exception("Unable to find object");
-	}
-	finally
-	{
-		Monitor::Exit(_syncObject);
-	}
+
+	_ownerTypeLookup[key]->Add(object);
 }
 
-generic<typename T>
-array<T>^ ObjectTable::GetObjectsOfType()
+void ObjectTable::EnsureUnmanagedObjectIsOnlyWrappedOnce(intptr_t unmanaged, Type^ managedType)
 {
-	List<T>^ objects = gcnew List<T>();
-
-	for each (Object^ obj in _objectTable->Values)
-	{
-		if (obj == nullptr)
-			continue;
-
-		if (obj->GetType() == T::typeid)
-			objects->Add((T)obj);
-	}
-
-	return objects->ToArray();
-}
-
-bool PhysX::ObjectTable::Contains(intptr_t pointer)
-{
-	Monitor::Enter(_syncObject);
-	try
-	{
-		return _objectTable->ContainsKey(pointer);
-	}
-	finally
-	{
-		Monitor::Exit(_syncObject);
-	}
-}
-bool PhysX::ObjectTable::Contains(Object^ object)
-{
-	return _objectTable->ContainsValue(object);
-}
-
-int PhysX::ObjectTable::Count::get()
-{
-	Monitor::Enter(_syncObject);
-	try
-	{
-		return _objectTable->Count;
-	}
-	finally
-	{
-		Monitor::Exit(_syncObject);
-	}
-}
-
-void PhysX::ObjectTable::disposableObject_OnDisposing(Object^ sender, EventArgs^ e)
-{
-	Monitor::Enter(_syncObject);
-	try
-	{
-		DisposeOfObjectAndDependents(dynamic_cast<IDisposable^>(sender));
-
-		Remove(sender);
-	}
-	finally
-	{
-		Monitor::Exit(_syncObject);
-	}
-}
-
-void PhysX::ObjectTable::DisposeOfObjectAndDependents(IDisposable^ disposable)
-{
-	if (disposable == nullptr || disposable->Disposed || !_ownership->ContainsKey(disposable))
+	if (!_objectTable->ContainsKey(unmanaged))
 		return;
 
-	Monitor::Enter(_syncObject);
-	try
-	{
-		List<IDisposable^>^ dependents = gcnew List<IDisposable^>();
-		for each(KeyValuePair<IDisposable^, IDisposable^> d in _ownership)
-		{
-			// Get the object (child) of the disposable arg
-			IDisposable^ dependent = d.Key;
+	auto obj = _objectTable[unmanaged];
 
-			if (dependent == nullptr)
-				continue;
+	if (obj->GetType() == managedType)
+		throw gcnew InvalidOperationException(String::Format("There is already a managed instance of type '{0}' wrapping this unmanaged object. Instead retrieve the managed object from the ObjectTable using the unmanaged pointer as the lookup key.", managedType->FullName));
+}
 
-			// Check the owner
-			if (d.Value == disposable)
-			{
-				dependents->Add(dependent);
-			}
-		}
-
-		// Dispose of the objects children first, then it
-		for each(IDisposable^ dependent in dependents)
-		{
-			// Recurse through dependent children
-			DisposeOfObjectAndDependents(dependent);
-		}
+// Remove
+bool ObjectTable::Remove(intptr_t pointer)
+{
+	Object^ object = _objectTable[pointer];
 		
-		_ownership->Remove(disposable);
-		
-		delete disposable;
-	}
-	finally
+	// Unbind the OnDisposing event
+	if (IsInstanceOf<PhysX::IDisposable^>(object))
 	{
-		Monitor::Exit(_syncObject);
+		IDisposable^ disposableObject = dynamic_cast<PhysX::IDisposable^>(object);
+			
+		disposableObject->OnDisposing -= gcnew EventHandler(&ObjectTable::disposableObject_OnDisposing);
 	}
+		
+	// Remove from the pointer-object dictionary
+	bool result = _objectTable->Remove(pointer);
+		
+	// Remove the from owner-type dictionary
+	if (IsInstanceOf<PhysX::IDisposable^>(object))
+	{
+		IDisposable^ disposableObject = dynamic_cast<PhysX::IDisposable^>(object);
+
+		IDisposable^ owner = _ownership[disposableObject];
+
+		auto ownerTypeKey = ObjectTableOwnershipType(owner, object->GetType());
+
+		if (_ownerTypeLookup->ContainsKey(ownerTypeKey))
+		{
+			_ownerTypeLookup[ownerTypeKey]->Remove(object);
+
+			if (_ownerTypeLookup[ownerTypeKey]->Count == 0)
+				_ownerTypeLookup->Remove(ownerTypeKey);
+		}
+	}
+
+	// Remove from the ownership dictionary
+	if (IsInstanceOf<PhysX::IDisposable^>(object))
+	{
+		IDisposable^ disposableObject = dynamic_cast<PhysX::IDisposable^>(object);
+
+		_ownership->Remove(disposableObject);
+	}
+
+	// Raise event
+	ObjectRemoved(nullptr, gcnew ObjectTableEventArgs(pointer, object));
+		
+	return result;
+}
+bool ObjectTable::Remove(Object^ object)
+{
+	for each(KeyValuePair<intptr_t, Object^>^ pair in _objectTable)
+	{
+		if (pair->Value == object)
+			return Remove(pair->Key);
+	}
+		
+	return false;
+}
+
+void ObjectTable::Clear()
+{
+	_objectTable->Clear();
+	_ownership->Clear();
+	_ownerTypeLookup->Clear();
+}
+
+//
+
+int ObjectTable::Count::get()
+{
+	return _objectTable->Count;
+}
+
+Dictionary<intptr_t, Object^>^ ObjectTable::Objects::get()
+{
+	return _objectTable;
+}
+Dictionary<PhysX::IDisposable^, PhysX::IDisposable^>^ ObjectTable::Ownership::get()
+{
+	return _ownership;
+}
+Dictionary<ObjectTableOwnershipType, List<Object^>^>^ ObjectTable::OwnerTypeLookup::get()
+{
+	return _ownerTypeLookup;
 }

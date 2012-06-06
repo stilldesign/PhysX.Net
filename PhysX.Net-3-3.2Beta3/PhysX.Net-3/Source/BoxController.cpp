@@ -10,20 +10,53 @@ BoxController::BoxController(PxBoxController* boxController, PhysX::ControllerMa
 
 Vector3 BoxController::Extents::get()
 {
-	return MathUtil::PxVec3ToVector3(this->UnmanagedPointer->getExtents());
+	float x = this->UnmanagedPointer->getHalfSideExtent();
+	float y = this->UnmanagedPointer->getHalfHeight();
+	float z = this->UnmanagedPointer->getHalfForwardExtent();
+
+	return Vector3(x, y, z);
 }
 void BoxController::Extents::set(Vector3 value)
 {
-	this->UnmanagedPointer->setExtents(MathUtil::Vector3ToPxVec3(value));
+	this->UnmanagedPointer->setHalfSideExtent(value.X);
+	this->UnmanagedPointer->setHalfHeight(value.Y);
+	this->UnmanagedPointer->setHalfForwardExtent(value.Z);
 }
 
 Vector3 BoxController::Size::get()
 {
-	return MathUtil::PxVec3ToVector3(this->UnmanagedPointer->getExtents() * 2.0f);
+	return Extents * 2;
 }
 void BoxController::Size::set(Vector3 value)
 {
-	this->UnmanagedPointer->setExtents(MathUtil::Vector3ToPxVec3(value * 0.5f));
+	Extents = value * 0.5f;
+}
+
+float BoxController::HalfHeight::get()
+{
+	return this->UnmanagedPointer->getHalfHeight();
+}
+void BoxController::HalfHeight::set(float value)
+{
+	this->UnmanagedPointer->setHalfHeight(value);
+}
+
+float BoxController::HalfSideExtent::get()
+{
+	return this->UnmanagedPointer->getHalfSideExtent();
+}
+void BoxController::HalfSideExtent::set(float value)
+{
+	this->UnmanagedPointer->setHalfSideExtent(value);
+}
+
+float BoxController::HalfForwardExtent::get()
+{
+	return this->UnmanagedPointer->getHalfForwardExtent();
+}
+void BoxController::HalfForwardExtent::set(float value)
+{
+	this->UnmanagedPointer->setHalfForwardExtent(value);
 }
 
 PxBoxController* BoxController::UnmanagedPointer::get()

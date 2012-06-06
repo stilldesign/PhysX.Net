@@ -5,6 +5,7 @@ namespace PhysX
 	ref class Scene;
 	ref class Actor;
 	ref class Articulation;
+	ref class Serializable;
 
 	/// <summary>
 	/// Class to aggregate actors into a single broad phase entry.
@@ -18,7 +19,6 @@ namespace PhysX
 		private:
 			PxAggregate* _aggregate;
 			PhysX::Scene^ _scene;
-			List<Actor^>^ _actors;
 
 		internal:
 			Aggregate(PxAggregate* aggregate, PhysX::Scene^ owner);
@@ -78,6 +78,16 @@ namespace PhysX
 			/// <summary>Retrieves a given actor contained in the aggregate.</summary>
 			Actor^ GetActor(int index);
 
+			/// <summary>
+			/// Gets all the actors in the aggregate.
+			/// </summary>
+			array<Actor^>^ GetActors();
+
+			/// <summary>
+			/// Gets an object which is responsible for serialization of this type.
+			/// </summary>
+			virtual Serializable^ AsSerializable();
+
 			//
 
 			/// <summary>
@@ -91,7 +101,7 @@ namespace PhysX
 			/// <summary>
 			/// Gets the max amount of actors that can be contained in the aggregate.
 			/// </summary>
-			property int MaximumSize
+			property int MaximumNumberOfActors
 			{
 				int get();
 			}
@@ -99,17 +109,9 @@ namespace PhysX
 			/// <summary>
 			/// Gets the current number of actors contained in the aggregate.
 			/// </summary>
-			property int CurrentSize
+			property int NumberOfActors
 			{
 				int get();
-			}
-
-			/// <summary>
-			/// Gets the collection of actors contained in this aggregate.
-			/// </summary>
-			property IEnumerable<Actor^>^ Actors
-			{
-				IEnumerable<Actor^>^ get();
 			}
 
 			/// <summary>Gets the aggregate's self-collision flag.</summary>

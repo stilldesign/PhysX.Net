@@ -27,6 +27,7 @@ namespace PhysX
 	ref class SweepHit;
 	ref class SceneSweepOperationObject;
 	ref class RenderBuffer;
+	ref class SweepCache;
 
 	/// <summary>
 	/// A scene is a collection of bodies, deformables, particle systems and constraints which can interact.
@@ -41,11 +42,6 @@ namespace PhysX
 			PxScene* _scene;
 
 			Physics^ _physics;
-			List<Actor^>^ _actors;
-			List<Joint^>^ _joints;
-			List<Aggregate^>^ _aggregates;
-			List<Articulation^>^ _articulations;
-			List<ControllerManager^>^ _controllerManagers;
 
 		internal:
 			Scene(PxScene* scene, PhysX::Physics^ physics);
@@ -155,6 +151,14 @@ namespace PhysX
 			/// <returns>A joint of the specified type.</returns>
 			generic<typename T> where T : Joint
 			T CreateJoint(RigidActor^ actor0, Matrix localFrame0, RigidActor^ actor1, Matrix localFrame1);
+
+			/// <summary>
+			/// Gets the joints in the scene.
+			/// </summary>
+			property IEnumerable<Joint^>^ Joints
+			{
+				IEnumerable<Joint^>^ get();
+			}
 			#pragma endregion
 
 			#pragma region Grouping
@@ -259,7 +263,7 @@ namespace PhysX
 			/// <param name="direction">Normalized direction of the ray.</param>
 			/// <param name="distance">Length of the ray. Needs to be larger than 0.</param>
 			/// <param name="filterData">Filtering data and simple logic.</param>
-			/// <returns>Raycast hit information, or null if no hit occured.</returns>
+			/// <returns>An array of raycast hit information, or null if the hit buffer overflowed.</returns>
 			array<RaycastHit^>^ RaycastMultiple(Vector3 origin, Vector3 direction, float distance, SceneQueryFlags outputFlags, int hitBufferSize, [Optional] Nullable<SceneQueryFilterData> filterData);
 			#pragma endregion
 
@@ -277,6 +281,18 @@ namespace PhysX
 			/// <returns>A hit result object, or null if no hit occured.</returns>
 			SceneQueryHit^ SweepAny(Geometry^ geometry, Matrix pose, Vector3 direction, float distance, SceneQueryFlags queryFlags, [Optional] Nullable<SceneQueryFilterData> filterData);
 
+			/// <summary>
+			/// Sweep returning any blocking hit, not necessarily the closest.
+			/// Returns whether any rigid actor is hit along the sweep path.
+			/// </summary>
+			/// <param name="objects">Geometry, transforms and filtering of objects to check for overlap (supported types are: box, sphere, capsule).</param>
+			/// <param name="direction">Normalized direction of the ray.</param>
+			/// <param name="distance">Length of the ray. Needs to be larger than 0.</param>
+			/// <param name="outputFlags">Specifies which properties should be written to the hit information.</param>
+			/// <param name="maxNumberOfHits>Maximum number of hits.</param>
+			/// <param name="filterFlags">Simple filter logic.</param>
+			/// <returns>A hit result object, or null if no hit occured.</returns>
+			array<SweepHit^>^ SweepMultiple(PhysX::Geometry^ geometry, Matrix pose, Nullable<PhysX::FilterData> filterData, Vector3 direction, float distance, SceneQueryFlags outputFlags, int maxNumberOfHits, Nullable<SceneQueryFilterFlag> filterFlags);
 			/// <summary>
 			/// Sweep returning any blocking hit, not necessarily the closest.
 			/// Returns whether any rigid actor is hit along the sweep path.
@@ -343,6 +359,9 @@ namespace PhysX
 			}
 			#pragma endregion
 
+			SweepCache^ CreateSweepCache();
+			SweepCache^ CreateSweepCache(float dimensions);
+
 			/// <summary>
 			/// Reserves a new client ID.
 			/// PX_DEFAULT_CLIENT is always available as the default clientID. Additional clients are returned by this function.
@@ -358,6 +377,14 @@ namespace PhysX
 			{
 				int get();
 				void set(int value);
+			}
+
+			/// <summary>
+			/// Gets the scene's internal timestamp, increased each time a simulation step is completed.
+			/// </summary>
+			property int Timestamp
+			{
+				int get();
 			}
 
 			//

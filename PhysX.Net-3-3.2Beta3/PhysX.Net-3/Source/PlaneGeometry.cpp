@@ -14,3 +14,7 @@ PxGeometry* PlaneGeometry::ToUnmanaged()
 {
 	return new PxPlaneGeometry();
 }
+PlaneGeometry^ PlaneGeometry::ToManaged(PxPlaneGeometry plane)
+{
+	return gcnew PlaneGeometry();
+}

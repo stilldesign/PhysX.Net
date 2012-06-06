@@ -6,6 +6,7 @@ namespace PhysX
 	ref class Aggregate;
 	ref class ArticulationLink;
 	value class Bounds3;
+	ref class Serializable;
 
 	public ref class Articulation : IDisposable
 	{
@@ -29,6 +30,13 @@ namespace PhysX
 			{
 				virtual bool get();
 			}
+
+			/// <summary>
+			/// Gets an object which is responsible for serialization of this type.
+			/// </summary>
+			Serializable^ AsSerializable();
+
+			//
 
 			/// <summary>
 			/// Gets the scene which this articulation belongs to.

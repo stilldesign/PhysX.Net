@@ -20,3 +20,8 @@ PxGeometry* CapsuleGeometry::ToUnmanaged()
 {
 	return new PxCapsuleGeometry(this->Radius, this->HalfHeight);
 }
+
+CapsuleGeometry^ CapsuleGeometry::ToManaged(PxCapsuleGeometry capsule)
+{
+	return gcnew CapsuleGeometry(capsule.radius, capsule.halfHeight);
+}

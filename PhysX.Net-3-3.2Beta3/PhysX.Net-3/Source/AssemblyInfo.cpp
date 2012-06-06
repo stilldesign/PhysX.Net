@@ -11,12 +11,12 @@ using namespace System::Security::Permissions;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 //
-[assembly:AssemblyTitleAttribute("PhysX.Net for NVIDIA PhysX 3.0")];
-[assembly:AssemblyDescriptionAttribute(".NET Wrapper for NVIDIA PhysX 3.0.1.1")];
+[assembly:AssemblyTitleAttribute("PhysX.Net for NVIDIA PhysX 3.2")];
+[assembly:AssemblyDescriptionAttribute(".NET Wrapper for NVIDIA PhysX 3.2.0.1")];
 [assembly:AssemblyConfigurationAttribute("")];
 [assembly:AssemblyCompanyAttribute("StillDesign")];
 [assembly:AssemblyProductAttribute("PhysX.Net")];
-[assembly:AssemblyCopyrightAttribute("Copyright (c) StillDesign 2011")];
+[assembly:AssemblyCopyrightAttribute("Copyright (c) StillDesign 2012")];
 [assembly:AssemblyTrademarkAttribute("")];
 [assembly:AssemblyCultureAttribute("")];
 
@@ -31,7 +31,7 @@ using namespace System::Security::Permissions;
 // You can specify all the value or you can default the Revision and Build Numbers
 // by using the '*' as shown below:
 
-[assembly:AssemblyVersionAttribute("0.1.0.0")];
+[assembly:AssemblyVersionAttribute("0.2.0.0")];
 
 [assembly:ComVisible(false)];
 

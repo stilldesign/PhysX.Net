@@ -1,12 +1,14 @@
 #include "StdAfx.h"
 #include "Controller.h"
 #include "ControllerManager.h"
+#include "ControllerFilters.h"
+#include "ObstacleContext.h"
 
 Controller::Controller(PxController* controller, PhysX::ControllerManager^ owner)
 {
 	if (controller == NULL)
 		throw gcnew ArgumentNullException("controller");
-	ThrowIfNull(owner, "owner");
+	ThrowIfNullOrDisposed(owner, "owner");
 
 	_controller = controller;
 	_controllerManager = owner;
@@ -33,17 +35,31 @@ Controller::!Controller()
 }
 bool Controller::Disposed::get()
 {
-	return _controller == NULL;
+	return (_controller == NULL);
 }
 
-void Controller::Move(Vector3 displacement)
+void Controller::Move(Vector3 displacement, TimeSpan elapsedTime)
 {
-	Move(displacement, 0xFFFFFFFF, 0.001f, ControllerFlag::Down | ControllerFlag::Sides | ControllerFlag::Up, 1.0f);
+	auto filter = gcnew ControllerFilters();
+		filter->ActiveGroups = 0xFFFFFFFF;
+		filter->FilterFlags = SceneQueryFilterFlag::Static | SceneQueryFilterFlag::Dynamic;
+
+	Move(displacement, elapsedTime, 0.001f, filter, nullptr);
 }
-void Controller::Move(Vector3 displacement, int activeGroups, float minimumDistance, ControllerFlag collisionFlags, float sharpness)
+void Controller::Move(Vector3 displacement, TimeSpan elapsedTime, float minimumDistance, ControllerFilters^ filters, [Optional] ObstacleContext^ obstacles)
 {
-	PxU32 cf;
-	_controller->move(MathUtil::Vector3ToPxVec3(displacement), activeGroups, minimumDistance, cf, sharpness);
+	auto disp = MathUtil::Vector3ToPxVec3(displacement);
+	auto et = (float)elapsedTime.TotalSeconds;
+	auto f = ControllerFilters::ToUnmanaged(filters);
+	auto oc = (obstacles == nullptr ? NULL : obstacles->UnmanagedPointer);
+
+	_controller->move(disp, minimumDistance, et, f, oc);
+
+	// TODO: Not the cleanest way of cleaning up the memory that ControllerFilter allocates
+	if (f.mFilterData != NULL)
+	{
+		delete f.mFilterData;
+	}
 }
 
 void Controller::ReportSceneChanged()
@@ -60,11 +76,11 @@ Vector3 Controller::Position::get()
 {
 	PxExtendedVec3 p = _controller->getPosition();
 
-	return Vector3((float)p.x, (float)p.y, (float)p.z);
+	return MathUtil::PxExtendedVec3ToVector3(p);
 }
 void Controller::Position::set(Vector3 value)
 {
-	PxExtendedVec3 p(value.X, value.Y, value.Z);
+	PxExtendedVec3 p = MathUtil::Vector3ToPxExtendedVec3(value);
 
 	_controller->setPosition(p);
 }
@@ -92,9 +108,13 @@ float Controller::ContactOffset::get()
 	return _controller->getContactOffset();
 }
 
-CCTUpAxis Controller::UpDirection::get()
+Vector3 Controller::UpDirection::get()
 {
-	return ToManagedEnum(CCTUpAxis, _controller->getUpDirection());
+	return MathUtil::PxVec3ToVector3(_controller->getUpDirection());
+}
+void Controller::UpDirection::set(Vector3 value)
+{
+	_controller->setUpDirection(MathUtil::Vector3ToPxVec3(value));
 }
 
 float Controller::SlopeLimit::get()

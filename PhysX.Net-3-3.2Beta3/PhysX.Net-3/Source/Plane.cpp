@@ -5,6 +5,11 @@ using namespace PhysX;
 using namespace PhysX::Math;
 using namespace System::Globalization;
 
+PxPlane Plane::ToUnmanaged(Plane plane)
+{
+	return PxPlane(UV(plane.Normal), plane.D);
+}
+
 generic<typename T>
 T Plane::As()
 {

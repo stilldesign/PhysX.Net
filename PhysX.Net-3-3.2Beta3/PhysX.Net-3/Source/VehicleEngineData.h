@@ -1,7 +1,7 @@
 #pragma once
 
 #include "VehicleEnum.h"
-#include <PxVehicle.h>
+#include <PxVehicleComponents.h> 
 
 namespace PhysX
 {
@@ -11,31 +11,43 @@ namespace PhysX
 	public ref class VehicleEngineData
 	{
 		public:
-			static const int MaximumNumberOfEngineTorqueCurveEntries = PxVehicleEngineData::eMAX_NUM_ENGINE_TORQUE_CURVE_ENTRIES;
+			literal int MaximumNumberOfEngineTorqueCurveEntries = PxVehicleEngineData::eMAX_NUM_ENGINE_TORQUE_CURVE_ENTRIES;
 		
 		internal:
 			static PxVehicleEngineData ToUnmanaged(VehicleEngineData^ data);
 			static VehicleEngineData^ ToManaged(PxVehicleEngineData data);
 
+		public: static VehicleEngineData^ TestManagedUnmanagedConversion(VehicleEngineData^ data)
+			{
+				return ToManaged(ToUnmanaged(data));
+			}
+
 		public:
+			// TODO: TorqueCurve property
+
 			/// <summary>
-			/// Maximum torque available to apply to the engine, specified in Nm. Range: (0, inf).
+			/// Gets or sets the maximum torque available to apply to the engine, specified in Nm. Range: (0, inf).
 			/// </summary>
 			property float PeakTorque;
 
 			/// <summary>
-			/// Maximum rotation speed of the engine, specified in radians per second. Range: (0, inf).
+			/// Gets or sets the maximum rotation speed of the engine, specified in radians per second. Range: (0, inf).
 			/// </summary>
 			property float MaxOmega;
 
 			/// <summary>
-			/// Damping rate of engine when the clutch is engaged, specified in s^-1. Range: (0, inf).
+			/// Damping rate of engine in s^-1 when full throttle is applied. Damping rate applied at run-time is an interpolation between mDampingRateZeroThrottleClutchEngaged and mDampingRateFullThrottle if the clutch is engaged. If the clutch is disengaged (in neutral gear) the damping rate applied at run-time is an interpolation between mDampingRateZeroThrottleClutchDisengaged and mDampingRateFullThrottle. Range: (0,inf).
 			/// </summary>
-			property float EngagedClutchDampingRate;
+			property float DampingRateFullThrottle;
 
 			/// <summary>
-			/// Damping rate of engine when the clutch is not engaged, specified in s^-1. Range: (0, inf).
+			/// Damping rate of engine in s^-1 at zero throttle when the clutch is engaged. Damping rate applied at run-time is an interpolation between mDampingRateZeroThrottleClutchEngaged and mDampingRateFullThrottle if the clutch is engaged. If the clutch is disengaged (in neutral gear) the damping rate applied at run-time is an interpolation between mDampingRateZeroThrottleClutchDisengaged and mDampingRateFullThrottle. Range: (0,inf).
 			/// </summary>
-			property float DisengagedClutchDampingRate;
+			property float DampingRateZeroThrottleClutchEngaged;
+
+			/// <summary>
+			/// Damping rate of engine in s^-1 at zero throttle when the clutch is disengaged (in neutral gear). Damping rate applied at run-time is an interpolation between mDampingRateZeroThrottleClutchEngaged and mDampingRateFullThrottle if the clutch is engaged. If the clutch is disengaged (in neutral gear) the damping rate applied at run-time is an interpolation between mDampingRateZeroThrottleClutchDisengaged and mDampingRateFullThrottle. Range: (0,inf).
+			/// </summary>
+			property float DampingRateZeroThrottleClutchDisengaged;
 	};
 };

@@ -31,43 +31,45 @@ namespace PhysX.Test.Serialization
 			}
 		}
 
-		[TestMethod]
-		public void DeserializeCollection()
-		{
-			byte[] serialzedScene;
+		//[TestMethod]
+		//public void DeserializeCollection()
+		//{
+		//    byte[] serialzedScene;
 
-			using (var core = CreatePhysicsAndScene())
-			{
-				CreateBoxActor(core.Scene, 5, 5, 5);
+		//    // Serialize
+		//    using (var core = CreatePhysicsAndScene())
+		//    {
+		//        CreateBoxActor(core.Scene, 5, 5, 5);
 
-				var collection = core.Physics.CreateCollection();
+		//        var collection = core.Physics.CreateCollection();
 
-				using (var serializeStream = new MemoryStream())
-				{
-					collection.CollectPhysicsForExport(core.Physics);
+		//        using (var serializeStream = new MemoryStream())
+		//        {
+		//            collection.CollectPhysicsForExport(core.Physics);
 
-					collection.Serialize(serializeStream);
-					serializeStream.Flush();
-					serializeStream.Position = 0;
+		//            collection.Serialize(serializeStream);
+		//            serializeStream.Flush();
+		//            serializeStream.Position = 0;
 
-					serialzedScene = serializeStream.ToArray();
-				}
-			}
+		//            serialzedScene = serializeStream.ToArray();
+		//        }
+		//    }
 
-			using (var core = CreatePhysicsAndScene())
-			{
-				var collection = core.Physics.CreateCollection();
+		//    // Deserialize
+		//    using (var core = CreatePhysicsAndScene())
+		//    {
+		//        var collection = core.Physics.CreateCollection();
 
-				using (var serializeStream = new MemoryStream())
-				{
-					serializeStream.Write(serialzedScene, 0, serialzedScene.Length);
-					serializeStream.Position = 0;
+		//        using (var serializeStream = new MemoryStream())
+		//        {
+		//            serializeStream.Write(serialzedScene, 0, serialzedScene.Length);
+		//            serializeStream.Position = 0;
 
-					bool result = collection.Deserialize(serializeStream);
+		//            bool result = collection.Deserialize(serializeStream);
 
-					Assert.IsTrue(result);
-				}
-			}
-		}
+		//            Assert.IsTrue(result);
+		//        }
+		//    }
+		//}
 	}
 }

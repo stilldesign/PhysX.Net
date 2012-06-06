@@ -22,100 +22,94 @@ namespace PhysX.Samples.ClothSample
 		{
 			var cloth = CreateCloth(scene);
 
-			CreateFlagPole(cloth);
+			//CreateFlagPole(cloth);
 
 			// Visualize the cloth
-			scene.SetVisualizationParameter(VisualizationParameter.DeformableMesh, true);
+			//scene.SetVisualizationParameter(VisualizationParameter.cloth, true);
 		}
 
-		private Deformable CreateCloth(Scene scene)
+		private Cloth CreateCloth(Scene scene)
 		{
 			// Create a grid of triangles to be our cloth
 			var clothGrid = new VertexGrid(25, 25);
 
 			// Setup the grid for cooking
-			var deformableMeshDesc = new DeformableMeshDesc()
+			var clothMeshDesc = new ClothMeshDesc()
 			{
-				// Clothes are made up of triangles. There are 3 indices per triangle.
-				NumberOfPrimitives = clothGrid.Indices.Length / 3,
-				NumberOfVertices = clothGrid.Points.Length,
-				PrimitiveType = DeformablePrimitiveType.Triangle,
-				Vertices = clothGrid.Points,
-				Primitives = clothGrid.Indices
+				Points = clothGrid.Points,
+				Triangles = clothGrid.Indices
 			};
 
 			// Cook
-			var deformableMeshStream = new MemoryStream();
+			var clothFabricStream = new MemoryStream();
 
 			using (var cooking = scene.Physics.CreateCooking())
 			{
-				bool result = cooking.CookDeformableMesh(deformableMeshDesc, deformableMeshStream);
+				bool result = cooking.CookClothFabric(clothMeshDesc, new Vector3(0, -1, 0), clothFabricStream);
 
 				if (!result)
 					throw new Exception("Failed to cook deformable mesh");
 			}
 
 			// Reset the seek position of the stream so we can read it form the beginning
-			deformableMeshStream.Position = 0;
+			clothFabricStream.Position = 0;
 
-			// Create the deformable mesh from the cooked stream
-			var deformableMesh = scene.Physics.CreateDeformableMesh(deformableMeshStream);
+			var clothFabric = scene.Physics.CreateClothFabric(clothFabricStream);
 
-			// Create the deformable object using the above mesh
-			// Set the bending amount to a low value to make it act like cloth, 
-			// but set the strectching amount to a high value to stop it looking like rubber,
-			// finally add some wind to make it flap around like a flag.
-			var desc = new DeformableDesc()
-			{
-				DeformableMesh = deformableMesh,
-				Flags = ActorFlag.Visualization,
-				Mass = 10,
-				GlobalPose = Matrix.Translation(0, 5, 0),
-				BendingStiffness = 0.15f,
-				StretchingStiffness = 0.95f,
-				DeformableFlags = DeformableFlag.Bending,
-				WindAcceleration = new Vector3(60, 0.01f, 0)
-			};
+			var collisionData = new ClothCollisionData();
 
-			var deformable = scene.Physics.CreateDeformable(desc);
+			var particles = from p in clothGrid.Points
+							select new ClothParticle()
+							{
+								Position = p,
+								InverseWeight = 0.1f
+							};
 
-			scene.AddActor(deformable);
+			// Create the cloth mesh from the cooked stream
+			var cloth = scene.Physics.CreateCloth(
+				Matrix.Identity,
+				clothFabric,
+				particles.ToArray(),
+				collisionData,
+				0);
 
-			return deformable;
+			scene.AddActor(cloth);
+
+			return cloth;
 		}
-		private void CreateFlagPole(Deformable cloth)
-		{
-			var polePosition = new Vector3(0, 30, 0);
+		//private void CreateFlagPole(Cloth cloth)
+		//{
+		//    var polePosition = new Vector3(0, 30, 0);
 
-			// Create a flag pole to attach the cloth to
-			var material = this.Scene.Physics.CreateMaterial(0.1f, 0.1f, 0.1f);
+		//    // Create a flag pole to attach the cloth to
+		//    var material = this.Scene.Physics.CreateMaterial(0.1f, 0.1f, 0.1f);
 
-			var rigidActor = this.Scene.Physics.CreateRigidStatic();
+		//    var rigidActor = this.Scene.Physics.CreateRigidStatic();
 
-			var boxGeom = new BoxGeometry(2, 30, 2);
-			var boxShape = rigidActor.CreateShape(boxGeom, material);
+		//    var boxGeom = new BoxGeometry(2, 30, 2);
+		//    var boxShape = rigidActor.CreateShape(boxGeom, material);
 
-			rigidActor.GlobalPose = Matrix.Translation(polePosition);
-			//rigidActor.SetMassAndUpdateInertia(10);
-			//rigidActor.Flags = RigidDynamicFlags.Kinematic;
+		//    rigidActor.GlobalPose = Matrix.Translation(polePosition);
+		//    //rigidActor.SetMassAndUpdateInertia(10);
+		//    //rigidActor.Flags = RigidDynamicFlags.Kinematic;
 
-			this.Scene.AddActor(rigidActor);
+		//    this.Scene.AddActor(rigidActor);
 
-			// Attach the cloth
-			var clothGrid = new VertexGrid(25, 25);
+		//    // Attach the cloth
+		//    var clothGrid = new VertexGrid(25, 25);
 
-			// TODO: Clean up the below code
-			// I'd like this to use the FindPointsInsideBoxGeom method instead (more generic)
-			Vector3[] p;
-			int[] i;
-			FindPointsInsideBoxGeom(boxGeom, polePosition, clothGrid, out p, out i);
+		//    // TODO: Clean up the below code
+		//    // I'd like this to use the FindPointsInsideBoxGeom method instead (more generic)
+		//    Vector3[] p;
+		//    int[] i;
+		//    FindPointsInsideBoxGeom(boxGeom, polePosition, clothGrid, out p, out i);
 
-			p = clothGrid.Points.Take(75).ToArray();
-			i = Enumerable.Range(0, 75).ToArray();
-			var f = new int[p.Length];
+		//    p = clothGrid.Points.Take(75).ToArray();
+		//    i = Enumerable.Range(0, 75).ToArray();
+		//    var f = new int[p.Length];
 
-			var attachment = this.Scene.Physics.CreateAttachment(cloth, boxShape, i, p, f);
-		}
+		//    var attachment = this.Scene.Physics.CreateAttachment(cloth, boxShape, i, p, f);
+		//}
 
 		private void FindPointsInsideBoxGeom(BoxGeometry box, Vector3 boxPosition, VertexGrid grid, out Vector3[] points, out int[] indices)
 		{

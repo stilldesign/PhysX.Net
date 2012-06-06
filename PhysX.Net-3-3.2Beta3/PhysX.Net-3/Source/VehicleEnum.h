@@ -1,33 +1,20 @@
 #pragma once
 
-#include <PxVehicle.h>
+#include <PxVehicleComponents.h> 
+#include <PxVehicleTireFriction.h> 
+#include <PxVehicleDrive4W.h>
 
 namespace PhysX
 {
 	public enum class VehicleDifferentialType
 	{
-		LS4WheelDrive = PxVehicleDifferential4WData::eDIFF_TYPE_LS_4WD,
-		LSFrontWheelDrive = PxVehicleDifferential4WData::eDIFF_TYPE_LS_FRONTWD,
-		LSRearWheelDrive = PxVehicleDifferential4WData::eDIFF_TYPE_LS_REARWD,
-		Open4WheelDrive = PxVehicleDifferential4WData::eDIFF_TYPE_OPEN_4WD,
-		OpenFrontWheelDrive = PxVehicleDifferential4WData::eDIFF_TYPE_OPEN_FRONTWD,
-		OpenRearWheelDrive = PxVehicleDifferential4WData::eDIFF_TYPE_OPEN_REARWD
-	};						 
-
-	public enum class VehicleAnalogInput
-	{
-		Acceleration = PxVehicleControlInputs::eVEHICLE_ANALOG_INPUT_ACCEL,
-		Brake = PxVehicleControlInputs::eVEHICLE_ANALOG_INPUT_BRAKE,
-		HandBrake = PxVehicleControlInputs::eVEHICLE_ANALOG_INPUT_HANDBRAKE,
-		SteerLeft = PxVehicleControlInputs::eVEHICLE_ANALOG_INPUT_STEER_LEFT,
-		SteerRight = PxVehicleControlInputs::eVEHICLE_ANALOG_INPUT_STEER_RIGHT
-	};
-
-	public enum class VehicleDigitalInput
-	{
-		GearUp = PxVehicleControlInputs::eVEHICLE_DIGITAL_INPUT_GEAR_UP,
-		GearDown = PxVehicleControlInputs::eVEHICLE_DIGITAL_INPUT_GEAR_DOWN
-	};
+		LimitedSlip4WheelDrive = PxVehicleDifferential4WData::eDIFF_TYPE_LS_4WD,			//limited slip differential for car with 4 driven wheels
+		LimitedSlipFrontWheelDrive = PxVehicleDifferential4WData::eDIFF_TYPE_LS_FRONTWD,		//limited slip differential for car with front-wheel drive
+		LimitedSlipRearWheelDrive = PxVehicleDifferential4WData::eDIFF_TYPE_LS_REARWD,		//limited slip differential for car with rear-wheel drive
+		OpenDifferential4WheelDrive = PxVehicleDifferential4WData::eDIFF_TYPE_OPEN_4WD,		//open differential for car with 4 driven wheels 
+		OpenDifferentialFrontWheelDrive = PxVehicleDifferential4WData::eDIFF_TYPE_OPEN_FRONTWD,	//open differential for car with front-wheel drive
+		OpenDifferentialRearWheelDrive = PxVehicleDifferential4WData::eDIFF_TYPE_OPEN_REARWD		//open differentila for car with rear-wheel drive
+	};					 
 
 	public enum class VehicleDrivableSurfaceType
 	{
@@ -43,6 +30,38 @@ namespace PhysX
 		Third = PxVehicleGearsData::eTHIRD,
 		Fourth = PxVehicleGearsData::eFOURTH,
 		Fifth = PxVehicleGearsData::eFIFTH,
-		Sixth = PxVehicleGearsData::eSIXTH
+		Sixth = PxVehicleGearsData::eSIXTH,
+		Seventh = PxVehicleGearsData::eSEVENTH, 
+		Eighth = PxVehicleGearsData::eEIGHTH, 
+		Ninth = PxVehicleGearsData::eNINTH, 
+		Tenth = PxVehicleGearsData::eTENTH, 
+		Eleventh = PxVehicleGearsData::eELEVENTH, 
+		Twelfth = PxVehicleGearsData::eTWELFTH, 
+		Thirteenth = PxVehicleGearsData::eTHIRTEENTH, 
+		Fourteenth = PxVehicleGearsData::eFOURTEENTH, 
+		Fifteenth = PxVehicleGearsData::eFIFTEENTH, 
+		Sixteenth = PxVehicleGearsData::eSIXTEENTH, 
+		Seventeenth = PxVehicleGearsData::eSEVENTEENTH, 
+		Eighteenth = PxVehicleGearsData::eEIGHTEENTH, 
+		Nineteenth = PxVehicleGearsData::eNINETEENTH, 
+		Twentieth = PxVehicleGearsData::eTWENTIETH, 
+		TwentyFirst = PxVehicleGearsData::eTWENTYFIRST, 
+		TwentySecond = PxVehicleGearsData::eTWENTYSECOND, 
+		TwentyThird = PxVehicleGearsData::eTWENTYTHIRD, 
+		TwentyFourth = PxVehicleGearsData::eTWENTYFOURTH, 
+		TwentyFifth = PxVehicleGearsData::eTWENTYFIFTH, 
+		TwentySixth = PxVehicleGearsData::eTWENTYSIXTH, 
+		TwentySeventh = PxVehicleGearsData::eTWENTYSEVENTH, 
+		TwentyEighth = PxVehicleGearsData::eTWENTYEIGHTH, 
+		TwentyNinth = PxVehicleGearsData::eTWENTYNINTH, 
+		Thirtieth = PxVehicleGearsData::eTHIRTIETH
+	};
+
+	public enum class VehicleWheelOrdering
+	{
+		FrontLeftWheel = PxVehicleDrive4W::eFRONT_LEFT_WHEEL,
+		FrontRightWheel = PxVehicleDrive4W::eFRONT_RIGHT_WHEEL,
+		RearLeftWheel = PxVehicleDrive4W::eREAR_LEFT_WHEEL,
+		RearRightWheel = PxVehicleDrive4W::eREAR_RIGHT_WHEEL
 	};
 };

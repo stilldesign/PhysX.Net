@@ -3,7 +3,6 @@
 
 using namespace PhysX;
 using namespace PhysX::Math;
-using namespace physx::pubfnd3;
 
 Matrix MathUtil::PxTransformToMatrix(PxTransform* transform)
 {
@@ -25,7 +24,7 @@ PxTransform MathUtil::MatrixToPxTransform(Matrix matrix)
 	return t;
 }
 
-PhysX::Math::Matrix MathUtil::PxMat33ToMatrix(physx::pubfnd3::PxMat33* matrix)
+PhysX::Math::Matrix MathUtil::PxMat33ToMatrix(PxMat33* matrix)
 {
 	Matrix m = Matrix::Identity;
 
@@ -43,7 +42,7 @@ PhysX::Math::Matrix MathUtil::PxMat33ToMatrix(physx::pubfnd3::PxMat33* matrix)
 
 	return m;
 }
-physx::pubfnd3::PxMat33 MathUtil::MatrixToPxMat33(Matrix matrix)
+PxMat33 MathUtil::MatrixToPxMat33(Matrix matrix)
 {
 	float values[9];
 		values[0] = matrix.M11;
@@ -85,7 +84,7 @@ Quaternion MathUtil::PxQuatToQuaternion(PxQuat quat)
 {
 	return Quaternion(quat.x, quat.y, quat.z, quat.w);
 }
-PxQuat MathUtil::QuaternionPxQuat(Quaternion quat)
+PxQuat MathUtil::QuaternionToPxQuat(Quaternion quat)
 {
 	return PxQuat(quat.X, quat.Y, quat.Z, quat.W);
 }

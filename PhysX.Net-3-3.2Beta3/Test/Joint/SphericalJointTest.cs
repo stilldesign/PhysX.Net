@@ -46,34 +46,5 @@ namespace PhysX.Test.Joint
 				Assert.AreEqual(0.7f, retrievedLimitCone.Restitution);
 			}
 		}
-
-		///// <summary>
-		///// Assign each limit cone individually, instead of creating a new limit cone class.
-		///// </summary>
-		//[TestMethod]
-		//public void LimitConeByIndividualPropertyAssignment()
-		//{
-		//    using (var core = CreatePhysicsAndScene())
-		//    {
-		//        var box1 = CreateBoxActor(core.Scene, new Vector3(5, 5, 5), new Vector3(0, 10, 0));
-		//        var box2 = CreateBoxActor(core.Scene, new Vector3(5, 5, 5), new Vector3(0, 20, 0));
-
-		//        SphericalJoint joint = core.Scene.CreateJoint<SphericalJoint>(box1, Matrix.Identity, box2, Matrix.Identity);
-
-		//        joint.Flags = SphericalJointFlag.LimitEnabled;
-
-		//        joint.LimitCone.YLimitAngle = 0.5f; // [0 - PI/2]
-		//        joint.LimitCone.ZLimitAngle = 0.6f; // [0 - PI/2]
-		//        joint.LimitCone.Spring = 3;
-		//        joint.LimitCone.Damping = 4;
-		//        joint.LimitCone.Restitution = 0.7f; // [0 - 1]
-
-		//        Assert.AreEqual(0.5f, joint.LimitCone.YLimitAngle);
-		//        Assert.AreEqual(0.6f, joint.LimitCone.ZLimitAngle);
-		//        Assert.AreEqual(3, joint.LimitCone.Spring);
-		//        Assert.AreEqual(4, joint.LimitCone.Damping);
-		//        Assert.AreEqual(0.7f, joint.LimitCone.Restitution);
-		//    }
-		//}
 	}
 }

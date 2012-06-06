@@ -1,5 +1,8 @@
 #include "StdAfx.h"
 #include "RigidBody.h"
+#include "BatchQuery.h"
+#include "SweepCache.h"
+
 #include <PxRigidBody.h>
 #include <PxRigidBodyExt.h>
 
@@ -39,13 +42,40 @@ void RigidBody::ClearTorque(ForceMode mode, bool wake)
 bool RigidBody::UpdateMassAndInertia(float density, [Optional] Nullable<Vector3> massLocalPose)
 {
 	PxVec3* mlp = (massLocalPose.HasValue ? &MathUtil::Vector3ToPxVec3(massLocalPose.Value) : NULL);
+
 	return PxRigidBodyExt::updateMassAndInertia(*this->UnmanagedPointer, density, mlp);
+}
+bool RigidBody::UpdateMassAndInertia(array<float>^ shapeDensities, Nullable<Vector3> massLocalPose)
+{
+	float* sd = new float[shapeDensities->Length];
+	Util::AsUnmanagedArray(shapeDensities, sd, shapeDensities->Length);
+
+	PxVec3* mlp = (massLocalPose.HasValue ? &MathUtil::Vector3ToPxVec3(massLocalPose.Value) : NULL);
+
+	bool result = PxRigidBodyExt::updateMassAndInertia(*this->UnmanagedPointer, sd, shapeDensities->Length, mlp);
+
+	delete[] sd;
+
+	return result;
 }
 
 bool RigidBody::SetMassAndUpdateInertia(float mass, [Optional] Nullable<Vector3> massLocalPose)
 {
 	PxVec3* mlp = (massLocalPose.HasValue ? &MathUtil::Vector3ToPxVec3(massLocalPose.Value) : NULL);
 	return PxRigidBodyExt::setMassAndUpdateInertia(*this->UnmanagedPointer, mass, mlp);
+}
+bool RigidBody::SetMassAndUpdateInertia(array<float>^ shapeMasses, [Optional] Nullable<Vector3> massLocalPose)
+{
+	float* sm = new float[shapeMasses->Length];
+	Util::AsUnmanagedArray(shapeMasses, sm, shapeMasses->Length);
+
+	PxVec3* mlp = (massLocalPose.HasValue ? &MathUtil::Vector3ToPxVec3(massLocalPose.Value) : NULL);
+
+	bool result = PxRigidBodyExt::setMassAndUpdateInertia(*this->UnmanagedPointer, sm, shapeMasses->Length, mlp);
+
+	delete[] sm;
+
+	return result;
 }
 
 void RigidBody::AddForceAtPosition(Vector3 force, Vector3 position)
@@ -84,11 +114,95 @@ void RigidBody::AddLocalForceAtLocalPosition(Vector3 force, Vector3 position, Fo
 	PxRigidBodyExt::addLocalForceAtLocalPos(*this->UnmanagedPointer, MathUtil::Vector3ToPxVec3(force), MathUtil::Vector3ToPxVec3(position), ToUnmanagedEnum(PxForceMode, forceMode), wakeUp);
 }
 
-Vector3 RigidBody::GetVelocityAtPosition(Vector3 point)
+Vector3 RigidBody::GetVelocityAtPosition(Vector3 position)
 {
-	PxVec3 v = PxRigidBodyExt::getVelocityAtPos(*this->UnmanagedPointer, MathUtil::Vector3ToPxVec3(point));
+	PxVec3 v = PxRigidBodyExt::getVelocityAtPos(*this->UnmanagedPointer, MathUtil::Vector3ToPxVec3(position));
 
 	return MathUtil::PxVec3ToVector3(v);
+}
+
+Vector3 RigidBody::GetLocalVelocityAtLocalPosition(Vector3 position)
+{
+	PxVec3 v = PxRigidBodyExt::getLocalVelocityAtLocalPos(*this->UnmanagedPointer, MathUtil::Vector3ToPxVec3(position));
+
+	return MathUtil::PxVec3ToVector3(v);
+}
+
+Vector3 RigidBody::GetVelocityAtOffset(Vector3 position)
+{
+	return MV(PxRigidBodyExt::getLocalVelocityAtLocalPos(*this->UnmanagedPointer, UV(position)));
+}
+
+void RigidBody::LinearSweepSingle(BatchQuery^ batchQuery, Vector3 unitDirection, float distance, SceneQueryFilterFlag filterFlags)
+{
+	LinearSweepSingle(batchQuery, unitDirection, distance, filterFlags, true, nullptr, nullptr);
+}
+void RigidBody::LinearSweepSingle(BatchQuery^ batchQuery, Vector3 unitDirection, float distance, SceneQueryFilterFlag filterFlags, bool useShapeFilterData, array<FilterData>^ filterDataList, SweepCache^ sweepCache)
+{
+	PxFilterData* fd;
+	if (filterDataList == nullptr)
+	{
+		fd = NULL;
+	}
+	else
+	{
+		fd = new PxFilterData[filterDataList->Length];
+		for (int i = 0; i < filterDataList->Length; i++)
+		{
+			fd[i] = FilterData::ToUnmanaged(filterDataList[i]);
+		}
+	}
+
+	PxSweepCache* sc = GetPointerOrNull(sweepCache);
+
+	PxRigidBodyExt::linearSweepSingle(
+		*this->UnmanagedPointer, 
+		*batchQuery->UnmanagedPointer, 
+		UV(unitDirection), 
+		distance, 
+		ToUnmanagedEnum(PxSceneQueryFilterFlag, filterFlags), 
+		useShapeFilterData, 
+		fd, 
+		(filterDataList == nullptr ? 0 : filterDataList->Length), 
+		nullptr, 
+		sc);
+
+	delete[] fd;
+}
+
+void RigidBody::LinearSweepMultiple(BatchQuery^ batchQuery, Vector3 unitDirection, float distance, SceneQueryFilterFlag filterFlags)
+{
+	LinearSweepMultiple(batchQuery, unitDirection, distance, filterFlags, true, nullptr, nullptr);
+}
+void RigidBody::LinearSweepMultiple(BatchQuery^ batchQuery, Vector3 unitDirection, float distance, SceneQueryFilterFlag filterFlags, bool useShapeFilterData, array<FilterData>^ filterDataList, SweepCache^ sweepCache)
+{
+	PxFilterData* fd;
+	if (filterDataList == nullptr)
+	{
+		fd = NULL;
+	}
+	else
+	{
+		fd = new PxFilterData[filterDataList->Length];
+		for (int i = 0; i < filterDataList->Length; i++)
+		{
+			fd[i] = FilterData::ToUnmanaged(filterDataList[i]);
+		}
+	}
+
+	PxSweepCache* sc = GetPointerOrNull(sweepCache);
+
+	PxRigidBodyExt::linearSweepSingle(
+		*this->UnmanagedPointer, 
+		*batchQuery->UnmanagedPointer, 
+		UV(unitDirection),
+		distance, 
+		ToUnmanagedEnum(PxSceneQueryFilterFlag, filterFlags), 
+		useShapeFilterData, 
+		fd, 
+		(filterDataList == nullptr ? 0 : filterDataList->Length), 
+		NULL, 
+		sc);
 }
 
 //

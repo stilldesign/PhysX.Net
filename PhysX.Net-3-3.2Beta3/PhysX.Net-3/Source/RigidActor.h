@@ -7,6 +7,7 @@ namespace PhysX
 	ref class Shape;
 	ref class Geometry;
 	ref class Material;
+	ref class RigidStatic;
 
 	/// <summary>
 	/// RigidActor represents a base class shared between dynamic and static rigid bodies in the physics SDK.
@@ -42,6 +43,32 @@ namespace PhysX
 			/// <param name="localPose">Optional actor-relative pose of the shape.</param>
 			/// <returns>The newly created shape.</returns>
 			Shape^ CreateShape(Geometry^ geometry, Material^ material, [Optional] Nullable<Matrix> localPose);
+
+			/// <summary>
+			/// Scale a rigid actor by a uniform scale.
+			/// The geometry and relative positions of the actor are multiplied by the given scale value. If the actor is a rigid body or an articulation link and the scaleMassProps value is true, the mass properties are scaled assuming the density is constant: the center of mass is linearly scaled, the mass is multiplied by the cube of the scale, and the inertia tensor by the fifth power of the scale.
+			/// </summary>
+			/// <param name="scale">The scale by which to multiply the actor.</param>
+			void Scale(float scale);
+			/// <summary>
+			/// Scale a rigid actor by a uniform scale.
+			/// The geometry and relative positions of the actor are multiplied by the given scale value. If the actor is a rigid body or an articulation link and the scaleMassProps value is true, the mass properties are scaled assuming the density is constant: the center of mass is linearly scaled, the mass is multiplied by the cube of the scale, and the inertia tensor by the fifth power of the scale.
+			/// </summary>
+			/// <param name="scale">The scale by which to multiply the actor.</param>
+			/// <param name="scaleMassProperties">Whether to scale the mass properties.</param>
+			void Scale(float scale, bool scaleMassProperties);
+
+			/// <summary>
+			/// Create a static body by copying attributes from another rigid actor.
+			/// The function clones a PxRigidDynamic as a PxRigidStatic. A uniform scale is applied.
+			/// The following properties are copied: shapes, actor flags, owner client and client behavior bits
+			/// The following are not copied and retain their default values: name, joints or observers, aggregate or scene membership, user data.
+			/// Note: Transforms are not copied with bit-exact accuracy.
+			/// </summary>
+			/// <param name="transform">The transform of the new static</param>
+			RigidStatic^ CloneStatic(Matrix transform);
+
+			//
 
 			/// <summary>
 			/// Retrieves the actors world space transform.

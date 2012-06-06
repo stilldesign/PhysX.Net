@@ -2,6 +2,11 @@
 #include "TriangleMeshGeometry.h"
 #include "TriangleMesh.h"
 
+TriangleMeshGeometry::TriangleMeshGeometry()
+	: Geometry(GeometryType::TriangleMesh)
+{
+
+}
 TriangleMeshGeometry::TriangleMeshGeometry(PhysX::TriangleMesh^ triangleMesh, [Optional] Nullable<MeshScale> scaling, [Optional] Nullable<MeshGeometryFlag> flags)
 	: Geometry(GeometryType::TriangleMesh)
 {
@@ -18,6 +23,21 @@ PxGeometry* TriangleMeshGeometry::ToUnmanaged()
 		g->scale = MeshScale::ToUnmanaged(this->Scale);
 		g->meshFlags = ToUnmanagedEnum(PxMeshGeometryFlag, this->MeshFlags);
 		g->triangleMesh = (this->TriangleMesh == nullptr ? NULL : this->TriangleMesh->UnmanagedPointer);
+
+	// TODO: paddingFromFlags
+
+	return g;
+}
+TriangleMeshGeometry^ TriangleMeshGeometry::ToManaged(PxTriangleMeshGeometry triangleMesh)
+{
+	TriangleMeshGeometry^ g = gcnew TriangleMeshGeometry();
+		g->Scale = MeshScale::ToManaged(triangleMesh.scale);
+		g->MeshFlags = ToManagedEnum(MeshGeometryFlag, triangleMesh.meshFlags);
+		g->TriangleMesh = triangleMesh.triangleMesh == NULL ?
+			nullptr : 
+			ObjectTable::GetObject<PhysX::TriangleMesh^>((intptr_t)triangleMesh.triangleMesh);
+
+	// TODO: paddingFromFlags
 
 	return g;
 }

@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Input;
 using SlimDX;
@@ -11,8 +13,6 @@ using SlimDX.DXGI;
 
 using Buffer = SlimDX.Direct3D10.Buffer;
 using Device = SlimDX.Direct3D10.Device;
-using System.Reflection;
-using System.IO;
 
 namespace PhysX.Samples.Engine
 {
@@ -154,7 +154,7 @@ namespace PhysX.Samples.Engine
 
 			var rasterDesc = new RasterizerStateDescription()
 			{
-				IsAntialiasedLineEnabled = true,
+				IsAntialiasedLineEnabled = false,
 				IsMultisampleEnabled = false,
 				FillMode = FillMode.Solid,
 				CullMode = CullMode.None
@@ -206,14 +206,14 @@ namespace PhysX.Samples.Engine
 
 			// Construct physics objects
 			ErrorOutput errorOutput = new ErrorOutput();
+
+			Foundation foundation = new Foundation(errorOutput);
 			
-			this.Physics = new Physics(errorOutput, checkRuntimeFiles: true);
+			this.Physics = new Physics(foundation, checkRuntimeFiles: true);
 
 			var sceneDesc = new SceneDesc()
 			{
-				//SimulationType = SimulationType.Hardware,
-				Gravity = new Math.Vector3(0, -9.81f, 0),
-				//GroundPlaneEnabled = true
+				Gravity = new Math.Vector3(0, -9.81f, 0)
 			};
 
 			this.Scene = this.Physics.CreateScene(sceneDesc);
@@ -226,9 +226,7 @@ namespace PhysX.Samples.Engine
 			this.Scene.SetVisualizationParameter(VisualizationParameter.ActorAxes, true);
 
 			// Connect to the remote debugger if it's there
-			//physics.Foundation.RemoteDebugger.Connect("localhost");
-
-			this.Physics.ConnectToRemoteDebugger("localhost");
+			Physics.RemoteDebugger.Connect("localhost");
 
 			CreateGroundPlane();
 		}

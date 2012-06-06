@@ -11,30 +11,6 @@
 namespace PhysX
 {
 	/// <summary>
-	/// Constraint flags.
-	/// </summary>
-	public enum class ConstraintFlag
-	{
-		Broken = PxConstraintFlag::eBROKEN,
-		Projection = PxConstraintFlag::ePROJECTION,
-		CollisionEnabled = PxConstraintFlag::eCOLLISION_ENABLED,
-		Reporting = PxConstraintFlag::eREPORTING,
-		Visualization = PxConstraintFlag::eVISUALIZATION
-	};
-
-	/// <summary>
-	/// Unique identifiers for extensions classes which implement a constraint based on Constraint.
-	/// </summary>
-	public enum class ConstraintExtIds
-	{
-		Joint = PxConstraintExtIDs::eJOINT, 
-		VehicleSuspensionLimit = PxConstraintExtIDs::eVEHICLE_SUSP_LIMIT, 
-		VehicleStickyTyre = PxConstraintExtIDs::eVEHICLE_STICKY_TYRE, 
-		NextFreeId = PxConstraintExtIDs::eNEXT_FREE_ID, 
-		InvalidId = PxConstraintExtIDs::eINVALID_ID
-	};
-
-	/// <summary>
 	/// Used to specify one of the degrees of freedom of a D6 joint.
 	/// </summary>
 	public enum class D6Axis

@@ -32,24 +32,26 @@ PxConvexMeshDesc ConvexMeshDesc::ToUnmanaged(ConvexMeshDesc^ desc)
 	PxConvexMeshDesc d;
 	
 	PxBoundedData p;
-	p.data = new PxVec3[desc->_positions->Length];
-	Util::AsUnmanagedArray(desc->_positions, (void*)p.data, desc->_positions->Length);
-	p.count = desc->_positions->Length;
-	p.stride = sizeof(Vector3);
+	{
+		p.data = new PxVec3[desc->_positions->Length];
+		Util::AsUnmanagedArray(desc->_positions, (void*)p.data, desc->_positions->Length);
+		p.count = desc->_positions->Length;
+		p.stride = sizeof(Vector3);
+	}
 
 	PxBoundedData t;
-	if (desc->Is16BitTriangles)
 	{
-		t.data = new short[desc->_triangles->Length];
-		Util::AsUnmanagedArray<short>((array<short>^)desc->_triangles, (void*)t.data, desc->_triangles->Length);
+		int indexSize = desc->Is16BitTriangles ? sizeof(short) : sizeof(int);
+		int indexCount = desc->_triangles->Length;
+
+		t.data = malloc(indexCount * indexSize);
+		if (desc->Is16BitTriangles)
+			Util::AsUnmanagedArray((array<short>^)desc->_triangles, (void*)t.data, indexCount);
+		else
+			Util::AsUnmanagedArray((array<int>^)desc->_triangles, (void*)t.data, indexCount);
+		t.count = desc->_triangles->Length / 3;
+		t.stride = (indexSize * 3);
 	}
-	else
-	{
-		t.data = new int[desc->_triangles->Length];
-		Util::AsUnmanagedArray<int>((array<int>^)desc->_triangles, (void*)t.data, desc->_triangles->Length);
-	}
-	t.count = desc->_triangles->Length / 3;
-	t.stride = (desc->Is16BitTriangles ? sizeof(short) : sizeof(int)) * 3;
 
 	d.points = p;
 	d.triangles = t;
@@ -76,7 +78,7 @@ void ConvexMeshDesc::SetTriangles(array<T>^ triangles)
 	else if (t == PrimitiveTypeSize::Bit32)
 		_is16BitTriangles = false;
 	else
-		throw gcnew InvalidOperationException("Triangles indices must be either short or int (signed or unsigned)");
+		throw gcnew InvalidOperationException("Triangle indices must be an array of either short or int (signed or unsigned) values");
 	
 	_triangles = triangles;
 }

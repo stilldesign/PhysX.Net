@@ -15,6 +15,7 @@ namespace PhysX
 		public:
 			property int NumberOfParticles;
 
+			property array<int>^ IndexBuffer;
 			property array<Vector3>^ PositionBuffer;
 			property array<Vector3>^ VelocityBuffer;
 			property array<Vector3>^ RestOffsetBuffer;

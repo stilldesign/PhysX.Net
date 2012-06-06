@@ -1825,3 +1825,22 @@ bool Matrix::Equals(Matrix% value1, Matrix% value2)
 						value1.M31 == value2.M31 && value1.M32 == value2.M32 && value1.M33 == value2.M33 && value1.M34 == value2.M34 &&
 						value1.M41 == value2.M41 && value1.M42 == value2.M42 && value1.M43 == value2.M43 && value1.M44 == value2.M44);
 }
+
+Matrix Matrix::FromSegment(Vector3 p0, Vector3 p1, [Optional] Nullable<float> halfHeight)
+{
+	float h = halfHeight.GetValueOrDefault();
+	float* g = halfHeight.HasValue ? &h : NULL;
+
+	PxTransform t = PxTransformFromSegment(UV(p0), UV(p1), g);
+
+	return MathUtil::PxTransformToMatrix(&t);
+}
+
+Matrix Matrix::FromPlaneEquation(Plane plane)
+{
+	PxPlane p = Plane::ToUnmanaged(plane);
+
+	PxTransform t = PxTransformFromPlaneEquation(p);
+
+	return MathUtil::PxTransformToMatrix(&t);
+}

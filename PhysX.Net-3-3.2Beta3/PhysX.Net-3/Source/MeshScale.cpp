@@ -11,7 +11,7 @@ PxMeshScale MeshScale::ToUnmanaged(MeshScale meshScale)
 {
 	PxMeshScale s;
 		s.scale = MathUtil::Vector3ToPxVec3(meshScale.Scale);
-		s.rotation = MathUtil::QuaternionPxQuat(meshScale.Rotation);
+		s.rotation = MathUtil::QuaternionToPxQuat(meshScale.Rotation);
 
 	return s;
 }

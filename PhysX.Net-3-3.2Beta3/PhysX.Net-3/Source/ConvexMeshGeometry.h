@@ -20,6 +20,7 @@ namespace PhysX
 
 		internal:
 			virtual PxGeometry* ToUnmanaged() override;
+			static ConvexMeshGeometry^ ToManaged(PxConvexMeshGeometry convexMesh);
 
 		public:
 			property MeshScale Scale;

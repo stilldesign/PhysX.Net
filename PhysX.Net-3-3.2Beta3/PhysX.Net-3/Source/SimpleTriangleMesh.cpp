@@ -88,7 +88,7 @@ Nullable<bool> SimpleTriangleMesh::Is16BitTriangleIndices()
 	return Util::Is16Or32Bit(this->Triangles);
 }
 
-generic<typename T> where T : value class
+generic<typename T>
 array<T>^ SimpleTriangleMesh::GetTriangles()
 {
 	//if (!IsInstanceOf<array<T>^>(_triangles))
@@ -96,7 +96,7 @@ array<T>^ SimpleTriangleMesh::GetTriangles()
 
 	return (array<T>^)_triangles;
 }
-generic<typename T> where T : value class
+generic<typename T>
 void SimpleTriangleMesh::SetTriangles(array<T>^ triangles)
 {
 	this->Triangles = triangles;

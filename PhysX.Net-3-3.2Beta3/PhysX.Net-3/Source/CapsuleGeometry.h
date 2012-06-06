@@ -18,6 +18,7 @@ namespace PhysX
 
 		internal:
 			virtual PxGeometry* ToUnmanaged() override;
+			static CapsuleGeometry^ ToManaged(PxCapsuleGeometry capsule);
 
 		public:
 			property float Radius;

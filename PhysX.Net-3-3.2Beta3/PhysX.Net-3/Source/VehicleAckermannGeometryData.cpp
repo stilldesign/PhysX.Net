@@ -1,47 +1,25 @@
 #include "StdAfx.h"
 #include "VehicleAckermannGeometryData.h"
 
-VehicleAckermannGeometryData::VehicleAckermannGeometryData(PxVehicleAckermannGeometryData* data)
+VehicleAckermannGeometryData^ VehicleAckermannGeometryData::ToManaged(PxVehicleAckermannGeometryData data)
 {
-	if (data == NULL)
-		throw gcnew ArgumentNullException("data");
+	auto d = gcnew VehicleAckermannGeometryData();
+		d->Accuracy = data.mAccuracy;
+		d->FrontWidth = data.mFrontWidth;
+		d->RearWidth = data.mRearWidth;
+		d->AxleSeparation = data.mAxleSeparation;
+	
+	return d;
+}
+PxVehicleAckermannGeometryData VehicleAckermannGeometryData::ToUnmanaged(VehicleAckermannGeometryData^ data)
+{
+	ThrowIfNull(data, "data");
 
-	_data = data;
-}
-VehicleAckermannGeometryData::~VehicleAckermannGeometryData()
-{
-	this->!VehicleAckermannGeometryData();
-}
-VehicleAckermannGeometryData::!VehicleAckermannGeometryData()
-{
-	SAFE_DELETE(_data);
-}
-
-bool VehicleAckermannGeometryData::Disposed::get()
-{
-	return _data == NULL;
-}
-
-float VehicleAckermannGeometryData::Accuracy::get()
-{
-	return _data->mAccuracy;
-}
-void VehicleAckermannGeometryData::Accuracy::set(float value)
-{
-	_data->mAccuracy = value;
-}
-
-float VehicleAckermannGeometryData::FrontWidth::get()
-{
-	return _data->getFrontWidth();
-}
-
-float VehicleAckermannGeometryData::AxleSeparation::get()
-{
-	return _data->getAxleSeparation();
-}
-
-PxVehicleAckermannGeometryData* VehicleAckermannGeometryData::UnmanagedPointer::get()
-{
-	return _data;
+	PxVehicleAckermannGeometryData d;
+		d.mAccuracy = data->Accuracy;
+		d.mFrontWidth = data->FrontWidth;
+		d.mRearWidth = data->RearWidth;
+		d.mAxleSeparation = data->AxleSeparation;
+	
+	return d;
 }

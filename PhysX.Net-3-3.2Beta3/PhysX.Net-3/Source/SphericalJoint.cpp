@@ -4,7 +4,7 @@
 #include <PxSphericalJoint.h> 
 
 SphericalJoint::SphericalJoint(PxSphericalJoint* joint, PhysX::Scene^ owner)
-	: Joint(joint, JointType::Spherical, owner)
+	: Joint(joint, owner)
 {
 
 }
@@ -17,7 +17,7 @@ JointLimitCone^ SphericalJoint::GetLimitCone()
 }
 void SphericalJoint::SetLimitCone(JointLimitCone^ limitCone)
 {
-	ThrowIfNull(limitCone);
+	ThrowIfNull(limitCone, "limitCone");
 	if (!limitCone->IsValid())
 		throw gcnew ArgumentException("The limit cone is invalid", "limitCone");
 

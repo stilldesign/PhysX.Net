@@ -19,10 +19,12 @@ namespace PhysX
 	public ref class TriangleMeshGeometry : Geometry
 	{
 		public:
+			TriangleMeshGeometry();
 			TriangleMeshGeometry(PhysX::TriangleMesh^ triangleMesh, [Optional] Nullable<MeshScale> scaling, [Optional] Nullable<MeshGeometryFlag> flags);
 
 		internal:
 			virtual PxGeometry* ToUnmanaged() override;
+			static TriangleMeshGeometry^ ToManaged(PxTriangleMeshGeometry triangleMesh);
 
 		public:
 			property MeshScale Scale;

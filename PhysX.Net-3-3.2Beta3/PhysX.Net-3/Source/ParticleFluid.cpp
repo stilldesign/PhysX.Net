@@ -1,7 +1,6 @@
 #include "StdAfx.h"
 #include "ParticleFluid.h"
 #include "ParticleFluidReadData.h"
-#include "ParticleFluidDesc.h"
 
 ParticleFluid::ParticleFluid(PxParticleFluid* particleFluid, PhysX::Physics^ owner)
 	: ParticleBase(particleFluid, owner)
@@ -12,14 +11,6 @@ ParticleFluid::ParticleFluid(PxParticleFluid* particleFluid, PhysX::Physics^ own
 ParticleFluidReadData^ ParticleFluid::LockParticleFluidReadData()
 {
 	return gcnew ParticleFluidReadData(this->UnmanagedPointer->lockParticleFluidReadData());
-}
-
-ParticleFluidDesc^ ParticleFluid::SaveToDesc()
-{
-	PxParticleFluidDesc desc = PxParticleFluidDesc(PxTolerancesScale());
-	this->UnmanagedPointer->saveToDesc(desc);
-
-	return ParticleFluidDesc::ToManaged(desc);
 }
 
 float ParticleFluid::Stiffness::get()
@@ -43,6 +34,15 @@ void ParticleFluid::Viscosity::set(float value)
 float ParticleFluid::RestParticleDistance::get()
 {
 	return this->UnmanagedPointer->getRestParticleDistance();
+}
+void ParticleFluid::RestParticleDistance::set(float value)
+{
+	this->UnmanagedPointer->setRestParticleDistance(value);
+}
+
+String^ ParticleFluid::ConcreteTypeName::get()
+{
+	return Util::ToManagedString(this->UnmanagedPointer->getConcreteTypeName());
 }
 
 PxParticleFluid* ParticleFluid::UnmanagedPointer::get()

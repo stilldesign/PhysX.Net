@@ -4,9 +4,12 @@
 #include "Material.h"
 #include "Shape.h"
 #include "ShapeCreationException.h"
+#include "Physics.h"
+#include "RigidStatic.h"
 #include <PxRigidActor.h>
 #include <PxShape.h>
 #include <PxBoxGeometry.h>
+#include <PxSimpleFactory.h>
 
 RigidActor::RigidActor(PxRigidActor* rigidActor, PhysX::Physics^ owner)
 	: Actor(rigidActor, owner)
@@ -44,6 +47,25 @@ Shape^ RigidActor::CreateShape(Geometry^ geometry, Material^ material, [Optional
 	_shapes->Add(shape);
 
 	return shape;
+}
+
+void RigidActor::Scale(float scale)
+{
+	Scale(scale, true);
+}
+void RigidActor::Scale(float scale, bool scaleMassProperties)
+{
+	PxScaleRigidActor(*this->UnmanagedPointer, scale, scaleMassProperties);
+}
+
+RigidStatic^ RigidActor::CloneStatic(Matrix transform)
+{
+	PxRigidStatic* rigidStatic = PxCloneStatic(
+		*this->Physics->UnmanagedPointer, 
+		MathUtil::MatrixToPxTransform(transform),
+		*this->UnmanagedPointer);
+
+	return gcnew RigidStatic(rigidStatic, this->Physics);
 }
 
 Matrix RigidActor::GlobalPose::get()

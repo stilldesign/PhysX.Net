@@ -41,10 +41,10 @@ namespace PhysX
 			virtual void reportError(PxErrorCode::Enum code, const char *message, const char *file, int line);
 	};
 
-	public ref class ConsoleOutputStream sealed : ErrorCallback
+	public ref class ConsoleErrorCallback sealed : ErrorCallback
 	{
 		public:
-			ConsoleOutputStream();
+			ConsoleErrorCallback();
 
 			virtual void ReportError(ErrorCode errorCode, String^ message, String^ file, int lineNumber) override;
 	};

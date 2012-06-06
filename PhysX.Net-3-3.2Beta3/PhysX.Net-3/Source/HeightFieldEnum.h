@@ -13,7 +13,7 @@ namespace PhysX
 		/// <summary>
 		/// Height field height data is 16 bit signed integers, followed by triangle materials.
 		/// </summary>
-		S16_TM = PxHeightFieldFormat::eS16_TM
+		Signed16BitIntegersWithTriangleMaterials = PxHeightFieldFormat::eS16_TM
 	};
 
 	/// <summary>

@@ -3,6 +3,8 @@
 
 PxVehicleSuspensionData VehicleSuspensionData::ToUnmanaged(VehicleSuspensionData^ data)
 {
+	ThrowIfNull(data, "data");
+
 	PxVehicleSuspensionData d;
 		d.mSpringStrength = data->SpringStrength;
 		d.mSpringDamperRate = data->SpringDamperRate;

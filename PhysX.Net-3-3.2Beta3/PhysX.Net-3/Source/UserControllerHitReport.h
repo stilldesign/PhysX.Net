@@ -7,6 +7,7 @@ namespace PhysX
 	ref class ControllerShapeHit;
 	ref class ControllersHit;
 	ref class UserControllerHitReport;
+	ref class ControllerObstacleHit;
 
 	class InternalUserControllerHitReport : public PxUserControllerHitReport
 	{
@@ -18,6 +19,7 @@ namespace PhysX
 
 			void onShapeHit(const PxControllerShapeHit &hit);
 			void onControllerHit(const PxControllersHit &hit);
+			void onObstacleHit (const PxControllerObstacleHit &hit);
 	};
 
 	/// <summary>
@@ -43,10 +45,16 @@ namespace PhysX
 			/// Called when current controller hits a shape.
 			/// </summary>
 			virtual void OnShapeHit(ControllerShapeHit^ hit) abstract;
+
 			/// <summary>
 			/// Called when current controller hits another controller.
 			/// </summary>
 			virtual void OnControllerHit(ControllersHit^ hit) abstract;
+
+			/// <summary>
+			/// Called when current controller hits a user-defined obstacle.
+			/// </summary>
+			virtual void OnObstacleHit(ControllerObstacleHit^ hit) abstract;
 
 		internal:
 			property InternalUserControllerHitReport* UnmanagedPointer

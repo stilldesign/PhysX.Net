@@ -1,6 +1,7 @@
 #include "StdAfx.h"
 #include "Material.h"
 #include "Physics.h"
+#include "Serializable.h"
 
 using namespace PhysX;
 
@@ -33,7 +34,12 @@ Material::!Material()
 
 bool Material::Disposed::get()
 {
-	return _material == NULL;
+	return (_material == NULL);
+}
+
+Serializable^ Material::AsSerializable()
+{
+	return gcnew Serializable(_material);
 }
 
 String^ Material::ToString()
@@ -52,14 +58,6 @@ void Material::DynamicFriction::set(float value)
 	
 	_material->setDynamicFriction(value);
 }
-float Material::DynamicFrictionV::get()
-{
-	return _material->getDynamicFrictionV();
-}
-void Material::DynamicFrictionV::set(float value)
-{
-	_material->setDynamicFrictionV(value);
-}
 
 float Material::StaticFriction::get()
 {
@@ -68,14 +66,6 @@ float Material::StaticFriction::get()
 void Material::StaticFriction::set(float value)
 {
 	_material->setStaticFriction(value);
-}
-float Material::StaticFrictionV::get()
-{
-	return _material->getStaticFrictionV();
-}
-void Material::StaticFrictionV::set(float value)
-{
-	_material->setStaticFrictionV(value);
 }
 
 float Material::Restitution::get()
@@ -88,15 +78,6 @@ void Material::Restitution::set(float value)
 		throw gcnew ArgumentException("Restitution must be between 0 and 1");
 	
 	_material->setRestitution(value);
-}
-
-Vector3 Material::DirectionOfAnisotropy::get()
-{
-	return MathUtil::PxVec3ToVector3(_material->getDirOfAnisotropy());
-}
-void Material::DirectionOfAnisotropy::set(Vector3 value)
-{
-	_material->setDirOfAnisotropy(MathUtil::Vector3ToPxVec3(value));
 }
 
 MaterialFlag Material::Flags::get()
@@ -124,6 +105,11 @@ CombineMode Material::RestitutionCombineMode::get()
 void Material::RestitutionCombineMode::set(CombineMode value)
 {
 	_material->setRestitutionCombineMode(ToUnmanagedEnum(PxCombineMode, value));
+}
+
+String^ Material::ConcreteTypeName::get()
+{
+	return Util::ToManagedString(_material->getConcreteTypeName());
 }
 
 PxMaterial* Material::UnmanagedPointer::get()

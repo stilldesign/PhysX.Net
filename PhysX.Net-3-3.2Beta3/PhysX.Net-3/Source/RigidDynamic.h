@@ -19,7 +19,7 @@ namespace PhysX
 			/// <summary>
 			/// Moves kinematically controlled dynamic actors through the game world.
 			/// </summary>
-			void MoveKinematic(Matrix destination);
+			void SetKinematicTarget(Matrix destination);
 
 			/// <summary>
 			/// Wakes up the actor if it is sleeping.
@@ -31,7 +31,7 @@ namespace PhysX
 			/// </summary>
 			void PutToSleep();
 
-			virtual String^ ToString() override;
+			RigidDynamic^ CloneDynamic(Matrix transform);
 
 			//
 

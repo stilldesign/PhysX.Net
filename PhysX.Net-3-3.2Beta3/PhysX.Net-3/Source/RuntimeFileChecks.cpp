@@ -16,9 +16,10 @@ void RuntimeFileChecks::Check()
 	CheckFile("PhysX3Cooking_x64.dll", PhysXDllVersion);
 	CheckFile("PhysX3Gpu_x64.dll", PhysXDllVersion);
 #elif WIN32
-	CheckFile("PhysX3_x86.dll", PhysXDllVersion);
-	CheckFile("PhysX3Cooking_x86.dll", PhysXDllVersion);
-	CheckFile("PhysX3Gpu_x86.dll", PhysXDllVersion);
+	CheckFile("PhysX3CHECKED_x86.dll", PhysXDllVersion);
+	CheckFile("PhysX3CommonCHECKED_x86.dll", PhysXDllVersion);
+	CheckFile("PhysX3CookingCHECKED_x86.dll", PhysXDllVersion);
+	CheckFile("PhysX3GpuCHECKED_x86.dll", PhysXDllVersion);
 #else
 	#error No platform specified
 #endif

@@ -2,6 +2,7 @@
 #include "UserControllerHitReport.h"
 #include "ControllerShapeHit.h"
 #include "ControllersHit.h"
+#include "ControllerObstacleHit.h"
 
 InternalUserControllerHitReport::InternalUserControllerHitReport(UserControllerHitReport^ hitReport)
 	: PxUserControllerHitReport()
@@ -21,6 +22,12 @@ void InternalUserControllerHitReport::onControllerHit(const PxControllersHit &hi
 	ControllersHit^ controllerHit = ControllersHit::ToManaged(hit);
 
 	_hitReport->OnControllerHit(controllerHit);
+}
+void InternalUserControllerHitReport::onObstacleHit (const PxControllerObstacleHit &hit)
+{
+	auto obstacleHit = ControllerObstacleHit::ToManaged(hit);
+
+	_hitReport->OnObstacleHit(obstacleHit);
 }
 
 //

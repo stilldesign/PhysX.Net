@@ -8,7 +8,7 @@
 #include <PxD6Joint.h>
 
 D6Joint::D6Joint(PxD6Joint* joint, PhysX::Scene^ owner)
-	: Joint(joint, JointType::D6, owner)
+	: Joint(joint, owner)
 {
 	
 }

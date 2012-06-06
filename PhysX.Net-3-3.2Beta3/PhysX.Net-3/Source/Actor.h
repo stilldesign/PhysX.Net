@@ -4,6 +4,8 @@
 #include "ActorEnum.h"
 #include "Bounds3.h"
 #include "IObservable.h"
+#include "ISerializable.h"
+#include "Serializable.h"
 
 namespace PhysX
 {
@@ -15,7 +17,7 @@ namespace PhysX
 	///	The actor is owned by and contained in a <see cref="Scene" />.
 	/// See <see cref="ActorDesc" /> for a more detailed description of the parameters which can be set when creating an actor.
 	/// </summary>
-	public ref class Actor abstract : IDisposable, IObservable
+	public ref class Actor abstract : IDisposable, IObservable, ISerializable
 	{
 		public:
 			/// <summary>Raised before any disposing is performed.</summary>
@@ -42,6 +44,8 @@ namespace PhysX
 
 			virtual ObservableInstance^ GetObservableInstance();
 
+			virtual String^ ToString() override;
+
 			//
 
 			/// <summary>
@@ -58,6 +62,15 @@ namespace PhysX
 			property ActorType Type
 			{
 				ActorType get();
+			}
+
+			/// <summary>
+			/// Gets or set the name of the actor.
+			/// </summary>
+			property String^ Name
+			{
+				String^ get();
+				void set(String^ value);
 			}
 
 			/// <summary>
@@ -79,6 +92,8 @@ namespace PhysX
 
 			/// <summary>Gets or sets an object, usually to create a 1:1 relationship with a user object.</summary>
 			property Object^ UserData;
+
+			virtual Serializable^ AsSerializable();
 
 		internal:
 			property PxActor* UnmanagedPointer

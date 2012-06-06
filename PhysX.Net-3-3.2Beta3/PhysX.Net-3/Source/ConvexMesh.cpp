@@ -3,6 +3,7 @@
 #include "Physics.h"
 #include "HullPolygon.h"
 #include "ConvexMeshMassInformation.h"
+#include "Serializable.h"
 #include <PxConvexMesh.h> 
 
 ConvexMesh::ConvexMesh(PxConvexMesh* convexMesh, PhysX::Physics^ physics)
@@ -62,6 +63,11 @@ ConvexMeshMassInformation^ ConvexMesh::GetMassInformation()
 		info->LocalCenterOfMass = MathUtil::PxVec3ToVector3(localCenterOfMass);
 
 	return info;
+}
+
+Serializable^ ConvexMesh::AsSerializable()
+{
+	return gcnew Serializable(_convexMesh);
 }
 
 PhysX::Physics^ ConvexMesh::Physics::get()

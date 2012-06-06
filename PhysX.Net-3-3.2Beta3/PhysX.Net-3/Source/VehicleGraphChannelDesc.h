@@ -1,6 +1,6 @@
 #pragma once
 
-#include <PxVehicleUtils.h>
+#include <PxVehicleUtilTelemetry.h>
 
 namespace PhysX
 {
@@ -22,19 +22,19 @@ namespace PhysX
 			property float MaxY;
 
 			/// <summary>
-			/// Data values greater than MidY will be drawn with colour ColourHigh.
+			/// Data values greater than MidY will be drawn with colour ColorHigh.
 			/// </summary>
 			property float MidY;
 
 			/// <summary>
-			/// Colour used to render data values lower than MidY.
+			/// Color used to render data values lower than MidY.
 			/// </summary>
-			property Vector3 ColourLow;
+			property Vector3 ColorLow;
 
 			/// <summary>
-			/// Colour used to render data values greater than mMidY.
+			/// Color used to render data values greater than mMidY.
 			/// </summary>
-			property Vector3 ColourHigh;
+			property Vector3 ColorHigh;
 
 			/// <summary>
 			/// String to describe data channel.

@@ -26,6 +26,7 @@
 #include "SweepHit.h"
 #include "FailedToCreateObjectException.h"
 #include "RenderBuffer.h"
+#include "SweepCache.h"
 #include <PxFixedJoint.h>
 
 using namespace PhysX;
@@ -38,11 +39,6 @@ Scene::Scene(PxScene* scene, PhysX::Physics^ physics)
 
 	_scene = scene;
 	_physics = physics;
-
-	_actors = gcnew List<Actor^>();
-	_joints = gcnew List<Joint^>();
-	_aggregates = gcnew List<Aggregate^>();
-	_controllerManagers = gcnew List<ControllerManager^>();
 
 	ObjectTable::Add((intptr_t)scene, this, physics);
 }
@@ -110,7 +106,7 @@ SimulationStatistics^ Scene::GetSimulationStatistics()
 #pragma region Actors
 IEnumerable<Actor^>^ Scene::Actors::get()
 {
-	return _actors;
+	return ObjectTable::GetObjectsOfOwnerAndType<Actor^>(this);
 }
 int Scene::GetNumberOfActors(ActorTypeSelectionFlag types)
 {
@@ -137,15 +133,11 @@ void Scene::AddActor(Actor^ actor)
 {
 	ThrowIfNullOrDisposed(actor, "actor");
 
-	_actors->Add(actor);
-
 	_scene->addActor(*actor->UnmanagedPointer);
 }
 void Scene::RemoveActor(Actor^ actor)
 {
 	ThrowIfNullOrDisposed(actor, "actor");
-
-	_actors->Remove(actor);
 
 	_scene->removeActor(*actor->UnmanagedPointer);
 }
@@ -153,7 +145,7 @@ void Scene::RemoveActor(Actor^ actor)
 /// <summary>Gets the articulations.</summary>
 IEnumerable<Articulation^>^ Scene::Articulations::get()
 {
-	return _articulations;
+	return ObjectTable::GetObjectsOfOwnerAndType<Articulation^>(this);
 }
 #pragma endregion
 
@@ -254,6 +246,12 @@ T Scene::CreateJoint(RigidActor^ actor0, Matrix localFrame0, RigidActor^ actor1,
 		throw gcnew ArgumentException("Unsupported joint type");
 
 	return (T)CreateJoint(type, actor0, localFrame0, actor1, localFrame1);
+}
+
+IEnumerable<Joint^>^ Scene::Joints::get()
+{
+	// Extend this object table method to support inheritance selection
+	return ObjectTable::GetObjectsOfOwnerAndType<Joint^>(this);
 }
 #pragma endregion
 
@@ -358,37 +356,48 @@ RaycastHit^ Scene::RaycastSingle(Vector3 origin, Vector3 direction, float distan
 
 array<RaycastHit^>^ Scene::RaycastMultiple(Vector3 origin, Vector3 direction, float distance, SceneQueryFlags outputFlags, int hitBufferSize, [Optional] Nullable<SceneQueryFilterData> filterData)
 {
-	PxRaycastHit* h = new PxRaycastHit[hitBufferSize];
-	bool blockingHit = false;
-	PxSceneQueryFilterData filter = (filterData.HasValue ? SceneQueryFilterData::ToUnmanaged(filterData.Value) : PxSceneQueryFilterData());
+	if (hitBufferSize < 0)
+		throw gcnew ArgumentOutOfRangeException("hitBufferSize", "Hit buffer size must be greater than or equal to 0");
+	if (hitBufferSize == 0)
+		return gcnew array<RaycastHit^>(0);
 
-	int hitCount = _scene->raycastMultiple
-	(
-		MathUtil::Vector3ToPxVec3(origin), 
-		MathUtil::Vector3ToPxVec3(direction), 
-		distance, 
-		ToUnmanagedEnum(PxSceneQueryFlag, outputFlags), 
-		h, 
-		hitBufferSize, 
-		blockingHit, 
-		filter
-	);
-
-	if (hitCount == -1)
-		return nullptr;
-
-	int n = hitCount < hitBufferSize ? hitCount : hitBufferSize;
-
-	auto hits = gcnew array<RaycastHit^>(n);
-	for (int i = 0; i < n; i++)
+	PxRaycastHit* h;
+	try
 	{
-		hits[i] = RaycastHit::ToManaged(*(h + i));
+		h = new PxRaycastHit[hitBufferSize];
+		bool blockingHit = false;
+		PxSceneQueryFilterData filter = (filterData.HasValue ? SceneQueryFilterData::ToUnmanaged(filterData.Value) : PxSceneQueryFilterData());
+
+		int hitCount = _scene->raycastMultiple
+		(
+			UV(origin), 
+			UV(direction), 
+			distance, 
+			ToUnmanagedEnum(PxSceneQueryFlag, outputFlags), 
+			h, 
+			hitBufferSize, 
+			blockingHit, 
+			filter
+		);
+
+		if (hitCount == -1)
+			return nullptr;
+
+		int n = (hitCount < hitBufferSize ? hitCount : hitBufferSize);
+
+		auto hits = gcnew array<RaycastHit^>(n);
+		for (int i = 0; i < n; i++)
+		{
+			hits[i] = RaycastHit::ToManaged(*(h + i));
+		}
+
+		return hits;
 	}
-
-	delete[] h;
-	h = NULL;
-
-	return hits;
+	finally
+	{
+		delete[] h;
+		h = NULL;
+	}
 }
 #pragma endregion
 
@@ -397,17 +406,45 @@ SceneQueryHit^ Scene::SweepAny(Geometry^ geometry, Matrix pose, Vector3 directio
 {
 	ThrowIfNull(geometry, "geometry");
 
-	PxSceneQueryFilterData fd = (filterData.HasValue ? SceneQueryFilterData::ToUnmanaged(filterData.Value) : PxSceneQueryFilterData());
+	PxGeometry* geom;
+	try
+	{
+		PxSceneQueryFilterData fd = (filterData.HasValue ? SceneQueryFilterData::ToUnmanaged(filterData.Value) : PxSceneQueryFilterData());
 
-	PxSceneQueryHit hit;
-	bool result = _scene->sweepAny(*geometry->ToUnmanaged(), MathUtil::MatrixToPxTransform(pose), MathUtil::Vector3ToPxVec3(direction), distance, ToUnmanagedEnum(PxSceneQueryFlag, queryFlags), hit, fd);
+		geom = geometry->ToUnmanaged();
 
-	if (result)
-		return nullptr;
+		PxSceneQueryHit hit;
+		bool result = _scene->sweepAny
+		(
+			*geom,
+			MathUtil::MatrixToPxTransform(pose),
+			MathUtil::Vector3ToPxVec3(direction),
+			distance,
+			ToUnmanagedEnum(PxSceneQueryFlag, queryFlags),
+			hit,
+			fd
+		);
 
-	return SceneQueryHit::ToManaged(&hit);
+		if (!result)
+			return nullptr;
+
+		return SceneQueryHit::ToManaged(&hit);
+	}
+	finally
+	{
+		delete geom;
+	}
 }
 
+array<SweepHit^>^ Scene::SweepMultiple(PhysX::Geometry^ geometry, Matrix pose, Nullable<PhysX::FilterData> filterData, Vector3 direction, float distance, SceneQueryFlags outputFlags, int maxNumberOfHits, Nullable<SceneQueryFilterFlag> filterFlags)
+{
+	ThrowIfNull(geometry, "geometry");
+
+	auto objects = gcnew array<SceneSweepOperationObject^>(1);
+		objects[0] = gcnew SceneSweepOperationObject(geometry, pose, filterData);
+
+	return SweepMultiple(objects, direction, distance, outputFlags, maxNumberOfHits, filterFlags);
+}
 array<SweepHit^>^ Scene::SweepMultiple(array<SceneSweepOperationObject^>^ objects, Vector3 direction, float distance, SceneQueryFlags outputFlags, int maxNumberOfHits, Nullable<SceneQueryFilterFlag> filterFlags)
 {
 	ThrowIfNull(objects, "objects");
@@ -416,6 +453,9 @@ array<SweepHit^>^ Scene::SweepMultiple(array<SceneSweepOperationObject^>^ object
 
 	int n = objects->Length;
 
+	// Checks
+
+	// Make sure that (if any) filter data is supplied, all filter data is supplied
 	bool useFilterData = objects[0]->FilterData.HasValue;
 	if (useFilterData)
 	{
@@ -426,9 +466,19 @@ array<SweepHit^>^ Scene::SweepMultiple(array<SceneSweepOperationObject^>^ object
 		}
 	}
 
-	const PxGeometry** g = (const PxGeometry**)malloc(sizeof(PxGeometry*) * n);
-	PxTransform* t = (PxTransform*)malloc(sizeof(PxTransform) * n);
-	PxFilterData* f = useFilterData ? (PxFilterData*)malloc(sizeof(PxFilterData) * n) : NULL;
+	// Geometry
+	for each(SceneSweepOperationObject^ object in objects)
+	{
+		if (object->Geometry == nullptr)
+			throw gcnew ArgumentException("Objects array contains a null geometry", "objects");
+	}
+
+	//
+
+	const PxGeometry** g = new const PxGeometry*[n];
+	PxTransform* t = new PxTransform[n];
+	PxFilterData* f = useFilterData ? new PxFilterData[n] : NULL;
+
 	for (int i = 0; i < n; i++)
 	{
 		g[i] = objects[i]->Geometry->ToUnmanaged();
@@ -438,37 +488,52 @@ array<SweepHit^>^ Scene::SweepMultiple(array<SceneSweepOperationObject^>^ object
 			f[i] = FilterData::ToUnmanaged(objects[i]->FilterData.Value);
 	}
 
-	PxSceneQueryFilterFlags ff = filterFlags.HasValue ? ToUnmanagedEnum2(PxSceneQueryFilterFlags, filterFlags.Value) : PxSceneQueryFilterFlag::eDYNAMIC|PxSceneQueryFilterFlag::eSTATIC;
+	PxSceneQueryFilterFlags ff = filterFlags.HasValue ? 
+		ToUnmanagedEnum2(PxSceneQueryFilterFlags, filterFlags.Value) : 
+		PxSceneQueryFilterFlag::eDYNAMIC|PxSceneQueryFilterFlag::eSTATIC;
 
-	PxSweepHit* h = (PxSweepHit*)malloc(sizeof(PxSweepHit) * n);
+	//
+	
+	PxSweepHit* h = new PxSweepHit[maxNumberOfHits];
 	bool blockingHit;
-	PxI32 numOfHits = _scene->sweepMultiple(g, t, f, objects->Length, MathUtil::Vector3ToPxVec3(direction), distance, 
-		ToUnmanagedEnum(PxSceneQueryFlag, outputFlags), h, maxNumberOfHits, blockingHit, ff);
+	int numOfHits = _scene->sweepMultiple
+	(
+		g, 
+		t,
+		f,
+		n,
+		UV(direction),
+		distance, 
+		ToUnmanagedEnum(PxSceneQueryFlag, outputFlags), 
+		h,
+		maxNumberOfHits, 
+		blockingHit, 
+		ff
+	);
 
 	// Clean up
-	for (int i = 0; i < objects->Length; i++)
+	for (int i = 0; i < n; i++)
 	{
 		delete g[i];
 	}
-	free(g);
-	free(t);
-	if (f != NULL)
-		free(f);
+	delete[] g;
+	delete[] t;
+	delete[] f;
 	
 	if (!blockingHit || numOfHits == -1)
 	{
-		free(h);
+		delete[] h;
 
 		return nullptr;
 	}
 
-	array<SweepHit^>^ hits = gcnew array<SweepHit^>(numOfHits);
+	auto hits = gcnew array<SweepHit^>(numOfHits);
 	for (int i = 0; i < numOfHits; i++)
 	{
 		hits[i] = SweepHit::ToManaged(h[i]);
 	}
 
-	free(h);
+	delete[] h;
 
 	return hits;
 }
@@ -500,16 +565,21 @@ array<Shape^>^ Scene::OverlapMultiple(Geometry^ geometry, Matrix pose, [Optional
 	if (hitLimitVal <= 0)
 		return gcnew array<Shape^>(0);
 
-	PxShape** hitShapes = new PxShape*[hitLimitVal];
-	int hitCount = _scene->overlapMultiple(*geometry->ToUnmanaged(), MathUtil::MatrixToPxTransform(pose), hitShapes, hitLimitVal, filter);
+	PxGeometry* g = geometry->ToUnmanaged();
 
-	array<Shape^>^ shapes = gcnew array<Shape^>(hitCount);
+	PxShape** hitShapes = new PxShape*[hitLimitVal];
+
+	int hitCount = _scene->overlapMultiple(*g, MathUtil::MatrixToPxTransform(pose), hitShapes, hitLimitVal, filter);
+
+	auto shapes = gcnew array<Shape^>(hitCount);
 	for (int i = 0; i < hitCount; i++)
 	{
 		shapes[i] = ObjectTable::GetObject<Shape^>((intptr_t)hitShapes[i]);
 	}
 
 	delete[] hitShapes;
+
+	delete g;
 
 	return shapes;
 }
@@ -519,12 +589,11 @@ array<Shape^>^ Scene::OverlapMultiple(Geometry^ geometry, Matrix pose, [Optional
 ControllerManager^ Scene::CreateControllerManager()
 {
 	PxControllerManager* manager = PxCreateControllerManager(_scene->getPhysics().getFoundation());
+
 	if (manager == NULL)
 		throw gcnew FailedToCreateObjectException("Failed to create controller manager");
 
 	ControllerManager^ c = gcnew ControllerManager(manager, this);
-
-	_controllerManagers->Add(c);
 
 	return c;
 }
@@ -535,36 +604,40 @@ void Scene::AddArticulation(Articulation^ articulation)
 	ThrowIfNullOrDisposed(articulation, "articulation");
 
 	_scene->addArticulation(*articulation->UnmanagedPointer);
-
-	_articulations->Add(articulation);
 }
 
 void Scene::RemoveArticulation(Articulation^ articulation)
 {
 	_scene->removeArticulation(*articulation->UnmanagedPointer);
-
-	_articulations->Remove(articulation);
 }
 
 void Scene::AddAggregate(Aggregate^ aggregate)
 {
 	_scene->addAggregate(*aggregate->UnmanagedPointer);
-
-	_aggregates->Add(aggregate);
 }
 
 void Scene::RemoveAggregate(Aggregate^ aggregate)
 {
 	_scene->removeAggregate(*aggregate->UnmanagedPointer);
-
-	_aggregates->Remove(aggregate);
 }
 
 IEnumerable<Aggregate^>^ Scene::Aggregates::get()
 {
-	return _aggregates;
+	return ObjectTable::GetObjectsOfOwnerAndType<Aggregate^>(this);
 }
 #pragma endregion
+
+SweepCache^ Scene::CreateSweepCache()
+{
+	// 5 is the default size in the SDK
+	return CreateSweepCache(5.0f);
+}
+SweepCache^ Scene::CreateSweepCache(float dimensions)
+{
+	PxSweepCache* sc = _scene->createSweepCache(dimensions);
+
+	return gcnew SweepCache(sc);
+}
 
 int Scene::CreateClient()
 {
@@ -578,6 +651,11 @@ int Scene::DynamicTreeRebuildRateHint::get()
 void Scene::DynamicTreeRebuildRateHint::set(int value)
 {
 	_scene->setDynamicTreeRebuildRateHint(value);
+}
+
+int Scene::Timestamp::get()
+{
+	return _scene->getTimestamp();
 }
 
 //

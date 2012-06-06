@@ -4,7 +4,7 @@
 #include <PxPrismaticJoint.h> 
 
 PrismaticJoint::PrismaticJoint(PxPrismaticJoint* joint, PhysX::Scene^ owner)
-	: Joint(joint, JointType::Prismatic, owner)
+	: Joint(joint, owner)
 {
 	
 }

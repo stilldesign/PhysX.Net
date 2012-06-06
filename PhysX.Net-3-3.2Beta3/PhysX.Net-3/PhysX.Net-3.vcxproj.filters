@@ -1,0 +1,969 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Source\ActiveTransform.cpp" />
+    <ClCompile Include="Source\Aggregate.cpp" />
+    <ClCompile Include="Source\Articulation.cpp" />
+    <ClCompile Include="Source\ArticulationJoint.cpp" />
+    <ClCompile Include="Source\ArticulationLink.cpp" />
+    <ClCompile Include="Source\AssemblyInfo.cpp" />
+    <ClCompile Include="Source\BitAndData.cpp" />
+    <ClCompile Include="Source\CctHit.cpp" />
+    <ClCompile Include="Source\CommonEnum.cpp" />
+    <ClCompile Include="Source\ContactPointAux.cpp" />
+    <ClCompile Include="Source\ConvexMesh.cpp" />
+    <ClCompile Include="Source\ConvexMeshDesc.cpp" />
+    <ClCompile Include="Source\DebugLine.cpp" />
+    <ClCompile Include="Source\DebugPoint.cpp" />
+    <ClCompile Include="Source\DebugText.cpp" />
+    <ClCompile Include="Source\DebugTriangle.cpp" />
+    <ClCompile Include="Source\DefaultMemoryInputData.cpp" />
+    <ClCompile Include="Source\ErrorCallback.cpp" />
+    <ClCompile Include="Source\FixedSizeLookupTable.cpp" />
+    <ClCompile Include="Source\HullPolygon.cpp" />
+    <ClCompile Include="Source\InputData.cpp" />
+    <ClCompile Include="Source\InputStream.cpp" />
+    <ClCompile Include="Source\LockedData.cpp" />
+    <ClCompile Include="Source\MeshScale.cpp" />
+    <ClCompile Include="Source\Observable.cpp" />
+    <ClCompile Include="Source\ObservableInstance.cpp" />
+    <ClCompile Include="Source\Observer.cpp" />
+    <ClCompile Include="Source\DefaultMemoryOutputStream.cpp" />
+    <ClCompile Include="Source\OutputStream.cpp" />
+    <ClCompile Include="Source\RaycastHit.cpp" />
+    <ClCompile Include="Source\RenderBuffer.cpp" />
+    <ClCompile Include="Source\RuntimeFileChecks.cpp" />
+    <ClCompile Include="Source\SimpleTriangleMesh.cpp" />
+    <ClCompile Include="Source\StdAfx.cpp" />
+    <ClCompile Include="Source\SweepHit.cpp" />
+    <ClCompile Include="Source\TriangleMesh.cpp" />
+    <ClCompile Include="Source\TriangleMeshDesc.cpp" />
+    <ClCompile Include="Source\TriggerPair.cpp" />
+    <ClCompile Include="Source\UserControllerHitReport.cpp" />
+    <ClCompile Include="Source\Connection.cpp" />
+    <ClCompile Include="Source\ConnectionManager.cpp" />
+    <ClCompile Include="Source\VisualDebuggerExt.cpp" />
+    <ClCompile Include="Source\FilterData.cpp" />
+    <ClCompile Include="Source\Plane.cpp" />
+    <ClCompile Include="Source\Shape.cpp" />
+    <ClCompile Include="Source\ContactPoint.cpp" />
+    <ClCompile Include="Source\BatchQuery.cpp" />
+    <ClCompile Include="Source\SweepCache.cpp" />
+    <ClCompile Include="Source\VehicleAckermannGeometryData.cpp">
+      <Filter>Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VehicleAutoBoxData.cpp">
+      <Filter>Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VehicleChassisData.cpp">
+      <Filter>Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VehicleClutchData.cpp">
+      <Filter>Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VehicleDifferential4WData.cpp">
+      <Filter>Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VehicleDrive.cpp">
+      <Filter>Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VehicleDrive4W.cpp">
+      <Filter>Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VehicleDriveDynData.cpp">
+      <Filter>Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VehicleDriveSimData4W.cpp">
+      <Filter>Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VehicleEngineData.cpp">
+      <Filter>Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VehicleGearsData.cpp">
+      <Filter>Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VehicleGraph.cpp">
+      <Filter>Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VehicleGraphChannelDesc.cpp">
+      <Filter>Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VehicleKeySmoothingData.cpp">
+      <Filter>Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VehiclePadSmoothingData.cpp">
+      <Filter>Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VehicleSuspensionData.cpp">
+      <Filter>Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VehicleTireLoadFilterData.cpp">
+      <Filter>Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VehicleTyreData.cpp">
+      <Filter>Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VehicleWheelData.cpp">
+      <Filter>Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VehicleWheels.cpp">
+      <Filter>Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VehicleWheelValues.cpp">
+      <Filter>Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VehicleWheelsSimData.cpp">
+      <Filter>Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VehicleSDK.cpp">
+      <Filter>Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\RaycastQueryResult.cpp" />
+    <ClCompile Include="Source\D6Joint.cpp">
+      <Filter>Joints</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\D6JointDrive.cpp">
+      <Filter>Joints</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FixedJoint.cpp">
+      <Filter>Joints</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DistanceJoint.cpp">
+      <Filter>Joints</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\PrismaticJoint.cpp">
+      <Filter>Joints</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\RevoluteJoint.cpp">
+      <Filter>Joints</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SphericalJoint.cpp">
+      <Filter>Joints</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CapsuleController.cpp">
+      <Filter>Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CapsuleControllerDesc.cpp">
+      <Filter>Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\BoxController.cpp">
+      <Filter>Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\BoxControllerDesc.cpp">
+      <Filter>Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Controller.cpp">
+      <Filter>Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ControllerDesc.cpp">
+      <Filter>Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ControllerFilters.cpp">
+      <Filter>Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ControllerManager.cpp">
+      <Filter>Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ControllerObstacleHit.cpp">
+      <Filter>Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ControllerShapeHit.cpp">
+      <Filter>Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ControllersHit.cpp">
+      <Filter>Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Bounds3.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Vector2.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Vector3.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Vector4.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MathUtil.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Matrix.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Actor.cpp">
+      <Filter>Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\RigidActor.cpp">
+      <Filter>Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\RigidBody.cpp">
+      <Filter>Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\RigidDynamic.cpp">
+      <Filter>Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\RigidStatic.cpp">
+      <Filter>Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VehicleDriveSimData.cpp">
+      <Filter>Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Cloth.cpp">
+      <Filter>Cloth</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ClothFabric.cpp">
+      <Filter>Cloth</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\OperationFailedException.cpp">
+      <Filter>Exception</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ClothPhaseSolverConfig.cpp">
+      <Filter>Cloth</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ClothReadData.cpp">
+      <Filter>Cloth</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Util.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ClothCollisionData.cpp">
+      <Filter>Cloth</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ObjectTable.cpp">
+      <Filter>ObjectTable</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Cooking.cpp">
+      <Filter>Cooking</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CookingParams.cpp">
+      <Filter>Cooking</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Collection.cpp">
+      <Filter>Serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ControllerBehaviorCallback.cpp">
+      <Filter>Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Obstacle.cpp">
+      <Filter>Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\BoxObstacle.cpp">
+      <Filter>Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CapsuleObstacle.cpp" />
+    <ClCompile Include="Source\ObstacleContext.cpp">
+      <Filter>Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Serializable.cpp">
+      <Filter>Serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ClothMeshDesc.cpp">
+      <Filter>Cloth</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ClothParticle.cpp">
+      <Filter>Cloth</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Joint.cpp">
+      <Filter>Joints</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\JointLimit.cpp">
+      <Filter>Joints</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\JointLimitCone.cpp">
+      <Filter>Joints</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\JointLimitPair.cpp">
+      <Filter>Joints</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\JointLimitParameters.cpp">
+      <Filter>Joints</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ObjectTable.Get.cpp">
+      <Filter>ObjectTable</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ObjectTable.Disposal.cpp">
+      <Filter>ObjectTable</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HeightField.cpp">
+      <Filter>HeightField</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HeightFieldDesc.cpp">
+      <Filter>HeightField</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HeightFieldSample.cpp">
+      <Filter>HeightField</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ParticleBase.cpp">
+      <Filter>Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ParticleCreationData.cpp">
+      <Filter>Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ParticleFluid.cpp">
+      <Filter>Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ParticleFluidReadData.cpp">
+      <Filter>Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ParticleReadData.cpp">
+      <Filter>Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ParticleSystem.cpp">
+      <Filter>Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CapsuleGeometry.cpp">
+      <Filter>Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\BoxGeometry.cpp">
+      <Filter>Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Scene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SceneDesc.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SceneQueryFilterData.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SceneQueryHit.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SceneQueryImpactHit.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SceneSweepOperationObject.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Constraint.cpp">
+      <Filter>Constraint</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Constraint1D.cpp">
+      <Filter>Constraint</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ConstraintDesc.cpp">
+      <Filter>Constraint</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ConstraintDominance.cpp">
+      <Filter>Constraint</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Quaternion.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\TolerancesScale.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Physics.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Material.cpp">
+      <Filter>Material</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ConstraintConnector.cpp">
+      <Filter>Constraint</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Foundation.cpp">
+      <Filter>Foundation</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Geometry.cpp">
+      <Filter>Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\PlaneGeometry.cpp">
+      <Filter>Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\TriangleMeshGeometry.cpp">
+      <Filter>Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ConvexMeshGeometry.cpp">
+      <Filter>Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HeightFieldGeometry.cpp">
+      <Filter>Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SphereGeometry.cpp">
+      <Filter>Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SimulationStatistics.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\StreamExtensions.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="Source\ActiveTransform.h" />
+    <ClInclude Include="Source\Aggregate.h" />
+    <ClInclude Include="Source\Articulation.h" />
+    <ClInclude Include="Source\ArticulationJoint.h" />
+    <ClInclude Include="Source\ArticulationLink.h" />
+    <ClInclude Include="Source\BitAndData.h" />
+    <ClInclude Include="Source\CctHit.h" />
+    <ClInclude Include="Source\CommonEnum.h" />
+    <ClInclude Include="Source\ContactPointAux.h" />
+    <ClInclude Include="Source\ConvexMesh.h" />
+    <ClInclude Include="Source\ConvexMeshDesc.h" />
+    <ClInclude Include="Source\ConvexMeshMassInformation.h" />
+    <ClInclude Include="Source\DebugLine.h" />
+    <ClInclude Include="Source\DebugPoint.h" />
+    <ClInclude Include="Source\DebugText.h" />
+    <ClInclude Include="Source\DebugTriangle.h" />
+    <ClInclude Include="Source\DefaultMemoryInputData.h" />
+    <ClInclude Include="Source\ErrorCallback.h" />
+    <ClInclude Include="Source\ConnectionManager.h" />
+    <ClInclude Include="Source\VisualDebuggerEnum.h" />
+    <ClInclude Include="Source\FilterData.h" />
+    <ClInclude Include="Source\FixedSizeLookupTable.h" />
+    <ClInclude Include="Source\FixedSizeLookupTablePair.h" />
+    <ClInclude Include="Source\HullPolygon.h" />
+    <ClInclude Include="Source\IDisposable.h" />
+    <ClInclude Include="Source\InputData.h" />
+    <ClInclude Include="Source\InputStream.h" />
+    <ClInclude Include="Source\IObservable.h" />
+    <ClInclude Include="Source\IObserver.h" />
+    <ClInclude Include="Source\LockedData.h" />
+    <ClInclude Include="Source\MeshScale.h" />
+    <ClInclude Include="Source\MultipleRaycastHitResult.h" />
+    <ClInclude Include="Source\Observable.h" />
+    <ClInclude Include="Source\ObservableEnum.h" />
+    <ClInclude Include="Source\ObservableInstance.h" />
+    <ClInclude Include="Source\Observer.h" />
+    <ClInclude Include="Source\DefaultMemoryOutputStream.h" />
+    <ClInclude Include="Source\OutputStream.h" />
+    <ClInclude Include="Source\PhysXException.h" />
+    <ClInclude Include="Source\Plane.h" />
+    <ClInclude Include="Source\RaycastHit.h" />
+    <ClInclude Include="Source\RenderBuffer.h" />
+    <ClInclude Include="Source\RuntimeFileChecks.h" />
+    <ClInclude Include="Source\Shape.h" />
+    <ClInclude Include="Source\ShapeCreationException.h" />
+    <ClInclude Include="Source\ShapeFlag.h" />
+    <ClInclude Include="Source\SimpleTriangleMesh.h" />
+    <ClInclude Include="Source\SolverIterationCounts.h" />
+    <ClInclude Include="Source\StdAfx.h" />
+    <ClInclude Include="Source\SweepHit.h" />
+    <ClInclude Include="Source\TriangleMesh.h" />
+    <ClInclude Include="Source\TriangleMeshDesc.h" />
+    <ClInclude Include="Source\TriggerPair.h" />
+    <ClInclude Include="Source\UserControllerHitReport.h" />
+    <ClInclude Include="Source\Connection.h" />
+    <ClInclude Include="Source\VisualDebuggerExt.h" />
+    <ClInclude Include="Source\ContactPoint.h" />
+    <ClInclude Include="Source\BatchQuery.h" />
+    <ClInclude Include="Source\SweepCache.h" />
+    <ClInclude Include="Source\VehicleWheelValues.h">
+      <Filter>Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleAckermannGeometryData.h">
+      <Filter>Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleAutoBoxData.h">
+      <Filter>Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleChassisData.h">
+      <Filter>Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleClutchData.h">
+      <Filter>Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleDifferential4WData.h">
+      <Filter>Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleDrive.h">
+      <Filter>Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleDrive4W.h">
+      <Filter>Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleDriveDynData.h">
+      <Filter>Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleDriveSimData4W.h">
+      <Filter>Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleEngineData.h">
+      <Filter>Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleEnum.h">
+      <Filter>Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleGearsData.h">
+      <Filter>Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleGraph.h">
+      <Filter>Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleGraphChannelDesc.h">
+      <Filter>Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleKeySmoothingData.h">
+      <Filter>Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehiclePadSmoothingData.h">
+      <Filter>Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleSuspensionData.h">
+      <Filter>Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleTireLoadFilterData.h">
+      <Filter>Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleTyreData.h">
+      <Filter>Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleWheelData.h">
+      <Filter>Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleWheels.h">
+      <Filter>Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleWheelsSimData.h">
+      <Filter>Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleSDK.h">
+      <Filter>Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleSDKNotInitializedException.h">
+      <Filter>Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\RaycastQueryResult.h" />
+    <ClInclude Include="Source\D6Joint.h">
+      <Filter>Joints</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\D6JointDrive.h">
+      <Filter>Joints</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FixedJoint.h">
+      <Filter>Joints</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DistanceJoint.h">
+      <Filter>Joints</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\PrismaticJoint.h">
+      <Filter>Joints</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\RevoluteJoint.h">
+      <Filter>Joints</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SphericalJoint.h">
+      <Filter>Joints</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CapsuleController.h">
+      <Filter>Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CapsuleControllerDesc.h">
+      <Filter>Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\BoxControllerDesc.h">
+      <Filter>Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\BoxController.h">
+      <Filter>Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ControllersHit.h">
+      <Filter>Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Controller.h">
+      <Filter>Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ControllerDesc.h">
+      <Filter>Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ControllerFilters.h">
+      <Filter>Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ControllerManager.h">
+      <Filter>Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ControllerObstacleHit.h">
+      <Filter>Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ControllerShapeDesc.h">
+      <Filter>Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ControllerShapeHit.h">
+      <Filter>Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Bounds3.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Vector4.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Vector2.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Vector3.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\MathUtil.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Matrix.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Actor.h">
+      <Filter>Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ActorEnum.h">
+      <Filter>Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\RigidActor.h">
+      <Filter>Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\RigidBody.h">
+      <Filter>Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\RigidDynamic.h">
+      <Filter>Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\RigidStatic.h">
+      <Filter>Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleDriveSimData.h">
+      <Filter>Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Cloth.h">
+      <Filter>Cloth</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ClothFabric.h">
+      <Filter>Cloth</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ClothEnum.h">
+      <Filter>Cloth</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ClothParticle.h">
+      <Filter>Cloth</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ClothParticleMotionConstraint.h">
+      <Filter>Cloth</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OperationFailedException.h">
+      <Filter>Exception</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\MotionConstraintScaleBias.h">
+      <Filter>Cloth</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ClothParticleSeparationConstraint.h">
+      <Filter>Cloth</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ClothPhaseSolverConfig.h">
+      <Filter>Cloth</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ClothCollisionSphere.h">
+      <Filter>Cloth</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ClothCollisionPlane.h">
+      <Filter>Cloth</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ClothReadData.h">
+      <Filter>Cloth</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Util.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\EnumUtil.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ClothCollisionData.h">
+      <Filter>Cloth</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ObjectTable.h">
+      <Filter>ObjectTable</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ObjectTableOwnershipType.h">
+      <Filter>ObjectTable</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CookingParams.h">
+      <Filter>Cooking</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Cooking.h">
+      <Filter>Cooking</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CookingEnum.h">
+      <Filter>Cooking</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SerialEnum.h">
+      <Filter>Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Collection.h">
+      <Filter>Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ControllerBehaviorCallback.h">
+      <Filter>Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ControllerEnum.h">
+      <Filter>Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Obstacle.h">
+      <Filter>Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\BoxObstacle.h">
+      <Filter>Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CapsuleObstacle.h" />
+    <ClInclude Include="Source\ObstacleContext.h">
+      <Filter>Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ISerializable.h">
+      <Filter>Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Serializable.h">
+      <Filter>Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SerializableEnum.h">
+      <Filter>Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ClothMeshDesc.h">
+      <Filter>Cloth</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FailedToCreateObjectException.h">
+      <Filter>Exception</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\JointLimitParameters.h">
+      <Filter>Joints</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Joint.h">
+      <Filter>Joints</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\JointEnum.h">
+      <Filter>Joints</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\JointLimit.h">
+      <Filter>Joints</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\JointLimitCone.h">
+      <Filter>Joints</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\JointLimitPair.h">
+      <Filter>Joints</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\PhysicsAlreadyInstantiatedException.h">
+      <Filter>Exception</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ObjectTableEventArgs.h">
+      <Filter>ObjectTable</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HeightFieldSample.h">
+      <Filter>HeightField</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HeightField.h">
+      <Filter>HeightField</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HeightFieldDesc.h">
+      <Filter>HeightField</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HeightFieldEnum.h">
+      <Filter>HeightField</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ParticleSystem.h">
+      <Filter>Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ParticleBase.h">
+      <Filter>Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ParticleCreationData.h">
+      <Filter>Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ParticleEnum.h">
+      <Filter>Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ParticleFluid.h">
+      <Filter>Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ParticleFluidReadData.h">
+      <Filter>Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ParticleReadData.h">
+      <Filter>Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CapsuleGeometry.h">
+      <Filter>Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\BoxGeometry.h">
+      <Filter>Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CharacterEnum.h">
+      <Filter>Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SceneSweepOperationObject.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Scene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SceneCreationException.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SceneDesc.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SceneEnum.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SceneQueryFilterData.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SceneQueryHit.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SceneQueryImpactHit.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ConstraintFlag.h">
+      <Filter>Constraint</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Constraint.h">
+      <Filter>Constraint</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Constraint1D.h">
+      <Filter>Constraint</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ConstraintConnector.h">
+      <Filter>Constraint</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ConstraintDesc.h">
+      <Filter>Constraint</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ConstraintDominance.h">
+      <Filter>Constraint</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ConstraintEnum.h">
+      <Filter>Constraint</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Quaternion.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\TolerancesScale.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\PhysicsEnum.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Physics.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Material.h">
+      <Filter>Material</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\MaterialEnum.h">
+      <Filter>Material</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Foundation.h">
+      <Filter>Foundation</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FoundationAlreadyInitalizedException.h">
+      <Filter>Foundation</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Geometry.h">
+      <Filter>Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GeometryUtilEnum.h">
+      <Filter>Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GeometryEnum.h">
+      <Filter>Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\PlaneGeometry.h">
+      <Filter>Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\TriangleMeshGeometry.h">
+      <Filter>Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ConvexMeshGeometry.h">
+      <Filter>Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HeightFieldGeometry.h">
+      <Filter>Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SphereGeometry.h">
+      <Filter>Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SimulationStatistics.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\StreamExtensions.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Version.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Changelog.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="PhysXExtensions">
+      <UniqueIdentifier>{8b0ce4ef-6049-4539-b15d-273e4d2d2b26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vehicle">
+      <UniqueIdentifier>{5892e8a6-22a0-4a98-bb0c-c7fe2c35eb93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Cloth">
+      <UniqueIdentifier>{d2b6474b-f4a8-435e-b0b3-2c1178548e17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Physics">
+      <UniqueIdentifier>{b82288c4-e4e0-41a7-bb1d-35ead323f1e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SceneQuery">
+      <UniqueIdentifier>{a150c3a9-5584-4130-b9c5-16550a264435}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Character">
+      <UniqueIdentifier>{00643cd6-e173-4d1c-bdac-4435a4b5e99d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{e5495bed-2009-42b4-9b32-369b06ec4953}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Cooking">
+      <UniqueIdentifier>{7335a60c-096c-4e73-b4eb-e3217776a84c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Extensions">
+      <UniqueIdentifier>{493e7b8b-ab01-4d6e-8204-5547e5d20422}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GeomUtils">
+      <UniqueIdentifier>{123b0f1a-881e-48b3-a9c4-f057f7fd0426}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Particles">
+      <UniqueIdentifier>{158039ca-df02-4e54-aa78-c3b99459e1ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PVD">
+      <UniqueIdentifier>{9da63bcf-e4a9-44f1-895e-601382702b86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Foundation">
+      <UniqueIdentifier>{52812c25-7015-4646-ba5a-30fbde86f2a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Joints">
+      <UniqueIdentifier>{7588858e-a0dc-4475-a285-3f0be0cdd708}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math">
+      <UniqueIdentifier>{3b690f58-62de-4073-a7ac-05bafbeb9464}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Actor">
+      <UniqueIdentifier>{dd4e2258-07ad-43ae-b350-9e39539fefe9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Exception">
+      <UniqueIdentifier>{303706b6-aebf-4a02-b112-e2c8ddaa2386}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Util">
+      <UniqueIdentifier>{cfdf1000-5af4-4570-b80b-d5a9165df387}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ObjectTable">
+      <UniqueIdentifier>{1791789f-0090-4245-99fe-e00974390ace}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Serialization">
+      <UniqueIdentifier>{b2ee8822-2a4b-4405-87d4-5697d714dbb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HeightField">
+      <UniqueIdentifier>{e532dab4-c7b3-43ce-8452-b43f96338f68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Geometry">
+      <UniqueIdentifier>{22c3534a-d537-4c32-8120-ccd411d76c54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{4eeaecb3-452c-4792-8a14-7d8eebd3531e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Constraint">
+      <UniqueIdentifier>{85f72683-ed38-4306-a757-97bf6cbfddcc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Material">
+      <UniqueIdentifier>{24ae7e2a-f6e6-4cdc-a721-a65ade415970}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

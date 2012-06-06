@@ -4,7 +4,7 @@
 #include <PxRevoluteJoint.h> 
 
 RevoluteJoint::RevoluteJoint(PxRevoluteJoint* joint, PhysX::Scene^ owner)
-	: Joint(joint, JointType::Revolute, owner)
+	: Joint(joint, owner)
 {
 	
 }

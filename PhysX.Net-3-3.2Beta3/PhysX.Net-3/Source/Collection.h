@@ -1,5 +1,7 @@
 #pragma once
 
+#include "SerialEnum.h"
+
 using namespace System::IO;
 
 namespace PhysX

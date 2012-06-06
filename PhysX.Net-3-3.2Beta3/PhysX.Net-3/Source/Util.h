@@ -1,7 +1,8 @@
 #pragma once
 
-#include "MemoryStream.h"
 #include <PxStrideIterator.h>
+#include <PxDefaultStreams.h> 
+#include "EnumUtil.h"
 
 using namespace System;
 using namespace System::Runtime::InteropServices;
@@ -41,8 +42,9 @@ namespace PhysX
 			static PrimitiveTypeSize Is16Or32Bit(Type^ type);
 			static Nullable<bool> Is16Or32Bit(Array^ values);
 
-			static MemoryStream* StreamToUnmanagedMemoryStream(System::IO::Stream^ stream);
-			static System::IO::MemoryStream^ UnmanagedMemoryStreamToStream(MemoryStream& memoryStream);
-			static void CopyIntoStream(MemoryStream& memoryStream, System::IO::Stream^ stream);
+			// Returns an unmanaged stream clone of the data. The caller is responsible for freeing the allocated memory.
+			static PxDefaultMemoryInputData* StreamToUnmanagedInputStream(System::IO::Stream^ stream);
+			//static System::IO::MemoryStream^ UnmanagedMemoryStreamToStream(MemoryStream& memoryStream);
+			static void CopyIntoStream(PxDefaultMemoryOutputStream* from, System::IO::Stream^ to);
 	};
 };

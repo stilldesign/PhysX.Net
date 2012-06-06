@@ -1,8 +1,21 @@
 #include "StdAfx.h"
 #include "Shape.h"
 #include "Actor.h"
+#include "Geometry.h"
+#include "SphereGeometry.h"
+#include "Serializable.h"
+#include "BoxGeometry.h"
+#include "SphereGeometry.h"
+#include "CapsuleGeometry.h"
+#include "PlaneGeometry.h"
+#include "ConvexMeshGeometry.h"
+#include "TriangleMeshGeometry.h"
+#include "HeightFieldGeometry.h"
+#include <PxGeometryHelpers.h>
+#include <PxShapeExt.h>
 
 using namespace PhysX;
+using namespace System::Runtime::InteropServices;
 
 Shape::Shape(PxShape* shape, PhysX::Actor^ parentActor)
 {
@@ -34,17 +47,91 @@ Shape::!Shape()
 
 bool Shape::Disposed::get()
 {
-	return _shape == NULL;
+	return (_shape == NULL);
 }
 
-GeometryType Shape::Type::get()
+Serializable^ Shape::AsSerializable()
 {
-	return ToManagedEnum(GeometryType, _shape->getGeometryType());
+	return gcnew Serializable(_shape);
+}
+
+BoxGeometry^ Shape::GetBoxGeometry()
+{
+	PxBoxGeometry box;
+	_shape->getBoxGeometry(box);
+
+	return BoxGeometry::ToManaged(box);
+}
+SphereGeometry^ Shape::GetSphereGeometry()
+{
+	PxSphereGeometry sphere;
+	_shape->getSphereGeometry(sphere);
+
+	return SphereGeometry::ToManaged(sphere);
+}
+CapsuleGeometry^ Shape::GetCapsuleGeometry()
+{
+	PxCapsuleGeometry capsule;
+	_shape->getCapsuleGeometry(capsule);
+
+	return CapsuleGeometry::ToManaged(capsule);
+}
+PlaneGeometry^ Shape::GetPlaneGeometry()
+{
+	PxPlaneGeometry plane;
+	_shape->getPlaneGeometry(plane);
+
+	return PlaneGeometry::ToManaged(plane);
+}
+ConvexMeshGeometry^ Shape::GetConvexMeshGeometry()
+{
+	PxConvexMeshGeometry convexMesh;
+	_shape->getConvexMeshGeometry(convexMesh);
+
+	return ConvexMeshGeometry::ToManaged(convexMesh);
+}
+TriangleMeshGeometry^ Shape::GetTriangleMeshGeometry()
+{
+	PxTriangleMeshGeometry triangleMesh;
+	_shape->getTriangleMeshGeometry(triangleMesh);
+
+	return TriangleMeshGeometry::ToManaged(triangleMesh);
+}
+HeightFieldGeometry^ Shape::GetHeightFieldGeometry()
+{
+	PxHeightFieldGeometry heightField;
+	_shape->getHeightFieldGeometry(heightField);
+
+	return HeightFieldGeometry::ToManaged(heightField);
+}
+
+//
+
+PhysX::GeometryType Shape::GeometryType::get()
+{
+	return ToManagedEnum(PhysX::GeometryType, _shape->getGeometryType());
 }
 
 PhysX::Actor^ Shape::Actor::get()
 {
 	return _actor;
+}
+
+Matrix Shape::GlobalPose::get()
+{
+	return MathUtil::PxTransformToMatrix(&PxShapeExt::getGlobalPose(*_shape));
+}
+
+String^ Shape::Name::get()
+{
+	return Util::ToManagedString(_shape->getName());
+}
+void Shape::Name::set(String^ value)
+{
+	if (_shape->getName() != NULL)
+		Marshal::FreeHGlobal(IntPtr((char*)_shape->getName()));
+
+	_shape->setName(Util::ToUnmanagedString(value));
 }
 
 Bounds3 Shape::WorldBounds::get()

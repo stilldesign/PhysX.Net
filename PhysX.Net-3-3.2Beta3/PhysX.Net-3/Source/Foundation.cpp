@@ -1,16 +1,36 @@
 #include "StdAfx.h"
 #include "Foundation.h"
 #include "Physics.h"
+#include "ErrorCallback.h"
+#include "FailedToCreateObjectException.h"
+#include "FoundationAlreadyInitalizedException.h"
+#include <PxTolerancesScale.h>
+#include <PxDefaultAllocator.h> 
+#include <PxDefaultErrorCallback.h>
 
-Foundation::Foundation(PxFoundation* foundation, PhysX::Physics^ owner)
+static Foundation::Foundation()
 {
-	if (foundation == NULL)
-		throw gcnew ArgumentNullException("foundation");
-	ThrowIfNullOrDisposed(owner, "owner");
+	_initalized = false;
+}
+Foundation::Foundation([Optional] PhysX::ErrorCallback^ errorCallback)
+{
+	if (Foundation::Initalized)
+		throw gcnew FoundationAlreadyInitalizedException("Foundation can only be initalized once");
 
-	_foundation = foundation;
+	PxErrorCallback* errors = (errorCallback == nullptr ? gcnew DefaultErrorCallback() : errorCallback)->UnmanagedPointer;
 
-	ObjectTable::Add((intptr_t)foundation, this, owner);
+	_allocator = new PxDefaultAllocator();
+
+	_foundation = PxCreateFoundation(PX_PHYSICS_VERSION, *_allocator, *errors);
+	
+	if (_foundation == NULL)
+		throw gcnew FailedToCreateObjectException("Failed to create Foundation");
+
+	_initalized = true;
+
+	_errorCallback = errorCallback;
+
+	ObjectTable::Add((intptr_t)_foundation, this, nullptr);
 }
 Foundation::~Foundation()
 {
@@ -20,19 +40,39 @@ Foundation::!Foundation()
 {
 	OnDisposing(this, nullptr);
 
-	if (Disposed)
+	if (this->Disposed)
 		return;
 
-	// The native PxFoundation object is not created by us, it is a simple member variable
-	// on the PxPhysics object, therefore do not delete/free it
+	_foundation->release();
 	_foundation = NULL;
+
+	SAFE_DELETE(_allocator);
+
+	_errorCallback = nullptr;
+
+	_initalized = false;
 
 	OnDisposed(this, nullptr);
 }
 
 bool Foundation::Disposed::get()
 {
-	return _foundation == NULL;
+	return (_foundation == NULL);
+}
+
+PxAllocatorCallback* Foundation::GetAllocator()
+{
+	return _allocator;
+}
+
+bool Foundation::Initalized::get()
+{
+	return _initalized;
+}
+
+PhysX::ErrorCallback^ Foundation::ErrorCallback::get()
+{
+	return _errorCallback;
 }
 
 PxFoundation* Foundation::UnmanagedPointer::get()

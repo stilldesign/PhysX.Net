@@ -3,7 +3,7 @@
 #include "DistanceJoint.h"
 
 DistanceJoint::DistanceJoint(PxDistanceJoint* joint, PhysX::Scene^ owner)
-	: Joint(joint, JointType::Distance, owner)
+	: Joint(joint, owner)
 {
 	
 }

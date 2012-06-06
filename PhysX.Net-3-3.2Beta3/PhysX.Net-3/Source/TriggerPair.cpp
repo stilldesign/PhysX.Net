@@ -4,6 +4,8 @@
 
 PxTriggerPair TriggerPair::ToUnmanaged(TriggerPair^ pair)
 {
+	ThrowIfNull(pair, "pair");
+
 	PxTriggerPair tp;
 		tp.otherShape = GetPointerOrNull(pair->OtherShape);
 		tp.status = ToUnmanagedEnum(PxPairFlag, pair->Status);

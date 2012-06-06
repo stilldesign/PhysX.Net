@@ -35,12 +35,12 @@ void InternalErrorCallback::reportError(PxErrorCode::Enum code, const char *mess
 
 //
 
-ConsoleOutputStream::ConsoleOutputStream()
+ConsoleErrorCallback::ConsoleErrorCallback()
 {
 
 }
 
-void ConsoleOutputStream::ReportError(ErrorCode errorCode, String^ message, String^ file, int lineNumber)
+void ConsoleErrorCallback::ReportError(ErrorCode errorCode, String^ message, String^ file, int lineNumber)
 {
 	Console::WriteLine(message);
 }

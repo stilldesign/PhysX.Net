@@ -966,6 +966,10 @@ namespace PhysX
 				/// <returns><c>true</c> if <paramref name="value1"/> is the same instance as <paramref name="value2"/> or
 				/// if both are <c>null</c> references or if <c>value1.Equals(value2)</c> returns <c>true</c>; otherwise, <c>false</c>.</returns>
 				static bool Equals( Matrix% value1, Matrix% value2 );
+
+				static Matrix FromSegment(Vector3 p0, Vector3 p1, [Optional] Nullable<float> halfHeight);
+
+				static Matrix FromPlaneEquation(Plane plane);
 		};
 	};
 };

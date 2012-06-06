@@ -3,6 +3,7 @@
 namespace PhysX
 {
 	ref class Physics;
+	ref class Serializable;
 
 	/// <summary>
 	/// A triangle mesh, also called a 'polygon soup'.
@@ -31,6 +32,13 @@ namespace PhysX
 			{
 				virtual bool get();
 			}
+
+			/// <summary>
+			/// Gets an object which is responsible for serialization of this type.
+			/// </summary>
+			Serializable^ AsSerializable();
+
+			//
 
 			/// <summary>
 			/// Gets the owner physics object.

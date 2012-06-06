@@ -7,8 +7,8 @@ VehicleGraphChannelDesc^ VehicleGraphChannelDesc::FromUnmanaged(PxVehicleGraphCh
 		d->MinY = desc.mMinY;
 		d->MaxY = desc.mMaxY;
 		d->MidY = desc.mMidY;
-		d->ColourLow = MathUtil::PxVec3ToVector3(desc.mColourLow);
-		d->ColourHigh = MathUtil::PxVec3ToVector3(desc.mColourHigh);
+		d->ColorLow = MathUtil::PxVec3ToVector3(desc.mColorLow);
+		d->ColorHigh = MathUtil::PxVec3ToVector3(desc.mColorHigh);
 		d->Title = Util::ToManagedString(desc.mTitle);
 
 	return d;
@@ -19,8 +19,8 @@ PxVehicleGraphChannelDesc VehicleGraphChannelDesc::ToUnmanaged(VehicleGraphChann
 		d.mMinY = desc->MinY;
 		d.mMaxY = desc->MaxY;
 		d.mMidY = desc->MidY;
-		d.mColourLow = MathUtil::Vector3ToPxVec3(desc->ColourLow);
-		d.mColourHigh = MathUtil::Vector3ToPxVec3(desc->ColourHigh);
+		d.mColorLow = MathUtil::Vector3ToPxVec3(desc->ColorLow);
+		d.mColorHigh = MathUtil::Vector3ToPxVec3(desc->ColorHigh);
 		d.mTitle = Util::ToUnmanagedString(desc->Title);
 
 	return d;
