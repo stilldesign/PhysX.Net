@@ -17,7 +17,6 @@
 #include "CookingParams.h"
 #include "Cooking.h"
 #include "TriangleMesh.h"
-#include "Attachment.h"
 #include "Shape.h"
 #include "RuntimeFileChecks.h"
 #include "ParticleFluid.h"
