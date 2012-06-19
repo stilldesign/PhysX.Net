@@ -31,6 +31,8 @@ namespace PhysX.Samples.FluidSample
 			// Create the particle fluid
 			var particleFluid = scene.Physics.CreateParticleFluid(d * d * d);
 
+			particleFluid.RestParticleDistance *= 10.5f;
+
 			//
 
 			// Create an array to hold the positions of the particles
