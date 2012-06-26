@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestLists xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestList name="Joint" id="14ce7c5c-73d7-401d-b8c8-38397a5980db" parentListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6">
+    <TestLinks>
+      <TestLink id="fdd8bb42-bd73-c220-c385-ce21fa62a24b" name="CreateAndDisposeFixedJoint" storage="test\bin\x86\debug\physx.test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+      <TestLink id="85b4930a-4c45-2f83-c456-3d5454eb3129" name="CreateAndDisposeDistanceJoint" storage="test\bin\x86\debug\physx.test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+      <TestLink id="74f49227-a748-edb8-dce4-05a91b740d46" name="CreateAndDisposeD6Joint" storage="test\bin\x86\debug\physx.test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+      <TestLink id="94030105-78f6-79f3-6776-da9518106f5a" name="CreateAndDisposePrismaticJoint" storage="test\bin\x86\debug\physx.test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    </TestLinks>
+  </TestList>
+  <TestList name="Deformable" id="3e166980-c5fd-476d-bf78-98883e402224" parentListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" />
+  <TestList name="Scene" id="53613a1e-ba7c-4693-987c-74b1baec3ff1" parentListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6">
+    <TestLinks>
+      <TestLink id="a4e5a611-be7d-9b4a-3cb1-0204a44db982" name="CreateAndDisposeSceneInstance" storage="test\bin\x86\debug\physx.test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+      <TestLink id="b02b81d6-410c-1d39-a77d-86fa838e649d" name="RaycastAny" storage="test\bin\x86\debug\physx.test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+      <TestLink id="824292ea-0a49-ddac-1a90-a84e81937939" name="SetGravity" storage="test\bin\x86\debug\physx.test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    </TestLinks>
+  </TestList>
+  <TestList name="HeightField" id="7a53fc12-6298-4bbf-af01-02d755a4994a" parentListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6">
+    <TestLinks>
+      <TestLink id="09f1d153-9059-a03f-3721-67fd9b728b33" name="CreateAndDisposeHeightField" storage="test\bin\x86\debug\physx.test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    </TestLinks>
+  </TestList>
+  <TestList name="Character" id="8477d812-c567-41ee-8b57-3a47529ca600" parentListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6">
+    <TestLinks>
+      <TestLink id="8713cd37-a999-93fa-4f18-e2178a2e6b10" name="CreateAndDisposeCapsuleController" storage="test\bin\x86\debug\physx.test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+      <TestLink id="64b1816f-d8ff-3394-43a5-84dc61ce761b" name="CreateAndDisposeBoxController" storage="test\bin\x86\debug\physx.test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    </TestLinks>
+  </TestList>
+  <TestList name="Lists of Tests" id="8c43106b-9dc1-4907-a29f-aa66a61bf5b6">
+    <RunConfiguration id="7e925b54-f10a-4b92-83db-c45e0873a279" name="Local" storage="local.testsettings" type="Microsoft.VisualStudio.TestTools.Common.TestRunConfiguration, Microsoft.VisualStudio.QualityTools.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  </TestList>
+  <TestList name="Core" id="b506682b-377a-4055-8ffc-f18e78327608" parentListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" />
+  <TestList name="Object Table" id="bc53c873-c9a4-4a2a-bdd3-4c4156665387" parentListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6">
+    <TestLinks>
+      <TestLink id="bfb077af-02c2-e3e7-87ca-bacd21be60aa" name="OwnershipDisposale" storage="test\bin\x86\debug\physx.test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+      <TestLink id="b6a003f3-c66e-7dbc-7c76-ca108615456b" name="Disposing_RemovedFromOwnershipDictionary" storage="test\bin\x86\debug\physx.test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+      <TestLink id="500f5658-1633-a74e-f875-3df7280f7d6e" name="Disposing_OwnerTypeListIsRemovedWhenEmpty" storage="test\bin\x86\debug\physx.test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+      <TestLink id="daaadbe2-e7d6-33f3-7c49-f5069bbbd1aa" name="Disposing_RemovedFromOwnerTypeDictionary" storage="test\bin\x86\debug\physx.test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+      <TestLink id="26d5cccb-d56c-22cd-ed82-4b2e5fdcc27e" name="GetObjectsOfOwnerAndType" storage="test\bin\x86\debug\physx.test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+      <TestLink id="d9fe6dc8-f731-b9f6-9d43-732fd2c1cdab" name="GetObjectsOfOwnerAndType_MultipleEnumerationsYieldTheSameObjects" storage="test\bin\x86\debug\physx.test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+      <TestLink id="a9c3f509-82df-4deb-f2f4-e02cefd053e7" name="EnsureUnmanagedObjectIsOnlyWrappedOnce" storage="test\bin\x86\debug\physx.test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+      <TestLink id="679d67d2-b123-e342-d904-4f3c712f0fe7" name="Disposing_RemovedFromObjectTableDictionary" storage="test\bin\x86\debug\physx.test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    </TestLinks>
+  </TestList>
+  <TestList name="Particle" id="db3313b4-3302-4087-9c0d-1b670da5c00b" parentListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6">
+    <TestLinks>
+      <TestLink id="57c8f7e5-e9dd-6893-431c-68e63563c0c7" name="CreateAndDisposeParticleSystemInstance" storage="test\bin\x86\debug\physx.test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    </TestLinks>
+  </TestList>
+  <TestList name="Physics" id="ea790780-964d-4a32-9881-387c08cce4ab" parentListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6">
+    <TestLinks>
+      <TestLink id="24dca697-5dcf-f898-55e4-0adc744b4d9b" name="CreateAndDisposePhysicsInstance" storage="test\bin\x86\debug\physx.test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+      <TestLink id="e6d39f81-c3ed-625b-9228-cab8c5fe6f53" name="ThrowsExceptionOnDuplicateInstantiation" storage="test\bin\x86\debug\physx.test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    </TestLinks>
+  </TestList>
+</TestLists>
