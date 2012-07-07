@@ -51,7 +51,7 @@ namespace PhysX
 	/// Error codes.
 	/// These error codes are passed to #PxErrorCallback.
 	/// </summary>
-	public enum ErrorCode
+	public enum class ErrorCode
 	{
 		NoError = PxErrorCode::eNO_ERROR,
 
