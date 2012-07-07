@@ -17,22 +17,23 @@ namespace PhysX.Test
 
 				var material = core.Physics.CreateMaterial(0.1f, 0.1f, 0.1f);
 
-				var desc = new BoxControllerDesc()
+				var desc = new CapsuleControllerDesc()
 				{
-					Extents = new Math.Vector3(5, 5, 5),
+					Radius = 5,
+					Height = 2,
 					Material = material
 				};
 
 				Assert.IsTrue(desc.IsValid());
 
-				BoxController boxController;
-				using (boxController = controllerManager.CreateController<BoxController>(desc))
+				CapsuleController capsuleController;
+				using (capsuleController = controllerManager.CreateController<CapsuleController>(desc))
 				{
-					Assert.IsNotNull(boxController);
-					Assert.IsFalse(boxController.Disposed);
+					Assert.IsNotNull(capsuleController);
+					Assert.IsFalse(capsuleController.Disposed);
 				}
 
-				Assert.IsTrue(boxController.Disposed);
+				Assert.IsTrue(capsuleController.Disposed);
 			}
 		}
 	}

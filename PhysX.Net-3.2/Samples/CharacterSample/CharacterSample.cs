@@ -14,9 +14,6 @@ namespace PhysX.Samples.CharacterSample
 		private const float _cameraDistance = 15;
 		private const float _controllerSpeed = 0.1f;
 
-		// Height of the controller (used to calculate gravity)
-		private PhysX.Math.Vector3? _previousControllerPosition;
-
 		public CharacterSample()
 		{
 			Run();
@@ -32,7 +29,7 @@ namespace PhysX.Samples.CharacterSample
 		protected override void LoadPhysics(Scene scene)
 		{
 			var material = scene.Physics.CreateMaterial(0.1f, 0.1f, 0.1f);
-
+			
 			var controllerManager = scene.CreateControllerManager();
 
 			var desc = new CapsuleControllerDesc()
@@ -41,7 +38,8 @@ namespace PhysX.Samples.CharacterSample
 				Radius = 1,
 				Material = material,
 				UpDirection = new Math.Vector3(0, 1, 0),
-				Position = new Math.Vector3(0, 2, 0)
+				Position = new Math.Vector3(0, 2, 0),
+				Callback = new ControllerHitReport()
 			};
 
 			_controller = controllerManager.CreateController<CapsuleController>(desc);

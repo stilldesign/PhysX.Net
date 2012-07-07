@@ -47,6 +47,7 @@
     <Compile Include="Actor\ActorSerialization.cs" />
     <Compile Include="Cloth\ClothTest.cs" />
     <Compile Include="Controller\BoxControllerTest.cs" />
+    <Compile Include="Controller\CapsuleControllerDescTest.cs" />
     <Compile Include="Controller\CapsuleControllerTest.cs" />
     <Compile Include="Controller\ObstacleTest.cs" />
     <Compile Include="Cooking\CookTest.cs" />

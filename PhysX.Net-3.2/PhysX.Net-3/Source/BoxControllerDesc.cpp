@@ -43,13 +43,18 @@ PxControllerDesc BoxControllerDesc::ToUnmanaged()
 
 void BoxControllerDesc::SetToDefault()
 {
-	
+	ControllerDesc::SetToDefault();
+
+	// Values from PxBoxControllerDesc
+	HalfHeight = 1.0f;
+	HalfSideExtent = 0.5f;
+	HalfForwardExtent = 0.5f;
 }
 bool BoxControllerDesc::IsValid()
 {
-	auto d = ToUnmanaged(this);
+	auto desc = ToUnmanaged(this);
 
-	return d.isValid();
+	return desc.isValid();
 }
 
 Vector3 BoxControllerDesc::Extents::get()

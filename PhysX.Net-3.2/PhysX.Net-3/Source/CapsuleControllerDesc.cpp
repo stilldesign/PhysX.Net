@@ -4,7 +4,7 @@
 CapsuleControllerDesc::CapsuleControllerDesc()
 	: ControllerDesc(ControllerShapeType::Capsule)
 {
-
+	
 }
 
 PxCapsuleControllerDesc CapsuleControllerDesc::ToUnmanaged(CapsuleControllerDesc^ desc)
@@ -43,9 +43,16 @@ PxControllerDesc CapsuleControllerDesc::ToUnmanaged()
 
 void CapsuleControllerDesc::SetToDefault()
 {
+	ControllerDesc::SetToDefault();
 
+	// Values from PxCapsuleControllerDesc::setToDefault()
+	Radius = 0;
+	Height = 0;
+	ClimbingMode = CapsuleClimbingMode::Easy;
 }
 bool CapsuleControllerDesc::IsValid()
 {
-	return true;
+	auto desc = ToUnmanaged(this);
+
+	return desc.isValid();
 }

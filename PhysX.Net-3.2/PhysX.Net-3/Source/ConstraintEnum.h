@@ -26,7 +26,7 @@ namespace PhysX
 		InvalidId = PxConstraintExtIDs::eINVALID_ID
 	};
 
-	public enum PvdUpdateType
+	public enum class PvdUpdateType
 	{
 		CreateInstance = PxPvdUpdateType::CREATE_INSTANCE,
 		ReleaseInstance = PxPvdUpdateType::RELEASE_INSTANCE,

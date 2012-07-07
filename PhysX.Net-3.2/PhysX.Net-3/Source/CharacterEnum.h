@@ -63,6 +63,19 @@ namespace PhysX
 		UseFilter = PxCCTInteractionMode::eUSE_FILTER
 	};
 
+	public enum class CCTNonWalkableMode
+	{
+		/// <summary>
+		/// Stops character from climbing up a slope, but doesn't move it otherwise.
+		/// </summary>
+		PreventClimbing = PxCCTNonWalkableMode::ePREVENT_CLIMBING,
+
+		/// <summary>
+		/// Forces character to slide down non-walkable slopes.
+		/// </summary>
+		ForceSliding = PxCCTNonWalkableMode::eFORCE_SLIDING
+	};
+
 	/// <summary>
 	/// The type of controller, eg box, sphere or capsule.
 	/// </summary>
@@ -79,7 +92,7 @@ namespace PhysX
 		Capsule = PxControllerShapeType::eCAPSULE
 	};
 
-	public enum CapsuleClimbingMode
+	public enum class CapsuleClimbingMode
 	{
 		/// <summary>
 		/// Standard mode, let the capsule climb over surfaces according to impact normal.
@@ -88,11 +101,7 @@ namespace PhysX
 		/// <summary>
 		/// Constrained mode, try to limit climbing according to the step offset.
 		/// </summary>
-		Constrained = PxCapsuleClimbingMode::eCONSTRAINED,
-		/// <summary>
-		/// 
-		/// </summary>
-		Last = PxCapsuleClimbingMode::eLAST
+		Constrained = PxCapsuleClimbingMode::eCONSTRAINED
 	};
 
 	//public enum class ControllerAction
