@@ -57,6 +57,9 @@ namespace PhysX.Samples.RigidBodiesSample
 				rigidActor.SetMassAndUpdateInertia(10);
 
 				scene.AddActor(rigidActor);
+
+				// Spin the cube
+				rigidActor.AddTorque(new Vector3(0, 50000, 0), ForceMode.Acceleration, true);
 			}
 		}
 

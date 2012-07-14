@@ -40,6 +40,15 @@ namespace PhysX
 			void ClearForce(ForceMode mode, bool wake);
 			
 			/// <summary>
+			/// Applies an impulsive torque defined in the global coordinate frame to the actor. 
+			/// </summary>
+			void AddTorque(Vector3 force);
+			/// <summary>
+			/// Applies an impulsive torque defined in the global coordinate frame to the actor. 
+			/// </summary>
+			void AddTorque(Vector3 force, ForceMode mode, bool wake);
+
+			/// <summary>
 			/// Clears the impulsive torque defined in the global coordinate frame to the actor.
 			/// </summary>
 			void ClearTorque();

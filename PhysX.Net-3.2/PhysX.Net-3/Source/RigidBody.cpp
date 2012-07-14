@@ -30,6 +30,15 @@ void RigidBody::ClearForce(ForceMode mode, bool wake)
 	this->UnmanagedPointer->clearForce(ToUnmanagedEnum(PxForceMode, mode), wake);
 }
 
+void RigidBody::AddTorque(Vector3 force)
+{
+	AddTorque(force, ForceMode::Force, true);
+}
+void RigidBody::AddTorque(Vector3 force, ForceMode mode, bool wake)
+{
+	this->UnmanagedPointer->addTorque(MathUtil::Vector3ToPxVec3(force), ToUnmanagedEnum(PxForceMode, mode), wake);
+}
+
 void RigidBody::ClearTorque()
 {
 	ClearTorque(ForceMode::Force, true);
