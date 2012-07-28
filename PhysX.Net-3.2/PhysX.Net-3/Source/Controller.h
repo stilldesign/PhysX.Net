@@ -45,7 +45,16 @@ namespace PhysX
 			/// can not detect when static objects have changed in the scene. You need to call this method
 			/// when such changes have been made. 
 			/// </summary>
-			void ReportSceneChanged();
+			void InvalidateCache();
+
+			/// <summary>
+			/// Resizes the controller.
+			/// This function attempts to resize the controller to a given size, while making sure the bottom
+			/// position of the controller remains constant. In other words the function modifies both the
+			/// height and the (center) position of the controller. This is a helper function that can be used
+			/// to implement a 'crouch' functionality for example.
+			/// </summary>
+			void Resize(float height);
 
 			//
 

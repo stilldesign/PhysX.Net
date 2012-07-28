@@ -62,9 +62,14 @@ void Controller::Move(Vector3 displacement, TimeSpan elapsedTime, float minimumD
 	}
 }
 
-void Controller::ReportSceneChanged()
+void Controller::InvalidateCache()
 {
-	_controller->reportSceneChanged();
+	_controller->invalidateCache();
+}
+
+void Controller::Resize(float height)
+{
+	_controller->resize(height);
 }
 
 PhysX::ControllerManager^ Controller::ControllerManager::get()
