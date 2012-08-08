@@ -58,27 +58,31 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="PhysX.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="PhysX.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="PhysX.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="PhysX.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\PhysXProfileSDK;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\PhysXVisualDebuggerSDK;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\Vehicle;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\Particles;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\Geometry;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\Extensions;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\Cooking;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\Common;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\Characterkinematic;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\Cloth;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\Foundation;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\PxTask;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Lib\win32;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(NVIDIAPhysXSDK)\Include\PhysXProfileSDK;$(NVIDIAPhysXSDK)\Include\PhysXVisualDebuggerSDK;$(NVIDIAPhysXSDK)\Include\Vehicle;$(NVIDIAPhysXSDK)\Include\Particles;$(NVIDIAPhysXSDK)\Include\Geometry;$(NVIDIAPhysXSDK)\Include\Extensions;$(NVIDIAPhysXSDK)\Include\Cooking;$(NVIDIAPhysXSDK)\Include\Common;$(NVIDIAPhysXSDK)\Include\Characterkinematic;$(NVIDIAPhysXSDK)\Include\Cloth;$(NVIDIAPhysXSDK)\Include\Foundation;$(NVIDIAPhysXSDK)\Include\PxTask;$(NVIDIAPhysXSDK)\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(NVIDIAPhysXSDK)\Lib\win32;$(LibraryPath)</LibraryPath>
     <OutDir>$(ProjectDir)bin\x86\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)bin\x86\$(Configuration)\Intermediate\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\PhysXProfileSDK;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\PhysXVisualDebuggerSDK;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\Vehicle;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\Particles;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\Geometry;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\Extensions;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\Cooking;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\Common;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\Characterkinematic;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\Cloth;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\Foundation;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\PxTask;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Lib\win64;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(NVIDIAPhysXSDK)\Include\PhysXProfileSDK;$(NVIDIAPhysXSDK)\Include\PhysXVisualDebuggerSDK;$(NVIDIAPhysXSDK)\Include\Vehicle;$(NVIDIAPhysXSDK)\Include\Particles;$(NVIDIAPhysXSDK)\Include\Geometry;$(NVIDIAPhysXSDK)\Include\Extensions;$(NVIDIAPhysXSDK)\Include\Cooking;$(NVIDIAPhysXSDK)\Include\Common;$(NVIDIAPhysXSDK)\Include\Characterkinematic;$(NVIDIAPhysXSDK)\Include\Cloth;$(NVIDIAPhysXSDK)\Include\Foundation;$(NVIDIAPhysXSDK)\Include\PxTask;$(NVIDIAPhysXSDK)\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(NVIDIAPhysXSDK)\Lib\win64;$(LibraryPath)</LibraryPath>
     <OutDir>$(ProjectDir)bin\x64\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)bin\x64\$(Configuration)\Intermediate\</IntDir>
   </PropertyGroup>
@@ -86,15 +90,15 @@
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(ProjectDir)bin\x86\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)bin\x86\$(Configuration)\Intermediate\</IntDir>
-    <IncludePath>C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\PhysXProfileSDK;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\PhysXVisualDebuggerSDK;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\Vehicle;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\Particles;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\Geometry;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\Extensions;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\Cooking;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\Common;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\Characterkinematic;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\Cloth;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\Foundation;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\PxTask;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Lib\win32;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(NVIDIAPhysXSDK)\Include\PhysXProfileSDK;$(NVIDIAPhysXSDK)\Include\PhysXVisualDebuggerSDK;$(NVIDIAPhysXSDK)\Include\Vehicle;$(NVIDIAPhysXSDK)\Include\Particles;$(NVIDIAPhysXSDK)\Include\Geometry;$(NVIDIAPhysXSDK)\Include\Extensions;$(NVIDIAPhysXSDK)\Include\Cooking;$(NVIDIAPhysXSDK)\Include\Common;$(NVIDIAPhysXSDK)\Include\Characterkinematic;$(NVIDIAPhysXSDK)\Include\Cloth;$(NVIDIAPhysXSDK)\Include\Foundation;$(NVIDIAPhysXSDK)\Include\PxTask;$(NVIDIAPhysXSDK)\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(NVIDIAPhysXSDK)\Lib\win32;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(ProjectDir)bin\x64\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)bin\x64\$(Configuration)\Intermediate\</IntDir>
-    <LibraryPath>C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Lib\win64;$(LibraryPath)</LibraryPath>
-    <IncludePath>C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\PhysXProfileSDK;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\PhysXVisualDebuggerSDK;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\Vehicle;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\Particles;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\Geometry;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\Extensions;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\Cooking;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\Common;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\Characterkinematic;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\Cloth;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\Foundation;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include\PxTask;C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(NVIDIAPhysXSDK)\Lib\win64;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(NVIDIAPhysXSDK)\Include\PhysXProfileSDK;$(NVIDIAPhysXSDK)\Include\PhysXVisualDebuggerSDK;$(NVIDIAPhysXSDK)\Include\Vehicle;$(NVIDIAPhysXSDK)\Include\Particles;$(NVIDIAPhysXSDK)\Include\Geometry;$(NVIDIAPhysXSDK)\Include\Extensions;$(NVIDIAPhysXSDK)\Include\Cooking;$(NVIDIAPhysXSDK)\Include\Common;$(NVIDIAPhysXSDK)\Include\Characterkinematic;$(NVIDIAPhysXSDK)\Include\Cloth;$(NVIDIAPhysXSDK)\Include\Foundation;$(NVIDIAPhysXSDK)\Include\PxTask;$(NVIDIAPhysXSDK)\Include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

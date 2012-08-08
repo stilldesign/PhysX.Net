@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros">
+    <NVIDIAPhysXSDK Condition="'$(NVIDIAPhysXSDK)' == '' ">C:\Program Files (x86)\NVIDIA Corporation\NVIDIA PhysX SDK\3.2.1</NVIDIAPhysXSDK>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemDefinitionGroup />
+  <ItemGroup>
+    <BuildMacro Include="NVIDIAPhysXSDK">
+      <Value>$(NVIDIAPhysXSDK)</Value>
+    </BuildMacro>
+  </ItemGroup>
+</Project>
