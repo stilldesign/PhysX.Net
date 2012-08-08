@@ -37,8 +37,8 @@ namespace PhysX
 				virtual bool get();
 			}
 
-			void Move(Vector3 displacement, TimeSpan elapsedTime);
-			void Move(Vector3 displacement, TimeSpan elapsedTime, float minimumDistance, ControllerFilters^ filters, [Optional] ObstacleContext^ obstacles);
+			ControllerFlag Move(Vector3 displacement, TimeSpan elapsedTime);
+			ControllerFlag Move(Vector3 displacement, TimeSpan elapsedTime, float minimumDistance, ControllerFilters^ filters, [Optional] ObstacleContext^ obstacles);
 
 			/// <summary>
 			/// The character controller uses caching in order to speed up collision testing, this caching

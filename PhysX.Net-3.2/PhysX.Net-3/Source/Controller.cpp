@@ -38,28 +38,30 @@ bool Controller::Disposed::get()
 	return (_controller == NULL);
 }
 
-void Controller::Move(Vector3 displacement, TimeSpan elapsedTime)
+ControllerFlag Controller::Move(Vector3 displacement, TimeSpan elapsedTime)
 {
 	auto filter = gcnew ControllerFilters();
 		filter->ActiveGroups = 0xFFFFFFFF;
 		filter->FilterFlags = SceneQueryFilterFlag::Static | SceneQueryFilterFlag::Dynamic;
 
-	Move(displacement, elapsedTime, 0.001f, filter, nullptr);
+	return Move(displacement, elapsedTime, 0.001f, filter, nullptr);
 }
-void Controller::Move(Vector3 displacement, TimeSpan elapsedTime, float minimumDistance, ControllerFilters^ filters, [Optional] ObstacleContext^ obstacles)
+ControllerFlag Controller::Move(Vector3 displacement, TimeSpan elapsedTime, float minimumDistance, ControllerFilters^ filters, [Optional] ObstacleContext^ obstacles)
 {
 	auto disp = MathUtil::Vector3ToPxVec3(displacement);
 	auto et = (float)elapsedTime.TotalSeconds;
 	auto f = ControllerFilters::ToUnmanaged(filters);
 	auto oc = (obstacles == nullptr ? NULL : obstacles->UnmanagedPointer);
 
-	_controller->move(disp, minimumDistance, et, f, oc);
+	PxU32 returnFlags = _controller->move(disp, minimumDistance, et, f, oc);
 
 	// TODO: Not the cleanest way of cleaning up the memory that ControllerFilter allocates
 	if (f.mFilterData != NULL)
 	{
 		delete f.mFilterData;
 	}
+
+	return (ControllerFlag)returnFlags;
 }
 
 void Controller::InvalidateCache()
