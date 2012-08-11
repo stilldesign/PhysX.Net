@@ -44,7 +44,8 @@ namespace PhysX.Samples.Engine
 			Vector3 newForward = Vector3.TransformNormal(Vector3.UnitZ, cameraRotation);
 
 			double elapsed = elapsedTime.TotalSeconds; // Elapsed time since last frame in seconds
-			const double speed = 40.0; // 40 distance units per second
+			double speedMultiplier = (_engine.Keyboard.IsKeyDown(Key.LeftShift) ? 2 : 1);
+			double speed = 40.0 * speedMultiplier; // 40 distance units per second
 			float distance = (float)(speed * elapsed); // d = vt
 
 			// The amount of movement * the direction of movement, then rotate that along the direction we are looking
@@ -61,7 +62,7 @@ namespace PhysX.Samples.Engine
 
 			if (_engine.Keyboard.IsKeyDown(Key.D)) // Right
 				translateDirection += Vector3.TransformNormal(Vector3.UnitX, cameraRotation);
-				
+
 			Vector3 newPosition = position;
 
 			if (translateDirection.LengthSquared() > 0)
