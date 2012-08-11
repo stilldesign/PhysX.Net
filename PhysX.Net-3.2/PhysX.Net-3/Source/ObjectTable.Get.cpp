@@ -8,20 +8,30 @@ using namespace System::Linq;
 
 Object^ ObjectTable::GetObject(intptr_t pointer)
 {
-	if (!_objectTable->ContainsKey(pointer))
-		throw gcnew ArgumentException(String::Format("Cannot find managed object with pointer '{0}'", pointer));
-
-	return _objectTable[pointer];
+	return GetObject<Object^>(pointer);
 }
-
 generic<typename T>
 T ObjectTable::GetObject(intptr_t pointer)
 {
 	if (!_objectTable->ContainsKey(pointer))
-		throw gcnew ArgumentException(String::Format("Cannot find managed object with pointer '{0}'", pointer));
+		throw gcnew ArgumentException(String::Format("Cannot find managed object with pointer address '{0}' (of type '{1}')", pointer, T::typeid->FullName));
 	
 	return (T)_objectTable[pointer];
 }
+
+Object^ ObjectTable::TryGetObject(intptr_t pointer)
+{
+	return TryGetObject<Object^>(pointer);
+}
+generic<typename T>
+T ObjectTable::TryGetObject(intptr_t pointer)
+{
+	if (!_objectTable->ContainsKey(pointer))
+		return T(); // aka. default(T) We only store reference objects, so return nullptr.
+	
+	return (T)_objectTable[pointer];
+}
+
 intptr_t ObjectTable::GetObject(Object^ object)
 {
 	for each(KeyValuePair<intptr_t, Object^>^ pair in _objectTable)
