@@ -28,6 +28,7 @@ namespace PhysX
 	ref class SceneSweepOperationObject;
 	ref class RenderBuffer;
 	ref class SweepCache;
+	ref class SimulationEventCallback;
 
 	/// <summary>
 	/// A scene is a collection of bodies, deformables, particle systems and constraints which can interact.
@@ -175,7 +176,7 @@ namespace PhysX
 
 			#pragma region Simulation
 			/// <summary>
-			/// Advances the simulation by an elapsedTime time.
+			/// Advances the simulation by the specified time.
 			/// </summary>
 			void Simulate(float elapsedTime);
 			/// <summary>
@@ -361,6 +362,15 @@ namespace PhysX
 
 			SweepCache^ CreateSweepCache();
 			SweepCache^ CreateSweepCache(float dimensions);
+
+			/// <summary>
+			/// Retrieves the SimulationEventCallback object set with SetSimulationEventCallback().
+			/// </summary>
+			SimulationEventCallback^ GetSimulationEventCallback(int clientId);
+			/// <summary>
+			/// Sets a user notify object which receives special simulation events when they occur.
+			/// </summary>
+			void SetSimulationEventCallback(SimulationEventCallback^ callback, int clientId);
 
 			/// <summary>
 			/// Reserves a new client ID.

@@ -639,6 +639,24 @@ SweepCache^ Scene::CreateSweepCache(float dimensions)
 	return gcnew SweepCache(sc);
 }
 
+SimulationEventCallback^ Scene::GetSimulationEventCallback(int clientId)
+{
+	PxSimulationEventCallback* c = _scene->getSimulationEventCallback(clientId);
+
+	if (c == NULL)
+		return nullptr;
+
+	// Get the SimulationEventCallback instance wrapping the unmanaged class
+	if (ObjectTable::Contains((intptr_t)c))
+		return ObjectTable::GetObject<SimulationEventCallback^>((intptr_t)c);
+	else
+		return nullptr;
+}
+void Scene::SetSimulationEventCallback(SimulationEventCallback^ callback, int clientId)
+{
+	_scene->setSimulationEventCallback(callback == nullptr ? NULL : callback->UnmanagedPointer, clientId);
+}
+
 int Scene::CreateClient()
 {
 	return _scene->createClient();

@@ -201,6 +201,7 @@
     <ClInclude Include="Source\ConstraintDesc.h" />
     <ClInclude Include="Source\ConstraintDominance.h" />
     <ClInclude Include="Source\ConstraintFlag.h" />
+    <ClInclude Include="Source\ConstraintInfo.h" />
     <ClInclude Include="Source\ContactPoint.h" />
     <ClInclude Include="Source\ContactPointAux.h" />
     <ClInclude Include="Source\Controller.h" />
@@ -244,6 +245,7 @@
     <ClInclude Include="Source\SerialEnum.h" />
     <ClInclude Include="Source\Serializable.h" />
     <ClInclude Include="Source\SerializableEnum.h" />
+    <ClInclude Include="Source\SimulationEventCallback.h" />
     <ClInclude Include="Source\SweepCache.h" />
     <ClInclude Include="Source\VehicleDrive.h" />
     <ClInclude Include="Source\VehicleDrive4W.h" />
@@ -398,6 +400,7 @@
     <ClCompile Include="Source\ConstraintConnector.cpp" />
     <ClCompile Include="Source\ConstraintDesc.cpp" />
     <ClCompile Include="Source\ConstraintDominance.cpp" />
+    <ClCompile Include="Source\ConstraintInfo.cpp" />
     <ClCompile Include="Source\ContactPoint.cpp" />
     <ClCompile Include="Source\ContactPointAux.cpp" />
     <ClCompile Include="Source\Controller.cpp" />
@@ -468,6 +471,7 @@
     <ClCompile Include="Source\SceneSweepOperationObject.cpp" />
     <ClCompile Include="Source\Serializable.cpp" />
     <ClCompile Include="Source\SimpleTriangleMesh.cpp" />
+    <ClCompile Include="Source\SimulationEventCallback.cpp" />
     <ClCompile Include="Source\SimulationStatistics.cpp" />
     <ClCompile Include="Source\SphericalJoint.cpp" />
     <ClCompile Include="Source\StdAfx.cpp">

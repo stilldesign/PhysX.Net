@@ -56,6 +56,17 @@ void SceneDesc::Gravity::set(Vector3 value)
 	_sceneDesc->gravity = MathUtil::Vector3ToPxVec3(value);
 }
 
+PhysX::SimulationEventCallback^ SceneDesc::SimulationEventCallback::get()
+{
+	return _simulationEventCallback;
+}
+void SceneDesc::SimulationEventCallback::set(PhysX::SimulationEventCallback^ value)
+{
+	_simulationEventCallback = value;
+
+	_sceneDesc->simulationEventCallback = (value == nullptr ? NULL : value->UnmanagedPointer);
+}
+
 PxSceneDesc* SceneDesc::UnmanagedPointer::get()
 {
 	return _sceneDesc;

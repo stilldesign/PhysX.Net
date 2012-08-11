@@ -388,6 +388,10 @@
       <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="Source\StreamExtensions.cpp" />
+    <ClCompile Include="Source\SimulationEventCallback.cpp" />
+    <ClCompile Include="Source\ConstraintInfo.cpp">
+      <Filter>Constraint</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
@@ -882,6 +886,10 @@
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="Source\StreamExtensions.h" />
+    <ClInclude Include="Source\SimulationEventCallback.h" />
+    <ClInclude Include="Source\ConstraintInfo.h">
+      <Filter>Constraint</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Version.rc" />

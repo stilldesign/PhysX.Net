@@ -3,6 +3,7 @@
 #include <PxSceneDesc.h>
 #include "SceneEnum.h"
 #include "TolerancesScale.h"
+#include "SimulationEventCallback.h"
 #include <PxCpuDispatcher.h>
 #include <PxTask.h>
 #include <PxDefaultCpuDispatcher.h>
@@ -21,6 +22,7 @@ namespace PhysX
 
 		private:
 			PxSceneDesc* _sceneDesc;
+			SimulationEventCallback^ _simulationEventCallback;
 
 		public:
 			SceneDesc([Optional] Nullable<PhysX::TolerancesScale> tolerancesScale);
@@ -45,6 +47,19 @@ namespace PhysX
 			{
 				Vector3 get();
 				void set(Vector3 value);
+			}
+
+			/// <summary>
+			/// Possible notification callback.
+			/// This callback will be associated with the
+			/// client PX_DEFAULT_CLIENT. Please use PxScene::setSimulationEventCallback() to
+			/// register callbacks for other clients.
+			/// Default: NULL
+			/// </summary>
+			property PhysX::SimulationEventCallback^ SimulationEventCallback
+			{
+				PhysX::SimulationEventCallback^ get();
+				void set(PhysX::SimulationEventCallback^ value);
 			}
 
 		internal:
