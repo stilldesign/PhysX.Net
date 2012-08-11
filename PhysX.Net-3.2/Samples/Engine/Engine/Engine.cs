@@ -268,18 +268,13 @@ namespace PhysX.Samples.Engine
 			}
 		}
 
-		private bool _fetchedResults = true;
 		private void Update(TimeSpan elapsed)
 		{
 			this.FrameTime = elapsed;
 
 			// Update Physics
-			if (_fetchedResults)
-				this.Scene.Simulate((float)elapsed.TotalSeconds);
-
-			_fetchedResults = this.Scene.FetchResults(block: true);
-
-			//_fetchedResults = false;
+			this.Scene.Simulate((float)elapsed.TotalSeconds);
+			this.Scene.FetchResults(block: true);
 
 			this.Camera.Update(elapsed);
 
