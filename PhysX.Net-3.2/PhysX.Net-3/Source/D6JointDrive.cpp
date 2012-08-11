@@ -7,12 +7,15 @@ D6JointDrive::D6JointDrive()
 }
 D6JointDrive::D6JointDrive(float driveSpring, float driveDamping, float forceLimit, bool isAcceleration)
 {
-	
+	Spring = driveSpring;
+	Damping = driveDamping;
+	ForceLimit = forceLimit;
+	Flags = (isAcceleration ? D6JointDriveFlag::Acceleration : (D6JointDriveFlag)0);
 }
 
 D6JointDrive^ D6JointDrive::ToManaged(PxD6JointDrive drive)
 {
-	D6JointDrive^ d = gcnew D6JointDrive();
+	auto d = gcnew D6JointDrive();
 		d->Damping = drive.damping;
 		d->Flags = ToManagedEnum(D6JointDriveFlag, drive.flags);
 		d->ForceLimit = drive.forceLimit;
