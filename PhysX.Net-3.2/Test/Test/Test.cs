@@ -57,15 +57,6 @@ namespace PhysX.Test
 			};
 		}
 
-		protected void Update(Scene scene)
-		{
-			// Update Physics
-			// Note: These 3 need to called together otherwise the unit test hosting process crashes
-			scene.Simulate(1.0f / 60.0f);
-			//this.Scene.FlushStream();
-			scene.FetchResults();
-		}
-
 		protected RigidDynamic CreateBoxActor(Scene scene, float x, float y, float z)
 		{
 			return CreateBoxActor(scene, new Vector3(5, 5, 5), new Vector3(x, y, z));
