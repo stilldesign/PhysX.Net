@@ -111,7 +111,7 @@ void RigidBody::AddLocalForceAtPosition(Vector3 force, Vector3 position)
 }
 void RigidBody::AddLocalForceAtPosition(Vector3 force, Vector3 position, ForceMode forceMode, bool wakeUp)
 {
-	PxRigidBodyExt::addForceAtLocalPos(*this->UnmanagedPointer, MathUtil::Vector3ToPxVec3(force), MathUtil::Vector3ToPxVec3(position), ToUnmanagedEnum(PxForceMode, forceMode), wakeUp);
+	PxRigidBodyExt::addLocalForceAtPos(*this->UnmanagedPointer, MathUtil::Vector3ToPxVec3(force), MathUtil::Vector3ToPxVec3(position), ToUnmanagedEnum(PxForceMode, forceMode), wakeUp);
 }
 
 void RigidBody::AddLocalForceAtLocalPosition(Vector3 force, Vector3 position)
