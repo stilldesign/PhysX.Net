@@ -13,7 +13,7 @@ namespace PhysX
 	public ref class RigidDynamic : RigidBody
 	{
 		internal:
-			RigidDynamic(PxRigidDynamic* rigidDynamic, PhysX::Physics^ owner);
+			RigidDynamic(PxRigidDynamic* rigidDynamic, PhysX::IDisposable^ owner);
 
 		public:
 			/// <summary>

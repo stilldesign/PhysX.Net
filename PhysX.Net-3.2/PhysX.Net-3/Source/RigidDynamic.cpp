@@ -2,9 +2,10 @@
 #include "RigidDynamic.h"
 #include "SolverIterationCounts.h"
 #include "Physics.h"
+#include "Scene.h"
 #include <PxSimpleFactory.h>
 
-RigidDynamic::RigidDynamic(PxRigidDynamic* rigidDynamic, PhysX::Physics^ owner)
+RigidDynamic::RigidDynamic(PxRigidDynamic* rigidDynamic, PhysX::IDisposable^ owner)
 	: RigidBody(rigidDynamic, owner)
 {
 	
@@ -30,7 +31,7 @@ void RigidDynamic::PutToSleep()
 RigidDynamic^ RigidDynamic::CloneDynamic(Matrix transform)
 {
 	PxRigidDynamic* rigidDynamic = PxCloneDynamic(
-		*this->Physics->UnmanagedPointer, 
+		*this->Scene->Physics->UnmanagedPointer, 
 		MathUtil::MatrixToPxTransform(transform),
 		*this->UnmanagedPointer);
 

@@ -29,20 +29,37 @@ namespace PhysX.Samples.CharacterSample
 		protected override void LoadPhysics(Scene scene)
 		{
 			var material = scene.Physics.CreateMaterial(0.1f, 0.1f, 0.1f);
-			
+
 			var controllerManager = scene.CreateControllerManager();
 
-			var desc = new CapsuleControllerDesc()
+			// User controllable character
 			{
-				Height = 4,
-				Radius = 1,
-				Material = material,
-				UpDirection = new Math.Vector3(0, 1, 0),
-				Position = new Math.Vector3(0, 2, 0),
-				Callback = new ControllerHitReport()
-			};
+				var desc = new CapsuleControllerDesc()
+				{
+					Height = 4,
+					Radius = 1,
+					Material = material,
+					UpDirection = new Math.Vector3(0, 1, 0),
+					Position = new Math.Vector3(0, 2, 0),
+					Callback = new ControllerHitReport()
+				};
 
-			_controller = controllerManager.CreateController<CapsuleController>(desc);
+				_controller = controllerManager.CreateController<CapsuleController>(desc);
+			}
+
+			// Another controller to walk into
+			{
+				var desc = new CapsuleControllerDesc()
+				{
+					Height = 4,
+					Radius = 1,
+					Material = material,
+					UpDirection = new Math.Vector3(0, 1, 0),
+					Position = new Math.Vector3(15, 2, 15)
+				};
+
+				controllerManager.CreateController<CapsuleController>(desc);
+			}
 		}
 
 		protected override void Update(TimeSpan elapsed)

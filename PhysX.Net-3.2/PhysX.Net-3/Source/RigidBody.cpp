@@ -6,7 +6,7 @@
 #include <PxRigidBody.h>
 #include <PxRigidBodyExt.h>
 
-RigidBody::RigidBody(PxRigidBody* rigidBody, PhysX::Physics^ owner)
+RigidBody::RigidBody(PxRigidBody* rigidBody, PhysX::IDisposable^ owner)
 	: RigidActor(rigidBody, owner)
 {
 	

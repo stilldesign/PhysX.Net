@@ -27,6 +27,8 @@ Shape::Shape(PxShape* shape, PhysX::Actor^ parentActor)
 	_actor = parentActor;
 
 	ObjectTable::Add((intptr_t)_shape, this, parentActor);
+
+	this->UnmanagedOwner = true;
 }
 Shape::~Shape()
 {
@@ -36,10 +38,11 @@ Shape::!Shape()
 {
 	OnDisposing(this, nullptr);
 
-	if (Disposed)
+	if (this->Disposed)
 		return;
 
-	_shape->release();
+	if (this->UnmanagedOwner)
+		_shape->release();
 	_shape = NULL;
 
 	OnDisposed(this, nullptr);

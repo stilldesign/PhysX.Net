@@ -3,17 +3,32 @@
 #include "ControllerManager.h"
 #include "ControllerFilters.h"
 #include "ObstacleContext.h"
+#include "RigidDynamic.h"
+#include "Shape.h"
+#include <PxRigidDynamic.h>
+
+using namespace System::Linq;
 
 Controller::Controller(PxController* controller, PhysX::ControllerManager^ owner)
 {
-	if (controller == NULL)
-		throw gcnew ArgumentNullException("controller");
+	ThrowIfNull(controller, "controller");
 	ThrowIfNullOrDisposed(owner, "owner");
 
 	_controller = controller;
 	_controllerManager = owner;
 
 	ObjectTable::Add((intptr_t)controller, this, owner);
+
+	// The Actor class holds the PxActor, but should not dispose of it, as it is owned entirely
+	// by the PxController instance
+	PxRigidDynamic* actor = controller->getActor();
+	_actor = gcnew PhysX::RigidDynamic(actor, nullptr);
+	_actor->UnmanagedOwner = false; 
+
+	// The Shape class holds the PxShape, but should not dispose of it, as it is owned entirely
+	// by the PxActor of the PxController instance
+	_shape = _actor->GetShape(0);
+	_shape->UnmanagedOwner = false;
 }
 Controller::~Controller()
 {
@@ -23,7 +38,7 @@ Controller::!Controller()
 {
 	OnDisposing(this, nullptr);
 
-	if (Disposed)
+	if (this->Disposed)
 		return;
 
 	_controller->release();
@@ -77,6 +92,16 @@ void Controller::Resize(float height)
 PhysX::ControllerManager^ Controller::ControllerManager::get()
 {
 	return _controllerManager;
+}
+
+PhysX::RigidDynamic^ Controller::Actor::get()
+{
+	return _actor;
+}
+
+PhysX::Shape^ Controller::Shape::get()
+{
+	return _shape;
 }
 
 Vector3 Controller::Position::get()

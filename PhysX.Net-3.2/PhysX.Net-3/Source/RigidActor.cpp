@@ -11,10 +11,12 @@
 #include <PxBoxGeometry.h>
 #include <PxSimpleFactory.h>
 
-RigidActor::RigidActor(PxRigidActor* rigidActor, PhysX::Physics^ owner)
+RigidActor::RigidActor(PxRigidActor* rigidActor, PhysX::IDisposable^ owner)
 	: Actor(rigidActor, owner)
 {
-	_shapes = gcnew List<Shape^>();
+	auto existingShapes = CreateShapesInActor(rigidActor);
+
+	_shapes = gcnew List<Shape^>(existingShapes);
 }
 RigidActor::~RigidActor()
 {
@@ -23,6 +25,37 @@ RigidActor::~RigidActor()
 RigidActor::!RigidActor()
 {
 	
+}
+
+array<Shape^>^ RigidActor::CreateShapesInActor(PxRigidActor* actor)
+{
+	auto managedShapes = gcnew List<Shape^>();
+
+	int n = actor->getNbShapes();
+
+	PxShape** shapes = new PxShape*[n];
+	actor->getShapes(shapes, n);
+
+	for (int i = 0; i < n; i++)
+	{
+		PxShape* shape = shapes[i];
+
+		Shape^ s = gcnew Shape(shape, this);
+
+		managedShapes->Add(s);
+	}
+
+	delete[] shapes;
+
+	return managedShapes->ToArray();
+}
+
+Shape^ RigidActor::GetShape(int index)
+{
+	if (index < 0 || index >= _shapes->Count)
+		throw gcnew ArgumentOutOfRangeException("index");
+
+	return _shapes[index];
 }
 
 Shape^ RigidActor::CreateShape(Geometry^ geometry, Material^ material, [Optional] Nullable<Matrix> localPose)

@@ -1,21 +1,22 @@
 #include "StdAfx.h"
 #include "Actor.h"
 #include "Physics.h"
+#include "Scene.h"
 #include "ObservableInstance.h"
 #include "Serializable.h"
 
 using namespace PhysX;
 
-Actor::Actor(PxActor* actor, PhysX::Physics^ owner)
+Actor::Actor(PxActor* actor, PhysX::IDisposable^ owner)
 {
 	if (actor == NULL)
 		throw gcnew ArgumentNullException("actor");
-	ThrowIfNullOrDisposed(owner, "owner");
 
 	_actor = actor;
-	_physics = owner;
 
 	ObjectTable::Add((intptr_t)actor, this, owner);
+
+	this->UnmanagedOwner = true;
 }
 Actor::~Actor()
 {
@@ -25,10 +26,11 @@ Actor::!Actor()
 {
 	OnDisposing(this, nullptr);
 
-	if (Disposed)
+	if (this->Disposed)
 		return;
 
-	_actor->release();
+	if (this->UnmanagedOwner)
+		_actor->release();
 	_actor = NULL;
 
 	OnDisposed(this, nullptr);
@@ -58,7 +60,13 @@ String^ Actor::ToString()
 
 PhysX::Physics^ Actor::Physics::get()
 {
-	return _physics;
+	return this->Scene->Physics;
+}
+PhysX::Scene^ Actor::Scene::get()
+{
+	PxScene* scene = _actor->getScene();
+
+	return ObjectTable::GetObject<PhysX::Scene^>((intptr_t)scene);
 }
 
 ActorType Actor::Type::get()

@@ -148,5 +148,7 @@ namespace PhysX
 			{
 				PxShape* get();
 			}
+
+			property bool UnmanagedOwner;
 	};
 };

@@ -12,7 +12,7 @@ namespace PhysX
 	public ref class RigidStatic : RigidActor
 	{
 		internal:
-			RigidStatic(PxRigidStatic* rigidStatic, PhysX::Physics^ owner);
+			RigidStatic(PxRigidStatic* rigidStatic, PhysX::IDisposable^ owner);
 
 		public:
 

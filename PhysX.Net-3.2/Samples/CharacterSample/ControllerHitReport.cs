@@ -8,7 +8,7 @@ namespace PhysX.Samples.CharacterSample
 	{
 		public override void OnControllerHit(ControllersHit hit)
 		{
-			
+			Console.WriteLine("Hit controller at " + hit.WorldPosition);
 		}
 
 		public override void OnObstacleHit(ControllerObstacleHit hit)

@@ -2,7 +2,7 @@
 #include "RigidStatic.h"
 #include <PxRigidStatic.h> 
 
-RigidStatic::RigidStatic(PxRigidStatic* rigidStatic, PhysX::Physics^ owner)
+RigidStatic::RigidStatic(PxRigidStatic* rigidStatic, PhysX::IDisposable^ owner)
 	: RigidActor(rigidStatic, owner)
 {
 	

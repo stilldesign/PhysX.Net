@@ -10,6 +10,7 @@
 namespace PhysX
 {
 	ref class Shape;
+	ref class Scene;
 	ref class Physics;
 
 	/// <summary>
@@ -27,10 +28,9 @@ namespace PhysX
 
 		private:
 			PxActor* _actor;
-			PhysX::Physics^ _physics;
 
 		protected:
-			Actor(PxActor* actor, PhysX::Physics^ owner);
+			Actor(PxActor* actor, PhysX::IDisposable^ owner);
 		public:
 			~Actor();
 		protected:
@@ -49,11 +49,18 @@ namespace PhysX
 			//
 
 			/// <summary>
-			/// Gets the parent physics object.
+			/// Gets the parent physics of the actor.
 			/// </summary>
 			property PhysX::Physics^ Physics
 			{
 				PhysX::Physics^ get();
+			}
+			/// <summary>
+			/// Gets the parent scene of the actor.
+			/// </summary>
+			property PhysX::Scene^ Scene
+			{
+				PhysX::Scene^ get();
 			}
 
 			/// <summary>
@@ -100,5 +107,7 @@ namespace PhysX
 			{
 				PxActor* get();
 			}
+
+			property bool UnmanagedOwner;
 	};
 };

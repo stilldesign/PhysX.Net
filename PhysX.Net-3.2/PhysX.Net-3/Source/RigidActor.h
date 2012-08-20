@@ -18,13 +18,18 @@ namespace PhysX
 			List<Shape^>^ _shapes;
 
 		internal:
-			RigidActor(PxRigidActor* rigidActor, PhysX::Physics^ owner);
+			RigidActor(PxRigidActor* rigidActor, PhysX::IDisposable^ owner);
 		public:
 			~RigidActor();
 		protected:
 			!RigidActor();
 
+		private:
+			array<Shape^>^ CreateShapesInActor(PxRigidActor* actor);
+
 		public:
+			Shape^ GetShape(int index);
+
 			/// <summary>
 			/// Creates a new shape with default properties and a single material adds it to the list of shapes of this actor.
 			/// </summary>

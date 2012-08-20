@@ -77,7 +77,7 @@ void ObjectTable::EnsureUnmanagedObjectIsOnlyWrappedOnce(intptr_t unmanaged, Typ
 	auto obj = _objectTable[unmanaged];
 
 	if (obj->GetType() == managedType)
-		throw gcnew InvalidOperationException(String::Format("There is already a managed instance of type '{0}' wrapping this unmanaged object. Instead retrieve the managed object from the ObjectTable using the unmanaged pointer as the lookup key.", managedType->FullName));
+		throw gcnew InvalidOperationException(String::Format("There is already a managed instance of type '{0}' wrapping this unmanaged object. Instead, retrieve the managed object from the ObjectTable using the unmanaged pointer as the lookup key.", managedType->FullName));
 }
 
 // Remove

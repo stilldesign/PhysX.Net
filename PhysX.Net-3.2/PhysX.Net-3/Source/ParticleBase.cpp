@@ -5,6 +5,7 @@
 #include "FilterData.h"
 #include "ParticleReadData.h"
 #include "ParticleCreationData.h"
+#include "Physics.h"
 #include <PxParticleBase.h> 
 #include <PxStrideIterator.h>
 

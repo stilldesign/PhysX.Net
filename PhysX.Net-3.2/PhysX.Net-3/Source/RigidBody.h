@@ -18,7 +18,7 @@ namespace PhysX
 	public ref class RigidBody : RigidActor
 	{
 		internal:
-			RigidBody(PxRigidBody* rigidBody, PhysX::Physics^ owner);
+			RigidBody(PxRigidBody* rigidBody, PhysX::IDisposable^ owner);
 
 		public:
 			/// <summary>

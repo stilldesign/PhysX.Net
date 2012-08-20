@@ -8,6 +8,8 @@ namespace PhysX
 	ref class ControllerManager;
 	ref class ControllerFilters;
 	ref class ObstacleContext;
+	ref class RigidDynamic;
+	ref class Shape;
 
 	/// <summary>
 	/// Base class for character controllers.
@@ -23,6 +25,8 @@ namespace PhysX
 		private:
 			PxController* _controller;
 			PhysX::ControllerManager^ _controllerManager;
+			PhysX::RigidDynamic^ _actor;
+			PhysX::Shape^ _shape;
 
 		protected:
 			Controller(PxController* controller, PhysX::ControllerManager^ owner);
@@ -64,6 +68,22 @@ namespace PhysX
 			property PhysX::ControllerManager^ ControllerManager
 			{
 				PhysX::ControllerManager^ get();
+			}
+
+			/// <summary>
+			/// Gets the associated actor instance.
+			/// </summary>
+			property PhysX::RigidDynamic^ Actor
+			{
+				PhysX::RigidDynamic^ get();
+			}
+
+			/// <summary>
+			/// Gets the associated shape instance.
+			/// </summary>
+			property PhysX::Shape^ Shape
+			{
+				PhysX::Shape^ get();
 			}
 
 			/// <summary>
