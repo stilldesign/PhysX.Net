@@ -20,8 +20,11 @@ namespace PhysX
 	/// <summary>
 	/// Specifies which sides a character is colliding with.
 	/// </summary>
+	[Flags]
 	public enum class ControllerFlag
 	{
+		None = 0,
+
 		/// <summary>
 		/// Character is colliding to the sides.
 		/// </summary>
