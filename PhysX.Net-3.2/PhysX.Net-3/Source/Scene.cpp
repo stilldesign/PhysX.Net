@@ -106,7 +106,7 @@ SimulationStatistics^ Scene::GetSimulationStatistics()
 #pragma region Actors
 IEnumerable<Actor^>^ Scene::Actors::get()
 {
-	return ObjectTable::GetObjectsOfOwnerAndType<Actor^>(this);
+	return ObjectTable::GetObjectsOfOwnerAndType<Actor^>(this->Physics);
 }
 int Scene::GetNumberOfActors(ActorTypeSelectionFlag types)
 {

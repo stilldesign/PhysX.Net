@@ -14,7 +14,7 @@ Actor::Actor(PxActor* actor, PhysX::IDisposable^ owner)
 
 	_actor = actor;
 
-	ObjectTable::Add((intptr_t)actor, this, owner);
+	ObjectTable::Add<Actor^>((intptr_t)actor, this, owner);
 
 	this->UnmanagedOwner = true;
 }

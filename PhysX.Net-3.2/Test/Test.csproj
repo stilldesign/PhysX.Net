@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actor\ActorSerialization.cs" />
+    <Compile Include="Actor\ActorTest.cs" />
     <Compile Include="Cloth\ClothTest.cs" />
     <Compile Include="Controller\BoxControllerTest.cs" />
     <Compile Include="Controller\CapsuleControllerDescTest.cs" />

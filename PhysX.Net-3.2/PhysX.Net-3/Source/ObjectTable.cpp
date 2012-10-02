@@ -28,7 +28,7 @@ void ObjectTable::Add(intptr_t pointer, T object, PhysX::IDisposable^ owner)
 
 	AddObjectOwner(object, owner);
 	AddOwnerTypeLookup<T>(owner, object);
-		
+	
 	try
 	{
 		_objectTable->Add(pointer, object);
@@ -51,13 +51,12 @@ void ObjectTable::AddObjectOwner(PhysX::IDisposable^ object, PhysX::IDisposable^
 	_ownership->Add(object, owner);
 }
 generic<typename T>
-
 void ObjectTable::AddOwnerTypeLookup(Object^ owner, T object)
 {
 	if (object == nullptr)
 		throw gcnew ArgumentNullException("object");
 
-	Type^ type = object->GetType();
+	Type^ type = T::typeid;
 
 	auto key = ObjectTableOwnershipType(owner, type);
 
