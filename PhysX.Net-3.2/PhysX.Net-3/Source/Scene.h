@@ -279,8 +279,9 @@ namespace PhysX
 			/// <param name="distance">Length of the ray. Needs to be larger than 0.</param>
 			/// <param name="queryFlags">Lets the user filter out initially overlapping objects, if necessary.</param>
 			/// <param name="filterData">Filtering data and simple logic.</param>
+			/// <param name="inflation">This parameter creates a skin around the swept geometry which increases its extents for sweeping. The sweep will register a hit as soon as the skin touches a shape, and will return the corresponding distance and normal.</param>
 			/// <returns>A hit result object, or null if no hit occured.</returns>
-			SceneQueryHit^ SweepAny(Geometry^ geometry, Matrix pose, Vector3 direction, float distance, SceneQueryFlags queryFlags, [Optional] Nullable<SceneQueryFilterData> filterData);
+			SceneQueryHit^ SweepAny(Geometry^ geometry, Matrix pose, Vector3 direction, float distance, SceneQueryFlags queryFlags, [Optional] Nullable<SceneQueryFilterData> filterData, [Optional] Nullable<float> inflation);
 
 			/// <summary>
 			/// Sweep returning any blocking hit, not necessarily the closest.
@@ -292,8 +293,9 @@ namespace PhysX
 			/// <param name="outputFlags">Specifies which properties should be written to the hit information.</param>
 			/// <param name="maxNumberOfHits>Maximum number of hits.</param>
 			/// <param name="filterFlags">Simple filter logic.</param>
+			/// <param name="inflation">This parameter creates a skin around the swept geometry which increases its extents for sweeping. The sweep will register a hit as soon as the skin touches a shape, and will return the corresponding distance and normal.</param>
 			/// <returns>A hit result object, or null if no hit occured.</returns>
-			array<SweepHit^>^ SweepMultiple(PhysX::Geometry^ geometry, Matrix pose, Nullable<PhysX::FilterData> filterData, Vector3 direction, float distance, SceneQueryFlags outputFlags, int maxNumberOfHits, Nullable<SceneQueryFilterFlag> filterFlags);
+			array<SweepHit^>^ SweepMultiple(PhysX::Geometry^ geometry, Matrix pose, Nullable<PhysX::FilterData> filterData, Vector3 direction, float distance, SceneQueryFlags outputFlags, int maxNumberOfHits, Nullable<SceneQueryFilterFlag> filterFlags, [Optional] Nullable<float> inflation);
 			/// <summary>
 			/// Sweep returning any blocking hit, not necessarily the closest.
 			/// Returns whether any rigid actor is hit along the sweep path.
@@ -304,8 +306,9 @@ namespace PhysX
 			/// <param name="outputFlags">Specifies which properties should be written to the hit information.</param>
 			/// <param name="maxNumberOfHits>Maximum number of hits.</param>
 			/// <param name="filterFlags">Simple filter logic.</param>
+			/// <param name="inflation">This parameter creates a skin around the swept geometry which increases its extents for sweeping. The sweep will register a hit as soon as the skin touches a shape, and will return the corresponding distance and normal.</param>
 			/// <returns>A hit result object, or null if no hit occured.</returns>
-			array<SweepHit^>^ SweepMultiple(array<SceneSweepOperationObject^>^ objects, Vector3 direction, float distance, SceneQueryFlags outputFlags, int maxNumberOfHits, Nullable<SceneQueryFilterFlag> filterFlags);
+			array<SweepHit^>^ SweepMultiple(array<SceneSweepOperationObject^>^ objects, Vector3 direction, float distance, SceneQueryFlags outputFlags, int maxNumberOfHits, Nullable<SceneQueryFilterFlag> filterFlags, [Optional] Nullable<float> inflation);
 			#pragma endregion
 
 			#pragma region Overlap

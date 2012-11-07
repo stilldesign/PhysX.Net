@@ -134,6 +134,15 @@ namespace PhysX
 		/// You can not connect Reduced joints to kinematic actors. Lagrange joints work ok if the platform is
 		/// moving with a relatively low, uniform velocity.
 		/// </summary>
-		Kinematic = PxRigidDynamicFlag::eKINEMATIC
+		Kinematic = PxRigidDynamicFlag::eKINEMATIC,
+
+		/// <summary>
+		/// Use the kinematic target transform for scene queries.
+		/// If this flag is raised, then scene queries will treat the kinematic target
+		/// transform as the current pose of the body (instead of using the actual pose).
+		/// Without this flag, the kinematic target will only take effect with respect
+		/// to scene queries after a simulation step.
+		/// </summary>
+		UseKinematicTargetForSceneQueries = PxRigidDynamicFlag::eUSE_KINEMATIC_TARGET_FOR_SCENE_QUERIES
 	};
 };

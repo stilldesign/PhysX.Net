@@ -20,6 +20,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
+// HACK: Doesn't link in debug mode unless this value is hacked into place
+//_ITERATOR_DEBUG_LEVEL = 0 (in release mode)
+//_ITERATOR_DEBUG_LEVEL = 1 (in release mode if _SECURE_SCL is defined)
+//_ITERATOR_DEBUG_LEVEL = 2 (in debug mode)
+#if _DEBUG
+#define _ITERATOR_DEBUG_LEVEL 0
+#endif
+
 #define WIN32_LEAN_AND_MEAN
 #include <Windows.h>
 #include <vcclr.h>

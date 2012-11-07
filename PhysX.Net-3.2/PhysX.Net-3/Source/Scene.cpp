@@ -402,7 +402,7 @@ array<RaycastHit^>^ Scene::RaycastMultiple(Vector3 origin, Vector3 direction, fl
 #pragma endregion
 
 #pragma region Sweep
-SceneQueryHit^ Scene::SweepAny(Geometry^ geometry, Matrix pose, Vector3 direction, float distance, SceneQueryFlags queryFlags, [Optional] Nullable<SceneQueryFilterData> filterData)
+SceneQueryHit^ Scene::SweepAny(Geometry^ geometry, Matrix pose, Vector3 direction, float distance, SceneQueryFlags queryFlags, [Optional] Nullable<SceneQueryFilterData> filterData, [Optional] Nullable<float> inflation)
 {
 	ThrowIfNull(geometry, "geometry");
 
@@ -422,7 +422,11 @@ SceneQueryHit^ Scene::SweepAny(Geometry^ geometry, Matrix pose, Vector3 directio
 			distance,
 			ToUnmanagedEnum(PxSceneQueryFlag, queryFlags),
 			hit,
-			fd
+			fd,
+			NULL,
+			NULL,
+			PX_DEFAULT_CLIENT,
+			inflation.GetValueOrDefault(0)
 		);
 
 		if (!result)
@@ -436,16 +440,16 @@ SceneQueryHit^ Scene::SweepAny(Geometry^ geometry, Matrix pose, Vector3 directio
 	}
 }
 
-array<SweepHit^>^ Scene::SweepMultiple(PhysX::Geometry^ geometry, Matrix pose, Nullable<PhysX::FilterData> filterData, Vector3 direction, float distance, SceneQueryFlags outputFlags, int maxNumberOfHits, Nullable<SceneQueryFilterFlag> filterFlags)
+array<SweepHit^>^ Scene::SweepMultiple(PhysX::Geometry^ geometry, Matrix pose, Nullable<PhysX::FilterData> filterData, Vector3 direction, float distance, SceneQueryFlags outputFlags, int maxNumberOfHits, Nullable<SceneQueryFilterFlag> filterFlags, [Optional] Nullable<float> inflation)
 {
 	ThrowIfNull(geometry, "geometry");
 
 	auto objects = gcnew array<SceneSweepOperationObject^>(1);
 		objects[0] = gcnew SceneSweepOperationObject(geometry, pose, filterData);
 
-	return SweepMultiple(objects, direction, distance, outputFlags, maxNumberOfHits, filterFlags);
+	return SweepMultiple(objects, direction, distance, outputFlags, maxNumberOfHits, filterFlags, inflation);
 }
-array<SweepHit^>^ Scene::SweepMultiple(array<SceneSweepOperationObject^>^ objects, Vector3 direction, float distance, SceneQueryFlags outputFlags, int maxNumberOfHits, Nullable<SceneQueryFilterFlag> filterFlags)
+array<SweepHit^>^ Scene::SweepMultiple(array<SceneSweepOperationObject^>^ objects, Vector3 direction, float distance, SceneQueryFlags outputFlags, int maxNumberOfHits, Nullable<SceneQueryFilterFlag> filterFlags, [Optional] Nullable<float> inflation)
 {
 	ThrowIfNull(objects, "objects");
 	if (objects->Length == 0)
@@ -508,7 +512,11 @@ array<SweepHit^>^ Scene::SweepMultiple(array<SceneSweepOperationObject^>^ object
 		h,
 		maxNumberOfHits, 
 		blockingHit, 
-		ff
+		ff,
+		NULL,
+		NULL,
+		PX_DEFAULT_CLIENT,
+		inflation.GetValueOrDefault(0)
 	);
 
 	// Clean up

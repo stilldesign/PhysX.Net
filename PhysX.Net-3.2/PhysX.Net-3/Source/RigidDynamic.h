@@ -17,6 +17,10 @@ namespace PhysX
 
 		public:
 			/// <summary>
+			/// Get target pose of a kinematically controlled dynamic actor.
+			/// </summary>
+			Nullable<Matrix> GetKinematicTarget();
+			/// <summary>
 			/// Moves kinematically controlled dynamic actors through the game world.
 			/// </summary>
 			void SetKinematicTarget(Matrix destination);

@@ -11,6 +11,15 @@ RigidDynamic::RigidDynamic(PxRigidDynamic* rigidDynamic, PhysX::IDisposable^ own
 	
 }
 
+Nullable<Matrix> RigidDynamic::GetKinematicTarget()
+{
+	PxTransform t;
+
+	if(!this->UnmanagedPointer->getKinematicTarget(t))
+		return Nullable<Matrix>();
+
+	return MathUtil::PxTransformToMatrix(&t);
+}
 void RigidDynamic::SetKinematicTarget(Matrix destination)
 {
 	this->UnmanagedPointer->setKinematicTarget(MathUtil::MatrixToPxTransform(destination));
