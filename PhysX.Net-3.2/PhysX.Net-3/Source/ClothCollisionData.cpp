@@ -24,7 +24,7 @@ PxClothCollisionData ClothCollisionData::ToUnmanaged(ClothCollisionData^ data)
 	{
 		pin_ptr<int> p = &data->PairIndices[0];
 
-		d.numPairs = data->PairIndices->Length;
+		d.numPairs = (data->PairIndices->Length / 2);
 		d.pairIndexBuffer = (PxU32*)p;
 	}
 	else
