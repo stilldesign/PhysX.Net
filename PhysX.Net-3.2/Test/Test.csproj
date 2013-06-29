@@ -84,11 +84,13 @@
     <Compile Include="Stream\StreamExtensionsTest.cs" />
     <Compile Include="Test\PhysicsAndSceneTestUnit.cs" />
     <Compile Include="Test\Test.cs" />
+    <Compile Include="Util\ColladaLoader.cs" />
     <Compile Include="Vehicle\VehicleEngineDataTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Resources\Teapot.DAE">
       <Link>Resources\Teapot.DAE</Link>
+      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>

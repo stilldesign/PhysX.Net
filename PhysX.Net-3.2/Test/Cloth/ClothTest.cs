@@ -17,25 +17,30 @@ namespace PhysX.Test
 
 			using (var physics = CreatePhysicsAndScene())
 			{
-				Cooking cooking = physics.Physics.CreateCooking();
-
-				ClothMeshDesc clothMeshDesc = new ClothMeshDesc()
+				using (Cooking cooking = physics.Physics.CreateCooking())
 				{
-					Points = clothGrid.Points,
-					Triangles = clothGrid.Indices
-				};
+					var clothMeshDesc = new ClothMeshDesc()
+					{
+						Points = clothGrid.Points,
+						Triangles = clothGrid.Indices
+					};
 
-				MemoryStream stream = new MemoryStream();
+					MemoryStream stream = new MemoryStream();
 
-				bool result = cooking.CookClothFabric(clothMeshDesc, new Vector3(0, -9.81f, 0), stream);
+					bool result = cooking.CookClothFabric(clothMeshDesc, new Vector3(0, -9.81f, 0), stream);
 
-				ClothFabric clothFabric = physics.Physics.CreateClothFabric(stream);
+					// After cooking the fabric, we must put the position of the written stream back to 0
+					// so that it can be read from the beginning in the CreateClothFabric method
+					stream.Position = 0;
 
-				ClothParticle[] particles = clothGrid.Points.Select(p => new ClothParticle(p, 2)).ToArray();
+					ClothFabric clothFabric = physics.Physics.CreateClothFabric(stream);
 
-				ClothCollisionData collision = new ClothCollisionData();
+					ClothParticle[] particles = clothGrid.Points.Select(p => new ClothParticle(p, 2)).ToArray();
 
-				Cloth cloth = physics.Physics.CreateCloth(Matrix.Identity, clothFabric, particles, collision, 0);
+					ClothCollisionData collision = new ClothCollisionData();
+
+					Cloth cloth = physics.Physics.CreateCloth(Matrix.Identity, clothFabric, particles, collision, 0);
+				}
 			}
 		}
 	}

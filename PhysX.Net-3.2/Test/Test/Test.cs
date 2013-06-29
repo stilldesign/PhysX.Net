@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PhysX.Math;
@@ -26,13 +27,26 @@ namespace PhysX.Test
 		[TestCleanup]
 		public void CleanUp()
 		{
+			if (Physics.Instantiated)
+				throw new Exception("After a test has run, the Physics singleton should have been disposed");
+
 			ObjectTable.Clear();
+		}
+
+		[TestInitialize]
+		public void TestInitialize()
+		{
+			if (Physics.Instantiated)
+				throw new Exception("Before a test run, the Physics singleton should not be initalized. Probably spill over from a previous test.");
 		}
 
 		private Physics CreatePhysics(ErrorCallback errorCallback = null)
 		{
 			if (Physics.Instantiated)
 				Assert.Fail("Physics is still created");
+
+			if (errorCallback == null)
+				errorCallback = new ErrorLog();
 
 			var foundation = new Foundation(errorCallback);
 

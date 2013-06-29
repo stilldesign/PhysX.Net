@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PhysX.Math;
-using System.IO;
 
 namespace PhysX.Test
 {
@@ -13,35 +13,37 @@ namespace PhysX.Test
 		[TestMethod]
 		public void CreateTriangleMeshShape()
 		{
-			var physics = CreatePhysicsAndScene();
+			using (var physics = CreatePhysicsAndScene())
+			{
+				var material = physics.Physics.CreateMaterial(0.5f, 0.5f, 0.1f);
 
-			var material = physics.Physics.CreateMaterial(0.5f, 0.5f, 0.1f);
+				var actor = physics.Physics.CreateRigidDynamic();
 
-			var actor = physics.Physics.CreateRigidDynamic();
+				var grid = new ClothTestGrid(10, 10);
 
-			var grid = new ClothTestGrid(10, 10);
+				var triangleMeshDesc = new TriangleMeshDesc();
+				triangleMeshDesc.Points = grid.Points;
+				triangleMeshDesc.SetTriangles(grid.Indices);
 
-			var triangleMeshDesc = new TriangleMeshDesc();
-			triangleMeshDesc.Points = grid.Points;
-			triangleMeshDesc.SetTriangles(grid.Indices);
+				using (var cooking = physics.Physics.CreateCooking())
+				{
+					var cookedStream = new MemoryStream();
 
-			var cooking = physics.Physics.CreateCooking();
+					bool result = cooking.CookTriangleMesh(triangleMeshDesc, cookedStream);
 
-			var cookedStream = new MemoryStream();
+					Assert.IsTrue(result);
 
-			bool result = cooking.CookTriangleMesh(triangleMeshDesc, cookedStream);
+					cookedStream.Position = 0;
 
-			Assert.IsTrue(result);
+					var triangleMesh = physics.Physics.CreateTriangleMesh(cookedStream);
 
-			cookedStream.Position = 0;
+					var triangleMeshGeometry = new TriangleMeshGeometry(triangleMesh);
 
-			var triangleMesh = physics.Physics.CreateTriangleMesh(cookedStream);
+					var shape = actor.CreateShape(triangleMeshGeometry, material);
 
-			var triangleMeshGeometry = new TriangleMeshGeometry(triangleMesh);
-
-			var shape = actor.CreateShape(triangleMeshGeometry, material);
-
-			physics.Scene.AddActor(actor);
+					physics.Scene.AddActor(actor);
+				}
+			}
 		}
 	}
 }

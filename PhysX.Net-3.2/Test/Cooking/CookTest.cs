@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PhysX.Math;
-using System.IO;
+using PhysX.Test.Util;
 
 namespace PhysX.Test
 {
 	[TestClass]
+	[DeploymentItem(@"Resources\Teapot.DAE")]
 	public class CookTest : Test
 	{
 		[TestMethod]
@@ -18,19 +20,20 @@ namespace PhysX.Test
 				// Create a grid of triangles to be our cloth
 				var clothGrid = new VertexGrid(25, 25);
 
-				Cooking cooking = physics.Physics.CreateCooking();
-
-				ClothMeshDesc clothMeshDesc = new ClothMeshDesc()
+				using (Cooking cooking = physics.Physics.CreateCooking())
 				{
-					Points = clothGrid.Points,
-					Triangles = clothGrid.Indices
-				};
+					ClothMeshDesc clothMeshDesc = new ClothMeshDesc()
+					{
+						Points = clothGrid.Points,
+						Triangles = clothGrid.Indices
+					};
 
-				var stream = new MemoryStream();
+					var stream = new MemoryStream();
 
-				bool result = cooking.CookClothFabric(clothMeshDesc, new Vector3(0, -9.81f, 0), stream);
+					bool result = cooking.CookClothFabric(clothMeshDesc, new Vector3(0, -9.81f, 0), stream);
 
-				Assert.IsTrue(result);
+					Assert.IsTrue(result);
+				}
 			}
 		}
 
@@ -42,43 +45,51 @@ namespace PhysX.Test
 				// Create a grid of triangles to be our cloth
 				var clothGrid = new VertexGrid(25, 25);
 
-				var cooking = physics.Physics.CreateCooking();
-
-				var desc = new TriangleMeshDesc()
+				using (var cooking = physics.Physics.CreateCooking())
 				{
-					Points = clothGrid.Points,
-					Triangles = clothGrid.Indices
-				};
+					var desc = new TriangleMeshDesc()
+					{
+						Points = clothGrid.Points,
+						Triangles = clothGrid.Indices
+					};
 
-				var stream = new MemoryStream();
+					var stream = new MemoryStream();
 
-				bool result = cooking.CookTriangleMesh(desc, stream);
+					bool result = cooking.CookTriangleMesh(desc, stream);
 
-				Assert.IsTrue(result);
+					Assert.IsTrue(result);
+				}
 			}
 		}
 
+		/// <summary>
+		/// Cook a convex mesh (a teapot).
+		/// </summary>
 		[TestMethod]
 		public void CookConvexMesh()
 		{
 			using (var physics = CreatePhysicsAndScene())
 			{
-				var vertices = Cuboid.CubeVertices();
-				var indices = Cuboid.CubeIndices();
+				var colladaLoader = new ColladaLoader();
 
-				var cooking = physics.Physics.CreateCooking();
+				// Read the vertices and indices from the Teapot.DAE collada file
+				// This file is copied out to the TestResults folder using the DeploymentItem attribute on this class
+				var teapot = colladaLoader.Load(@"Teapot.DAE");
 
-				var desc = new ConvexMeshDesc();
-				desc.SetTriangles(indices);
-				desc.SetPositions(vertices);
-				desc.Flags = ConvexFlag.Indices16Bit | ConvexFlag.ComputeConvex;
+				using (var cooking = physics.Physics.CreateCooking())
+				{
+					var desc = new ConvexMeshDesc();
+					desc.SetTriangles(teapot.Indices);
+					desc.SetPositions(teapot.Vertices);
+					desc.Flags = ConvexFlag.ComputeConvex;
 
-				var stream = new MemoryStream();
+					var stream = new MemoryStream();
 
-				bool result = cooking.CookConvexMesh(desc, stream);
+					bool result = cooking.CookConvexMesh(desc, stream);
 
-				Assert.IsFalse(physics.ErrorOutput.HasErrors, physics.ErrorOutput.LastError);
-				Assert.IsTrue(result);
+					Assert.IsFalse(physics.ErrorOutput.HasErrors, physics.ErrorOutput.LastError);
+					Assert.IsTrue(result);
+				}
 			}
 		}
 

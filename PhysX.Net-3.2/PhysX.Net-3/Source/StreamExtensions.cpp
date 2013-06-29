@@ -2,12 +2,12 @@
 #include "StreamExtensions.h"
 
 generic<typename T> where T : value class
-void StreamExtensions::CopyData(System::IO::Stream^ stream, int offsetInBytes, int strideSize, array<T>^ data, int startIndex, int elementCount, bool isSetting)
+void StreamExtensions::CopyData(UnmanagedMemoryStream^ stream, int offsetInBytes, int strideSize, array<T>^ data, int startIndex, int elementCount, bool isSetting)
 {
-	throw gcnew NotImplementedException();
-
 	if (data == nullptr)
 		throw gcnew ArgumentNullException("data");
+	if (stream == nullptr)
+		throw gcnew ArgumentNullException("stream");
 
 	if (data->Length == 0 || elementCount == 0 || startIndex == data->Length)
 		return;
@@ -43,28 +43,24 @@ void StreamExtensions::CopyData(System::IO::Stream^ stream, int offsetInBytes, i
 
 	int dataSize = sizeof(T) * data->Length;
 
-	array<Byte>^ dataBytes = gcnew array<Byte>(dataSize);
-	pin_ptr<Byte> bytesPin = &dataBytes[0];
-	pin_ptr<T> dataPin = &data[0];
-	memcpy(bytesPin, dataPin, dataSize);
+	int originalPosition = (int)stream->Position;
+	stream->Position = 0;
 
 	try
 	{
-		//stream->Write(dataBytes, offsetInBytes
+		for (int x = 0; x < elementCount; x++)
+		{
+			pin_ptr<T> item = &data[startIndex + x];
 
-		//for (int x = 0; x < elementCount; x++)
-		//{
-		//	pin_ptr<T> item = &data[startIndex + x];
-
-		//	if (isSetting)
-		//	{
-		//		//memcpy_s(stream->PositionPointer + offsetInBytes + (strideSize *x), (int)stream->Length - offsetInBytes, item, sizeof(T));
-		//	}
-		//	else
-		//	{
-		//		//memcpy_s(item, sizeof(T), stream->PositionPointer + offsetInBytes + (strideSize * x), sizeof(T));
-		//	}
-		//}
+			if ((isSetting))
+			{
+				memcpy_s(stream->PositionPointer + offsetInBytes + (strideSize *x), (int)stream->Length - offsetInBytes, item, sizeof(T));
+			}
+			else
+			{
+				memcpy_s(item, sizeof(T), stream->PositionPointer + offsetInBytes + (strideSize * x), sizeof(T));
+			}
+		}
 	}
 	catch(Exception^ ex)
 	{
@@ -73,7 +69,7 @@ void StreamExtensions::CopyData(System::IO::Stream^ stream, int offsetInBytes, i
 }
 
 generic<typename T>
-	array<T>^ StreamExtensions::GetData(System::IO::Stream^ stream)
+array<T>^ StreamExtensions::GetData(UnmanagedMemoryStream^ stream)
 {
 	array<T>^ data = gcnew array<T>((int)stream->Length / sizeof(T));
 
@@ -82,7 +78,7 @@ generic<typename T>
 	return data;
 }
 generic<typename T>
-void StreamExtensions::GetData(System::IO::Stream^ stream, array<T>^ data)
+void StreamExtensions::GetData(UnmanagedMemoryStream^ stream, array<T>^ data)
 {
 	if (data == nullptr)
 		throw gcnew ArgumentNullException("data");
@@ -90,18 +86,18 @@ void StreamExtensions::GetData(System::IO::Stream^ stream, array<T>^ data)
 	GetData(stream, data, 0, data->Length);
 }
 generic<typename T>
-void StreamExtensions::GetData(System::IO::Stream^ stream, array<T>^ data, int startIndex, int elementCount)
+void StreamExtensions::GetData(UnmanagedMemoryStream^ stream, array<T>^ data, int startIndex, int elementCount)
 {
 	GetData(stream, 0, sizeof(T), data, startIndex, elementCount);
 }
 generic<typename T>
-void StreamExtensions::GetData(System::IO::Stream^ stream, int offsetInBytes, int strideSize, array<T>^ data, int startIndex, int elementCount)
+void StreamExtensions::GetData(UnmanagedMemoryStream^ stream, int offsetInBytes, int strideSize, array<T>^ data, int startIndex, int elementCount)
 {
 	CopyData(stream, offsetInBytes, strideSize, data, startIndex, elementCount, false);
 }
 
 generic<typename T>
-void StreamExtensions::SetData(System::IO::Stream^ stream, array<T>^ data)
+void StreamExtensions::SetData(UnmanagedMemoryStream^ stream, array<T>^ data)
 {
 	if (data == nullptr)
 		throw gcnew ArgumentNullException("data", "Cannot be null");
@@ -109,18 +105,18 @@ void StreamExtensions::SetData(System::IO::Stream^ stream, array<T>^ data)
 	SetData(stream, data, 0, data->Length);
 }
 generic<typename T>
-void StreamExtensions::SetData(System::IO::Stream^ stream, array<T>^ data, int startIndex, int elementCount)
+void StreamExtensions::SetData(UnmanagedMemoryStream^ stream, array<T>^ data, int startIndex, int elementCount)
 {
 	SetData(stream, 0, sizeof(T), data, startIndex, elementCount);
 }
 generic<typename T>
-void StreamExtensions::SetData(System::IO::Stream^ stream, int offsetInBytes, int strideSize, array<T>^ data, int startIndex, int elementCount)
+void StreamExtensions::SetData(UnmanagedMemoryStream^ stream, int offsetInBytes, int strideSize, array<T>^ data, int startIndex, int elementCount)
 {
 	CopyData(stream, offsetInBytes, strideSize, data, startIndex, elementCount, true);
 }
 
 generic<typename T>
-T StreamExtensions::Read(System::IO::Stream^ stream)
+T StreamExtensions::Read(UnmanagedMemoryStream^ stream)
 {
 	array<T>^ data = gcnew array<T>(1);
 
@@ -131,7 +127,7 @@ T StreamExtensions::Read(System::IO::Stream^ stream)
 	return data[0];
 }
 generic<typename T>
-void StreamExtensions::Write(System::IO::Stream^ stream, T data)
+void StreamExtensions::Write(UnmanagedMemoryStream^ stream, T data)
 {
 	array<T>^ dataArray = gcnew array<T>(1);
 	dataArray[0] = data;
