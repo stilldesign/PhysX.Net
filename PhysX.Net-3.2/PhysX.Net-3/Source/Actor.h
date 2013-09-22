@@ -89,12 +89,43 @@ namespace PhysX
 			}
 
 			/// <summary>
-			/// Reads the PxActor flags.
+			/// Reads the actor flags.
 			/// </summary>
 			property ActorFlag Flags
 			{
 				ActorFlag get();
 				void set(ActorFlag value);
+			}
+
+			/// <summary>
+			/// Assigns dynamic actors a dominance group identifier.
+			/// Dominance group is a 5 bit group identifier (legal range from 0 to 31).
+			/// </summary>
+			/// <remarks>Changing the dominance group does NOT wake the actor up automatically.</remarks>
+			property int DominanceGroup
+			{
+				int get();
+				void set(int value);
+			}
+
+			/// <summary>
+			/// Gets or sets the owner client of an actor.
+			/// This cannot be done once the actor has been placed into a scene.
+			/// </summary>
+			property int OwnerClient
+			{
+				int get();
+				void set(int value);
+			}
+
+			/// <summary>
+			/// Gets or sets the behavior bits of the actor.
+			/// The behavior bits determine which types of events the actor will broadcast to foreign clients.
+			/// </summary>
+			property int ClientBehaviorBits
+			{
+				int get();
+				void set(int value);
 			}
 
 			/// <summary>Gets or sets an object, usually to create a 1:1 relationship with a user object.</summary>

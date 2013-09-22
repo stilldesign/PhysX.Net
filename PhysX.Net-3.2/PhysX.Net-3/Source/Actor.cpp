@@ -100,6 +100,33 @@ void Actor::Flags::set(ActorFlag value)
 	_actor->setActorFlags((PxActorFlags)(PxU32)value);
 }
 
+int Actor::DominanceGroup::get()
+{
+	return (int)_actor->getDominanceGroup();
+}
+void Actor::DominanceGroup::set(int value)
+{
+	_actor->setDominanceGroup((PxDominanceGroup)value);
+}
+
+int Actor::OwnerClient::get()
+{
+	return (int)_actor->getOwnerClient();
+}
+void Actor::OwnerClient::set(int value)
+{
+	_actor->setOwnerClient((PxClientID)value);
+}
+
+int Actor::ClientBehaviorBits::get()
+{
+	return (int)_actor->getClientBehaviorBits();
+}
+void Actor::ClientBehaviorBits::set(int value)
+{
+	_actor->setClientBehaviorBits((PxU32)value);
+}
+
 PxActor* Actor::UnmanagedPointer::get()
 {
 	return _actor;
