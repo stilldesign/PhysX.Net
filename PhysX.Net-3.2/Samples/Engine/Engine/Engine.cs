@@ -226,7 +226,10 @@ namespace PhysX.Samples.Engine
 			this.Scene.SetVisualizationParameter(VisualizationParameter.ActorAxes, true);
 
 			// Connect to the remote debugger if it's there
-			Physics.RemoteDebugger.Connect("localhost");
+			if (this.Physics.RemoteDebugger != null)
+			{
+				this.Physics.RemoteDebugger.Connect("localhost");
+			}
 
 			CreateGroundPlane();
 		}

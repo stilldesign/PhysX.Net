@@ -110,7 +110,15 @@ void Physics::PostInit(PhysX::Foundation^ owner)
 	_vehicleSDK = gcnew PhysX::VehicleSDK(this);
 
 	// PVD
-	_connectionManager = gcnew PhysX::VisualDebugger::ConnectionManager(_physics->getPvdConnectionManager(), this);
+	{
+		auto connectionManager = _physics->getPvdConnectionManager();
+
+		// Can be NULL if the version of PhysX is not compiled with PVD support.
+		if (connectionManager != NULL)
+		{
+			_connectionManager = gcnew PhysX::VisualDebugger::ConnectionManager(connectionManager, this);
+		}
+	}
 
 	//
 
