@@ -187,7 +187,7 @@ namespace PhysX.Samples.Engine
 
 			string visEffectFile = Path.Combine(engineDir, @"Shaders\VisualizationEffect.fx");
 
-			var effect = Effect.FromFile(this.GraphicsDevice, visEffectFile, "fx_4_0", ShaderFlags.None, EffectFlags.None, null, null);
+			var effect = Effect.FromFile(this.GraphicsDevice, visEffectFile, "fx_4_0");
 
 			_visualizationEffect = new VisualizationEffect()
 			{

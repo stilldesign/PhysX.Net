@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>SlimDX</id>
+    <version>4.0.13.43</version>
+    <title>SlimDX</title>
+    <authors>SlimDX Group</authors>
+    <owners>SlimDX Group</owners>
+    <licenseUrl>http://opensource.org/licenses/mit-license.html</licenseUrl>
+    <projectUrl>http://slimdx.org/</projectUrl>
+    <iconUrl>http://benjaminnitschke.com/SlimDX128x128.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>SlimDX is a free open source framework that enables developers to easily build DirectX applications using .NET technologies such as C#, VB.NET, and IronPython.</description>
+    <releaseNotes>Provides the SlimDX framework as NuGet package (release version, .NET 4, 32bit). For details see http://slimdx.org/</releaseNotes>
+    <copyright>Copyright 2013</copyright>
+    <language />
+    <tags>SlimDX</tags>
+  </metadata>
+</package>
