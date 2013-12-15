@@ -210,6 +210,12 @@ namespace PhysX
 
 			//
 
+			property RigidBodyFlag RigidBodyFlags
+			{
+				RigidBodyFlag get();
+				void set(RigidBodyFlag value);
+			}
+
 			/// <summary>
 			/// Gets or sets the center of mass pose relative to the actor frame.
 			/// </summary>

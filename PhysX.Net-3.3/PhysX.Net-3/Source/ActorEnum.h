@@ -145,4 +145,12 @@ namespace PhysX
 		/// </summary>
 		UseKinematicTargetForSceneQueries = PxRigidDynamicFlag::eUSE_KINEMATIC_TARGET_FOR_SCENE_QUERIES
 	};
+
+	public enum RigidBodyFlag
+	{
+		Kinematic = PxRigidBodyFlag::eKINEMATIC,
+		UseKinematicTargetForSceneQueries = PxRigidBodyFlag::eUSE_KINEMATIC_TARGET_FOR_SCENE_QUERIES,
+		EnableCCD = PxRigidBodyFlag::eENABLE_CCD,
+		EnableCCDFriction = PxRigidBodyFlag::eENABLE_CCD_FRICTION
+	};
 };

@@ -263,6 +263,15 @@ LinearSweepMultipleResult^ RigidBody::LinearSweepMultiple(RigidBody^ body, PhysX
 
 //
 
+RigidBodyFlag RigidBody::RigidBodyFlags::get()
+{
+	return ToManagedEnum(RigidBodyFlag, this->UnmanagedPointer->getRigidBodyFlags());
+}
+void RigidBody::RigidBodyFlags::set(RigidBodyFlag value)
+{
+	this->UnmanagedPointer->setRigidBodyFlags(ToUnmanagedEnum(PxRigidBodyFlag, value));
+}
+
 Matrix RigidBody::CenterOfMassLocalPose::get()
 {
 	return MathUtil::PxTransformToMatrix(&this->UnmanagedPointer->getCMassLocalPose());
