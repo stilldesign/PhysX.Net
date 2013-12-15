@@ -80,7 +80,7 @@ namespace PhysX
 				PhysX::Physics^ get();
 			}
 
-			/// <summary
+			/// <summary>
 			/// Retrieves the render buffer.
 			/// This will contain the results of any active visualization for this scene.
 			/// Note: Do not use this method while the simulation is running. Calls to this method while result in undefined behaviour.
@@ -89,6 +89,21 @@ namespace PhysX
 
 			/// <summary>Call this method to retrieve statistics for the current simulation step.</summary>
 			SimulationStatistics^ GetSimulationStatistics();
+
+			/// <summary>
+			/// Shift the scene origin by the specified vector. 
+			///
+			/// The poses of all objects in the scene and the corresponding data structures will get adjusted to reflect the new origin location (the shift vector will get subtracted from all object positions).
+			/// 
+			/// Note:
+			/// It is the user's responsibility to keep track of the summed total origin shift and adjust all input/output to/from PhysX accordingly.
+			/// Do not use this method while the simulation is running. Calls to this method while the simulation is running will be ignored.
+			/// 
+			/// Make sure to propagate the origin shift to other dependent modules (for example, the character controller module etc.).
+			/// 
+			/// This is an expensive operation and we recommend to use it only in the case where distance related precision issues may arise in areas far from the origin.
+			/// </summary>
+			void ShiftOrigin(Vector3 shift);
 
 			#pragma region Actors
 			/// <summary>

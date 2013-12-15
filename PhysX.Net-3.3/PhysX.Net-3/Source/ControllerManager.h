@@ -87,6 +87,19 @@ namespace PhysX
 			/// </summary>
 			void SetOverlapRecoveryModule(bool flag);
 
+			/// <summary>
+			/// Shift the origin of the character controllers and obstacle objects by the specified vector. 
+			/// The positions of all character controllers, obstacle objects and the corresponding data
+			/// structures will get adjusted to reflect the shifted origin location (the shift vector will get
+			/// subtracted from all character controller and obstacle object positions).
+			/// Note:
+			/// It is the user's responsibility to keep track of the summed total origin shift and adjust
+			/// all input/output to/from PhysXCharacterKinematic accordingly.
+			/// This call will not automatically shift the PhysX scene and its objects. You need to call
+			/// Scene.ShiftOrigin() seperately to keep the systems in sync.
+			/// </summary>
+			void ShiftOrigin(Vector3 shift);
+
 			//
 
 			/// <summary>Gets the parent scene object.</summary>

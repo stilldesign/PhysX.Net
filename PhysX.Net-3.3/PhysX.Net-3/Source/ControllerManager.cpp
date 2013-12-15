@@ -121,6 +121,11 @@ void ControllerManager::SetOverlapRecoveryModule(bool flag)
 	_manager->setOverlapRecoveryModule(flag);
 }
 
+void ControllerManager::ShiftOrigin(Vector3 shift)
+{
+	_manager->shiftOrigin(UV(shift));
+}
+
 //
 
 PhysX::Scene^ ControllerManager::Scene::get()

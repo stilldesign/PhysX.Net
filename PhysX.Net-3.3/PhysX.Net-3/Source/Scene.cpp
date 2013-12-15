@@ -102,6 +102,11 @@ SimulationStatistics^ Scene::GetSimulationStatistics()
 	return SimulationStatistics::ToManaged(&stats);
 }
 
+void Scene::ShiftOrigin(Vector3 shift)
+{
+	_scene->shiftOrigin(UV(shift));
+}
+
 #pragma region Actors
 IEnumerable<Actor^>^ Scene::Actors::get()
 {
