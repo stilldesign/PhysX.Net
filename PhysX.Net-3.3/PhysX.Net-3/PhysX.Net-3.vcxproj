@@ -215,6 +215,7 @@
     <ClInclude Include="Source\GeometryHolder.h">
       <FileType>CppHeader</FileType>
     </ClInclude>
+    <ClInclude Include="Source\GeometryQuery.h" />
     <ClInclude Include="Source\HitCallback.h" />
     <ClInclude Include="Source\InternalOverlapCallback.h" />
     <ClInclude Include="Source\InternalRaycastCallback.h" />
@@ -435,6 +436,7 @@
     <ClCompile Include="Source\GeometryHolder.cpp">
       <FileType>CppCode</FileType>
     </ClCompile>
+    <ClCompile Include="Source\GeometryQuery.cpp" />
     <ClCompile Include="Source\InternalOverlapCallback.cpp" />
     <ClCompile Include="Source\InternalRaycastCallback.cpp" />
     <ClCompile Include="Source\IVehicleComputeTireForceInput.cpp" />

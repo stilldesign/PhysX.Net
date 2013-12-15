@@ -463,6 +463,9 @@
     <ClCompile Include="Source\SceneLimits.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
+    <ClCompile Include="Source\GeometryQuery.cpp">
+      <Filter>Geometry</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
@@ -1043,6 +1046,9 @@
     <ClInclude Include="Source\ShapeUtil.h" />
     <ClInclude Include="Source\SceneLimits.h">
       <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GeometryQuery.h">
+      <Filter>Geometry</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

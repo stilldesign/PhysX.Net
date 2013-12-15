@@ -78,6 +78,8 @@ using namespace PhysX::Math;
 
 #define MV(v) (MathUtil::PxVec3ToVector3(v))
 #define UV(v) (MathUtil::Vector3ToPxVec3(v))
+#define MM(m) (MathUtil::PxTransformToMatrix(m))
+#define UM(m) (MathUtil::MatrixToPxTransform(m))
 
 #define ThrowIfNull(var, varName)\
 {\
@@ -109,9 +111,3 @@ bool IsInstanceOf(U u)
 {
 	return dynamic_cast<T>(u) != nullptr;
 }
-
-// HACK: This file is required to be included here and not later on in another file otherwise we get
-// horrible linker errors (PxGeometry has already been defined)
-////#include <PxShape.h>
-
-//#include <PxShape.h>

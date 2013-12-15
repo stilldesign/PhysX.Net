@@ -58,6 +58,7 @@
     <Compile Include="Cooking\CookTest.cs" />
     <Compile Include="Cloth\ClothTestGrid.cs" />
     <Compile Include="FoundationTest.cs" />
+    <Compile Include="Geometry\GeometryQueryTest.cs" />
     <Compile Include="Geometry\Model.cs" />
     <Compile Include="HeightField\HeightFieldSimpleTests.cs" />
     <Compile Include="HeightField\HeightFieldTest.cs" />
