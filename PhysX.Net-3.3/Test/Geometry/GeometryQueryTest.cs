@@ -30,5 +30,18 @@ namespace PhysX.Test.Geometry
 			Assert.IsNotNull(hit);
 			Assert.AreEqual(2.0f, hit.Distance);
 		}
+
+		[TestMethod]
+		public void GetWorldBounds()
+		{
+			var sphere = new SphereGeometry(5);
+
+			var bounds = GeometryQuery.GetWorldBounds(sphere, Matrix.Identity);
+
+			// We started with a sphere of radius 5,
+			// the bounding size + inflation value (3rd optional arg) results
+			// in a box of size 10.1 whd
+			Assert.AreEqual(new Bounds3(new Vector3(10.1f, 10.1f, 10.1f)), bounds);
+		}
 	}
 }

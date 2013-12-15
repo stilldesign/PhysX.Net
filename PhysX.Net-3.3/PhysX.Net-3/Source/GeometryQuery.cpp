@@ -34,3 +34,24 @@ SweepHit^ GeometryQuery::Sweep(Vector3 unitDirection, float distance, Geometry^ 
 
 	return SweepHit::ToManaged(sh);
 }
+
+Bounds3 GeometryQuery::GetWorldBounds(Geometry^ geometry, Matrix pose, [Optional] Nullable<float> inflation)
+{
+	if (geometry == nullptr)
+		throw gcnew ArgumentNullException("geometry");
+
+	PxGeometry* g = geometry->ToUnmanaged();
+
+	PxTransform t = UM(pose);
+
+	PxBounds3 bounds = PxGeometryQuery::getWorldBounds
+	(
+		*g,
+		t,
+		inflation.GetValueOrDefault(1.01f)
+	);
+
+	delete g;
+
+	return Bounds3::FromUnmanaged(bounds);
+}
