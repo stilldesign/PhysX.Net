@@ -34,6 +34,7 @@ namespace PhysX
 	ref class QueryCache;
 	ref class OverlapHit;
 	ref class Collection;
+	ref class SceneLimits;
 
 	/// <summary>
 	/// A scene is a collection of bodies, deformables, particle systems and constraints which can interact.
@@ -330,6 +331,12 @@ namespace PhysX
 			property int SceneQueryStaticTimestamp
 			{
 				int get();
+			}
+
+			property PhysX::SceneLimits^ SceneLimits
+			{
+				PhysX::SceneLimits^ get();
+				void set(PhysX::SceneLimits^ value);
 			}
 
 			/// <summary>

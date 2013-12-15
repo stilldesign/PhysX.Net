@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PhysX.Math;
 
@@ -14,12 +15,14 @@ namespace PhysX.Test
 	[DeploymentItem(@"Assemblies\x86\PhysX3CommonCHECKED_x86.dll")]
 	[DeploymentItem(@"Assemblies\x86\PhysX3CookingCHECKED_x86.dll")]
 	[DeploymentItem(@"Assemblies\x86\PhysX3GpuCHECKED_x86.dll")]
+	[DeploymentItem(@"Assemblies\x86\nvToolsExt32_1.dll")]
 #elif x64
 	[DeploymentItem(@"Assemblies\x86\PhysX3CharacterKinematicCHECKED_x64.dll")]
 	[DeploymentItem(@"Assemblies\x86\PhysX3CHECKED_x64.dll")]
 	[DeploymentItem(@"Assemblies\x86\PhysX3CommonCHECKED_x64.dll")]
 	[DeploymentItem(@"Assemblies\x86\PhysX3CookingCHECKED_x64.dll")]
 	[DeploymentItem(@"Assemblies\x86\PhysX3GpuCHECKED_x64.dll")]
+	[DeploymentItem(@"Assemblies\x86\nvToolsExt64_1.dll")]
 #endif
 	[TestClass]
 	public abstract class Test
@@ -36,6 +39,8 @@ namespace PhysX.Test
 		[TestInitialize]
 		public void TestInitialize()
 		{
+			Trace.WriteLine(GetCurrentMethod());
+
 			if (Physics.Instantiated)
 				throw new Exception("Before a test run, the Physics singleton should not be initalized. Probably spill over from a previous test.");
 		}
@@ -93,6 +98,15 @@ namespace PhysX.Test
 		protected void AssertNoPhysXErrors(PhysicsAndSceneTestUnit physics)
 		{
 			Assert.IsFalse(physics.ErrorOutput.HasErrors, physics.ErrorOutput.LastError);
+		}
+
+		[MethodImpl(MethodImplOptions.NoInlining)]
+		public string GetCurrentMethod()
+		{
+			StackTrace st = new StackTrace();
+			StackFrame sf = st.GetFrame(1);
+
+			return sf.GetMethod().Name;
 		}
 	}
 }

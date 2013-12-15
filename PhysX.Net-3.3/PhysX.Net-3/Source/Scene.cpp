@@ -33,6 +33,7 @@
 #include "OverlapHit.h"
 #include "InternalOverlapCallback.h"
 #include "Collection.h"
+#include "SceneLimits.h"
 
 //#include <PxFixedJoint.h>
 //#include <PxCollectionExt.h>
@@ -490,6 +491,15 @@ SceneFlag Scene::Flags::get()
 int Scene::SceneQueryStaticTimestamp::get()
 {
 	return _scene->getSceneQueryStaticTimestamp();
+}
+
+PhysX::SceneLimits^ Scene::SceneLimits::get()
+{
+	return PhysX::SceneLimits::ToManaged(_scene->getLimits());
+}
+void Scene::SceneLimits::set(PhysX::SceneLimits^ value)
+{
+	_scene->setLimits(PhysX::SceneLimits::ToUnmanaged(value));
 }
 
 PxScene* Scene::UnmanagedPointer::get()

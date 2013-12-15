@@ -460,6 +460,9 @@
       <Filter>Base</Filter>
     </ClCompile>
     <ClCompile Include="Source\ShapeUtil.cpp" />
+    <ClCompile Include="Source\SceneLimits.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
@@ -1038,6 +1041,9 @@
       <Filter>Base</Filter>
     </ClInclude>
     <ClInclude Include="Source\ShapeUtil.h" />
+    <ClInclude Include="Source\SceneLimits.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Version.rc" />

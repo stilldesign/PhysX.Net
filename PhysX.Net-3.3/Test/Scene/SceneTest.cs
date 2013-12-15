@@ -201,5 +201,33 @@ namespace PhysX.Test
 				Assert.AreEqual(1, stats.NumberOfDynamicBodies);
 			}
 		}
+
+		[TestMethod]
+		public void GetSetSceneLimits()
+		{
+			using (var physics = CreatePhysicsAndScene())
+			{
+				physics.Scene.SceneLimits = new SceneLimits()
+				{
+					MaxActors = 1,
+					MaxBodies = 2,
+					MaxConstraints = 3,
+					MaxDynamicShapes = 4,
+					MaxObjectsPerRegion = 5,
+					MaxRegions = 6,
+					MaxStaticShapes = 7
+				};
+
+				var limits = physics.Scene.SceneLimits;
+
+				Assert.AreEqual(1, limits.MaxActors);
+				Assert.AreEqual(2, limits.MaxBodies);
+				Assert.AreEqual(3, limits.MaxConstraints);
+				Assert.AreEqual(4, limits.MaxDynamicShapes);
+				Assert.AreEqual(5, limits.MaxObjectsPerRegion);
+				Assert.AreEqual(6, limits.MaxRegions);
+				Assert.AreEqual(7, limits.MaxStaticShapes);
+			}
+		}
 	}
 }

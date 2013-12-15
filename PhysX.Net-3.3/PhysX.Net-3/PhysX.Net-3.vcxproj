@@ -267,6 +267,7 @@
     <ClInclude Include="Source\QueryCache.h" />
     <ClInclude Include="Source\QueryFilterCallback.h" />
     <ClInclude Include="Source\RaycastQueryResult.h" />
+    <ClInclude Include="Source\SceneLimits.h" />
     <ClInclude Include="Source\Serializable.h" />
     <ClInclude Include="Source\SerializableEnum.h" />
     <ClInclude Include="Source\Serialization.h" />
@@ -506,6 +507,7 @@
     <ClCompile Include="Source\RigidStatic.cpp" />
     <ClCompile Include="Source\RuntimeFileChecks.cpp" />
     <ClCompile Include="Source\LocationHit.cpp" />
+    <ClCompile Include="Source\SceneLimits.cpp" />
     <ClCompile Include="Source\SceneSweepOperationObject.cpp" />
     <ClCompile Include="Source\Serializable.cpp" />
     <ClCompile Include="Source\Serialization.cpp" />
