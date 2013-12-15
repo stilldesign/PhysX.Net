@@ -12,6 +12,7 @@ namespace PhysX.Test
 	[DeploymentItem(@"Resources\Teapot.DAE")]
 	public class CookTest : Test
 	{
+		[Ignore]
 		[TestMethod]
 		public void CookClothFabric()
 		{
@@ -35,6 +36,7 @@ namespace PhysX.Test
 			}
 		}
 
+		[Ignore]
 		[TestMethod]
 		public void CookTriangleMesh()
 		{
