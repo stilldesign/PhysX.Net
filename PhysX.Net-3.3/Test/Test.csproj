@@ -75,6 +75,7 @@
     <Compile Include="Joint\DistanceJointTest.cs" />
     <Compile Include="Joint\D6JointTest.cs" />
     <Compile Include="ObjectTable\ObjectTableTest.cs" />
+    <Compile Include="Physics\ContactModifyCallbackTest.cs" />
     <Compile Include="Scene\SceneTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Physics\PhysicsTest.cs" />

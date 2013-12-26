@@ -35,6 +35,7 @@ namespace PhysX
 	ref class OverlapHit;
 	ref class Collection;
 	ref class SceneLimits;
+	ref class ContactModifyCallback;
 
 	/// <summary>
 	/// A scene is a collection of bodies, deformables, particle systems and constraints which can interact.
@@ -49,6 +50,7 @@ namespace PhysX
 			PxScene* _scene;
 
 			Physics^ _physics;
+			PhysX::ContactModifyCallback^ _contactModifyCallback;
 
 		internal:
 			Scene(PxScene* scene, PhysX::Physics^ physics);
@@ -352,6 +354,12 @@ namespace PhysX
 			{
 				PhysX::SceneLimits^ get();
 				void set(PhysX::SceneLimits^ value);
+			}
+
+			property PhysX::ContactModifyCallback^ ContactModifyCallback
+			{
+				PhysX::ContactModifyCallback^ get();
+				void set(PhysX::ContactModifyCallback^ value);
 			}
 
 			/// <summary>

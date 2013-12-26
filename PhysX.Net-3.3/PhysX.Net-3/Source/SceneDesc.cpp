@@ -1,12 +1,9 @@
 #include "StdAfx.h"
-#include "SceneDesc.h"
 #include "TolerancesScale.h"
 #include "Physics.h"
 #include "PhysicsEnum.h"
-//#include <PxSceneDesc.h>
-//#include <PxDefaultSimulationFilterShader.h>
-//#include <PxDefaultCpuDispatcher.h>
-//#include <PxCpuDispatcher.h>
+#include "ContactModifyCallback.h"
+#include "SceneDesc.h"
 
 using namespace PhysX;
 using namespace PhysX::Math;
@@ -75,6 +72,26 @@ void SceneDesc::SimulationEventCallback::set(PhysX::SimulationEventCallback^ val
 	_simulationEventCallback = value;
 
 	_sceneDesc->simulationEventCallback = (value == nullptr ? NULL : value->UnmanagedPointer);
+}
+
+PhysX::ContactModifyCallback^ SceneDesc::ContactModifyCallback::get()
+{
+	return _contactModifyCallback;
+}
+void SceneDesc::ContactModifyCallback::set(PhysX::ContactModifyCallback^ value)
+{
+	_contactModifyCallback = value;
+
+	_sceneDesc->contactModifyCallback = (value == nullptr ? NULL : value->UnmanagedPointer);
+}
+
+int SceneDesc::CCDMaximumPasses::get()
+{
+	return _sceneDesc->ccdMaxPasses;
+}
+void SceneDesc::CCDMaximumPasses::set(int value)
+{
+	_sceneDesc->ccdMaxPasses = value;
 }
 
 PxSceneDesc* SceneDesc::UnmanagedPointer::get()

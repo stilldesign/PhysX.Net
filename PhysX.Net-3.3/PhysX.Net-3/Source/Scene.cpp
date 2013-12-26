@@ -34,6 +34,7 @@
 #include "InternalOverlapCallback.h"
 #include "Collection.h"
 #include "SceneLimits.h"
+#include "ContactModifyCallback.h"
 
 //#include <PxFixedJoint.h>
 //#include <PxCollectionExt.h>
@@ -505,6 +506,17 @@ PhysX::SceneLimits^ Scene::SceneLimits::get()
 void Scene::SceneLimits::set(PhysX::SceneLimits^ value)
 {
 	_scene->setLimits(PhysX::SceneLimits::ToUnmanaged(value));
+}
+
+PhysX::ContactModifyCallback^ Scene::ContactModifyCallback::get()
+{
+	return _contactModifyCallback;
+}
+void Scene::ContactModifyCallback::set(PhysX::ContactModifyCallback^ value)
+{
+	_contactModifyCallback = value;
+
+	_scene->setContactModifyCallback(value == nullptr ? NULL : value->UnmanagedPointer);
 }
 
 PxScene* Scene::UnmanagedPointer::get()

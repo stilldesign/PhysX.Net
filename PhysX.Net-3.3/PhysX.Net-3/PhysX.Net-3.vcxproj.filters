@@ -466,6 +466,16 @@
     <ClCompile Include="Source\GeometryQuery.cpp">
       <Filter>Geometry</Filter>
     </ClCompile>
+    <ClCompile Include="Source\ContactModifyCallback.cpp" />
+    <ClCompile Include="Source\ContactSet.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ContactModifyPair.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DefaultSimulationFilterShader.cpp">
+      <Filter>Extensions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
@@ -1049,6 +1059,22 @@
     </ClInclude>
     <ClInclude Include="Source\GeometryQuery.h">
       <Filter>Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ContactModifyCallback.h" />
+    <ClInclude Include="Source\ContactSet.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ContactModifyPair.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DefaultSimulationFilterShader.h">
+      <Filter>Extensions</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SimulationFilterShaderOps.h">
+      <Filter>Extensions</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ExtensionsEnum.h">
+      <Filter>Extensions</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -12,6 +12,8 @@ using namespace PhysX::Math;
 
 namespace PhysX
 {
+	ref class ContactModifyCallback;
+
 	public ref class SceneDesc : IDisposable
 	{
 		public:
@@ -22,7 +24,9 @@ namespace PhysX
 
 		private:
 			PxSceneDesc* _sceneDesc;
+
 			SimulationEventCallback^ _simulationEventCallback;
+			PhysX::ContactModifyCallback^ _contactModifyCallback;
 
 		public:
 			SceneDesc([Optional] Nullable<PhysX::TolerancesScale> tolerancesScale);
@@ -69,6 +73,18 @@ namespace PhysX
 			{
 				PhysX::SimulationEventCallback^ get();
 				void set(PhysX::SimulationEventCallback^ value);
+			}
+
+			property PhysX::ContactModifyCallback^ ContactModifyCallback
+			{
+				PhysX::ContactModifyCallback^ get();
+				void set(PhysX::ContactModifyCallback^ value);
+			}
+
+			property int CCDMaximumPasses
+			{
+				int get();
+				void set(int value);
 			}
 
 		internal:

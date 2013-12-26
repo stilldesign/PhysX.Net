@@ -189,6 +189,9 @@
     <ClInclude Include="Source\ClothFabricDesc.h" />
     <ClInclude Include="Source\ClothFabricPhase.h" />
     <ClInclude Include="Source\ConstraintShaderTable.h" />
+    <ClInclude Include="Source\ContactModifyCallback.h" />
+    <ClInclude Include="Source\ContactModifyPair.h" />
+    <ClInclude Include="Source\ContactSet.h" />
     <ClInclude Include="Source\ControllerHit.h" />
     <ClInclude Include="Source\CharacterEnum.h" />
     <ClInclude Include="Source\Cloth.h" />
@@ -210,6 +213,7 @@
     <ClInclude Include="Source\ConstraintDesc.h" />
     <ClInclude Include="Source\ConstraintDominance.h" />
     <ClInclude Include="Source\ConstraintInfo.h" />
+    <ClInclude Include="Source\ExtensionsEnum.h" />
     <ClInclude Include="Source\FeatureContact.h" />
     <ClInclude Include="Source\FoundationEnum.h" />
     <ClInclude Include="Source\GeometryHolder.h">
@@ -265,6 +269,7 @@
     <ClInclude Include="Source\ObstacleContext.h" />
     <ClInclude Include="Source\OperationFailedException.h" />
     <ClInclude Include="Source\OverlapHit.h" />
+    <ClInclude Include="Source\DefaultSimulationFilterShader.h" />
     <ClInclude Include="Source\QueryCache.h" />
     <ClInclude Include="Source\QueryFilterCallback.h" />
     <ClInclude Include="Source\RaycastQueryResult.h" />
@@ -276,6 +281,7 @@
     <ClInclude Include="Source\ShapeUtil.h" />
     <ClInclude Include="Source\SimpleContact.h" />
     <ClInclude Include="Source\SimulationEventCallback.h" />
+    <ClInclude Include="Source\SimulationFilterShaderOps.h" />
     <ClInclude Include="Source\Spring.h" />
     <ClInclude Include="Source\VehicleWheelsDynData.h" />
     <ClInclude Include="Source\VolumeCache.h" />
@@ -417,6 +423,9 @@
     <ClCompile Include="Source\ClothFabricDesc.cpp" />
     <ClCompile Include="Source\ClothMotionConstraintConfig.cpp" />
     <ClCompile Include="Source\ConstraintShaderTable.cpp" />
+    <ClCompile Include="Source\ContactModifyCallback.cpp" />
+    <ClCompile Include="Source\ContactModifyPair.cpp" />
+    <ClCompile Include="Source\ContactSet.cpp" />
     <ClCompile Include="Source\ControllerHit.cpp" />
     <ClCompile Include="Source\Cloth.cpp" />
     <ClCompile Include="Source\ClothCollisionData.cpp" />
@@ -527,6 +536,7 @@
     <ClCompile Include="Source\SimpleContact.cpp" />
     <ClCompile Include="Source\SimpleTriangleMesh.cpp" />
     <ClCompile Include="Source\SimulationEventCallback.cpp" />
+    <ClCompile Include="Source\DefaultSimulationFilterShader.cpp" />
     <ClCompile Include="Source\SimulationStatistics.cpp" />
     <ClCompile Include="Source\SphericalJoint.cpp" />
     <ClCompile Include="Source\Spring.cpp" />
