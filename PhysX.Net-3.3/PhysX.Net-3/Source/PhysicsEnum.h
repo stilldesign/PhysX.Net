@@ -214,4 +214,13 @@ namespace PhysX
 		/// </summary>
 		Overflow = PxBatchQueryStatus::eOVERFLOW
 	};
+
+	public enum class FilterFlag
+	{
+		Kill = PxFilterFlag::eKILL,
+		Supress = PxFilterFlag::eSUPPRESS,
+		Callback = PxFilterFlag::eCALLBACK,
+		Notify = PxFilterFlag::eNOTIFY,
+		Default = PxFilterFlag::eDEFAULT
+	};
 };
