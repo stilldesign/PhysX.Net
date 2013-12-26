@@ -146,7 +146,7 @@ namespace PhysX
 		UseKinematicTargetForSceneQueries = PxRigidDynamicFlag::eUSE_KINEMATIC_TARGET_FOR_SCENE_QUERIES
 	};
 
-	public enum RigidBodyFlag
+	public enum class RigidBodyFlag
 	{
 		Kinematic = PxRigidBodyFlag::eKINEMATIC,
 		UseKinematicTargetForSceneQueries = PxRigidBodyFlag::eUSE_KINEMATIC_TARGET_FOR_SCENE_QUERIES,
