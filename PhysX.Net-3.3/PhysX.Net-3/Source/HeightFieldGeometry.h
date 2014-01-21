@@ -15,6 +15,7 @@ namespace PhysX
 	{
 		public:
 			HeightFieldGeometry();
+			HeightFieldGeometry(PhysX::HeightField^ heightField);
 			HeightFieldGeometry(PhysX::HeightField^ heightField, MeshGeometryFlag flags, float heightFieldScale, float rowScale, float columnScale);
 
 		internal:

@@ -2,10 +2,15 @@
 #include "InternalRaycastCallback.h"
 #include "RaycastHit.h"
 
-InternalRaycastCallback::InternalRaycastCallback(PxRaycastHit *aTouches, PxU32 aMaxNbTouches)
+InternalRaycastCallback::InternalRaycastCallback(PxRaycastHit *aTouches, PxU32 aMaxNbTouches, gcroot<Func<array<RaycastHit^>^, bool>^> managedCallback)
 	: PxHitCallback<PxRaycastHit>(aTouches, aMaxNbTouches)
 {
+	Func<array<RaycastHit^>^, bool>^ c = managedCallback;
 
+	if (c == nullptr)
+		throw gcnew InvalidOperationException("The hit call back cannot be null");
+
+	_managedCallback = managedCallback;
 }
 
 PxAgain InternalRaycastCallback::processTouches(const PxRaycastHit* buffer, PxU32 nbHits)

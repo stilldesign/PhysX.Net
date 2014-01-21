@@ -15,19 +15,21 @@ namespace PhysX
 		Shearing = PxClothFabricPhaseType::eSHEARING  //!< resists in-plane shearing along (typically) diagonal edges,
 	};
 
-	//public enum class ClothPhaseSolverType
-	//{
-	//	Invalid = PxClothPhaseSolverConfig::eINVALID, 
-	//	Fast = PxClothPhaseSolverConfig::eFAST, 
-	//	Stiff = PxClothPhaseSolverConfig::eSTIFF, 
-	//	Bending = PxClothPhaseSolverConfig::eBENDING, 
-	//	ZeroStreching = PxClothPhaseSolverConfig::eZEROSTRETCH, 
-	//	Shearing = PxClothPhaseSolverConfig::eSHEARING
-	//};
-
 	public enum class ClothFlag
 	{
+		/// <summary>
+		/// Turn on/off gpu based solver.
+		/// </summary>
+		GPU = PxClothFlag::eGPU,
+
+		/// <summary>
+		/// Use swept contact (continuous collision).
+		/// </summary>
 		SweptContact = PxClothFlag::eSWEPT_CONTACT,
-		GPU = PxClothFlag::eGPU
+
+		/// <summary>
+		/// Collide against rigid body shapes in scene.
+		/// </summary>
+		SceneCollision = PxClothFlag::eSCENE_COLLISION
 	};
 };

@@ -2,10 +2,15 @@
 #include "InternalOverlapCallback.h"
 #include "OverlapHit.h"
 
-InternalOverlapCallback::InternalOverlapCallback(PxOverlapHit *aTouches, PxU32 aMaxNbTouches)
+InternalOverlapCallback::InternalOverlapCallback(PxOverlapHit *aTouches, PxU32 aMaxNbTouches, gcroot<Func<array<OverlapHit^>^, bool>^> managedCallback)
 	: PxHitCallback<PxOverlapHit>(aTouches, aMaxNbTouches)
 {
+	Func<array<OverlapHit^>^, bool>^ c = managedCallback;
 
+	if (c == nullptr)
+		throw gcnew InvalidOperationException("The overlap call back cannot be null");
+
+	_managedCallback = managedCallback;
 }
 
 PxAgain InternalOverlapCallback::processTouches(const PxOverlapHit* buffer, PxU32 nbHits)

@@ -27,6 +27,8 @@ namespace PhysX.Test
 	[TestClass]
 	public abstract class Test
 	{
+		private ErrorLog _errorLog;
+
 		[TestCleanup]
 		public void CleanUp()
 		{
@@ -34,6 +36,13 @@ namespace PhysX.Test
 				throw new Exception("After a test has run, the Physics singleton should have been disposed");
 
 			ObjectTable.Clear();
+
+			if (_errorLog != null && _errorLog.HasErrors)
+			{
+				Trace.TraceError("There were errors, check the error log");
+			}
+
+			_errorLog = null;
 		}
 
 		[TestInitialize]
@@ -51,7 +60,7 @@ namespace PhysX.Test
 				Assert.Fail("Physics is still created");
 
 			if (errorCallback == null)
-				errorCallback = new ErrorLog();
+				errorCallback = _errorLog = new ErrorLog();
 
 			var foundation = new Foundation(errorCallback);
 
@@ -61,9 +70,9 @@ namespace PhysX.Test
 		}
 		protected PhysicsAndSceneTestUnit CreatePhysicsAndScene()
 		{
-			var errors = new ErrorLog();
+			_errorLog = new ErrorLog();
 
-			var physics = CreatePhysics(errors);
+			var physics = CreatePhysics(_errorLog);
 
 			var scene = physics.CreateScene();
 
@@ -72,7 +81,7 @@ namespace PhysX.Test
 				Foundation = physics.Foundation,
 				Physics = scene.Physics,
 				Scene = scene,
-				ErrorOutput = errors
+				ErrorOutput = _errorLog
 			};
 		}
 

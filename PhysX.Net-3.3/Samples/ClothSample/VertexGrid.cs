@@ -7,14 +7,14 @@ namespace PhysX.Samples.ClothSample
 {
 	public class VertexGrid
 	{
-		public VertexGrid(int rows, int columns)
+		private VertexGrid()
 		{
-			CreateGrid(rows, columns);
+
 		}
 
-		private void CreateGrid(int rows, int columns)
+		public static VertexGrid CreateGrid(int rows, int columns, float particleSpacing = 1.0f)
 		{
-			Random rnd = new Random();
+			var rnd = new Random();
 
 			int numVertsX = rows + 1;
 			int numVertsZ = columns + 1;
@@ -27,10 +27,12 @@ namespace PhysX.Samples.ClothSample
 				{
 					for (int c = 0; c < numVertsZ; c++)
 					{
+						float x = r * particleSpacing;
+						float y = c * particleSpacing;
 						// Make the cloth slightly crumpled (randomize the z position between -0.2 and 0.2)
 						float z = -0.2f + (float)rnd.NextDouble() * 0.4f;
 
-						points[r * numVertsZ + c] = new Vector3(r, c, z);
+						points[r * numVertsZ + c] = new Vector3(x, y, z);
 					}
 				}
 			}
@@ -58,8 +60,11 @@ namespace PhysX.Samples.ClothSample
 				}
 			}
 
-			this.Points = points;
-			this.Indices = indices;
+			return new VertexGrid()
+			{
+				Points = points,
+				Indices = indices
+			};
 		}
 
 		public Vector3[] Points { get; private set; }

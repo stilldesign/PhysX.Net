@@ -9,10 +9,11 @@ namespace PhysX
 
 class InternalRaycastCallback : public PxRaycastCallback
 {
-public:
+private:
 	gcroot<Func<array<RaycastHit^>^, bool>^> _managedCallback;
 
-	InternalRaycastCallback(PxRaycastHit *aTouches, PxU32 aMaxNbTouches);
+public:
+	InternalRaycastCallback(PxRaycastHit *aTouches, PxU32 aMaxNbTouches, gcroot<Func<array<RaycastHit^>^, bool>^> managedCallback);
 
 	virtual PxAgain processTouches(const PxRaycastHit* buffer, PxU32 nbHits);
 };

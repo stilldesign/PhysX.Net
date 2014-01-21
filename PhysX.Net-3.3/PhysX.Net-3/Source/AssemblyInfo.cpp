@@ -16,7 +16,7 @@ using namespace System::Security::Permissions;
 [assembly:AssemblyConfigurationAttribute("")];
 [assembly:AssemblyCompanyAttribute("StillDesign")];
 [assembly:AssemblyProductAttribute("PhysX.Net")];
-[assembly:AssemblyCopyrightAttribute("Copyright (c) StillDesign 2013")];
+[assembly:AssemblyCopyrightAttribute("Copyright (c) StillDesign 2014")];
 [assembly:AssemblyTrademarkAttribute("")];
 [assembly:AssemblyCultureAttribute("")];
 
@@ -36,5 +36,3 @@ using namespace System::Security::Permissions;
 [assembly:ComVisible(false)];
 
 [assembly:CLSCompliantAttribute(true)];
-
-[assembly:SecurityPermission(SecurityAction::RequestMinimum, UnmanagedCode = true)];

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PhysX.Math;
@@ -21,6 +22,9 @@ namespace PhysX.Test
 			_material = _physics.Physics.CreateMaterial(0.5f, 0.5f, 0.1f);
 
 			_actor = _physics.Physics.CreateRigidDynamic();
+
+			// Make the actor kinematic because Triangle mesh, heightfield and plane geometry shapes require it.
+			_actor.Flags = RigidDynamicFlags.Kinematic;
 
 			_physics.Scene.AddActor(_actor);
 		}
@@ -80,13 +84,87 @@ namespace PhysX.Test
 		[TestMethod]
 		public void GetHeightFieldGeometry()
 		{
-			throw new NotImplementedException();
+			var material = _physics.Physics.CreateMaterial(0.5f, 0.5f, 0.1f);
+
+			const int rows = 25, columns = 25;
+			var samples = HeightFieldTestUtil.CreateSampleGrid(rows, columns);
+
+			var heightFieldDesc = new HeightFieldDesc()
+			{
+				NumberOfRows = rows,
+				NumberOfColumns = columns,
+				Samples = samples
+			};
+
+			var heightField = _physics.Physics.CreateHeightField(heightFieldDesc);
+
+			Assert.IsNotNull(heightField);
+
+			var heightFieldGeometry = new HeightFieldGeometry
+			(
+				heightField: heightField,
+				flags: MeshGeometryFlag.DoubleSided,
+				heightFieldScale: 2.3f,
+				rowScale: 1.2f,
+				columnScale: 1.9f
+			);
+
+			var shape = _actor.CreateShape(heightFieldGeometry, material);
+
+			//
+
+			var retrievedHeightfieldGeom = shape.GetHeightFieldGeometry();
+
+			Assert.IsNotNull(retrievedHeightfieldGeom);
+			Assert.AreEqual(heightField, retrievedHeightfieldGeom.HeightField);
+			Assert.AreEqual(retrievedHeightfieldGeom.ColumnScale, 1.9f);
+			Assert.AreEqual(retrievedHeightfieldGeom.RowScale, 1.2f);
+			Assert.AreEqual(retrievedHeightfieldGeom.HeightFieldFlags, MeshGeometryFlag.DoubleSided);
 		}
 
 		[TestMethod]
 		public void GetTriangleMeshGeometry()
 		{
-			throw new NotImplementedException();
+			var material = _physics.Physics.CreateMaterial(0.5f, 0.5f, 0.1f);
+
+			var actor = _physics.Physics.CreateRigidDynamic();
+
+			// Triangle mesh can only be created on a kinematic actor
+			actor.Flags = RigidDynamicFlags.Kinematic;
+
+			var grid = new ClothTestGrid(10, 10);
+
+			var triangleMeshDesc = new TriangleMeshDesc();
+			triangleMeshDesc.Points = grid.Points;
+			triangleMeshDesc.SetTriangles(grid.Indices);
+
+			MemoryStream cookedStream;
+			using (var cooking = _physics.Physics.CreateCooking())
+			{
+				cookedStream = new MemoryStream();
+
+				bool result = cooking.CookTriangleMesh(triangleMeshDesc, cookedStream);
+
+				Assert.IsTrue(result);
+
+				cookedStream.Position = 0;
+			}
+
+			var triangleMesh = _physics.Physics.CreateTriangleMesh(cookedStream);
+
+			var triangleMeshGeometry = new TriangleMeshGeometry(triangleMesh);
+
+			var shape = actor.CreateShape(triangleMeshGeometry, material);
+
+			//
+
+			var retrievedTriangleMeshGeom = shape.GetTriangleMeshGeometry();
+
+			Assert.IsNotNull(retrievedTriangleMeshGeom);
+			Assert.AreEqual(triangleMesh, retrievedTriangleMeshGeom.TriangleMesh);
+			Assert.AreEqual(GeometryType.TriangleMesh, retrievedTriangleMeshGeom.Type);
+			Assert.AreEqual(new MeshScale(new Vector3(1), Quaternion.Identity), retrievedTriangleMeshGeom.Scale);
+			Assert.AreEqual((MeshGeometryFlag)0, retrievedTriangleMeshGeom.MeshFlags);
 		}
 	}
 }

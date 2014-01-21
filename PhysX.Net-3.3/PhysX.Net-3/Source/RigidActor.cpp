@@ -18,14 +18,6 @@ RigidActor::RigidActor(PxRigidActor* rigidActor, PhysX::IDisposable^ owner)
 
 	_shapes = gcnew List<Shape^>(existingShapes);
 }
-RigidActor::~RigidActor()
-{
-	
-}
-RigidActor::!RigidActor()
-{
-	
-}
 
 array<Shape^>^ RigidActor::CreateShapesInActor(PxRigidActor* actor)
 {

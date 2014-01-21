@@ -4,11 +4,14 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using PhysX.Math;
+using PhysX.Samples.Engine.Util;
 
 namespace PhysX.Samples.ClothSample
 {
 	public class ClothSample : Sample
 	{
+		private Cloth _flag;
+
 		public ClothSample()
 		{
 			Run();
@@ -21,38 +24,19 @@ namespace PhysX.Samples.ClothSample
 
 		protected override void LoadPhysics(Scene scene)
 		{
-			var cloth = CreateCloth(scene);
+			var poleActor = CreateFlagPole();
 
-			//CreateFlagPole(cloth);
+			_flag = CreateCloth(scene, poleActor);
 
 			// Visualize the cloth
-			//scene.SetVisualizationParameter(VisualizationParameter.cloth, true);
+			scene.SetVisualizationParameter(VisualizationParameter.ClothVertical, true);
+			scene.SetVisualizationParameter(VisualizationParameter.ClothHorizontal, true);
 		}
 
-		// TODO: Move later
-		public static class ArrayUtil
-		{
-			public static byte[] ToByteArray<T>(T[] array)
-				where T : struct
-			{
-				int t = Marshal.SizeOf(typeof(T));
-
-				GCHandle pinSrc = GCHandle.Alloc(array, GCHandleType.Pinned);
-
-				var bytes = new byte[t * array.Length];
-
-				Marshal.Copy(pinSrc.AddrOfPinnedObject(), bytes, 0, t * array.Length);
-
-				pinSrc.Free();
-
-				return bytes;
-			}
-		}
-
-		private Cloth CreateCloth(Scene scene)
+		private Cloth CreateCloth(Scene scene, RigidActor poleActor)
 		{
 			// Create a grid of triangles to be our cloth
-			var clothGrid = new VertexGrid(25, 25);
+			var clothGrid = VertexGrid.CreateGrid(40, 40, 0.4f);
 
 			// Setup the grid for cooking
 			var clothMeshDesc = new ClothMeshDesc()
@@ -74,77 +58,54 @@ namespace PhysX.Samples.ClothSample
 
 			var clothFabric = scene.Physics.CreateClothFabric(clothFabricStream);
 
+			var poleBoxGeom = poleActor.GetShape(0).GetBoxGeometry();
+			var boxPosition = new Vector3(poleActor.GlobalPose.M41, poleActor.GlobalPose.M42, poleActor.GlobalPose.M43);
+
 			var particles = from p in clothGrid.Points
 							select new ClothParticle()
 							{
 								Position = p,
-								InverseWeight = 0.1f
+								// Setting the inverse weight of a particle to 0 will pin it in place, any other value will be its weight
+								InverseWeight = IsPointInBox(poleBoxGeom, boxPosition, p) ? 0 : 1
 							};
 
 			// Create the cloth mesh from the cooked stream
-			var cloth = scene.Physics.CreateCloth(
-				Matrix.Identity,
+			var cloth = scene.Physics.CreateCloth
+			(
+				Matrix.Translation(0, 30, 0),
 				clothFabric,
 				particles.ToArray(),
-				0);
+				(ClothFlag)0
+			);
+
+			// Enable collision with other scene geometry
+			//cloth.Flags |= ClothFlag.SceneCollision;
+			// GPU cloth if desired
+			//cloth.Flags |= ClothFlag.GPU;
 
 			scene.AddActor(cloth);
 
 			return cloth;
 		}
-		//private void CreateFlagPole(Cloth cloth)
-		//{
-		//    var polePosition = new Vector3(0, 30, 0);
-
-		//    // Create a flag pole to attach the cloth to
-		//    var material = this.Scene.Physics.CreateMaterial(0.1f, 0.1f, 0.1f);
-
-		//    var rigidActor = this.Scene.Physics.CreateRigidStatic();
-
-		//    var boxGeom = new BoxGeometry(2, 30, 2);
-		//    var boxShape = rigidActor.CreateShape(boxGeom, material);
-
-		//    rigidActor.GlobalPose = Matrix.Translation(polePosition);
-		//    //rigidActor.SetMassAndUpdateInertia(10);
-		//    //rigidActor.Flags = RigidDynamicFlags.Kinematic;
-
-		//    this.Scene.AddActor(rigidActor);
-
-		//    // Attach the cloth
-		//    var clothGrid = new VertexGrid(25, 25);
-
-		//    // TODO: Clean up the below code
-		//    // I'd like this to use the FindPointsInsideBoxGeom method instead (more generic)
-		//    Vector3[] p;
-		//    int[] i;
-		//    FindPointsInsideBoxGeom(boxGeom, polePosition, clothGrid, out p, out i);
-
-		//    p = clothGrid.Points.Take(75).ToArray();
-		//    i = Enumerable.Range(0, 75).ToArray();
-		//    var f = new int[p.Length];
-
-		//    var attachment = this.Scene.Physics.CreateAttachment(cloth, boxShape, i, p, f);
-		//}
-
-		private void FindPointsInsideBoxGeom(BoxGeometry box, Vector3 boxPosition, VertexGrid grid, out Vector3[] points, out int[] indices)
+		private RigidActor CreateFlagPole()
 		{
-			var i = new List<Vector3>();
-			var j = new List<int>();
+			var polePosition = new Vector3(0, 25, 0);
 
-			foreach (int index in grid.Indices)
-			{
-				Vector3 p = grid.Points[index] + new Vector3(0, 5, 0);
+			// Create a flag pole to attach the cloth to
+			var material = this.Scene.Physics.CreateMaterial(0.1f, 0.1f, 0.1f);
 
-				if (IsPointInBox(box, boxPosition, p))
-				{
-					i.Add(p);
-					j.Add(index);
-				}
-			}
+			var rigidActor = this.Scene.Physics.CreateRigidStatic();
 
-			points = i.ToArray();
-			indices = j.ToArray();
+			var boxGeom = new BoxGeometry(0.5f, 25, 0.5f);
+			var boxShape = rigidActor.CreateShape(boxGeom, material);
+
+			rigidActor.GlobalPose = Matrix.Translation(polePosition);
+
+			this.Scene.AddActor(rigidActor);
+
+			return rigidActor;
 		}
+
 		private bool IsPointInBox(BoxGeometry box, Vector3 boxPosition, Vector3 point)
 		{
 			Vector3 min = boxPosition - box.HalfExtents;
@@ -160,7 +121,17 @@ namespace PhysX.Samples.ClothSample
 
 		protected override void Update(TimeSpan elapsed)
 		{
+			// Set some wind in a random direction every 3 seconds
+			if ((int)elapsed.TotalSeconds % 3 == 0)
+			{
+				var r = new Random();
 
+				double x = 25 + r.NextDouble() * 15;
+				double y = -5 + r.NextDouble() * 10;
+				double z = -5 + r.NextDouble() * 10;
+
+				_flag.ExternalAcceleration = new Vector3((float)x, (float)y, (float)z);
+			}
 		}
 
 		protected override void Draw()

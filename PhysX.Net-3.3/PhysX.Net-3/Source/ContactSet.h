@@ -13,9 +13,10 @@ namespace PhysX
 	internal:
 		ContactSet(PxContactSet unmanaged);
 	protected:
+		~ContactSet();
+	public:
 		!ContactSet();
 
-	public:
 		Vector3 GetPoint(int i);
 		void SetPoint(int i, Vector3 p);
 

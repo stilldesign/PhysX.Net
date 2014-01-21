@@ -6,6 +6,11 @@ HeightFieldGeometry::HeightFieldGeometry()
 {
 	
 }
+HeightFieldGeometry::HeightFieldGeometry(PhysX::HeightField^ heightField)
+	: HeightFieldGeometry(heightField, (MeshGeometryFlag)0, 1, 1, 1)
+{
+
+}
 HeightFieldGeometry::HeightFieldGeometry(PhysX::HeightField^ heightField, MeshGeometryFlag flags, float heightFieldScale, float rowScale, float columnScale)
 	: Geometry(GeometryType::Heightfield)
 {

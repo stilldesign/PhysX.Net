@@ -32,6 +32,10 @@ ContactModifyCallback::ContactModifyCallback()
 {
 	_unmanaged = new InternalContactModifyCallback(this);
 }
+ContactModifyCallback::~ContactModifyCallback()
+{
+	this->!ContactModifyCallback();
+}
 ContactModifyCallback::!ContactModifyCallback()
 {
 	SAFE_DELETE(_unmanaged);

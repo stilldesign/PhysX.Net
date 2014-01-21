@@ -1,5 +1,5 @@
 #include "StdAfx.h"
-#include "Actor.h"
+#include "RigidActor.h"
 #include "ControllerBehaviorCallback.h"
 
 ControllerBehaviorCallback::ControllerBehaviorCallback()
@@ -19,9 +19,9 @@ ControllerBehaviorFlag ControllerBehaviorCallback::GetBehaviorFlags(Shape^ shape
 {
 	ThrowIfNullOrDisposed(shape, "shape");
 
-	//PxU32 bf = _callback->getBehaviorFlags(*shape->UnmanagedPointer, *shape->Actor->UnmanagedPointer);
+	PxU32 bf = _callback->getBehaviorFlags(*shape->UnmanagedPointer, *shape->Actor->UnmanagedPointer);
 
-	//return (ControllerBehaviorFlag)bf;
+	return (ControllerBehaviorFlag)bf;
 }
 ControllerBehaviorFlag ControllerBehaviorCallback::GetBehaviorFlags(Controller^ controller)
 {

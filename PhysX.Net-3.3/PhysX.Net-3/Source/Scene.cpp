@@ -331,7 +331,7 @@ void Scene::VisualizationCullingBox::set(Bounds3 value)
 }
 #pragma endregion
 
-bool Scene::Raycast(Vector3 origin, Vector3 direction, float distance, int maximumHits, Action<array<RaycastHit^>^>^ hitCall, [Optional] HitFlag hitFlag, [Optional] Nullable<QueryFilterData> filterData, [Optional] QueryFilterCallback^ filterCallback, [Optional] QueryCache^ cache)
+bool Scene::Raycast(Vector3 origin, Vector3 direction, float distance, int maximumHits, Func<array<RaycastHit^>^, bool>^ hitCall, [Optional] HitFlag hitFlag, [Optional] Nullable<QueryFilterData> filterData, [Optional] QueryFilterCallback^ filterCallback, [Optional] QueryCache^ cache)
 {
 	if (maximumHits < 0)
 		throw gcnew ArgumentOutOfRangeException("maximumHits");
@@ -344,7 +344,7 @@ bool Scene::Raycast(Vector3 origin, Vector3 direction, float distance, int maxim
 	try
 	{
 		hits = new PxRaycastHit[maximumHits];
-		InternalRaycastCallback hc(hits, maximumHits);
+		InternalRaycastCallback hc(hits, maximumHits, hitCall);
 
 		PxHitFlags f = ToUnmanagedEnum(PxHitFlag, hitFlag);
 
@@ -364,7 +364,7 @@ bool Scene::Raycast(Vector3 origin, Vector3 direction, float distance, int maxim
 	}
 }
 
-bool Scene::Overlap(Geometry^ geometry, Matrix pose, int maximumOverlaps, Action<array<OverlapHit^>^>^ hitCall, [Optional] Nullable<QueryFilterData> filterData, [Optional] QueryFilterCallback^ filterCallback)
+bool Scene::Overlap(Geometry^ geometry, Matrix pose, int maximumOverlaps, Func<array<OverlapHit^>^, bool>^ hitCall, [Optional] Nullable<QueryFilterData> filterData, [Optional] QueryFilterCallback^ filterCallback)
 {
 	ThrowIfNull(geometry, "geometry");
 	if (maximumOverlaps < 0)
@@ -378,7 +378,7 @@ bool Scene::Overlap(Geometry^ geometry, Matrix pose, int maximumOverlaps, Action
 	try
 	{
 		overlaps = new PxOverlapHit[maximumOverlaps];
-		InternalOverlapCallback oc(overlaps, maximumOverlaps);
+		InternalOverlapCallback oc(overlaps, maximumOverlaps, hitCall);
 
 		PxQueryFilterData fd = (filterData.HasValue ? QueryFilterData::ToUnmanaged(filterData.Value) : PxQueryFilterData());
 

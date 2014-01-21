@@ -98,7 +98,7 @@ namespace PhysX
 		/// <summary>
 		/// Visualize the bodies joint projection group.
 		/// </summary>
-		JointGroups = PxVisualizationParameter::eBODY_JOINT_GROUPS,
+		BodyJointGroups = PxVisualizationParameter::eBODY_JOINT_GROUPS,
 		/// <summary>
 		/// Visualize contact points. Will enable contact information.
 		/// </summary>
@@ -198,7 +198,31 @@ namespace PhysX
 		/// <summary>
 		/// Debug visualization culling.
 		/// </summary>
-		CullBox = PxVisualizationParameter::eCULL_BOX
+		CullBox = PxVisualizationParameter::eCULL_BOX,
+		/// <summary>
+		/// Cloth fabric vertical sets.
+		/// </summary>
+		ClothVertical = PxVisualizationParameter::eCLOTH_VERTICAL,
+		/// <summary>
+		/// 
+		/// </summary>
+		ClothHorizontal = PxVisualizationParameter::eCLOTH_HORIZONTAL,
+		/// <summary>
+		/// 
+		/// </summary>
+		ClothBending = PxVisualizationParameter::eCLOTH_BENDING,
+		/// <summary>
+		/// Cloth fabric shearing sets.
+		/// </summary>
+		ClothShearing = PxVisualizationParameter::eCLOTH_SHEARING,
+		/// <summary>
+		/// Cloth virtual particles.
+		/// </summary>
+		ClothVirtualParticles = PxVisualizationParameter::eCLOTH_VIRTUAL_PARTICLES,
+		/// <summary>
+		/// MBP regions.
+		/// </summary>
+		MBPRegions = PxVisualizationParameter::eMBP_REGIONS
 	};
 
 	public enum class HitFlag

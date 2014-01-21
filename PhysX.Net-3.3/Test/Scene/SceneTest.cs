@@ -64,12 +64,17 @@ namespace PhysX.Test
 					direction,
 					distance: 10000,
 					maximumHits: 2,
-					hitCall: (h =>
+					hitCall: h =>
 					{
 						hits = h;
-					}),
+
+						// Return hit again (PxAgain)
+						return true;
+					},
 					hitFlag: HitFlag.Distance | HitFlag.Normal | HitFlag.Position
 				);
+
+				Assert.IsNotNull(hits);
 
 				var hit = hits[0];
 
@@ -101,12 +106,14 @@ namespace PhysX.Test
 
 				bool result = core.Scene.Overlap
 				(
-					overlappingBox,
-					Matrix.Identity,
-					2,
-					(OverlapHit[] hit) =>
+					geometry: overlappingBox,
+					pose: Matrix.Identity,
+					maximumOverlaps: 2,
+					hitCall: hit =>
 					{
 						hits = hit;
+
+						return true;
 					}
 				);
 

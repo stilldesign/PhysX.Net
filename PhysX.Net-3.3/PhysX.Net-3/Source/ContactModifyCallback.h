@@ -18,7 +18,7 @@ namespace PhysX
 
 	//
 
-	public ref class ContactModifyCallback
+	public ref class ContactModifyCallback abstract
 	{
 	private:
 		InternalContactModifyCallback* _unmanaged;
@@ -26,9 +26,10 @@ namespace PhysX
 	public:
 		ContactModifyCallback();
 	protected:
+		~ContactModifyCallback();
+	public:
 		!ContactModifyCallback();
 
-	public:
 		virtual void OnContactModify(array<ContactModifyPair^>^ pairs) abstract;
 
 	internal:

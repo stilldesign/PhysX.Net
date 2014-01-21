@@ -12,7 +12,6 @@ namespace PhysX.Test
 	[DeploymentItem(@"Resources\Teapot.DAE")]
 	public class CookTest : Test
 	{
-		[Ignore]
 		[TestMethod]
 		public void CookClothFabric()
 		{
@@ -36,7 +35,39 @@ namespace PhysX.Test
 			}
 		}
 
-		[Ignore]
+		/// <summary>
+		/// The simplest possible set of data to make debugging the cooker logic and math easy.
+		/// 3 points, 1 triangle.
+		/// </summary>
+		[TestMethod]
+		public void CookClothFabric_SimplestExample()
+		{
+			using (var physics = CreatePhysicsAndScene())
+			{
+				var points = new[] 
+				{
+					new Vector3(0, 5, 0),
+					new Vector3(0, 5, 1),
+					new Vector3(1, 5, 1)
+				};
+
+				var indices = new[] { 0, 1, 2 };
+
+				using (var cooking = physics.Physics.CreateCooking())
+				{
+					var clothMeshDesc = new ClothMeshDesc()
+					{
+						Points = points,
+						Triangles = ArrayUtil.ToByteArray(indices)
+					};
+
+					var stream = new MemoryStream();
+
+					cooking.CookClothFabric(clothMeshDesc, new Vector3(0, -9.81f, 0), stream);
+				}
+			}
+		}
+
 		[TestMethod]
 		public void CookTriangleMesh()
 		{

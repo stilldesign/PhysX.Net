@@ -9,10 +9,11 @@ namespace PhysX
 
 class InternalOverlapCallback : public PxOverlapCallback
 {
-public:
+private:
 	gcroot<Func<array<OverlapHit^>^, bool>^> _managedCallback;
 
-	InternalOverlapCallback(PxOverlapHit *aTouches, PxU32 aMaxNbTouches);
+public:
+	InternalOverlapCallback(PxOverlapHit *aTouches, PxU32 aMaxNbTouches, gcroot<Func<array<OverlapHit^>^, bool>^> managedCallback);
 
 	virtual PxAgain processTouches(const PxOverlapHit* buffer, PxU32 nbHits);
 };

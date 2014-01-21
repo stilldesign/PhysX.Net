@@ -52,7 +52,9 @@ bool Cooking::CookTriangleMesh(TriangleMeshDesc^ desc, System::IO::Stream^ strea
 	PxDefaultMemoryOutputStream cookedStream;
 	bool result = _cooking->cookTriangleMesh(d, cookedStream);
 
-	Util::CopyIntoStream(&cookedStream, stream);
+	// Copy the cooked data into the managed stream (only if the cooked stream actually has data)
+	if (result)
+		Util::CopyIntoStream(&cookedStream, stream);
 
 	delete[] d.points.data;
 	delete[] d.triangles.data;
@@ -92,19 +94,20 @@ void Cooking::CookClothFabric(ClothMeshDesc^ desc, Vector3 gravityDirection, Sys
 	PxClothMeshDesc d = ClothMeshDesc::ToUnmanaged(desc);
 	PxVec3 g = UV(gravityDirection);
 
-	if(!d.isValid())
+	if (!d.isValid())
 		throw gcnew ArgumentException("The cloth mesh description is invalid");
 
-	PxClothFabricCooker clothCooker(d, g);
+	PxClothFabricCooker* clothCooker = new PxClothFabricCooker(d, g);
 
 	PxDefaultMemoryOutputStream cookedStream;
-	clothCooker.save(cookedStream, false);
+	clothCooker->save(cookedStream, false);
 
 	Util::CopyIntoStream(&cookedStream, stream);
 
 	delete[] d.points.data;
 	delete[] d.triangles.data;
 	delete[] d.quads.data;
+	delete[] d.invMasses.data;
 }
 
 //

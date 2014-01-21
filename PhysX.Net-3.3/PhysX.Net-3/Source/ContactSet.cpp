@@ -8,6 +8,10 @@ ContactSet::ContactSet(PxContactSet unmanaged)
 	// Clone the PxContactSet
 	_contactSet = new PxContactSet(unmanaged);
 }
+ContactSet::~ContactSet()
+{
+	this->!ContactSet();
+}
 ContactSet::!ContactSet()
 {
 	SAFE_DELETE(_contactSet);

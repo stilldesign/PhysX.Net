@@ -38,6 +38,8 @@ Shape::!Shape()
 	if (this->Disposed)
 		return;
 
+	// TODO: What does it mean to Dispose a Shape which is used on multiple Actors?
+	// Should be using _actor->detachShape(...)
 	if (this->UnmanagedOwner)
 		_shape->release();
 	_shape = NULL;

@@ -19,10 +19,6 @@ namespace PhysX
 
 		internal:
 			RigidActor(PxRigidActor* rigidActor, PhysX::IDisposable^ owner);
-		public:
-			~RigidActor();
-		protected:
-			!RigidActor();
 
 		private:
 			array<Shape^>^ CreateShapesInActor(PxRigidActor* actor);

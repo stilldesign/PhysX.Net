@@ -36,7 +36,7 @@ PxClothMeshDesc ClothMeshDesc::ToUnmanaged(ClothMeshDesc^ desc)
 	PxBoundedData triangles;
 	if (desc->Triangles != nullptr)
 	{
-		triangles.count = desc->Triangles->Length;
+		triangles.count = (desc->Triangles->Length / indexStride) / 3;
 		triangles.stride = indexStride*3; // 3 indices per triangle
 
 		triangles.data = new BYTE[triangles.count * triangles.stride];
@@ -47,7 +47,10 @@ PxClothMeshDesc ClothMeshDesc::ToUnmanaged(ClothMeshDesc^ desc)
 	if (desc->InverseMasses != nullptr)
 	{
 		// The number of inverse masses must be the same as the number of points.
-		invMasses.count = desc->Points->Length;
+		if (desc->InverseMasses->Length != desc->Points->Length)
+			throw gcnew ArgumentException("The length of InverseMasses must equal the length of Points, or be null");
+
+		invMasses.count = desc->InverseMasses->Length;
 		invMasses.stride = sizeof(float);
 		invMasses.data = new float[invMasses.count * invMasses.stride];
 		Util::AsUnmanagedArray(desc->InverseMasses, (void*)invMasses.data);
@@ -74,7 +77,7 @@ void ClothMeshDesc::SetToDefault()
 bool ClothMeshDesc::IsValid()
 {
 	// TODO: Do I copy into a temp unmanaged var and call isValid(), or copy-paste the code into here, either way is stupid
-	return true;
+	return ToUnmanaged(this).isValid();
 }
 
 array<short>^ ClothMeshDesc::GetQuads16()

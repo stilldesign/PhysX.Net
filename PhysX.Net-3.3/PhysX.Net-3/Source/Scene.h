@@ -253,8 +253,8 @@ namespace PhysX
 			#pragma endregion
 
 			#pragma region Raycast, Overlap and Sweep testing
-			bool Raycast(Vector3 origin, Vector3 direction, float distance, int maximumHits, Action<array<RaycastHit^>^>^ hitCall, [Optional] HitFlag hitFlag, [Optional] Nullable<QueryFilterData> filterData, [Optional] QueryFilterCallback^ filterCallback, [Optional] QueryCache^ cache);
-			bool Overlap(Geometry^ geometry, Matrix pose, int maximumOverlaps, Action<array<OverlapHit^>^>^ hitCall, [Optional] Nullable<QueryFilterData> filterData, [Optional] QueryFilterCallback^ filterCallback);
+			bool Raycast(Vector3 origin, Vector3 direction, float distance, int maximumHits, Func<array<RaycastHit^>^, bool>^ hitCall, [Optional] HitFlag hitFlag, [Optional] Nullable<QueryFilterData> filterData, [Optional] QueryFilterCallback^ filterCallback, [Optional] QueryCache^ cache);
+			bool Overlap(Geometry^ geometry, Matrix pose, int maximumOverlaps, Func<array<OverlapHit^>^, bool>^ hitCall, [Optional] Nullable<QueryFilterData> filterData, [Optional] QueryFilterCallback^ filterCallback);
 			#pragma endregion
 
 			#pragma region Character
