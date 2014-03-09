@@ -211,9 +211,16 @@ namespace PhysX.Samples.Engine
 			
 			this.Physics = new Physics(foundation, checkRuntimeFiles: true);
 
+#if GPU
+			var cudaContext = new CudaContextManager(foundation);
+#endif
+
 			var sceneDesc = new SceneDesc()
 			{
-				Gravity = new Math.Vector3(0, -9.81f, 0)
+				Gravity = new Math.Vector3(0, -9.81f, 0),
+#if GPU
+				GpuDispatcher = cudaContext.GpuDispatcher
+#endif
 			};
 
 			this.Scene = this.Physics.CreateScene(sceneDesc);

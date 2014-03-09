@@ -476,6 +476,12 @@
     <ClCompile Include="Source\DefaultSimulationFilterShader.cpp">
       <Filter>Extensions</Filter>
     </ClCompile>
+    <ClCompile Include="Source\GpuDispatcher.cpp">
+      <Filter>CUDA</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CudaContextManager.cpp">
+      <Filter>CUDA</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
@@ -1076,6 +1082,15 @@
     <ClInclude Include="Source\ExtensionsEnum.h">
       <Filter>Extensions</Filter>
     </ClInclude>
+    <ClInclude Include="Source\GpuDispatcher.h">
+      <Filter>CUDA</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CudaContextManager.h">
+      <Filter>CUDA</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CudaEnum.h">
+      <Filter>CUDA</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Version.rc" />
@@ -1170,6 +1185,9 @@
     </Filter>
     <Filter Include="Base">
       <UniqueIdentifier>{8df59940-efdc-4826-a440-7366f849bd0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CUDA">
+      <UniqueIdentifier>{d23aeb3d-7b14-458c-a25c-30163cbfb80a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

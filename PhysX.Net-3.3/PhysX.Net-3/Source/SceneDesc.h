@@ -1,18 +1,15 @@
 #pragma once
 
-//#include <PxSceneDesc.h>
 #include "SceneEnum.h"
 #include "TolerancesScale.h"
 #include "SimulationEventCallback.h"
-//#include <PxCpuDispatcher.h>
-//#include <PxTask.h>
-//#include <PxDefaultCpuDispatcher.h>
 
 using namespace PhysX::Math;
 
 namespace PhysX
 {
 	ref class ContactModifyCallback;
+	ref class GpuDispatcher;
 
 	public ref class SceneDesc : IDisposable
 	{
@@ -27,6 +24,7 @@ namespace PhysX
 
 			SimulationEventCallback^ _simulationEventCallback;
 			PhysX::ContactModifyCallback^ _contactModifyCallback;
+			PhysX::GpuDispatcher^ _gpuDispatcher;
 
 		public:
 			SceneDesc([Optional] Nullable<PhysX::TolerancesScale> tolerancesScale);
@@ -85,6 +83,12 @@ namespace PhysX
 			{
 				int get();
 				void set(int value);
+			}
+
+			property PhysX::GpuDispatcher^ GpuDispatcher
+			{
+				PhysX::GpuDispatcher^ get();
+				void set(PhysX::GpuDispatcher^ value);
 			}
 
 		internal:

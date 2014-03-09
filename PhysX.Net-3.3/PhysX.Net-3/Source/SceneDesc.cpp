@@ -4,6 +4,7 @@
 #include "PhysicsEnum.h"
 #include "ContactModifyCallback.h"
 #include "SceneDesc.h"
+#include "GpuDispatcher.h"
 
 using namespace PhysX;
 using namespace PhysX::Math;
@@ -92,6 +93,17 @@ int SceneDesc::CCDMaximumPasses::get()
 void SceneDesc::CCDMaximumPasses::set(int value)
 {
 	_sceneDesc->ccdMaxPasses = value;
+}
+
+PhysX::GpuDispatcher^ SceneDesc::GpuDispatcher::get()
+{
+	return _gpuDispatcher;
+}
+void SceneDesc::GpuDispatcher::set(PhysX::GpuDispatcher^ value)
+{
+	_gpuDispatcher = value;
+
+	_sceneDesc->gpuDispatcher = (value == nullptr ? NULL : value->UnmanagedPointer);
 }
 
 PxSceneDesc* SceneDesc::UnmanagedPointer::get()

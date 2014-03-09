@@ -75,13 +75,16 @@ namespace PhysX.Samples.ClothSample
 				Matrix.Translation(0, 30, 0),
 				clothFabric,
 				particles.ToArray(),
-				(ClothFlag)0
+				0
 			);
 
 			// Enable collision with other scene geometry
 			//cloth.Flags |= ClothFlag.SceneCollision;
+
 			// GPU cloth if desired
-			//cloth.Flags |= ClothFlag.GPU;
+			// The Engine class needs to create a CudaContextManager for this to work. Define 'GPU' on
+			// the Engine project to enable it.
+			cloth.Flags |= ClothFlag.GPU;
 
 			scene.AddActor(cloth);
 

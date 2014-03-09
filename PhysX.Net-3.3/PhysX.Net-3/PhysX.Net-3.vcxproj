@@ -213,6 +213,8 @@
     <ClInclude Include="Source\ConstraintDesc.h" />
     <ClInclude Include="Source\ConstraintDominance.h" />
     <ClInclude Include="Source\ConstraintInfo.h" />
+    <ClInclude Include="Source\CudaContextManager.h" />
+    <ClInclude Include="Source\CudaEnum.h" />
     <ClInclude Include="Source\ExtensionsEnum.h" />
     <ClInclude Include="Source\FeatureContact.h" />
     <ClInclude Include="Source\FoundationEnum.h" />
@@ -220,6 +222,7 @@
       <FileType>CppHeader</FileType>
     </ClInclude>
     <ClInclude Include="Source\GeometryQuery.h" />
+    <ClInclude Include="Source\GpuDispatcher.h" />
     <ClInclude Include="Source\HitCallback.h" />
     <ClInclude Include="Source\InternalOverlapCallback.h" />
     <ClInclude Include="Source\InternalRaycastCallback.h" />
@@ -441,11 +444,13 @@
     <ClCompile Include="Source\ConstraintDesc.cpp" />
     <ClCompile Include="Source\ConstraintDominance.cpp" />
     <ClCompile Include="Source\ConstraintInfo.cpp" />
+    <ClCompile Include="Source\CudaContextManager.cpp" />
     <ClCompile Include="Source\FeatureContact.cpp" />
     <ClCompile Include="Source\GeometryHolder.cpp">
       <FileType>CppCode</FileType>
     </ClCompile>
     <ClCompile Include="Source\GeometryQuery.cpp" />
+    <ClCompile Include="Source\GpuDispatcher.cpp" />
     <ClCompile Include="Source\InternalOverlapCallback.cpp" />
     <ClCompile Include="Source\InternalRaycastCallback.cpp" />
     <ClCompile Include="Source\IVehicleComputeTireForceInput.cpp" />
