@@ -1,2 +1,42 @@
 PhysX.Net
 =========
+! PhysX.Net
+{project:description}
+
+Download: [release:67299]
+
+!! Nightly builds
+'Nightly builds' are available at: [url:http://stilldesign.co.nz/PhysX]
+This will contain builds of the latest PhysX.Net for both the 2.8.4 and 3.2.4 branches.
+Latest build is: [url:Download Latest Nightly|http://stilldesign.co.nz/PhysX/DownloadLatestNightly]
+
+!! Development
+!!! PhysX.Net 0.1 for NVIDIA PhysX 3.3
+* Targets PhysX 3.3.0
+* 32 and 64 bit version
+* .NET 4.5.1 and CRT 12 (2013)
+* Progress:
+** ~75% done
+** I'll be creating a vehicle sample as well
+** New for 3.3 is that Cloth can interact with scene geometry once again (like it did in v2 of PhysX)
+** I'll package up and change the main download to the 3.3 package, no point keeping v2 around much longer
+** There's plenty of breaking API changes from 3.2 > 3.3, so look forward to lots of build errors :P Nothing seems to of been removed from the API, just moved around and renamed.
+
+!!! PhysX.Net 0.4 for NVIDIA PhysX 3.2.4
+* Targets PhysX 3.2.4
+* 32 and 64 bit version
+* Does not rely on any external graphics libraries
+* .NET 4.0 and CRT 11 (2012)
+* Progress:
+** Most things are working
+** Vehicle still needs a working sample to prove it working
+
+I've done quite a bit of work regarding the ObjectTable which manages the unmanaged-managed objects and also improved the disposal issues.
+
+!!! PhysX.Net 0.12 for NVIDIA PhysX 2.8.4.5
+* Targets PhysX 2.8.4.5
+** 2.8.4.x doesn't require system software to run anymore! yay! (CPU mode only though :P)
+* 32 bit and 64 bit versions
+* Remove the dependencies on graphics libraries
+** Although it's convenient, a physics library shouldn't rely on specific graphics libraries. Consumers (e.g. graphics engines) should provide their own thin wrappers around types such as Vector3 and Matrix
+* .NET 4.0 and CRT 10 (2010)
