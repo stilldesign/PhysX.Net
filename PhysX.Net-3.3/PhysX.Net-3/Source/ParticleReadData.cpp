@@ -84,16 +84,12 @@ array<ParticleFlag>^ ParticleReadData::GetFlags()
 	if (n <= 0)
 		return nullptr;
 
-	PxParticleFlags *f =  (PxParticleFlags *) malloc(n * sizeof(PxParticleFlags));
-
-	f = new PxParticleFlags[n];
-
+	array<ParticleFlag>^ ret = gcnew array<ParticleFlag>(n);
 	for (int i = 0; i < n; i++)
-		f[i] = this->UnmanagedPointer->flagsBuffer[i];
-
-	array<ParticleFlag>^ ret = Util::AsManagedArray<ParticleFlag>((void*)f, n);
-
-	free(f);
+	{
+		PxU16 flag = this->UnmanagedPointer->flagsBuffer[i];
+		ret[i] = (ParticleFlag)flag;
+	}
 
 	return ret;
 }

@@ -19,6 +19,6 @@ namespace PhysX
 			property array<Vector3>^ PositionBuffer;
 			property array<Vector3>^ VelocityBuffer;
 			property array<Vector3>^ RestOffsetBuffer;
-			property array<Vector3>^ FlagBuffer;
+			property array<int>^ FlagBuffer;
 	};
 };
