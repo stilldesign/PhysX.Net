@@ -9,9 +9,9 @@ VehicleWheelQueryResult^ VehicleWheelQueryResult::ToManaged(PxWheelQueryResult* 
 	managed->SuspensionLineDirection = MV(unmanaged->suspLineDir);
 	managed->SuspensionLineLength = unmanaged->suspLineLength;
 	managed->IsInAir = unmanaged->isInAir;
-	managed->TireContactActor = unmanaged->tireContactActor == NULL ? nullptr : ObjectTable::GetObject<Actor^>((intptr_t)unmanaged->tireContactActor);
-	managed->TireContactShape = unmanaged->tireContactShape == NULL ? nullptr : ObjectTable::GetObject<Shape^>((intptr_t)unmanaged->tireContactShape);
-	managed->TireSurfaceMaterial = unmanaged->tireSurfaceMaterial == NULL ? nullptr : ObjectTable::GetObject<Material^>((intptr_t)unmanaged->tireSurfaceMaterial);
+	managed->TireContactActor = ObjectTable::GetObject<Actor^>((intptr_t)unmanaged->tireContactActor);
+	managed->TireContactShape = ObjectTable::GetObject<Shape^>((intptr_t)unmanaged->tireContactShape);
+	managed->TireSurfaceMaterial = ObjectTable::GetObject<Material^>((intptr_t)unmanaged->tireSurfaceMaterial);
 	managed->TireSurfaceType = unmanaged->tireSurfaceType;
 	managed->TireContactPoint = MV(unmanaged->tireContactPoint);
 	managed->TireContactNormal = MV(unmanaged->tireContactNormal);

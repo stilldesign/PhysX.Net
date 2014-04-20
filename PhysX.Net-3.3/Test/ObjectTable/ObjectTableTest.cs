@@ -234,6 +234,21 @@ namespace PhysX.Test
 			}
 		}
 
+		[TestMethod]
+		public void GetObjectHandlesNull()
+		{
+			RigidActor actor = ObjectTable.GetObject<RigidActor>(0);
+
+			Assert.IsNull(actor);
+		}
+
+		[TestMethod]
+		[ExpectedException(typeof(PhysXException))]
+		public void NullKeyIsNotAllowed()
+		{
+			ObjectTable.Add(0, new MockMaterial(), null);
+		}
+
 		//
 
 		public abstract class MockDisposableObject : IDisposable

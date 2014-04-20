@@ -13,6 +13,12 @@ Object^ ObjectTable::GetObject(intptr_t pointer)
 generic<typename T>
 T ObjectTable::GetObject(intptr_t pointer)
 {
+	// Gracefully handle code requesting NULL by returning managed null
+	// This saves having to null check everywhere, as you can't add inptr_t NULL as the key for an
+	// object to the ObjectTable in the first place
+	if (pointer == NULL)
+		return T();
+
 	if (!_objectTable->ContainsKey(pointer))
 		throw gcnew ArgumentException(String::Format("Cannot find managed object with pointer address '{0}' (of type '{1}')", pointer, T::typeid->FullName));
 	
