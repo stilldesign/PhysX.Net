@@ -55,6 +55,7 @@
     <Compile Include="Controller\CapsuleControllerDescTest.cs" />
     <Compile Include="Controller\CapsuleControllerTest.cs" />
     <Compile Include="Controller\ObstacleTest.cs" />
+    <Compile Include="Controller\ControllerTest.cs" />
     <Compile Include="Cooking\CookTest.cs" />
     <Compile Include="Cloth\ClothTestGrid.cs" />
     <Compile Include="FoundationTest.cs" />

@@ -213,6 +213,7 @@
     <ClInclude Include="Source\ConstraintDesc.h" />
     <ClInclude Include="Source\ConstraintDominance.h" />
     <ClInclude Include="Source\ConstraintInfo.h" />
+    <ClInclude Include="Source\ControllerState.h" />
     <ClInclude Include="Source\CudaContextManager.h" />
     <ClInclude Include="Source\CudaEnum.h" />
     <ClInclude Include="Source\ExtensionsEnum.h" />
@@ -446,6 +447,7 @@
     <ClCompile Include="Source\ConstraintDesc.cpp" />
     <ClCompile Include="Source\ConstraintDominance.cpp" />
     <ClCompile Include="Source\ConstraintInfo.cpp" />
+    <ClCompile Include="Source\ControllerState.cpp" />
     <ClCompile Include="Source\CudaContextManager.cpp" />
     <ClCompile Include="Source\FeatureContact.cpp" />
     <ClCompile Include="Source\GeometryHolder.cpp">

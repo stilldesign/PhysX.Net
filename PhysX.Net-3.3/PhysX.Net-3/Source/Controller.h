@@ -10,6 +10,7 @@ namespace PhysX
 	ref class ObstacleContext;
 	ref class RigidDynamic;
 	ref class Shape;
+	ref class ControllerState;
 
 	/// <summary>
 	/// Base class for character controllers.
@@ -43,6 +44,11 @@ namespace PhysX
 
 			ControllerCollisionFlag Move(Vector3 displacement, TimeSpan elapsedTime);
 			ControllerCollisionFlag Move(Vector3 displacement, TimeSpan elapsedTime, float minimumDistance, ControllerFilters^ filters, [Optional] ObstacleContext^ obstacles);
+
+			/// <summary>
+			/// Returns information about the controller's internal state. 
+			/// </summary>
+			ControllerState^ GetState();
 
 			/// <summary>
 			/// The character controller uses caching in order to speed up collision testing, this caching

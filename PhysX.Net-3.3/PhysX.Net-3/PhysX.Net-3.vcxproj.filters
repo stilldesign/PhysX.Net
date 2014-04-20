@@ -358,7 +358,6 @@
     <ClCompile Include="Source\ClothParticleData.cpp">
       <Filter>Cloth</Filter>
     </ClCompile>
-    <ClCompile Include="Source\ControllerHit.cpp" />
     <ClCompile Include="Source\FeatureContact.cpp">
       <Filter>Contact</Filter>
     </ClCompile>
@@ -487,6 +486,12 @@
     </ClCompile>
     <ClCompile Include="Source\VehicleWheelConcurrentUpdateData.cpp">
       <Filter>Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ControllerHit.cpp">
+      <Filter>Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ControllerState.cpp">
+      <Filter>Character</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -940,7 +945,6 @@
     <ClInclude Include="Source\ClothParticleData.h">
       <Filter>Cloth</Filter>
     </ClInclude>
-    <ClInclude Include="Source\ControllerHit.h" />
     <ClInclude Include="Source\SimpleContact.h">
       <Filter>Contact</Filter>
     </ClInclude>
@@ -1102,6 +1106,12 @@
     </ClInclude>
     <ClInclude Include="Source\VehicleWheelConcurrentUpdateData.h">
       <Filter>Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ControllerHit.h">
+      <Filter>Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ControllerState.h">
+      <Filter>Character</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

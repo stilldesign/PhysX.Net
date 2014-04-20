@@ -5,6 +5,7 @@
 #include "ObstacleContext.h"
 #include "RigidDynamic.h"
 #include "Shape.h"
+#include "ControllerState.h"
 //#include <PxRigidDynamic.h>
 
 using namespace System::Linq;
@@ -77,6 +78,16 @@ ControllerCollisionFlag Controller::Move(Vector3 displacement, TimeSpan elapsedT
 	}
 
 	return (ControllerCollisionFlag)returnFlags;
+}
+
+ControllerState^ Controller::GetState()
+{
+	PxControllerState state;
+	_controller->getState(state);
+
+	auto managedState = ControllerState::ToManaged(state);
+
+	return managedState;
 }
 
 void Controller::InvalidateCache()
