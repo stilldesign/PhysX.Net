@@ -40,7 +40,7 @@ array<T>^ Util::AsManagedArray(void* memory, int count)
 
 	pin_ptr<T> arrPin = &arr[0];
 
-	memcpy_s(arrPin, count*sizeof(T), memory, count*sizeof(T));
+	memcpy_s(arrPin,count*sizeof(T), memory, count*sizeof(T));
 
 	return arr;
 }

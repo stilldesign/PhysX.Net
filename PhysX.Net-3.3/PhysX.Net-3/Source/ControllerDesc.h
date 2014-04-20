@@ -96,5 +96,10 @@ namespace PhysX
 		/// Gets or sets the user specified data associated with the controller.
 		/// </summary>
 		property Object^ UserData;
+
+		/// <summary>
+		/// Gets or sets the user callback class for character controller events.
+		/// </summary>
+		property UserControllerHitReport^ ReportCallback;
 	};
 };

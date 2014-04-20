@@ -42,6 +42,7 @@ void ControllerDesc::AssignToUnmanaged(ControllerDesc^ desc, PxControllerDesc& d
 	d.scaleCoeff = desc->ScaleCoefficient;
 	d.nonWalkableMode = ToUnmanagedEnum(PxControllerNonWalkableMode, desc->NonWalkableMode);
 	d.material = (desc->Material == nullptr ? NULL : desc->Material->UnmanagedPointer);
+	d.reportCallback = (desc->ReportCallback == nullptr ? NULL : desc->ReportCallback->UnmanagedPointer);
 }
 void ControllerDesc::AssignToManaged(PxControllerDesc& d, ControllerDesc^ desc)
 {
@@ -56,4 +57,5 @@ void ControllerDesc::AssignToManaged(PxControllerDesc& d, ControllerDesc^ desc)
 	desc->ScaleCoefficient = d.scaleCoeff;
 	desc->NonWalkableMode = ToManagedEnum(ControllerNonWalkableMode, d.nonWalkableMode);
 	desc->Material = ObjectTable::GetObject<PhysX::Material^>((intptr_t)d.material);
+	desc->ReportCallback = ObjectTable::GetObject<PhysX::UserControllerHitReport^>((intptr_t)d.reportCallback);
 }
