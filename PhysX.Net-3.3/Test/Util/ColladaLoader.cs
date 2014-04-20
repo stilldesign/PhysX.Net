@@ -38,7 +38,7 @@ namespace PhysX.Test.Util
 
 		private IEnumerable<Vector3> ParseVector3s(string positionsText)
 		{
-			var positions = positionsText.Split(new[] { ' ', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+			var positions = positionsText.Split(new[] { ' ', '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
 
 			for (int i = 0; i < positions.Length; i += 3)
 			{

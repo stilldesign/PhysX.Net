@@ -1,15 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30110.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{27CD93B0-2E6E-42D3-B44A-43EAF972337E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{70C15685-AF4C-41C1-9C9C-55B242A8154C}"
 	ProjectSection(SolutionItems) = preProject
-		Default.testsettings = Default.testsettings
 		Package.bat = Package.bat
 		PhysX.Net.vsmdi = PhysX.Net.vsmdi
 		PhysX.Net-3\PhysX.props = PhysX.Net-3\PhysX.props
 		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+		x64.testsettings = x64.testsettings
+		x86.testsettings = x86.testsettings
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assemblies", "Assemblies", "{C30E53D2-3E99-40D6-9A1F-10316660BD96}"
@@ -53,49 +56,6 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PhysX.Net", "PhysX.Net-3\PhysX.Net-3.vcxproj", "{FB145A7D-CDF2-417D-A006-F7591481D609}"
 EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 10
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs01
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = Test\\Test.csproj
-		SccProjectName1 = Test
-		SccLocalPath1 = Test
-		SccProjectUniqueName2 = Samples\\Engine\\Engine.csproj
-		SccProjectTopLevelParentUniqueName2 = PhysX.Net-3.3.sln
-		SccProjectName2 = Samples/Engine
-		SccLocalPath2 = Samples\\Engine
-		SccProjectUniqueName3 = Samples\\RigidBodiesSample\\RigidBodiesSample.csproj
-		SccProjectTopLevelParentUniqueName3 = PhysX.Net-3.3.sln
-		SccProjectName3 = Samples/RigidBodiesSample
-		SccLocalPath3 = Samples\\RigidBodiesSample
-		SccProjectUniqueName4 = Samples\\JointsSample\\JointsSample.csproj
-		SccProjectTopLevelParentUniqueName4 = PhysX.Net-3.3.sln
-		SccProjectName4 = Samples/JointsSample
-		SccLocalPath4 = Samples\\JointsSample
-		SccProjectUniqueName5 = Samples\\CharacterSample\\CharacterSample.csproj
-		SccProjectTopLevelParentUniqueName5 = PhysX.Net-3.3.sln
-		SccProjectName5 = Samples/CharacterSample
-		SccLocalPath5 = Samples\\CharacterSample
-		SccProjectUniqueName6 = Samples\\ClothSample\\ClothSample.csproj
-		SccProjectTopLevelParentUniqueName6 = PhysX.Net-3.3.sln
-		SccProjectName6 = Samples/ClothSample
-		SccLocalPath6 = Samples\\ClothSample
-		SccProjectUniqueName7 = Samples\\FluidSample\\FluidSample.csproj
-		SccProjectTopLevelParentUniqueName7 = PhysX.Net-3.3.sln
-		SccProjectName7 = Samples/FluidSample
-		SccLocalPath7 = Samples\\FluidSample
-		SccProjectUniqueName8 = Samples\\VehicleSample\\VehicleSample.csproj
-		SccProjectTopLevelParentUniqueName8 = PhysX.Net-3.3.sln
-		SccProjectName8 = Samples/VehicleSample
-		SccLocalPath8 = Samples\\VehicleSample
-		SccProjectUniqueName9 = PhysX.Net-3\\PhysX.Net-3.vcxproj
-		SccProjectName9 = PhysX.Net-3
-		SccLocalPath9 = PhysX.Net-3
-	EndGlobalSection
-	GlobalSection(TestCaseManagementSettings) = postSolution
-		CategoryFile = PhysX.Net.vsmdi
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
@@ -103,7 +63,8 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{27CD93B0-2E6E-42D3-B44A-43EAF972337E}.Debug|x64.ActiveCfg = Debug|x86
+		{27CD93B0-2E6E-42D3-B44A-43EAF972337E}.Debug|x64.ActiveCfg = Debug|x64
+		{27CD93B0-2E6E-42D3-B44A-43EAF972337E}.Debug|x64.Build.0 = Debug|x64
 		{27CD93B0-2E6E-42D3-B44A-43EAF972337E}.Debug|x86.ActiveCfg = Debug|x86
 		{27CD93B0-2E6E-42D3-B44A-43EAF972337E}.Debug|x86.Build.0 = Debug|x86
 		{27CD93B0-2E6E-42D3-B44A-43EAF972337E}.Release|x64.ActiveCfg = Release|x86
@@ -173,5 +134,8 @@ Global
 		{B3EFE92A-7B73-44F5-B91D-93BC37AE429F} = {E1E0C505-3069-4E15-980D-1C87F241C7F3}
 		{F8164306-BE0D-4165-AE47-127DFEA652D4} = {E1E0C505-3069-4E15-980D-1C87F241C7F3}
 		{9DADC745-6D7C-4655-83C1-EDABC205FAEA} = {E1E0C505-3069-4E15-980D-1C87F241C7F3}
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = PhysX.Net.vsmdi
 	EndGlobalSection
 EndGlobal
