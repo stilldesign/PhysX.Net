@@ -114,6 +114,16 @@ HeightFieldGeometry^ Shape::GetHeightFieldGeometry()
 	return HeightFieldGeometry::ToManaged(heightField);
 }
 
+Material^ Shape::GetMaterialFromInternalFaceIndex(int faceIndex)
+{
+	PxMaterial* material = _shape->getMaterialFromInternalFaceIndex(faceIndex);
+
+	if (material == NULL)
+		return nullptr;
+
+	return ObjectTable::GetObject<Material^>((intptr_t)material);
+}
+
 //
 
 PhysX::GeometryType Shape::GeometryType::get()

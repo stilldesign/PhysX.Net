@@ -126,6 +126,11 @@ void ControllerManager::ShiftOrigin(Vector3 shift)
 	_manager->shiftOrigin(UV(shift));
 }
 
+void ControllerManager::SetPreventVerticalSlidingAgainstCeiling(bool flag)
+{
+	_manager->setPreventVerticalSlidingAgainstCeiling(flag);
+}
+
 //
 
 PhysX::Scene^ ControllerManager::Scene::get()

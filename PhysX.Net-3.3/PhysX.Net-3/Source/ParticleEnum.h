@@ -82,6 +82,11 @@ namespace PhysX
 		CollisionNormalBuffer = PxParticleReadDataFlag::eCOLLISION_NORMAL_BUFFER,
 
 		/// <summary>
+		/// Enables reading particle collision velocities from the SDK.
+		/// </summary>
+		CollisionVelocityBuffer = PxParticleReadDataFlag::eCOLLISION_VELOCITY_BUFFER,
+
+		/// <summary>
 		/// Enables reading particle densities from the SDK. (ParticleFluid only).
 		/// </summary>
 		DensityBuffer = PxParticleReadDataFlag::eDENSITY_BUFFER

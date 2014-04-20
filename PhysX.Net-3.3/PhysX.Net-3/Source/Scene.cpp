@@ -489,6 +489,15 @@ int Scene::Timestamp::get()
 	return _scene->getTimestamp();
 }
 
+PhysX::FrictionType Scene::FrictionType::get()
+{
+	return (PhysX::FrictionType)_scene->getFrictionType();
+}
+void Scene::FrictionType::set(PhysX::FrictionType value)
+{
+	_scene->setFrictionType(ToUnmanagedEnum(PxFrictionType, value));
+}
+
 SceneFlag Scene::Flags::get()
 {
 	return ToManagedEnum(SceneFlag, _scene->getFlags());

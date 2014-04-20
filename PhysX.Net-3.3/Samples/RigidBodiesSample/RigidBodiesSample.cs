@@ -178,7 +178,7 @@ namespace PhysX.Samples.RigidBodiesSample
 			var cooking = scene.Physics.CreateCooking();
 
 			var stream = new MemoryStream();
-			bool cookResult = cooking.CookConvexMesh(convexMeshDesc, stream);
+			var cookResult = cooking.CookConvexMesh(convexMeshDesc, stream);
 
 			stream.Position = 0;
 

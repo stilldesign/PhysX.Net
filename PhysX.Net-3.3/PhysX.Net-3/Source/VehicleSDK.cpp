@@ -8,6 +8,7 @@
 #include "RaycastQueryResult.h"
 #include "BatchQuery.h"
 #include "VehicleWheelsDynData.h"
+#include "VehicleConcurrentUpdateData.h"
 //#include <PxVehicleSDK.h>
 //#include <PxVehicleUtilSetup.h>
 //#include <PxVehicleUpdate.h>
@@ -117,6 +118,31 @@ void VehicleSDK::VehicleSuspensionRaycasts(BatchQuery^ batchQuery, array<Vehicle
 
 	delete[] r;
 	delete[] v;
+}
+
+//void VehicleSDK::VehiclePostUpdates(VehicleConcurrentUpdateData^ concurrentUpdateData, array<VehicleWheels^>^ vehicles)
+//{
+//
+//}
+
+VehicleWheels^ VehicleSDK::VehicleUpdateCMassLocalPose(Matrix oldCMassLocalPose, Matrix newCMassLocalPose, VehicleGravityDirection gravityDirection, VehicleWheels^ vehicle)
+{
+	ThrowIfNullOrDisposed(vehicle, "vehicle");
+
+	PxVehicleWheels* w = vehicle->UnmanagedPointer;
+
+	PxVehicleUpdateCMassLocalPose
+	(
+		MathUtil::MatrixToPxTransform(oldCMassLocalPose),
+		MathUtil::MatrixToPxTransform(newCMassLocalPose),
+		(int)gravityDirection,
+		w
+	);
+
+	// The fourth parameter is [in, out], se we'll find the managed object it represents
+	auto outWheel = ObjectTable::GetObject<VehicleWheels^>((intptr_t)w);
+
+	return outWheel;
 }
 
 //

@@ -68,7 +68,7 @@ int TriangleMesh::NumberOfTriangles::get()
 }
 bool TriangleMesh::Has16BitTriangleIndices::get()
 {
-	return (_triangleMesh->getTriangleMeshFlags() & PxTriangleMeshFlag::eHAS_16BIT_TRIANGLE_INDICES) == PxTriangleMeshFlag::eHAS_16BIT_TRIANGLE_INDICES;
+	return (_triangleMesh->getTriangleMeshFlags() & PxTriangleMeshFlag::e16_BIT_INDICES) == PxTriangleMeshFlag::e16_BIT_INDICES;
 }
 
 array<int>^ TriangleMesh::GetTriangleRemap()

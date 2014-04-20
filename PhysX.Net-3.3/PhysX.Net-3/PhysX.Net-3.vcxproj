@@ -273,6 +273,7 @@
     <ClInclude Include="Source\OperationFailedException.h" />
     <ClInclude Include="Source\OverlapHit.h" />
     <ClInclude Include="Source\DefaultSimulationFilterShader.h" />
+    <ClInclude Include="Source\VehicleWheelConcurrentUpdateData.h" />
     <ClInclude Include="Source\QueryCache.h" />
     <ClInclude Include="Source\QueryFilterCallback.h" />
     <ClInclude Include="Source\RaycastQueryResult.h" />
@@ -286,6 +287,7 @@
     <ClInclude Include="Source\SimulationEventCallback.h" />
     <ClInclude Include="Source\SimulationFilterShaderOps.h" />
     <ClInclude Include="Source\Spring.h" />
+    <ClInclude Include="Source\VehicleConcurrentUpdateData.h" />
     <ClInclude Include="Source\VehicleWheelsDynData.h" />
     <ClInclude Include="Source\VolumeCache.h" />
     <ClInclude Include="Source\VehicleDrive.h" />
@@ -552,6 +554,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Source\StreamExtensions.cpp" />
+    <ClCompile Include="Source\VehicleConcurrentUpdateData.cpp" />
+    <ClCompile Include="Source\VehicleWheelConcurrentUpdateData.cpp" />
     <ClCompile Include="Source\VehicleWheelsDynData.cpp" />
     <ClCompile Include="Source\VolumeCache.cpp" />
     <ClCompile Include="Source\SweepHit.cpp" />

@@ -100,6 +100,15 @@ namespace PhysX
 			/// </summary>
 			void ShiftOrigin(Vector3 shift);
 
+			/// <summary>
+			/// Enables or disables vertical sliding against ceilings.
+			/// Geometry is seen as "ceilings" when the following condition is met :
+			///		dot product(contact normal, up direction)<0.0f
+			/// 	This flag controls whether characters should slide vertically along the geometry in that case.
+			/// By default, sliding is allowed.
+			/// </summary>
+			void SetPreventVerticalSlidingAgainstCeiling(bool flag);
+
 			//
 
 			/// <summary>Gets the parent scene object.</summary>

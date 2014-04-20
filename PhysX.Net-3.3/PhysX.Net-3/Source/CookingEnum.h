@@ -38,6 +38,54 @@
 		/// Inflates the convex object according to skin width.
 		/// Note: This flag is only used in combination with ComputeConvex.
 		/// </summary>
-		InflateConvex = PxConvexFlag::eINFLATE_CONVEX
+		InflateConvex = PxConvexFlag::eINFLATE_CONVEX,
+
+		/// <summary>
+		/// Checks and removes almost zero - area triangles during convex hull computation.The rejected area size is specified in PxCookingParams::areaTestEpsilon.
+		/// Note:
+		/// This flag is only used in combination with eCOMPUTE_CONVEX.
+		///	If this flag is used in combination with eINFLATE_CONVEX, the newly added triangles by the inflation algorithm are not checked(size of the triangles depends on PxCooking::skinWidth).
+		/// </summary>
+		CheckZeroAreaTriangles = PxConvexFlag::eCHECK_ZERO_AREA_TRIANGLES
+	};
+
+	public enum class MeshPreprocessingFlag
+	{
+		/// <summary>
+		/// When set, mesh welding is performed. See PxCookingParams::meshWeldTolerance. Clean mesh must be enabled.
+		/// </summary>
+		WeldVertices = PxMeshPreprocessingFlag::eWELD_VERTICES,
+
+		/// <summary>
+		/// When set, mesh cleaning is disabled. This makes cooking faster.
+		/// When clean mesh is not performed, mesh welding is also not performed.
+		/// It is recommended to use only meshes that passed during validateTriangleMesh.
+		/// </summary>
+		DisableCleanMesh = PxMeshPreprocessingFlag::eDISABLE_CLEAN_MESH,
+
+		/// <summary>
+		/// When set, active edges are set for each triangle edge. This makes cooking faster but slow up contact generation.
+		/// </summary>
+		DisableActiveEdgesPrecompute = PxMeshPreprocessingFlag::eDISABLE_ACTIVE_EDGES_PRECOMPUTE
+	};
+
+	public enum class MeshCookingHint
+	{
+		/// <summary>
+		/// Default value. Favors higher quality hierarchy with higher runtime performance over cooking speed.
+		/// </summary>
+		SimulationPerformance = PxMeshCookingHint::eSIM_PERFORMANCE,
+
+		/// <summary>
+		/// Enables fast cooking path at the expense of somewhat lower quality hierarchy construction.
+		/// </summary>
+		CookingPerformance = PxMeshCookingHint::eCOOKING_PERFORMANCE
+	};
+
+	public enum class ConvexMeshCookingResult
+	{
+		Success = PxConvexMeshCookingResult::eSUCCESS,
+		ZeroAreaTestFailed = PxConvexMeshCookingResult::eZERO_AREA_TEST_FAILED,
+		Failure = PxConvexMeshCookingResult::eFAILURE
 	};
  };

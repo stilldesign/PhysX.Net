@@ -37,7 +37,7 @@ PxRaycastQueryResult RaycastQueryResult::ToUnmanaged(RaycastQueryResult^ result)
 	}
 
 	hit.touches = touches;
-	hit.queryStatus = result->QueryStatus;
+	hit.queryStatus = (PxU8)result->QueryStatus;
 
 	return hit;
 }

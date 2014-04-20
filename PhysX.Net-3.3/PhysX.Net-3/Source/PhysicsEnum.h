@@ -174,7 +174,7 @@ namespace PhysX
 	/// <summary>
 	/// Enum for selecting the friction algorithm used for simulation.
 	/// </summary>
-	public enum FrictionType
+	public enum class FrictionType
 	{
 		/// <summary>
 		/// Select default patch-friction model.
@@ -189,15 +189,10 @@ namespace PhysX
 		/// <summary>
 		/// Select two directional per-contact friction model.
 		/// </summary>
-		TwoDirectional = PxFrictionType::eTWO_DIRECTIONAL,
-
-		/// <summary>
-		/// Select patch friction model with behavior unchanged from PhysX version 3.2 and prior.
-		/// </summary>
-		LegacyPatch = PxFrictionType::eLEGACY_PATCH
+		TwoDirectional = PxFrictionType::eTWO_DIRECTIONAL
 	};
 
-	public enum BatchQueryStatus
+	public enum class BatchQueryStatus
 	{
 		/// <summary>
 		/// This is the initial state before a query starts.

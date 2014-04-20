@@ -116,10 +116,10 @@ namespace PhysX.Test
 
 					var stream = new MemoryStream();
 
-					bool result = cooking.CookConvexMesh(desc, stream);
+					var result = cooking.CookConvexMesh(desc, stream);
 
 					Assert.IsFalse(physics.ErrorOutput.HasErrors, physics.ErrorOutput.LastError);
-					Assert.IsTrue(result);
+					Assert.AreEqual(ConvexMeshCookingResult.Success, result);
 				}
 			}
 		}

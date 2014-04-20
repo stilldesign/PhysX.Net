@@ -9,10 +9,15 @@ namespace PhysX
 	public enum class ConstraintFlag
 	{
 		Broken = PxConstraintFlag::eBROKEN,
+		ProjectToActor0 = PxConstraintFlag::ePROJECT_TO_ACTOR0,
+		ProjectToActor1 = PxConstraintFlag::ePROJECT_TO_ACTOR1,
 		Projection = PxConstraintFlag::ePROJECTION,
 		CollisionEnabled = PxConstraintFlag::eCOLLISION_ENABLED,
 		Reporting = PxConstraintFlag::eREPORTING,
-		Visualization = PxConstraintFlag::eVISUALIZATION
+		Visualization = PxConstraintFlag::eVISUALIZATION,
+		DriveLimitsAreForces = PxConstraintFlag::eDRIVE_LIMITS_ARE_FORCES,
+		
+		ImprovedSlerp = PxConstraintFlag::eIMPROVED_SLERP
 	};
 
 	/// <summary>

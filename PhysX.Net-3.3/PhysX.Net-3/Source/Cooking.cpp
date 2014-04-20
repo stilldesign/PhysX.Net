@@ -63,7 +63,7 @@ bool Cooking::CookTriangleMesh(TriangleMeshDesc^ desc, System::IO::Stream^ strea
 	return result;
 }
 
-bool Cooking::CookConvexMesh(ConvexMeshDesc^ desc, System::IO::Stream^ stream)
+ConvexMeshCookingResult Cooking::CookConvexMesh(ConvexMeshDesc^ desc, System::IO::Stream^ stream)
 {
 	ThrowIfDescriptionIsNullOrInvalid(desc, "desc");
 	ThrowIfNull(stream, "stream");
@@ -73,17 +73,19 @@ bool Cooking::CookConvexMesh(ConvexMeshDesc^ desc, System::IO::Stream^ stream)
 	if(!d.isValid())
 		throw gcnew ArgumentException("The convex mesh description is invalid");
 
+	PxConvexMeshCookingResult::Enum result;
+
 	PxDefaultMemoryOutputStream cookedStream;
-	bool result = _cooking->cookConvexMesh(d, cookedStream);
+	_cooking->cookConvexMesh(d, cookedStream, &result);
 
 	// Copy the cooked data into the managed stream (only if the cooked stream actually has data)
-	if (result)
+	if (result == PxConvexMeshCookingResult::eSUCCESS)
 		Util::CopyIntoStream(&cookedStream, stream);
 
 	delete[] d.points.data;
 	delete[] d.triangles.data;
 
-	return result;
+	return ToManagedEnum(ConvexMeshCookingResult, result);
 }
 
 void Cooking::CookClothFabric(ClothMeshDesc^ desc, Vector3 gravityDirection, System::IO::Stream^ stream)

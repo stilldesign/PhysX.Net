@@ -106,5 +106,10 @@ namespace PhysX
 		/// Steer angle of the wheel about the "up" vector accounting for input steer and toe and, if applicable, Ackermann steer correction.
 		/// </summary>
 		property float SteerAngle;
+
+		/// <summary>
+		/// Local pose of the wheel.
+		/// </summary>
+		property Matrix LocalPose;
 	};
 }

@@ -11,19 +11,29 @@ namespace PhysX
 	/// </summary>
 	public ref class CookingParams
 	{
-		internal:
-			static PxCookingParams ToUnmanaged(CookingParams^ params);
-			static CookingParams^ ToManaged(PxCookingParams params);
+	internal:
+		static PxCookingParams ToUnmanaged(CookingParams^ params);
+		static CookingParams^ ToManaged(PxCookingParams params);
 
-		public:
-			property Platform TargetPlatform;
+	public:
+		property Platform TargetPlatform;
 
-			property float SkinWidth;
+		property float SkinWidth;
 
-			property bool SuppressTriangleMeshRemapTable;
+		property bool SuppressTriangleMeshRemapTable;
 
-			property TolerancesScale Scale;
+		property TolerancesScale Scale;
 
-			property bool BuildTriangleAdjacencies;
+		property bool BuildTriangleAdjacencies;
+
+		property MeshPreprocessingFlag MeshPreprocessParams;
+
+		property PhysX::MeshCookingHint MeshCookingHint;
+
+		property float MeshWeldTolerance;
+
+		property float MeshSizePerformanceTradeOff;
+
+		property float AreaTestEpsilon;
 	};
 };

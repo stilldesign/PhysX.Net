@@ -1,5 +1,7 @@
 #pragma once
 
+#include "VehicleEnum.h"
+
 namespace PhysX
 {
 	ref class Physics;
@@ -9,6 +11,7 @@ namespace PhysX
 	ref class VehicleWheels;
 	ref class RaycastQueryResult;
 	ref class VehicleWheelsDynData;
+	ref class VehicleConcurrentUpdateData;
 
 	public ref class VehicleSDK : IDisposable
 	{
@@ -104,6 +107,16 @@ namespace PhysX
 		void VehicleSuspensionRaycasts(BatchQuery^ batchQuery, array<VehicleWheels^>^ vehicles, array<RaycastQueryResult^>^ sceneQueryResults);
 		
 		//void PxVehicleUpdates(float timestep, Vector3 gravity, VehicleDrivableSurfaceToTireFrictionPairs vehicleDrivableSurfaceToTireFrictionPairs, int numVehicles, array<VehicleWheels^>^ vehicles);
+
+		//void VehiclePostUpdates(VehicleConcurrentUpdateData^ concurrentUpdateData, array<VehicleWheels^>^ vehicles);
+
+		/// <summary>
+		/// Reconfigure the vehicle to reflect a new center of mass local pose that has been applied to the actor.
+		/// The function requires(i) the center of mass local pose that was last used to configure the vehicle and
+		/// the vehicle's actor, (ii) the new center of mass local pose that has been applied to the vehicle's actor
+		/// and will now be applied to the vehicle, and(iii) the direction of gravity(0 for x - axis, 1 for y - axis, 2 for z - axis).
+		/// </summary>
+		VehicleWheels^ VehicleUpdateCMassLocalPose(Matrix oldCMassLocalPose, Matrix newCMassLocalPose, VehicleGravityDirection gravityDirection, VehicleWheels^ vehicle);
 
 		//
 

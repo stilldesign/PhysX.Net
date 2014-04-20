@@ -64,4 +64,11 @@ namespace PhysX
 		RearLeft = PxVehicleDrive4WWheelOrder::eREAR_LEFT,
 		RearRight = PxVehicleDrive4WWheelOrder::eREAR_RIGHT
 	};
+
+	public enum class VehicleGravityDirection
+	{
+		NegativeX = 0,
+		NegativeY = 1,
+		NegativeZ = 2
+	};
 };

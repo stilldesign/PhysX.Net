@@ -31,10 +31,13 @@ namespace PhysX
 			virtual bool get();
 		}
 
+		[Obsolete]
 		void Add(IPhysXEntity^ object);
 		void AddId(IPhysXEntity^ object, long reference);
+		[Obsolete]
 		void AddRequired(IPhysXEntity^ object);
 
+		[Obsolete]
 		bool Contains(IPhysXEntity^ object);
 
 		IPhysXEntity^ GetObject(int index);

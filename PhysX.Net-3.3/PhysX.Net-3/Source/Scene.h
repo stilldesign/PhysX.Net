@@ -6,6 +6,7 @@
 #include "ActorEnum.h"
 #include "ConstraintDominance.h"
 #include "JointEnum.h"
+#include "PhysicsEnum.h"
 
 namespace PhysX
 {
@@ -330,6 +331,15 @@ namespace PhysX
 			property int Timestamp
 			{
 				int get();
+			}
+
+			/// <summary>
+			/// 
+			/// </summary>
+			property PhysX::FrictionType FrictionType
+			{
+				PhysX::FrictionType get();
+				void set(PhysX::FrictionType value);
 			}
 
 			//

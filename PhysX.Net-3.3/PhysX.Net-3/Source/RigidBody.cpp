@@ -55,20 +55,20 @@ void RigidBody::ClearTorque(ForceMode mode)
 	this->UnmanagedPointer->clearTorque(ToUnmanagedEnum(PxForceMode, mode));
 }
 
-bool RigidBody::UpdateMassAndInertia(float density, [Optional] Nullable<Vector3> massLocalPose)
+bool RigidBody::UpdateMassAndInertia(float density, [Optional] Nullable<Vector3> massLocalPose, [Optional] bool includeNonSimShapes)
 {
 	PxVec3* mlp = (massLocalPose.HasValue ? &MathUtil::Vector3ToPxVec3(massLocalPose.Value) : NULL);
 
-	return PxRigidBodyExt::updateMassAndInertia(*this->UnmanagedPointer, density, mlp);
+	return PxRigidBodyExt::updateMassAndInertia(*this->UnmanagedPointer, density, mlp, includeNonSimShapes);
 }
-bool RigidBody::UpdateMassAndInertia(array<float>^ shapeDensities, Nullable<Vector3> massLocalPose)
+bool RigidBody::UpdateMassAndInertia(array<float>^ shapeDensities, Nullable<Vector3> massLocalPose, [Optional] bool includeNonSimShapes)
 {
 	float* sd = new float[shapeDensities->Length];
 	Util::AsUnmanagedArray(shapeDensities, sd, shapeDensities->Length);
 
 	PxVec3* mlp = (massLocalPose.HasValue ? &MathUtil::Vector3ToPxVec3(massLocalPose.Value) : NULL);
 
-	bool result = PxRigidBodyExt::updateMassAndInertia(*this->UnmanagedPointer, sd, shapeDensities->Length, mlp);
+	bool result = PxRigidBodyExt::updateMassAndInertia(*this->UnmanagedPointer, sd, shapeDensities->Length, mlp, includeNonSimShapes);
 
 	delete[] sd;
 

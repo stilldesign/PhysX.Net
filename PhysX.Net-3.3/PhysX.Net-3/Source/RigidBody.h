@@ -66,11 +66,15 @@ namespace PhysX
 			/// </summary>
 			/// <param name="density">The density of the body. Used to compute the mass of the body. The density must be greater than 0.</param>
 			/// <param name="massLocalPose">The center of mass relative to the actor frame. If set to null then (0,0,0) is assumed.</param>
-			bool UpdateMassAndInertia(float density, [Optional] Nullable<Vector3> massLocalPose);
+			/// <param name="includeNonSimShapes">True if all kind of shapes (ShapeFlag::SceneQueryShape, TriggerShape, ParticleDrain) should be taken into account.</param>
+			bool UpdateMassAndInertia(float density, [Optional] Nullable<Vector3> massLocalPose, [Optional] bool includeNonSimShapes);
 			/// <summary>
 			/// Computation of mass properties for a rigid body actor.
 			/// </summary>
-			bool UpdateMassAndInertia(array<float>^ shapeDensities, Nullable<Vector3> massLocalPose);
+			/// <param name="shapeDensities">The per shape densities. There must be one entry for each shape which has the ShapeFlag::SimulationShape set (or for all shapes if includeNonSimShapes is set to true). Other shapes are ignored. The density values must be greater than 0.</param>
+			/// <param name="massLocalPose">The center of mass relative to the actor frame. If set to null then (0,0,0) is assumed.</param>
+			/// <param name="includeNonSimShapes">True if all kind of shapes (ShapeFlag::SceneQueryShape, TriggerShape, ParticleDrain) should be taken into account.</param>
+			bool UpdateMassAndInertia(array<float>^ shapeDensities, Nullable<Vector3> massLocalPose, [Optional] bool includeNonSimShapes);
 
 			/// <summary>
 			/// Computation of mass properties for a rigid body actor.

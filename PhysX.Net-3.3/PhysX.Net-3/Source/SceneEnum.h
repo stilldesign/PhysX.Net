@@ -227,16 +227,64 @@ namespace PhysX
 
 	public enum class HitFlag
 	{
+		/// <summary>
+		/// "position" member of PxQueryHit is valid.
+		/// </summary>
 		Position = PxHitFlag::ePOSITION,
+
+		/// <summary>
+		/// "normal" member of PxQueryHit is valid.
+		/// </summary>
 		Normal = PxHitFlag::eNORMAL,
+
+		/// <summary>
+		/// "distance" member of PxQueryHit is valid.
+		/// </summary>
 		Distance = PxHitFlag::eDISTANCE,
+
+		/// <summary>
+		/// "u" and "v" barycentric coordinates of PxQueryHit are valid. Not applicable to sweep queries.
+		/// </summary>
 		UV = PxHitFlag::eUV,
+
+		/// <summary>
+		/// Performance hint flag for sweeps when it is known upfront there's no initial overlap. NOTE: using this flag may cause undefined results if shapes are initially overlapping.
+		/// </summary>
 		AssumeInitialOverlapDisabled = PxHitFlag::eASSUME_NO_INITIAL_OVERLAP,
+
+		/// <summary>
+		/// Report all hits for meshes rather than just the first. On SPU the number of reported hits per mesh is limited to 16 in no specific order.
+		/// </summary>
 		MeshMultiple = PxHitFlag::eMESH_MULTIPLE,
+
+		/// <summary>
+		/// Report any first hit for meshes. If neither eMESH_MULTIPLE or eMESH_ANY is specified, a single closest hit will be reported for meshes.
+		/// </summary>
 		MeshAny = PxHitFlag::eMESH_ANY,
+
+		/// <summary>
+		/// Report hits with back faces of triangles. Also report hits for raycast originating on mesh surface and facing away from the surface normal.
+		/// </summary>
 		MeshBothSides = PxHitFlag::eMESH_BOTH_SIDES,
+
+		/// <summary>
+		/// Use more accurate but slower narrow phase sweep tests. May provide better compatibility with PhysX 3.2 sweep behavior. Ignored on SPU.
+		/// </summary>
 		PreciseSweep = PxHitFlag::ePRECISE_SWEEP,
+
+		/// <summary>
+		/// Report the minimum translation depth, normal and contact point. Ignored on SPU.
+		/// </summary>
+		MinimumTranslationDirection = PxHitFlag::eMTD,
+
+		/// <summary>
+		/// 
+		/// </summary>
 		Default = PxHitFlag::eDEFAULT,
+
+		/// <summary>
+		/// Only this subset of flags can be modified by pre-filter. Other modifications will be discarded.
+		/// </summary>
 		ModifiableFlags = PxHitFlag::eMODIFIABLE_FLAGS
 	};
 

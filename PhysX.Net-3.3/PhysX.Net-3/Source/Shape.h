@@ -3,6 +3,7 @@
 #include "GeometryEnum.h"
 #include "Bounds3.h"
 #include "ShapeFlag.h"
+#include "Material.h"
 
 namespace PhysX
 {
@@ -60,6 +61,15 @@ namespace PhysX
 		ConvexMeshGeometry^ GetConvexMeshGeometry();
 		TriangleMeshGeometry^ GetTriangleMeshGeometry();
 		HeightFieldGeometry^ GetHeightFieldGeometry();
+
+		/// <summary>
+		/// Retrieve material from given triangle index.
+		/// The input index is the internal triangle index as used inside the SDK.This is the index returned to
+		/// users by various SDK functions such as raycasts.
+		/// This function is only useful for triangle meshes or heightfields, which have per - triangle materials.
+		/// For other shapes the function returns the single material associated with the shape, regardless of the index.
+		/// </summary>
+		Material^ GetMaterialFromInternalFaceIndex(int faceIndex);
 
 		//
 

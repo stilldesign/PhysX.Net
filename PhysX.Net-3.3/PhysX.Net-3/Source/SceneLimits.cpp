@@ -8,6 +8,7 @@ PxSceneLimits SceneLimits::ToUnmanaged(SceneLimits^ managed)
 		unmanaged.maxNbBodies = managed->MaxBodies;
 		unmanaged.maxNbStaticShapes = managed->MaxStaticShapes;
 		unmanaged.maxNbDynamicShapes = managed->MaxDynamicShapes;
+		unmanaged.maxNbAggregates = managed->MaxAggregates;
 		unmanaged.maxNbConstraints = managed->MaxConstraints;
 		unmanaged.maxNbRegions = managed->MaxRegions;
 		unmanaged.maxNbObjectsPerRegion = managed->MaxObjectsPerRegion;
@@ -21,6 +22,7 @@ SceneLimits^ SceneLimits::ToManaged(PxSceneLimits unmanaged)
 		managed->MaxBodies = unmanaged.maxNbBodies;
 		managed->MaxStaticShapes = unmanaged.maxNbStaticShapes;
 		managed->MaxDynamicShapes = unmanaged.maxNbDynamicShapes;
+		managed->MaxAggregates = unmanaged.maxNbAggregates;
 		managed->MaxConstraints = unmanaged.maxNbConstraints;
 		managed->MaxRegions = unmanaged.maxNbRegions;
 		managed->MaxObjectsPerRegion = unmanaged.maxNbObjectsPerRegion;
@@ -34,6 +36,7 @@ void SceneLimits::SetToDefault()
 	MaxBodies = 0;
 	MaxStaticShapes = 0;
 	MaxDynamicShapes = 0;
+	MaxAggregates = 0;
 	MaxConstraints = 0;
 	MaxRegions = 0;
 	MaxObjectsPerRegion = 0;
