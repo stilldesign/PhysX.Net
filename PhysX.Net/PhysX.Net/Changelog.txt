@@ -1,0 +1,303 @@
+[0.12.1.0 - ]
+Target PhysX 2.8.4.6
+
+[0.12.0.0 - ]
+Cleaned up ActorDescription/Base
+Added Serialization code back in (not complete though)
+Fix for the underlying NxMeshData not being referenced by the wrapper when constructed by the SoftBodyDescription class
+Added contact report stream and related classes
+Targeting PhysX 2.8.4.5 (x86 and x64)
+Enum spelling
+Added Cloth Split Pairs
+Added various Cloth and SoftBody properties
+Fixed bug - Use AND operator in argument check for size of indices
+Added EmulateLegacyWheel and ClampedFriction to WheelShapeFlag enum 
+HintFlags in Raycast functions are now RaycastBit instead of uint
+FetchResults returns a boolean
+Added Shape.UserData
+Fixed bug - Copy NxSweepQueryHit data so the managed class can look after it
+Use FileVersionInfo to test PhysX assembly details
+Description classes now inherit from a base Description class that has a CheckValid function
+New 2.8.4 methods and properties -
+	Cloth class properties to control compression
+	Core.ResizeGpuHeap
+	Scene.SimulateCompartments
+PhysXInitializationException reports failure reason in message
+Removed dependencies on graphics libraries
+Changed samples to use SlimDX and DirectX 10
+Changed PhysX.Net to target .NET 4.0 and CRT10
+Cleaned up NX Utility build warnings
+
+[0.11.0.0 - 2009-03-28]
+Changed RuntimeFileChecks to strip quotes from environment variable paths
+Changed version number to match next release: 0.11.0.0
+Removed duplicate simulation code in Serialization sample
+Scene.Linear*Sweep now returns an array of SweepQueryHit instead of an array of Shape (previous checkin note)
+Moved FileStream Close call to a finally block in RuntimeFileCheck to ensure its always called
+Added 2.8.1.21 assembilies to solution
+Cleaned up Box. Added a constructor to Capsule
+Removed DebugSM and DebugET enum values from SweepFlags (only meant for internal use)
+Heavily changed and fixed LinearSweep. Scene.LinearSweep replaced by Scene.LinearObbSweep and Scene.LinearCapsuleSweep. Each have two flavours; array of hits as a return or callback on hit. You cannot use both flavours at the same time.
+Scene.Linear*Sweep does not require maximumShapes argument now
+Added unit tests for linear sweep. Test project is now built with debug info
+Fixed Core.CheckPhysXRuntimeFiles; this property is now static and used by the Core constructors
+Fixed bug where a D6JointDesc was being created instead of a NxDistanceJointDesc
+Removed ControllerShapeHit.TriangleIndex (Reserved for future use)	
+Cleaned up Runtime File Checks; correct hash array sizes, throw on uncaught exception
+Changed Microsoft.DirectX.Direct3DX.dll to version 1.0.2911.0
+Added HeightFieldDescription.VerticalExtent
+Fixed bug in SceneDescription.MaximumBounds setter
+Changed PhysX.Net to target PhysX 2.8.1.21 (January 2009)
+Fixed PhysicsStream Finalizer. Was calling itself.
+Worked on serialization
+Cleaned up comments
+Renamed ObjectCache to ObjectTable
+Added a thread lock object to all functions in the ObjectTable
+Added ActorFlag.UserActorPairFiltering
+Targeting SlimDX November 2008 SDK
+Removed Serialization from trunk
+Added Controller and Other to ControllersHit to controlls hit report
+Changed ControllerHitReport to UserControllerHitReport
+Fixed bug where ContactPair was not observing isDeletedActor which caused crash if deleting an actor associated with a contact report
+Set _actorADeleted, _actorBDeleted variables in ContactPair via constructor
+
+[0.10.2.0 - 2008-11-15]
+Fixed bug where Fluid.ParticleWriteData would be empty
+Added sample projects to solution
+Samples target the RTM version of XNA 3.0 and SlimDX September 2008
+Included some unit tests (many more can be written)
+Changed onAdd, onRemove to ItemAdded, ItemRemoved
+Changed ParticleData, FluidPacketData to take pointers instead of values in their constructors - this fixes up Fluid.ParticleWriteData being empty (among others)
+Fixed random crash on exit when a controller had been created. Crash caused by shape being disposed by controller, then attempting to be released by Shape on GC
+
+[0.10.0.0 - 2008-08-24]
+Changed to PhysX SDK 2.8.1 - Check the official change log
+Removed the 'Base' prefix from abstract class names, no need for it, conforms to .Net naming and PhysX naming better
+Added Timing to Compartment
+Added checks for null and disposed parameters to lots of functions
+Removed FluidDescriptionBase.SetInitialParticleData and FluidDescriptionBase.SetParticleWriteData.
+Added FluidDescriptionBase.ParticleDeletionIdWriteData, FluidDescriptionBase.ParticleCreationIdWriteData, FluidDescriptionBase.FluidPacketData
+FluidDescriptionBase. { InitialParticleData, ParticleWriteData, ParticleDeletionIdWriteData, ParticleCreationIdWriteData, FluidPacketData } are all created when the constructor is called as per the SDK
+Changed AllocateCommonParticleData to an instance call
+Slight speed up to FluidEmitter.LoadFromDescription. Fixed FluidEmitter.SaveToDescription not saving the FrameShape
+Removed OverlapAABBTrianglesResult. Cloth.OverlapAABBTriangles return null if no overlap, the indices otherwise
+Fixed removing a shape description from the actor description
+ControllerManagement is now ControllerManager
+Controller has a Manager property
+Fixed bug in the joint constructor. Actor2 was being assigned to actor1
+SweepQueryHit is now a (reference) class
+Fixed bug when assigning a compartment to a actor description base
+MeshData correctly clones a NxMeshData/MeshData
+Actor.SaveBodyToDescription() now returns null if actor has no body instead of throwing an exception
+Optimized EntityShapeReport for much better speed
+WheelContactModify actually works now
+User* reports no longer need the scene passed in as an argument
+Fixed bug where Shape.CCDSkeleton was not populated on construction of the shape. Value comes from the descriptor
+*.SetToDefault() works much better. Managed references are nulled out, or defaulted themselves.
+Joint.GetLimitPoint() is now of type Vector3?. The return is null if the internal functions NxJoint::getLimitPoint() returns false
+Project and all source code is avaliable online at codeplex - http://www.codeplex.com/physxdotnet
+Fluid stream properties now set the unmanaged versions they wrap
+Fixed SceneDescription.Limits.Set from crashing
+SoftBody.DampingStiffness is now DampingCoefficient
+Added PhysXException and PhysXInitializationException. Replaced all Exception/ApplicationException with the new ones.
+Added flag wrappers in Core, Actor and Fluid classes.
+Replaced all custom ReadOnly* collections with System.Collection.ObjectModel.ReadOnlyCollection<T>.
+Removed specialized collections like, e.g. Scene.ActorCollection.
+Modified RuntimeFileChecker to follow DLL search order and throw DllNotFoundException. Also fixed bug in CheckFile.
+Changed precompiled header settings. That gave compiler a nice boost.
+Moved all PhysX includes from individual headers to stdafx.h.
+Removed DescriptorValidity. If the user wishes to debug IsValid() calls, they can aquire the source code and step into.
+Added IsValid and SetToDefault to WheelShapeDescription
+Changed onAdd, onRemove to ItemAdded, ItemRemoved
+Added sample projects to solution and converted them to XNA3
+
+[0.9.1.0 - 2008-06-28]
+Fixed WheelShape.GetContactData()
+WheelShape.GetContactData() returns an empty struct when no contact occurs rather than undefined memory
+Added WheelContactData.ContactPosition
+Added comments to WheelContactData
+
+[0.9.0.0 - 2008-06-27]
+Changed the version number to better reflect the changes
+
+[0.8.11.0 - 2008-06-27]
+Added Core.InternalVersion and Core.SDKVersion
+Removed NumberOf-Actors, Cloths, DynamicShapes, StaticShapes
+Added Scene.Flags
+Small speed up of ActiveTransform.FromUnmanagedPointer
+Renamed stillDesign to StillDesign to better conform with .Net naming guidelines
+Added Scene.GetActiveTransforms
+Added ParticleIdData
+Added ParticleUpdateData
+Added Fluid.UpdateParticles()
+Added FluidPacketData
+Added Fluid.AddParticles, Fluid.RemoveAllParticles, Fluid.ParticleWriteData, Fluid.ParticleDeletionIdWriteData, Fluid.ParticleCreationIdWriteData, Fluid.UpdateParticles, Fluid.FluidPacketData
+Many new function comments added
+Renamed binary to StillDesign.PhysX.Net.dll to better conform with .Net naming guidelines
+Added Compartment to FluidBaseDescription, Fluid, ActorDescriptionBase, Actor, Cloth, ClothDescription, SoftBody, SoftBodyDescription
+Renamed Tag property to UserData
+Fixed bug where the 'default material' (i.e index 0) can be disposed of, this is not allowed in PhysX. This fixes the bug where disposal of a material means the default material is reassigned to the shape which caused the program to crash because the wrapper is unable to find the default material in the list.
+Changed CommonParticleData.Flags to CommonParticleData.Flag
+Added FluidEmitter.Fluid
+Changed FluidEmitter.NumberOfParticleEmitted to Fluid.NumberOfParticlesEmitted
+Changed Shape.Raycast to return a RaycastHit instead of using an out parameter as specified by the .Net design guidelines
+Changed Shape.CheckOverlapsSphere to take a Sphere instead of center and radius to match PhysX
+Changed ConvexMeshDescription.TrianglesStream to ConvexMeshDescription.TriangleStream
+Changed all UnmanagedPointer properties to have the internal access modifier
+Changed MemoryWriterStream.Count to MemoryWriterStream.Length to better match .Net. Also changed _writer variable to private
+Fixed memory leaks when getting or setting particle properties in a cloth
+Removed PhysicsException, replaced calls with more appropriate exception classes
+Added Fluid.SaveToDescription and Fluid.LoadFromDescription
+Changed ParticleData.NumberOfParticles to an Int32 instead of a Int32?. It is always allocated now.
+Removed Read*, Write* and To*Array from PhysicsStream, use GetData<T> and SetData<T>. More like XNA.
+Added Actor.GetPointVelocity(), Actor.GetLocalPointVelocity(), Actor.LinearSweep()
+Removed CommonParticleData. Use ParticleData.AllocateCommonParticleData static call instead
+Added generic version of Allocate* calls
+ShapeDescription.ShapeFlag is now ShapeDescription.Flags
+Math class is now private so you want get any conflicts with System.Math :)
+Fixed memory leak in UtilitiesLibrary.ComputeSphere()
+Changed Pulley1 and Pulley2 to SuspensionPointA and SuspensionPointB in PulleyJointDescription
+Added SceneDescription.BackgroundThreadMask, SceneDescription.UserData
+Added Scene.CookFluidMeshHotspot()
+Added Scene.GetActorPairFlags(), Scene.GetDominanceGroupPair(), Scene.SetDominanceGroupPair(), Scene.GetActorGroupPairs(), Scene.Get/SetFilter*()
+DescriptorValidity on many description classes instead of bool. DescriptorValidity is backwards compat with the bool return type via an implicit conversion operator
+ActorDescription implements IsValid, previously only ActorDescriptionBase.IsValid was being called
+Renamed DefaultUserOutputStream to ConsoleOutputStream
+Removed IStreamReader and IStreamWriter. Instead you only need to use System.IO.Stream implemented classes, usually these will be MemoryStream, FileStream or BinaryStream
+
+[0.8.10.0 - 2008-05-12]
+Fixed TriangleMesh/ConvexMesh/ClothMesh/.SaveToDescription causing an ASSERTION once GCed
+Added ClothMesh.SaveToDescription and ClothMesh.ReferencedCount
+Added VertexMasses, VertexFlags, SetToDefault and IsValid to ClothMeshDescription
+SimpleTriangleMesh.SetToDefault, ClothMeshDescription.SetToDefault and TriangleMeshDescription.SetToDefault now releases allocated vertices and indices
+Added MaterialIndicesStream, AllocateMaterialIndices to TriangleMeshDescription
+Fixes to ConvexMeshDescription to do with construction of Stream
+Removed ConvexMeshDescription.GetConvexShapeDescrription, use ConvexMesh.SaveToDescription instead
+Replaced ConvexMesh.SharedMeshReferenceCount with ConvexMesh.ReferencedCount
+Added ConvexMesh.MassInformation
+Explicitly implemented StillDesign::PhysX::IStreamWriter::UnmanagedPointer::get unfortunately due to a VC++ 2005 compiler bug, this could not be done
+Changed enums to better conform with .NET Framework naming standards
+Cooking.Cook* returns a bool
+Removed BodyDescription.Name, added BodyDescription.MassLocalPose
+Added BodyDescription.SleepEnergyThreshold, BodyDescription.SleepDamping
+Many new function comments added
+Reworked Limit Planes for Joints
+Allocating streams now zero all memory
+Added ConstraintDominance
+Fixes to Allocate* functions in ParticleData
+Actor.AddShape is now Actor.CreateShape, added wheel shape creation
+
+[0.8.9.0 - 2008-05-03]
+Few minor changes to controller enums
+Changed Controller::Move; removed the CollisionGroup enum, it now takes an unsigned int. Also the other Move function now passes in 0xFFFFFFFF (i.e. 11111111111111111111111111111111 base 2) so all group are active.
+Fixed up controller hit
+Fixed access modifiers on CCDSkeleton
+Fixed up Capsule Shape Description; removed unused pointer and set correct access modifiers
+Added ConvexForceFieldShapeDescription and ConvexForceFieldShape
+Abstracted the pointers in the force field shape descriptors. Removed the empty specific finalizers
+Minor performance improvements for searching for managed instances
+Removed finalizers and deconstructors from force field shapes
+Added UserWheelContactModify and associated properties to WheelShapeDescription and WheelShape
+Removed finalizers and deconstructors from all the shapes and shape descriptions; they were empty functions or setting managed variables to null which is not required. Inherited deconstructor and finalizer still exist.
+Removed local copy of spring description from distance joint, this fixes up the spring not being there when DistanceJoint.SaveToDescription was called
+Added Name property to JointDescription
+Changed access modifiers on Joint, constructor is now protected
+Fixed a bug where new joint where not being added to the joint collection of the scene
+Fixed bug where assigning a material then upon GC collection of the material would cause a crash (thanks to nca2003)
+Added CCDSkeleton to ShapeDescription
+Fixed up CCDSkeleton Finalizer not releasing the unmanaged CCDSkeleton
+Fixed up Shape::SaveToDescription not saving all managed variables, removed LoadFromDescription from Shape which was not needed and fixed up the access modifiers for Shape
+Optimized RaycastHit RaycastHit::FromUnmanaged, now uses dictionary to search for managed shape
+Removed Scene.GetMaterial(), use scene.Materials[ index ] instead
+Adding shapes to an actor (using Actor.AddShape) now correctly adds them to the shape collection in the scene
+SimpleTriangleMesh creates VerticesStream and TriangleStream when using the constructor SimpleTriangleMesh( NxSimpleTriangleMesh* simpleTriangleMesh );. This constructor is now protected. This also fixes calling TriangleMesh.SaveToDescription having null VerticesStream and TriangleStream in the returned descriptor
+hanged Cloth::Create to Cloth::FromUnmanagedPointer to match coding style
+Cloth::SaveToDescription now saves MeshData and ClothMesh properties, and doesn't require a core to be passed in
+Removed _groupsMask from Cloth
+Added Triangle default indexer, rewrote Triangle::Normal, added Triangle::Center(), added Triangle::Inflate and changed the To/From-Unmanaged to cast operators
+Removed _spring from MaterialDescription, fixed access modifiers
+Assigned unmanaged enum values to RemoteDebuggerObjectType values
+Implemented SoftBodyMesh::SaveToDescription
+Added FromUnmanagedPointer to SoftBodyMeshDescription
+Added SweepCache::Scene property, SweepCache inherits Dependency and depend on the scene, fixed access modifiers on SweepCache, fixed finalizer
+Added PlaneShapeDescription( Plane plane ) constructor
+Removed Dispose and Finalizer functions that were empty (thus not needed) from all joint and their descriptors 
+Removed _motorDesc from PulleyJoint, casts from the unmanaged variable instead
+Changed To/From-Unmanaged to cast operators in JointLimitPairDescription and JointLimitDescription
+Removed global variables from SphericalJointDescription, RevoluteJoint that were ValueType's and replaced them with casts from the unmanaged variable
+Changed RevoluteJoint::FromUnmanagedPointer to use casts instead of passing in individual parameters to the constructor
+Removed IDisposable from BodyDescription not needed
+Compartment has a dependency on the scene
+Implemented SoftBody::SaveToDescription, removed LoadFromDescription, sped up GetInteractingShapes by using hash table lookup
+Implemented UtilitiesLibrary::GetBoxEdges, UtilitiesLibrary::ComputeBoxAroundCapsule
+Chanaged Cooking to static
+Changed SoftBody raycast to return information in a class rather than using 'out' as per .net framework guidelines
+Fixed Cloth returning a Ray ref instead of a Ray value
+The binary is now signed
+Added Scene.OverlappedShapes +12 overloads
+Added Scene.CullShapes +2 overloads
+Fixed up RaycastClosestShape and RaycastClosestBounds, RaycastHit is now a ref class, fixed small bug in RaycastHit when using ToUnmanaged
+Added UserActorPairFiltering and associated
+
+
+[0.8.8.0 - 2008-04-10]
+Moved project back to Visual Studio 2005 (Non SP1) so the wrapper will run with CRT 8.0
+The wrapper is now built with DirectX April 2005 SDK (v25)
+Managed DirectX version is included in releases now
+Fixed up Scene Description;
+	it implements IDisposable
+	removed IName inheritence
+	it has a correct finalizer now
+	added the remaining functions
+	fixed Gravity returning only the x component for each vector element, i.e. ( x, x, x )
+	moved SaveToDescription to SceneDescription instead of Scene
+SceneLimits has correct finalizer, and explicit operators for casting between unmanaged and managed, changed properties to int instead of uint
+Added misc enums
+Added UserNotify
+Actors retain their names on scene creation
+Fixed potential crash when setting contact report on scene
+Added FluidUserNotify
+Added UserContactModify
+Added UserTriggerReport
+Renamed BaseContactReport to UserContactReport
+Optimized shape management/searching
+Change Bounds3.Empty to static
+Added Bounds3.Extremes. This creates a bounds3 with the min and max properties set to Single.MaxValue and Single.MinValue respectively. Use this instead of the default constructor.
+Removed IName and INameNotifiable from classes, not part of the SDK. Thus objects no longer get nice names when they are created, just assign them manually if you need them
+Fixed up WheelShape finalizer
+Changed TireFunctionDescription to ValueType
+Fixed and Changed Simple Triangle Mesh;
+	Removed the Write/Read Vertices/Indices functions and replaced it with PhysicsStream. With this users can now interleave data and it conforms much better to the actual SDK. Physics Stream provides conveniance functions to replace the Write/Read Vertices/Indices functions.
+	Its now releases the allocated vertices and indices where as it didnot before.
+	Vertex Count and Index Count must now be set
+Cooking now uses the cooking parameters supplied in the non blank constructor
+RayCast is now Raycast
+BaseRaycastReport is now UserRaycastReport
+Changed UserContactReport::OnContactNotify's second param to ContactPairFlag
+Removed onNameChanged events from classes. This was originally used for serialalization perposes, but there are easier and cleaner ways of handling this.
+Fixed crash when assigning null to properties that use the UnmanagedPointer property of the value being set
+Changed BaseUserOutputStream to UserOutputStream
+
+[0.8.7.0 - 2008-04-01]
+Changed the All in One Demo project to VS2005
+Added LimitPlanes to Joint
+Added SetLimitPoint to Joint
+Removed throw of Exception in Controller Hit, relplaced it with output message to user output stream
+Added misc intellisense comments
+ControllerShapeHit::FromUnmanagedPointer is now ControllerShapeHit::FromUnmanaged
+ControllerHitReport checks if scene parameter is nullptr
+Moved static explicit operator NxGroupsMask( GroupsMask groupsMask ) to its cpp file
+Fixed access modifiers on force field desc, inherited IDisposable and checked if disposing more than once
+Added UnmanagedPointer to SceneStatistics. Fixed access modifiers on SceneStatistics
+UserEntityShapeReport checks if scene parameter is null
+Fixed access modifiers on ImplicitScreenMeshDescription
+Included XML Documentation in release
+
+[0.8.6.1 - 2008-04-01]
+
+[0.8.6.0 - 2008-03-26]
+Frist beta release
+
+[0.8.1.0 - 2008-01-27]
+
+[0.6.0.0 - 2007-11-06]
