@@ -191,6 +191,9 @@
     <ClInclude Include="Source\ConstraintShaderTable.h" />
     <ClInclude Include="Source\ContactModifyCallback.h" />
     <ClInclude Include="Source\ContactModifyPair.h" />
+    <ClInclude Include="Source\ContactPair.h" />
+    <ClInclude Include="Source\ContactPairHeader.h" />
+    <ClInclude Include="Source\ContactPairPoint.h" />
     <ClInclude Include="Source\ContactSet.h" />
     <ClInclude Include="Source\ControllerHit.h" />
     <ClInclude Include="Source\CharacterEnum.h" />
@@ -431,6 +434,9 @@
     <ClCompile Include="Source\ConstraintShaderTable.cpp" />
     <ClCompile Include="Source\ContactModifyCallback.cpp" />
     <ClCompile Include="Source\ContactModifyPair.cpp" />
+    <ClCompile Include="Source\ContactPair.cpp" />
+    <ClCompile Include="Source\ContactPairHeader.cpp" />
+    <ClCompile Include="Source\ContactPairPoint.cpp" />
     <ClCompile Include="Source\ContactSet.cpp" />
     <ClCompile Include="Source\ControllerHit.cpp" />
     <ClCompile Include="Source\Cloth.cpp" />

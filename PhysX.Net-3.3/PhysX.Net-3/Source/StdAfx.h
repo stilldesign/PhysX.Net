@@ -84,27 +84,28 @@ using namespace PhysX::Math;
 #define ThrowIfNull(var, varName)\
 {\
 	if (var == nullptr)\
-		throw gcnew ArgumentNullException(varName);\
+	throw gcnew ArgumentNullException(varName);\
 }
 #define ThrowIfNullOrDisposed(var, varName)\
 {\
 	if (var == nullptr)\
-		throw gcnew ArgumentNullException(varName);\
+	throw gcnew ArgumentNullException(varName);\
 	if (var->Disposed)\
-		throw gcnew ArgumentException("Argument is disposed", varName);\
+	throw gcnew ArgumentException("Argument is disposed", varName);\
 }
 #define ThrowIfDisposed(var, varName)\
 {\
 	if (var != nullptr && var->IsDisposed)\
-		throw gcnew ArgumentException("Argument is disposed", varName);\
+	throw gcnew ArgumentException("Argument is disposed", varName);\
 }
 #define ThrowIfDescriptionIsNullOrInvalid(var, varName)\
 {\
 	ThrowIfNull(var, varName);\
 	\
 	if(!var->IsValid())\
-		throw gcnew ArgumentException("Description is invalid", varName);\
+	throw gcnew ArgumentException("Description is invalid", varName);\
 }
+#define ThrowIfThisDisposed() { if (this->Disposed) throw gcnew InvalidOperationException("The instance has been disposed of, no further operations should be performed."); }
 
 template <class T, class U>
 bool IsInstanceOf(U u)

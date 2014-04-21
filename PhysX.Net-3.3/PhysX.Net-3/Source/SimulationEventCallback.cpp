@@ -1,6 +1,8 @@
 #include "StdAfx.h"
 #include "SimulationEventCallback.h"
 #include "ConstraintInfo.h"
+#include "ContactPair.h"
+#include "ContactPairHeader.h"
 
 using namespace PhysX;
 
@@ -34,7 +36,26 @@ void InternalSimulationEventCallback::onSleep (PxActor **actors, PxU32 count)
 }
 void InternalSimulationEventCallback::onContact (const PxContactPairHeader &pairHeader, const PxContactPair *pairs, PxU32 nbPairs)
 {
+	auto ph = ContactPairHeader::ToManaged(pairHeader);
 
+	auto p = gcnew array<ContactPair^>(nbPairs);
+	for (int i = 0; i < nbPairs; i++)
+	{
+		PxContactPair x = pairs[i];
+
+		p[i] = gcnew ContactPair(&x);
+	}
+
+	_callback->OnContact(ph, p);
+
+	// The PhysX SDK docs clearly say not to hold onto objects passed into this function, as they will be invalid
+	// after we exit this method.
+	// As ContactPair class holds onto the pointer pass into it, that means our ContactPair instances must be disposed of.
+	for each (auto x in p)
+	{
+		delete x;
+	}
+	p = nullptr;
 }
 void InternalSimulationEventCallback::onTrigger (PxTriggerPair *pairs, PxU32 count)
 {
@@ -86,7 +107,10 @@ void SimulationEventCallback::OnSleep(array<Actor^>^ actors)
 {
 
 }
-//virtual void OnContact (const PxContactPairHeader &pairHeader, const PxContactPair *pairs, PxU32 nbPairs);
+void SimulationEventCallback::OnContact(ContactPairHeader^ pairHeader, array<ContactPair^>^ pairs)
+{
+
+}
 void SimulationEventCallback::OnTrigger(array<TriggerPair^>^ pairs)
 {
 

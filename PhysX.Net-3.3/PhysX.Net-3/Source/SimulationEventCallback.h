@@ -8,6 +8,8 @@
 namespace PhysX
 {
 	ref class SimulationEventCallback;
+	ref class ContactPairHeader;
+	ref class ContactPair;
 
 	class InternalSimulationEventCallback : public PxSimulationEventCallback
 	{
@@ -48,7 +50,15 @@ namespace PhysX
 		virtual void OnConstraintBreak (array<ConstraintInfo^>^ constraints);
 		virtual void OnWake(array<Actor^>^ actors);
 		virtual void OnSleep(array<Actor^>^ actors);
-		//virtual void OnContact (const PxContactPairHeader &pairHeader, const PxContactPair *pairs, PxU32 nbPairs);
+
+		/// <summary>
+		/// The user needs to implement this interface class in order to be notified when certain contact events occur.
+		/// The method will be called for a pair of actors if one of the colliding shape pairs requested contact notification.
+		/// You request which events are reported using the filter shader / callback
+		/// mechanism(see PxSimulationFilterShader, PxSimulationFilterCallback, PxPairFlag).
+		/// Do not keep references to the passed objects, as they will be invalid after this function returns.
+		/// </summary>
+		virtual void OnContact (ContactPairHeader^ pairHeader, array<ContactPair^>^ pairs);
 		virtual void OnTrigger(array<TriggerPair^>^ pairs);
 
 	internal:

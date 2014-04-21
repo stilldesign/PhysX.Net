@@ -493,6 +493,15 @@
     <ClCompile Include="Source\ControllerState.cpp">
       <Filter>Character</Filter>
     </ClCompile>
+    <ClCompile Include="Source\ContactPairHeader.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ContactPair.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ContactPairPoint.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
@@ -1112,6 +1121,15 @@
     </ClInclude>
     <ClInclude Include="Source\ControllerState.h">
       <Filter>Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ContactPairHeader.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ContactPair.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ContactPairPoint.h">
+      <Filter>Physics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -218,4 +218,67 @@ namespace PhysX
 		Notify = PxFilterFlag::eNOTIFY,
 		Default = PxFilterFlag::eDEFAULT
 	};
+
+	public enum class ContactPairHeaderFlag
+	{
+		/// <summary>
+		/// The actor with index 0 has been deleted.
+		/// </summary>
+		DeletedActor0 = PxContactPairHeaderFlag::eDELETED_ACTOR_0,
+
+		/// <summary>
+		/// The actor with index 1 has been deleted.
+		/// </summary>
+		DeletedActor1 = PxContactPairHeaderFlag::eDELETED_ACTOR_1
+	};
+
+	/// <summary>
+	/// Collection of flags providing information on contact report pairs.
+	/// </summary>
+	public enum class ContactPairFlag
+	{
+		/// <summary>
+		/// The shape with index 0 has been deleted.
+		/// </summary>
+		DeletedShape0 = PxContactPairFlag::eDELETED_SHAPE_0,
+
+		/// <summary>
+		/// The shape with index 1 has been deleted.
+		/// </summary>
+		DeletedShape1 = PxContactPairFlag::eDELETED_SHAPE_1,
+
+		/// <summary>
+		/// First actor pair contact
+		/// The provided shape pair marks the first contact between the two actors, no other shape pair
+		/// has been touching prior to the current simulation frame.
+		/// Note: This info is only available if PxPairFlag::eNOTIFY_TOUCH_FOUND has been declared for the pair.
+		/// </summary>
+		ActorPairHasFirstTouch = PxContactPairFlag::eACTOR_PAIR_HAS_FIRST_TOUCH,
+
+		/// <summary>
+		/// All contact between the actor pair was lost.
+		/// All contact between the two actors has been lost, no shape pairs remain touching after the current simulation frame.
+		/// </summary>
+		ActorPairLostTouch = PxContactPairFlag::eACTOR_PAIR_LOST_TOUCH,
+
+		/// <summary>
+		/// Internal flag, used by PxContactPair.extractContacts().
+		/// For meshes / heightfields the flag indicates that the contact points provide internal triangle index information.
+		/// </summary>
+		InternalHasFaceIndices = PxContactPairFlag::eINTERNAL_HAS_FACE_INDICES,
+
+		/// <summary>
+		/// Internal flag, used by PxContactPair.extractContacts().
+		/// The applied contact impulses are provided for every contact point.This is the
+		/// case if PxPairFlag::eSOLVE_CONTACT has been set for the pair.
+		/// </summary>
+		InternalHasImpulses = PxContactPairFlag::eINTERNAL_HAS_IMPULSES,
+
+		/// <summary>
+		/// Internal flag, used by PxContactPair.extractContacts().
+		/// The provided contact point information is flipped with regards to the shapes of the contact pair.
+		/// This mainly concerns the order of the internal triangle indices.
+		/// </summary>
+		InternalContactsAreFlipped = PxContactPairFlag::eINTERNAL_CONTACTS_ARE_FLIPPED
+	};
 };
