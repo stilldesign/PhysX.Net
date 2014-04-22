@@ -1,3 +1,8 @@
+[0.14.0]
+Updated to .NET 4.5.1 and CRT12 (Visual Studio 2013 toolset)
+
+[0.13.0]
+
 [0.12.1.0 - ]
 Target PhysX 2.8.4.6
 

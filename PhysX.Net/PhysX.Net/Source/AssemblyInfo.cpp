@@ -11,14 +11,14 @@ using namespace System::Security::Permissions;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 //
-[assembly:AssemblyTitleAttribute( "PhysX.Net" )];
-[assembly:AssemblyDescriptionAttribute( ".NET Wrapper for NVIDIA PhysX 2.8.4.6" )];
-[assembly:AssemblyConfigurationAttribute( "" )];
-[assembly:AssemblyCompanyAttribute( "StillDesign" )];
-[assembly:AssemblyProductAttribute( "PhysX.Net" )];
-[assembly:AssemblyCopyrightAttribute( "Copyright (c) StillDesign 2013" )];
-[assembly:AssemblyTrademarkAttribute( "" )];
-[assembly:AssemblyCultureAttribute( "" )];
+[assembly:AssemblyTitleAttribute("PhysX.Net")];
+[assembly:AssemblyDescriptionAttribute(".NET Wrapper for NVIDIA PhysX 2.8.4.6")];
+[assembly:AssemblyConfigurationAttribute("")];
+[assembly:AssemblyCompanyAttribute("StillDesign")];
+[assembly:AssemblyProductAttribute("PhysX.Net")];
+[assembly:AssemblyCopyrightAttribute("Copyright (c) StillDesign 2014")];
+[assembly:AssemblyTrademarkAttribute("")];
+[assembly:AssemblyCultureAttribute("")];
 
 //
 // Version information for an assembly consists of the following four values:
@@ -31,7 +31,7 @@ using namespace System::Security::Permissions;
 // You can specify all the value or you can default the Revision and Build Numbers
 // by using the '*' as shown below:
 
-[assembly:AssemblyVersionAttribute("0.13.0.0")];
+[assembly:AssemblyVersionAttribute("0.14.0")];
 
 [assembly:ComVisible(false)];
 
