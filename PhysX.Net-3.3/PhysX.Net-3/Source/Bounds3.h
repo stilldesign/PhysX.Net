@@ -23,10 +23,11 @@ namespace PhysX
 			/// <param name="maxZ">The Z component of the maximum point.</param>
 			Bounds3(float minX, float minY, float minZ, float maxX, float maxY, float maxZ);
 			
-		public:
+		internal:
 			static PxBounds3 ToUnmanaged(Bounds3 bounds);
 			static Bounds3 FromUnmanaged(PxBounds3 bounds);
 				
+		public:
 			void Include(Vector3 vector);
 			void Combine(Bounds3 bounds);
 			void BoundsOfOBB(Matrix orientation, Vector3 translation, Vector3 halfDimensions);
