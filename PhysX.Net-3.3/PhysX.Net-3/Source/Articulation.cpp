@@ -118,7 +118,7 @@ void Articulation::Name::set(String^ value)
 
 Bounds3 Articulation::WorldBounds::get()
 {
-	return Bounds3::FromUnmanaged(_articulation->getWorldBounds());
+	return Bounds3::ToManaged(_articulation->getWorldBounds());
 }
 
 PhysX::Aggregate^ Articulation::Aggregate::get()

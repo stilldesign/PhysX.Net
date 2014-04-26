@@ -83,7 +83,7 @@ void Actor::Name::set(String^ value)
 
 Bounds3 Actor::WorldBounds::get()
 {
-	return Bounds3::FromUnmanaged(_actor->getWorldBounds());
+	return Bounds3::ToManaged(_actor->getWorldBounds());
 }
 
 ActorFlag Actor::Flags::get()

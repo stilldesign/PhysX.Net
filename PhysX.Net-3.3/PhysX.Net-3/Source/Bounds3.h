@@ -25,7 +25,7 @@ namespace PhysX
 			
 		internal:
 			static PxBounds3 ToUnmanaged(Bounds3 bounds);
-			static Bounds3 FromUnmanaged(PxBounds3 bounds);
+			static Bounds3 ToManaged(PxBounds3 bounds);
 				
 		public:
 			void Include(Vector3 vector);

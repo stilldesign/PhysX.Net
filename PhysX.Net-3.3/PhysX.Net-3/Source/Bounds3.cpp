@@ -31,7 +31,7 @@ PxBounds3 Bounds3::ToUnmanaged(Bounds3 bounds)
 	
 	return b;
 }
-Bounds3 Bounds3::FromUnmanaged(PxBounds3 bounds)
+Bounds3 Bounds3::ToManaged(PxBounds3 bounds)
 {
 	PxVec3 center = bounds.getCenter();
 	PxVec3 extents = bounds.getExtents();

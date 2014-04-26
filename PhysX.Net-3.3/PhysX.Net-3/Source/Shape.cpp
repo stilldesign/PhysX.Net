@@ -162,7 +162,7 @@ Bounds3 Shape::WorldBounds::get()
 {
 	PxBounds3 bounds = ShapeUtil::GetWorldBoundsUnmanaged(_shape, _actor->UnmanagedPointer);
 
-	return Bounds3::FromUnmanaged(bounds);
+	return Bounds3::ToManaged(bounds);
 }
 
 float Shape::ContactOffset::get()

@@ -492,7 +492,7 @@ float Cloth::PreviousTimestep::get()
 
 Bounds3 Cloth::WorldBounds::get()
 {
-	return Bounds3::FromUnmanaged(this->UnmanagedPointer->getWorldBounds());
+	return Bounds3::ToManaged(this->UnmanagedPointer->getWorldBounds());
 }
 
 ClothMotionConstraintConfig Cloth::MotionConstraintConfig::get()

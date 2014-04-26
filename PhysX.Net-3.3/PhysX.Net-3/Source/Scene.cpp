@@ -323,7 +323,7 @@ bool Scene::SetVisualizationParameter(VisualizationParameter param, bool value)
 
 Bounds3 Scene::VisualizationCullingBox::get()
 {
-	return Bounds3::FromUnmanaged(_scene->getVisualizationCullingBox());
+	return Bounds3::ToManaged(_scene->getVisualizationCullingBox());
 }
 void Scene::VisualizationCullingBox::set(Bounds3 value)
 {

@@ -53,5 +53,5 @@ Bounds3 GeometryQuery::GetWorldBounds(Geometry^ geometry, Matrix pose, [Optional
 
 	delete g;
 
-	return Bounds3::FromUnmanaged(bounds);
+	return Bounds3::ToManaged(bounds);
 }
