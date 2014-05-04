@@ -5,7 +5,7 @@ OperationFailedException::OperationFailedException()
 {
 
 }
-OperationFailedException::OperationFailedException(String^ messageFormat, ... array<String^>^ args)
+OperationFailedException::OperationFailedException(String^ messageFormat, ... array<Object^>^ args)
 	: Exception(String::Format(messageFormat, args))
 {
 

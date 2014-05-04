@@ -7,6 +7,6 @@ namespace PhysX
 	{
 	public:
 		OperationFailedException();
-		OperationFailedException(String^ messageFormat, ... array<String^>^ args);
+		OperationFailedException(String^ messageFormat, ... array<Object^>^ args);
 	};
 };
