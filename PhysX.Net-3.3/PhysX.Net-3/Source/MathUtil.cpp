@@ -62,6 +62,27 @@ PxMat33 MathUtil::MatrixToPxMat33(Matrix matrix)
 	return m;
 }
 
+Matrix MathUtil::PxMat44ToMatrix(PxMat44* mat44)
+{
+	Matrix m;
+
+	pin_ptr<Matrix> m_pin = &m;
+
+	memcpy(m_pin, mat44, sizeof(PxMat44));
+
+	return m;
+}
+PxMat44 MathUtil::MatrixToPxMat44(Matrix matrix)
+{
+	pin_ptr<Matrix> m_pin = &matrix;
+
+	PxMat44 mat44;
+
+	memcpy(&mat44, m_pin, sizeof(PxMat44));
+
+	return mat44;
+}
+
 Vector3 MathUtil::PxVec3ToVector3(PxVec3 vector)
 {
 	return Vector3(vector.x, vector.y, vector.z);
@@ -77,7 +98,16 @@ PhysX::Math::Vector3 MathUtil::PxExtendedVec3ToVector3(PxExtendedVec3 vector)
 }
 PxExtendedVec3 MathUtil::Vector3ToPxExtendedVec3(PhysX::Math::Vector3 vector)
 {
-return PxExtendedVec3(vector.X, vector.Y, vector.Z);
+	return PxExtendedVec3(vector.X, vector.Y, vector.Z);
+}
+
+Vector2 MathUtil::PxVec2ToVector2(PxVec2 vector)
+{
+	return Vector2(vector.x, vector.y);
+}
+PxVec2 MathUtil::Vector2ToPxVec2(Vector2 vector)
+{
+	return PxVec2(vector.X, vector.Y);
 }
 
 Quaternion MathUtil::PxQuatToQuaternion(PxQuat quat)
