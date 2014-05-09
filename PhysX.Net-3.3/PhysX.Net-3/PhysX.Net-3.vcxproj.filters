@@ -13,14 +13,10 @@
     <ClCompile Include="Source\MeshScale.cpp" />
     <ClCompile Include="Source\RenderBuffer.cpp" />
     <ClCompile Include="Source\RuntimeFileChecks.cpp" />
-    <ClCompile Include="Source\SimpleTriangleMesh.cpp" />
     <ClCompile Include="Source\StdAfx.cpp" />
     <ClCompile Include="Source\SweepHit.cpp" />
-    <ClCompile Include="Source\TriangleMesh.cpp" />
-    <ClCompile Include="Source\TriangleMeshDesc.cpp" />
     <ClCompile Include="Source\TriggerPair.cpp" />
     <ClCompile Include="Source\UserControllerHitReport.cpp" />
-    <ClCompile Include="Source\VisualDebuggerExt.cpp" />
     <ClCompile Include="Source\FilterData.cpp" />
     <ClCompile Include="Source\Plane.cpp" />
     <ClCompile Include="Source\VehicleAckermannGeometryData.cpp">
@@ -538,6 +534,18 @@
     <ClCompile Include="Source\ConnectionManager.cpp">
       <Filter>PVD</Filter>
     </ClCompile>
+    <ClCompile Include="Source\VisualDebuggerExt.cpp">
+      <Filter>PVD</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\TriangleMesh.cpp">
+      <Filter>TriangleMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\TriangleMeshDesc.cpp">
+      <Filter>TriangleMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SimpleTriangleMesh.cpp">
+      <Filter>TriangleMesh</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
@@ -545,7 +553,6 @@
     <ClInclude Include="Source\Aggregate.h" />
     <ClInclude Include="Source\BitAndData.h" />
     <ClInclude Include="Source\ErrorCallback.h" />
-    <ClInclude Include="Source\VisualDebuggerEnum.h" />
     <ClInclude Include="Source\FilterData.h" />
     <ClInclude Include="Source\FixedSizeLookupTable.h" />
     <ClInclude Include="Source\FixedSizeLookupTablePair.h" />
@@ -559,15 +566,11 @@
     <ClInclude Include="Source\Plane.h" />
     <ClInclude Include="Source\RenderBuffer.h" />
     <ClInclude Include="Source\RuntimeFileChecks.h" />
-    <ClInclude Include="Source\SimpleTriangleMesh.h" />
     <ClInclude Include="Source\SolverIterationCounts.h" />
     <ClInclude Include="Source\StdAfx.h" />
     <ClInclude Include="Source\SweepHit.h" />
-    <ClInclude Include="Source\TriangleMesh.h" />
-    <ClInclude Include="Source\TriangleMeshDesc.h" />
     <ClInclude Include="Source\TriggerPair.h" />
     <ClInclude Include="Source\UserControllerHitReport.h" />
-    <ClInclude Include="Source\VisualDebuggerExt.h" />
     <ClInclude Include="Source\VehicleWheelValues.h">
       <Filter>Vehicle</Filter>
     </ClInclude>
@@ -1209,6 +1212,21 @@
     <ClInclude Include="Source\ConnectionManager.h">
       <Filter>PVD</Filter>
     </ClInclude>
+    <ClInclude Include="Source\VisualDebuggerExt.h">
+      <Filter>PVD</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VisualDebuggerEnum.h">
+      <Filter>PVD</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\TriangleMesh.h">
+      <Filter>TriangleMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\TriangleMeshDesc.h">
+      <Filter>TriangleMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SimpleTriangleMesh.h">
+      <Filter>TriangleMesh</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Version.rc" />
@@ -1321,6 +1339,9 @@
     </Filter>
     <Filter Include="Articulation">
       <UniqueIdentifier>{d0b753e9-39e8-414f-9081-fa3d807c3b7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TriangleMesh">
+      <UniqueIdentifier>{93deaeb0-54bc-490e-9b2b-59f7ff08fb12}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
