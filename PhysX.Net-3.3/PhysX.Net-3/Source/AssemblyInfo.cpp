@@ -37,4 +37,5 @@ using namespace System::Security::Permissions;
 
 [assembly:CLSCompliantAttribute(true)];
 
+[assembly:InternalsVisibleToAttribute("PhysX.Test")];
 [assembly:InternalsVisibleToAttribute("APEX.Net")];
