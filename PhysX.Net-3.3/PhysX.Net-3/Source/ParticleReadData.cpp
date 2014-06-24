@@ -27,18 +27,11 @@ array<Vector3>^ ParticleReadData::GetPositions()
 	if (n <= 0)
 		return nullptr;
 
-	PxVec3 *p =  (PxVec3 *) malloc(n * sizeof(PxVec3));
+	const PxVec3* p = this->UnmanagedPointer->positionBuffer.ptr();
 
-	p = new PxVec3[n];
+	auto positions = Util::AsManagedArray<Vector3>(p, n);
 
-	for (int i = 0; i < n; i++)
-		p[i] = this->UnmanagedPointer->positionBuffer[i];
-
-	array<Vector3>^ ret = Util::AsManagedArray<Vector3>((void*)p, n);
-
-	free(p);
-
-	return ret;
+	return positions;
 }
 
 array<Vector3>^ ParticleReadData::GetVelocities()
