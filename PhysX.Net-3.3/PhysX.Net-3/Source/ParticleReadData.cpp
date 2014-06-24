@@ -87,18 +87,11 @@ array<Vector3>^ ParticleReadData::GetCollisionNormals()
 	if (n <= 0)
 		return nullptr;
 
-	PxVec3 *c =  (PxVec3 *) malloc(n * sizeof(PxVec3));
+	const PxVec3* c = this->UnmanagedPointer->collisionNormalBuffer.ptr();
 
-	c = new PxVec3[n];
+	auto collisionNormals = Util::AsManagedArray<Vector3>(c, n);
 
-	for (int i = 0; i < n; i++)
-		c[i] = this->UnmanagedPointer->collisionNormalBuffer[i];
-
-	array<Vector3>^ ret = Util::AsManagedArray<Vector3>((void*)c, n);
-
-	free(c);
-
-	return ret;
+	return collisionNormals;
 }
 
 PhysX::DataAccessFlag ParticleReadData::DataAccessFlag::get()
