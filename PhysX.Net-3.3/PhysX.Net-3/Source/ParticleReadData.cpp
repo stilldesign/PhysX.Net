@@ -41,18 +41,11 @@ array<Vector3>^ ParticleReadData::GetVelocities()
 	if (n <= 0)
 		return nullptr;
 
-	PxVec3 *v =  (PxVec3 *) malloc(n * sizeof(PxVec3));
+	const PxVec3* v = this->UnmanagedPointer->velocityBuffer.ptr();
 
-	v = new PxVec3[n];
+	auto velocities = Util::AsManagedArray<Vector3>(v, n);
 
-	for (int i = 0; i < n; i++)
-		v[i] = this->UnmanagedPointer->velocityBuffer[i];
-
-	array<Vector3>^ ret = Util::AsManagedArray<Vector3>((void*)v, n);
-
-	free(v);
-
-	return ret;
+	return velocities;
 }
 
 array<float>^ ParticleReadData::GetRestOffsets()
