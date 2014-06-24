@@ -11,8 +11,8 @@ using namespace System::Security::Permissions;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 //
-[assembly:AssemblyTitleAttribute("PhysX.Net for NVIDIA PhysX 3.3")];
-[assembly:AssemblyDescriptionAttribute(".NET Wrapper for NVIDIA PhysX 3.3.0.0")];
+[assembly:AssemblyTitleAttribute("PhysX.Net for NVIDIA PhysX 3.3.1")];
+[assembly:AssemblyDescriptionAttribute(".NET Wrapper for NVIDIA PhysX 3.3.1")];
 [assembly:AssemblyConfigurationAttribute("")];
 [assembly:AssemblyCompanyAttribute("StillDesign")];
 [assembly:AssemblyProductAttribute("PhysX.Net")];
