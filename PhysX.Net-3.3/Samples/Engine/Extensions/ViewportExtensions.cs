@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using SlimDX.Direct3D10;
+using SlimDX.Direct3D11;
 
 namespace PhysX.Samples
 {

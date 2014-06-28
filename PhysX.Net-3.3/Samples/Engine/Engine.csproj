@@ -83,7 +83,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Camera.cs" />
+    <Compile Include="Engine\Camera.cs" />
     <Compile Include="Color.cs" />
     <Compile Include="Engine\Engine.cs" />
     <Compile Include="Extensions\MathExtensions.cs" />

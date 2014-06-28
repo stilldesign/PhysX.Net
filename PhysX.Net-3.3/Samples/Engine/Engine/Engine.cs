@@ -1,18 +1,16 @@
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Input;
 using SlimDX;
 using SlimDX.D3DCompiler;
-using SlimDX.Direct3D10;
+using SlimDX.Direct3D11;
 using SlimDX.DXGI;
 
-using Buffer = SlimDX.Direct3D10.Buffer;
-using Device = SlimDX.Direct3D10.Device;
+using Buffer = SlimDX.Direct3D11.Buffer;
+using Device = SlimDX.Direct3D11.Device;
 
 namespace PhysX.Samples.Engine
 {
@@ -30,10 +28,8 @@ namespace PhysX.Samples.Engine
 		private DepthStencilView _depthBuffer;
 		private SwapChain _swapChain;
 
-		private SlimDX.Direct3D10.Buffer _userPrimitivesBuffer;
+		private Buffer _userPrimitivesBuffer;
 		private InputLayout _inputLayout;
-		private RasterizerState _rasterizerState;
-		private BlendState _blendState;
 
 		public Engine()
 		{
@@ -84,82 +80,51 @@ namespace PhysX.Samples.Engine
 			if (Window.RenderCanvasHandle == IntPtr.Zero)
 				throw new InvalidOperationException();
 
-			SwapChainDescription swapChainDesc = new SwapChainDescription()
+			var swapChainDesc = new SwapChainDescription()
 			{
 				BufferCount = 1,
-				Flags = SwapChainFlags.None,
 				IsWindowed = true,
 				OutputHandle = Window.RenderCanvasHandle,
 				SwapEffect = SwapEffect.Discard,
 				Usage = Usage.RenderTargetOutput,
 				ModeDescription = new ModeDescription()
 				{
-					Format = SlimDX.DXGI.Format.R8G8B8A8_UNorm,
-					//Format = SlimDX.DXGI.Format.B8G8R8A8_UNorm,
+					Format = Format.R8G8B8A8_UNorm,
 					Width = (int)Window.RenderCanvasSize.Width,
 					Height = (int)Window.RenderCanvasSize.Height,
-					RefreshRate = new Rational(60, 1),
-					Scaling = DisplayModeScaling.Unspecified,
-					ScanlineOrdering = DisplayModeScanlineOrdering.Unspecified
+					RefreshRate = new Rational(60, 1)
 				},
 				SampleDescription = new SampleDescription(1, 0)
 			};
 
-			var giFactory = new SlimDX.DXGI.Factory();
-			var adapter = giFactory.GetAdapter(0);
-
 			Device device;
-			SwapChain swapChain;
-			Device.CreateWithSwapChain(adapter, DriverType.Hardware, DeviceCreationFlags.Debug, swapChainDesc, out device, out swapChain);
-			_swapChain = swapChain;
-			GraphicsDevice = device;
-
-			// create a view of our render target, which is the backbuffer of the swap chain we just created
-			using (var resource = SlimDX.Direct3D10.Resource.FromSwapChain<Texture2D>(swapChain, 0))
+			try
 			{
-				_backBuffer = new RenderTargetView(device, resource);
+				Device.CreateWithSwapChain(DriverType.Hardware, DeviceCreationFlags.None, swapChainDesc, out device, out _swapChain);
+				GraphicsDevice = device;
+			}
+			catch
+			{
+				throw new Exception("Failed to create graphics device. Do you have DirectX 11?");
 			}
 
-			// setting a viewport is required if you want to actually see anything
-			var viewport = new Viewport(0, 0, (int)Window.RenderCanvasSize.Width, (int)Window.RenderCanvasSize.Height);
-			device.OutputMerger.SetTargets(_backBuffer);
-			device.Rasterizer.SetViewports(viewport);
+			// Create a view of our render target, which is the 'back buffer' of the swap chain we just created
+			{
+				using (var resource = SlimDX.Direct3D11.Resource.FromSwapChain<Texture2D>(_swapChain, 0))
+				{
+					_backBuffer = new RenderTargetView(device, resource);
+				}
+
+				// Use it
+				device.ImmediateContext.OutputMerger.SetTargets(_backBuffer);
+			}
 
 			CreateDepthStencil();
 			LoadVisualizationEffect();
 
 			// Allocate a large buffer to write the PhysX visualization vertices into
 			// There's more optimized ways of doing this, but for this sample a large buffer will do
-			_userPrimitivesBuffer = new SlimDX.Direct3D10.Buffer(GraphicsDevice, VertexPositionColor.SizeInBytes * 50000, ResourceUsage.Dynamic, BindFlags.VertexBuffer, CpuAccessFlags.Write, ResourceOptionFlags.None);
-
-			var elements = new[]
-			{
-				new InputElement("Position", 0, Format.R32G32B32A32_Float, 0, 0),
-				new InputElement("Color", 0, Format.R32G32B32A32_Float, 16, 0)
-			};
-			_inputLayout = new InputLayout(GraphicsDevice, _visualizationEffect.RenderScenePass0.Description.Signature, elements);
-
-			// States
-			var blendDesc = new BlendStateDescription()
-			{
-				SourceBlend = BlendOption.One,
-				DestinationBlend = BlendOption.Zero,
-				BlendOperation = BlendOperation.Add,
-				SourceAlphaBlend = BlendOption.One,
-				DestinationAlphaBlend = BlendOption.Zero,
-				AlphaBlendOperation = BlendOperation.Add
-			};
-			blendDesc.SetBlendEnable(0, true);
-			_blendState = BlendState.FromDescription(device, blendDesc);
-
-			var rasterDesc = new RasterizerStateDescription()
-			{
-				IsAntialiasedLineEnabled = false,
-				IsMultisampleEnabled = false,
-				FillMode = FillMode.Solid,
-				CullMode = CullMode.None
-			};
-			_rasterizerState = RasterizerState.FromDescription(device, rasterDesc);
+			_userPrimitivesBuffer = new SlimDX.Direct3D11.Buffer(GraphicsDevice, VertexPositionColor.SizeInBytes * 50000, ResourceUsage.Dynamic, BindFlags.VertexBuffer, CpuAccessFlags.Write, ResourceOptionFlags.None, VertexPositionColor.SizeInBytes);
 		}
 		private void CreateDepthStencil()
 		{
@@ -187,7 +152,9 @@ namespace PhysX.Samples.Engine
 
 			string visEffectFile = Path.Combine(engineDir, @"Shaders\VisualizationEffect.fx");
 
-			var effect = Effect.FromFile(this.GraphicsDevice, visEffectFile, "fx_4_0");
+			var shaderByteCode = ShaderBytecode.CompileFromFile(visEffectFile, "fx_5_0");
+
+			var effect = new Effect(this.GraphicsDevice, shaderByteCode);
 
 			_visualizationEffect = new VisualizationEffect()
 			{
@@ -197,6 +164,14 @@ namespace PhysX.Samples.Engine
 				Projection = effect.GetVariableByName("Projection").AsMatrix(),
 				RenderScenePass0 = effect.GetTechniqueByName("RenderScene").GetPassByIndex(0)
 			};
+
+			// Vertex structure the shader is expecting - very basic sample, just Position and Color.
+			var elements = new[]
+			{
+				new InputElement("Position", 0, Format.R32G32B32A32_Float, 0, 0),
+				new InputElement("Color", 0, Format.R32G32B32A32_Float, 16, 0)
+			};
+			_inputLayout = new InputLayout(this.GraphicsDevice, _visualizationEffect.RenderScenePass0.Description.Signature, elements);
 		}
 
 		public void InitalizePhysics()
@@ -208,7 +183,7 @@ namespace PhysX.Samples.Engine
 			ErrorOutput errorOutput = new ErrorOutput();
 
 			Foundation foundation = new Foundation(errorOutput);
-			
+
 			this.Physics = new Physics(foundation, checkRuntimeFiles: true);
 
 #if GPU
@@ -232,7 +207,7 @@ namespace PhysX.Samples.Engine
 			this.Scene.SetVisualizationParameter(VisualizationParameter.ParticleSystemPosition, true);
 			this.Scene.SetVisualizationParameter(VisualizationParameter.ActorAxes, true);
 
-			// Connect to the remote debugger if it's there
+			// Connect to the remote debugger (if it's there)
 			if (this.Physics.RemoteDebugger != null)
 			{
 				this.Physics.RemoteDebugger.Connect("localhost");
@@ -245,7 +220,7 @@ namespace PhysX.Samples.Engine
 			var groundPlaneMaterial = this.Scene.Physics.CreateMaterial(0.1f, 0.1f, 0.1f);
 
 			var groundPlane = this.Scene.Physics.CreateRigidStatic();
-			groundPlane.GlobalPose = Matrix.RotationAxis(new Vector3(0, 0, 1), (float)System.Math.PI * 0.5f).AsPhysX();
+			groundPlane.GlobalPose = Matrix.RotationAxis(new Vector3(0, 0, 1), (float)System.Math.PI / 2).AsPhysX();
 
 			var planeGeom = new PlaneGeometry();
 
@@ -260,20 +235,19 @@ namespace PhysX.Samples.Engine
 			Window.Focus();
 			//Application.DoEvents();
 
-			Stopwatch timer = new Stopwatch();
-			timer.Start();
+			var frameTimer = Stopwatch.StartNew();
 
 			// Not an ideal render loop, but it will do for this sample
 			while (true)
 			{
 				// 60fps = 1/60 = 16.67 ms/frame
-				if (timer.Elapsed < TimeSpan.FromMilliseconds(16.67))
+				if (frameTimer.Elapsed < TimeSpan.FromMilliseconds(16.67))
 					continue;
 
-				Update(timer.Elapsed);
+				Update(frameTimer.Elapsed);
 				Draw();
 
-				timer.Restart();
+				frameTimer.Restart();
 				System.Windows.Forms.Application.DoEvents();
 			}
 		}
@@ -294,23 +268,12 @@ namespace PhysX.Samples.Engine
 
 		private void Draw()
 		{
-			this.GraphicsDevice.OutputMerger.SetTargets(_depthBuffer, _backBuffer);
+			this.GraphicsDevice.ImmediateContext.OutputMerger.SetTargets(_depthBuffer, _backBuffer);
 
-			this.GraphicsDevice.ClearRenderTargetView(_backBuffer, new Color4(0.27f, 0.51f, 0.71f)); // A nice blue colour :)
-			this.GraphicsDevice.ClearDepthStencilView(_depthBuffer, DepthStencilClearFlags.Depth | DepthStencilClearFlags.Stencil, 1, 0);
-			this.GraphicsDevice.Rasterizer.SetViewports(Camera.Viewport);
-
-			var pass = _visualizationEffect.RenderScenePass0;
-
-			_visualizationEffect.World.SetMatrix(Matrix.Identity);
-			_visualizationEffect.View.SetMatrix(this.Camera.View);
-			_visualizationEffect.Projection.SetMatrix(this.Camera.Projection);
-
-			this.GraphicsDevice.InputAssembler.SetInputLayout(_inputLayout);
-
-			this.GraphicsDevice.Rasterizer.State = _rasterizerState;
-
-			pass.Apply();
+			// Clear to a nice blue colour :)
+			this.GraphicsDevice.ImmediateContext.ClearRenderTargetView(_backBuffer, new Color4(0.27f, 0.51f, 0.71f));
+			this.GraphicsDevice.ImmediateContext.ClearDepthStencilView(_depthBuffer, DepthStencilClearFlags.Depth | DepthStencilClearFlags.Stencil, 1, 0);
+			this.GraphicsDevice.ImmediateContext.Rasterizer.SetViewports(this.Camera.Viewport);
 
 			DrawDebug(this.Scene.GetRenderBuffer());
 
@@ -327,9 +290,9 @@ namespace PhysX.Samples.Engine
 			_visualizationEffect.View.SetMatrix(this.Camera.View);
 			_visualizationEffect.Projection.SetMatrix(this.Camera.Projection);
 
-			this.GraphicsDevice.InputAssembler.SetInputLayout(_inputLayout);
+			this.GraphicsDevice.ImmediateContext.InputAssembler.InputLayout = _inputLayout;
 
-			pass.Apply();
+			pass.Apply(this.GraphicsDevice.ImmediateContext);
 
 			if (data.NumberOfPoints > 0)
 			{
@@ -376,30 +339,29 @@ namespace PhysX.Samples.Engine
 
 		private void PopulatePrimitivesBuffer(VertexPositionColor[] vertices)
 		{
-			using (var stream = _userPrimitivesBuffer.Map(MapMode.WriteDiscard, SlimDX.Direct3D10.MapFlags.None))
-			{
-				for (int i = 0; i < vertices.Length; i++)
-				{
-					stream.Write(vertices[i]);
-				}
-			}
-			_userPrimitivesBuffer.Unmap();
+			var data = this.GraphicsDevice.ImmediateContext.MapSubresource(_userPrimitivesBuffer, MapMode.WriteDiscard, SlimDX.Direct3D11.MapFlags.None);
+
+			data.Data.WriteRange(vertices);
+
+			this.GraphicsDevice.ImmediateContext.UnmapSubresource(_userPrimitivesBuffer, 0);
+
+			data.Data.Dispose();
 		}
 		private void DrawVertices(VertexPositionColor[] vertices, PrimitiveTopology top)
 		{
 			PopulatePrimitivesBuffer(vertices);
 
-			this.GraphicsDevice.InputAssembler.SetPrimitiveTopology(top);
-			this.GraphicsDevice.InputAssembler.SetVertexBuffers(0, new VertexBufferBinding(_userPrimitivesBuffer, VertexPositionColor.SizeInBytes, 0));
-			this.GraphicsDevice.Draw(vertices.Length, 0);
+			this.GraphicsDevice.ImmediateContext.InputAssembler.PrimitiveTopology = top;
+			this.GraphicsDevice.ImmediateContext.InputAssembler.SetVertexBuffers(0, new VertexBufferBinding(_userPrimitivesBuffer, VertexPositionColor.SizeInBytes, 0));
+			this.GraphicsDevice.ImmediateContext.Draw(vertices.Length, 0);
 		}
 		public void DrawSimple(Buffer vertexBuffer, Buffer indexBuffer, int indexCount)
 		{
-			GraphicsDevice.InputAssembler.SetVertexBuffers(0, new VertexBufferBinding(vertexBuffer, 0, 0));
-			GraphicsDevice.InputAssembler.SetIndexBuffer(indexBuffer, Format.R32_UInt, 0);
-			GraphicsDevice.InputAssembler.SetPrimitiveTopology(PrimitiveTopology.LineList);
+			this.GraphicsDevice.ImmediateContext.InputAssembler.SetVertexBuffers(0, new VertexBufferBinding(vertexBuffer, 0, 0));
+			this.GraphicsDevice.ImmediateContext.InputAssembler.SetIndexBuffer(indexBuffer, Format.R32_UInt, 0);
+			this.GraphicsDevice.ImmediateContext.InputAssembler.PrimitiveTopology = PrimitiveTopology.LineList;
 
-			GraphicsDevice.DrawIndexed(indexCount, 0, 0);
+			this.GraphicsDevice.ImmediateContext.DrawIndexed(indexCount, 0, 0);
 		}
 
 		//
