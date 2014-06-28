@@ -18,6 +18,7 @@ namespace PhysX
 			array<float>^ GetRestOffsets();
 			array<ParticleFlag>^ GetFlags();
 			array<Vector3>^ GetCollisionNormals();
+			array<Vector3>^ GetCollisionVelocities();
 
 			property PhysX::DataAccessFlag DataAccessFlag
 			{

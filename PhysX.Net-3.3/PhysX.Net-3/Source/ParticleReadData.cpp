@@ -22,76 +22,144 @@ array<int>^ ParticleReadData::GetValidParticleBitmap()
 
 array<Vector3>^ ParticleReadData::GetPositions()
 {
+	auto buffer = this->UnmanagedPointer->positionBuffer;
+
+	if (buffer.ptr() == NULL)
+		return nullptr;
+
 	const int n = this->UnmanagedPointer->nbValidParticles;
 
 	if (n <= 0)
 		return nullptr;
 
-	const PxVec3* p = this->UnmanagedPointer->positionBuffer.ptr();
+	auto positions = gcnew array<Vector3>(n);
+	
+	for (size_t i = 0; i < n; i++)
+	{
+		PxVec3 p = buffer[i];
 
-	auto positions = Util::AsManagedArray<Vector3>(p, n);
+		positions[i] = Vector3(p.x, p.y, p.z);
+	}
 
 	return positions;
 }
 
 array<Vector3>^ ParticleReadData::GetVelocities()
 {
+	auto buffer = this->UnmanagedPointer->velocityBuffer;
+
+	if (buffer.ptr() == NULL)
+		return nullptr;
+
 	const int n = this->UnmanagedPointer->nbValidParticles;
 
 	if (n <= 0)
 		return nullptr;
 
-	const PxVec3* v = this->UnmanagedPointer->velocityBuffer.ptr();
+	auto velocities = gcnew array<Vector3>(n);
 
-	auto velocities = Util::AsManagedArray<Vector3>(v, n);
+	for (size_t i = 0; i < n; i++)
+	{
+		PxVec3 v = buffer[i];
+
+		velocities[i] = Vector3(v.x, v.y, v.z);
+	}
 
 	return velocities;
 }
 
 array<float>^ ParticleReadData::GetRestOffsets()
 {
+	auto buffer = this->UnmanagedPointer->restOffsetBuffer;
+
+	if (buffer.ptr() == NULL)
+		return nullptr;
+
 	const int n = this->UnmanagedPointer->nbValidParticles;
 
 	if (n <= 0)
 		return nullptr;
 
-	array<float>^ ret = gcnew array<float>(n);
+	auto restOffsets = gcnew array<float>(n);
 
 	for (int i = 0; i < n; i++)
-		ret[i] = this->UnmanagedPointer->restOffsetBuffer[i];
+	{
+		restOffsets[i] = buffer[i];
+	}
 
-	return ret;
+	return restOffsets;
 }
 
 array<ParticleFlag>^ ParticleReadData::GetFlags()
 {
+	auto buffer = this->UnmanagedPointer->flagsBuffer;
+
+	if (buffer.ptr() == NULL)
+		return nullptr;
+
 	const int n = this->UnmanagedPointer->nbValidParticles;
 
 	if (n <= 0)
 		return nullptr;
 
-	array<ParticleFlag>^ ret = gcnew array<ParticleFlag>(n);
+	auto flags = gcnew array<ParticleFlag>(n);
+
 	for (int i = 0; i < n; i++)
 	{
-		PxU16 flag = this->UnmanagedPointer->flagsBuffer[i];
-		ret[i] = (ParticleFlag)flag;
+		PxU16 flag = buffer[i];
+
+		flags [i] = (ParticleFlag)flag;
 	}
 
-	return ret;
+	return flags;
 }
 
 array<Vector3>^ ParticleReadData::GetCollisionNormals()
 {
+	auto buffer = this->UnmanagedPointer->collisionNormalBuffer;
+
+	if (buffer.ptr() == NULL)
+		return nullptr;
+
 	const int n = this->UnmanagedPointer->nbValidParticles;
 
 	if (n <= 0)
 		return nullptr;
 
-	const PxVec3* c = this->UnmanagedPointer->collisionNormalBuffer.ptr();
+	auto collisionNormals = gcnew array<Vector3>(n);
 
-	auto collisionNormals = Util::AsManagedArray<Vector3>(c, n);
+	for (size_t i = 0; i < n; i++)
+	{
+		PxVec3 n = buffer[i];
+
+		collisionNormals[i] = Vector3(n.x, n.y, n.z);
+	}
 
 	return collisionNormals;
+}
+
+array<Vector3>^ ParticleReadData::GetCollisionVelocities()
+{
+	auto buffer = this->UnmanagedPointer->collisionVelocityBuffer;
+
+	if (buffer.ptr() == NULL)
+		return nullptr;
+
+	const int n = this->UnmanagedPointer->nbValidParticles;
+
+	if (n <= 0)
+		return nullptr;
+
+	auto collisionVelocities = gcnew array<Vector3>(n);
+
+	for (size_t i = 0; i < n; i++)
+	{
+		PxVec3 n = buffer[i];
+
+		collisionVelocities[i] = Vector3(n.x, n.y, n.z);
+	}
+
+	return collisionVelocities;
 }
 
 PhysX::DataAccessFlag ParticleReadData::DataAccessFlag::get()
