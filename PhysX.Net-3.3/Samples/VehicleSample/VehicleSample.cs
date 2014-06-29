@@ -32,11 +32,11 @@ namespace PhysX.Samples.VehicleSample
 		private void CreateVehicle4WSimulationData(
 			float chassisMass,
 			ConvexMesh chassisConvexMesh,
-			float wheelMass, 
-			ConvexMesh[] wheelConvexMeshes, 
+			float wheelMass,
+			ConvexMesh[] wheelConvexMeshes,
 			Vector3[] wheelCentreOffsets,
-			VehicleWheelsSimData wheelsData, 
-			VehicleDriveSimData4W driveData, 
+			VehicleWheelsSimData wheelsData,
+			VehicleDriveSimData4W driveData,
 			VehicleChassisData chassisData)
 		{
 			const int TIRE_TYPE_SLICKS = 0;
@@ -127,7 +127,7 @@ namespace PhysX.Samples.VehicleSample
 
 			//Let's set up the tire data structures now.
 			//Put slicks on the front tires and wets on the rear tires.
-			VehicleTireData[] tires = new VehicleTireData[4]
+			var tires = new VehicleTireData[4]
 			{
 				new VehicleTireData(),
 				new VehicleTireData(),
@@ -190,12 +190,12 @@ namespace PhysX.Samples.VehicleSample
 			//Now set up the differential, engine, gears, clutch, and ackermann steering.
 
 			//Diff
-			VehicleDifferential4WData diff = new VehicleDifferential4WData();
+			var diff = new VehicleDifferential4WData();
 			diff.Type = VehicleDifferentialType.LimitedSlip4WheelDrive;
 			driveData.SetDifferentialData(diff);
 
 			//Engine
-			VehicleEngineData engine = new VehicleEngineData()
+			var engine = new VehicleEngineData()
 			{
 				PeakTorque = 500.0f,
 				MaxOmega = 600.0f//approx 6000 rpm
@@ -203,14 +203,14 @@ namespace PhysX.Samples.VehicleSample
 			driveData.SetEngineData(engine);
 
 			//Gears
-			VehicleGearsData gears = new VehicleGearsData()
+			var gears = new VehicleGearsData()
 			{
 				SwitchTime = 0.5f
 			};
 			driveData.SetGearsData(gears);
 
 			//Clutch
-			VehicleClutchData clutch = new VehicleClutchData()
+			var clutch = new VehicleClutchData()
 			{
 				Strength = 10.0f
 			};
@@ -225,6 +225,116 @@ namespace PhysX.Samples.VehicleSample
 				RearWidth = wheelCentreOffsets[(int)VehicleWheelOrdering.RearRight].X - wheelCentreOffsets[(int)VehicleWheelOrdering.RearLeft].X
 			};
 			driveData.SetAckermannGeometryData(ackermann);
+
+			// Create actor
+			var vehActor = CreateVehicleActor4W(chassisData, wheelConvexMeshes, chassisConvexMesh, this.Scene, material);
+		}
+
+		private RigidDynamic CreateVehicleActor4W(
+				VehicleChassisData chassisData,
+				ConvexMesh[] wheelConvexMeshes,
+				ConvexMesh chassisConvexMesh,
+				Scene scene,
+				Material material)
+		{
+			//We need a rigid body actor for the vehicle.
+			//Don't forget to add the actor the scene after setting up the associated vehicle.
+			RigidDynamic vehActor = scene.Physics.CreateRigidDynamic();
+
+			//We need to add wheel collision shapes, their local poses, a material for the wheels, and a simulation filter for the wheels.
+			ConvexMeshGeometry frontLeftWheelGeom = new ConvexMeshGeometry(wheelConvexMeshes[0]);
+			ConvexMeshGeometry frontRightWheelGeom = new ConvexMeshGeometry(wheelConvexMeshes[1]);
+			ConvexMeshGeometry rearLeftWheelGeom = new ConvexMeshGeometry(wheelConvexMeshes[2]);
+			ConvexMeshGeometry rearRightWheelGeom = new ConvexMeshGeometry(wheelConvexMeshes[3]);
+
+			var wheelGeometries = new[]
+			{
+				frontLeftWheelGeom,
+				frontRightWheelGeom,
+				rearLeftWheelGeom,
+				rearRightWheelGeom
+			};
+
+					var wheelLocalPoses = new[]
+			{
+				Matrix.Identity,
+				Matrix.Identity,
+				Matrix.Identity,
+				Matrix.Identity
+			};
+
+			Material wheelMaterial = material;
+
+			FilterData wheelCollFilterData;
+			wheelCollFilterData.Word0 = (uint)CollisionFlags.COLLISION_FLAG_WHEEL;
+			wheelCollFilterData.Word1 = (uint)CollisionFlags.COLLISION_FLAG_WHEEL_AGAINST;
+
+			//We need to add chassis collision shapes, their local poses, a material for the chassis, and a simulation filter for the chassis.
+			var chassisConvexGeom = new ConvexMeshGeometry(chassisConvexMesh);
+			var chassisGeoms = new[]
+			{
+				chassisConvexGeom 
+			};
+
+					var chassisLocalPoses = new[]
+			{
+				Matrix.Identity
+			};
+
+			Material chassisMaterial = material;
+
+			FilterData chassisCollFilterData;
+			chassisCollFilterData.Word0 = (uint)CollisionFlags.COLLISION_FLAG_CHASSIS;
+			chassisCollFilterData.Word1 = (uint)CollisionFlags.COLLISION_FLAG_CHASSIS_AGAINST;
+
+			//Create a query filter data for the car to ensure that cars
+			//do not attempt to drive on themselves.
+			FilterData vehQryFilterData;
+			//SampleVehicleSetupVehicleShapeQueryFilterData(&vehQryFilterData);
+			vehQryFilterData.Word3 = (uint)DrivableSurfaces.SAMPLEVEHICLE_UNDRIVABLE_SURFACE;
+
+			//Set up the physx rigid body actor with shapes, local poses, and filters.
+			setupActor
+				(vehActor,
+				vehQryFilterData,
+				wheelGeometries, wheelLocalPoses, 4, wheelMaterial, wheelCollFilterData,
+				chassisGeoms, chassisLocalPoses, 1, chassisMaterial, chassisCollFilterData,
+				chassisData,
+				scene.Physics);
+
+			return vehActor;
+		}
+
+		private void setupActor(
+			RigidDynamic vehActor,
+			FilterData vehQryFilterData,
+			Geometry[] wheelGeometries, Matrix[] wheelLocalPoses, Material wheelMaterial, FilterData wheelCollFilterData,
+			Geometry[] chassisGeometries, Matrix[] chassisLocalPoses, Material chassisMaterial, FilterData chassisCollFilterData,
+			VehicleChassisData chassisData,
+			Physics physics)
+		{
+			//Add all the wheel shapes to the actor.
+			for (int i = 0; i < wheelLocalPoses.Length; i++)
+			{
+				var wheelShape = vehActor.CreateShape(wheelGeometries[i], wheelMaterial);
+				wheelShape.QueryFilterData = vehQryFilterData;
+				wheelShape.SimulationFilterData = wheelCollFilterData;
+				wheelShape.LocalPose = wheelLocalPoses[i];
+			}
+
+			//Add the chassis shapes to the actor.
+			for (int i = 0; i < chassisGeometries.Length; i++)
+			{
+				var chassisShape = vehActor.CreateShape(chassisGeometries[i], chassisMaterial);
+
+				chassisShape.QueryFilterData = vehQryFilterData;
+				chassisShape.SimulationFilterData = chassisCollFilterData;
+				chassisShape.LocalPose = chassisLocalPoses[i];
+			}
+
+			vehActor.Mass = chassisData.Mass;
+			vehActor.MassSpaceInertiaTensor = chassisData.MomentOfInertia;
+			vehActor.CenterOfMassLocalPose = Matrix.Translation(chassisData.CenterOfMassOffset);
 		}
 
 		protected override void Update(TimeSpan elapsed)
