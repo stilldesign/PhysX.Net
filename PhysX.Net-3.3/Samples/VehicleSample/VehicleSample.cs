@@ -564,6 +564,116 @@ namespace PhysX.Samples.VehicleSample
 			ackermann.FrontWidth = wheelCentreOffsets[(int)VehicleWheelOrdering.FrontRight].X - wheelCentreOffsets[(int)VehicleWheelOrdering.FrontLeft].X;
 			ackermann.RearWidth = wheelCentreOffsets[(int)VehicleWheelOrdering.RearRight].X - wheelCentreOffsets[(int)VehicleWheelOrdering.RearLeft].X;
 			driveData.SetAckermannGeometryData(ackermann);
+
+			// Create actor
+			var vehActor = CreateVehicleActor4W(chassisData, wheelConvexMeshes, chassisConvexMesh, this.Scene, material);
+		}
+
+		private RigidDynamic CreateVehicleActor4W(
+				VehicleChassisData chassisData,
+				ConvexMesh[] wheelConvexMeshes,
+				ConvexMesh chassisConvexMesh,
+				Scene scene,
+				Material material)
+		{
+			//We need a rigid body actor for the vehicle.
+			//Don't forget to add the actor the scene after setting up the associated vehicle.
+			RigidDynamic vehActor = scene.Physics.CreateRigidDynamic();
+
+			//We need to add wheel collision shapes, their local poses, a material for the wheels, and a simulation filter for the wheels.
+			ConvexMeshGeometry frontLeftWheelGeom = new ConvexMeshGeometry(wheelConvexMeshes[0]);
+			ConvexMeshGeometry frontRightWheelGeom = new ConvexMeshGeometry(wheelConvexMeshes[1]);
+			ConvexMeshGeometry rearLeftWheelGeom = new ConvexMeshGeometry(wheelConvexMeshes[2]);
+			ConvexMeshGeometry rearRightWheelGeom = new ConvexMeshGeometry(wheelConvexMeshes[3]);
+
+			var wheelGeometries = new[]
+			{
+				frontLeftWheelGeom,
+				frontRightWheelGeom,
+				rearLeftWheelGeom,
+				rearRightWheelGeom
+			};
+
+					var wheelLocalPoses = new[]
+			{
+				Matrix.Identity,
+				Matrix.Identity,
+				Matrix.Identity,
+				Matrix.Identity
+			};
+
+			Material wheelMaterial = material;
+
+			FilterData wheelCollFilterData;
+			wheelCollFilterData.Word0 = (uint)CollisionFlags.COLLISION_FLAG_WHEEL;
+			wheelCollFilterData.Word1 = (uint)CollisionFlags.COLLISION_FLAG_WHEEL_AGAINST;
+
+			//We need to add chassis collision shapes, their local poses, a material for the chassis, and a simulation filter for the chassis.
+			var chassisConvexGeom = new ConvexMeshGeometry(chassisConvexMesh);
+			var chassisGeoms = new[]
+			{
+				chassisConvexGeom 
+			};
+
+					var chassisLocalPoses = new[]
+			{
+				Matrix.Identity
+			};
+
+			Material chassisMaterial = material;
+
+			FilterData chassisCollFilterData;
+			chassisCollFilterData.Word0 = (uint)CollisionFlags.COLLISION_FLAG_CHASSIS;
+			chassisCollFilterData.Word1 = (uint)CollisionFlags.COLLISION_FLAG_CHASSIS_AGAINST;
+
+			//Create a query filter data for the car to ensure that cars
+			//do not attempt to drive on themselves.
+			FilterData vehQryFilterData;
+			//SampleVehicleSetupVehicleShapeQueryFilterData(&vehQryFilterData);
+			vehQryFilterData.Word3 = (uint)DrivableSurfaces.SAMPLEVEHICLE_UNDRIVABLE_SURFACE;
+
+			//Set up the physx rigid body actor with shapes, local poses, and filters.
+			setupActor
+				(vehActor,
+				vehQryFilterData,
+				wheelGeometries, wheelLocalPoses, 4, wheelMaterial, wheelCollFilterData,
+				chassisGeoms, chassisLocalPoses, 1, chassisMaterial, chassisCollFilterData,
+				chassisData,
+				scene.Physics);
+
+			return vehActor;
+		}
+
+		private void setupActor(
+			RigidDynamic vehActor,
+			FilterData vehQryFilterData,
+			Geometry[] wheelGeometries, Matrix[] wheelLocalPoses, Material wheelMaterial, FilterData wheelCollFilterData,
+			Geometry[] chassisGeometries, Matrix[] chassisLocalPoses, Material chassisMaterial, FilterData chassisCollFilterData,
+			VehicleChassisData chassisData,
+			Physics physics)
+		{
+			//Add all the wheel shapes to the actor.
+			for (int i = 0; i < wheelLocalPoses.Length; i++)
+			{
+				var wheelShape = vehActor.CreateShape(wheelGeometries[i], wheelMaterial);
+				wheelShape.QueryFilterData = vehQryFilterData;
+				wheelShape.SimulationFilterData = wheelCollFilterData;
+				wheelShape.LocalPose = wheelLocalPoses[i];
+			}
+
+			//Add the chassis shapes to the actor.
+			for (int i = 0; i < chassisGeometries.Length; i++)
+			{
+				var chassisShape = vehActor.CreateShape(chassisGeometries[i], chassisMaterial);
+
+				chassisShape.QueryFilterData = vehQryFilterData;
+				chassisShape.SimulationFilterData = chassisCollFilterData;
+				chassisShape.LocalPose = chassisLocalPoses[i];
+			}
+
+			vehActor.Mass = chassisData.Mass;
+			vehActor.MassSpaceInertiaTensor = chassisData.MomentOfInertia;
+			vehActor.CenterOfMassLocalPose = Matrix.Translation(chassisData.CenterOfMassOffset);
 		}
 
 		protected override void Update(TimeSpan elapsed)
