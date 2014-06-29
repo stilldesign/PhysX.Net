@@ -18,6 +18,20 @@ RigidActor::RigidActor(PxRigidActor* rigidActor, PhysX::IDisposable^ owner)
 
 	_shapes = gcnew List<Shape^>(existingShapes);
 }
+RigidActor::~RigidActor()
+{
+	this->!RigidActor();
+}
+RigidActor::!RigidActor()
+{
+	for each (auto shape in _shapes)
+	{
+		DetachShape(shape);
+	}
+
+	_shapes->Clear();
+	_shapes = nullptr;
+}
 
 array<Shape^>^ RigidActor::CreateShapesInActor(PxRigidActor* actor)
 {
@@ -72,6 +86,24 @@ Shape^ RigidActor::CreateShape(Geometry^ geometry, Material^ material, [Optional
 	_shapes->Add(shape);
 
 	return shape;
+}
+
+void RigidActor::AttachShape(Shape^ shape)
+{
+	ThrowIfNullOrDisposed(shape, "shape");
+
+	this->UnmanagedPointer->attachShape(*shape->UnmanagedPointer);
+}
+
+void RigidActor::DetachShape(Shape^ shape)
+{
+	DetachShape(shape, true);
+}
+void RigidActor::DetachShape(Shape^ shape, bool wakeOnLostTouch)
+{
+	ThrowIfNullOrDisposed(shape, "shape");
+
+	this->UnmanagedPointer->detachShape(*shape->UnmanagedPointer, wakeOnLostTouch);
 }
 
 void RigidActor::Scale(float scale)
