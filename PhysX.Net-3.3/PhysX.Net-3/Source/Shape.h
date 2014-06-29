@@ -4,6 +4,7 @@
 #include "Bounds3.h"
 #include "ShapeFlag.h"
 #include "Material.h"
+#include "FilterData.h"
 
 namespace PhysX
 {
@@ -148,6 +149,26 @@ namespace PhysX
 		{
 			Matrix get();
 			void set(Matrix value);
+		}
+
+		/// <summary>
+		/// Gets or sets the user definable query filter data.
+		/// </summary>
+		property FilterData QueryFilterData
+		{
+			FilterData get();
+			void set(FilterData data);
+		}
+
+		/// <summary>
+		/// Gets or sets the user definable collision filter data.
+		/// Sleeping: Does wake up the actor if the filter data change causes a formerly suppressed collision pair to be enabled.
+		/// Default: (0, 0, 0, 0).
+		/// </summary>
+		property FilterData SimulationFilterData
+		{
+			FilterData get();
+			void set(FilterData data);
 		}
 
 		/// <summary>Gets or sets an object, usually to create a 1:1 relationship with a user object.</summary>
