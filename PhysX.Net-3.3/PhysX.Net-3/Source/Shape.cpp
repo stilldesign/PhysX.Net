@@ -41,6 +41,7 @@ Shape::!Shape()
 	// Should be using _actor->detachShape(...)
 	if (this->UnmanagedOwner)
 		_shape->release();
+
 	_shape = NULL;
 
 	OnDisposed(this, nullptr);
