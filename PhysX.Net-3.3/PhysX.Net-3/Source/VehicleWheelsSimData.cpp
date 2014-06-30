@@ -20,6 +20,11 @@ void VehicleWheelsSimData::CopyWheelData(VehicleWheelsSimData^ sourceData, int s
 	_data->copy(*sourceData->_data, sourceWheelIndex, targetWheelIndex);
 }
 
+void VehicleWheelsSimData::SetSubStepCount(float thresholdLongitudinalSpeed, int lowForwardSpeedSubStepCount, int highForwardSpeedSubStepCount)
+{
+	_data->setSubStepCount(thresholdLongitudinalSpeed, lowForwardSpeedSubStepCount, highForwardSpeedSubStepCount);
+}
+
 VehicleSuspensionData^ VehicleWheelsSimData::GetSuspensionData(int id)
 {
 	return VehicleSuspensionData::ToManaged(_data->getSuspensionData(id));
