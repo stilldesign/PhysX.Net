@@ -24,6 +24,8 @@ namespace PhysX
 
 		void CopyWheelData(VehicleWheelsSimData^ sourceData, int sourceWheelIndex, int targetWheelIndex);
 
+		void SetSubStepCount(float thresholdLongitudinalSpeed, int lowForwardSpeedSubStepCount, int highForwardSpeedSubStepCount);
+
 		VehicleSuspensionData^ GetSuspensionData(int id);
 		void SetSuspensionData(int id, VehicleSuspensionData^ data);
 

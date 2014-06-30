@@ -34,5 +34,27 @@ namespace PhysX
 			/// Mass of vehicle that is supported by suspension spring, specified in kg. Range: (0, inf).
 			/// </summary>
 			property float SprungMass;
+
+			/// <summary>
+			/// Camber angle (in radians) of wheel when the suspension is at its rest
+			/// position, specified in radians. Range: [-pi / 2, pi / 2].
+			/// </summary>
+			property float CamberAtRest;
+
+			/// <summary>
+			/// Camber angle (in radians) of wheel when the suspension is at maximum compression.
+			/// For compressed suspensions the camber angle is a linear interpolation of CamberAngleAtRest and CamberAtMaxCompression.
+			/// Specified in radians.
+			/// Range: [-pi / 2, pi / 2]
+			/// </summary>
+			property float CamberAtMaxCompression;
+
+			/// <summary>
+			/// Camber angle (in radians) of wheel when the suspension is at maximum droop.
+			/// For extended suspensions the camber angle is linearly interpolation of CamberAngleAtRest and CamberAtMaxDroop.
+			/// Specified in radians.
+			/// Range: [-pi / 2, pi / 2]
+			/// </summary>
+			property float CamberAtMaxDroop;
 	};
 };
