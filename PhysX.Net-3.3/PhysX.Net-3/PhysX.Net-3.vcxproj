@@ -277,6 +277,7 @@
     <ClInclude Include="Source\OperationFailedException.h" />
     <ClInclude Include="Source\OverlapHit.h" />
     <ClInclude Include="Source\DefaultSimulationFilterShader.h" />
+    <ClInclude Include="Source\VehicleUtilSetup.h" />
     <ClInclude Include="Source\VehicleWheelConcurrentUpdateData.h" />
     <ClInclude Include="Source\QueryCache.h" />
     <ClInclude Include="Source\QueryFilterCallback.h" />
@@ -563,6 +564,7 @@
     </ClCompile>
     <ClCompile Include="Source\StreamExtensions.cpp" />
     <ClCompile Include="Source\VehicleConcurrentUpdateData.cpp" />
+    <ClCompile Include="Source\VehicleUtilSetup.cpp" />
     <ClCompile Include="Source\VehicleWheelConcurrentUpdateData.cpp" />
     <ClCompile Include="Source\VehicleWheelsDynData.cpp" />
     <ClCompile Include="Source\VolumeCache.cpp" />
