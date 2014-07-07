@@ -67,9 +67,35 @@ namespace PhysX
 			}
 
 			/// <summary>
+			/// Gets whether or not the body is sleeping.
+			/// </summary>
+			property bool IsSleeping
+			{
+				bool get();
+			}
+
+			/// <summary>
 			/// Gets or sets the mass-normalized kinetic energy threshold below which an actor may go to sleep.
 			/// </summary>
 			property float SleepThreshold
+			{
+				float get();
+				void set(float value);
+			}
+
+			/// <summary>
+			/// Gets or sets the mass-normalized kinetic energy below which an actor may participate in stabilization.
+			/// </summary>
+			property float StabilizationThreshold
+			{
+				float get();
+				void set(float value);
+			}
+
+			/// <summary>
+			/// Gets or sets the wake counter of the actor.
+			/// </summary>
+			property float WakeCounter
 			{
 				float get();
 				void set(float value);
@@ -82,6 +108,15 @@ namespace PhysX
 			{
 				PhysX::SolverIterationCounts get();
 				void set(PhysX::SolverIterationCounts value);
+			}
+
+			/// <summary>
+			/// Gets or sets the force threshold for contact reports.
+			/// </summary>
+			property float ContactReportThreshold
+			{
+				float get();
+				void set(float value);
 			}
 
 			/// <summary>

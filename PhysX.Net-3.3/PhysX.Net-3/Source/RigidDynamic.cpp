@@ -74,6 +74,11 @@ void RigidDynamic::MaxAngularVelocity::set(float value)
 	this->UnmanagedPointer->setMaxAngularVelocity(value);
 }
 
+bool RigidDynamic::IsSleeping::get()
+{
+	return this->UnmanagedPointer->isSleeping();
+}
+
 float RigidDynamic::SleepThreshold::get()
 {
 	return this->UnmanagedPointer->getSleepThreshold();
@@ -81,6 +86,24 @@ float RigidDynamic::SleepThreshold::get()
 void RigidDynamic::SleepThreshold::set(float value)
 {
 	this->UnmanagedPointer->setSleepThreshold(value);
+}
+
+float RigidDynamic::StabilizationThreshold::get()
+{
+	return this->UnmanagedPointer->getStabilizationThreshold();
+}
+void RigidDynamic::StabilizationThreshold::set(float value)
+{
+	this->UnmanagedPointer->setStabilizationThreshold(value);
+}
+
+float RigidDynamic::WakeCounter::get()
+{
+	return this->UnmanagedPointer->getWakeCounter();
+}
+void RigidDynamic::WakeCounter::set(float value)
+{
+	this->UnmanagedPointer->setWakeCounter(value);
 }
 
 PhysX::SolverIterationCounts RigidDynamic::SolverIterationCounts::get()
@@ -95,6 +118,15 @@ PhysX::SolverIterationCounts RigidDynamic::SolverIterationCounts::get()
 void RigidDynamic::SolverIterationCounts::set(PhysX::SolverIterationCounts value)
 {
 	this->UnmanagedPointer->setSolverIterationCounts(value.MinimumPositionIterations, value.MinimumVelocityIterations);
+}
+
+float RigidDynamic::ContactReportThreshold::get()
+{
+	return this->UnmanagedPointer->getContactReportThreshold();
+}
+void RigidDynamic::ContactReportThreshold::set(float value)
+{
+	this->UnmanagedPointer->setContactReportThreshold(value);
 }
 
 RigidDynamicFlags RigidDynamic::Flags::get()
