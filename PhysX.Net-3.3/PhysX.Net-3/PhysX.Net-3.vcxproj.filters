@@ -546,6 +546,12 @@
     <ClCompile Include="Source\SimpleTriangleMesh.cpp">
       <Filter>TriangleMesh</Filter>
     </ClCompile>
+    <ClCompile Include="Source\ContactPatch.cpp">
+      <Filter>Contact</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ContactPatchBase.cpp">
+      <Filter>Contact</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
@@ -1226,6 +1232,12 @@
     </ClInclude>
     <ClInclude Include="Source\SimpleTriangleMesh.h">
       <Filter>TriangleMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ContactPatch.h">
+      <Filter>Contact</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ContactPatchBase.h">
+      <Filter>Contact</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

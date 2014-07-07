@@ -194,6 +194,8 @@
     <ClInclude Include="Source\ContactPair.h" />
     <ClInclude Include="Source\ContactPairHeader.h" />
     <ClInclude Include="Source\ContactPairPoint.h" />
+    <ClInclude Include="Source\ContactPatch.h" />
+    <ClInclude Include="Source\ContactPatchBase.h" />
     <ClInclude Include="Source\ContactSet.h" />
     <ClInclude Include="Source\ControllerHit.h" />
     <ClInclude Include="Source\CharacterEnum.h" />
@@ -437,6 +439,8 @@
     <ClCompile Include="Source\ContactPair.cpp" />
     <ClCompile Include="Source\ContactPairHeader.cpp" />
     <ClCompile Include="Source\ContactPairPoint.cpp" />
+    <ClCompile Include="Source\ContactPatch.cpp" />
+    <ClCompile Include="Source\ContactPatchBase.cpp" />
     <ClCompile Include="Source\ContactSet.cpp" />
     <ClCompile Include="Source\ControllerHit.cpp" />
     <ClCompile Include="Source\Cloth.cpp" />
