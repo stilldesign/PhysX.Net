@@ -48,4 +48,18 @@ namespace PhysX
 		KeepBias = Px1DConstraintFlag::eKEEPBIAS,
 		OutputForce = Px1DConstraintFlag::eOUTPUT_FORCE
 	};
+
+	/// <summary>
+	/// Constraint type hints which the solver uses to optimize constraint handling.
+	/// </summary>
+	public enum class ConstraintSolveHint
+	{
+		None = PxConstraintSolveHint::eNONE,
+		Acceleration = PxConstraintSolveHint::eACCELERATION1,
+		SlerpSpring = PxConstraintSolveHint::eSLERP_SPRING,
+		Acceleration2 = PxConstraintSolveHint::eACCELERATION2,
+		Acceleration3 = PxConstraintSolveHint::eACCELERATION3,
+		Equality = PxConstraintSolveHint::eEQUALITY,
+		Inequality = PxConstraintSolveHint::eINEQUALITY
+	};
 };
