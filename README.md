@@ -15,12 +15,13 @@ Development
 * Targets PhysX 3.3.1
 * 32 and 64 bit version
 * .NET 4.5.1 and CRT 12 (2013)
-* Progress:
-    * ~75% done
-    * I'll be creating a vehicle sample as well
-    * New for 3.3 is that Cloth can interact with scene geometry once again (like it did in v2 of PhysX)
-    * I'll package up and change the main download to the 3.3.1 package, no point keeping v2 around much longer
-    * There's plenty of breaking API changes from 3.2 to 3.3, so look forward to lots of build errors :P Nothing seems to of been removed from the API, just moved around and renamed.
+* Remaining:
+    * Vehicle sample and a few related classes
+    * Attach/Detach shape from an actor
+    * Getting started guide for people
+    * Serialization
+    * Broad Phase
+    * Deletion Listener
 
 ### PhysX.Net 0.12 for NVIDIA PhysX 2.8.4.5
 * Targets PhysX 2.8.4.5
