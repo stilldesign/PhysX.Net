@@ -4,12 +4,12 @@ PhysX.Net
 Nightly builds
 --------------
 * 'Nightly builds' are available at: http://stilldesign.co.nz/PhysX
-* This will contain builds of the latest PhysX.Net for both the 2.8.4 and 3.3 branches.
+* This will contain builds of the latest PhysX.Net for both the 2.8.4 and 3.3.1 branches.
 * Latest build is at http://stilldesign.co.nz/PhysX/DownloadLatestNightly
 
 Development
 -----------
-### PhysX.Net 0.1 for NVIDIA PhysX 3.3.1
+### PhysX.Net 0.2.0 for NVIDIA PhysX 3.3.1
 * Targets PhysX 3.3.1
 * 32 and 64 bit version
 * .NET 4.5.1 and CRT 12 (2013)
