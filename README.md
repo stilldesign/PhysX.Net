@@ -1,6 +1,8 @@
 PhysX.Net
 =========
 
+PM> Install-Package PhysX.Net-x64
+
 Nightly builds
 --------------
 * 'Nightly builds' are available at: http://stilldesign.co.nz/PhysX
