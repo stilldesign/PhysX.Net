@@ -1,13 +1,13 @@
 PhysX.Net
 =========
 
+Nuget
+-----
 PM> Install-Package PhysX.Net-x64
 
-Nightly builds
+Build all the things!
 --------------
-* 'Nightly builds' are available at: http://stilldesign.co.nz/PhysX
-* This will contain builds of the latest PhysX.Net for both the 2.8.4 and 3.3.1 branches.
-* Latest build is at http://stilldesign.co.nz/PhysX/DownloadLatestNightly
+A zip of all relevant DLLs and samples - http://stilldesign.co.nz/PhysX
 
 Development
 -----------
@@ -24,7 +24,7 @@ Development
 
 ### PhysX.Net 0.12 for NVIDIA PhysX 2.8.4.5
 * Targets PhysX 2.8.4.5
-** 2.8.4.x doesn't require system software to run anymore! yay! (CPU mode only though :P)
+    * 2.8.4.x doesn't require system software to run anymore! yay! (CPU mode only though :P)
 * 32 bit and 64 bit versions
 * Remove the dependencies on graphics libraries
     * Although it's convenient, a physics library shouldn't rely on specific graphics libraries. Consumers (e.g. graphics engines) should provide their own thin wrappers around types such as Vector3 and Matrix
