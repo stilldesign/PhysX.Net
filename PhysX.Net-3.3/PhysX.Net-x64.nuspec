@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+	<metadata>
+		<id>PhysX.Net-x64</id>
+		<version>0.2.0</version>
+		<authors>StillDesign</authors>
+		<description>.NET wrapper for NVIDIA PhysX 3.3.1</description>
+		<language>en-US</language>
+		<projectUrl>https://github.com/stilldesign/PhysX.Net</projectUrl>
+		<tags>nvidia physx wrapper physics</tags>
+	</metadata>
+	<files>
+		<!-- x64 -->
+		<file src="PhysX.Net-3\bin\x64\Debug\PhysX.Net.dll" target="lib\net45" />
+		<file src="PhysX.Net-3\bin\x64\Debug\PhysX.Net.pdb" target="lib\net45" />
+		
+		<!-- Dependencies -->
+		<!-- The native PhysX DLL files -->
+		<file src="Assemblies\x64\*" target="content" />
+
+		<file src="Install.ps1" target="tools" />
+	</files>
+</package>
