@@ -6,7 +6,7 @@ ClothParticleData::ClothParticleData(physx::PxClothParticleData* data, int parti
 {
 	int n = particleCount;
 
-	if (n == 0)
+	if (n <= 0)
 	{
 		this->Particles = gcnew array<ClothParticle>(0);
 		this->PreviousParticles = gcnew array<ClothParticle>(0);

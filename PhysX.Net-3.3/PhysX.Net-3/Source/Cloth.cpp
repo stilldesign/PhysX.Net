@@ -2,6 +2,7 @@
 #include "Cloth.h"
 #include "ClothFabric.h"
 #include "Bounds3.h"
+#include "ClothParticleData.h"
 
 Cloth::Cloth(PxCloth* cloth, PhysX::Physics^ owner)
 	: Actor(cloth, owner)
@@ -322,6 +323,21 @@ void Cloth::WakeUp()
 void Cloth::PutToSleep()
 {
 	this->UnmanagedPointer->putToSleep();
+}
+
+ClothParticleData^ Cloth::LockParticleData()
+{
+	return LockParticleData(DataAccessFlag::Readable);
+}
+ClothParticleData^ Cloth::LockParticleData(DataAccessFlag flag)
+{
+	PxClothParticleData* data = this->UnmanagedPointer->lockParticleData(ToUnmanagedEnum(PxDataAccessFlag, flag));
+
+	int n = this->UnmanagedPointer->getNbParticles();
+
+	auto d = gcnew ClothParticleData(data, n);
+
+	return d;
 }
 
 void Cloth::SetInertiaScale(float scale)

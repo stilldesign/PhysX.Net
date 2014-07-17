@@ -10,11 +10,13 @@
 #include "ClothCollisionSphere.h"
 #include "ClothCollisionPlane.h"
 #include "Bounds3.h"
+#include "PhysicsEnum.h"
 //#include <PxCloth.h> 
 
 namespace PhysX
 {
 	ref class ClothFabric;
+	ref class ClothParticleData;
 
 	public ref class Cloth : Actor
 	{
@@ -143,7 +145,11 @@ namespace PhysX
 		/// <summary>
 		/// Locks the cloth solver so that external applications can safely read back particle data.
 		/// </summary>
-		//ClothParticleData^ LockParticleData();
+		ClothParticleData^ LockParticleData();
+		/// <summary>
+		/// Locks the cloth solver so that external applications can safely read back particle data.
+		/// </summary>
+		ClothParticleData^ LockParticleData(DataAccessFlag flag);
 
 		void SetInertiaScale(float scale);
 

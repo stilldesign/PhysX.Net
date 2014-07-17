@@ -46,7 +46,8 @@ namespace PhysX
 	public enum class DataAccessFlag
 	{
 		Readable = PxDataAccessFlag::eREADABLE,
-		Writable = PxDataAccessFlag::eWRITABLE
+		Writable = PxDataAccessFlag::eWRITABLE,
+		Device = PxDataAccessFlag::eDEVICE
 	};
 
 	/// <summary>
