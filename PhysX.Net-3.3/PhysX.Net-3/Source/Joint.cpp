@@ -18,11 +18,7 @@ Joint::Joint(PxJoint* joint, PhysX::Scene^ owner)
 	_scene = owner;
 
 	// Constraint
-	//PxConstraint* constraint = _joint->getConstraint();
-	//if (!ObjectTable::Contains((intptr_t)constraint))
-	//{
-	//	PhysX::Constraint^ c = gcnew PhysX::Constraint(constraint, this);
-	//}
+	_constraint = gcnew PhysX::Constraint(_joint->getConstraint(), this, false);
 
 	ObjectTable::Add((intptr_t)joint, this, owner);
 }
@@ -41,6 +37,7 @@ Joint::!Joint()
 	_joint = NULL;
 
 	_scene = nullptr;
+	_constraint = nullptr;
 
 	OnDisposed(this, nullptr);
 }
@@ -57,7 +54,7 @@ Serializable^ Joint::AsSerializable()
 
 PhysX::Constraint^ Joint::Constraint::get()
 {
-	return ObjectTable::GetObject<PhysX::Constraint^>((intptr_t)_joint->getConstraint());
+	return _constraint;
 }
 
 JointType Joint::Type::get()

@@ -19,6 +19,7 @@ namespace PhysX
 		private:
 			PxJoint* _joint;
 			PhysX::Scene^ _scene;
+			PhysX::Constraint^ _constraint;
 
 		internal:
 			Joint(PxJoint* joint, PhysX::Scene^ owner);

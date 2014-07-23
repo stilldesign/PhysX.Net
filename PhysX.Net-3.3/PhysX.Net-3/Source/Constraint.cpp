@@ -5,7 +5,7 @@
 #include "Constraint.h"
 //#include <PxConstraint.h> 
 
-Constraint::Constraint(PxConstraint* constraint, PhysX::IDisposable^ owner)
+Constraint::Constraint(PxConstraint* constraint, PhysX::IDisposable^ owner, bool unmanagedOwner)
 {
 	if (constraint == NULL)
 		throw gcnew ArgumentNullException("constraint");
@@ -13,10 +13,10 @@ Constraint::Constraint(PxConstraint* constraint, PhysX::IDisposable^ owner)
 
 	_constraint = constraint;
 
-	// Constraints can be created either manually which means they are owned by their parent PxPhysics,
-	// or they are automatically created by a joint
-	if (owner != nullptr)
-		ObjectTable::Add((intptr_t)constraint, this, owner);
+	_unmanagedOwner = unmanagedOwner;
+
+	// Constraints can be created either as a child of a joint or a child of a physics
+	ObjectTable::Add((intptr_t)constraint, this, owner);
 }
 Constraint::~Constraint()
 {
@@ -27,8 +27,14 @@ Constraint::!Constraint()
 	if (this->Disposed)
 		return;
 
-	_constraint->release();
+	OnDisposing(this, EventArgs::Empty);
+
+	if (_unmanagedOwner)
+		_constraint->release();
+
 	_constraint = NULL;
+
+	OnDisposed(this, EventArgs::Empty);
 }
 
 bool Constraint::Disposed::get()

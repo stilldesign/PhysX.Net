@@ -17,9 +17,12 @@ namespace PhysX
 
 	private:
 		PxConstraint* _constraint;
+		// Does this class own the unmanaged PxConstraint? If true, it is free to dispose of it, otherwise it should not dispose
+		// of it and it will be disposed of by whoever created it initially (usually the parent PxJoint object).
+		bool _unmanagedOwner;
 
 	internal:
-		Constraint(PxConstraint* constraint, IDisposable^ owner);
+		Constraint(PxConstraint* constraint, IDisposable^ owner, bool unmanagedOwner);
 	public:
 		~Constraint();
 	protected:
