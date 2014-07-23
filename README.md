@@ -11,7 +11,7 @@ A zip of all relevant DLLs and samples - http://stilldesign.co.nz/PhysX
 
 Development
 -----------
-### PhysX.Net 0.2.0 for NVIDIA PhysX 3.3.1
+### PhysX.Net 0.3.0 for NVIDIA PhysX 3.3.1
 * Targets PhysX 3.3.1
 * 32 and 64 bit version
 * .NET 4.5.1 and CRT 12 (2013)
