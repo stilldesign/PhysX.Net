@@ -3,16 +3,16 @@
 #include "Scene.h"
 #include "Bounds3.h"
 #include "Serializable.h"
+#include "Physics.h"
 //#include <PxArticulation.h> 
 
-Articulation::Articulation(PxArticulation* articulation, PhysX::Scene^ owner)
+Articulation::Articulation(PxArticulation* articulation, PhysX::Physics^ owner)
 {
 	if (articulation == NULL)
 		throw gcnew ArgumentNullException("articulation");
 	ThrowIfNullOrDisposed(owner, "owner");
 
 	_articulation = articulation;
-	_scene = owner;
 
 	ObjectTable::Add((intptr_t)articulation, this, owner);
 }
@@ -47,7 +47,7 @@ Serializable^ Articulation::AsSerializable()
 
 PhysX::Scene^ Articulation::Scene::get()
 {
-	return _scene;
+	return ObjectTable::GetObject<PhysX::Scene^>((intptr_t)_articulation->getScene());
 }
 
 int Articulation::MaximumProjectionIterations::get()

@@ -38,6 +38,7 @@ namespace PhysX
 	ref class ClothFabric;
 	ref class ClothCollisionData;
 	ref class ClothFabricDesc;
+	ref class Articulation;
 	
 	namespace VisualDebugger
 	{
@@ -327,6 +328,10 @@ namespace PhysX
 			IEnumerable<ClothFabric^>^ get();
 		}
 		#pragma endregion
+
+#pragma region Articulation
+		Articulation^ CreateArticulation();
+#pragma endregion
 
 	internal:
 		property PxPhysics* UnmanagedPointer

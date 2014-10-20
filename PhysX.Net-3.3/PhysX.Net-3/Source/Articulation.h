@@ -7,6 +7,7 @@ namespace PhysX
 	ref class ArticulationLink;
 	value class Bounds3;
 	ref class Serializable;
+	ref class Physics;
 
 	public ref class Articulation : IDisposable
 	{
@@ -16,10 +17,9 @@ namespace PhysX
 
 		private:
 			PxArticulation* _articulation;
-			PhysX::Scene^ _scene;
 
 		internal:
-			Articulation(PxArticulation* articulation, PhysX::Scene^ owner);
+			Articulation(PxArticulation* articulation, PhysX::Physics^ owner);
 		public:
 			~Articulation();
 		protected:
@@ -35,6 +35,16 @@ namespace PhysX
 			/// Gets an object which is responsible for serialization of this type.
 			/// </summary>
 			Serializable^ AsSerializable();
+
+			/// <summary>
+			/// Apply an impulse to an entire articulation.
+			/// </summary>
+			//void ApplyImpulse(ArticulationLink^ link, ArticulationDriveCache^ driveCache, Vector3 linearImpulse, Vector3 angularImpulse);
+
+			/// <summary>
+			/// Determine the effect of applying an impulse to an entire articulation, without applying the impulse.
+			/// </summary>
+			//void ComputeImpulseResponse(ArticulationLink^ link, Vector3 linearResponse, Vector3 angularResponse, ArticulationDriveCache^ driveCache, Vector3 linearImpulse, Vector3 angularImpulse);
 
 			//
 

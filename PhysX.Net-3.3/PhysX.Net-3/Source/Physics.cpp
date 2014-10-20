@@ -30,6 +30,7 @@
 #include "ClothCollisionData.h"
 #include "ClothFabricDesc.h"
 #include "ConstraintShaderTable.h"
+#include "Articulation.h"
 
 //#include <PxDefaultAllocator.h>
 //#include <PxDefaultErrorCallback.h>
@@ -466,6 +467,13 @@ IEnumerable<ClothFabric^>^ Physics::ClothFabrics::get()
 PhysX::VehicleSDK^ Physics::VehicleSDK::get()
 {
 	return _vehicleSDK;
+}
+
+Articulation^ Physics::CreateArticulation()
+{
+	PxArticulation* a = _physics->createArticulation();
+
+	return gcnew Articulation(a, this);
 }
 
 PxPhysics* Physics::UnmanagedPointer::get()
