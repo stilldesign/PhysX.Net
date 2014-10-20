@@ -25,8 +25,6 @@ ContactPair::~ContactPair()
 }
 ContactPair::!ContactPair()
 {
-	SAFE_DELETE(_pair);
-
 	this->Shape0 = nullptr;
 	this->Shape1 = nullptr;
 	this->ContactData = nullptr;
