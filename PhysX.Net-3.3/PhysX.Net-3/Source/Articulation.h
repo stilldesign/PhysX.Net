@@ -101,7 +101,7 @@ namespace PhysX
 			}
 
 			/// <summary>
-			/// Gets the set of links in the articulation.
+			/// Gets or sets the name of the articulation.
 			/// </summary>
 			property String^ Name
 			{
