@@ -31,6 +31,7 @@
 #include "ClothFabricDesc.h"
 #include "ConstraintShaderTable.h"
 #include "Articulation.h"
+#include "Aggregate.h"
 
 //#include <PxDefaultAllocator.h>
 //#include <PxDefaultErrorCallback.h>
@@ -474,6 +475,13 @@ Articulation^ Physics::CreateArticulation()
 	PxArticulation* a = _physics->createArticulation();
 
 	return gcnew Articulation(a, this);
+}
+
+Aggregate^ Physics::CreateAggregate(int maximumSize, bool enableSelfCollision)
+{
+	PxAggregate* a = _physics->createAggregate(maximumSize, enableSelfCollision);
+
+	return gcnew Aggregate(a, this);
 }
 
 PxPhysics* Physics::UnmanagedPointer::get()

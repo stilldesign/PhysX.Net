@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="Actor\ActorSerialization.cs" />
     <Compile Include="Actor\ActorTest.cs" />
+    <Compile Include="Aggregate\AggregateTests.cs" />
     <Compile Include="Articulation\ArticulationTests.cs" />
     <Compile Include="Cloth\ClothTest.cs" />
     <Compile Include="Constraint\ConstraintTest.cs" />

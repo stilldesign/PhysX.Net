@@ -4,16 +4,16 @@
 #include "Actor.h"
 #include "Articulation.h"
 #include "Serializable.h"
+#include "Physics.h"
 //#include <PxAggregate.h> 
 
-Aggregate::Aggregate(PxAggregate* aggregate, PhysX::Scene^ owner)
+Aggregate::Aggregate(PxAggregate* aggregate, PhysX::Physics^ owner)
 {
 	if (aggregate == NULL)
 		throw gcnew ArgumentNullException("aggregate");
 	ThrowIfNullOrDisposed(owner, "owner");
 
 	_aggregate = aggregate;
-	_scene = owner;
 
 	ObjectTable::Add((intptr_t)aggregate, this, owner);
 }
@@ -30,8 +30,6 @@ Aggregate::!Aggregate()
 
 	_aggregate->release();
 	_aggregate = NULL;
-
-	_scene = nullptr;
 
 	OnDisposed(this, nullptr);
 }
@@ -80,7 +78,11 @@ Actor^ Aggregate::GetActor(int index)
 
 	_aggregate->getActors(actors, 1, index);
 
-	return ObjectTable::GetObject<Actor^>((intptr_t)actors[0]);
+	auto actor = ObjectTable::GetObject<Actor^>((intptr_t)actors[0]);
+
+	delete[] actors;
+
+	return actor;
 }
 array<Actor^>^ Aggregate::GetActors()
 {
@@ -89,7 +91,11 @@ array<Actor^>^ Aggregate::GetActors()
 
 	_aggregate->getActors(actors, actorCount, 0);
 
-	return ObjectTable::GetObjects<Actor^>((intptr_t*)actors, actorCount);
+	auto a = ObjectTable::GetObjects<Actor^>((intptr_t*)actors, actorCount);
+
+	delete[] actors;
+
+	return a;
 }
 
 Serializable^ Aggregate::AsSerializable()
@@ -101,7 +107,7 @@ Serializable^ Aggregate::AsSerializable()
 
 PhysX::Scene^ Aggregate::Scene::get()
 {
-	return _scene;
+	return ObjectTable::GetObject<PhysX::Scene^>((intptr_t)_aggregate->getScene());
 }
 
 int Aggregate::MaximumNumberOfActors::get()

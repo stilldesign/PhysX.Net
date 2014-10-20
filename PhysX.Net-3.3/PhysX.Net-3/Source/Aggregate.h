@@ -6,6 +6,7 @@ namespace PhysX
 	ref class Actor;
 	ref class Articulation;
 	ref class Serializable;
+	ref class Physics;
 
 	/// <summary>
 	/// Class to aggregate actors into a single broad phase entry.
@@ -18,10 +19,9 @@ namespace PhysX
 
 		private:
 			PxAggregate* _aggregate;
-			PhysX::Scene^ _scene;
 
 		internal:
-			Aggregate(PxAggregate* aggregate, PhysX::Scene^ owner);
+			Aggregate(PxAggregate* aggregate, PhysX::Physics^ owner);
 		public:
 			~Aggregate();
 		protected:

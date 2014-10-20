@@ -39,6 +39,7 @@ namespace PhysX
 	ref class ClothCollisionData;
 	ref class ClothFabricDesc;
 	ref class Articulation;
+	ref class Aggregate;
 	
 	namespace VisualDebugger
 	{
@@ -329,9 +330,13 @@ namespace PhysX
 		}
 		#pragma endregion
 
-#pragma region Articulation
+		#pragma region Articulation
 		Articulation^ CreateArticulation();
-#pragma endregion
+		#pragma endregion
+		
+		#pragma region Aggregate
+		Aggregate^ CreateAggregate(int maximumSize, bool enableSelfCollision);
+		#pragma endregion
 
 	internal:
 		property PxPhysics* UnmanagedPointer

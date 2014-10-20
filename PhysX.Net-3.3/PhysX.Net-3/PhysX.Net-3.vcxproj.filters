@@ -2,7 +2,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="Source\ActiveTransform.cpp" />
-    <ClCompile Include="Source\Aggregate.cpp" />
     <ClCompile Include="Source\AssemblyInfo.cpp" />
     <ClCompile Include="Source\BitAndData.cpp" />
     <ClCompile Include="Source\ErrorCallback.cpp" />
@@ -552,11 +551,13 @@
     <ClCompile Include="Source\ContactPatchBase.cpp">
       <Filter>Contact</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Aggregate.cpp">
+      <Filter>Aggregate</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
     <ClInclude Include="Source\ActiveTransform.h" />
-    <ClInclude Include="Source\Aggregate.h" />
     <ClInclude Include="Source\BitAndData.h" />
     <ClInclude Include="Source\ErrorCallback.h" />
     <ClInclude Include="Source\FilterData.h" />
@@ -1239,6 +1240,9 @@
     <ClInclude Include="Source\ContactPatchBase.h">
       <Filter>Contact</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Aggregate.h">
+      <Filter>Aggregate</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Version.rc" />
@@ -1354,6 +1358,9 @@
     </Filter>
     <Filter Include="TriangleMesh">
       <UniqueIdentifier>{93deaeb0-54bc-490e-9b2b-59f7ff08fb12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Aggregate">
+      <UniqueIdentifier>{c91e0d2e-a543-49c5-8ae4-5a9c5cf393d5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
