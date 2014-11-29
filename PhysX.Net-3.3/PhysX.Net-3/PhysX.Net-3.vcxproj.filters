@@ -551,6 +551,9 @@
     <ClCompile Include="Source\VehicleUtilSetup.cpp">
       <Filter>Vehicle</Filter>
     </ClCompile>
+    <ClCompile Include="Source\VehicleUtilSetup.cpp">
+      <Filter>Vehicle</Filter>
+    </ClCompile>
     <ClCompile Include="Source\ContactPatchBase.cpp">
       <Filter>Contact</Filter>
     </ClCompile>
@@ -1236,6 +1239,9 @@
     </ClInclude>
     <ClInclude Include="Source\SimpleTriangleMesh.h">
       <Filter>TriangleMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleUtilSetup.h">
+      <Filter>Vehicle</Filter>
     </ClInclude>
     <ClInclude Include="Source\VehicleUtilSetup.h">
       <Filter>Vehicle</Filter>
