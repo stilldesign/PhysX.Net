@@ -111,6 +111,7 @@
     <Compile Include="Test\Test.cs" />
     <Compile Include="Util\ArrayUtil.cs" />
     <Compile Include="Util\ColladaLoader.cs" />
+    <Compile Include="Vehicle\VehicleNoDriveTests.cs" />
     <Compile Include="Vehicle\VehicleEngineDataTest.cs" />
   </ItemGroup>
   <ItemGroup>
