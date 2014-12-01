@@ -6,27 +6,21 @@
 
 using namespace PhysX;
 
-VehicleNoDrive::VehicleNoDrive(PxVehicleNoDrive* noDrive, PhysX::Physics^ owner)
-	: VehicleWheels(noDrive, owner)
+VehicleNoDrive::VehicleNoDrive(int numberOfWheels, PhysX::Physics^ owner)
+	: VehicleWheels(Create(numberOfWheels), owner)
 {
-
+	
 }
-
-//VehicleNoDrive::VehicleNoDrive(int numberOfWheels, PhysX::Physics^ owner)
-//	: VehicleWheels(Create(numberOfWheels), owner)
-//{
-//
-//}
 VehicleNoDrive::VehicleNoDrive(PhysX::Physics^ physics, RigidDynamic^ vehicleActor, VehicleWheelsSimData^ wheelsData)
 	: VehicleWheels(Create(physics, vehicleActor, wheelsData), physics)
 {
 
 }
 
-//PxVehicleNoDrive* VehicleNoDrive::Create(int numberOfWheels)
-//{
-//	PxVehicleNoDrive::create()
-//}
+PxVehicleNoDrive* VehicleNoDrive::Create(int numberOfWheels)
+{
+	return PxVehicleNoDrive::allocate(numberOfWheels);
+}
 PxVehicleNoDrive* VehicleNoDrive::Create(PhysX::Physics^ physics, RigidDynamic^ vehicleActor, VehicleWheelsSimData^ wheelsData)
 {
 	return PxVehicleNoDrive::create(physics->UnmanagedPointer, vehicleActor->UnmanagedPointer, *wheelsData->UnmanagedPointer);

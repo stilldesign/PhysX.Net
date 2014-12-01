@@ -35,7 +35,16 @@ namespace PhysX.Test.Vehicle
 		[TestMethod]
 		public void ConstructAndDispose()
 		{
+			// TestInitalize and TestCleanup will be called (creating and disposing)
+		}
 
+		[TestMethod]
+		public void CreateWithJustWheelCount()
+		{
+			using (var noDrive = new VehicleNoDrive(2, _physics.Physics))
+			{
+
+			}
 		}
 
 		[TestMethod]

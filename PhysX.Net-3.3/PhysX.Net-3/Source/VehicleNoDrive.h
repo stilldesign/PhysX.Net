@@ -8,17 +8,12 @@ namespace PhysX
 
 	public ref class VehicleNoDrive : VehicleWheels
 	{
-	private:
-
-	internal:
-		VehicleNoDrive(PxVehicleNoDrive* noDrive, PhysX::Physics^ owner);
-
 	public:
-		//VehicleNoDrive(int numberOfWheels, PhysX::Physics^ owner);
+		VehicleNoDrive(int numberOfWheels, PhysX::Physics^ owner);
 		VehicleNoDrive(PhysX::Physics^ physics, RigidDynamic^ vehicleActor, VehicleWheelsSimData^ wheelsData);
 
 	private:
-		//PxVehicleNoDrive* Create(int numberOfWheels);
+		PxVehicleNoDrive* Create(int numberOfWheels);
 		PxVehicleNoDrive* Create(PhysX::Physics^ physics, RigidDynamic^ vehicleActor, VehicleWheelsSimData^ wheelsData);
 
 	public:
