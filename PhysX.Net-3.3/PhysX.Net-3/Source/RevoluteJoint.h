@@ -13,7 +13,7 @@ namespace PhysX
 	public ref class RevoluteJoint : Joint
 	{
 		internal:
-			RevoluteJoint(PxRevoluteJoint* joint, PhysX::Scene^ owner);
+			RevoluteJoint(PxRevoluteJoint* joint, PhysX::Physics^ owner);
 
 		public:
 			/// <summary>

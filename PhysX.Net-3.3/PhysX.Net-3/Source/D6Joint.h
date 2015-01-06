@@ -16,7 +16,7 @@ namespace PhysX
 	public ref class D6Joint : Joint
 	{
 	internal:
-		D6Joint(PxD6Joint* joint, PhysX::Scene^ owner);
+		D6Joint(PxD6Joint* joint, PhysX::Physics^ owner);
 
 	public:
 		/// <summary>

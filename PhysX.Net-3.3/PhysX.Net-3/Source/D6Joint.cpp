@@ -7,7 +7,7 @@
 #include "JointAngularLimitPair.h"
 //#include <PxD6Joint.h>
 
-D6Joint::D6Joint(PxD6Joint* joint, PhysX::Scene^ owner)
+D6Joint::D6Joint(PxD6Joint* joint, PhysX::Physics^ owner)
 	: Joint(joint, owner)
 {
 	

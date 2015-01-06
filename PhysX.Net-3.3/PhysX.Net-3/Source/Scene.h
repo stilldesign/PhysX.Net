@@ -168,14 +168,6 @@ namespace PhysX
 			/// <returns>A joint of the specified type.</returns>
 			generic<typename T> where T : Joint
 			T CreateJoint(RigidActor^ actor0, Matrix localFrame0, RigidActor^ actor1, Matrix localFrame1);
-
-			/// <summary>
-			/// Gets the joints in the scene.
-			/// </summary>
-			property IEnumerable<Joint^>^ Joints
-			{
-				IEnumerable<Joint^>^ get();
-			}
 			#pragma endregion
 
 			#pragma region Grouping

@@ -5,6 +5,7 @@
 //#include <PxPhysics.h>
 //#include <PxDistanceJoint.h>
 //#include <PxRigidDynamic.h>
+#include "JointEnum.h"
 
 namespace PhysX
 {
@@ -40,7 +41,9 @@ namespace PhysX
 	ref class ClothFabricDesc;
 	ref class Articulation;
 	ref class Aggregate;
-	
+	ref class Joint;
+
+
 	namespace VisualDebugger
 	{
 		ref class Connection;
@@ -192,6 +195,32 @@ namespace PhysX
 		{
 			IEnumerable<RigidActor^>^ get();
 		}
+		#pragma endregion
+
+		#pragma region Joints
+		/// <summary>
+		/// Creates a joint.
+		/// </summary>
+		/// <param name="type">The type of the joint.</param>
+		/// <param name="actor0">An actor to which the joint is attached. Null may be used to attach the joint to a specific point in the world frame.</param>
+		/// <param name="">The position and orientation of the joint relative to actor0.</param>
+		/// <param name="actor1">An actor to which the joint is attached. Null may be used to attach the joint to a specific point in the world frame.</param>
+		/// <param name="">The position and orientation of the joint relative to actor1.</param>
+		/// <returns>A joint of the specified type.</returns>
+		Joint^ CreateJoint(JointType type, RigidActor^ actor0, Matrix localFrame0, RigidActor^ actor1, Matrix localFrame1);
+
+		/// <summary>
+		/// Creates a joint.
+		/// </summary>
+		/// <param name="type">The type of the joint.</param>
+		/// <param name="actor0">An actor to which the joint is attached. Null may be used to attach the joint to a specific point in the world frame.</param>
+		/// <param name="">The position and orientation of the joint relative to actor0.</param>
+		/// <param name="actor1">An actor to which the joint is attached. Null may be used to attach the joint to a specific point in the world frame.</param>
+		/// <param name="">The position and orientation of the joint relative to actor1.</param>
+		/// <returns>A joint of the specified type.</returns>
+		generic<typename T> where T : Joint
+			T CreateJoint(RigidActor^ actor0, Matrix localFrame0, RigidActor^ actor1, Matrix localFrame1);
+
 		#pragma endregion
 
 		#pragma region Particle System

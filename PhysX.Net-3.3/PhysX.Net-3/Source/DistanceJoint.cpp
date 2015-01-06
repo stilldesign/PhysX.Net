@@ -2,7 +2,7 @@
 //#include <PxDistanceJoint.h> 
 #include "DistanceJoint.h"
 
-DistanceJoint::DistanceJoint(PxDistanceJoint* joint, PhysX::Scene^ owner)
+DistanceJoint::DistanceJoint(PxDistanceJoint* joint, PhysX::Physics^ owner)
 	: Joint(joint, owner)
 {
 	

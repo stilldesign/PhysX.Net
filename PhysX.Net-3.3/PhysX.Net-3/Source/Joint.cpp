@@ -8,19 +8,19 @@
 //#include <PxJoint.h>
 //#include <PxRigidActor.h>
 
-Joint::Joint(PxJoint* joint, PhysX::Scene^ owner)
+Joint::Joint(PxJoint* joint, PhysX::Physics^ owner)
 {
 	if (joint == NULL)
 		throw gcnew ArgumentNullException("joint");
-	ThrowIfNullOrDisposed(owner, "owner");
+	ThrowIfNull(owner, "owner");
 
 	_joint = joint;
-	_scene = owner;
+	_owner = owner;
 
 	// Constraint
 	_constraint = gcnew PhysX::Constraint(_joint->getConstraint(), this, false);
 
-	ObjectTable::Add((intptr_t)joint, this, owner);
+	ObjectTable::Add((intptr_t)joint, this, (PhysX::IDisposable^)owner);
 }
 Joint::~Joint()
 {
@@ -36,7 +36,7 @@ Joint::!Joint()
 	_joint->release();
 	_joint = NULL;
 
-	_scene = nullptr;
+	_owner = nullptr;
 	_constraint = nullptr;
 
 	OnDisposed(this, nullptr);
@@ -60,11 +60,6 @@ PhysX::Constraint^ Joint::Constraint::get()
 JointType Joint::Type::get()
 {
 	return ToManagedEnum(JointType, _joint->getType());
-}
-
-PhysX::Scene^ Joint::Scene::get()
-{
-	return _scene;
 }
 
 PhysX::Actor^ Joint::Actor0::get()

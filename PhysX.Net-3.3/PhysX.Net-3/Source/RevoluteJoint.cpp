@@ -3,7 +3,7 @@
 #include "JointAngularLimitPair.h"
 //#include <PxRevoluteJoint.h> 
 
-RevoluteJoint::RevoluteJoint(PxRevoluteJoint* joint, PhysX::Scene^ owner)
+RevoluteJoint::RevoluteJoint(PxRevoluteJoint* joint, PhysX::Physics^ owner)
 	: Joint(joint, owner)
 {
 	
