@@ -16,11 +16,11 @@ void ObjectTable::disposableObject_OnDisposing(Object^ sender, EventArgs^ e)
 
 	_performingDisposal = true;
 
-		// Call Dispose on the object and its dependents
-		DisposeOfObjectAndDependents(dynamic_cast<IDisposable^>(sender));
+	// Call Dispose on the object and its dependents
+	DisposeOfObjectAndDependents(dynamic_cast<IDisposable^>(sender));
 
-		// Remove the object from all the dictionaries
-		Remove(sender);
+	// Remove the object from all the dictionaries
+	Remove(sender);
 
 	_performingDisposal = false;
 }

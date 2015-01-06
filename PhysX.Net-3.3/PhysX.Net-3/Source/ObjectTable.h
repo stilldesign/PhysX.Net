@@ -18,7 +18,8 @@ namespace PhysX
 		public:
 			static event EventHandler<ObjectTableEventArgs^>^ ObjectAdded;
 			static event EventHandler<ObjectTableEventArgs^>^ ObjectRemoved;
-			
+			static Object^ locker = gcnew Object();
+
 		private:
 			// A collection of native objects to their managed version
 			static Dictionary<intptr_t, Object^>^ _objectTable;
