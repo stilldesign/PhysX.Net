@@ -201,6 +201,39 @@ void Shape::LocalPose::set(Matrix value)
 	_shape->setLocalPose(MathUtil::MatrixToPxTransform(value));
 }
 
+array<PhysX::Material^>^ Shape::Materials::get()
+{
+	auto managedMaterials = gcnew List<Material^>();
+
+	int n = _shape->getNbMaterials();
+
+	PxMaterial** materials = new PxMaterial*[n];
+	_shape->getMaterials(materials, n);
+
+	for (int i = 0; i < n; i++)
+	{
+		PxMaterial* mat = materials[i];
+		Material^ s = (Material^)ObjectTable::TryGetObject((intptr_t)mat);
+		managedMaterials->Add(s);
+	}
+
+	delete[] materials;
+
+	return managedMaterials->ToArray();
+}
+void Shape::Materials::set(array<PhysX::Material^>^ value)
+{
+	int n = value->Length;
+
+	PxMaterial** materials = new PxMaterial*[n];
+	for (int i = 0; i < n; i++)
+		materials[i] = value[i]->UnmanagedPointer;
+
+	_shape->setMaterials(materials, n);
+
+	delete[] materials;
+}
+
 PxShape* Shape::UnmanagedPointer::get()
 {
 	return _shape;

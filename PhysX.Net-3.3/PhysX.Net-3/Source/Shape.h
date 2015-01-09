@@ -150,6 +150,15 @@ namespace PhysX
 			void set(Matrix value);
 		}
 
+		/// <summary>
+		/// Gets or sets the shape materials.
+		/// </summary>
+		property array<PhysX::Material^>^ Materials
+		{
+			array<PhysX::Material^>^  get();
+			void set(array<PhysX::Material^>^ value);
+		}
+
 		/// <summary>Gets or sets an object, usually to create a 1:1 relationship with a user object.</summary>
 		property Object^ UserData;
 		
