@@ -4,6 +4,7 @@
 #include "Scene.h"
 #include "Actor.h"
 #include "Serializable.h"
+#include "Physics.h"
 
 //#include <PxJoint.h>
 //#include <PxRigidActor.h>
@@ -12,7 +13,7 @@ Joint::Joint(PxJoint* joint, PhysX::Physics^ owner)
 {
 	if (joint == NULL)
 		throw gcnew ArgumentNullException("joint");
-	ThrowIfNull(owner, "owner");
+	ThrowIfNullOrDisposed(owner, "owner");
 
 	_joint = joint;
 	_owner = owner;
@@ -20,7 +21,7 @@ Joint::Joint(PxJoint* joint, PhysX::Physics^ owner)
 	// Constraint
 	_constraint = gcnew PhysX::Constraint(_joint->getConstraint(), this, false);
 
-	ObjectTable::Add((intptr_t)joint, this, (PhysX::IDisposable^)owner);
+	ObjectTable::Add((intptr_t)joint, this, owner);
 }
 Joint::~Joint()
 {
