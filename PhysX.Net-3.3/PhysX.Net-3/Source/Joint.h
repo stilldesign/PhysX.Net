@@ -5,7 +5,7 @@
 
 namespace PhysX
 {
-	ref class Scene;
+	ref class Physics;
 	ref class Actor;
 	ref class Constraint;
 	ref class Serializable;
@@ -18,11 +18,11 @@ namespace PhysX
 
 		private:
 			PxJoint* _joint;
-			PhysX::Scene^ _scene;
+			PhysX::Physics^ _owner;
 			PhysX::Constraint^ _constraint;
 
 		internal:
-			Joint(PxJoint* joint, PhysX::Scene^ owner);
+			Joint(PxJoint* joint, PhysX::Physics^ owner);
 		public:
 			~Joint();
 		protected:
@@ -56,14 +56,6 @@ namespace PhysX
 			property JointType Type
 			{
 				JointType get();
-			}
-
-			/// <summary>
-			/// Gets the scene which this joint belongs to. 
-			/// </summary>
-			property PhysX::Scene^ Scene
-			{
-				PhysX::Scene^ get();
 			}
 
 			/// <summary>

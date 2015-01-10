@@ -3,7 +3,7 @@
 #include "JointLinearLimitPair.h"
 //#include <PxPrismaticJoint.h> 
 
-PrismaticJoint::PrismaticJoint(PxPrismaticJoint* joint, PhysX::Scene^ owner)
+PrismaticJoint::PrismaticJoint(PxPrismaticJoint* joint, PhysX::Physics^ owner)
 	: Joint(joint, owner)
 {
 	

@@ -11,14 +11,7 @@
 #include "ControllerManager.h"
 #include "Shape.h"
 #include "RaycastHit.h"
-#include "Joint.h"
-#include "D6Joint.h"
-#include "DistanceJoint.h"
-#include "FixedJoint.h"
 #include "RigidActor.h"
-#include "PrismaticJoint.h"
-#include "RevoluteJoint.h"
-#include "SphericalJoint.h"
 #include "SimulationStatistics.h"
 #include "Articulation.h"
 #include "Aggregate.h"
@@ -157,106 +150,13 @@ IEnumerable<Articulation^>^ Scene::Articulations::get()
 #pragma region Joints
 Joint^ Scene::CreateJoint(JointType type, RigidActor^ actor0, Matrix localFrame0, RigidActor^ actor1, Matrix localFrame1)
 {
-	PxPhysics* physics = this->Physics->UnmanagedPointer;
-
-	PxRigidActor* a0 = GetPointerOrNull(actor0);
-	PxRigidActor* a1 = GetPointerOrNull(actor1);
-
-	PxTransform lf0 = MathUtil::MatrixToPxTransform(localFrame0);
-	PxTransform lf1 = MathUtil::MatrixToPxTransform(localFrame1);
-
-	Joint^ joint = nullptr;
-
-	switch (type)
-	{
-		case JointType::D6:
-		{
-			auto d6 = PxD6JointCreate(*physics, a0, lf0, a1, lf1);
-
-			auto d6Joint = joint = gcnew D6Joint(d6, this);
-		}
-		break;
-
-		case JointType::Distance:
-		{
-			auto distance = PxDistanceJointCreate(*physics, a0, lf0, a1, lf1);
-
-			auto distanceJoint = joint = gcnew DistanceJoint(distance, this);
-		}
-		break;
-
-		case JointType::Fixed:
-		{
-			auto fixed = PxFixedJointCreate(*physics, a0, lf0, a1, lf1);
-
-			auto fixedJoint = joint = gcnew FixedJoint(fixed, this);
-		}
-		break;
-
-		case JointType::Prismatic:
-		{
-			auto primatic = PxPrismaticJointCreate(*physics, a0, lf0, a1, lf1);
-
-			auto primaticJoint = joint = gcnew PrismaticJoint(primatic, this);
-		}
-		break;
-
-		case JointType::Revolute:
-		{
-			auto revolute = PxRevoluteJointCreate(*physics, a0, lf0, a1, lf1);
-
-			auto revoluteJoint = joint = gcnew RevoluteJoint(revolute, this);
-		}
-		break;
-
-		case JointType::Spherical:
-		{
-			auto spherical = PxSphericalJointCreate(*physics, a0, lf0, a1, lf1);
-
-			auto sphericalJoint = joint = gcnew SphericalJoint(spherical, this);
-		}
-		break;
-	}
-
-	if (joint == nullptr)
-		throw gcnew ArgumentException(String::Format("Unsupported joint type {0}", type));
-
-	return joint;
+	return this->Physics->CreateJoint(type, actor0, localFrame0, actor1, localFrame1);
 }
 
 generic<typename T> where T : Joint
 T Scene::CreateJoint(RigidActor^ actor0, Matrix localFrame0, RigidActor^ actor1, Matrix localFrame1)
 {
-	JointType type;
-
-	if (T::typeid == D6Joint::typeid)
-		type = JointType::D6;
-
-	else if (T::typeid == DistanceJoint::typeid)
-		type = JointType::Distance;
-
-	else if (T::typeid == FixedJoint::typeid)
-		type = JointType::Fixed;
-
-	else if (T::typeid == PrismaticJoint::typeid)
-		type = JointType::Prismatic;
-
-	else if (T::typeid == RevoluteJoint::typeid)
-		type = JointType::Revolute;
-
-	else if (T::typeid == SphericalJoint::typeid)
-		type = JointType::Spherical;
-
-	else
-		throw gcnew ArgumentException("Unsupported joint type");
-
-	return (T)CreateJoint(type, actor0, localFrame0, actor1, localFrame1);
-}
-
-IEnumerable<Joint^>^ Scene::Joints::get()
-{
-	// Extend this object table method to support inheritance selection
-	return ObjectTable::GetObjectsOfOwnerAndType<Joint^>(this);
+	return this->Physics->CreateJoint<T>(actor0, localFrame0, actor1, localFrame1);
 }
 #pragma endregion
 

@@ -13,7 +13,7 @@ namespace PhysX
 	public ref class PrismaticJoint : Joint
 	{
 		internal:
-			PrismaticJoint(PxPrismaticJoint* joint, PhysX::Scene^ owner);
+			PrismaticJoint(PxPrismaticJoint* joint, PhysX::Physics^ owner);
 
 		public:
 			/// <summary>
