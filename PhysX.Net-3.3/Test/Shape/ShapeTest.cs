@@ -33,5 +33,18 @@ namespace PhysX.Test
 
 			_shape = null;
 		}
+
+		[TestMethod]
+		public void GetAndSetMaterialOfShape()
+		{
+			// New material to set
+			var newMaterial = _physics.Physics.CreateMaterial(0.2f, 0.1f, 0.2f);
+
+			// Assign the new material (can only be 1, given the shape setup)
+			_shape.Materials = new[] { newMaterial };
+
+			Assert.AreEqual(1, _shape.Materials.Length);
+			Assert.AreEqual(newMaterial, _shape.Materials[0]);
+		}
 	}
 }
