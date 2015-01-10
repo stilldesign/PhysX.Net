@@ -2,7 +2,7 @@
 //#include <PxFixedJoint.h> 
 #include "FixedJoint.h"
 
-FixedJoint::FixedJoint(PxFixedJoint* joint, PhysX::Scene^ owner)
+FixedJoint::FixedJoint(PxFixedJoint* joint, PhysX::Physics^ owner)
 	: Joint(joint, owner)
 {
 	

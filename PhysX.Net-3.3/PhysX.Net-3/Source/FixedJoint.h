@@ -11,7 +11,7 @@ namespace PhysX
 	public ref class FixedJoint : Joint
 	{
 		internal:
-			FixedJoint(PxFixedJoint* joint, PhysX::Scene^ owner);
+			FixedJoint(PxFixedJoint* joint, PhysX::Physics^ owner);
 
 		public:
 			/// <summary>

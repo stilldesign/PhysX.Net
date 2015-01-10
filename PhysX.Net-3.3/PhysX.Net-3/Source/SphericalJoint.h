@@ -13,7 +13,7 @@ namespace PhysX
 	public ref class SphericalJoint : Joint
 	{
 		internal:
-			SphericalJoint(PxSphericalJoint* joint, PhysX::Scene^ owner);
+			SphericalJoint(PxSphericalJoint* joint, PhysX::Physics^ owner);
 
 		public:
 			/// <summary>

@@ -3,7 +3,7 @@
 #include "JointLimitCone.h"
 //#include <PxSphericalJoint.h> 
 
-SphericalJoint::SphericalJoint(PxSphericalJoint* joint, PhysX::Scene^ owner)
+SphericalJoint::SphericalJoint(PxSphericalJoint* joint, PhysX::Physics^ owner)
 	: Joint(joint, owner)
 {
 

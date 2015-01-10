@@ -11,7 +11,7 @@ namespace PhysX
 	public ref class DistanceJoint : Joint
 	{
 		internal:
-			DistanceJoint(PxDistanceJoint* joint, PhysX::Scene^ owner);
+			DistanceJoint(PxDistanceJoint* joint, PhysX::Physics^ owner);
 
 		public:
 			
