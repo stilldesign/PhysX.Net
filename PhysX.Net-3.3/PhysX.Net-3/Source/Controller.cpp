@@ -164,6 +164,10 @@ float Controller::SlopeLimit::get()
 {
 	return _controller->getSlopeLimit();
 }
+void Controller::SlopeLimit::set(float value)
+{
+	_controller->setSlopeLimit(value);
+}
 
 ControllerShapeType Controller::Type::get()
 {

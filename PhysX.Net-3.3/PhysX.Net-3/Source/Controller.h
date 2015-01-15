@@ -143,6 +143,7 @@ namespace PhysX
 			property float SlopeLimit
 			{
 				float get();
+				void set(float value);
 			}
 
 			/// <summary>
