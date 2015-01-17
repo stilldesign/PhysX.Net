@@ -1,7 +1,6 @@
 #include "StdAfx.h"
 #include "Bounds3.h"
 #include "MathUtil.h"
-//#include <PxMath.h>
 
 using namespace System;
 using namespace System::Globalization;

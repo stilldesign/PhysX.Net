@@ -1,6 +1,5 @@
 #pragma once
 
-//#include <PxPlaneGeometry.h>
 #include "Geometry.h"
 
 namespace PhysX

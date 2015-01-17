@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Geometry.h"
-//#include <PxBoxGeometry.h>
 
 namespace PhysX
 {

@@ -1,6 +1,5 @@
 #include "StdAfx.h"
 #include "SphereGeometry.h"
-//#include <PxSphereGeometry.h>
 
 using namespace PhysX;
 

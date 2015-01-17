@@ -3,7 +3,6 @@
 #include "Physics.h"
 #include "ClothEnum.h"
 #include "ClothFabricPhase.h"
-//#include <PxClothFabric.h> 
 
 namespace PhysX
 {

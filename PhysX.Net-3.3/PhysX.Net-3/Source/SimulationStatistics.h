@@ -1,7 +1,6 @@
 #pragma once
 
 #include "GeometryEnum.h"
-//#include <PxSimulationStatistics.h> 
 
 namespace PhysX
 {

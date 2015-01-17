@@ -2,7 +2,6 @@
 
 #include "ClothEnum.h"
 #include "SimpleTriangleMesh.h"
-//#include <PxClothMeshDesc.h> 
 
 namespace PhysX
 {

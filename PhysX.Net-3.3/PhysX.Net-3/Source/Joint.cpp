@@ -6,8 +6,6 @@
 #include "Serializable.h"
 #include "Physics.h"
 
-//#include <PxJoint.h>
-//#include <PxRigidActor.h>
 
 Joint::Joint(PxJoint* joint, PhysX::Physics^ owner)
 {

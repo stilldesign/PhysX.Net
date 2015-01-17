@@ -1,7 +1,6 @@
 #pragma once
 
 #include "GeometryUtilEnum.h"
-//#include <PxSimpleTriangleMesh.h> 
 
 namespace PhysX
 {

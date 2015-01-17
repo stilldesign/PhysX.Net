@@ -1,6 +1,5 @@
 #pragma once
 
-//#include <PxSerialization.h> 
 #include "TolerancesScale.h"
 
 namespace PhysX

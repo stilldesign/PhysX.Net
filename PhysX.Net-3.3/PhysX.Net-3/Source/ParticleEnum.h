@@ -1,7 +1,5 @@
 #pragma once
 
-//#include <PxParticleBase.h>
-//#include <PxParticleFlag.h>
 
 namespace PhysX
 {

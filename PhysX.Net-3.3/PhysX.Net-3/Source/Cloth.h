@@ -11,7 +11,6 @@
 #include "ClothCollisionPlane.h"
 #include "Bounds3.h"
 #include "PhysicsEnum.h"
-//#include <PxCloth.h> 
 
 namespace PhysX
 {

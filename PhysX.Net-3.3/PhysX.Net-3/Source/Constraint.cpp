@@ -3,7 +3,6 @@
 #include "RigidActor.h"
 #include "Physics.h"
 #include "Constraint.h"
-//#include <PxConstraint.h> 
 
 Constraint::Constraint(PxConstraint* constraint, PhysX::IDisposable^ owner, bool unmanagedOwner)
 {

@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Obstacle.h"
-//#include <PxControllerObstacles.h> 
 
 namespace PhysX
 {

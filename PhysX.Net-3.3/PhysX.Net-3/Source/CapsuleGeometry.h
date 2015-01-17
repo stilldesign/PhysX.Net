@@ -1,6 +1,5 @@
 #pragma once
 
-//#include <PxCapsuleGeometry.h>
 #include "Geometry.h"
 
 namespace PhysX

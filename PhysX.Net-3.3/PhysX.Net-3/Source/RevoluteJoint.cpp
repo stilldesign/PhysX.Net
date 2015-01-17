@@ -1,7 +1,6 @@
 #include "StdAfx.h"
 #include "RevoluteJoint.h"
 #include "JointAngularLimitPair.h"
-//#include <PxRevoluteJoint.h> 
 
 RevoluteJoint::RevoluteJoint(PxRevoluteJoint* joint, PhysX::Physics^ owner)
 	: Joint(joint, owner)

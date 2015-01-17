@@ -2,9 +2,6 @@
 
 #include "ClothEnum.h"
 #include "ClothParticle.h"
-//#include <PxPhysics.h>
-//#include <PxDistanceJoint.h>
-//#include <PxRigidDynamic.h>
 #include "JointEnum.h"
 
 namespace PhysX

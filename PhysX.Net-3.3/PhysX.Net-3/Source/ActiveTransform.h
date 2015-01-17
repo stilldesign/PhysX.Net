@@ -1,6 +1,5 @@
 #pragma once
 
-//#include <PxScene.h>
 
 namespace PhysX
 {

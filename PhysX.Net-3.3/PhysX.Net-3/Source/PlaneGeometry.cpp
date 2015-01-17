@@ -1,6 +1,5 @@
 #include "StdAfx.h"
 #include "PlaneGeometry.h"
-//#include <PxPlaneGeometry.h>
 
 using namespace PhysX;
 

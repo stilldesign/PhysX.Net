@@ -1,6 +1,5 @@
 #pragma once
 
-//#include <PxScene.h>
 #include "SceneEnum.h"
 #include "QueryFilterData.h"
 #include "ActorEnum.h"

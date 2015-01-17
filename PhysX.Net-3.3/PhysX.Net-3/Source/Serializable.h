@@ -1,6 +1,5 @@
 #pragma once
 
-//#include <PxBase.h>
 #include "SerializableEnum.h"
 
 namespace PhysX

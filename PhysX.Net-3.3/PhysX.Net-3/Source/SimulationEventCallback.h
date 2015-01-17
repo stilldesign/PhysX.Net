@@ -3,7 +3,6 @@
 #include "Actor.h"
 #include "TriggerPair.h"
 #include "ConstraintInfo.h"
-//#include <PxSimulationEventCallback.h>
 
 namespace PhysX
 {

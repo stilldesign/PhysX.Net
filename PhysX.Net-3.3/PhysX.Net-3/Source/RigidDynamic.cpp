@@ -3,7 +3,6 @@
 #include "SolverIterationCounts.h"
 #include "Physics.h"
 #include "Scene.h"
-//#include <PxSimpleFactory.h>
 
 RigidDynamic::RigidDynamic(PxRigidDynamic* rigidDynamic, PhysX::IDisposable^ owner)
 	: RigidBody(rigidDynamic, owner)

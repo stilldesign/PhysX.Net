@@ -1,7 +1,6 @@
 #pragma once
 
 #include "VehicleDriveSimData.h"
-//#include <PxVehicleDrive4W.h> 
 
 namespace PhysX
 {

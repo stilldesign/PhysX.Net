@@ -1,6 +1,5 @@
 #include "StdAfx.h"
 #include "HeightFieldDesc.h"
-//#include <PxHeightFieldDesc.h> 
 
 HeightFieldDesc::HeightFieldDesc()
 {

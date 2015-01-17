@@ -4,8 +4,6 @@
 #include "TriangleMeshDesc.h"
 #include "ConvexMeshDesc.h"
 #include "ClothMeshDesc.h"
-//#include <PxCooking.h> 
-//#include <PxClothFabricCooker.h>
 
 Cooking::Cooking(PxCooking* cooking, PhysX::Foundation^ owner)
 {

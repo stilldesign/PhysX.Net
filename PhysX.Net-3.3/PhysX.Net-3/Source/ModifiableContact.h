@@ -1,7 +1,6 @@
 #pragma once
 
 #include "FeatureContact.h"
-//#include <PxContact.h> 
 
 namespace PhysX
 {

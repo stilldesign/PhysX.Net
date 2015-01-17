@@ -2,7 +2,6 @@
 #include "TriangleMesh.h"
 #include "Physics.h"
 #include "Serializable.h"
-//#include <PxTriangleMesh.h> 
 
 TriangleMesh::TriangleMesh(PxTriangleMesh* triangleMesh, PhysX::Physics^ physics)
 {

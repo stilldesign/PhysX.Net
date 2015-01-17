@@ -1,6 +1,5 @@
 #pragma once
 
-//#include <PxTypeInfo.h>
 
 namespace PhysX
 {

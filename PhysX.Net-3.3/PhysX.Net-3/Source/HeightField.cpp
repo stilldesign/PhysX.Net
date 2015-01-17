@@ -1,5 +1,4 @@
 #include "StdAfx.h"
-//#include <PxHeightField.h> 
 #include "HeightField.h"
 #include "Physics.h"
 #include "Serializable.h"

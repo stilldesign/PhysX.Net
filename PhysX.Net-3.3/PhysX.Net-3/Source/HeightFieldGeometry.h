@@ -3,7 +3,6 @@
 #include "HeightField.h"
 #include "GeometryEnum.h"
 #include "Geometry.h"
-//#include <PxHeightFieldGeometry.h> 
 
 namespace PhysX
 {

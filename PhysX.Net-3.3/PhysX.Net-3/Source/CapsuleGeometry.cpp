@@ -1,6 +1,5 @@
 #include "StdAfx.h"
 #include "CapsuleGeometry.h"
-//#include <PxCapsuleGeometry.h>
 
 using namespace PhysX;
 

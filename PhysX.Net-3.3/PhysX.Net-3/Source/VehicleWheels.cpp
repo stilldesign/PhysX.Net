@@ -2,7 +2,6 @@
 #include "VehicleWheels.h"
 #include "Physics.h"
 #include "Actor.h"
-//#include <PxVehicleWheels.h> 
 
 VehicleWheels::VehicleWheels(PxVehicleWheels* wheels, PhysX::Physics^ owner)
 {

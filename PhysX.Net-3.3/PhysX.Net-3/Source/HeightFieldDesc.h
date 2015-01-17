@@ -2,7 +2,6 @@
 
 #include "HeightFieldEnum.h"
 #include "HeightFieldSample.h"
-//#include <PxHeightFieldDesc.h> 
 
 namespace PhysX
 {

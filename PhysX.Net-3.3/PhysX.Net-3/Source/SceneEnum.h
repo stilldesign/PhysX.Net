@@ -1,9 +1,5 @@
 #pragma once
 
-//#include <PxVisualizationParameter.h>
-//#include <PxSceneDesc.h>
-//#include <PxQueryFiltering.h>
-//#include <PxQueryReport.h>
 
 namespace PhysX
 {

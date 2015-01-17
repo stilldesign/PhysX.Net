@@ -6,7 +6,6 @@
 #include "RigidDynamic.h"
 #include "Shape.h"
 #include "ControllerState.h"
-//#include <PxRigidDynamic.h>
 
 using namespace System::Linq;
 

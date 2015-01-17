@@ -1,7 +1,6 @@
 #pragma once
 
 #include "SimpleContact.h"
-//#include <PxContact.h> 
 
 namespace PhysX
 {

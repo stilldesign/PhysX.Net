@@ -1,6 +1,5 @@
 #pragma once
 
-//#include <PxContact.h>
 
 namespace PhysX
 {

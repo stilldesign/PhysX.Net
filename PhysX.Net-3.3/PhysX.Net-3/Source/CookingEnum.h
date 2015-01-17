@@ -1,7 +1,5 @@
 #pragma once
 
-//#include <PxCooking.h>
-//#include <PxConvexMeshDesc.h> 
 
  namespace PhysX
  {

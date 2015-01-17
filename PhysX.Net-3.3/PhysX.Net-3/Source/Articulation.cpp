@@ -4,7 +4,6 @@
 #include "Bounds3.h"
 #include "Serializable.h"
 #include "Physics.h"
-//#include <PxArticulation.h> 
 
 Articulation::Articulation(PxArticulation* articulation, PhysX::Physics^ owner)
 {

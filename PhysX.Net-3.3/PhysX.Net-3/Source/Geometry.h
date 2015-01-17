@@ -1,6 +1,5 @@
 #pragma once
 
-////#include <PxGeometry.h>
 #include "GeometryEnum.h"
 
 namespace PhysX

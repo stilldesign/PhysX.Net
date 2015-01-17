@@ -6,8 +6,6 @@
 #include "ParticleReadData.h"
 #include "ParticleCreationData.h"
 #include "Physics.h"
-//#include <PxParticleBase.h> 
-//#include <PxStrideIterator.h>
 
 ParticleBase::ParticleBase(PxParticleBase* particleBase, PhysX::Physics^ owner)
 	: Actor(particleBase, owner)

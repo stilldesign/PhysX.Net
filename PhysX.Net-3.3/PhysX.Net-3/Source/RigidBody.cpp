@@ -10,8 +10,6 @@
 #include "SweepHit.h"
 #include "LinearSweepMultipleResult.h"
 
-//#include <PxRigidBody.h>
-//#include <PxRigidBodyExt.h>
 
 RigidBody::RigidBody(PxRigidBody* rigidBody, PhysX::IDisposable^ owner)
 	: RigidActor(rigidBody, owner)

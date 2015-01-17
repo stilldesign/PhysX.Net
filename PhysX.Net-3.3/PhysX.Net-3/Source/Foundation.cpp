@@ -4,9 +4,6 @@
 #include "ErrorCallback.h"
 #include "FailedToCreateObjectException.h"
 #include "FoundationAlreadyInitalizedException.h"
-//#include <PxTolerancesScale.h>
-//#include <PxDefaultAllocator.h> 
-//#include <PxDefaultErrorCallback.h>
 
 static Foundation::Foundation()
 {

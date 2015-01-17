@@ -40,9 +40,6 @@
 #include "RevoluteJoint.h"
 #include "SphericalJoint.h"
 
-//#include <PxDefaultAllocator.h>
-//#include <PxDefaultErrorCallback.h>
-//#include <PxExtensionsAPI.h>
 //#include <PvdConnection.h>
 //#include <extensions\PxCollectionExt.h>
 

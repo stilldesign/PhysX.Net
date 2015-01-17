@@ -1,6 +1,5 @@
 #pragma once
 
-//#include <PxMeshScale.h> 
 
 namespace PhysX
 {

@@ -29,8 +29,6 @@
 #include "SceneLimits.h"
 #include "ContactModifyCallback.h"
 
-//#include <PxFixedJoint.h>
-//#include <PxCollectionExt.h>
 
 using namespace PhysX;
 

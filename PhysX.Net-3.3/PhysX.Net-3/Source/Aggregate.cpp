@@ -5,7 +5,6 @@
 #include "Articulation.h"
 #include "Serializable.h"
 #include "Physics.h"
-//#include <PxAggregate.h> 
 
 Aggregate::Aggregate(PxAggregate* aggregate, PhysX::Physics^ owner)
 {

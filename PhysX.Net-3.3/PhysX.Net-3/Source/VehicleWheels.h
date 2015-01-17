@@ -1,7 +1,6 @@
 #pragma once
 
 #include "RigidDynamic.h"
-//#include <PxVehicleWheels.h> 
 
 namespace PhysX
 {

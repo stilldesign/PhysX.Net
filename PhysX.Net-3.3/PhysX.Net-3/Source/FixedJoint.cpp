@@ -1,5 +1,4 @@
 #include "StdAfx.h"
-//#include <PxFixedJoint.h> 
 #include "FixedJoint.h"
 
 FixedJoint::FixedJoint(PxFixedJoint* joint, PhysX::Physics^ owner)

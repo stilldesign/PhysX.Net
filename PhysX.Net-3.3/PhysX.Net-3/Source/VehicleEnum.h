@@ -1,8 +1,5 @@
 #pragma once
 
-//#include <PxVehicleComponents.h> 
-//#include <PxVehicleTireFriction.h> 
-//#include <PxVehicleDrive4W.h>
 
 namespace PhysX
 {

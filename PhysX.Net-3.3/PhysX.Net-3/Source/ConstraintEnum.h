@@ -1,8 +1,5 @@
 #pragma once
 
-//#include <PxConstraint.h>
-//#include <PxConstraintDesc.h> 
-//#include <PxConstraintExt.h>
 
 namespace PhysX
 {

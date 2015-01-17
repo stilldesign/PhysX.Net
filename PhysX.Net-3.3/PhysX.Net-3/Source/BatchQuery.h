@@ -3,7 +3,6 @@
 #include "SceneEnum.h"
 #include "FilterData.h"
 #include "QueryFilterData.h"
-//#include <PxBatchQuery.h> 
 
 namespace PhysX
 {

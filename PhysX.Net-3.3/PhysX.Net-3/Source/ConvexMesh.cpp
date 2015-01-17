@@ -4,7 +4,6 @@
 #include "HullPolygon.h"
 #include "ConvexMeshMassInformation.h"
 #include "Serializable.h"
-//#include <PxConvexMesh.h> 
 
 ConvexMesh::ConvexMesh(PxConvexMesh* convexMesh, PhysX::Physics^ physics)
 {

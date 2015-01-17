@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Plane.h"
-//#include <PxConvexMesh.h> 
 
 namespace PhysX
 {

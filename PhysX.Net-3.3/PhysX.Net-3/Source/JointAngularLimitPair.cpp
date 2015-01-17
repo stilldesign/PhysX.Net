@@ -1,6 +1,5 @@
 #include "StdAfx.h"
 #include "JointAngularLimitPair.h"
-//#include <PxJointLimit.h> 
 
 JointAngularLimitPair::JointAngularLimitPair(PxJointAngularLimitPair* unmanaged)
 	: JointLimitParameters(unmanaged)

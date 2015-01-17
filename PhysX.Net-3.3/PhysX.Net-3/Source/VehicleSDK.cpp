@@ -9,9 +9,6 @@
 #include "BatchQuery.h"
 #include "VehicleWheelsDynData.h"
 #include "VehicleConcurrentUpdateData.h"
-//#include <PxVehicleSDK.h>
-//#include <PxVehicleUtilSetup.h>
-//#include <PxVehicleUpdate.h>
 
 VehicleSDK::VehicleSDK(PhysX::Physics^ physics)
 {

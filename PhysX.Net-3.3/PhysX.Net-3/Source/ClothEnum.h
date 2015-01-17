@@ -1,8 +1,5 @@
 #pragma once
 
-//#include <PxClothTypes.h> 
-//#include <PxClothMeshDesc.h>
-//#include <PxClothFabric.h>
 
 namespace PhysX
 {

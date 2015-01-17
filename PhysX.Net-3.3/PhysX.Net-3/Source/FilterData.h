@@ -1,6 +1,5 @@
 #pragma once
 
-//#include <PxFiltering.h>
 
 namespace PhysX
 {

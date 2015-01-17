@@ -4,8 +4,6 @@
 #include "Vector3.h"
 #include "Vector4.h"
 #include "Plane.h"
-//#include <PxCapsuleGeometry.h>
-//#include <PxPlaneGeometry.h>
 
 using namespace System::Globalization;
 using namespace PhysX;

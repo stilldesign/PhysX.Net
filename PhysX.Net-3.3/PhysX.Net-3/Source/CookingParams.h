@@ -2,7 +2,6 @@
 
 #include "CookingEnum.h"
 #include "TolerancesScale.h"
-//#include <PxCooking.h> 
 
 namespace PhysX
 {

@@ -1,7 +1,6 @@
 #include "StdAfx.h"
 #include "SphericalJoint.h"
 #include "JointLimitCone.h"
-//#include <PxSphericalJoint.h> 
 
 SphericalJoint::SphericalJoint(PxSphericalJoint* joint, PhysX::Physics^ owner)
 	: Joint(joint, owner)

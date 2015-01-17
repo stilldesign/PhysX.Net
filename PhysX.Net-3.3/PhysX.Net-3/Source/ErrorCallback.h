@@ -1,7 +1,5 @@
 #pragma once
 
-//#include <PxErrorCallback.h>
-//#include <PxErrors.h>
 #include "PhysicsEnum.h"
 
 namespace PhysX

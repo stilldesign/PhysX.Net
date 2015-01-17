@@ -1,6 +1,5 @@
 #include "StdAfx.h"
 
-////#include <PxGeometryHelpers.h> 
 //
 //#include "GeometryHolder.h"
 //#include "Geometry.h"

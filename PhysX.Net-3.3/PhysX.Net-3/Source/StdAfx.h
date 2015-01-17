@@ -34,12 +34,6 @@ THE SOFTWARE.
 // It wasn't in beta2, perhaps they just missed it. To the forums, posthaste!
 #include <extensions\PxCollectionExt.h>
 
-////#include <PxTransform.h>
-////#include <PxVec2.h>
-////#include <PxVec3.h>
-////#include <PxVec4.h>
-////#include <PxQuat.h>
-////#include <PxMat33.h>
 
 // Native PhysX namespaces
 using namespace physx;

@@ -2,7 +2,6 @@
 
 #include "SceneEnum.h"
 #include "FilterData.h"
-//#include <PxController.h> 
 
 namespace PhysX
 {

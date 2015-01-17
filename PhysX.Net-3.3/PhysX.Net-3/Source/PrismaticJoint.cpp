@@ -1,7 +1,6 @@
 #include "StdAfx.h"
 #include "PrismaticJoint.h"
 #include "JointLinearLimitPair.h"
-//#include <PxPrismaticJoint.h> 
 
 PrismaticJoint::PrismaticJoint(PxPrismaticJoint* joint, PhysX::Physics^ owner)
 	: Joint(joint, owner)

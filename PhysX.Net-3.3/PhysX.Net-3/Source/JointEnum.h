@@ -1,12 +1,5 @@
 #pragma once
 
-//#include <PxConstraintDesc.h> 
-//#include <PxConstraintExt.h> 
-//#include <PxD6Joint.h> 
-//#include <PxDistanceJoint.h> 
-//#include <PxPrismaticJoint.h> 
-//#include <PxRevoluteJoint.h> 
-//#include <PxSphericalJoint.h>
 
 namespace PhysX
 {

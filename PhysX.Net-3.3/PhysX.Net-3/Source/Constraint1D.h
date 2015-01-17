@@ -1,7 +1,6 @@
 #pragma once
 
 #include "ConstraintEnum.h"
-//#include <PxConstraintDesc.h>
 
 namespace PhysX
 {

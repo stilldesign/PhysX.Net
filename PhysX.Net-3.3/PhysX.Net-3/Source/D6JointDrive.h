@@ -1,7 +1,6 @@
 #pragma once
 
 #include "JointEnum.h"
-//#include <PxD6Joint.h> 
 
 namespace PhysX
 {

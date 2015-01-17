@@ -1,11 +1,5 @@
 #pragma once
 
-//#include <PxLockedData.h>
-//#include <PxMaterial.h>
-//#include <PxErrors.h>
-//#include <PxFiltering.h> 
-//#include <PxSceneDesc.h>
-//#include <PxBatchQueryDesc.h> 
 
 namespace PhysX
 {

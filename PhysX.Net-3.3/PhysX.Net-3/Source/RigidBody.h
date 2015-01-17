@@ -4,8 +4,6 @@
 #include "SceneEnum.h"
 #include "FilterData.h"
 #include "QueryFilterData.h"
-//#include <PxActor.h>
-//#include <PxRigidBody.h> 
 
 namespace PhysX
 {

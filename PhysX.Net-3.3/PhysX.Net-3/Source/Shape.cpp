@@ -12,7 +12,6 @@
 #include "TriangleMeshGeometry.h"
 #include "HeightFieldGeometry.h"
 #include "ShapeUtil.h"
-//#include <PxShapeExt.h>
 
 Shape::Shape(PxShape* shape, PhysX::RigidActor^ parentActor)
 {

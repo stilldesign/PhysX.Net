@@ -1,5 +1,4 @@
 #include "StdAfx.h"
-//#include <PxDistanceJoint.h> 
 #include "DistanceJoint.h"
 
 DistanceJoint::DistanceJoint(PxDistanceJoint* joint, PhysX::Physics^ owner)

@@ -1,6 +1,5 @@
 #pragma once
 
-//#include <PxCloth.h>
 
 namespace PhysX
 {

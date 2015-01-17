@@ -2,8 +2,6 @@
 
 #include "LockedData.h"
 #include "ClothParticle.h"
-//#include <PxClothTypes.h> 
-//#include <PxClothParticleData.h>
 
 namespace PhysX
 {

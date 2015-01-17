@@ -1,7 +1,6 @@
 #pragma once
 
 #include "VisualDebuggerEnum.h"
-//#include <PxVisualDebuggerExt.h>
 //#include <PvdConnection.h>
 
 namespace PhysX

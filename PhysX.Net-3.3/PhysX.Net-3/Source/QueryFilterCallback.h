@@ -1,6 +1,5 @@
 #pragma once
 
-//#include <PxQueryFiltering.h> 
 #include "FilterData.h"
 #include "QueryHit.h"
 

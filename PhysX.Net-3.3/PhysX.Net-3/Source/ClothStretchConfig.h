@@ -1,6 +1,5 @@
 #pragma once
 
-//#include <PxCloth.h> 
 #include "ClothEnum.h"
 
 namespace PhysX

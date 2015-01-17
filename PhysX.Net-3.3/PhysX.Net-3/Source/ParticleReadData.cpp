@@ -1,6 +1,5 @@
 #include "StdAfx.h"
 #include "ParticleReadData.h"
-//#include <PxParticleReadData.h> 
 
 ParticleReadData::ParticleReadData(PxParticleReadData* data)
 	: LockedData(data)

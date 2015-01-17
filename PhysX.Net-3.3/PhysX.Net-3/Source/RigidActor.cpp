@@ -6,10 +6,6 @@
 #include "ShapeCreationException.h"
 #include "Physics.h"
 #include "RigidStatic.h"
-//#include <PxRigidActor.h>
-//#include <PxShape.h>
-//#include <PxBoxGeometry.h>
-//#include <PxSimpleFactory.h>
 
 RigidActor::RigidActor(PxRigidActor* rigidActor, PhysX::IDisposable^ owner)
 	: Actor(rigidActor, owner)

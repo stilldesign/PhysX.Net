@@ -10,8 +10,6 @@
 #include "Physics.h"
 #include "FailedToCreateObjectException.h"
 #include "ObstacleContext.h"
-//#include <PxBoxController.h> 
-//#include <PxCapsuleController.h> 
 
 PhysX::ControllerManager::ControllerManager(PxControllerManager* manager, PhysX::Scene^ owner)
 {

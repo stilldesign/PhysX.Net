@@ -3,7 +3,6 @@
 #include "Articulation.h"
 #include "Scene.h"
 #include "Physics.h"
-//#include <PxArticulation.h> 
 
 ArticulationLink::ArticulationLink(PxArticulationLink* articulationLink, PhysX::Articulation^ owner)
 	: RigidBody(articulationLink, owner->Scene->Physics)

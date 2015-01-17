@@ -1,7 +1,6 @@
 #pragma once
 
 #include "BitAndData.h"
-//#include <PxHeightFieldSample.h> 
 
 namespace PhysX
 {

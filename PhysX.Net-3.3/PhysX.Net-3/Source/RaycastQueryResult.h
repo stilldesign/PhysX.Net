@@ -2,7 +2,6 @@
 
 #include "PhysicsEnum.h"
 
-//#include <PxBatchQueryDesc.h> 
 
 namespace PhysX
 {

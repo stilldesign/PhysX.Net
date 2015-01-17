@@ -1,6 +1,5 @@
 #include "StdAfx.h"
 #include "ParticleCreationData.h"
-//#include <PxCoreUtilityTypes.h> 
 
 PxParticleCreationData ParticleCreationData::ToUnmanaged(ParticleCreationData^ data)
 {

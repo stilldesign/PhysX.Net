@@ -1,7 +1,6 @@
 #pragma once
 
 #include "PhysicsEnum.h"
-//#include <PxSimulationEventCallback.h> 
 
 namespace PhysX
 {

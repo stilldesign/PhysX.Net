@@ -1,6 +1,5 @@
 #include "StdAfx.h"
 #include "JointLinearLimit.h"
-//#include <PxJointLimit.h> 
 
 JointLinearLimit::JointLinearLimit(PxJointLinearLimit* unmanaged)
 	: JointLimitParameters(unmanaged)

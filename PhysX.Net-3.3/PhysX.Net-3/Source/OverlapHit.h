@@ -1,7 +1,6 @@
 #pragma once
 
 #include "LocationHit.h"
-//#include <PxQueryReport.h>
 
 namespace PhysX
 {

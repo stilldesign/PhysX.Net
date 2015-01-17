@@ -1,5 +1,4 @@
 #include "StdAfx.h"
-//#include <PxConvexMeshGeometry.h> 
 #include "ConvexMeshGeometry.h"
 #include "ConvexMesh.h"
 
