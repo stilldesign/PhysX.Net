@@ -214,6 +214,26 @@ namespace PhysX
 
 			//
 
+			/// <summary>
+			/// Returns the maximum depenetration velocity the solver is permitted to introduced.
+			/// This value controls how much velocity the solver can introduce to correct
+			/// for penetrations in contacts.
+			/// </summary>
+			property float MaxDepenetrationVelocity
+			{
+				float get();
+				void set(float value);
+			}
+
+			/// <summary>
+			/// Gets or sets the CCD minimum advance coefficient.
+			/// </summary>
+			property float MinCCDAdvanceCoefficient
+			{
+				float get();
+				void set(float value);
+			}
+
 			property RigidBodyFlag RigidBodyFlags
 			{
 				RigidBodyFlag get();
@@ -239,12 +259,29 @@ namespace PhysX
 			}
 
 			/// <summary>
+			/// Gets the inverse mass of the actor.
+			/// </summary>
+			property float InverseMass
+			{
+				float get();
+			}
+
+			/// <summary>
 			/// Gets or sets the inertia tensor, using a parameter specified in mass space coordinates.
 			/// </summary>
 			property Vector3 MassSpaceInertiaTensor
 			{
 				Vector3 get();
 				void set(Vector3 value);
+			}
+
+			/// <summary>
+			/// Gets the diagonal inverse inertia tensor of the actor relative to the mass coordinate frame.
+			/// This method retrieves a mass frame inverse inertia vector.
+			/// </summary>
+			property Vector3 MassSpaceInverseInertiaTensor
+			{
+				Vector3 get();
 			}
 
 			/// <summary>

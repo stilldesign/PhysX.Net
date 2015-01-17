@@ -263,6 +263,24 @@ LinearSweepMultipleResult^ RigidBody::LinearSweepMultiple(RigidBody^ body, PhysX
 
 //
 
+float RigidBody::MaxDepenetrationVelocity::get()
+{
+	return this->UnmanagedPointer->getMaxDepenetrationVelocity();
+}
+void RigidBody::MaxDepenetrationVelocity::set(float value)
+{
+	this->UnmanagedPointer->setMaxDepenetrationVelocity(value);
+}
+
+float RigidBody::MinCCDAdvanceCoefficient::get()
+{
+	return this->UnmanagedPointer->getMinCCDAdvanceCoefficient();
+}
+void RigidBody::MinCCDAdvanceCoefficient::set(float value)
+{
+	this->UnmanagedPointer->setMinCCDAdvanceCoefficient(value);
+}
+
 RigidBodyFlag RigidBody::RigidBodyFlags::get()
 {
 	return ToManagedEnum(RigidBodyFlag, this->UnmanagedPointer->getRigidBodyFlags());
@@ -290,6 +308,11 @@ void RigidBody::Mass::set(float value)
 	this->UnmanagedPointer->setMass(value);
 }
 
+float RigidBody::InverseMass::get()
+{
+	return this->UnmanagedPointer->getInvMass();
+}
+
 Vector3 RigidBody::MassSpaceInertiaTensor::get()
 {
 	return MathUtil::PxVec3ToVector3(this->UnmanagedPointer->getMassSpaceInertiaTensor());
@@ -297,6 +320,11 @@ Vector3 RigidBody::MassSpaceInertiaTensor::get()
 void RigidBody::MassSpaceInertiaTensor::set(Vector3 value)
 {
 	return this->UnmanagedPointer->setMassSpaceInertiaTensor(MathUtil::Vector3ToPxVec3(value));
+}
+
+Vector3 RigidBody::MassSpaceInverseInertiaTensor::get()
+{
+	return MV(this->UnmanagedPointer->getMassSpaceInvInertiaTensor());
 }
 
 Vector3 RigidBody::LinearVelocity::get()
