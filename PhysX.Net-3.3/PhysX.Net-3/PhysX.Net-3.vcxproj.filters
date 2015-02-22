@@ -551,11 +551,17 @@
     <ClCompile Include="Source\VehicleUtilSetup.cpp">
       <Filter>Vehicle</Filter>
     </ClCompile>
+    <ClCompile Include="Source\VehicleUtilSetup.cpp">
+      <Filter>Vehicle</Filter>
+    </ClCompile>
     <ClCompile Include="Source\ContactPatchBase.cpp">
       <Filter>Contact</Filter>
     </ClCompile>
     <ClCompile Include="Source\Aggregate.cpp">
       <Filter>Aggregate</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VehicleNoDrive.cpp">
+      <Filter>Vehicle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1240,6 +1246,12 @@
     <ClInclude Include="Source\VehicleUtilSetup.h">
       <Filter>Vehicle</Filter>
     </ClInclude>
+    <ClInclude Include="Source\VehicleUtilSetup.h">
+      <Filter>Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleUtilSetup.h">
+      <Filter>Vehicle</Filter>
+    </ClInclude>
     <ClInclude Include="Source\ContactPatch.h">
       <Filter>Contact</Filter>
     </ClInclude>
@@ -1248,6 +1260,9 @@
     </ClInclude>
     <ClInclude Include="Source\Aggregate.h">
       <Filter>Aggregate</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleNoDrive.h">
+      <Filter>Vehicle</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
