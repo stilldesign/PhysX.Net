@@ -6,6 +6,7 @@ using PhysX.Math;
 using SlimDX.Direct3D11;
 
 using Buffer = SlimDX.Direct3D11.Buffer;
+using System.Globalization;
 
 namespace PhysX.Samples.Engine
 {
@@ -52,9 +53,9 @@ namespace PhysX.Samples.Engine
 
 			for (int i = 0; i < positions.Length; i += 3)
 			{
-				float x = float.Parse(positions[i + 0]);
-				float y = float.Parse(positions[i + 1]);
-				float z = float.Parse(positions[i + 2]);
+				float x = float.Parse(positions[i + 0], CultureInfo.InvariantCulture);
+				float y = float.Parse(positions[i + 1], CultureInfo.InvariantCulture);
+				float z = float.Parse(positions[i + 2], CultureInfo.InvariantCulture);
 
 				yield return new Vector3(x, y, z);
 			}
@@ -65,7 +66,7 @@ namespace PhysX.Samples.Engine
 
 			for (int i = 0; i < indices.Length; i++)
 			{
-				yield return int.Parse(indices[i]);
+				yield return int.Parse(indices[i], CultureInfo.InvariantCulture);
 			}
 		}
 	}

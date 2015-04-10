@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
 using PhysX.Math;
+using System.Globalization;
 
 namespace PhysX.Test.Util
 {
@@ -42,9 +43,9 @@ namespace PhysX.Test.Util
 
 			for (int i = 0; i < positions.Length; i += 3)
 			{
-				float x = float.Parse(positions[i + 0]);
-				float y = float.Parse(positions[i + 1]);
-				float z = float.Parse(positions[i + 2]);
+				float x = float.Parse(positions[i + 0], CultureInfo.InvariantCulture);
+				float y = float.Parse(positions[i + 1], CultureInfo.InvariantCulture);
+				float z = float.Parse(positions[i + 2], CultureInfo.InvariantCulture);
 
 				yield return new Vector3(x, y, z);
 			}
@@ -55,7 +56,7 @@ namespace PhysX.Test.Util
 
 			for (int i = 0; i < indices.Length; i++)
 			{
-				yield return int.Parse(indices[i]);
+				yield return int.Parse(indices[i], CultureInfo.InvariantCulture);
 			}
 		}
 	}
