@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
-using PhysX.Math;
 using System.Globalization;
+using System.Numerics;
 
 namespace PhysX.Test.Util
 {

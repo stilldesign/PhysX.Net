@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Numerics;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Input;
@@ -8,9 +9,12 @@ using SlimDX;
 using SlimDX.D3DCompiler;
 using SlimDX.Direct3D11;
 using SlimDX.DXGI;
-
 using Buffer = SlimDX.Direct3D11.Buffer;
 using Device = SlimDX.Direct3D11.Device;
+using Vector2 = System.Numerics.Vector2;
+using Vector3 = System.Numerics.Vector3;
+using Vector4 = System.Numerics.Vector4;
+using Matrix = System.Numerics.Matrix4x4;
 
 namespace PhysX.Samples.Engine
 {
@@ -68,12 +72,12 @@ namespace PhysX.Samples.Engine
 			var sphereGeom = new SphereGeometry(2);
 			var boxShape = rigidActor.CreateShape(sphereGeom, material);
 
-			rigidActor.GlobalPose = PhysX.Math.Matrix.Translation(cameraPos);
+			rigidActor.GlobalPose = Matrix.CreateTranslation(cameraPos);
 			rigidActor.SetMassAndUpdateInertia(100);
 
 			this.Scene.AddActor(rigidActor);
 
-			rigidActor.AddForceAtLocalPosition(cameraDir * force, new Math.Vector3(0, 0, 0), ForceMode.Impulse, true);
+			rigidActor.AddForceAtLocalPosition(cameraDir * force, new System.Numerics.Vector3(0, 0, 0), ForceMode.Impulse, true);
 		}
 
 		private void InitalizeGraphics()
@@ -193,7 +197,7 @@ namespace PhysX.Samples.Engine
 
 			var sceneDesc = new SceneDesc()
 			{
-				Gravity = new Math.Vector3(0, -9.81f, 0),
+				Gravity = new System.Numerics.Vector3(0, -9.81f, 0),
 #if GPU
 				GpuDispatcher = cudaContext.GpuDispatcher
 #endif
@@ -223,7 +227,7 @@ namespace PhysX.Samples.Engine
 
 			var groundPlane = this.Scene.Physics.CreateRigidStatic();
 			groundPlane.Name = "Ground Plane";
-			groundPlane.GlobalPose = Matrix.RotationAxis(new Vector3(0, 0, 1), (float)System.Math.PI / 2).AsPhysX();
+			groundPlane.GlobalPose = Matrix.CreateFromAxisAngle(new Vector3(0, 0, 1), (float)System.Math.PI / 2);
 
 			var planeGeom = new PlaneGeometry();
 
@@ -296,7 +300,7 @@ namespace PhysX.Samples.Engine
 		{
 			var pass = _visualizationEffect.RenderScenePass0;
 
-			_visualizationEffect.World.SetMatrix(Matrix.Identity);
+			_visualizationEffect.World.SetMatrix(SlimDX.Matrix.Identity);
 			_visualizationEffect.View.SetMatrix(this.Camera.View);
 			_visualizationEffect.Projection.SetMatrix(this.Camera.Projection);
 
@@ -311,7 +315,7 @@ namespace PhysX.Samples.Engine
 				{
 					var point = data.Points[i];
 
-					vertices[i * 2 + 0] = new VertexPositionColor(point.Point.As<Vector3>(), Color.FromArgb(point.Color));
+					vertices[i * 2 + 0] = new VertexPositionColor(point.Point.As<SlimDX.Vector3>(), Color.FromArgb(point.Color));
 				}
 
 				DrawVertices(vertices, PrimitiveTopology.PointList);
@@ -324,8 +328,8 @@ namespace PhysX.Samples.Engine
 				{
 					DebugLine line = data.Lines[x];
 
-					vertices[x * 2 + 0] = new VertexPositionColor(line.Point0.As<Vector3>(), Color.FromArgb(line.Color0));
-					vertices[x * 2 + 1] = new VertexPositionColor(line.Point1.As<Vector3>(), Color.FromArgb(line.Color1));
+					vertices[x * 2 + 0] = new VertexPositionColor(line.Point0.As<SlimDX.Vector3>(), Color.FromArgb(line.Color0));
+					vertices[x * 2 + 1] = new VertexPositionColor(line.Point1.As<SlimDX.Vector3>(), Color.FromArgb(line.Color1));
 				}
 
 				DrawVertices(vertices, PrimitiveTopology.LineList);
@@ -338,9 +342,9 @@ namespace PhysX.Samples.Engine
 				{
 					DebugTriangle triangle = data.Triangles[x];
 
-					vertices[x * 3 + 0] = new VertexPositionColor(triangle.Point0.As<Vector3>(), Color.FromArgb(triangle.Color0));
-					vertices[x * 3 + 1] = new VertexPositionColor(triangle.Point1.As<Vector3>(), Color.FromArgb(triangle.Color1));
-					vertices[x * 3 + 2] = new VertexPositionColor(triangle.Point2.As<Vector3>(), Color.FromArgb(triangle.Color2));
+					vertices[x * 3 + 0] = new VertexPositionColor(triangle.Point0.As<SlimDX.Vector3>(), Color.FromArgb(triangle.Color0));
+					vertices[x * 3 + 1] = new VertexPositionColor(triangle.Point1.As<SlimDX.Vector3>(), Color.FromArgb(triangle.Color1));
+					vertices[x * 3 + 2] = new VertexPositionColor(triangle.Point2.As<SlimDX.Vector3>(), Color.FromArgb(triangle.Color2));
 				}
 
 				DrawVertices(vertices, PrimitiveTopology.TriangleList);

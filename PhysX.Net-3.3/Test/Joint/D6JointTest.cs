@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PhysX.Math;
 
 namespace PhysX.Test
 {
@@ -16,7 +16,7 @@ namespace PhysX.Test
 			{
 				var box = CreateBoxActor(core.Scene, 5, 5, 5);
 
-				using (var d6 = core.Scene.CreateJoint<D6Joint>(box, Matrix.Identity, null, Matrix.Identity))
+				using (var d6 = core.Scene.CreateJoint<D6Joint>(box, Matrix4x4.Identity, null, Matrix4x4.Identity))
 				{
 
 				}

@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Numerics;
 using System.Runtime.InteropServices;
-using PhysX.Math;
 using PhysX.Samples.Engine.Util;
 
 namespace PhysX.Samples.ClothSample
@@ -72,7 +72,7 @@ namespace PhysX.Samples.ClothSample
 			// Create the cloth mesh from the cooked stream
 			var cloth = scene.Physics.CreateCloth
 			(
-				Matrix.Translation(0, 30, 0),
+				Matrix4x4.CreateTranslation(0, 30, 0),
 				clothFabric,
 				particles.ToArray(),
 				0
@@ -102,7 +102,7 @@ namespace PhysX.Samples.ClothSample
 			var boxGeom = new BoxGeometry(0.5f, 25, 0.5f);
 			var boxShape = rigidActor.CreateShape(boxGeom, material);
 
-			rigidActor.GlobalPose = Matrix.Translation(polePosition);
+			rigidActor.GlobalPose = Matrix4x4.CreateTranslation(polePosition);
 
 			this.Scene.AddActor(rigidActor);
 

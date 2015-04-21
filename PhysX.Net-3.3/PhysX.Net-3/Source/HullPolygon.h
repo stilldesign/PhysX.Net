@@ -1,7 +1,5 @@
 #pragma once
 
-#include "Plane.h"
-
 namespace PhysX
 {
 	public ref class HullPolygon
@@ -11,7 +9,7 @@ namespace PhysX
 			static HullPolygon^ ToManaged(PxHullPolygon hullPolygon);
 
 		public:
-			property PhysX::Math::Plane Plane;
+			property Plane Plane;
 			property int NumberOfVertices;
 			property int IndexBase;
 	};

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Windows.Input;
 using PhysX.Samples.Engine;
-using SlimDX;
 
 namespace PhysX.Samples.CharacterSample
 {
@@ -39,8 +39,8 @@ namespace PhysX.Samples.CharacterSample
 					Height = 4,
 					Radius = 1,
 					Material = material,
-					UpDirection = new Math.Vector3(0, 1, 0),
-					Position = new Math.Vector3(0, 2, 0),
+					UpDirection = new Vector3(0, 1, 0),
+					Position = new Vector3(0, 2, 0),
 					// TODO: I think this is coming back in 3.3 (> beta 2)
 					//Callback = new ControllerHitReport()
 				};
@@ -55,8 +55,8 @@ namespace PhysX.Samples.CharacterSample
 					Height = 4,
 					Radius = 1,
 					Material = material,
-					UpDirection = new Math.Vector3(0, 1, 0),
-					Position = new Math.Vector3(15, 2, 15)
+					UpDirection = new Vector3(0, 1, 0),
+					Position = new Vector3(15, 2, 15)
 				};
 
 				controllerManager.CreateController<CapsuleController>(desc);
@@ -74,9 +74,9 @@ namespace PhysX.Samples.CharacterSample
 			Vector3 controllerPosition = _controller.Position.As<Vector3>();
 
 			// Create a rotation matrix around the y-axis
-			Matrix rotation = Matrix.RotationAxis(Vector3.UnitY, _rotation);
+			var rotation = Matrix4x4.CreateFromAxisAngle(Vector3.UnitY, _rotation);
 			// Rotate the 'fowards' vector by the rotation matrix, then stretch it out a distance
-			Vector3 cameraOffset = Vector3.TransformCoordinate(-Vector3.UnitZ, rotation) * _cameraDistance;
+			Vector3 cameraOffset = Vector3.Transform(-Vector3.UnitZ, rotation) * _cameraDistance;
 
 			// Start at the controllers position, move the camera backwards, move the camera up slightly
 			Vector3 p = controllerPosition
@@ -84,7 +84,10 @@ namespace PhysX.Samples.CharacterSample
 				+ new Vector3(0, 3, 0);
 
 			// Recreate the cameras view matrix from our computed position, target (and static up direction)
-			this.Engine.Camera.View = Matrix.LookAtLH(p, controllerPosition, Vector3.UnitY);
+			this.Engine.Camera.View = SlimDX.Matrix.LookAtLH(
+				p.As<SlimDX.Vector3>(),
+				controllerPosition.As<SlimDX.Vector3>(), 
+				SlimDX.Vector3.UnitY);
 		}
 
 		private void ProcessGravity()
@@ -113,7 +116,7 @@ namespace PhysX.Samples.CharacterSample
 		protected override void ProcessKeyboard(Key[] pressedKeys)
 		{
 			// Create a rotation matrix around the y-axis
-			Matrix rotation = Matrix.RotationAxis(Vector3.UnitY, _rotation);
+			var rotation = Matrix4x4.CreateFromAxisAngle(Vector3.UnitY, _rotation);
 
 			// Compute the forwards and right movement vectors
 			// The controller will move in its own space, so rotate the usual forwards and right vectors
@@ -135,7 +138,7 @@ namespace PhysX.Samples.CharacterSample
 			Vector3 d = Vector3.Normalize(moveDelta);
 
 			// Move the controller in the intended direction * a speed multiplier
-			_controller.Move(d.AsPhysX() * _controllerSpeed, this.Engine.FrameTime);
+			_controller.Move(d * _controllerSpeed, this.Engine.FrameTime);
 		}
 		protected override void ProcessMouse(float deltaX, float deltaY)
 		{

@@ -44,21 +44,23 @@ using namespace System::Collections::Generic;
 using namespace System::Linq;
 using namespace System::Diagnostics;
 using namespace System::Runtime::InteropServices;
+using namespace System::Numerics;
+
+#define Matrix Matrix4x4
 
 #include "IPhysXEntity.h"
 #include "OperationFailedException.h"
 #include "Util.h"
-#include "Vector2.h"
-#include "Vector3.h"
-#include "Vector4.h"
-#include "Quaternion.h"
-#include "Matrix.h"
+//#include "Vector2.h"
+//#include "Vector3.h"
+//#include "Vector4.h"
+//#include "Quaternion.h"
+//#include "Matrix.h"
 #include "MathUtil.h"
 #include "ObjectTable.h"
 
 // Our namespaces
 using namespace PhysX;
-using namespace PhysX::Math;
 
 // Enum conversion
 #define ToManagedEnum(managedType, e) ((managedType)(PxU32)e)

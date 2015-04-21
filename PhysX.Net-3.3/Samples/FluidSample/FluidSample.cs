@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using PhysX.Math;
+using System.Numerics;
 
 namespace PhysX.Samples.FluidSample
 {
@@ -78,8 +78,8 @@ namespace PhysX.Samples.FluidSample
 			var boxShape = rigidActor.CreateShape(boxGeom, material);
 
 			rigidActor.GlobalPose =
-				Matrix.RotationX(0.2f) *
-				Matrix.Translation(0, 7, -5.1f);
+				Matrix4x4.CreateRotationX(0.2f) *
+				Matrix4x4.CreateTranslation(0, 7, -5.1f);
 			rigidActor.SetMassAndUpdateInertia(10);
 			rigidActor.Flags = RigidDynamicFlags.Kinematic;
 
@@ -93,8 +93,8 @@ namespace PhysX.Samples.FluidSample
 			var boxShape2 = rigidActor2.CreateShape(boxGeom2, material);
 
 			rigidActor2.GlobalPose =
-				Matrix.RotationX(-0.2f) *
-				Matrix.Translation(0, 7, 5.1f);
+				Matrix4x4.CreateRotationX(-0.2f) *
+				Matrix4x4.CreateTranslation(0, 7, 5.1f);
 			rigidActor2.SetMassAndUpdateInertia(10);
 			rigidActor2.Flags = RigidDynamicFlags.Kinematic;
 
