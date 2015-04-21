@@ -32,7 +32,7 @@ technique10 RenderScene
 {
 	pass p0
 	{
-		SetVertexShader(CompileShader(vs_5_0, RenderSceneVS()));
-		SetPixelShader(CompileShader(ps_5_0, RenderScenePS()));
+		SetVertexShader(CompileShader(vs_4_0, RenderSceneVS()));
+		SetPixelShader(CompileShader(ps_4_0, RenderScenePS()));
 	}
 }

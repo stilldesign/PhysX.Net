@@ -84,10 +84,10 @@ namespace PhysX.Samples.CharacterSample
 				+ new Vector3(0, 3, 0);
 
 			// Recreate the cameras view matrix from our computed position, target (and static up direction)
-			this.Engine.Camera.View = SlimDX.Matrix.LookAtLH(
-				p.As<SlimDX.Vector3>(),
-				controllerPosition.As<SlimDX.Vector3>(), 
-				SlimDX.Vector3.UnitY);
+			this.Engine.Camera.View = SharpDX.Matrix.LookAtLH(
+				p.As<SharpDX.Vector3>(),
+				controllerPosition.As<SharpDX.Vector3>(), 
+				SharpDX.Vector3.UnitY);
 		}
 
 		private void ProcessGravity()
