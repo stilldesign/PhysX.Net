@@ -1,7 +1,6 @@
 #include "StdAfx.h"
 #include "ParticleBase.h"
 #include "Actor.h"
-#include "Plane.h"
 #include "FilterData.h"
 #include "ParticleReadData.h"
 #include "ParticleCreationData.h"

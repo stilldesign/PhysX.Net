@@ -32,8 +32,8 @@ MeshScale MeshScale::GetInverse()
 Matrix MeshScale::ToMatrix()
 {
 	return
-		Matrix::Scaling(this->Scale) *
-		Matrix::RotationQuaternion(this->Rotation);
+		Matrix::CreateScale(this->Scale) *
+		Matrix::CreateFromQuaternion(this->Rotation);
 }
 
 MeshScale MeshScale::Identity::get()

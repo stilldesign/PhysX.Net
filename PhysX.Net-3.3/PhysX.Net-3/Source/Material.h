@@ -3,8 +3,6 @@
 #include "MaterialEnum.h"
 #include "PhysicsEnum.h"
 
-using namespace PhysX::Math;
-
 namespace PhysX
 {
 	ref class Physics;

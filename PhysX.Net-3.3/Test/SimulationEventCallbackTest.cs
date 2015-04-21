@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PhysX.Math;
 
 namespace PhysX.Test
 {
@@ -20,7 +20,7 @@ namespace PhysX.Test
 
 				var box = CreateBoxActor(physics.Scene, new Vector3(5, 5, 5), new Vector3(0, 10, 0));
 
-				var joint = physics.Scene.CreateJoint<SphericalJoint>(box, Matrix.Identity, null, Matrix.Translation(0, 50, 0));
+				var joint = physics.Scene.CreateJoint<SphericalJoint>(box, Matrix4x4.Identity, null, Matrix4x4.CreateTranslation(0, 50, 0));
 				joint.BreakForce = 0.001f;
 				joint.ConstraintFlag = ConstraintFlag.Reporting;
 

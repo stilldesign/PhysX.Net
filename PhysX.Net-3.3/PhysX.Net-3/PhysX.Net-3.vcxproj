@@ -28,6 +28,8 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccProvider>SAK</SccProvider>
     <ProjectName>PhysX.Net</ProjectName>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -279,6 +281,7 @@
     <ClInclude Include="Source\OperationFailedException.h" />
     <ClInclude Include="Source\OverlapHit.h" />
     <ClInclude Include="Source\DefaultSimulationFilterShader.h" />
+    <ClInclude Include="Source\VectorAndMatrixExtensions.h" />
     <ClInclude Include="Source\VehicleWheelConcurrentUpdateData.h" />
     <ClInclude Include="Source\QueryCache.h" />
     <ClInclude Include="Source\QueryFilterCallback.h" />
@@ -334,7 +337,6 @@
     <ClInclude Include="Source\Material.h" />
     <ClInclude Include="Source\MaterialEnum.h" />
     <ClInclude Include="Source\MathUtil.h" />
-    <ClInclude Include="Source\Matrix.h" />
     <ClInclude Include="Source\MeshScale.h" />
     <ClInclude Include="Source\MultipleRaycastHitResult.h" />
     <ClInclude Include="Source\ObjectTable.h" />
@@ -351,10 +353,8 @@
     <ClInclude Include="Source\PhysicsAlreadyInstantiatedException.h" />
     <ClInclude Include="Source\PhysicsEnum.h" />
     <ClInclude Include="Source\PhysXException.h" />
-    <ClInclude Include="Source\Plane.h" />
     <ClInclude Include="Source\PlaneGeometry.h" />
     <ClInclude Include="Source\PrismaticJoint.h" />
-    <ClInclude Include="Source\Quaternion.h" />
     <ClInclude Include="Source\RaycastHit.h" />
     <ClInclude Include="Source\RenderBuffer.h" />
     <ClInclude Include="Source\RevoluteJoint.h" />
@@ -389,9 +389,6 @@
     <ClInclude Include="Source\TriggerPair.h" />
     <ClInclude Include="Source\UserControllerHitReport.h" />
     <ClInclude Include="Source\Util.h" />
-    <ClInclude Include="Source\Vector2.h" />
-    <ClInclude Include="Source\Vector3.h" />
-    <ClInclude Include="Source\Vector4.h" />
     <ClInclude Include="Source\VehicleAckermannGeometryData.h" />
     <ClInclude Include="Source\VehicleAutoBoxData.h" />
     <ClInclude Include="Source\VehicleChassisData.h" />
@@ -566,6 +563,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Source\StreamExtensions.cpp" />
+    <ClCompile Include="Source\VectorAndMatrixExtensions.cpp" />
     <ClCompile Include="Source\VehicleConcurrentUpdateData.cpp" />
     <ClCompile Include="Source\VehicleWheelConcurrentUpdateData.cpp" />
     <ClCompile Include="Source\VehicleWheelsDynData.cpp" />
@@ -612,12 +610,9 @@
     <ClCompile Include="Source\Geometry.cpp" />
     <ClCompile Include="Source\Material.cpp" />
     <ClCompile Include="Source\MathUtil.cpp" />
-    <ClCompile Include="Source\Matrix.cpp" />
     <ClCompile Include="Source\ObjectTable.cpp" />
     <ClCompile Include="Source\Physics.cpp" />
-    <ClCompile Include="Source\Plane.cpp" />
     <ClCompile Include="Source\PlaneGeometry.cpp" />
-    <ClCompile Include="Source\Quaternion.cpp" />
     <ClCompile Include="Source\RigidActor.cpp" />
     <ClCompile Include="Source\Scene.cpp" />
     <ClCompile Include="Source\SceneDesc.cpp" />
@@ -627,16 +622,17 @@
     <ClCompile Include="Source\SphereGeometry.cpp" />
     <ClCompile Include="Source\TolerancesScale.cpp" />
     <ClCompile Include="Source\Util.cpp" />
-    <ClCompile Include="Source\Vector2.cpp" />
-    <ClCompile Include="Source\Vector3.cpp" />
-    <ClCompile Include="Source\Vector4.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Numerics.Vectors">
+      <HintPath>..\packages\System.Numerics.Vectors.4.0.0\lib\portable-net45+win8+wpa81\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\samples\rigidbodiessample\packages.config" />
     <None Include="Changelog.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -644,5 +640,12 @@
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
 </Project>

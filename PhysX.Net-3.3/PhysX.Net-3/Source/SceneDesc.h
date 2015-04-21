@@ -4,8 +4,6 @@
 #include "TolerancesScale.h"
 #include "SimulationEventCallback.h"
 
-using namespace PhysX::Math;
-
 namespace PhysX
 {
 	ref class ContactModifyCallback;

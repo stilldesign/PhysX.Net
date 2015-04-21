@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Numerics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PhysX.Math;
 
 namespace PhysX.Test.Constraint
 {
@@ -15,7 +15,7 @@ namespace PhysX.Test.Constraint
 				var boxA = CreateBoxActor(core.Scene, new Vector3(1, 1, 1), new Vector3(-10, 10, 0));
 				var boxB = CreateBoxActor(core.Scene, new Vector3(1, 1, 1), new Vector3(10, 10, 0));
 
-				var joint = core.Scene.CreateJoint<SphericalJoint>(boxA, Matrix.Identity, boxB, Matrix.Identity);
+				var joint = core.Scene.CreateJoint<SphericalJoint>(boxA, Matrix4x4.Identity, boxB, Matrix4x4.Identity);
 
 				// Make sure its been wrapped when the joint was created
 				Assert.IsNotNull(joint.Constraint);
@@ -35,7 +35,7 @@ namespace PhysX.Test.Constraint
 				var boxA = CreateBoxActor(core.Scene, new Vector3(1, 1, 1), new Vector3(-10, 10, 0));
 				var boxB = CreateBoxActor(core.Scene, new Vector3(1, 1, 1), new Vector3(10, 10, 0));
 
-				var joint = core.Scene.CreateJoint<SphericalJoint>(boxA, Matrix.Identity, boxB, Matrix.Identity);
+				var joint = core.Scene.CreateJoint<SphericalJoint>(boxA, Matrix4x4.Identity, boxB, Matrix4x4.Identity);
 
 				Assert.IsNotNull(joint.Constraint);
 				Assert.IsFalse(joint.Constraint.Disposed);

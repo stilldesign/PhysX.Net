@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Numerics;
 using System.Runtime.CompilerServices;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PhysX.Math;
 
 namespace PhysX.Test
 {
@@ -97,7 +97,7 @@ namespace PhysX.Test
 
 			var shape = rigid.CreateShape(new BoxGeometry(size / 2), material);
 
-			rigid.GlobalPose = Matrix.Translation(position);
+			rigid.GlobalPose = Matrix4x4.CreateTranslation(position);
 
 			scene.AddActor(rigid);
 
