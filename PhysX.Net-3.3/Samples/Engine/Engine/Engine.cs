@@ -11,10 +11,6 @@ using SlimDX.Direct3D11;
 using SlimDX.DXGI;
 using Buffer = SlimDX.Direct3D11.Buffer;
 using Device = SlimDX.Direct3D11.Device;
-using Vector2 = System.Numerics.Vector2;
-using Vector3 = System.Numerics.Vector3;
-using Vector4 = System.Numerics.Vector4;
-using Matrix = System.Numerics.Matrix4x4;
 
 namespace PhysX.Samples.Engine
 {
@@ -71,7 +67,7 @@ namespace PhysX.Samples.Engine
 			var sphereGeom = new SphereGeometry(2);
 			var boxShape = rigidActor.CreateShape(sphereGeom, material);
 
-			rigidActor.GlobalPose = Matrix.CreateTranslation(cameraPos);
+			rigidActor.GlobalPose = Matrix4x4.CreateTranslation(cameraPos);
 			rigidActor.SetMassAndUpdateInertia(100);
 
 			this.Scene.AddActor(rigidActor);
@@ -224,7 +220,7 @@ namespace PhysX.Samples.Engine
 			var groundPlaneMaterial = this.Scene.Physics.CreateMaterial(0.1f, 0.1f, 0.1f);
 
 			var groundPlane = this.Scene.Physics.CreateRigidStatic();
-			groundPlane.GlobalPose = Matrix.CreateFromAxisAngle(new Vector3(0, 0, 1), (float)System.Math.PI / 2);
+			groundPlane.GlobalPose = Matrix4x4.CreateFromAxisAngle(new System.Numerics.Vector3(0, 0, 1), (float)System.Math.PI / 2);
 
 			var planeGeom = new PlaneGeometry();
 
