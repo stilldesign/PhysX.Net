@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
-using Buffer = SlimDX.Direct3D11.Buffer;
+using Buffer = SharpDX.Direct3D11.Buffer;
 
 namespace PhysX.Samples.Engine
 {

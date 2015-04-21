@@ -6,17 +6,17 @@ namespace PhysX.Samples.Engine
 {
 	public static class MathExtensions
 	{
-		public static SlimDX.Vector3 AsSlimDX(this System.Numerics.Vector3 vector3)
+		public static SharpDX.Vector3 AsSharpDX(this System.Numerics.Vector3 vector3)
 		{
-			return new SlimDX.Vector3(vector3.X, vector3.Y, vector3.Z);
+			return new SharpDX.Vector3(vector3.X, vector3.Y, vector3.Z);
 		}
 
-		public static System.Numerics.Vector3 AsPhysX(this SlimDX.Vector3 vector3)
+		public static System.Numerics.Vector3 AsPhysX(this SharpDX.Vector3 vector3)
 		{
 			return new System.Numerics.Vector3(vector3.X, vector3.Y, vector3.Z);
 		}
 
-		//public static System.Numerics.Matrix4x4 AsPhysX(this SlimDX.Matrix m)
+		//public static System.Numerics.Matrix4x4 AsPhysX(this SharpDX.Matrix m)
 		//{
 		//	return new System.Numerics.Matrix4x4
 		//	(

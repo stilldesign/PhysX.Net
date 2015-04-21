@@ -5,12 +5,10 @@ using System.Numerics;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Input;
-using SlimDX;
-using SlimDX.D3DCompiler;
-using SlimDX.Direct3D11;
-using SlimDX.DXGI;
-using Buffer = SlimDX.Direct3D11.Buffer;
-using Device = SlimDX.Direct3D11.Device;
+using SharpDX.D3DCompiler;
+using SharpDX.Direct3D;
+using SharpDX.Direct3D11;
+using SharpDX.DXGI;
 
 namespace PhysX.Samples.Engine
 {
@@ -28,7 +26,7 @@ namespace PhysX.Samples.Engine
 		private DepthStencilView _depthBuffer;
 		private SwapChain _swapChain;
 
-		private Buffer _userPrimitivesBuffer;
+		private SharpDX.Direct3D11.Buffer _userPrimitivesBuffer;
 		private InputLayout _inputLayout;
 
 		public Engine()
@@ -37,7 +35,7 @@ namespace PhysX.Samples.Engine
 			Window.Show();
 
 			_keyboard = new Keyboard(this);
-			_keyboard.OnKeyDown += new KeyEventHandler(_keyboard_OnKeyDown);
+			_keyboard.OnKeyDown += _keyboard_OnKeyDown;
 
 			InitalizeGraphics();
 
@@ -98,10 +96,10 @@ namespace PhysX.Samples.Engine
 				SampleDescription = new SampleDescription(1, 0)
 			};
 
-			Device device;
+			SharpDX.Direct3D11.Device device;
 			try
 			{
-				Device.CreateWithSwapChain(DriverType.Hardware, DeviceCreationFlags.None, swapChainDesc, out device, out _swapChain);
+				SharpDX.Direct3D11.Device.CreateWithSwapChain(DriverType.Warp, DeviceCreationFlags.None, new[] { FeatureLevel.Level_10_0 }, swapChainDesc, out device, out _swapChain);
 				GraphicsDevice = device;
 			}
 			catch
@@ -111,7 +109,7 @@ namespace PhysX.Samples.Engine
 
 			// Create a view of our render target, which is the 'back buffer' of the swap chain we just created
 			{
-				using (var resource = SlimDX.Direct3D11.Resource.FromSwapChain<Texture2D>(_swapChain, 0))
+				using (var resource = SharpDX.Direct3D11.Resource.FromSwapChain<Texture2D>(_swapChain, 0))
 				{
 					_backBuffer = new RenderTargetView(device, resource);
 				}
@@ -125,7 +123,7 @@ namespace PhysX.Samples.Engine
 
 			// Allocate a large buffer to write the PhysX visualization vertices into
 			// There's more optimized ways of doing this, but for this sample a large buffer will do
-			_userPrimitivesBuffer = new SlimDX.Direct3D11.Buffer(GraphicsDevice, VertexPositionColor.SizeInBytes * 50000, ResourceUsage.Dynamic, BindFlags.VertexBuffer, CpuAccessFlags.Write, ResourceOptionFlags.None, VertexPositionColor.SizeInBytes);
+			_userPrimitivesBuffer = new SharpDX.Direct3D11.Buffer(GraphicsDevice, VertexPositionColor.SizeInBytes * 50000, ResourceUsage.Dynamic, BindFlags.VertexBuffer, CpuAccessFlags.Write, ResourceOptionFlags.None, VertexPositionColor.SizeInBytes);
 		}
 		private void CreateDepthStencil()
 		{
@@ -153,7 +151,7 @@ namespace PhysX.Samples.Engine
 
 			string visEffectFile = Path.Combine(engineDir, @"Shaders\VisualizationEffect.fx");
 
-			var shaderByteCode = ShaderBytecode.CompileFromFile(visEffectFile, "fx_5_0");
+			var shaderByteCode = ShaderBytecode.CompileFromFile(visEffectFile, "fx_5_0", ShaderFlags.Debug);
 
 			var effect = new Effect(this.GraphicsDevice, shaderByteCode);
 
@@ -281,9 +279,9 @@ namespace PhysX.Samples.Engine
 			this.GraphicsDevice.ImmediateContext.OutputMerger.SetTargets(_depthBuffer, _backBuffer);
 
 			// Clear to a nice blue colour :)
-			this.GraphicsDevice.ImmediateContext.ClearRenderTargetView(_backBuffer, new Color4(0.27f, 0.51f, 0.71f));
+			this.GraphicsDevice.ImmediateContext.ClearRenderTargetView(_backBuffer, new SharpDX.Color4(0.27f, 0.51f, 0.71f, 1));
 			this.GraphicsDevice.ImmediateContext.ClearDepthStencilView(_depthBuffer, DepthStencilClearFlags.Depth | DepthStencilClearFlags.Stencil, 1, 0);
-			this.GraphicsDevice.ImmediateContext.Rasterizer.SetViewports(this.Camera.Viewport);
+			this.GraphicsDevice.ImmediateContext.Rasterizer.SetViewports(new[] { (SharpDX.ViewportF)this.Camera.Viewport }, 1);
 
 			DrawDebug(this.Scene.GetRenderBuffer());
 
@@ -296,7 +294,7 @@ namespace PhysX.Samples.Engine
 		{
 			var pass = _visualizationEffect.RenderScenePass0;
 
-			_visualizationEffect.World.SetMatrix(SlimDX.Matrix.Identity);
+			_visualizationEffect.World.SetMatrix(SharpDX.Matrix.Identity);
 			_visualizationEffect.View.SetMatrix(this.Camera.View);
 			_visualizationEffect.Projection.SetMatrix(this.Camera.Projection);
 
@@ -311,7 +309,7 @@ namespace PhysX.Samples.Engine
 				{
 					var point = data.Points[i];
 
-					vertices[i * 2 + 0] = new VertexPositionColor(point.Point.As<SlimDX.Vector3>(), Color.FromArgb(point.Color));
+					vertices[i * 2 + 0] = new VertexPositionColor(point.Point.As<SharpDX.Vector3>(), Color.FromArgb(point.Color));
 				}
 
 				DrawVertices(vertices, PrimitiveTopology.PointList);
@@ -324,8 +322,8 @@ namespace PhysX.Samples.Engine
 				{
 					DebugLine line = data.Lines[x];
 
-					vertices[x * 2 + 0] = new VertexPositionColor(line.Point0.As<SlimDX.Vector3>(), Color.FromArgb(line.Color0));
-					vertices[x * 2 + 1] = new VertexPositionColor(line.Point1.As<SlimDX.Vector3>(), Color.FromArgb(line.Color1));
+					vertices[x * 2 + 0] = new VertexPositionColor(line.Point0.As<SharpDX.Vector3>(), Color.FromArgb(line.Color0));
+					vertices[x * 2 + 1] = new VertexPositionColor(line.Point1.As<SharpDX.Vector3>(), Color.FromArgb(line.Color1));
 				}
 
 				DrawVertices(vertices, PrimitiveTopology.LineList);
@@ -338,9 +336,9 @@ namespace PhysX.Samples.Engine
 				{
 					DebugTriangle triangle = data.Triangles[x];
 
-					vertices[x * 3 + 0] = new VertexPositionColor(triangle.Point0.As<SlimDX.Vector3>(), Color.FromArgb(triangle.Color0));
-					vertices[x * 3 + 1] = new VertexPositionColor(triangle.Point1.As<SlimDX.Vector3>(), Color.FromArgb(triangle.Color1));
-					vertices[x * 3 + 2] = new VertexPositionColor(triangle.Point2.As<SlimDX.Vector3>(), Color.FromArgb(triangle.Color2));
+					vertices[x * 3 + 0] = new VertexPositionColor(triangle.Point0.As<SharpDX.Vector3>(), Color.FromArgb(triangle.Color0));
+					vertices[x * 3 + 1] = new VertexPositionColor(triangle.Point1.As<SharpDX.Vector3>(), Color.FromArgb(triangle.Color1));
+					vertices[x * 3 + 2] = new VertexPositionColor(triangle.Point2.As<SharpDX.Vector3>(), Color.FromArgb(triangle.Color2));
 				}
 
 				DrawVertices(vertices, PrimitiveTopology.TriangleList);
@@ -349,13 +347,9 @@ namespace PhysX.Samples.Engine
 
 		private void PopulatePrimitivesBuffer(VertexPositionColor[] vertices)
 		{
-			var data = this.GraphicsDevice.ImmediateContext.MapSubresource(_userPrimitivesBuffer, MapMode.WriteDiscard, SlimDX.Direct3D11.MapFlags.None);
-
-			data.Data.WriteRange(vertices);
-
+			var dataBox = this.GraphicsDevice.ImmediateContext.MapSubresource(_userPrimitivesBuffer, 0, MapMode.WriteDiscard, SharpDX.Direct3D11.MapFlags.None);
+			SharpDX.Utilities.Write(IntPtr.Add(dataBox.DataPointer, 0), vertices, 0, vertices.Length);
 			this.GraphicsDevice.ImmediateContext.UnmapSubresource(_userPrimitivesBuffer, 0);
-
-			data.Data.Dispose();
 		}
 		private void DrawVertices(VertexPositionColor[] vertices, PrimitiveTopology top)
 		{
@@ -365,7 +359,7 @@ namespace PhysX.Samples.Engine
 			this.GraphicsDevice.ImmediateContext.InputAssembler.SetVertexBuffers(0, new VertexBufferBinding(_userPrimitivesBuffer, VertexPositionColor.SizeInBytes, 0));
 			this.GraphicsDevice.ImmediateContext.Draw(vertices.Length, 0);
 		}
-		public void DrawSimple(Buffer vertexBuffer, Buffer indexBuffer, int indexCount)
+		public void DrawSimple(SharpDX.Direct3D11.Buffer vertexBuffer, SharpDX.Direct3D11.Buffer indexBuffer, int indexCount)
 		{
 			this.GraphicsDevice.ImmediateContext.InputAssembler.SetVertexBuffers(0, new VertexBufferBinding(vertexBuffer, 0, 0));
 			this.GraphicsDevice.ImmediateContext.InputAssembler.SetIndexBuffer(indexBuffer, Format.R32_UInt, 0);
@@ -381,7 +375,7 @@ namespace PhysX.Samples.Engine
 		public Physics Physics { get; private set; }
 		public Scene Scene { get; private set; }
 
-		public Device GraphicsDevice { get; private set; }
+		public SharpDX.Direct3D11.Device GraphicsDevice { get; private set; }
 
 		public SampleWindow Window { get; private set; }
 
