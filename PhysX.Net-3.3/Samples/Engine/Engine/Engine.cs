@@ -99,7 +99,7 @@ namespace PhysX.Samples.Engine
 			SharpDX.Direct3D11.Device device;
 			try
 			{
-				SharpDX.Direct3D11.Device.CreateWithSwapChain(DriverType.Warp, DeviceCreationFlags.None, new[] { FeatureLevel.Level_10_0 }, swapChainDesc, out device, out _swapChain);
+				SharpDX.Direct3D11.Device.CreateWithSwapChain(DriverType.Warp, DeviceCreationFlags.None, swapChainDesc, out device, out _swapChain);
 				GraphicsDevice = device;
 			}
 			catch
