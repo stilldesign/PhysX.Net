@@ -1,19 +1,18 @@
 #pragma once
 
-
 namespace PhysX
 {
 	public ref class MathUtil
 	{
 	internal:
-		static Matrix PxTransformToMatrix(PxTransform* transform);
-		static PxTransform MatrixToPxTransform(Matrix transform);
+		static Matrix4x4 PxTransformToMatrix(PxTransform* transform);
+		static PxTransform MatrixToPxTransform(Matrix4x4 transform);
 
-		static Matrix PxMat33ToMatrix(PxMat33* matrix);
-		static PxMat33 MatrixToPxMat33(Matrix matrix);
+		static Matrix4x4 PxMat33ToMatrix(PxMat33* matrix);
+		static PxMat33 MatrixToPxMat33(Matrix4x4 matrix);
 
-		static Matrix PxMat44ToMatrix(PxMat44* mat44);
-		static PxMat44 MatrixToPxMat44(Matrix matrix);
+		static Matrix4x4 PxMat44ToMatrix(PxMat44* mat44);
+		static PxMat44 MatrixToPxMat44(Matrix4x4 matrix);
 
 		static Vector3 PxVec3ToVector3(PxVec3 vector);
 		static PxVec3 Vector3ToPxVec3(Vector3 vector);

@@ -44,6 +44,8 @@ using namespace System::Collections::Generic;
 using namespace System::Linq;
 using namespace System::Diagnostics;
 using namespace System::Runtime::InteropServices;
+
+#pragma warning(disable:4691) // System.Numerics.Vectors relys on the new (and currently pre release) System.Runtime
 using namespace System::Numerics;
 
 #define Matrix Matrix4x4
