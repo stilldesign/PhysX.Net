@@ -33,7 +33,7 @@ array<Vector3>^ ParticleReadData::GetPositions()
 
 	auto positions = gcnew array<Vector3>(n);
 	
-	for (size_t i = 0; i < n; i++)
+	for (int i = 0; i < n; i++)
 	{
 		PxVec3 p = buffer[i];
 
@@ -57,7 +57,7 @@ array<Vector3>^ ParticleReadData::GetVelocities()
 
 	auto velocities = gcnew array<Vector3>(n);
 
-	for (size_t i = 0; i < n; i++)
+	for (int i = 0; i < n; i++)
 	{
 		PxVec3 v = buffer[i];
 
@@ -127,7 +127,7 @@ array<Vector3>^ ParticleReadData::GetCollisionNormals()
 
 	auto collisionNormals = gcnew array<Vector3>(n);
 
-	for (size_t i = 0; i < n; i++)
+	for (int i = 0; i < n; i++)
 	{
 		PxVec3 n = buffer[i];
 
@@ -151,7 +151,7 @@ array<Vector3>^ ParticleReadData::GetCollisionVelocities()
 
 	auto collisionVelocities = gcnew array<Vector3>(n);
 
-	for (size_t i = 0; i < n; i++)
+	for (int i = 0; i < n; i++)
 	{
 		PxVec3 n = buffer[i];
 

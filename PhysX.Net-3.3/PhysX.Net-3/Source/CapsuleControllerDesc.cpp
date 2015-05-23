@@ -36,7 +36,7 @@ CapsuleControllerDesc^ CapsuleControllerDesc::ToManaged(PxCapsuleControllerDesc 
 	return d;
 }
 
-PxControllerDesc CapsuleControllerDesc::ToUnmanaged()
+PxCapsuleControllerDesc CapsuleControllerDesc::ToUnmanaged()
 {
 	return CapsuleControllerDesc::ToUnmanaged(this);
 }
