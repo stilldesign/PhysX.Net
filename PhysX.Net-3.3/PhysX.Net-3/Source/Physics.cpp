@@ -152,7 +152,7 @@ PhysX::Foundation^ Physics::Foundation::get()
 #pragma region Scene
 Scene^ Physics::CreateScene()
 {
-	auto sceneDesc = gcnew SceneDesc(TolerancesScale());
+	auto sceneDesc = gcnew SceneDesc(Nullable<TolerancesScale>());
 
 	return CreateScene(sceneDesc);
 }
