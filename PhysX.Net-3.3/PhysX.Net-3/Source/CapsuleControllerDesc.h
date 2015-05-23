@@ -17,7 +17,7 @@ namespace PhysX
 			static PxCapsuleControllerDesc ToUnmanaged(CapsuleControllerDesc^ desc);
 			static CapsuleControllerDesc^ ToManaged(PxCapsuleControllerDesc desc);
 
-			virtual PxControllerDesc ToUnmanaged() override;
+			PxCapsuleControllerDesc ToUnmanaged();
 
 		public:
 			/// <summary>

@@ -130,28 +130,32 @@
     <Folder Include="Deformable\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\Assemblies\x86\nvToolsExt32_1.dll">
+    <Content Include="..\Assemblies\x86\Checked\nvToolsExt32_1.dll">
       <Link>nvToolsExt32_1.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\Assemblies\x86\PhysX3CharacterKinematicCHECKED_x86.dll">
+    <Content Include="..\Assemblies\x86\Checked\PhysX3CharacterKinematicCHECKED_x86.dll">
       <Link>PhysX3CharacterKinematicCHECKED_x86.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\Assemblies\x86\PhysX3CHECKED_x86.dll">
+    <Content Include="..\Assemblies\x86\Checked\PhysX3CHECKED_x86.dll">
       <Link>PhysX3CHECKED_x86.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\Assemblies\x86\PhysX3CommonCHECKED_x86.dll">
+    <Content Include="..\Assemblies\x86\Checked\PhysX3CommonCHECKED_x86.dll">
       <Link>PhysX3CommonCHECKED_x86.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\Assemblies\x86\PhysX3CookingCHECKED_x86.dll">
+    <Content Include="..\Assemblies\x86\Checked\PhysX3CookingCHECKED_x86.dll">
       <Link>PhysX3CookingCHECKED_x86.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\Assemblies\x86\PhysX3GpuCHECKED_x86.dll">
+    <Content Include="..\Assemblies\x86\Checked\PhysX3GpuCHECKED_x86.dll">
       <Link>PhysX3GpuCHECKED_x86.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Assemblies\x86\Checked\PhysXDevice.dll">
+      <Link>PhysXDevice.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

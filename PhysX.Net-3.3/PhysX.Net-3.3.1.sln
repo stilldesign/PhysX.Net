@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{27CD93B0-2E6E-42D3-B44A-43EAF972337E}"
 EndProject
@@ -13,28 +13,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
 		x64.testsettings = x64.testsettings
 		x86.testsettings = x86.testsettings
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assemblies", "Assemblies", "{C30E53D2-3E99-40D6-9A1F-10316660BD96}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "x86", "x86", "{B3BDE269-6BA3-41F2-A9DF-06B55DDD64B1}"
-	ProjectSection(SolutionItems) = preProject
-		Assemblies\x86\nvToolsExt32_1.dll = Assemblies\x86\nvToolsExt32_1.dll
-		Assemblies\x86\PhysX3CharacterKinematicCHECKED_x86.dll = Assemblies\x86\PhysX3CharacterKinematicCHECKED_x86.dll
-		Assemblies\x86\PhysX3CHECKED_x86.dll = Assemblies\x86\PhysX3CHECKED_x86.dll
-		Assemblies\x86\PhysX3CommonCHECKED_x86.dll = Assemblies\x86\PhysX3CommonCHECKED_x86.dll
-		Assemblies\x86\PhysX3CookingCHECKED_x86.dll = Assemblies\x86\PhysX3CookingCHECKED_x86.dll
-		Assemblies\x86\PhysX3GpuCHECKED_x86.dll = Assemblies\x86\PhysX3GpuCHECKED_x86.dll
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "x64", "x64", "{2397F90D-2DDE-4F56-B9B8-9A50494CD181}"
-	ProjectSection(SolutionItems) = preProject
-		Assemblies\x64\nvToolsExt64_1.dll = Assemblies\x64\nvToolsExt64_1.dll
-		Assemblies\x64\PhysX3CharacterKinematicCHECKED_x64.dll = Assemblies\x64\PhysX3CharacterKinematicCHECKED_x64.dll
-		Assemblies\x64\PhysX3CHECKED_x64.dll = Assemblies\x64\PhysX3CHECKED_x64.dll
-		Assemblies\x64\PhysX3CommonCHECKED_x64.dll = Assemblies\x64\PhysX3CommonCHECKED_x64.dll
-		Assemblies\x64\PhysX3CookingCHECKED_x64.dll = Assemblies\x64\PhysX3CookingCHECKED_x64.dll
-		Assemblies\x64\PhysX3GpuCHECKED_x64.dll = Assemblies\x64\PhysX3GpuCHECKED_x64.dll
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Engine", "Samples\Engine\Engine.csproj", "{D126F9D4-66BB-403B-B4B6-18C3546BEDF8}"
@@ -83,7 +61,8 @@ Global
 		{27CD93B0-2E6E-42D3-B44A-43EAF972337E}.Release|x64.ActiveCfg = Release|x86
 		{27CD93B0-2E6E-42D3-B44A-43EAF972337E}.Release|x86.ActiveCfg = Release|x86
 		{27CD93B0-2E6E-42D3-B44A-43EAF972337E}.Release|x86.Build.0 = Release|x86
-		{D126F9D4-66BB-403B-B4B6-18C3546BEDF8}.Debug|x64.ActiveCfg = Debug|x86
+		{D126F9D4-66BB-403B-B4B6-18C3546BEDF8}.Debug|x64.ActiveCfg = Debug|x64
+		{D126F9D4-66BB-403B-B4B6-18C3546BEDF8}.Debug|x64.Build.0 = Debug|x64
 		{D126F9D4-66BB-403B-B4B6-18C3546BEDF8}.Debug|x86.ActiveCfg = Debug|x86
 		{D126F9D4-66BB-403B-B4B6-18C3546BEDF8}.Debug|x86.Build.0 = Debug|x86
 		{D126F9D4-66BB-403B-B4B6-18C3546BEDF8}.Release|x64.ActiveCfg = Release|x86
@@ -138,8 +117,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{B3BDE269-6BA3-41F2-A9DF-06B55DDD64B1} = {C30E53D2-3E99-40D6-9A1F-10316660BD96}
-		{2397F90D-2DDE-4F56-B9B8-9A50494CD181} = {C30E53D2-3E99-40D6-9A1F-10316660BD96}
 		{D126F9D4-66BB-403B-B4B6-18C3546BEDF8} = {E1E0C505-3069-4E15-980D-1C87F241C7F3}
 		{B6FCBC86-7674-47F8-9A95-E4B8B7FD44C0} = {E1E0C505-3069-4E15-980D-1C87F241C7F3}
 		{36BAE136-2AA3-4292-BC2D-666A6A239FEB} = {E1E0C505-3069-4E15-980D-1C87F241C7F3}
