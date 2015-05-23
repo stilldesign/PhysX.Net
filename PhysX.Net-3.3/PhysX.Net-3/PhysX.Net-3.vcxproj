@@ -94,7 +94,7 @@
     <OutDir>$(ProjectDir)bin\x86\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)bin\x86\$(Configuration)\Intermediate\</IntDir>
     <IncludePath>$(NVIDIAPhysXSDK)\Include\PhysXProfileSDK;$(NVIDIAPhysXSDK)\Include\PhysXVisualDebuggerSDK;$(NVIDIAPhysXSDK)\Include\Vehicle;$(NVIDIAPhysXSDK)\Include\Particles;$(NVIDIAPhysXSDK)\Include\Geometry;$(NVIDIAPhysXSDK)\Include\Extensions;$(NVIDIAPhysXSDK)\Include\Cooking;$(NVIDIAPhysXSDK)\Include\Common;$(NVIDIAPhysXSDK)\Include\Characterkinematic;$(NVIDIAPhysXSDK)\Include\Cloth;$(NVIDIAPhysXSDK)\Include\Foundation;$(NVIDIAPhysXSDK)\Include\PxTask;$(NVIDIAPhysXSDK)\Include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(NVIDIAPhysXSDK)\Lib\win32;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(NVIDIAPhysXSDK)\Lib\vc12win32;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -146,7 +146,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>PhysX3CharacterKinematicCHECKED_x86.lib;PhysX3CHECKED_x86.lib;PhysX3CommonCHECKED_x86.lib;PhysX3CookingCHECKED_x86.lib;PhysX3ExtensionsCHECKED.lib;PhysX3VehicleCHECKED.lib;PhysXProfileSDKCHECKED.lib;PhysXVisualDebuggerSDKCHECKED.lib;PxTaskCHECKED.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>PhysX3CharacterKinematic_x86.lib;PhysX3_x86.lib;PhysX3Common_x86.lib;PhysX3Cooking_x86.lib;PhysX3Extensions.lib;PhysX3Vehicle.lib;PhysXProfileSDK.lib;PhysXVisualDebuggerSDK.lib;PxTask.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>
       </IgnoreSpecificDefaultLibraries>
     </Link>
