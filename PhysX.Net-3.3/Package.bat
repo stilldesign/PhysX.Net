@@ -18,10 +18,10 @@ md "Assemblies\x64\Debug"
 md "Assemblies\x64\Release"
 cd ..\..\..
 
-msbuild PhysX.Net-3.3.1.sln /p:Configuration=Debug;Platform=x86 /t:Clean,Build
-msbuild PhysX.Net-3.3.1.sln /p:Configuration=Release;Platform=x86 /t:Clean,Build
-msbuild PhysX.Net-3.3.1.sln /p:Configuration=Debug;Platform=x64 /t:Clean,Build
-msbuild PhysX.Net-3.3.1.sln /p:Configuration=Release;Platform=x64 /t:Clean,Build
+msbuild PhysX.Net-3.3.3.sln /p:Configuration=Debug;Platform=x86 /t:Clean,Build
+msbuild PhysX.Net-3.3.3.sln /p:Configuration=Release;Platform=x86 /t:Clean,Build
+msbuild PhysX.Net-3.3.3.sln /p:Configuration=Debug;Platform=x64 /t:Clean,Build
+msbuild PhysX.Net-3.3.3.sln /p:Configuration=Release;Platform=x64 /t:Clean,Build
 
 # Samples
 md "Package\Working\PhysX.Net 0.4 for NVIDIA PhysX 3.3.3\Samples"
