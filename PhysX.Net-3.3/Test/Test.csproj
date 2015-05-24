@@ -21,18 +21,22 @@
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Checked|x86' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <OutputPath>bin\x86\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;x86</DefineConstants>
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Checked\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;x86;CHECKED</DefineConstants>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Prefer32Bit>false</Prefer32Bit>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <PlatformTarget>x86</PlatformTarget>
     <OutputPath>bin\x86\Release\</OutputPath>
-    <DefineConstants>x86</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;x86;RELEASE</DefineConstants>
     <Prefer32Bit>false</Prefer32Bit>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Checked|x64' ">
     <DebugSymbols>true</DebugSymbols>
@@ -74,8 +78,12 @@
     <Compile Include="Controller\CapsuleControllerTest.cs" />
     <Compile Include="Controller\ObstacleTest.cs" />
     <Compile Include="Controller\ControllerTest.cs" />
-    <Compile Include="Cooking\CookTest.cs" />
+    <Compile Include="Cooking\CookingTriangleMeshTests.cs" />
+    <Compile Include="Cooking\CookingClothTests.cs" />
+    <Compile Include="Cooking\CookConvexMeshTests.cs" />
     <Compile Include="Cloth\ClothTestGrid.cs" />
+    <Compile Include="Cooking\CookingTests.cs" />
+    <Compile Include="Cooking\VertexGrid.cs" />
     <Compile Include="FoundationTest.cs" />
     <Compile Include="Geometry\GeometryQueryTest.cs" />
     <Compile Include="Geometry\Model.cs" />
@@ -109,6 +117,7 @@
     <Compile Include="Stream\StreamExtensionsTest.cs" />
     <Compile Include="Test\PhysicsAndSceneTestUnit.cs" />
     <Compile Include="Test\Test.cs" />
+    <Compile Include="Test\TestDependantFiles.cs" />
     <Compile Include="Util\ArrayUtil.cs" />
     <Compile Include="Util\ColladaLoader.cs" />
     <Compile Include="Vehicle\VehicleEngineDataTest.cs" />
@@ -117,52 +126,22 @@
     <None Include="..\Resources\Teapot.DAE">
       <Link>Resources\Teapot.DAE</Link>
       <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PhysX.Net-3\PhysX.Net-3.vcxproj">
       <Project>{FB145A7D-CDF2-417D-A006-F7591481D609}</Project>
       <Name>PhysX.Net</Name>
+      <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Deformable\" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="..\Assemblies\x86\Checked\nvToolsExt32_1.dll">
-      <Link>nvToolsExt32_1.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\Assemblies\x86\Checked\PhysX3CharacterKinematicCHECKED_x86.dll">
-      <Link>PhysX3CharacterKinematicCHECKED_x86.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\Assemblies\x86\Checked\PhysX3CHECKED_x86.dll">
-      <Link>PhysX3CHECKED_x86.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\Assemblies\x86\Checked\PhysX3CommonCHECKED_x86.dll">
-      <Link>PhysX3CommonCHECKED_x86.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\Assemblies\x86\Checked\PhysX3CookingCHECKED_x86.dll">
-      <Link>PhysX3CookingCHECKED_x86.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\Assemblies\x86\Checked\PhysX3GpuCHECKED_x86.dll">
-      <Link>PhysX3GpuCHECKED_x86.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\Assemblies\x86\Checked\PhysXDevice.dll">
-      <Link>PhysXDevice.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>xcopy "$(SolutionDir)Assemblies\$(PlatformName)\$(ConfigurationName)\*.dll" "$(TargetDir)" /Q /Y /R</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>

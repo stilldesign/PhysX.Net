@@ -8,22 +8,6 @@ using PhysX.Math;
 
 namespace PhysX.Test
 {
-	// Copy out the dependant DLL files needed for each test run
-#if x86
-	[DeploymentItem(@"Assemblies\x86\PhysX3CharacterKinematicCHECKED_x86.dll")]
-	[DeploymentItem(@"Assemblies\x86\PhysX3CHECKED_x86.dll")]
-	[DeploymentItem(@"Assemblies\x86\PhysX3CommonCHECKED_x86.dll")]
-	[DeploymentItem(@"Assemblies\x86\PhysX3CookingCHECKED_x86.dll")]
-	[DeploymentItem(@"Assemblies\x86\PhysX3GpuCHECKED_x86.dll")]
-	[DeploymentItem(@"Assemblies\x86\nvToolsExt32_1.dll")]
-#elif x64
-	[DeploymentItem(@"Assemblies\x64\PhysX3CharacterKinematicCHECKED_x64.dll")]
-	[DeploymentItem(@"Assemblies\x64\PhysX3CHECKED_x64.dll")]
-	[DeploymentItem(@"Assemblies\x64\PhysX3CommonCHECKED_x64.dll")]
-	[DeploymentItem(@"Assemblies\x64\PhysX3CookingCHECKED_x64.dll")]
-	[DeploymentItem(@"Assemblies\x64\PhysX3GpuCHECKED_x64.dll")]
-	[DeploymentItem(@"Assemblies\x64\nvToolsExt64_1.dll")]
-#endif
 	[TestClass]
 	public abstract class Test
 	{
@@ -43,6 +27,12 @@ namespace PhysX.Test
 			}
 
 			_errorLog = null;
+		}
+
+		[AssemblyInitialize]
+		public static void AssemblyInit(TestContext ctx)
+		{
+			TestDependantFiles.CopyDependantFiles(ctx);
 		}
 
 		[TestInitialize]
