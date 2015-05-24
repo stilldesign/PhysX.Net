@@ -13,11 +13,19 @@ namespace PhysX.Test
 	{
 		private ErrorLog _errorLog;
 
+		private static PhysX.Foundation _foundation;
+		private static PhysX.Physics _physics;
+
 		[TestCleanup]
 		public void CleanUp()
 		{
 			if (Physics.Instantiated)
+			{
+				_foundation.Dispose();
+				_foundation = null;
+
 				throw new Exception("After a test has run, the Physics singleton should have been disposed");
+			}
 
 			ObjectTable.Clear();
 
@@ -52,11 +60,22 @@ namespace PhysX.Test
 			if (errorCallback == null)
 				errorCallback = _errorLog = new ErrorLog();
 
-			var foundation = new Foundation(errorCallback);
+			if (_physics != null)
+			{
+				_physics.Dispose();
+				_physics = null;
+			}
+			if (_foundation != null)
+			{
+				_foundation.Dispose();
+				_foundation = null;
+			}
 
-			var physics = new Physics(foundation, checkRuntimeFiles: true);
+			_foundation = new Foundation(errorCallback);
 
-			return physics;
+			_physics = new Physics(_foundation, checkRuntimeFiles: true);
+
+			return _physics;
 		}
 		protected PhysicsAndSceneTestUnit CreatePhysicsAndScene()
 		{
