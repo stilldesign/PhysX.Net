@@ -17,10 +17,19 @@ void RuntimeFileChecks::Check()
 	CheckFile("PhysX3CookingCHECKED_x64.dll", PhysXDllVersion);
 	CheckFile("PhysX3GpuCHECKED_x64.dll", PhysXDllVersion);
 #elif WIN32
-	CheckFile("PhysX3CHECKED_x86.dll", PhysXDllVersion);
-	CheckFile("PhysX3CommonCHECKED_x86.dll", PhysXDllVersion);
-	CheckFile("PhysX3CookingCHECKED_x86.dll", PhysXDllVersion);
-	CheckFile("PhysX3GpuCHECKED_x86.dll", PhysXDllVersion);
+	#if PHYSX_CHECKED
+		CheckFile("PhysX3CHECKED_x86.dll", PhysXDllVersion);
+		CheckFile("PhysX3CommonCHECKED_x86.dll", PhysXDllVersion);
+		CheckFile("PhysX3CookingCHECKED_x86.dll", PhysXDllVersion);
+		CheckFile("PhysX3GpuCHECKED_x86.dll", PhysXDllVersion);
+	#elif PHYSX_RELEASE
+		CheckFile("PhysX3_x86.dll", PhysXDllVersion);
+		CheckFile("PhysX3Common_x86.dll", PhysXDllVersion);
+		CheckFile("PhysX3Cooking_x86.dll", PhysXDllVersion);
+		CheckFile("PhysX3Gpu_x86.dll", PhysXDllVersion);
+	#else
+		#error PhysX Build Configuration not specified for x86
+	#endif
 #else
 	#error No platform specified
 #endif
