@@ -287,6 +287,24 @@ void Shape::SimulationFilterData::set(FilterData data)
 	_shape->setSimulationFilterData(FilterData::ToUnmanaged(data));
 }
 
+FilterData Shape::QueryFilterData::get()
+{
+	return FilterData::ToManaged(_shape->getQueryFilterData());
+}
+void Shape::QueryFilterData::set(FilterData data)
+{
+	_shape->setQueryFilterData(FilterData::ToUnmanaged(data));
+}
+
+FilterData Shape::SimulationFilterData::get()
+{
+	return FilterData::ToManaged(_shape->getSimulationFilterData());
+}
+void Shape::SimulationFilterData::set(FilterData data)
+{
+	_shape->setSimulationFilterData(FilterData::ToUnmanaged(data));
+}
+
 PxShape* Shape::UnmanagedPointer::get()
 {
 	return _shape;
