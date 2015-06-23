@@ -554,6 +554,9 @@
     <ClCompile Include="Source\Aggregate.cpp">
       <Filter>Aggregate</Filter>
     </ClCompile>
+    <ClCompile Include="Source\SimulationFilterShader.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
@@ -1242,6 +1245,9 @@
     </ClInclude>
     <ClInclude Include="Source\Aggregate.h">
       <Filter>Aggregate</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SimulationFilterShader.h">
+      <Filter>Physics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

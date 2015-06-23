@@ -196,6 +196,7 @@ namespace PhysX.Samples.Engine
 #if GPU
 				GpuDispatcher = cudaContext.GpuDispatcher
 #endif
+				FilterShader = new SampleFilterShader()
 			};
 
 			this.Scene = this.Physics.CreateScene(sceneDesc);

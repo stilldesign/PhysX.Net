@@ -4,6 +4,7 @@
 #include "Bounds3.h"
 #include "ShapeFlag.h"
 #include "Material.h"
+#include "FilterData.h"
 
 namespace PhysX
 {
@@ -70,6 +71,24 @@ namespace PhysX
 		/// For other shapes the function returns the single material associated with the shape, regardless of the index.
 		/// </summary>
 		Material^ GetMaterialFromInternalFaceIndex(int faceIndex);
+
+		/// <summary>
+		/// Gets or sets the user definable collision filter data.
+		/// </summary>
+		property FilterData SimulationFilterData
+		{
+			FilterData get();
+			void set(FilterData value);
+		}
+
+		/// <summary>
+		/// Gets or sets the user definable query filter data.
+		/// </summary>
+		property FilterData QueryFilterData
+		{
+			FilterData get();
+			void set(FilterData value);
+		}
 
 		//
 

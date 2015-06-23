@@ -361,6 +361,23 @@ void Scene::SetSimulationEventCallback(SimulationEventCallback^ callback, int cl
 	_scene->setSimulationEventCallback(callback == nullptr ? NULL : callback->UnmanagedPointer, clientId);
 }
 
+void Scene::ResetFiltering(Actor^ actor)
+{
+	_scene->resetFiltering(*actor->UnmanagedPointer);
+}
+void Scene::ResetFiltering(RigidActor^ actor, array<Shape^>^ shapes)
+{
+	auto s = new PxShape*[shapes->Length];
+	for (int i = 0; i < shapes->Length; i++)
+	{
+		s[i] = shapes[i]->UnmanagedPointer;
+	}
+
+	_scene->resetFiltering(*actor->UnmanagedPointer, s, shapes->Length);
+
+	delete[] s;
+}
+
 int Scene::CreateClient()
 {
 	return _scene->createClient();

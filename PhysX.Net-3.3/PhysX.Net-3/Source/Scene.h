@@ -294,6 +294,9 @@ namespace PhysX
 			/// </summary>
 			void SetSimulationEventCallback(SimulationEventCallback^ callback, int clientId);
 
+			void ResetFiltering(Actor^ actor);
+			void ResetFiltering(RigidActor^ actor, array<Shape^>^ shapes);
+
 			/// <summary>
 			/// Reserves a new client ID.
 			/// PX_DEFAULT_CLIENT is always available as the default clientID. Additional clients are returned by this function.

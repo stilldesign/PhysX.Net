@@ -88,6 +88,7 @@
     <Compile Include="Engine\Camera.cs" />
     <Compile Include="Color.cs" />
     <Compile Include="Engine\Engine.cs" />
+    <Compile Include="Engine\SampleFilterShader.cs" />
     <Compile Include="Extensions\MathExtensions.cs" />
     <Compile Include="Extensions\ViewportExtensions.cs" />
     <Compile Include="Geometry\ColladaLoader.cs" />
@@ -103,7 +104,6 @@
     <Compile Include="Engine\VertexGrid.cs" />
     <Compile Include="Engine\VertexPositionColor.cs" />
     <Compile Include="Engine\VisualizationEffect.cs" />
-    <Compile Include="SimulationEventCallback.cs" />
     <Compile Include="Util\ArrayUtil.cs" />
   </ItemGroup>
   <ItemGroup>

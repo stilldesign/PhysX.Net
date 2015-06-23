@@ -5,27 +5,6 @@
 #include "SimulationFilterShaderOps.h"
 #include "DefaultSimulationFilterShader.h"
 
-DefaultSimulationFilterShader::DefaultSimulationFilterShader()
-{
-
-}
-
-FilterFlag DefaultSimulationFilterShader::Setup(int attributes0, FilterData filterData0, int attributes1, FilterData filterData1, PairFlag pairFlags, array<Byte>^ constantBlock)
-{
-	PxPairFlags pf = ToUnmanagedEnum(PxPairFlag, pairFlags);
-
-	auto f = PxDefaultSimulationFilterShader(
-		attributes0,
-		FilterData::ToUnmanaged(filterData0),
-		attributes1,
-		FilterData::ToUnmanaged(filterData1),
-		pf,
-		NULL,
-		0);
-
-	return ToManagedEnum(FilterFlag, f);
-}
-
 bool DefaultSimulationFilterShader::GetGroupCollisionFlag(int group1, int group2)
 {
 	return PxGetGroupCollisionFlag(group1, group2);
