@@ -7,8 +7,12 @@ namespace PhysX.Samples.EventsSample
 {
 	public class EventsSample : Sample
 	{
+		public List<Actor> Touched { get; set; }
+
 		public EventsSample()
 		{
+			this.Touched = new List<Actor>();
+
 			Run();
 		}
 
@@ -22,29 +26,40 @@ namespace PhysX.Samples.EventsSample
 			var material = scene.Physics.CreateMaterial(0.7f, 0.7f, 0.1f);
 
 			var boxA = scene.Physics.CreateRigidDynamic();
+			boxA.Name = "Box A";
+			boxA.GlobalPose = Matrix.Translation(0, 50, 0);
+
 			var shapeA = boxA.CreateShape(new BoxGeometry(2, 2, 2), material);
-			boxA.GlobalPose = Matrix.Translation(0, 10, 0);
 
 			scene.AddActor(boxA);
 
 			//
 
 			var boxB = scene.Physics.CreateRigidDynamic();
-			var shapeB = boxB.CreateShape(new BoxGeometry(2, 2, 2), material);
+			boxB.Name = "Box B";
 			boxB.GlobalPose = Matrix.Translation(0, 4, 0);
+
+			var shapeB = boxB.CreateShape(new BoxGeometry(2, 2, 2), material);
 
 			scene.AddActor(boxB);
 
 			//
 
 			// Tell PhysX what to call when a contact/touch occurs
-			var callback = new EventCallback();
+			var callback = new EventCallback(this);
 			scene.SetSimulationEventCallback(callback, 0);
 		}
 
 		protected override void Update(TimeSpan elapsed)
 		{
+			// Called after Simulate
 
+			foreach (var touch in this.Touched)
+			{
+				touch.Dispose();
+			}
+
+			this.Touched.Clear();
 		}
 
 		protected override void Draw()
@@ -55,9 +70,28 @@ namespace PhysX.Samples.EventsSample
 
 	public class EventCallback : SimulationEventCallback
 	{
+		private EventsSample _sample;
+
+		public EventCallback(EventsSample sample)
+		{
+			_sample = sample;
+		}
+
 		public override void OnContact(ContactPairHeader pairHeader, ContactPair[] pairs)
 		{
 			base.OnContact(pairHeader, pairs);
+
+			foreach (var pair in pairs)
+			{
+				var names = new[] { pair.Shape0.Actor.Name, pair.Shape1.Actor.Name };
+
+				// Did Box A and B collide?
+				if (names.Contains("Box A") && names.Contains("Box B"))
+				{
+					_sample.Touched.Add(pair.Shape0.Actor);
+					_sample.Touched.Add(pair.Shape1.Actor);
+				}
+			}
 		}
 	}
 }
