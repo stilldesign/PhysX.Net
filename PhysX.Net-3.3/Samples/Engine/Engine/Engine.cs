@@ -35,6 +35,7 @@ namespace PhysX.Samples.Engine
 		{
 			Window = new SampleWindow();
 			Window.Show();
+
 			_keyboard = new Keyboard(this);
 			_keyboard.OnKeyDown += new KeyEventHandler(_keyboard_OnKeyDown);
 
@@ -221,6 +222,7 @@ namespace PhysX.Samples.Engine
 			var groundPlaneMaterial = this.Scene.Physics.CreateMaterial(0.1f, 0.1f, 0.1f);
 
 			var groundPlane = this.Scene.Physics.CreateRigidStatic();
+			groundPlane.Name = "Ground Plane";
 			groundPlane.GlobalPose = Matrix.RotationAxis(new Vector3(0, 0, 1), (float)System.Math.PI / 2).AsPhysX();
 
 			var planeGeom = new PlaneGeometry();
@@ -244,6 +246,13 @@ namespace PhysX.Samples.Engine
 				// 60fps = 1/60 = 16.67 ms/frame
 				if (frameTimer.Elapsed < TimeSpan.FromMilliseconds(16.67))
 					continue;
+
+				if (!Window.IsActive)
+				{
+					System.Windows.Forms.Application.DoEvents();
+					System.Threading.Thread.Sleep(50);
+					continue;
+				}
 
 				Update(frameTimer.Elapsed);
 				Draw();
