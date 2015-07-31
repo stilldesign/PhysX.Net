@@ -8,8 +8,8 @@ ContactPair::ContactPair(PxContactPair* pair)
 
 	_pair = pair;
 
-	this->Shape0 = ObjectTable::GetObject<Shape^>((intptr_t)pair->shapes[0]);
-	this->Shape1 = ObjectTable::GetObject<Shape^>((intptr_t)pair->shapes[1]);
+	this->Shape0 = ObjectTable::TryGetObject<Shape^>((intptr_t)pair->shapes[0]);
+	this->Shape1 = ObjectTable::TryGetObject<Shape^>((intptr_t)pair->shapes[1]);
 
 	this->ContactData = (pair->contactStream == NULL) ?
 		nullptr :

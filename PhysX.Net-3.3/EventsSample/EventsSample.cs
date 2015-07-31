@@ -83,13 +83,17 @@ namespace PhysX.Samples.EventsSample
 
 			foreach (var pair in pairs)
 			{
-				var names = new[] { pair.Shape0.Actor.Name, pair.Shape1.Actor.Name };
-
-				// Delete the actors when they collide (as long as the pair isn't involving the ground plane)
-				if (!names.Contains("Ground Plane"))
+				// PhysX seems to report the collision of shapes even if we've disposed of them the previous frame, so either could potentially be null
+				if (pair.Shape0 != null && pair.Shape1 != null)
 				{
-					_sample.Touched.Add(pair.Shape0.Actor);
-					_sample.Touched.Add(pair.Shape1.Actor);
+					var names = new[] { pair.Shape0.Actor.Name, pair.Shape1.Actor.Name };
+
+					// Delete the actors when they collide (as long as the pair isn't involving the ground plane)
+					if (!names.Contains("Ground Plane"))
+					{
+						_sample.Touched.Add(pair.Shape0.Actor);
+						_sample.Touched.Add(pair.Shape1.Actor);
+					}
 				}
 			}
 		}
