@@ -85,8 +85,8 @@ namespace PhysX.Samples.EventsSample
 			{
 				var names = new[] { pair.Shape0.Actor.Name, pair.Shape1.Actor.Name };
 
-				// Did Box A and B collide?
-				if (names.Contains("Box A") && names.Contains("Box B"))
+				// Delete the actors when they collide (as long as the pair isn't involving the ground plane)
+				if (!names.Contains("Ground Plane"))
 				{
 					_sample.Touched.Add(pair.Shape0.Actor);
 					_sample.Touched.Add(pair.Shape1.Actor);
