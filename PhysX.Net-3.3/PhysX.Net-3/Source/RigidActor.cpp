@@ -65,9 +65,19 @@ Shape^ RigidActor::CreateShape(Geometry^ geometry, Material^ material, [Optional
 
 	Shape^ shape = gcnew Shape(s, this);
 
+	shape->OnDisposed += gcnew EventHandler(this, &RigidActor::OnShapeDisposed);
+
 	_shapes->Add(shape);
 
 	return shape;
+}
+void PhysX::RigidActor::OnShapeDisposed(Object ^sender, EventArgs ^e)
+{
+	auto shape = (PhysX::Shape^)sender;
+
+	shape->OnDisposed -= gcnew EventHandler(this, &RigidActor::OnShapeDisposed);
+
+	_shapes->Remove(shape);
 }
 
 void RigidActor::Scale(float scale)

@@ -44,7 +44,10 @@ namespace PhysX
 			/// <param name="localPose">Optional actor-relative pose of the shape.</param>
 			/// <returns>The newly created shape.</returns>
 			Shape^ CreateShape(Geometry^ geometry, Material^ material, [Optional] Nullable<Matrix> localPose);
+		private:
+			void OnShapeDisposed(System::Object ^sender, System::EventArgs ^e);
 
+		public:
 			/// <summary>
 			/// Scale a rigid actor by a uniform scale.
 			/// The geometry and relative positions of the actor are multiplied by the given scale value. If the actor is a rigid body or an articulation link and the scaleMassProps value is true, the mass properties are scaled assuming the density is constant: the center of mass is linearly scaled, the mass is multiplied by the cube of the scale, and the inertia tensor by the fifth power of the scale.
