@@ -1222,7 +1222,7 @@
     </ClInclude>
     <ClInclude Include="Source\SimulationFilterShader.h">
       <Filter>Physics</Filter>
-    </ClCompile>
+    </ClInclude>
     <ClInclude Include="Source\VectorAndMatrixExtensions.h">
       <Filter>Math</Filter>
     </ClInclude>

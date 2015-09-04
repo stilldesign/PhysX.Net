@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using PhysX.Math;
+using System.Numerics;
 
 namespace PhysX.Samples.EventsSample
 {
@@ -27,7 +27,7 @@ namespace PhysX.Samples.EventsSample
 
 			var boxA = scene.Physics.CreateRigidDynamic();
 			boxA.Name = "Box A";
-			boxA.GlobalPose = Matrix.Translation(0, 50, 0);
+			boxA.GlobalPose = Matrix4x4.CreateTranslation(0, 50, 0);
 
 			var shapeA = boxA.CreateShape(new BoxGeometry(2, 2, 2), material);
 
@@ -37,7 +37,7 @@ namespace PhysX.Samples.EventsSample
 
 			var boxB = scene.Physics.CreateRigidDynamic();
 			boxB.Name = "Box B";
-			boxB.GlobalPose = Matrix.Translation(0, 4, 0);
+			boxB.GlobalPose = Matrix4x4.CreateTranslation(0, 4, 0);
 
 			var shapeB = boxB.CreateShape(new BoxGeometry(2, 2, 2), material);
 

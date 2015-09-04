@@ -283,7 +283,6 @@
     <ClInclude Include="Source\DefaultSimulationFilterShader.h" />
     <ClInclude Include="Source\SimulationFilterShader.h" />
     <ClInclude Include="Source\VectorAndMatrixExtensions.h" />
-    <ClInclude Include="Source\VectorAndMatrixExtensions.h" />
     <ClInclude Include="Source\VehicleWheelConcurrentUpdateData.h" />
     <ClInclude Include="Source\QueryCache.h" />
     <ClInclude Include="Source\QueryFilterCallback.h" />
