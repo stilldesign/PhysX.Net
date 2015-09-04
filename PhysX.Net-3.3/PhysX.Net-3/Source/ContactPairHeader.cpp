@@ -5,8 +5,8 @@ ContactPairHeader^ ContactPairHeader::ToManaged(PxContactPairHeader unmanaged)
 {
 	auto managed = gcnew ContactPairHeader();
 
-	managed->Actor0 = ObjectTable::GetObject<RigidActor^>((intptr_t)unmanaged.actors[0]);
-	managed->Actor1 = ObjectTable::GetObject<RigidActor^>((intptr_t)unmanaged.actors[1]);
+	managed->Actor0 = ObjectTable::TryGetObject<RigidActor^>((intptr_t)unmanaged.actors[0]);
+	managed->Actor1 = ObjectTable::TryGetObject<RigidActor^>((intptr_t)unmanaged.actors[1]);
 
 	managed->ExtraData = (unmanaged.extraDataStream == NULL) ?
 		nullptr :

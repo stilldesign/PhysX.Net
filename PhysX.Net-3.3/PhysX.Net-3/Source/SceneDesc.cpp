@@ -5,6 +5,7 @@
 #include "ContactModifyCallback.h"
 #include "SceneDesc.h"
 #include "GpuDispatcher.h"
+#include "SimulationFilterShader.h"
 
 using namespace PhysX;
 using namespace PhysX::Math;
@@ -84,6 +85,19 @@ void SceneDesc::ContactModifyCallback::set(PhysX::ContactModifyCallback^ value)
 	_contactModifyCallback = value;
 
 	_sceneDesc->contactModifyCallback = (value == nullptr ? NULL : value->UnmanagedPointer);
+}
+
+PhysX::SimulationFilterShader^ SceneDesc::FilterShader::get()
+{
+	return _filterShader;
+}
+void SceneDesc::FilterShader::set(PhysX::SimulationFilterShader^ value)
+{
+	_filterShader = value;
+
+	// HACK: At the moment we can only have 1 filter shader regardless of what scene/scene desc
+	UnmanagedSimulationFilterShader::Managed = value;
+	_sceneDesc->filterShader = UnmanagedSimulationFilterShader::Filter;
 }
 
 int SceneDesc::CCDMaximumPasses::get()

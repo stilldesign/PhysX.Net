@@ -123,6 +123,24 @@ Material^ Shape::GetMaterialFromInternalFaceIndex(int faceIndex)
 	return ObjectTable::GetObject<Material^>((intptr_t)material);
 }
 
+FilterData Shape::SimulationFilterData::get()
+{
+	return FilterData::ToManaged(_shape->getSimulationFilterData());
+}
+void Shape::SimulationFilterData::set(FilterData value)
+{
+	_shape->setSimulationFilterData(FilterData::ToUnmanaged(value));
+}
+
+FilterData Shape::QueryFilterData::get()
+{
+	return FilterData::ToManaged(_shape->getQueryFilterData());
+}
+void Shape::QueryFilterData::set(FilterData value)
+{
+	_shape->setQueryFilterData(FilterData::ToUnmanaged(value));
+}
+
 //
 
 PhysX::GeometryType Shape::GeometryType::get()

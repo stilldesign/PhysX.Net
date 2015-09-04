@@ -10,6 +10,7 @@ namespace PhysX
 {
 	ref class ContactModifyCallback;
 	ref class GpuDispatcher;
+	ref class SimulationFilterShader;
 
 	public ref class SceneDesc : IDisposable
 	{
@@ -23,6 +24,7 @@ namespace PhysX
 			PxSceneDesc* _sceneDesc;
 
 			SimulationEventCallback^ _simulationEventCallback;
+			PhysX::SimulationFilterShader^ _filterShader;
 			PhysX::ContactModifyCallback^ _contactModifyCallback;
 			PhysX::GpuDispatcher^ _gpuDispatcher;
 
@@ -77,6 +79,12 @@ namespace PhysX
 			{
 				PhysX::ContactModifyCallback^ get();
 				void set(PhysX::ContactModifyCallback^ value);
+			}
+
+			property PhysX::SimulationFilterShader^ FilterShader
+			{
+				PhysX::SimulationFilterShader^ get();
+				void set(PhysX::SimulationFilterShader^ value);
 			}
 
 			property int CCDMaximumPasses
