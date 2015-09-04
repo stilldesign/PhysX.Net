@@ -544,6 +544,9 @@
     <ClCompile Include="Source\VectorAndMatrixExtensions.cpp">
       <Filter>Math</Filter>
     </ClCompile>
+    <ClCompile Include="Source\VectorAndMatrixExtensions.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
@@ -1219,6 +1222,9 @@
     </ClInclude>
     <ClInclude Include="Source\SimulationFilterShader.h">
       <Filter>Physics</Filter>
+    </ClCompile>
+    <ClInclude Include="Source\VectorAndMatrixExtensions.h">
+      <Filter>Math</Filter>
     </ClInclude>
     <ClInclude Include="Source\VectorAndMatrixExtensions.h">
       <Filter>Math</Filter>
