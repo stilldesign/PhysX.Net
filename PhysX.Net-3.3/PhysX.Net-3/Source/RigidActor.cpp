@@ -112,24 +112,6 @@ void RigidActor::DetachShape(Shape^ shape, bool wakeOnLostTouch)
 	this->UnmanagedPointer->detachShape(*shape->UnmanagedPointer, wakeOnLostTouch);
 }
 
-void RigidActor::AttachShape(Shape^ shape)
-{
-	ThrowIfNullOrDisposed(shape, "shape");
-
-	this->UnmanagedPointer->attachShape(*shape->UnmanagedPointer);
-}
-
-void RigidActor::DetachShape(Shape^ shape)
-{
-	DetachShape(shape, true);
-}
-void RigidActor::DetachShape(Shape^ shape, bool wakeOnLostTouch)
-{
-	ThrowIfNullOrDisposed(shape, "shape");
-
-	this->UnmanagedPointer->detachShape(*shape->UnmanagedPointer, wakeOnLostTouch);
-}
-
 void RigidActor::Scale(float scale)
 {
 	Scale(scale, true);

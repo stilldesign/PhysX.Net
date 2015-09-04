@@ -86,39 +86,6 @@ namespace PhysX
 			void DetachShape(Shape^ shape, bool wakeOnLostTouch);
 
 			/// <summary>
-			/// Attach a shared shape to an actor
-			/// This call will increment the reference count of the shape.
-			/// Note: Mass properties of dynamic rigid actors will not automatically be recomputed to reflect
-			/// the new mass distribution implied by the shape.Follow this call with a call to the method UpdateMassAndInertia() to do that.
-			/// Attaching a triangle mesh, heightfield or plane geometry shape configured as SimulationShape is not supported for non - kinematic PxRigidDynamic instances.
-			/// Sleeping: Does NOT wake the actor up automatically.
-			/// </summary>
-			/// <param name="shape">The shape to detach.</param>
-			void AttachShape(Shape^ shape);
-
-			/// <summary>
-			/// Detach a shape from an actor.
-			/// This will also decrement the reference count of the PxShape, and if the reference count
-			/// is zero, will cause it to be deleted.
-			/// For static rigid actors it is not possible to detach all shapes associated with the actor.
-			/// An attempt to remove the last shape will be ignored.
-			/// Sleeping: Does NOT wake the actor up automatically.
-			/// </summary>
-			/// <param name="shape">The shape to detach.</param>
-			void DetachShape(Shape^ shape);
-			/// <summary>
-			/// Detach a shape from an actor.
-			/// This will also decrement the reference count of the PxShape, and if the reference count
-			/// is zero, will cause it to be deleted.
-			/// For static rigid actors it is not possible to detach all shapes associated with the actor.
-			/// An attempt to remove the last shape will be ignored.
-			/// Sleeping: Does NOT wake the actor up automatically.
-			/// </summary>
-			/// <param name="shape">The shape to detach.</param>
-			/// <param name="wakeOnLostTouch">Specifies whether touching objects from the previous frame should get woken up in the next frame. Only applies to Articulation and RigidActor types.</param>
-			void DetachShape(Shape^ shape, bool wakeOnLostTouch);
-
-			/// <summary>
 			/// Scale a rigid actor by a uniform scale.
 			/// The geometry and relative positions of the actor are multiplied by the given scale value. If the actor is a rigid body or an articulation link and the scaleMassProps value is true, the mass properties are scaled assuming the density is constant: the center of mass is linearly scaled, the mass is multiplied by the cube of the scale, and the inertia tensor by the fifth power of the scale.
 			/// </summary>
