@@ -65,6 +65,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuspec", "nuspec", "{A965FAAA-D802-4E8B-97ED-D32167027628}"
 	ProjectSection(SolutionItems) = preProject
 		Install.ps1 = Install.ps1
+		Packaging.txt = Packaging.txt
 		PhysX.Net-x64.nuspec = PhysX.Net-x64.nuspec
 	EndProjectSection
 EndProject
