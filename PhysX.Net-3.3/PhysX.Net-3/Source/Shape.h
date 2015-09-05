@@ -35,10 +35,12 @@ namespace PhysX
 
 	private:
 		PxShape* _shape;
-		RigidActor^ _actor;
+		IDisposable^ _owner;
+
+		List<RigidActor^>^ _attachedTo;
 
 	internal:
-		Shape(PxShape* shape, PhysX::RigidActor^ parentActor);
+		Shape(PxShape* shape, PhysX::IDisposable^ owner);
 	public:
 		~Shape();
 	protected:
@@ -72,6 +74,15 @@ namespace PhysX
 		/// </summary>
 		Material^ GetMaterialFromInternalFaceIndex(int faceIndex);
 
+		property IEnumerable<RigidActor^>^ AttachedTo
+		{
+			IEnumerable<RigidActor^>^ get();
+		}
+	internal:
+		void AddAttachedTo(RigidActor^ rigidActor);
+		void RemoveAttachedTo(RigidActor^ rigidActor);
+
+	public:
 		/// <summary>
 		/// Gets or sets the user definable collision filter data.
 		/// </summary>
@@ -106,6 +117,20 @@ namespace PhysX
 		property PhysX::RigidActor^ Actor
 		{
 			PhysX::RigidActor^ get();
+		}
+		/// <summary>
+		/// Retrieves the physics class this shape was created with, or null if it was instead created on an actor.
+		/// </summary>
+		property PhysX::Physics^ Physics
+		{
+			PhysX::Physics^ get();
+		}
+		/// <summary>
+		/// True if the shape was create on an Actor, False if it was created on a Physics instance.
+		/// </summary>
+		property bool IsExclusive
+		{
+			bool get();
 		}
 
 		/// <summary>

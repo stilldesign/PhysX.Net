@@ -3,6 +3,7 @@
 #include "ClothEnum.h"
 #include "ClothParticle.h"
 #include "JointEnum.h"
+#include "ShapeFlag.h"
 
 namespace PhysX
 {
@@ -39,6 +40,7 @@ namespace PhysX
 	ref class Articulation;
 	ref class Aggregate;
 	ref class Joint;
+	ref class Geometry;
 
 
 	namespace VisualDebugger
@@ -363,6 +365,9 @@ namespace PhysX
 		#pragma region Aggregate
 		Aggregate^ CreateAggregate(int maximumSize, bool enableSelfCollision);
 		#pragma endregion
+
+		Shape^ CreateShape(Geometry^ geometry, Material^ material);
+		Shape^ CreateShape(Geometry^ geometry, Material^ material, bool isExclusive, ShapeFlag shapeFlags);
 
 	internal:
 		property PxPhysics* UnmanagedPointer

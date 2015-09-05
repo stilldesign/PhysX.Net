@@ -104,6 +104,7 @@
     <Compile Include="Shape\ShapeTest.cs" />
     <Compile Include="Shape\ShapeGeometryTest.cs" />
     <Compile Include="Shape\ShapeCreationAndDisposalTest.cs" />
+    <Compile Include="Shape\ShapeAttachingTests.cs" />
     <Compile Include="SimulationEventCallbackTest.cs" />
     <Compile Include="Stream\DefaultMemoryOutputStreamTest.cs" />
     <Compile Include="Stream\StreamExtensionsTest.cs" />

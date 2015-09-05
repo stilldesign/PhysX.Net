@@ -39,6 +39,7 @@
 #include "PrismaticJoint.h"
 #include "RevoluteJoint.h"
 #include "SphericalJoint.h"
+#include "Geometry.h";
 
 //#include <PvdConnection.h>
 //#include <extensions\PxCollectionExt.h>
@@ -586,6 +587,24 @@ Aggregate^ Physics::CreateAggregate(int maximumSize, bool enableSelfCollision)
 	PxAggregate* a = _physics->createAggregate(maximumSize, enableSelfCollision);
 
 	return gcnew Aggregate(a, this);
+}
+
+Shape^ Physics::CreateShape(Geometry^ geometry, Material^ material)
+{
+	return CreateShape(geometry, material, false, ShapeFlag::Visualization | ShapeFlag::SceneQueryShape | ShapeFlag::SimulationShape);
+}
+Shape^ Physics::CreateShape(Geometry^ geometry, Material^ material, bool isExclusive, ShapeFlag shapeFlags)
+{
+	ThrowIfNull(geometry, "geometry");
+	ThrowIfNull(material, "material");
+
+	PxGeometry* g = geometry->ToUnmanaged();
+
+	PxShape* s = _physics->createShape(*g, *material->UnmanagedPointer, isExclusive, ToUnmanagedEnum(PxShapeFlag, shapeFlags));
+
+	Shape^ shape = gcnew Shape(s, this);
+
+	return shape;
 }
 
 PxPhysics* Physics::UnmanagedPointer::get()

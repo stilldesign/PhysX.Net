@@ -12,17 +12,22 @@
 #include "TriangleMeshGeometry.h"
 #include "HeightFieldGeometry.h"
 #include "ShapeUtil.h"
+#include "RigidDynamic.h"
 
-Shape::Shape(PxShape* shape, PhysX::RigidActor^ parentActor)
+Shape::Shape(PxShape* shape, PhysX::IDisposable^ owner)
 {
-	if (shape == NULL)
-		throw gcnew ArgumentException("shape");
-	ThrowIfNullOrDisposed(parentActor, "parentActor");
+	ThrowIfNull(shape, "shape");
+	ThrowIfNullOrDisposed(owner, "owner");
 
 	_shape = shape;
-	_actor = parentActor;
+	_owner = owner;
 
-	ObjectTable::Add((intptr_t)_shape, this, parentActor);
+	// If the shape is not exclusive (i.e. created on a physics instance), then we'll need to know
+	// what actors it's been attached to
+	if (!shape->isExclusive())
+		_attachedTo = gcnew List<RigidActor^>();
+
+	ObjectTable::Add((intptr_t)_shape, this, owner);
 
 	this->UnmanagedOwner = true;
 }
@@ -37,10 +42,26 @@ Shape::!Shape()
 	if (this->Disposed)
 		return;
 
-	// TODO: What does it mean to Dispose a Shape which is used on multiple Actors?
-	// Should be using _actor->detachShape(...)
 	if (this->UnmanagedOwner)
-		_shape->release();
+	{
+		// Shared shape - created on a Physics instance
+		if (!_shape->isExclusive())
+		{
+			// Detach from all the actors
+			for each (auto actor in _attachedTo->ToArray())
+			{
+				actor->DetachShape(this);
+			}
+			// TODO: Should this be needed? If we detach from all actors, this *should* be Count=0
+			_attachedTo->Clear();
+		}
+		else
+		{
+			// Here, the shape was created for sole use on this actor. We call detach on our
+			// parent actor, which will inturn delete/release this shape
+			_shape->getActor()->detachShape(*_shape);
+		}
+	}
 
 	_shape = NULL;
 
@@ -124,6 +145,19 @@ Material^ Shape::GetMaterialFromInternalFaceIndex(int faceIndex)
 	return ObjectTable::GetObject<Material^>((intptr_t)material);
 }
 
+IEnumerable<RigidActor^>^ Shape::AttachedTo::get()
+{
+	return _attachedTo;
+}
+void Shape::AddAttachedTo(RigidActor^ rigidActor)
+{
+	_attachedTo->Add(rigidActor);
+}
+void Shape::RemoveAttachedTo(RigidActor^ rigidActor)
+{
+	_attachedTo->Remove(rigidActor);
+}
+
 FilterData Shape::SimulationFilterData::get()
 {
 	return FilterData::ToManaged(_shape->getSimulationFilterData());
@@ -151,7 +185,25 @@ PhysX::GeometryType Shape::GeometryType::get()
 
 PhysX::RigidActor^ Shape::Actor::get()
 {
-	return _actor;
+	// If the shape is 'exclusive', it's only used by one actor and that will be the owner/the object the shape was created on
+	// See: PxShape::getActor()
+	if (_shape->isExclusive())
+		return (PhysX::RigidActor^)_owner;
+	else
+		return nullptr;
+}
+PhysX::Physics^ Shape::Physics::get()
+{
+	// If the shape is NOT 'exclusive', it was created on a Physics instance as opposed to on an actor.
+	// See: PxShape::getActor()
+	if (_shape->isExclusive())
+		return nullptr;
+	else
+		return (PhysX::Physics^)_owner;
+}
+bool Shape::IsExclusive::get()
+{
+	return _shape->isExclusive();
 }
 
 Matrix Shape::GlobalPose::get()
@@ -178,7 +230,10 @@ void Shape::Name::set(String^ value)
 
 Bounds3 Shape::WorldBounds::get()
 {
-	PxBounds3 bounds = ShapeUtil::GetWorldBoundsUnmanaged(_shape, _actor->UnmanagedPointer);
+	if (!this->IsExclusive)
+		throw gcnew InvalidOperationException(String::Format("This method is only valid when the shape is exclusive, that is, when it was created on a RigidActor as opposed to having been created on a Physics instance."));
+
+	PxBounds3 bounds = ShapeUtil::GetWorldBoundsUnmanaged(_shape, this->Actor->UnmanagedPointer);
 
 	return Bounds3::ToManaged(bounds);
 }

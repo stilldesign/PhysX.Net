@@ -48,8 +48,6 @@ namespace PhysX.Test
 		[TestInitialize]
 		public void TestInitialize()
 		{
-			Trace.WriteLine(GetCurrentMethod());
-
 			if (Physics.Instantiated)
 				throw new Exception("Before a test run, the Physics singleton should not be initalized. Probably spill over from a previous test.");
 		}

@@ -20,13 +20,11 @@ RigidActor::~RigidActor()
 }
 RigidActor::!RigidActor()
 {
-	for each (auto shape in _shapes)
-	{
-		DetachShape(shape);
-	}
-
 	_shapes->Clear();
-	_shapes = nullptr;
+
+	// As shapes are a child of an actor, they will be disposed of before the actor, and calling dispose on a
+	// shape will call detachShape
+	// So, if this actor is being disposed, here, it should have no shapes left on it as each one will of been disposed/detached
 }
 
 array<Shape^>^ RigidActor::CreateShapesInActor(PxRigidActor* actor)
@@ -98,6 +96,11 @@ void RigidActor::AttachShape(Shape^ shape)
 {
 	ThrowIfNullOrDisposed(shape, "shape");
 
+	_shapes->Add(shape);
+
+	if (!shape->IsExclusive)
+		shape->AddAttachedTo(this);
+
 	this->UnmanagedPointer->attachShape(*shape->UnmanagedPointer);
 }
 
@@ -109,7 +112,21 @@ void RigidActor::DetachShape(Shape^ shape, bool wakeOnLostTouch)
 {
 	ThrowIfNullOrDisposed(shape, "shape");
 
-	this->UnmanagedPointer->detachShape(*shape->UnmanagedPointer, wakeOnLostTouch);
+	_shapes->Remove(shape);
+
+	if (shape->IsExclusive)
+	{
+		// Detaching an exclusive shape from an actor causes it to be released
+		// Inside the Dispose method of Shape, it calls detachShape(shape) and thus releases it
+		delete shape;
+	}
+	else
+	{
+		// If the shape is shared
+		shape->RemoveAttachedTo(this);
+
+		this->UnmanagedPointer->detachShape(*shape->UnmanagedPointer, wakeOnLostTouch);
+	}
 }
 
 void RigidActor::Scale(float scale)
