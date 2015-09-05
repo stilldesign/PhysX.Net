@@ -102,6 +102,18 @@ namespace PhysX
 			}
 
 			/// <summary>
+			/// Gets or sets the "foot" position of the controller, i.e. the position of the bottom of the CCT's shape.
+			/// 
+			/// Note: The foot position takes the contact offset into account
+			/// Warning: When setting, this is a 'teleport' function, it doesn't check for collisions.
+			/// </summary>
+			property Vector3 FootPosition
+			{
+				Vector3 get();
+				void set(Vector3 value);
+			}
+
+			/// <summary>
 			/// Gets or sets the step height.
 			/// </summary>
 			property float StepOffset
