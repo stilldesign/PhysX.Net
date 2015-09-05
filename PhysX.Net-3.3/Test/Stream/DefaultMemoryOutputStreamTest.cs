@@ -15,12 +15,13 @@ namespace PhysX.Test.Stream
 			{
 				var buffer = new byte[] { 1, 2, 3, 4, 5 };
 
-				var stream = new DefaultMemoryOutputStream(buffer);
+				using (var stream = new DefaultMemoryOutputStream(buffer))
+				{
+					var bufferOut = stream.GetData();
 
-				var bufferOut = stream.GetData();
-
-				Assert.IsNotNull(bufferOut);
-				Assert.AreEqual(5, bufferOut.Length);
+					Assert.IsNotNull(bufferOut);
+					Assert.AreEqual(5, bufferOut.Length);
+				}
 			}
 		}
 
@@ -29,7 +30,10 @@ namespace PhysX.Test.Stream
 		{
 			using (var foundation = new Foundation())
 			{
-				var stream = new DefaultMemoryOutputStream(new byte[] { });
+				using (var stream = new DefaultMemoryOutputStream(new byte[] { }))
+				{
+
+				}
 			}
 		}
 	}
