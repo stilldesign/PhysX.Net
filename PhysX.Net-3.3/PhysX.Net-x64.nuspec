@@ -8,6 +8,9 @@
 		<language>en-US</language>
 		<projectUrl>https://github.com/stilldesign/PhysX.Net</projectUrl>
 		<tags>nvidia physx wrapper physics</tags>
+		<dependencies>
+			<dependency id="System.Numerics.Vectors" version="4.0.0" />
+		</dependencies>
 	</metadata>
 	<files>
 		<!-- x64 -->
