@@ -149,6 +149,15 @@ void Controller::StepOffset::set(float value)
 	_controller->setStepOffset(value);
 }
 
+ControllerNonWalkableMode Controller::NonWalkableMode::get()
+{
+	return ToManagedEnum(ControllerNonWalkableMode, _controller->getNonWalkableMode());
+}
+void Controller::NonWalkableMode::set(ControllerNonWalkableMode value)
+{
+	_controller->setNonWalkableMode(ToUnmanagedEnum(PxControllerNonWalkableMode, value));
+}
+
 //CCTInteractionMode Controller::Interaction::get()
 //{
 //	return ToManagedEnum(CCTInteractionMode, _controller->getInteraction());

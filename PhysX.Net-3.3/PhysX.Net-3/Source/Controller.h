@@ -122,6 +122,15 @@ namespace PhysX
 				void set(float value);
 			}
 
+			/// <summary>
+			/// Gets or sets the non - walkable mode for the CCT.
+			/// </summary>
+			property ControllerNonWalkableMode NonWalkableMode
+			{
+				ControllerNonWalkableMode get();
+				void set(ControllerNonWalkableMode value);
+			}
+
 			///// <summary>
 			///// Sets the interaction mode for the CCT.
 			///// </summary>
