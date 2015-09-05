@@ -28,7 +28,7 @@ float4 RenderScenePS(VertexOutput IN) : SV_TARGET
 	return IN.Color;
 }
 
-technique10 RenderScene
+technique11 RenderScene
 {
 	pass p0
 	{
