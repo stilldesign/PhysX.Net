@@ -17,7 +17,6 @@
     <ClCompile Include="Source\TriggerPair.cpp" />
     <ClCompile Include="Source\UserControllerHitReport.cpp" />
     <ClCompile Include="Source\FilterData.cpp" />
-    <ClCompile Include="Source\Plane.cpp" />
     <ClCompile Include="Source\VehicleAckermannGeometryData.cpp">
       <Filter>Vehicle</Filter>
     </ClCompile>
@@ -145,19 +144,7 @@
     <ClCompile Include="Source\Bounds3.cpp">
       <Filter>Math</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Vector2.cpp">
-      <Filter>Math</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Vector3.cpp">
-      <Filter>Math</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Vector4.cpp">
-      <Filter>Math</Filter>
-    </ClCompile>
     <ClCompile Include="Source\MathUtil.cpp">
-      <Filter>Math</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Matrix.cpp">
       <Filter>Math</Filter>
     </ClCompile>
     <ClCompile Include="Source\Actor.cpp">
@@ -289,9 +276,6 @@
     </ClCompile>
     <ClCompile Include="Source\ConstraintDominance.cpp">
       <Filter>Constraint</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Quaternion.cpp">
-      <Filter>Math</Filter>
     </ClCompile>
     <ClCompile Include="Source\TolerancesScale.cpp">
       <Filter>Physics</Filter>
@@ -557,6 +541,12 @@
     <ClCompile Include="Source\SimulationFilterShader.cpp">
       <Filter>Physics</Filter>
     </ClCompile>
+    <ClCompile Include="Source\VectorAndMatrixExtensions.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VectorAndMatrixExtensions.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
@@ -573,7 +563,6 @@
     <ClInclude Include="Source\MeshScale.h" />
     <ClInclude Include="Source\MultipleRaycastHitResult.h" />
     <ClInclude Include="Source\PhysXException.h" />
-    <ClInclude Include="Source\Plane.h" />
     <ClInclude Include="Source\RenderBuffer.h" />
     <ClInclude Include="Source\RuntimeFileChecks.h" />
     <ClInclude Include="Source\SolverIterationCounts.h" />
@@ -714,19 +703,7 @@
     <ClInclude Include="Source\Bounds3.h">
       <Filter>Math</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Vector4.h">
-      <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Vector2.h">
-      <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Vector3.h">
-      <Filter>Math</Filter>
-    </ClInclude>
     <ClInclude Include="Source\MathUtil.h">
-      <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Matrix.h">
       <Filter>Math</Filter>
     </ClInclude>
     <ClInclude Include="Source\Actor.h">
@@ -921,9 +898,6 @@
     </ClInclude>
     <ClInclude Include="Source\ConstraintEnum.h">
       <Filter>Constraint</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Quaternion.h">
-      <Filter>Math</Filter>
     </ClInclude>
     <ClInclude Include="Source\TolerancesScale.h">
       <Filter>Physics</Filter>
@@ -1249,12 +1223,19 @@
     <ClInclude Include="Source\SimulationFilterShader.h">
       <Filter>Physics</Filter>
     </ClInclude>
+    <ClInclude Include="Source\VectorAndMatrixExtensions.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VectorAndMatrixExtensions.h">
+      <Filter>Math</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Version.rc" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Changelog.txt" />
+    <None Include="..\samples\rigidbodiessample\packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="PhysXExtensions">

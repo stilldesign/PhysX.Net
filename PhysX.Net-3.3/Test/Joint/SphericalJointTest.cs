@@ -3,7 +3,7 @@ using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PhysX.Math;
+using System.Numerics;
 
 namespace PhysX.Test.Joint
 {
@@ -22,7 +22,7 @@ namespace PhysX.Test.Joint
 				var box1 = CreateBoxActor(core.Scene, new Vector3(5, 5, 5), new Vector3(0, 10, 0));
 				var box2 = CreateBoxActor(core.Scene, new Vector3(5, 5, 5), new Vector3(0, 20, 0));
 
-				SphericalJoint joint = core.Scene.CreateJoint<SphericalJoint>(box1, Matrix.Identity, box2, Matrix.Identity);
+				SphericalJoint joint = core.Scene.CreateJoint<SphericalJoint>(box1, Matrix4x4.Identity, box2, Matrix4x4.Identity);
 
 				// Set the limit cone
 				var limit = new JointLimitCone()

@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Numerics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PhysX.Math;
 using PhysX.Test.Util;
 
 namespace PhysX.Test
@@ -38,7 +38,7 @@ namespace PhysX.Test
 
 					ClothParticle[] particles = clothGrid.Points.Select(p => new ClothParticle(p, 2)).ToArray();
 
-					Cloth cloth = physics.Physics.CreateCloth(Matrix.Identity, clothFabric, particles, 0);
+					Cloth cloth = physics.Physics.CreateCloth(Matrix4x4.Identity, clothFabric, particles, 0);
 				}
 			}
 		}
@@ -70,7 +70,7 @@ namespace PhysX.Test
 
 					ClothParticle[] particles = clothGrid.Points.Select(p => new ClothParticle(p, 2)).ToArray();
 
-					Cloth cloth = physics.Physics.CreateCloth(Matrix.Identity, clothFabric, particles, 0);
+					Cloth cloth = physics.Physics.CreateCloth(Matrix4x4.Identity, clothFabric, particles, 0);
 
 					var read = cloth.LockParticleData();
 

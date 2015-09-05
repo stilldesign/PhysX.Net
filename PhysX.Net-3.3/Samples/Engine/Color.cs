@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Runtime.InteropServices;
-using SlimDX;
+using SharpDX;
 
 namespace PhysX.Samples
 {
@@ -199,7 +199,7 @@ namespace PhysX.Samples
 		{
 			return new Vector4(this.Red, this.Green, this.Blue, this.Alpha);
 		}
-		/// <summary>Converts the Color struct to a SlimDX Color4 struct.</summary>
+		/// <summary>Converts the Color struct to a SharpDX Color4 struct.</summary>
 		/// <returns></returns>
 		public Color4 ToColor4()
 		{

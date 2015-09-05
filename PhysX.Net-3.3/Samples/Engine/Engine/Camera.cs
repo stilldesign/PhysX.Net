@@ -2,8 +2,8 @@
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Input;
-using SlimDX;
-using SlimDX.Direct3D11;
+using SharpDX;
+using SharpDX.Direct3D11;
 
 namespace PhysX.Samples.Engine
 {
@@ -73,7 +73,7 @@ namespace PhysX.Samples.Engine
 
 		private Vector2 GetMouseDelta()
 		{
-			Point p;
+			System.Drawing.Point p;
 			GetCursorPos(out p);
 
 			var mousePos = p - new Size((int)_engine.Window.Left, (int)_engine.Window.Top);
@@ -86,8 +86,8 @@ namespace PhysX.Samples.Engine
 
 		private void CenterCursor()
 		{
-			Point l = new Point((int)_engine.Window.Left, (int)_engine.Window.Top);
-			Size s = new Size((int)_engine.Window.Width, (int)_engine.Window.Height);
+			var l = new System.Drawing.Point((int)_engine.Window.Left, (int)_engine.Window.Top);
+			var s = new Size((int)_engine.Window.Width, (int)_engine.Window.Height);
 
 			SetCursorPos(l.X + s.Width / 2, l.Y + s.Height / 2);
 		}

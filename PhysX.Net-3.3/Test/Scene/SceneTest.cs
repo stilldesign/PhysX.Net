@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PhysX;
-using PhysX.Math;
 
 namespace PhysX.Test
 {
@@ -107,7 +107,7 @@ namespace PhysX.Test
 				bool result = core.Scene.Overlap
 				(
 					geometry: overlappingBox,
-					pose: Matrix.Identity,
+					pose: Matrix4x4.Identity,
 					maximumOverlaps: 2,
 					hitCall: hit =>
 					{
@@ -143,7 +143,7 @@ namespace PhysX.Test
 		//		var sweep = core.Scene.SweepAny
 		//		(
 		//			sweepBox, 
-		//			Matrix.Translation(0, 2, 0),
+		//			Matrix4x4.CreateTranslation(0, 2, 0),
 		//			new Vector3(0, 0, 1),
 		//			25,
 		//			SceneQueryFlags.All
@@ -176,7 +176,7 @@ namespace PhysX.Test
 		//		var sweep = core.Scene.SweepMultiple
 		//		(
 		//			sweepBox,
-		//			Matrix.Translation(0, 2, 0),
+		//			Matrix4x4.CreateTranslation(0, 2, 0),
 		//			null,
 		//			new Vector3(0, 0, 1),
 		//			25,

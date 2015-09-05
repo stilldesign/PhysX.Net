@@ -40,13 +40,13 @@ Bounds3 Bounds3::ToManaged(PxBounds3 bounds)
 
 void Bounds3::Include(Vector3 vector)
 {
-	this->Min = Vector3::Minimize(this->Min, vector);
-	this->Max = Vector3::Maximize(this->Max, vector);
+	this->Min = Vector3::Min(this->Min, vector);
+	this->Max = Vector3::Max(this->Max, vector);
 }
 void Bounds3::Combine(Bounds3 bounds)
 {
-	this->Min = Vector3::Minimize(bounds.Min, this->Min);
-	this->Max = Vector3::Maximize(bounds.Max, this->Max);
+	this->Min = Vector3::Min(bounds.Min, this->Min);
+	this->Max = Vector3::Max(bounds.Max, this->Max);
 }
 void Bounds3::BoundsOfOBB(Matrix orientation, Vector3 translation, Vector3 halfDimensions)
 {
@@ -63,7 +63,7 @@ void Bounds3::BoundsOfOBB(Matrix orientation, Vector3 translation, Vector3 halfD
 }
 void Bounds3::Transform(Matrix orientation, Vector3 translation)
 {
-	Vector3 center = Vector3::TransformCoordinate(this->Center, orientation) + translation;
+	Vector3 center = Vector3::Transform(this->Center, orientation) + translation;
 	
 	this->BoundsOfOBB(orientation, center, this->Extents);
 }

@@ -17,7 +17,7 @@ PxClothMeshDesc ClothMeshDesc::ToUnmanaged(ClothMeshDesc^ desc)
 	if (desc->Points != nullptr)
 	{
 		points.count = desc->Points->Length;
-		points.stride = Vector3::SizeInBytes;
+		points.stride = MathUtil::Vector3SizeInBytes;
 
 		points.data = new BYTE[points.count * points.stride];
 		Util::AsUnmanagedArray(desc->Points, (void*)points.data);

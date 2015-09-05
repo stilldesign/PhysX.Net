@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Numerics;
 using System.Text;
-using PhysX.Math;
 using PhysX.Samples;
 using PhysX.Samples.Engine;
 
@@ -53,7 +53,7 @@ namespace PhysX.Samples.RigidBodiesSample
 				var boxGeom = new BoxGeometry(2, 2, 2);
 				var boxShape = rigidActor.CreateShape(boxGeom, material);
 
-				rigidActor.GlobalPose = Matrix.Translation(-20, 10 + i * (boxGeom.Size.Y + 0.5f), 0);
+				rigidActor.GlobalPose = Matrix4x4.CreateTranslation(-20, 10 + i * (boxGeom.Size.Y + 0.5f), 0);
 				rigidActor.SetMassAndUpdateInertia(10);
 
 				scene.AddActor(rigidActor);
@@ -72,7 +72,7 @@ namespace PhysX.Samples.RigidBodiesSample
 				var sphereGeom = new SphereGeometry(radius: 2);
 				var boxShape = rigidActor.CreateShape(sphereGeom, material);
 
-				rigidActor.GlobalPose = Matrix.Translation(-10, 30 + i * (sphereGeom.Radius * 2 + 0.5f), 0);
+				rigidActor.GlobalPose = Matrix4x4.CreateTranslation(-10, 30 + i * (sphereGeom.Radius * 2 + 0.5f), 0);
 				rigidActor.SetMassAndUpdateInertia(10);
 
 				scene.AddActor(rigidActor);
@@ -88,7 +88,7 @@ namespace PhysX.Samples.RigidBodiesSample
 				var capsuleGeom = new CapsuleGeometry(radius: 2, halfHeight: 2);
 				var boxShape = rigidActor.CreateShape(capsuleGeom, material);
 
-				rigidActor.GlobalPose = Matrix.Translation(0, 30 + i * (capsuleGeom.HalfHeight + capsuleGeom.Radius + 0.5f), 0);
+				rigidActor.GlobalPose = Matrix4x4.CreateTranslation(0, 30 + i * (capsuleGeom.HalfHeight + capsuleGeom.Radius + 0.5f), 0);
 				rigidActor.SetMassAndUpdateInertia(10);
 
 				scene.AddActor(rigidActor);
@@ -119,7 +119,7 @@ namespace PhysX.Samples.RigidBodiesSample
 
 			rigidActor.CreateShape(heightFieldGeom, material);
 
-			rigidActor.GlobalPose = Matrix.Translation(30, 30, -32.5f);
+			rigidActor.GlobalPose = Matrix4x4.CreateTranslation(30, 30, -32.5f);
 
 			scene.AddActor(rigidActor);
 		}
@@ -157,8 +157,8 @@ namespace PhysX.Samples.RigidBodiesSample
 			rigidActor.CreateShape(triangleMeshGeom, material);
 
 			rigidActor.GlobalPose =
-				Matrix.RotationX(-(float)System.Math.PI / 2) *
-				Matrix.Translation(0, 10, 0);
+				Matrix4x4.CreateRotationX(-(float)System.Math.PI / 2) *
+				Matrix4x4.CreateTranslation(0, 10, 0);
 
 			scene.AddActor(rigidActor);
 		}
@@ -196,8 +196,8 @@ namespace PhysX.Samples.RigidBodiesSample
 			rigidActor.CreateShape(convexMeshGeom, material);
 
 			rigidActor.GlobalPose =
-				Matrix.RotationX(-(float)System.Math.PI / 2) *
-				Matrix.Translation(0, 80, 0);
+				Matrix4x4.CreateRotationX(-(float)System.Math.PI / 2) *
+				Matrix4x4.CreateTranslation(0, 80, 0);
 
 			scene.AddActor(rigidActor);
 		}

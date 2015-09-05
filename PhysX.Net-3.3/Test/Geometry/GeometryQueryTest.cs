@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PhysX.Math;
 
 namespace PhysX.Test.Geometry
 {
@@ -22,9 +22,9 @@ namespace PhysX.Test.Geometry
 				new Vector3(0, 0, 1),
 				100,
 				sweeper,
-				Matrix.Translation(0, 5, 0),
+				Matrix4x4.CreateTranslation(0, 5, 0),
 				obstacle,
-				Matrix.Translation(0, 5, 10)
+				Matrix4x4.CreateTranslation(0, 5, 10)
 			);
 
 			Assert.IsNotNull(hit);
@@ -36,7 +36,7 @@ namespace PhysX.Test.Geometry
 		{
 			var sphere = new SphereGeometry(5);
 
-			var bounds = GeometryQuery.GetWorldBounds(sphere, Matrix.Identity);
+			var bounds = GeometryQuery.GetWorldBounds(sphere, Matrix4x4.Identity);
 
 			// We started with a sphere of radius 5,
 			// the bounding size + inflation value (3rd optional arg) results

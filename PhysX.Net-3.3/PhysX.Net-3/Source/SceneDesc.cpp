@@ -8,7 +8,6 @@
 #include "SimulationFilterShader.h"
 
 using namespace PhysX;
-using namespace PhysX::Math;
 
 SceneDesc::SceneDesc([Optional] Nullable<PhysX::TolerancesScale> tolerancesScale)
 {

@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Xml;
-using PhysX.Math;
-using SlimDX.Direct3D11;
-
-using Buffer = SlimDX.Direct3D11.Buffer;
 using System.Globalization;
+using System.Linq;
+using System.Numerics;
+using System.Xml;
+using SharpDX.Direct3D11;
+using Buffer = SharpDX.Direct3D11.Buffer;
 
 namespace PhysX.Samples.Engine
 {
@@ -32,13 +31,10 @@ namespace PhysX.Samples.Engine
 			var indices = ParseInts(indicesNode.InnerText).ToArray();
 
 			// Mixing concerns here, but oh well
-			var positionsBuffer = new SlimDX.DataStream(positions, true, false);
-			var indicesBuffer = new SlimDX.DataStream(indices, true, false);
-
 			var model = new Model()
 			{
-				VertexBuffer = new Buffer(device, positionsBuffer, positions.Length * Vector3.SizeInBytes, ResourceUsage.Default, BindFlags.VertexBuffer, CpuAccessFlags.None, ResourceOptionFlags.None, Vector3.SizeInBytes),
-				IndexBuffer = new Buffer(device, indicesBuffer, indices.Length * sizeof(int), ResourceUsage.Default, BindFlags.IndexBuffer, CpuAccessFlags.None, ResourceOptionFlags.None, sizeof(int)),
+				VertexBuffer = Buffer.Create(device, BindFlags.VertexBuffer, positions),
+				IndexBuffer = Buffer.Create(device, BindFlags.IndexBuffer, indices),
 				IndexCount = indices.Length,
 				VertexPositions = positions,
 				Indices = indices
