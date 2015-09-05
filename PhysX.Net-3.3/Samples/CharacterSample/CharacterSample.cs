@@ -40,7 +40,7 @@ namespace PhysX.Samples.CharacterSample
 					Radius = 1,
 					Material = material,
 					UpDirection = new Math.Vector3(0, 1, 0),
-					Position = new Math.Vector3(0, 2, 0),
+					Position = new Math.Vector3(0, 3, 0),
 					// TODO: I think this is coming back in 3.3 (> beta 2)
 					//Callback = new ControllerHitReport()
 				};
@@ -56,7 +56,7 @@ namespace PhysX.Samples.CharacterSample
 					Radius = 1,
 					Material = material,
 					UpDirection = new Math.Vector3(0, 1, 0),
-					Position = new Math.Vector3(15, 2, 15)
+					Position = new Math.Vector3(15, 3, 15)
 				};
 
 				controllerManager.CreateController<CapsuleController>(desc);
