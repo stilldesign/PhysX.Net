@@ -156,5 +156,38 @@ namespace PhysX.Test.Shape
 				Assert.AreEqual(0, actorB.Shapes.Count());
 			}
 		}
+
+		[TestMethod]
+		public void DisposeActorWithSharedShape()
+		{
+			using (var physics = CreatePhysicsAndScene())
+			{
+				var material = physics.Physics.CreateMaterial(0.1f, 0.1f, 0.1f);
+
+				var actor = physics.Physics.CreateRigidDynamic();
+
+				var shape = physics.Physics.CreateShape(new BoxGeometry(2, 2, 2), material);
+
+				actor.AttachShape(shape);
+
+				actor.Dispose();
+			}
+		}
+
+		// A bit of a duplicated test, but it's the opposite of the above test and makes it easy to find
+		[TestMethod]
+		public void DisposeActorWithExclusiveShape()
+		{
+			using (var physics = CreatePhysicsAndScene())
+			{
+				var material = physics.Physics.CreateMaterial(0.1f, 0.1f, 0.1f);
+
+				var actor = physics.Physics.CreateRigidDynamic();
+
+				var shape = actor.CreateShape(new BoxGeometry(2, 2, 2), material);
+
+				actor.Dispose();
+			}
+		}
 	}
 }

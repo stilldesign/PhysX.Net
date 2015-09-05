@@ -82,6 +82,9 @@ namespace PhysX
 		void AddAttachedTo(RigidActor^ rigidActor);
 		void RemoveAttachedTo(RigidActor^ rigidActor);
 
+	private:
+		void AttachedActor_OnDisposing(Object ^sender, EventArgs ^e);
+
 	public:
 		/// <summary>
 		/// Gets or sets the user definable collision filter data.
@@ -213,5 +216,5 @@ namespace PhysX
 		}
 
 		property bool UnmanagedOwner;
-	};
+};
 };

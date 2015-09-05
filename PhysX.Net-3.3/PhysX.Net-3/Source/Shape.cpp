@@ -145,6 +145,8 @@ Material^ Shape::GetMaterialFromInternalFaceIndex(int faceIndex)
 	return ObjectTable::GetObject<Material^>((intptr_t)material);
 }
 
+//
+
 IEnumerable<RigidActor^>^ Shape::AttachedTo::get()
 {
 	return _attachedTo;
@@ -152,11 +154,23 @@ IEnumerable<RigidActor^>^ Shape::AttachedTo::get()
 void Shape::AddAttachedTo(RigidActor^ rigidActor)
 {
 	_attachedTo->Add(rigidActor);
+
+	// When the actor we are now attached to is disposing, remove the actor from the list of actors we are attached to
+	rigidActor->OnDisposing += gcnew EventHandler(this, &Shape::AttachedActor_OnDisposing);
 }
 void Shape::RemoveAttachedTo(RigidActor^ rigidActor)
 {
 	_attachedTo->Remove(rigidActor);
+
+	rigidActor->OnDisposing -= gcnew EventHandler(this, &Shape::AttachedActor_OnDisposing);
 }
+
+void Shape::AttachedActor_OnDisposing(Object ^sender, EventArgs ^e)
+{
+	RemoveAttachedTo((RigidActor^)sender);
+}
+
+//
 
 FilterData Shape::SimulationFilterData::get()
 {
