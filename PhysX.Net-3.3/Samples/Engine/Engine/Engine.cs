@@ -234,17 +234,12 @@ namespace PhysX.Samples.Engine
 		{
 			Window.Show();
 			Window.Focus();
-			//Application.DoEvents();
 
 			var frameTimer = Stopwatch.StartNew();
 
 			// Not an ideal render loop, but it will do for this sample
 			while (true)
 			{
-				// 60fps = 1/60 = 16.67 ms/frame
-				if (frameTimer.Elapsed < TimeSpan.FromMilliseconds(16.67))
-					continue;
-
 				if (!Window.IsActive)
 				{
 					System.Windows.Forms.Application.DoEvents();
@@ -252,11 +247,16 @@ namespace PhysX.Samples.Engine
 					continue;
 				}
 
-				Update(frameTimer.Elapsed);
 				Draw();
 
-				frameTimer.Restart();
-				System.Windows.Forms.Application.DoEvents();
+				// 60fps = 1/60 = 16.67 ms/frame
+				if (frameTimer.Elapsed >= TimeSpan.FromMilliseconds(16.67))
+				{
+					Update(frameTimer.Elapsed);
+
+					frameTimer.Restart();
+					System.Windows.Forms.Application.DoEvents();
+				}
 			}
 		}
 
