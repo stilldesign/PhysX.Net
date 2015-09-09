@@ -55,6 +55,9 @@ String^ Actor::ToString()
 
 PhysX::Physics^ Actor::Physics::get()
 {
+	if (this->Scene == nullptr)
+		return nullptr;
+
 	return this->Scene->Physics;
 }
 PhysX::Scene^ Actor::Scene::get()
