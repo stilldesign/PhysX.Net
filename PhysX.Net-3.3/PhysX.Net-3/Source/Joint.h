@@ -42,6 +42,15 @@ namespace PhysX
 			//
 
 			/// <summary>
+			/// Helper function to setup a joint's global frame.
+			/// This replaces the following functions from previous SDK versions
+			/// The function sets the joint's localPose using world-space input parameters.
+			/// </summary>
+			void SetGlobalFrame(Vector3 anchor, Vector3 axis);
+
+			//
+
+			/// <summary>
 			/// Retrieves the PxConstraint corresponding to this joint.
 			/// This can be used to determine, among other things, the force applied at the joint.
 			/// </summary>

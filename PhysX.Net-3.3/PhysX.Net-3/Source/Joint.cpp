@@ -51,6 +51,11 @@ Serializable^ Joint::AsSerializable()
 	return gcnew Serializable(_joint);
 }
 
+void Joint::SetGlobalFrame(Vector3 anchor, Vector3 axis)
+{
+	PxSetJointGlobalFrame(*this->UnmanagedPointer, &UV(anchor), &UV(axis));
+}
+
 PhysX::Constraint^ Joint::Constraint::get()
 {
 	return _constraint;
