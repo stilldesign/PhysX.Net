@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PhysX.Math;
 using PhysX.Test.Util;
 
 namespace PhysX.Test.Cooking
