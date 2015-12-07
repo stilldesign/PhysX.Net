@@ -10,7 +10,10 @@ using namespace System::Globalization;
 generic<typename T>
 T Quaternion::As()
 {
-	return Util::CloneFloatStruct<T>( 4, (void*)(&(*this)) );
+	PxQuat q = PxQuat(X, Y, Z, W);
+	pin_ptr<PxQuat> p = &q;
+
+	return Util::CloneFloatStruct<T>( 4, p );
 }
 
 Quaternion::Quaternion(float x, float y, float z, float w)

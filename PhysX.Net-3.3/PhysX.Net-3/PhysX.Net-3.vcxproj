@@ -85,7 +85,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Checked|x64'">
     <IncludePath>$(NVIDIAPhysXSDK)\Include\PhysXProfileSDK;$(NVIDIAPhysXSDK)\Include\PhysXVisualDebuggerSDK;$(NVIDIAPhysXSDK)\Include\Vehicle;$(NVIDIAPhysXSDK)\Include\Particles;$(NVIDIAPhysXSDK)\Include\Geometry;$(NVIDIAPhysXSDK)\Include\Extensions;$(NVIDIAPhysXSDK)\Include\Cooking;$(NVIDIAPhysXSDK)\Include\Common;$(NVIDIAPhysXSDK)\Include\Characterkinematic;$(NVIDIAPhysXSDK)\Include\Cloth;$(NVIDIAPhysXSDK)\Include\Foundation;$(NVIDIAPhysXSDK)\Include\PxTask;$(NVIDIAPhysXSDK)\Include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(NVIDIAPhysXSDK)\Lib\vc12win64;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(NVIDIAPhysXSDK)\Lib\vc14win64;$(LibraryPath)</LibraryPath>
     <OutDir>$(ProjectDir)bin\x64\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)bin\x64\$(Configuration)\Intermediate\</IntDir>
   </PropertyGroup>

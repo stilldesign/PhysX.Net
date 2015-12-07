@@ -7,10 +7,12 @@ CudaContextManager::CudaContextManager(Foundation^ foundation)
 {
 	ThrowIfNullOrDisposed(foundation, "foundation");
 
+	throw gcnew Exception("GPU PhysX isn't available in VS2015 :( We'll have to wait till NVIDIA get this working");
+
 	// TODO: Take a CudaContextManagerDesc^ ctor arg
 	PxCudaContextManagerDesc cudaContextManagerDesc;
 
-	auto native = PxCreateCudaContextManager(*foundation->UnmanagedPointer, cudaContextManagerDesc, NULL);
+	PxCudaContextManager* native = NULL;// PxCreateCudaContextManager(*foundation->UnmanagedPointer, cudaContextManagerDesc, NULL);
 
 	if (native == NULL)
 		throw gcnew OperationFailedException("Failed to create PxCudaContextManager instance");

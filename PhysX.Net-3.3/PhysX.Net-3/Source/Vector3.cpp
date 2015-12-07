@@ -12,7 +12,10 @@ using namespace System::Globalization;
 generic<typename T>
 T Vector3::As()
 {
-	return Util::CloneFloatStruct<T>( 3, (void*)(&(*this)) );
+	PxVec3 q = PxVec3(X,Y,Z);
+
+	pin_ptr<PxVec3> p = &q;
+	return Util::CloneFloatStruct<T>( 3, p );
 }
 
 /* The following code is from the SlimDX project (R1723) */

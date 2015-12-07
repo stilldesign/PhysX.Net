@@ -13,7 +13,10 @@ PxPlane Plane::ToUnmanaged(Plane plane)
 generic<typename T>
 T Plane::As()
 {
-	return Util::CloneFloatStruct<T>(4, (void*)(&(*this)));
+	PxPlane x = PxPlane(UV(Normal), D);
+	pin_ptr<PxPlane> p = &x;
+
+	return Util::CloneFloatStruct<T>(4, (void*)p);
 }
 
 Plane::Plane( float a, float b, float c, float d )

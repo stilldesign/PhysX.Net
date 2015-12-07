@@ -12,7 +12,11 @@ using namespace PhysX::Math;
 generic<typename T>
 T Matrix::As()
 {
-	return Util::CloneFloatStruct<T>(16, (void*)(&(*this)));
+	float f[] = { M11, M12, M13, M14, M21, M22, M23, M24, M31, M32, M33, M34, M41, M42, M43, M44 };
+	PxMat44 q = PxMat44(f);
+
+	pin_ptr<PxMat44> p = &q;
+	return Util::CloneFloatStruct<T>(16, p);
 }
 
 Matrix::Matrix(	float m11, float m12, float m13,float m14,
