@@ -16,12 +16,12 @@ void RuntimeFileChecks::Check()
 		CheckFile("PhysX3CHECKED_x64.dll", PhysXDllVersion);
 		CheckFile("PhysX3CommonCHECKED_x64.dll", PhysXDllVersion);
 		CheckFile("PhysX3CookingCHECKED_x64.dll", PhysXDllVersion);
-		CheckFile("PhysX3GpuCHECKED_x64.dll", PhysXDllVersion);
+		//CheckFile("PhysX3GpuCHECKED_x64.dll", PhysXDllVersion);
 	#elif PHYSX_RELEASE
 		CheckFile("PhysX3_x64.dll", PhysXDllVersion);
 		CheckFile("PhysX3Common_x64.dll", PhysXDllVersion);
 		CheckFile("PhysX3Cooking_x64.dll", PhysXDllVersion);
-		CheckFile("PhysX3Gpu_x64.dll", PhysXDllVersion);
+		//CheckFile("PhysX3Gpu_x64.dll", PhysXDllVersion);
 	#else
 		#error PhysX Build Configuration not specified for x64
 	#endif
