@@ -13,10 +13,10 @@ namespace PhysX.Test.Util
 	/// </remarks>
 	public class ColladaLoader
 	{
-		public Model Load(string file)
+		public Model Load(string xml)
 		{
 			XmlDocument document = new XmlDocument();
-			document.Load(file);
+			document.LoadXml(xml);
 
 			XmlNamespaceManager ns = new XmlNamespaceManager(document.NameTable);
 			ns.AddNamespace("c", "http://www.collada.org/2005/11/COLLADASchema");

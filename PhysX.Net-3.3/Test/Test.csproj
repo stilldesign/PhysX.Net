@@ -46,7 +46,7 @@
     <OutputPath>bin\x64\Checked\</OutputPath>
     <DefineConstants>TRACE;DEBUG;x64;CHECKED</DefineConstants>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <DebugType>full</DebugType>
   </PropertyGroup>
@@ -130,11 +130,10 @@
     <Compile Include="Vehicle\VehicleEngineDataTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Resources\Teapot.DAE">
+    <EmbeddedResource Include="..\Resources\Teapot.DAE">
       <Link>Resources\Teapot.DAE</Link>
       <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </EmbeddedResource>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
