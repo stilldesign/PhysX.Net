@@ -4,7 +4,7 @@
 		<id>PhysX.Net-x64</id>
 		<version>0.4.0</version>
 		<authors>StillDesign</authors>
-		<description>.NET wrapper for NVIDIA PhysX 3.3.1</description>
+		<description>.NET wrapper for NVIDIA PhysX 3.3.3</description>
 		<language>en-US</language>
 		<projectUrl>https://github.com/stilldesign/PhysX.Net</projectUrl>
 		<tags>nvidia physx wrapper physics</tags>

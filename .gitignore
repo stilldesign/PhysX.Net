@@ -153,3 +153,5 @@ $RECYCLE.BIN/
 
 Package
 Package-Archive
+
+*.opendb
