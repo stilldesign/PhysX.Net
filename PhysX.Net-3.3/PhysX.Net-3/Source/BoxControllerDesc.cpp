@@ -36,7 +36,7 @@ BoxControllerDesc^ BoxControllerDesc::ToManaged(PxBoxControllerDesc desc)
 	return d;
 }
 
-PxControllerDesc BoxControllerDesc::ToUnmanaged()
+PxBoxControllerDesc BoxControllerDesc::ToUnmanaged()
 {
 	return BoxControllerDesc::ToUnmanaged(this);
 }

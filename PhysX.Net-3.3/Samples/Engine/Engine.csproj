@@ -10,7 +10,7 @@
     <RootNamespace>PhysX.Samples.Engine</RootNamespace>
     <AssemblyName>PhysX.Samples.Engine</AssemblyName>
     <SignAssembly>false</SignAssembly>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <IsWebBootstrapper>true</IsWebBootstrapper>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
@@ -35,32 +35,16 @@
     <RestorePackages>true</RestorePackages>
     <NuGetPackageImportStamp>05bee07b</NuGetPackageImportStamp>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Checked|x64'">
     <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\x86\Debug</OutputPath>
+    <OutputPath>bin\x64\Checked\</OutputPath>
     <DefineConstants>TRACE;DEBUG;WINDOWS</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
     <NoStdLib>true</NoStdLib>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
-    <PlatformTarget>x86</PlatformTarget>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\x86\Release</OutputPath>
-    <DefineConstants>TRACE%3bWINDOWS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <NoStdLib>true</NoStdLib>
-    <UseVSHostingProcess>false</UseVSHostingProcess>
-    <PlatformTarget>x86</PlatformTarget>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationCore" />
@@ -88,10 +72,7 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Numerics.Vectors, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\System.Numerics.Vectors.4.0.0\lib\portable-net45+win8+wpa81\System.Numerics.Vectors.dll</HintPath>
-    </Reference>
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
@@ -150,32 +131,27 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\..\Assemblies\x86\nvToolsExt32_1.dll">
-      <Link>nvToolsExt32_1.dll</Link>
+    <Content Include="..\..\Assemblies\x64\Checked\nvToolsExt64_1.dll">
+      <Link>nvToolsExt64_1.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\Assemblies\x86\PhysX3CharacterKinematicCHECKED_x86.dll">
-      <Link>PhysX3CharacterKinematicCHECKED_x86.dll</Link>
+    <Content Include="..\..\Assemblies\x64\Checked\PhysX3CharacterKinematicCHECKED_x64.dll">
+      <Link>PhysX3CharacterKinematicCHECKED_x64.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\Assemblies\x86\PhysX3CHECKED_x86.dll">
-      <Link>PhysX3CHECKED_x86.dll</Link>
+    <Content Include="..\..\Assemblies\x64\Checked\PhysX3CHECKED_x64.dll">
+      <Link>PhysX3CHECKED_x64.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\Assemblies\x86\PhysX3CommonCHECKED_x86.dll">
-      <Link>PhysX3CommonCHECKED_x86.dll</Link>
+    <Content Include="..\..\Assemblies\x64\Checked\PhysX3CommonCHECKED_x64.dll">
+      <Link>PhysX3CommonCHECKED_x64.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\Assemblies\x86\PhysX3CookingCHECKED_x86.dll">
-      <Link>PhysX3CookingCHECKED_x86.dll</Link>
+    <Content Include="..\..\Assemblies\x64\Checked\PhysX3CookingCHECKED_x64.dll">
+      <Link>PhysX3CookingCHECKED_x64.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\Assemblies\x86\PhysX3GpuCHECKED_x86.dll">
-      <Link>PhysX3GpuCHECKED_x86.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="sharpdx_direct3d11_effects_x64.dll" />
-    <Content Include="sharpdx_direct3d11_effects_x86.dll">
+    <Content Include="sharpdx_direct3d11_effects_x64.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

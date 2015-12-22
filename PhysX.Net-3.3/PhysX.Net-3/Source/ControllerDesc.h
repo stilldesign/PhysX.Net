@@ -18,7 +18,7 @@ namespace PhysX
 		ControllerShapeType _type;
 
 	internal:
-		virtual PxControllerDesc ToUnmanaged() abstract;
+		//virtual PxControllerDesc ToUnmanaged() abstract;
 
 		static void AssignToUnmanaged(ControllerDesc^ desc, PxControllerDesc& d);
 		static void AssignToManaged(PxControllerDesc& d, ControllerDesc^ desc);

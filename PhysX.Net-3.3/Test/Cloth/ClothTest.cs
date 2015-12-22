@@ -18,7 +18,7 @@ namespace PhysX.Test
 
 			using (var physics = CreatePhysicsAndScene())
 			{
-				using (Cooking cooking = physics.Physics.CreateCooking())
+				using (var cooking = physics.Physics.CreateCooking())
 				{
 					var clothMeshDesc = new ClothMeshDesc()
 					{
@@ -50,7 +50,7 @@ namespace PhysX.Test
 
 			using (var physics = CreatePhysicsAndScene())
 			{
-				using (Cooking cooking = physics.Physics.CreateCooking())
+				using (var cooking = physics.Physics.CreateCooking())
 				{
 					var clothMeshDesc = new ClothMeshDesc()
 					{

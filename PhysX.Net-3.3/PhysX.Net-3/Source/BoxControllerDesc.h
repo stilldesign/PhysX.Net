@@ -17,7 +17,7 @@ namespace PhysX
 			static PxBoxControllerDesc ToUnmanaged(BoxControllerDesc^ desc);
 			static BoxControllerDesc^ ToManaged(PxBoxControllerDesc desc);
 
-			virtual PxControllerDesc ToUnmanaged() override;
+			PxBoxControllerDesc ToUnmanaged();
 
 		public:
 			/// <summary>

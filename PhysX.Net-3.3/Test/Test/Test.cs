@@ -8,32 +8,24 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace PhysX.Test
 {
-	// Copy out the dependant DLL files needed for each test run
-#if x86
-	[DeploymentItem(@"Assemblies\x86\PhysX3CharacterKinematicCHECKED_x86.dll")]
-	[DeploymentItem(@"Assemblies\x86\PhysX3CHECKED_x86.dll")]
-	[DeploymentItem(@"Assemblies\x86\PhysX3CommonCHECKED_x86.dll")]
-	[DeploymentItem(@"Assemblies\x86\PhysX3CookingCHECKED_x86.dll")]
-	[DeploymentItem(@"Assemblies\x86\PhysX3GpuCHECKED_x86.dll")]
-	[DeploymentItem(@"Assemblies\x86\nvToolsExt32_1.dll")]
-#elif x64
-	[DeploymentItem(@"Assemblies\x64\PhysX3CharacterKinematicCHECKED_x64.dll")]
-	[DeploymentItem(@"Assemblies\x64\PhysX3CHECKED_x64.dll")]
-	[DeploymentItem(@"Assemblies\x64\PhysX3CommonCHECKED_x64.dll")]
-	[DeploymentItem(@"Assemblies\x64\PhysX3CookingCHECKED_x64.dll")]
-	[DeploymentItem(@"Assemblies\x64\PhysX3GpuCHECKED_x64.dll")]
-	[DeploymentItem(@"Assemblies\x64\nvToolsExt64_1.dll")]
-#endif
 	[TestClass]
 	public abstract class Test
 	{
 		private ErrorLog _errorLog;
 
+		private static PhysX.Foundation _foundation;
+		private static PhysX.Physics _physics;
+
 		[TestCleanup]
 		public void CleanUp()
 		{
 			if (Physics.Instantiated)
+			{
+				_foundation.Dispose();
+				_foundation = null;
+
 				throw new Exception("After a test has run, the Physics singleton should have been disposed");
+			}
 
 			ObjectTable.Clear();
 
@@ -43,6 +35,12 @@ namespace PhysX.Test
 			}
 
 			_errorLog = null;
+		}
+
+		[AssemblyInitialize]
+		public static void AssemblyInit(TestContext ctx)
+		{
+			TestDependantFiles.CopyDependantFiles(ctx);
 		}
 
 		[TestInitialize]
@@ -62,11 +60,22 @@ namespace PhysX.Test
 			if (errorCallback == null)
 				errorCallback = _errorLog = new ErrorLog();
 
-			var foundation = new Foundation(errorCallback);
+			if (_physics != null)
+			{
+				_physics.Dispose();
+				_physics = null;
+			}
+			if (_foundation != null)
+			{
+				_foundation.Dispose();
+				_foundation = null;
+			}
 
-			var physics = new Physics(foundation, checkRuntimeFiles: true);
+			_foundation = new Foundation(errorCallback);
 
-			return physics;
+			_physics = new Physics(_foundation, checkRuntimeFiles: true);
+
+			return _physics;
 		}
 		protected PhysicsAndSceneTestUnit CreatePhysicsAndScene()
 		{

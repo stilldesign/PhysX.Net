@@ -3,10 +3,13 @@
 using namespace System;
 using namespace System::Reflection;
 
-#define PhysXDllVersion "3.3.1.0"
+#define PhysXDllVersion "3.3.4.0"
 
 namespace PhysX
 {
+	/// <summary>
+	/// Methods to make sure the correct versions of the native PhysX DLLs are being loaded.
+	/// </summary>
 	private ref class RuntimeFileChecks
 	{
 		public:
