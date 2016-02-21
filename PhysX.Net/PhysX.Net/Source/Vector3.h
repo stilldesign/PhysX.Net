@@ -22,8 +22,8 @@ namespace StillDesign
 					property float Y;
 					property float Z;
 
-					generic<typename T> where T : value class
-					T As();
+					//generic<typename T> where T : value class
+					//T As();
 
 				public:
 					/* The following code is from the SlimDX project (R1723) */

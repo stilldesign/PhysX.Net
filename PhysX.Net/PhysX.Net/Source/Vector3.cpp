@@ -7,11 +7,11 @@ using namespace StillDesign::PhysX;
 using namespace StillDesign::PhysX::MathPrimitives;
 using namespace System::Globalization;
 
-generic<typename T>
-T Vector3::As()
-{
-	return Functions::CloneFloatStruct<T>( 3, (void*)(&(*this)) );
-}
+//generic<typename T>
+//T Vector3::As()
+//{
+//	return Functions::CloneFloatStruct<T>( 3, (void*)(&(*this)) );
+//}
 
 /* The following code is from the SlimDX project (R1723) */
 /*

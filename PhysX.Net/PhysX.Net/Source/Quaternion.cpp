@@ -5,11 +5,20 @@ using namespace StillDesign::PhysX;
 using namespace StillDesign::PhysX::MathPrimitives;
 using namespace System::Globalization;
 
-generic<typename T>
-T Quaternion::As()
-{
-	return Functions::CloneFloatStruct<T>( 4, (void*)(&(*this)) );
-}
+//generic<typename T>
+//T Quaternion::As()
+//{
+//	int size = 4 * sizeof(float);
+//
+//	T managed = T();
+//	pin_ptr<T> p_managed = &managed;
+//
+//	void* x = &X;
+//
+//	memcpy_s(p_managed, size, (void*)&X, size);
+//
+//	return managed;
+//}
 
 Quaternion::Quaternion(float x, float y, float z, float w)
 {

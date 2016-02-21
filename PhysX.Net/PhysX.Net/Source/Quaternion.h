@@ -13,13 +13,13 @@ namespace StillDesign
 			public value class Quaternion
 			{
 				public:
-					property float X;
-					property float Y;
-					property float Z;
-					property float W;
+					float X;
+					float Y;
+					float Z;
+					float W;
 
-					generic<typename T> where T : value class
-					T As();
+					//generic<typename T> where T : value class
+					//T As();
 
 					/// <summary>
 					/// Initializes a new instance of the <see cref="Quaternion"/> structure.

@@ -5,11 +5,11 @@ using namespace System::Globalization;
 using namespace StillDesign::PhysX;
 using namespace StillDesign::PhysX::MathPrimitives;
 
-generic<typename T>
-T Matrix::As()
-{
-	return Functions::CloneFloatStruct<T>( 16, (void*)(&(*this)) );
-}
+//generic<typename T>
+//T Matrix::As()
+//{
+//	return Functions::CloneFloatStruct<T>( 16, (void*)(&(*this)) );
+//}
 
 Matrix::Matrix(	float m11, float m12, float m13,float m14,
 				float m21, float m22, float m23, float m24,

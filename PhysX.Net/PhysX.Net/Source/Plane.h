@@ -14,8 +14,8 @@ namespace StillDesign
 			public value class Plane
 			{
 				public:
-					generic<typename T> where T : value class
-					T As();
+					//generic<typename T> where T : value class
+					//T As();
 
 					NxPlane ToUnmanaged();
 

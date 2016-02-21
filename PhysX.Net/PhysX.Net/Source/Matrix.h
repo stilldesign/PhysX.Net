@@ -37,8 +37,8 @@ namespace StillDesign
 					property float M43;
 					property float M44;
 
-					generic<typename T> where T : value class
-					T As();
+					//generic<typename T> where T : value class
+					//T As();
 
 					//
 

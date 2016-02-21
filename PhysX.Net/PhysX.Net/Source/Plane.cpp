@@ -5,11 +5,11 @@ using namespace StillDesign::PhysX;
 using namespace StillDesign::PhysX::MathPrimitives;
 using namespace System::Globalization;
 
-generic<typename T>
-T Plane::As()
-{
-	return Functions::CloneFloatStruct<T>(4, (void*)(&(*this)));
-}
+//generic<typename T>
+//T Plane::As()
+//{
+//	return Functions::CloneFloatStruct<T>(4, (void*)(&(*this)));
+//}
 
 NxPlane Plane::ToUnmanaged()
 {
