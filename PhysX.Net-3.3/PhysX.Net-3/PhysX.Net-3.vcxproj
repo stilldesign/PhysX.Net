@@ -162,6 +162,7 @@
     <ClInclude Include="Source\HitCallback.h" />
     <ClInclude Include="Source\InternalOverlapCallback.h" />
     <ClInclude Include="Source\InternalRaycastCallback.h" />
+    <ClInclude Include="Source\InternalSweepCallback.h" />
     <ClInclude Include="Source\IPhysXEntity.h" />
     <ClInclude Include="Source\IVehicleComputeTireForceInput.h" />
     <ClInclude Include="Source\IVehicleComputeTireForceOutput.h" />
@@ -393,6 +394,7 @@
     <ClCompile Include="Source\GpuDispatcher.cpp" />
     <ClCompile Include="Source\InternalOverlapCallback.cpp" />
     <ClCompile Include="Source\InternalRaycastCallback.cpp" />
+    <ClCompile Include="Source\InternalSweepCallback.cpp" />
     <ClCompile Include="Source\IVehicleComputeTireForceInput.cpp" />
     <ClCompile Include="Source\IVehicleComputeTireForceOutput.cpp" />
     <ClCompile Include="Source\JointAngularLimitPair.cpp" />

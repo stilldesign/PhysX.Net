@@ -21,6 +21,7 @@
 #include "RenderBuffer.h"
 #include "VolumeCache.h"
 #include "InternalRaycastCallback.h"
+#include "InternalSweepCallback.h"
 #include "QueryFilterCallback.h"
 #include "QueryCache.h"
 #include "OverlapHit.h"
@@ -253,6 +254,40 @@ bool Scene::Raycast(Vector3 origin, Vector3 direction, float distance, int maxim
 		PxQueryCache* qc = (cache == nullptr ? NULL : &QueryCache::ToUnmanaged(cache));
 
 		bool result = _scene->raycast(o, d, distance, hc, f, fd, qfcb, qc);
+
+		return result;
+	}
+	finally
+	{
+		delete[] hits;
+	}
+}
+
+bool Scene::Sweep(Geometry^ geometry, Matrix pose, Vector3 direction, float distance, int maximumHits, Func<array<SweepHit^>^, bool>^ hitCall, [Optional] HitFlag hitFlag, [Optional] Nullable<QueryFilterData> filterData, [Optional] QueryFilterCallback^ filterCallback, [Optional] QueryCache^ cache)
+{
+	if (maximumHits < 0)
+		throw gcnew ArgumentOutOfRangeException("maximumHits");
+	ThrowIfNull(hitCall, "hitCall");
+
+	PxGeometry* g = geometry->ToUnmanaged();
+	PxTransform p = MathUtil::MatrixToPxTransform(pose);
+	PxVec3 d = UV(direction);
+
+	PxSweepHit* hits;
+	try
+	{
+		hits = new PxSweepHit[maximumHits];
+		InternalSweepCallback hc(hits, maximumHits, hitCall);
+
+		PxHitFlags f = ToUnmanagedEnum(PxHitFlag, hitFlag);
+
+		PxQueryFilterData fd = (filterData.HasValue ? QueryFilterData::ToUnmanaged(filterData.Value) : PxQueryFilterData());
+
+		UserQueryFilterCallback* qfcb = (filterCallback == nullptr ? NULL : &UserQueryFilterCallback(filterCallback));
+
+		PxQueryCache* qc = (cache == nullptr ? NULL : &QueryCache::ToUnmanaged(cache));
+
+		bool result = _scene->sweep(*g, p, d, distance, hc, f, fd, qfcb, qc);
 
 		return result;
 	}

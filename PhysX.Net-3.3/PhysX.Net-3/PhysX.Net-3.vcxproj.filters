@@ -547,6 +547,9 @@
     <ClCompile Include="Source\VectorAndMatrixExtensions.cpp">
       <Filter>Math</Filter>
     </ClCompile>
+    <ClCompile Include="Source\InternalSweepCallback.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
@@ -1228,6 +1231,9 @@
     </ClInclude>
     <ClInclude Include="Source\VectorAndMatrixExtensions.h">
       <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\InternalSweepCallback.h">
+      <Filter>Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
