@@ -16,9 +16,11 @@ PxTriggerPair TriggerPair::ToUnmanaged(TriggerPair^ pair)
 TriggerPair^ TriggerPair::ToManaged(PxTriggerPair pair)
 {
 	auto tp = gcnew TriggerPair();
-		tp->OtherShape = ObjectTable::GetObject<Shape^>((intptr_t)pair.otherShape);
+		tp->OtherShape = ObjectTable::TryGetObject<Shape^>((intptr_t)pair.otherShape);
+		tp->OtherActor = ObjectTable::TryGetObject<RigidActor^>((intptr_t)pair.otherActor);
 		tp->Status = ToManagedEnum(PairFlag, pair.status);
-		tp->TriggerShape = ObjectTable::GetObject<Shape^>((intptr_t)pair.triggerShape);
+		tp->TriggerShape = ObjectTable::TryGetObject<Shape^>((intptr_t)pair.triggerShape);
+		tp->TriggerActor = ObjectTable::TryGetObject<RigidActor^>((intptr_t)pair.triggerActor);
 
 	return tp;
 }
