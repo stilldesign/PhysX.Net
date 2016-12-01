@@ -61,6 +61,15 @@ namespace PhysX
 			}
 
 			/// <summary>
+			/// Flags used to select scene options.
+			/// </summary>
+			property SceneFlag Flags
+			{
+				SceneFlag get();
+				void set(SceneFlag value);
+			}
+
+			/// <summary>
 			/// Possible notification callback.
 			/// This callback will be associated with the
 			/// client PX_DEFAULT_CLIENT. Please use PxScene::setSimulationEventCallback() to

@@ -64,6 +64,15 @@ void SceneDesc::FrictionType::set(PhysX::FrictionType value)
 	_sceneDesc->frictionType = ToUnmanagedEnum(PxFrictionType, value);
 }
 
+SceneFlag SceneDesc::Flags::get()
+{
+	return ToManagedEnum(SceneFlag, _sceneDesc->flags);
+}
+void SceneDesc::Flags::set(SceneFlag value)
+{
+	_sceneDesc->flags = ToUnmanagedEnum(PxSceneFlag, value);
+}
+
 PhysX::SimulationEventCallback^ SceneDesc::SimulationEventCallback::get()
 {
 	return _simulationEventCallback;

@@ -128,6 +128,9 @@
   <ItemGroup>
     <Folder Include="Deformable\" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Readme.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy "$(SolutionDir)Assemblies\$(PlatformName)\$(ConfigurationName)\*.dll" "$(TargetDir)" /Q /Y /R</PostBuildEvent>

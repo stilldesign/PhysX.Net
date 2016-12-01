@@ -236,5 +236,21 @@ namespace PhysX.Test
 				Assert.AreEqual(7, limits.MaxStaticShapes);
 			}
 		}
+
+		[TestMethod]
+		public void SceneDescFlagsAreMaintained()
+		{
+			var sceneDesc = new SceneDesc
+			{
+				Flags = SceneFlag.EnableActiveTransforms
+			};
+
+			using (var physics = new Physics(new Foundation()))
+			{
+				var scene = physics.CreateScene(sceneDesc);
+
+				Assert.IsTrue(scene.Flags.HasFlag(SceneFlag.EnableActiveTransforms));
+			}
+		}
 	}
 }
