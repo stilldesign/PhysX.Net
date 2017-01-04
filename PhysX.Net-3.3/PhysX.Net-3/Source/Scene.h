@@ -95,6 +95,14 @@ namespace PhysX
 			SimulationStatistics^ GetSimulationStatistics();
 
 			/// <summary>
+			/// Returns the wake counter reset value.
+			/// </summary>
+			property float WakeCounterResetValue
+			{
+				float get();
+			}
+
+			/// <summary>
 			/// Shift the scene origin by the specified vector. 
 			///
 			/// The poses of all objects in the scene and the corresponding data structures will get adjusted to reflect the new origin location (the shift vector will get subtracted from all object positions).

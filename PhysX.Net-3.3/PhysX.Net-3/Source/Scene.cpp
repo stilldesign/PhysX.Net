@@ -95,6 +95,11 @@ SimulationStatistics^ Scene::GetSimulationStatistics()
 	return SimulationStatistics::ToManaged(&stats);
 }
 
+float Scene::WakeCounterResetValue::get()
+{
+	return _scene->getWakeCounterResetValue();
+}
+
 void Scene::ShiftOrigin(Vector3 shift)
 {
 	_scene->shiftOrigin(UV(shift));
