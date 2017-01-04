@@ -42,13 +42,11 @@ namespace PhysX
 			}
 			
 		public:
-			generic<typename T> where T : IDisposable
-			static void Add(intptr_t pointer, T object, IDisposable^ owner);
+			static void Add(intptr_t pointer, IDisposable^ object, IDisposable^ owner);
 			static void EnsureUnmanagedObjectIsOnlyWrappedOnce(intptr_t unmanaged, Type^ managedType);
 			
 			static void AddObjectOwner(IDisposable^ object, IDisposable^ owner);
-			generic<typename T> where T : IDisposable
-			static void AddOwnerTypeLookup(Object^ owner, T object);
+			static void AddOwnerTypeLookup(Object^ owner, IDisposable^ object);
 
 			static bool Remove(intptr_t pointer);
 			static bool Remove(Object^ object);
@@ -72,7 +70,7 @@ namespace PhysX
 			static array<T>^ GetObjectsOfType();
 
 			generic<typename T> where T : ref class
-			static IEnumerable<T>^ GetObjectsOfOwnerAndType(Object^ owner);
+			static array<T>^ GetObjectsOfOwnerAndType(Object^ owner);
 
 			static bool Contains(intptr_t pointer);
 			static bool Contains(Object^ object);

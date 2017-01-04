@@ -12,8 +12,7 @@ ObjectTable::ObjectTable()
 }
 
 // Add
-generic<typename T>
-void ObjectTable::Add(intptr_t pointer, T object, PhysX::IDisposable^ owner)
+void ObjectTable::Add(intptr_t pointer, PhysX::IDisposable^ object, PhysX::IDisposable^ owner)
 {
 	if (pointer == NULL)
 		throw gcnew PhysXException("Invalid pointer added to Object Table", "object");
@@ -27,7 +26,7 @@ void ObjectTable::Add(intptr_t pointer, T object, PhysX::IDisposable^ owner)
 	EnsureUnmanagedObjectIsOnlyWrappedOnce(pointer, object->GetType());
 
 	AddObjectOwner(object, owner);
-	AddOwnerTypeLookup<T>(owner, object);
+	AddOwnerTypeLookup(owner, object);
 	
 	try
 	{
@@ -50,13 +49,12 @@ void ObjectTable::AddObjectOwner(PhysX::IDisposable^ object, PhysX::IDisposable^
 
 	_ownership->Add(object, owner);
 }
-generic<typename T>
-void ObjectTable::AddOwnerTypeLookup(Object^ owner, T object)
+void ObjectTable::AddOwnerTypeLookup(Object^ owner, PhysX::IDisposable^ object)
 {
 	if (object == nullptr)
 		throw gcnew ArgumentNullException("object");
 
-	Type^ type = T::typeid;
+	Type^ type = object->GetType();
 
 	auto key = ObjectTableOwnershipType(owner, type);
 

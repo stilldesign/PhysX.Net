@@ -101,10 +101,15 @@ void Scene::ShiftOrigin(Vector3 shift)
 }
 
 #pragma region Actors
-IEnumerable<Actor^>^ Scene::Actors::get()
+array<RigidDynamic^>^ Scene::RigidDynamicActors::get()
 {
-	return ObjectTable::GetObjectsOfOwnerAndType<Actor^>(this->Physics);
+	return ObjectTable::GetObjectsOfOwnerAndType<RigidDynamic^>(this->Physics);
 }
+array<RigidStatic^>^ Scene::RigidStaticActors::get()
+{
+	return ObjectTable::GetObjectsOfOwnerAndType<RigidStatic^>(this->Physics);
+}
+
 int Scene::GetNumberOfActors(ActorTypeSelectionFlag types)
 {
 	return _scene->getNbActors(ToUnmanagedEnum(PxActorTypeSelectionFlag, types));

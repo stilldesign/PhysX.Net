@@ -81,14 +81,14 @@ array<T>^ ObjectTable::GetObjectsOfType()
 	return objects->ToArray();
 }
 generic<typename T>
-IEnumerable<T>^ ObjectTable::GetObjectsOfOwnerAndType(Object^ owner)
+array<T>^ ObjectTable::GetObjectsOfOwnerAndType(Object^ owner)
 {
 	ThrowIfNull(owner, "owner");
 
 	auto key = ObjectTableOwnershipType(owner, T::typeid);
 
 	if (!_ownerTypeLookup->ContainsKey(key))
-		return gcnew array<T>(0);
+		return System::Array::Empty<T>();
 
 	auto items = _ownerTypeLookup[key];
 

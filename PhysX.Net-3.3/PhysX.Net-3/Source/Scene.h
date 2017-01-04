@@ -36,6 +36,8 @@ namespace PhysX
 	ref class Collection;
 	ref class SceneLimits;
 	ref class ContactModifyCallback;
+	ref class RigidDynamic;
+	ref class RigidStatic;
 
 	/// <summary>
 	/// A scene is a collection of bodies, deformables, particle systems and constraints which can interact.
@@ -111,9 +113,15 @@ namespace PhysX
 			/// <summary>
 			/// Retrieve an array of all the actors of certain types in the scene.
 			/// </summary>
-			property IEnumerable<Actor^>^ Actors
+			//array<Actor^>^ GetActors(ActorType types);
+
+			property array<RigidDynamic^>^ RigidDynamicActors
 			{
-				IEnumerable<Actor^>^ get();
+				array<RigidDynamic^>^ get();
+			}
+			property array<RigidStatic^>^ RigidStaticActors
+			{
+				array<RigidStatic^>^ get();
 			}
 
 			/// <summary>
