@@ -146,9 +146,9 @@ namespace PhysX
 			void RemoveActor(Actor^ actor);
 
 			/// <summary>Gets the articulations.</summary>
-			property IEnumerable<Articulation^>^ Articulations
+			property array<Articulation^>^ Articulations
 			{
-				IEnumerable<Articulation^>^ get();
+				array<Articulation^>^ get();
 			}
 			#pragma endregion
 
@@ -283,10 +283,12 @@ namespace PhysX
 			/// </summary>
 			void RemoveAggregate(Aggregate^ aggregate);
 
-			/// <summary>Gets the aggregates.</summary>
-			property IEnumerable<Aggregate^>^ Aggregates
+			/// <summary>
+			/// Gets the aggregates.
+			/// </summary>
+			property array<Aggregate^>^ Aggregates
 			{
-				IEnumerable<Aggregate^>^ get();
+				array<Aggregate^>^ get();
 			}
 			#pragma endregion
 

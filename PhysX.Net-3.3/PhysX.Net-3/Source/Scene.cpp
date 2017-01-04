@@ -144,7 +144,7 @@ void Scene::RemoveActor(Actor^ actor)
 	_scene->removeActor(*actor->UnmanagedPointer);
 }
 
-IEnumerable<Articulation^>^ Scene::Articulations::get()
+array<Articulation^>^ Scene::Articulations::get()
 {
 	return ObjectTable::GetObjectsOfOwnerAndType<Articulation^>(this);
 }
@@ -367,7 +367,7 @@ void Scene::RemoveAggregate(Aggregate^ aggregate)
 	_scene->removeAggregate(*aggregate->UnmanagedPointer);
 }
 
-IEnumerable<Aggregate^>^ Scene::Aggregates::get()
+array<Aggregate^>^ Scene::Aggregates::get()
 {
 	return ObjectTable::GetObjectsOfOwnerAndType<Aggregate^>(this);
 }
