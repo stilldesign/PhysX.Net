@@ -144,7 +144,6 @@ void Scene::RemoveActor(Actor^ actor)
 	_scene->removeActor(*actor->UnmanagedPointer);
 }
 
-/// <summary>Gets the articulations.</summary>
 IEnumerable<Articulation^>^ Scene::Articulations::get()
 {
 	return ObjectTable::GetObjectsOfOwnerAndType<Articulation^>(this);
