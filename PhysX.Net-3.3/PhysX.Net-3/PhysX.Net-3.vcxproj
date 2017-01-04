@@ -112,6 +112,8 @@
     <ClInclude Include="Source\BoxControllerDesc.h" />
     <ClInclude Include="Source\BoxGeometry.h" />
     <ClInclude Include="Source\BoxObstacle.h" />
+    <ClInclude Include="Source\BroadPhase.h" />
+    <ClInclude Include="Source\BroadPhaseCallback.h" />
     <ClInclude Include="Source\CapsuleController.h" />
     <ClInclude Include="Source\CapsuleControllerDesc.h" />
     <ClInclude Include="Source\CapsuleGeometry.h" />
@@ -355,6 +357,8 @@
     <ClCompile Include="Source\BoxController.cpp" />
     <ClCompile Include="Source\BoxControllerDesc.cpp" />
     <ClCompile Include="Source\BoxObstacle.cpp" />
+    <ClCompile Include="Source\BroadPhase.cpp" />
+    <ClCompile Include="Source\BroadPhaseCallback.cpp" />
     <ClCompile Include="Source\CapsuleController.cpp" />
     <ClCompile Include="Source\CapsuleControllerDesc.cpp" />
     <ClCompile Include="Source\CapsuleObstacle.cpp" />

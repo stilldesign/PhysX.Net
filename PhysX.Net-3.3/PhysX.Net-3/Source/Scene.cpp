@@ -1,6 +1,5 @@
 #include "StdAfx.h"
 #include "Scene.h"
-#include "SceneDesc.h"
 #include "Bounds3.h"
 #include "QueryHit.h"
 #include "QueryFilterData.h"
@@ -29,11 +28,12 @@
 #include "Collection.h"
 #include "SceneLimits.h"
 #include "ContactModifyCallback.h"
-
+#include "BroadPhaseCallback.h"
+#include "SimulationEventCallback.h"
 
 using namespace PhysX;
 
-Scene::Scene(PxScene* scene, PhysX::Physics^ physics)
+Scene::Scene(PxScene* scene, PhysX::Physics^ physics, PhysX::BroadPhaseCallback^ broadPhaseCallback)
 {
 	if (scene == NULL)
 		throw gcnew ArgumentNullException("scene");
@@ -41,6 +41,7 @@ Scene::Scene(PxScene* scene, PhysX::Physics^ physics)
 
 	_scene = scene;
 	_physics = physics;
+	_broadPhaseCallback = broadPhaseCallback;
 
 	ObjectTable::Add((intptr_t)scene, this, physics);
 }
@@ -510,6 +511,17 @@ void Scene::ContactModifyCallback::set(PhysX::ContactModifyCallback^ value)
 	_contactModifyCallback = value;
 
 	_scene->setContactModifyCallback(value == nullptr ? NULL : value->UnmanagedPointer);
+}
+
+PhysX::BroadPhaseCallback^ Scene::BroadPhaseCallback::get()
+{
+	return _broadPhaseCallback;
+}
+void Scene::BroadPhaseCallback::set(PhysX::BroadPhaseCallback^ value)
+{
+	_broadPhaseCallback = value;
+
+	_scene->setBroadPhaseCallback(value == nullptr ? nullptr : value->UnmanagedPointer);
 }
 
 PxScene* Scene::UnmanagedPointer::get()

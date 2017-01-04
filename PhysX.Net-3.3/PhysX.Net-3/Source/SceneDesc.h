@@ -3,12 +3,14 @@
 #include "SceneEnum.h"
 #include "TolerancesScale.h"
 #include "SimulationEventCallback.h"
+#include "BroadPhase.h"
 
 namespace PhysX
 {
 	ref class ContactModifyCallback;
 	ref class GpuDispatcher;
 	ref class SimulationFilterShader;
+	ref class BroadPhaseCallback;
 
 	public ref class SceneDesc : IDisposable
 	{
@@ -25,6 +27,7 @@ namespace PhysX
 			PhysX::SimulationFilterShader^ _filterShader;
 			PhysX::ContactModifyCallback^ _contactModifyCallback;
 			PhysX::GpuDispatcher^ _gpuDispatcher;
+			PhysX::BroadPhaseCallback^ _broadPhaseCallback;
 
 		public:
 			SceneDesc([Optional] Nullable<PhysX::TolerancesScale> tolerancesScale);
@@ -69,6 +72,12 @@ namespace PhysX
 				void set(SceneFlag value);
 			}
 
+			property PhysX::BroadPhaseType BroadPhaseType
+			{
+				PhysX::BroadPhaseType get();
+				void set(PhysX::BroadPhaseType value);
+			}
+
 			/// <summary>
 			/// Possible notification callback.
 			/// This callback will be associated with the
@@ -104,6 +113,12 @@ namespace PhysX
 			{
 				PhysX::GpuDispatcher^ get();
 				void set(PhysX::GpuDispatcher^ value);
+			}
+
+			property PhysX::BroadPhaseCallback^ BroadPhaseCallback
+			{
+				PhysX::BroadPhaseCallback^ get();
+				void set(PhysX::BroadPhaseCallback^ value);
 			}
 
 		internal:

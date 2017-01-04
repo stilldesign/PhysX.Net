@@ -550,6 +550,12 @@
     <ClCompile Include="Source\InternalSweepCallback.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
+    <ClCompile Include="Source\BroadPhase.cpp">
+      <Filter>BroadPhase</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\BroadPhaseCallback.cpp">
+      <Filter>BroadPhase</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
@@ -1235,6 +1241,12 @@
     <ClInclude Include="Source\InternalSweepCallback.h">
       <Filter>Scene</Filter>
     </ClInclude>
+    <ClInclude Include="Source\BroadPhase.h">
+      <Filter>BroadPhase</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\BroadPhaseCallback.h">
+      <Filter>BroadPhase</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Version.rc" />
@@ -1354,6 +1366,9 @@
     </Filter>
     <Filter Include="Aggregate">
       <UniqueIdentifier>{c91e0d2e-a543-49c5-8ae4-5a9c5cf393d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BroadPhase">
+      <UniqueIdentifier>{18dd3cae-1ded-4246-ae9d-abd7443a7ac4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

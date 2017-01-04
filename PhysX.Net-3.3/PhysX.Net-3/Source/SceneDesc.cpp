@@ -6,6 +6,7 @@
 #include "SceneDesc.h"
 #include "GpuDispatcher.h"
 #include "SimulationFilterShader.h"
+#include "BroadPhaseCallback.h"
 
 using namespace PhysX;
 
@@ -73,6 +74,15 @@ void SceneDesc::Flags::set(SceneFlag value)
 	_sceneDesc->flags = ToUnmanagedEnum(PxSceneFlag, value);
 }
 
+PhysX::BroadPhaseType SceneDesc::BroadPhaseType::get()
+{
+	return ToManagedEnum(PhysX::BroadPhaseType, _sceneDesc->broadPhaseType);
+}
+void SceneDesc::BroadPhaseType::set(PhysX::BroadPhaseType value)
+{
+	_sceneDesc->broadPhaseType = ToUnmanagedEnum(PxBroadPhaseType, value);
+}
+
 PhysX::SimulationEventCallback^ SceneDesc::SimulationEventCallback::get()
 {
 	return _simulationEventCallback;
@@ -126,6 +136,17 @@ void SceneDesc::GpuDispatcher::set(PhysX::GpuDispatcher^ value)
 	_gpuDispatcher = value;
 
 	_sceneDesc->gpuDispatcher = (value == nullptr ? NULL : value->UnmanagedPointer);
+}
+
+PhysX::BroadPhaseCallback^ SceneDesc::BroadPhaseCallback::get()
+{
+	return _broadPhaseCallback;
+}
+void SceneDesc::BroadPhaseCallback::set(PhysX::BroadPhaseCallback^ value)
+{
+	_broadPhaseCallback = value;
+
+	_sceneDesc->broadPhaseCallback = (value == nullptr ? nullptr : value->UnmanagedPointer);
 }
 
 PxSceneDesc* SceneDesc::UnmanagedPointer::get()

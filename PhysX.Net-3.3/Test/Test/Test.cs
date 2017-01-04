@@ -21,7 +21,7 @@ namespace PhysX.Test
 		{
 			if (Physics.Instantiated)
 			{
-				_foundation.Dispose();
+				_foundation?.Dispose();
 				_foundation = null;
 
 				throw new Exception("After a test has run, the Physics singleton should have been disposed");
