@@ -19,10 +19,11 @@ T ObjectTable::GetObject(intptr_t pointer)
 	if (pointer == NULL)
 		return T();
 
-	if (!_objectTable->ContainsKey(pointer))
+	Object^ obj;
+	if (!_objectTable->TryGetValue(pointer, obj))
 		throw gcnew ArgumentException(String::Format("Cannot find managed object with pointer address '{0}' (of type '{1}')", pointer, T::typeid->FullName));
-	
-	return (T)_objectTable[pointer];
+
+	return (T)obj;
 }
 
 Object^ ObjectTable::TryGetObject(intptr_t pointer)

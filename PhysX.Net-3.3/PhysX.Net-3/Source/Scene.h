@@ -113,7 +113,7 @@ namespace PhysX
 			/// <summary>
 			/// Retrieve an array of all the actors of certain types in the scene.
 			/// </summary>
-			//array<Actor^>^ GetActors(ActorType types);
+			IReadOnlyList<Actor^>^ GetActors(ActorTypeSelectionFlag types);
 
 			property array<RigidDynamic^>^ RigidDynamicActors
 			{

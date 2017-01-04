@@ -101,6 +101,31 @@ void Scene::ShiftOrigin(Vector3 shift)
 }
 
 #pragma region Actors
+IReadOnlyList<Actor^>^ Scene::GetActors(ActorTypeSelectionFlag types)
+{
+	int n = _scene->getNbActors(ToUnmanagedEnum(PxActorTypeFlag, types));
+
+	PxActor** unmanaged = new PxActor*[n];
+
+	_scene->getActors(ToUnmanagedEnum(PxActorTypeFlag, types), unmanaged, n);
+
+	//
+
+	auto managed = gcnew List<Actor^>(n);
+
+	for (size_t i = 0; i < n; i++)
+	{
+		auto obj = ObjectTable::TryGetObject((intptr_t)unmanaged[i]);
+
+		if (obj != nullptr)
+			managed->Add(dynamic_cast<Actor^>(obj));
+	}
+
+	delete[] unmanaged;
+
+	return managed;
+}
+
 array<RigidDynamic^>^ Scene::RigidDynamicActors::get()
 {
 	return ObjectTable::GetObjectsOfOwnerAndType<RigidDynamic^>(this->Physics);
@@ -164,7 +189,7 @@ T Scene::CreateJoint(RigidActor^ actor0, Matrix localFrame0, RigidActor^ actor1,
 #pragma endregion
 
 #pragma region Grouping
-ConstraintDominance Scene::GetDominanceGroupPair (Byte group1, Byte group2)
+ConstraintDominance Scene::GetDominanceGroupPair(Byte group1, Byte group2)
 {
 	return ConstraintDominance::ToManaged(_scene->getDominanceGroupPair(group1, group2));
 }

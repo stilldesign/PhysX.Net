@@ -61,6 +61,7 @@ namespace PhysX
 	/// <summary>
 	/// Identifies each type of actor for retrieving actors from a scene.
 	/// </summary>
+	[Flags]
 	public enum class ActorTypeSelectionFlag
 	{
 		/// <summary>
@@ -71,7 +72,7 @@ namespace PhysX
 		/// <summary>
 		/// A dynamic rigid body.
 		/// </summary>
-		Dynamic = PxActorTypeSelectionFlag::eRIGID_DYNAMIC,
+		RigidDynamic = PxActorTypeSelectionFlag::eRIGID_DYNAMIC,
 
 		/// <summary>
 		/// A particle system.
