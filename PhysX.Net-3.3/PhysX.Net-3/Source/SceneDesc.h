@@ -140,6 +140,12 @@ namespace PhysX
 				void set(float value);
 			}
 
+			property int DynamicTreeRebuildRateHint
+			{
+				int get();
+				void set(int value);
+			}
+
 		internal:
 			property PxSceneDesc* UnmanagedPointer
 			{

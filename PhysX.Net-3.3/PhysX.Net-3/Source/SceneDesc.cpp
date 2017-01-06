@@ -177,6 +177,15 @@ void SceneDesc::FrictionOffsetThreshold::set(float value)
 	_sceneDesc->frictionOffsetThreshold = value;
 }
 
+int SceneDesc::DynamicTreeRebuildRateHint::get()
+{
+	return _sceneDesc->dynamicTreeRebuildRateHint;
+}
+void SceneDesc::DynamicTreeRebuildRateHint::set(int value)
+{
+	_sceneDesc->dynamicTreeRebuildRateHint = value;
+}
+
 PxSceneDesc* SceneDesc::UnmanagedPointer::get()
 {
 	return _sceneDesc;
