@@ -146,6 +146,36 @@ namespace PhysX
 				void set(int value);
 			}
 
+			property int SolverBatchSize
+			{
+				int get();
+				void set(int value);
+			}
+
+			property int NumberOfContactDataBlocks
+			{
+				int get();
+				void set(int value);
+			}
+
+			property int MaxNumberOfContactDataBlocks
+			{
+				int get();
+				void set(int value);
+			}
+
+			property int ContactReportStreamBufferSize
+			{
+				int get();
+				void set(int value);
+			}
+
+			property int CCDMaxPasses
+			{
+				int get();
+				void set(int value);
+			}
+
 		internal:
 			property PxSceneDesc* UnmanagedPointer
 			{

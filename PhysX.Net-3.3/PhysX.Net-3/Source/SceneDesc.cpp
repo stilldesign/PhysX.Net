@@ -186,6 +186,51 @@ void SceneDesc::DynamicTreeRebuildRateHint::set(int value)
 	_sceneDesc->dynamicTreeRebuildRateHint = value;
 }
 
+int SceneDesc::SolverBatchSize::get()
+{
+	return _sceneDesc->solverBatchSize;
+}
+void SceneDesc::SolverBatchSize::set(int value)
+{
+	_sceneDesc->solverBatchSize = value;
+}
+
+int SceneDesc::NumberOfContactDataBlocks::get()
+{
+	return _sceneDesc->nbContactDataBlocks;
+}
+void SceneDesc::NumberOfContactDataBlocks::set(int value)
+{
+	_sceneDesc->nbContactDataBlocks = value;
+}
+
+int SceneDesc::MaxNumberOfContactDataBlocks::get()
+{
+	return _sceneDesc->maxNbContactDataBlocks;
+}
+void SceneDesc::MaxNumberOfContactDataBlocks::set(int value)
+{
+	_sceneDesc->maxNbContactDataBlocks = value;
+}
+
+int SceneDesc::ContactReportStreamBufferSize::get()
+{
+	return _sceneDesc->contactReportStreamBufferSize;
+}
+void SceneDesc::ContactReportStreamBufferSize::set(int value)
+{
+	_sceneDesc->contactReportStreamBufferSize = value;
+}
+
+int SceneDesc::CCDMaxPasses::get()
+{
+	return _sceneDesc->ccdMaxPasses;
+}
+void SceneDesc::CCDMaxPasses::set(int value)
+{
+	_sceneDesc->ccdMaxPasses = value;
+}
+
 PxSceneDesc* SceneDesc::UnmanagedPointer::get()
 {
 	return _sceneDesc;
