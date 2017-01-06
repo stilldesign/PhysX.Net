@@ -134,6 +134,12 @@ namespace PhysX
 				void set(float value);
 			}
 
+			property float FrictionOffsetThreshold
+			{
+				float get();
+				void set(float value);
+			}
+
 		internal:
 			property PxSceneDesc* UnmanagedPointer
 			{

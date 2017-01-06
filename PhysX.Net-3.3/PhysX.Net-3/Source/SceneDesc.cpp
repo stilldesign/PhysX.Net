@@ -168,6 +168,15 @@ void SceneDesc::BounceThresholdVelocity::set(float value)
 	_sceneDesc->bounceThresholdVelocity = value;
 }
 
+float SceneDesc::FrictionOffsetThreshold::get()
+{
+	return _sceneDesc->frictionOffsetThreshold;
+}
+void SceneDesc::FrictionOffsetThreshold::set(float value)
+{
+	_sceneDesc->frictionOffsetThreshold = value;
+}
+
 PxSceneDesc* SceneDesc::UnmanagedPointer::get()
 {
 	return _sceneDesc;
