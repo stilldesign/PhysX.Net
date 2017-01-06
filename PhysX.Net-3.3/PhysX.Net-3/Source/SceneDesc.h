@@ -11,6 +11,7 @@ namespace PhysX
 	ref class GpuDispatcher;
 	ref class SimulationFilterShader;
 	ref class BroadPhaseCallback;
+	ref class SceneLimits;
 
 	public ref class SceneDesc : IDisposable
 	{
@@ -119,6 +120,12 @@ namespace PhysX
 			{
 				PhysX::BroadPhaseCallback^ get();
 				void set(PhysX::BroadPhaseCallback^ value);
+			}
+
+			property SceneLimits^ Limits
+			{
+				SceneLimits^ get();
+				void set(SceneLimits^ value);
 			}
 
 		internal:

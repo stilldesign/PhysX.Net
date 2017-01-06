@@ -7,6 +7,7 @@
 #include "GpuDispatcher.h"
 #include "SimulationFilterShader.h"
 #include "BroadPhaseCallback.h"
+#include "SceneLimits.h"
 
 using namespace PhysX;
 
@@ -147,6 +148,15 @@ void SceneDesc::BroadPhaseCallback::set(PhysX::BroadPhaseCallback^ value)
 	_broadPhaseCallback = value;
 
 	_sceneDesc->broadPhaseCallback = (value == nullptr ? nullptr : value->UnmanagedPointer);
+}
+
+SceneLimits^ SceneDesc::Limits::get()
+{
+	return SceneLimits::ToManaged(_sceneDesc->limits);
+}
+void SceneDesc::Limits::set(SceneLimits^ value)
+{
+	_sceneDesc->limits = SceneLimits::ToUnmanaged(value);
 }
 
 PxSceneDesc* SceneDesc::UnmanagedPointer::get()
