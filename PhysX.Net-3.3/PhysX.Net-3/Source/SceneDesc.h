@@ -176,6 +176,18 @@ namespace PhysX
 				void set(int value);
 			}
 
+			property float WakeCounterResetValue
+			{
+				float get();
+				void set(float value);
+			}
+
+			property Bounds3 SanityBounds
+			{
+				Bounds3 get();
+				void set(Bounds3 value);
+			}
+
 		internal:
 			property PxSceneDesc* UnmanagedPointer
 			{

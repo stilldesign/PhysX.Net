@@ -231,6 +231,24 @@ void SceneDesc::CCDMaxPasses::set(int value)
 	_sceneDesc->ccdMaxPasses = value;
 }
 
+float SceneDesc::WakeCounterResetValue::get()
+{
+	return _sceneDesc->wakeCounterResetValue;
+}
+void SceneDesc::WakeCounterResetValue::set(float value)
+{
+	_sceneDesc->wakeCounterResetValue = value;
+}
+
+Bounds3 SceneDesc::SanityBounds::get()
+{
+	return Bounds3::ToManaged(_sceneDesc->sanityBounds);
+}
+void SceneDesc::SanityBounds::set(Bounds3 value)
+{
+	_sceneDesc->sanityBounds = Bounds3::ToUnmanaged(value);
+}
+
 PxSceneDesc* SceneDesc::UnmanagedPointer::get()
 {
 	return _sceneDesc;
