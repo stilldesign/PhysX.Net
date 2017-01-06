@@ -84,13 +84,10 @@ namespace PhysX
 		InternalError = PxErrorCode::eINTERNAL_ERROR,
 	};
 
+	[Flags]
 	public enum class PairFlag
 	{
-		/// <summary>
-		/// Process the contacts of this collision pair in the dynamics solver.
-		/// Note: Only takes effect if the colliding actors are rigid bodies.  
-		/// </summary>
-		ResolveContacts = PxPairFlag::eRESOLVE_CONTACTS,
+		SolveContact = PxPairFlag::eSOLVE_CONTACT,
 
 		/// <summary>
 		/// Call contact modification callback for this collision pair.
@@ -128,6 +125,8 @@ namespace PhysX
 		/// </summary>
 		NotifyTouchLost = PxPairFlag::eNOTIFY_TOUCH_LOST,
 
+		NotifyTouchCCD = PxPairFlag::eNOTIFY_TOUCH_CCD,
+
 		/// <summary>
 		/// Call contact report callback when the contact force between the actors of this collision pair
 		/// exceeds one of the actor-defined force thresholds.
@@ -154,6 +153,16 @@ namespace PhysX
 		/// Provide contact points in contact reports for this collision pair.
 		/// </summary>
 		NotifyContactPoints = PxPairFlag::eNOTIFY_CONTACT_POINTS,
+
+		DetectDiscreteContact = PxPairFlag::eDETECT_DISCRETE_CONTACT,
+
+		DetectCCDContact = PxPairFlag::eDETECT_CCD_CONTACT,
+
+		PreSolverVelocity = PxPairFlag::ePRE_SOLVER_VELOCITY,
+
+		PostSolverVelocity = PxPairFlag::ePOST_SOLVER_VELOCITY,
+
+		ContactEventPose = PxPairFlag::eCONTACT_EVENT_POSE,
 
 		/// <summary>
 		/// Provided default flag to do simple contact processing for this collision pair.

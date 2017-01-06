@@ -118,6 +118,7 @@
     <ClInclude Include="Source\CapsuleControllerDesc.h" />
     <ClInclude Include="Source\CapsuleGeometry.h" />
     <ClInclude Include="Source\CapsuleObstacle.h" />
+    <ClInclude Include="Source\CCDContactModifyCallback.h" />
     <ClInclude Include="Source\ClothFabricDesc.h" />
     <ClInclude Include="Source\ClothFabricPhase.h" />
     <ClInclude Include="Source\ConstraintShaderTable.h" />
@@ -362,6 +363,7 @@
     <ClCompile Include="Source\CapsuleController.cpp" />
     <ClCompile Include="Source\CapsuleControllerDesc.cpp" />
     <ClCompile Include="Source\CapsuleObstacle.cpp" />
+    <ClCompile Include="Source\CCDContactModifyCallback.cpp" />
     <ClCompile Include="Source\ClothFabricDesc.cpp" />
     <ClCompile Include="Source\ClothMotionConstraintConfig.cpp" />
     <ClCompile Include="Source\ConstraintShaderTable.cpp" />

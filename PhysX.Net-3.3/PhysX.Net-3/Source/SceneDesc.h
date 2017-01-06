@@ -4,13 +4,15 @@
 #include "TolerancesScale.h"
 #include "SimulationEventCallback.h"
 #include "BroadPhase.h"
+#include "SimulationFilterShader.h"
 
 namespace PhysX
 {
 	ref class ContactModifyCallback;
 	ref class GpuDispatcher;
-	ref class SimulationFilterShader;
+	interface class SimulationFilterShader;
 	ref class BroadPhaseCallback;
+	ref class CCDContactModifyCallback;
 
 	public ref class SceneDesc : IDisposable
 	{
@@ -28,6 +30,7 @@ namespace PhysX
 			PhysX::ContactModifyCallback^ _contactModifyCallback;
 			PhysX::GpuDispatcher^ _gpuDispatcher;
 			PhysX::BroadPhaseCallback^ _broadPhaseCallback;
+			PhysX::CCDContactModifyCallback^ _ccdContactModifyCallback;
 
 		public:
 			SceneDesc([Optional] Nullable<PhysX::TolerancesScale> tolerancesScale);
@@ -103,6 +106,19 @@ namespace PhysX
 				void set(PhysX::SimulationFilterShader^ value);
 			}
 
+			void SetSFS(Action^ a)
+			{
+				__int64* w = (__int64*)Marshal::GetFunctionPointerForDelegate(a).ToPointer();
+				__int64* p = (__int64*)malloc(sizeof(__int64));
+				auto i = reinterpret_cast<std::uintptr_t>(w);
+				//i = 44;
+				memcpy(p, &i, sizeof(uintptr_t));
+				
+
+				_sceneDesc->filterShaderData = p;
+				_sceneDesc->filterShaderDataSize = sizeof(intptr_t);
+			}
+
 			property int CCDMaximumPasses
 			{
 				int get();
@@ -119,6 +135,12 @@ namespace PhysX
 			{
 				PhysX::BroadPhaseCallback^ get();
 				void set(PhysX::BroadPhaseCallback^ value);
+			}
+
+			property PhysX::CCDContactModifyCallback^ CCDContactModifyCallback
+			{
+				PhysX::CCDContactModifyCallback^ get();
+				void set(PhysX::CCDContactModifyCallback^ value);
 			}
 
 		internal:

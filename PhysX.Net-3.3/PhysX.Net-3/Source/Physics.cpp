@@ -39,6 +39,7 @@
 #include "PrismaticJoint.h"
 #include "RevoluteJoint.h"
 #include "SphericalJoint.h"
+#include "SimulationFilterShader.h"
 
 //#include <PvdConnection.h>
 //#include <extensions\PxCollectionExt.h>
@@ -165,7 +166,7 @@ Scene^ Physics::CreateScene(SceneDesc^ sceneDesc)
 	if (s == NULL)
 		throw gcnew SceneCreationException("Failed to create scene");
 
-	return gcnew Scene(s, this, sceneDesc->BroadPhaseCallback);
+	return gcnew Scene(s, this, sceneDesc->BroadPhaseCallback, sceneDesc->CCDContactModifyCallback);
 }
 
 IEnumerable<Scene^>^ Physics::Scenes::get()

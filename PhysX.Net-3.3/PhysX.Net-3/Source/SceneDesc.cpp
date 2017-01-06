@@ -7,6 +7,7 @@
 #include "GpuDispatcher.h"
 #include "SimulationFilterShader.h"
 #include "BroadPhaseCallback.h"
+#include "CCDContactModifyCallback.h"
 
 using namespace PhysX;
 
@@ -147,6 +148,17 @@ void SceneDesc::BroadPhaseCallback::set(PhysX::BroadPhaseCallback^ value)
 	_broadPhaseCallback = value;
 
 	_sceneDesc->broadPhaseCallback = (value == nullptr ? nullptr : value->UnmanagedPointer);
+}
+
+PhysX::CCDContactModifyCallback^ SceneDesc::CCDContactModifyCallback::get()
+{
+	return _ccdContactModifyCallback;
+}
+void SceneDesc::CCDContactModifyCallback::set(PhysX::CCDContactModifyCallback^ value)
+{
+	_ccdContactModifyCallback = value;
+
+	_sceneDesc->ccdContactModifyCallback = (value == nullptr ? nullptr : value->UnmanagedPointer);
 }
 
 PxSceneDesc* SceneDesc::UnmanagedPointer::get()

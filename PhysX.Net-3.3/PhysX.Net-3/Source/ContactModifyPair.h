@@ -10,7 +10,9 @@ namespace PhysX
 	{
 	internal:
 		static ContactModifyPair^ ToManaged(PxContactModifyPair* unmanaged);
+
 		static PxContactModifyPair ToUnmanaged(ContactModifyPair^ pair);
+		static void ToUnmanaged(ContactModifyPair^ pair, PxContactModifyPair& unmanaged);
 
 	public:
 		property RigidActor^ ActorA;

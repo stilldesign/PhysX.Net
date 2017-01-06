@@ -14,16 +14,23 @@ namespace PhysX
 		PhysX::PairFlag PairFlags;
 	};
 
-	public ref class SimulationFilterShader abstract
+	public interface class SimulationFilterShader
 	{
-	protected:
-		SimulationFilterShader()
-		{
+	//protected:
+	//	SimulationFilterShader()
+	//	{
 
-		}
+	//	}
 
-	public:
-		virtual FilterResult Filter(int attributes0, FilterData filterData0, int attributes1, FilterData filterData1) abstract;
+	//public:
+		//virtual FilterResult Filter(int attributes0, FilterData filterData0, int attributes1, FilterData filterData1) abstract;
+		FilterResult Filter(int attributes0, FilterData filterData0, int attributes1, FilterData filterData1);
+		//void A()
+		//{
+		//	int k = 3;
+		//	k /= 3;
+		//	throw gcnew Exception("Hello");
+		//};
 	};
 };
 

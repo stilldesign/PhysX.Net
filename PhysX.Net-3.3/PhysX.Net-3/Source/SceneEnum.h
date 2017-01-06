@@ -21,7 +21,7 @@ namespace PhysX
 		/// Note: For this feature to be effective for shapes that can move at a significant velocity, the
 		/// user should raise the flag PxShapeFlag::eUSE_SWEPT_BOUNDS for them.
 		/// </summary>
-		CCD = PxSceneFlag::eENABLE_CCD,
+		EnableCCD = PxSceneFlag::eENABLE_CCD,
 		/// <summary>
 		/// Enable adaptive forces to accelerate convergence of the solver.
 		/// Note that this flag is not mutable, and must be set in PxSceneDesc at scene creation.

@@ -30,10 +30,11 @@
 #include "ContactModifyCallback.h"
 #include "BroadPhaseCallback.h"
 #include "SimulationEventCallback.h"
+#include "CCDContactModifyCallback.h"
 
 using namespace PhysX;
 
-Scene::Scene(PxScene* scene, PhysX::Physics^ physics, PhysX::BroadPhaseCallback^ broadPhaseCallback)
+Scene::Scene(PxScene* scene, PhysX::Physics^ physics, PhysX::BroadPhaseCallback^ broadPhaseCallback, PhysX::CCDContactModifyCallback^ ccdContactModifyCallback)
 {
 	if (scene == NULL)
 		throw gcnew ArgumentNullException("scene");
@@ -42,6 +43,7 @@ Scene::Scene(PxScene* scene, PhysX::Physics^ physics, PhysX::BroadPhaseCallback^
 	_scene = scene;
 	_physics = physics;
 	_broadPhaseCallback = broadPhaseCallback;
+	_ccdContactModifyCallback = ccdContactModifyCallback;
 
 	ObjectTable::Add((intptr_t)scene, this, physics);
 }
@@ -522,6 +524,17 @@ void Scene::BroadPhaseCallback::set(PhysX::BroadPhaseCallback^ value)
 	_broadPhaseCallback = value;
 
 	_scene->setBroadPhaseCallback(value == nullptr ? nullptr : value->UnmanagedPointer);
+}
+
+PhysX::CCDContactModifyCallback^ Scene::CCDContactModifyCallback::get()
+{
+	return _ccdContactModifyCallback;
+}
+void Scene::CCDContactModifyCallback::set(PhysX::CCDContactModifyCallback^ value)
+{
+	_ccdContactModifyCallback = value;
+
+	_scene->setCCDContactModifyCallback(value == nullptr ? nullptr : value->UnmanagedPointer);
 }
 
 PxScene* Scene::UnmanagedPointer::get()

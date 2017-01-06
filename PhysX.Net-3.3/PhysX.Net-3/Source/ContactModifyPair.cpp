@@ -2,7 +2,6 @@
 #include "RigidActor.h"
 #include "Shape.h"
 #include "ContactSet.h"
-
 #include "ContactModifyPair.h"
 
 ContactModifyPair^ ContactModifyPair::ToManaged(PxContactModifyPair* unmanaged)
@@ -30,16 +29,20 @@ PxContactModifyPair ContactModifyPair::ToUnmanaged(ContactModifyPair^ pair)
 		throw gcnew InvalidOperationException("Cannot convert the managed ContactModifyPair to unmanaged as the Contacts property is null");
 
 	PxContactModifyPair unmanaged;
-		unmanaged.actor[0] = GetPointerOrNull(pair->ActorA);
-		unmanaged.actor[1] = GetPointerOrNull(pair->ActorB);
-
-		unmanaged.contacts = *pair->Contacts->UnmanagedPointer;
-
-		unmanaged.shape[0] = GetPointerOrNull(pair->ShapeA);
-		unmanaged.shape[1] = GetPointerOrNull(pair->ShapeB);
-
-		unmanaged.transform[0] = UM(pair->TransformA);
-		unmanaged.transform[1] = UM(pair->TransformB);
+	ToUnmanaged(pair, unmanaged);
 
 	return unmanaged;
+}
+void ContactModifyPair::ToUnmanaged(ContactModifyPair^ pair, PxContactModifyPair& unmanaged)
+{
+	unmanaged.actor[0] = GetPointerOrNull(pair->ActorA);
+	unmanaged.actor[1] = GetPointerOrNull(pair->ActorB);
+
+	unmanaged.contacts = *pair->Contacts->UnmanagedPointer;
+
+	unmanaged.shape[0] = GetPointerOrNull(pair->ShapeA);
+	unmanaged.shape[1] = GetPointerOrNull(pair->ShapeB);
+
+	unmanaged.transform[0] = UM(pair->TransformA);
+	unmanaged.transform[1] = UM(pair->TransformB);
 }

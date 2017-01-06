@@ -195,7 +195,8 @@ namespace PhysX.Samples.Engine
 #if GPU
 				GpuDispatcher = cudaContext.GpuDispatcher
 #endif
-				FilterShader = new SampleFilterShader()
+				FilterShader = new SampleFilterShader(),
+				CCDContactModifyCallback = new SampleCCD()
 			};
 
 			this.Scene = this.Physics.CreateScene(sceneDesc);
@@ -388,5 +389,13 @@ namespace PhysX.Samples.Engine
 		}
 
 		public TimeSpan FrameTime { get; private set; }
+	}
+
+	public class SampleCCD : CCDContactModifyCallback
+	{
+		public override void OnCCDContactModify(ContactModifyPair[] pairs)
+		{
+			
+		}
 	}
 }

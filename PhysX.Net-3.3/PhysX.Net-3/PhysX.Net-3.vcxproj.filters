@@ -556,6 +556,7 @@
     <ClCompile Include="Source\BroadPhaseCallback.cpp">
       <Filter>BroadPhase</Filter>
     </ClCompile>
+    <ClCompile Include="Source\CCDContactModifyCallback.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
@@ -1247,6 +1248,7 @@
     <ClInclude Include="Source\BroadPhaseCallback.h">
       <Filter>BroadPhase</Filter>
     </ClInclude>
+    <ClInclude Include="Source\CCDContactModifyCallback.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Version.rc" />

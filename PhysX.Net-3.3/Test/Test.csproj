@@ -110,6 +110,7 @@
     <Compile Include="Test\PhysicsAndSceneTestUnit.cs" />
     <Compile Include="Test\Test.cs" />
     <Compile Include="Test\TestDependantFiles.cs" />
+    <Compile Include="CCDContactModifyCallbackTests.cs" />
     <Compile Include="Util\ArrayUtil.cs" />
     <Compile Include="Util\ColladaLoader.cs" />
     <Compile Include="Vehicle\VehicleEngineDataTest.cs" />

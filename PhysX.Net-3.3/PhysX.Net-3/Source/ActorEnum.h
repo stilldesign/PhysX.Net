@@ -119,6 +119,7 @@ namespace PhysX
 	/// <summary>
 	/// Collection of flags describing the behavior of a dynamic rigid body.
 	/// </summary>
+	[Flags]
 	public enum class RigidDynamicFlags
 	{
 		/// <summary>
@@ -142,9 +143,14 @@ namespace PhysX
 		/// Without this flag, the kinematic target will only take effect with respect
 		/// to scene queries after a simulation step.
 		/// </summary>
-		UseKinematicTargetForSceneQueries = PxRigidDynamicFlag::eUSE_KINEMATIC_TARGET_FOR_SCENE_QUERIES
+		UseKinematicTargetForSceneQueries = PxRigidDynamicFlag::eUSE_KINEMATIC_TARGET_FOR_SCENE_QUERIES,
+
+		EnableCCD = PxRigidDynamicFlag::eENABLE_CCD,
+
+		EnableCCDFriction = PxRigidDynamicFlag::eENABLE_CCD_FRICTION
 	};
 
+	[Flags]
 	public enum class RigidBodyFlag
 	{
 		Kinematic = PxRigidBodyFlag::eKINEMATIC,

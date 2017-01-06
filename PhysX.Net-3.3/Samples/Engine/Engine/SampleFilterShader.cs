@@ -7,7 +7,7 @@ namespace PhysX.Samples.Engine
 {
 	public class SampleFilterShader : SimulationFilterShader
 	{
-		public override FilterResult Filter(int attributes0, FilterData filterData0, int attributes1, FilterData filterData1)
+		public FilterResult Filter(int attributes0, FilterData filterData0, int attributes1, FilterData filterData1)
 		{
 			return new FilterResult
 			{
