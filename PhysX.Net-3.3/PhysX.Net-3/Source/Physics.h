@@ -118,9 +118,9 @@ namespace PhysX
 		Scene^ CreateScene(SceneDesc^ sceneDesc);
 
 		/// <summary>Gets the collection of scenes</summary>
-		property IEnumerable<Scene^>^ Scenes
+		property array<Scene^>^ Scenes
 		{
-			IEnumerable<Scene^>^ get();
+			array<Scene^>^ get();
 		}
 		#pragma endregion
 
@@ -137,9 +137,9 @@ namespace PhysX
 		/// <summary>
 		/// Gets the materials.
 		/// </summary>
-		property IEnumerable<Material^>^ Materials
+		property array<Material^>^ Materials
 		{
-			IEnumerable<Material^>^ get();
+			array<Material^>^ get();
 		}
 		#pragma endregion
 
@@ -188,9 +188,9 @@ namespace PhysX
 		/// <summary>
 		///	Gets the rigid actors.
 		/// </summary>
-		property IEnumerable<RigidActor^>^ RigidActors
+		property array<RigidActor^>^ RigidActors
 		{
-			IEnumerable<RigidActor^>^ get();
+			array<RigidActor^>^ get();
 		}
 		#pragma endregion
 
@@ -233,9 +233,9 @@ namespace PhysX
 		/// <summary>
 		///	Gets the particle systems.
 		/// </summary>
-		property IEnumerable<ParticleSystem^>^ ParticleSystems
+		property array<ParticleSystem^>^ ParticleSystems
 		{
-			IEnumerable<ParticleSystem^>^ get();
+			array<ParticleSystem^>^ get();
 		}
 		#pragma endregion
 
@@ -326,9 +326,9 @@ namespace PhysX
 		/// <summary>
 		/// Gets cloths.
 		/// </summary>
-		property IEnumerable<Cloth^>^ Cloths
+		property array<Cloth^>^ Cloths
 		{
-			IEnumerable<Cloth^>^ get();
+			array<Cloth^>^ get();
 		}
 
 		/// <summary>
@@ -350,9 +350,9 @@ namespace PhysX
 		/// <summary>
 		/// Gets cloth fabrics.
 		/// </summary>
-		property IEnumerable<ClothFabric^>^ ClothFabrics
+		property array<ClothFabric^>^ ClothFabrics
 		{
-			IEnumerable<ClothFabric^>^ get();
+			array<ClothFabric^>^ get();
 		}
 		#pragma endregion
 

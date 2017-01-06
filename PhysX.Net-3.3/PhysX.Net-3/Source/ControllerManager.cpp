@@ -136,12 +136,12 @@ PhysX::Scene^ ControllerManager::Scene::get()
 	return _scene;
 }
 
-IEnumerable<Controller^>^ ControllerManager::Controllers::get()
+IReadOnlyList<Controller^>^ ControllerManager::Controllers::get()
 {
 	return _controllers;
 }
 
-IEnumerable<ObstacleContext^>^ ControllerManager::ObstacleContexts::get()
+array<ObstacleContext^>^ ControllerManager::ObstacleContexts::get()
 {
 	return ObjectTable::GetObjectsOfOwnerAndType<ObstacleContext^>(this);
 }

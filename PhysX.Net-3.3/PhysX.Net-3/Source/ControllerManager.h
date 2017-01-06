@@ -119,17 +119,17 @@ namespace PhysX
 			/// <summary>
 			/// Gets the collection of controller.
 			/// </summary>
-			property IEnumerable<Controller^>^ Controllers
+			property IReadOnlyList<Controller^>^ Controllers
 			{
-				IEnumerable<Controller^>^ get();
+				IReadOnlyList<Controller^>^ get();
 			}
 
 			/// <summary>
 			/// Gets the collection of obstacle contexts.
 			/// </summary>
-			property IEnumerable<ObstacleContext^>^ ObstacleContexts
+			property array<ObstacleContext^>^ ObstacleContexts
 			{
-				IEnumerable<ObstacleContext^>^ get();
+				array<ObstacleContext^>^ get();
 			}
 
 			/// <summary></summary>

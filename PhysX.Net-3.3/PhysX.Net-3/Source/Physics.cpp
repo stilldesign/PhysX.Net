@@ -168,7 +168,7 @@ Scene^ Physics::CreateScene(SceneDesc^ sceneDesc)
 	return gcnew Scene(s, this, sceneDesc->BroadPhaseCallback);
 }
 
-IEnumerable<Scene^>^ Physics::Scenes::get()
+array<Scene^>^ Physics::Scenes::get()
 {
 	return ObjectTable::GetObjectsOfOwnerAndType<Scene^>(this);
 }
@@ -185,7 +185,7 @@ Material^ Physics::CreateMaterial(float staticFriction, float dynamicFriction, f
 	return gcnew Material(m, this);
 }
 
-IEnumerable<Material^>^ Physics::Materials::get()
+array<Material^>^ Physics::Materials::get()
 {
 	return ObjectTable::GetObjectsOfOwnerAndType<Material^>(this);
 }
@@ -282,7 +282,7 @@ RigidStatic^ Physics::CreateRigidStatic([Optional] Nullable<Matrix> pose)
 	return actor;
 }
 
-IEnumerable<RigidActor^>^ Physics::RigidActors::get()
+array<RigidActor^>^ Physics::RigidActors::get()
 {
 	return ObjectTable::GetObjectsOfOwnerAndType<RigidActor^>(this);
 }
@@ -403,7 +403,7 @@ ParticleSystem^ Physics::CreateParticleSystem(int maxParticles, bool perParticle
 	return gcnew ParticleSystem(s, this);
 }
 
-IEnumerable<ParticleSystem^>^ Physics::ParticleSystems::get()
+array<ParticleSystem^>^ Physics::ParticleSystems::get()
 {
 	return ObjectTable::GetObjectsOfOwnerAndType<ParticleSystem^>(this);
 }
@@ -511,7 +511,7 @@ Cloth^ Physics::CreateCloth(Matrix globalPose, ClothFabric^ fabric, array<ClothP
 	return c;
 }
 
-IEnumerable<Cloth^>^ Physics::Cloths::get()
+array<Cloth^>^ Physics::Cloths::get()
 {
 	return ObjectTable::GetObjectsOfOwnerAndType<Cloth^>(this);
 }
@@ -563,7 +563,7 @@ ClothFabric^ Physics::CreateClothFabric(ClothFabricDesc^ desc)
 	return cf;
 }
 
-IEnumerable<ClothFabric^>^ Physics::ClothFabrics::get()
+array<ClothFabric^>^ Physics::ClothFabrics::get()
 {
 	return ObjectTable::GetObjectsOfOwnerAndType<ClothFabric^>(this);
 }

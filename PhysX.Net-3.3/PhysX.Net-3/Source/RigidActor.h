@@ -89,9 +89,9 @@ namespace PhysX
 			/// <summary>
 			/// Gets the shapes associated to this rigid actor.
 			/// </summary>
-			property IEnumerable<Shape^>^ Shapes
+			property IReadOnlyList<Shape^>^ Shapes
 			{
-				IEnumerable<Shape^>^ get();
+				IReadOnlyList<Shape^>^ get();
 			}
 
 		internal:

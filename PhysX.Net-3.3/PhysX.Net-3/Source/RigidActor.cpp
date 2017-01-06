@@ -108,7 +108,7 @@ void RigidActor::GlobalPose::set(Matrix value)
 	return this->UnmanagedPointer->setGlobalPose(MathUtil::MatrixToPxTransform(value));
 }
 
-IEnumerable<Shape^>^ RigidActor::Shapes::get()
+IReadOnlyList<Shape^>^ RigidActor::Shapes::get()
 {
 	return _shapes;
 }
