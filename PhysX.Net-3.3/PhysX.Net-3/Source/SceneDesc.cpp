@@ -159,6 +159,15 @@ void SceneDesc::Limits::set(SceneLimits^ value)
 	_sceneDesc->limits = SceneLimits::ToUnmanaged(value);
 }
 
+float SceneDesc::BounceThresholdVelocity::get()
+{
+	return _sceneDesc->bounceThresholdVelocity;
+}
+void SceneDesc::BounceThresholdVelocity::set(float value)
+{
+	_sceneDesc->bounceThresholdVelocity = value;
+}
+
 PxSceneDesc* SceneDesc::UnmanagedPointer::get()
 {
 	return _sceneDesc;

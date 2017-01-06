@@ -128,6 +128,12 @@ namespace PhysX
 				void set(SceneLimits^ value);
 			}
 
+			property float BounceThresholdVelocity
+			{
+				float get();
+				void set(float value);
+			}
+
 		internal:
 			property PxSceneDesc* UnmanagedPointer
 			{
