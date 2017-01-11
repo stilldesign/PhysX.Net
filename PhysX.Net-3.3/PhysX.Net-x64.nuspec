@@ -2,24 +2,25 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 	<metadata>
 		<id>PhysX.Net-x64</id>
-		<version>0.4.0</version>
+		<version>0.5.1</version>
 		<authors>StillDesign</authors>
 		<description>.NET wrapper for NVIDIA PhysX 3.3.4</description>
 		<language>en-US</language>
 		<projectUrl>https://github.com/stilldesign/PhysX.Net</projectUrl>
-		<tags>nvidia physx wrapper physics</tags>
+		<tags>nvidia physx wrapper physics .net c#</tags>
 		<dependencies>
 			<dependency id="System.Numerics.Vectors" version="4.0.0" />
 		</dependencies>
 	</metadata>
 	<files>
 		<!-- x64 -->
-		<file src="PhysX.Net-3\bin\x64\Debug\PhysX.Net.dll" target="lib\net45" />
-		<file src="PhysX.Net-3\bin\x64\Debug\PhysX.Net.pdb" target="lib\net45" />
+		<file src="PhysX.Net-3\bin\x64\Checked\PhysX.Net.dll" target="lib\net45" />
+		<file src="PhysX.Net-3\bin\x64\Checked\PhysX.Net.pdb" target="lib\net45" />
 		
 		<!-- Dependencies -->
 		<!-- The native PhysX DLL files -->
-		<file src="Assemblies\x64\*" target="content" />
+		<file src="Assemblies\x64\Checked\*" target="content" />
+		<!--<file src="Assemblies\x64\Release\*" target="content" />-->
 
 		<file src="Install.ps1" target="tools" />
 	</files>
