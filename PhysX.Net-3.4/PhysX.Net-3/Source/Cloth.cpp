@@ -415,6 +415,24 @@ void Cloth::WindVelocity::set(Vector3 value)
 	this->UnmanagedPointer->setWindVelocity(MathUtil::Vector3ToPxVec3(value));
 }
 
+float Cloth::WindDrag::get()
+{
+	return this->UnmanagedPointer->getWindDrag();
+}
+void Cloth::WindDrag::set(float value)
+{
+	this->UnmanagedPointer->setWindDrag(value);
+}
+
+float Cloth::WindLift::get()
+{
+	return this->UnmanagedPointer->getWindLift();
+}
+void Cloth::WindLift::set(float value)
+{
+	this->UnmanagedPointer->setWindLift(value);
+}
+
 Vector3 Cloth::ExternalAcceleration::get()
 {
 	return MathUtil::PxVec3ToVector3(this->UnmanagedPointer->getExternalAcceleration());

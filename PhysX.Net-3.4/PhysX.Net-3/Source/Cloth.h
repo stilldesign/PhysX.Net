@@ -255,6 +255,16 @@ namespace PhysX
 			Vector3 get();
 			void set(Vector3 value);
 		}
+		property float WindDrag
+		{
+			float get();
+			void set(float value);
+		}
+		property float WindLift
+		{
+			float get();
+			void set(float value);
+		}
 
 		/// <summary>
 		/// Gets or sets external particle accelerations.
