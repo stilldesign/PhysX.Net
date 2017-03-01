@@ -46,6 +46,13 @@ Shape^ RigidActor::GetShape(int index)
 	return _shapes[index];
 }
 
+void RigidActor::AttachShape(Shape^ shape)
+{
+	ThrowIfNullOrDisposed(shape, "shape");
+
+	this->UnmanagedPointer->attachShape(*shape->UnmanagedPointer);
+}
+
 Shape^ RigidActor::CreateShape(Geometry^ geometry, Material^ material)
 {
 	ThrowIfNull(geometry, "geometry");

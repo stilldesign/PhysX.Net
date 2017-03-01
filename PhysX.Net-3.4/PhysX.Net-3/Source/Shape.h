@@ -19,6 +19,7 @@ namespace PhysX
 	ref class ConvexMeshGeometry;
 	ref class TriangleMeshGeometry;
 	ref class HeightFieldGeometry;
+	ref class Physics;
 
 	/// <summary>
 	/// Abstract class for collision shapes.
@@ -50,6 +51,9 @@ namespace PhysX
 			virtual bool get();
 		}
 
+		Shape^ Clone();
+		Shape^ Clone(Physics^ physics, bool isExclusive);
+
 		/// <summary>
 		/// Gets an object which is responsible for serialization of this type.
 		/// </summary>
@@ -71,6 +75,16 @@ namespace PhysX
 		/// For other shapes the function returns the single material associated with the shape, regardless of the index.
 		/// </summary>
 		Material^ GetMaterialFromInternalFaceIndex(int faceIndex);
+
+		//
+
+		/// <summary>
+		/// Returns true if the shape is exclusive to an actor.
+		/// </summary>
+		property bool IsExclusive
+		{
+			bool get();
+		}
 
 		/// <summary>
 		/// Gets or sets the user definable collision filter data.

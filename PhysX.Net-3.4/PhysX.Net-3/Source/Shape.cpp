@@ -12,7 +12,10 @@
 #include "TriangleMeshGeometry.h"
 #include "HeightFieldGeometry.h"
 #include "ShapeUtil.h"
+#include "Scene.h"
+#include "Physics.h"
 
+// TODO: Detached shapes (i.e. no parent actor)
 Shape::Shape(PxShape* shape, PhysX::RigidActor^ parentActor)
 {
 	if (shape == NULL)
@@ -49,6 +52,22 @@ Shape::!Shape()
 bool Shape::Disposed::get()
 {
 	return (_shape == NULL);
+}
+
+Shape^ Shape::Clone()
+{
+	if (_actor->Scene == nullptr)
+		throw gcnew InvalidOperationException("The shape does not belong to a scene. Make sure Scene.AddActor() has been called prior, or specify the Physics argument in the other overload.");
+
+	return Clone(_actor->Scene->Physics, _shape->isExclusive());
+}
+Shape^ Shape::Clone(Physics^ physics, bool isExclusive)
+{
+	ThrowIfNullOrDisposed(physics, "physics");
+
+	PxShape* cloned = PxCloneShape(*physics->UnmanagedPointer, *_shape, isExclusive);
+
+	return gcnew Shape(cloned, _actor);
 }
 
 Serializable^ Shape::AsSerializable()
@@ -121,6 +140,13 @@ Material^ Shape::GetMaterialFromInternalFaceIndex(int faceIndex)
 		return nullptr;
 
 	return ObjectTable::GetObject<Material^>((intptr_t)material);
+}
+
+//
+
+bool Shape::IsExclusive::get()
+{
+	return _shape->isExclusive();
 }
 
 FilterData Shape::SimulationFilterData::get()

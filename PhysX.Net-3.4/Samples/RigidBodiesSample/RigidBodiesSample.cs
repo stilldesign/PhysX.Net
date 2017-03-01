@@ -42,6 +42,9 @@ namespace PhysX.Samples.RigidBodiesSample
 
 			// Convex mesh
 			CreateConvexMesh(scene, material);
+
+			// Clone
+			CreateClonedBox(scene, material);
 		}
 
 		private static void CreateBoxes(Scene scene, Material material)
@@ -232,6 +235,22 @@ namespace PhysX.Samples.RigidBodiesSample
 			}
 
 			return samples;
+		}
+
+		private static void CreateClonedBox(Scene scene, Material material)
+		{
+			var rigidActor = scene.Physics.CreateRigidDynamic();
+			scene.AddActor(rigidActor);
+
+			var boxGeom = new BoxGeometry(6, 6, 6);
+			var boxShape = rigidActor.CreateShape(boxGeom, material);
+
+			var boxShape2 = boxShape.Clone();
+			boxShape2.LocalPose = Matrix4x4.CreateTranslation(0, 4, 0);
+			rigidActor.AttachShape(boxShape2);
+
+			rigidActor.GlobalPose = Matrix4x4.CreateTranslation(-20, 100, 0);
+			rigidActor.SetMassAndUpdateInertia(30);
 		}
 
 		protected override void Update(TimeSpan elapsed)
