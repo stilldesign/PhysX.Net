@@ -100,6 +100,11 @@ int HeightField::ReferenceCount::get()
 	return _heightField->getReferenceCount();
 }
 
+int HeightField::Timestamp::get()
+{
+	return _heightField->getTimestamp();
+}
+
 PxHeightField* HeightField::UnmanagedPointer::get()
 {
 	return _heightField;

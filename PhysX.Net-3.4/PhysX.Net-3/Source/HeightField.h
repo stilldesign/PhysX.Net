@@ -122,6 +122,15 @@ namespace PhysX
 				int get();
 			}
 
+			/// <summary>
+			/// Returns the number of times the heightfield data has been modified.
+			/// This method returns the number of times modifySamples has been called on this heightfield, so that code that has retained state that depends on the heightfield can efficiently determine whether it has been modified.
+			/// </summary>
+			property int Timestamp
+			{
+				int get();
+			}
+
 		internal:
 			property PxHeightField* UnmanagedPointer
 			{
