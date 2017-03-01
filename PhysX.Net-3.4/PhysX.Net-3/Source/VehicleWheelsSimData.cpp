@@ -112,6 +112,10 @@ void VehicleWheelsSimData::SetWheelShapeMapping(int wheelId, int shapeId)
 	_data->setWheelShapeMapping(wheelId, shapeId);
 }
 
+int VehicleWheelsSimData::AddAntiRollBarData(VehicleAntiRollBarData^ data)
+{
+	return _data->addAntiRollBarData(VehicleAntiRollBarData::ToUnmanaged(data));
+}
 VehicleAntiRollBarData^ VehicleWheelsSimData::GetAntiRollBarData(int antiRollBarId)
 {
 	return VehicleAntiRollBarData::ToManaged(_data->getAntiRollBarData(antiRollBarId));

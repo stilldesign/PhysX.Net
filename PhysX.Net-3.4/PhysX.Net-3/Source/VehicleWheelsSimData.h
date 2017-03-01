@@ -56,6 +56,7 @@ namespace PhysX
 		int GetWheelShapeMapping(int wheelId);
 		void SetWheelShapeMapping(int wheelId, int shapeId);
 
+		int AddAntiRollBarData(VehicleAntiRollBarData^ data);
 		VehicleAntiRollBarData^ GetAntiRollBarData(int antiRollBarId);
 		void GetAntiRollBarData(int antiRollBarId, VehicleAntiRollBarData^ data);
 		property int NumberOfAntiRollBars
