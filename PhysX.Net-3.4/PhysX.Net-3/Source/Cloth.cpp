@@ -406,6 +406,15 @@ void Cloth::GlobalPose::set(Matrix value)
 	this->UnmanagedPointer->setGlobalPose(MathUtil::MatrixToPxTransform(value));
 }
 
+Vector3 Cloth::WindVelocity::get()
+{
+	return MathUtil::PxVec3ToVector3(this->UnmanagedPointer->getWindVelocity());
+}
+void Cloth::WindVelocity::set(Vector3 value)
+{
+	this->UnmanagedPointer->setWindVelocity(MathUtil::Vector3ToPxVec3(value));
+}
+
 Vector3 Cloth::ExternalAcceleration::get()
 {
 	return MathUtil::PxVec3ToVector3(this->UnmanagedPointer->getExternalAcceleration());

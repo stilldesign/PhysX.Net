@@ -250,6 +250,12 @@ namespace PhysX
 			void set(Matrix value);
 		}
 
+		property Vector3 WindVelocity
+		{
+			Vector3 get();
+			void set(Vector3 value);
+		}
+
 		/// <summary>
 		/// Gets or sets external particle accelerations.
 		/// Note: Use this to implement simple wind etc.
