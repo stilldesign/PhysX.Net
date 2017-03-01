@@ -12,28 +12,32 @@ SimulationStatistics^ SimulationStatistics::ToManaged(PxSimulationStatistics* st
 		throw gcnew ArgumentException("stats");
 
 	auto s = gcnew SimulationStatistics();
-		s->NumberOfActiveConstraints = stats->nbActiveConstraints;
-		s->NumberOfActiveDynamicBodies = stats->nbActiveDynamicBodies;
-		s->NumberOfActiveKinematicBodies = stats->nbActiveKinematicBodies;
-		s->NumberOfStaticBodies = stats->nbStaticBodies;
-		s->NumberOfDynamicBodies = stats->nbDynamicBodies;
+		s->ActiveConstraints = stats->nbActiveConstraints;
+		s->ActiveDynamicBodies = stats->nbActiveDynamicBodies;
+		s->ActiveKinematicBodies = stats->nbActiveKinematicBodies;
+		s->StaticBodies = stats->nbStaticBodies;
+		s->DynamicBodies = stats->nbDynamicBodies;
+		s->Articulations = stats->nbArticulations;
+		s->DiscreteContactPairsTotal = stats->nbDiscreteContactPairsTotal;
+		s->DiscreteContactPairsWithCacheHits = stats->nbDiscreteContactPairsWithCacheHits;
+		s->DiscreteContactPairsWithContacts = stats->nbDiscreteContactPairsWithContacts;
 
-		s->NumberOfShapes = gcnew Dictionary<GeometryType, int>();
+		s->Shapes = gcnew Dictionary<GeometryType, int>();
 		for (int i = 0; i < PxGeometryType::eGEOMETRY_COUNT; i++)
 		{
-			s->NumberOfShapes[(GeometryType)i] = stats->nbShapes[i];
+			s->Shapes[(GeometryType)i] = stats->nbShapes[i];
 		}
 
-		s->NumberOfBroadPhaseAdds = gcnew Dictionary<VolumeType, int>();
+		s->BroadPhaseAdds = gcnew Dictionary<VolumeType, int>();
 		for (int i = 0; i < PxSimulationStatistics::eVOLUME_COUNT; i++)
 		{
-			s->NumberOfBroadPhaseAdds[(VolumeType)i] = stats->nbBroadPhaseAdds[i];
+			s->BroadPhaseAdds[(VolumeType)i] = stats->nbBroadPhaseAdds[i];
 		}
 
-		s->NumberOfBroadPhaseRemoves = gcnew Dictionary<VolumeType, int>();
+		s->BroadPhaseRemoves = gcnew Dictionary<VolumeType, int>();
 		for (int i = 0; i < PxSimulationStatistics::eVOLUME_COUNT; i++)
 		{
-			s->NumberOfBroadPhaseRemoves[(VolumeType)i] = stats->nbBroadPhaseRemoves[i];
+			s->BroadPhaseRemoves[(VolumeType)i] = stats->nbBroadPhaseRemoves[i];
 		}
 
 	return s;

@@ -206,8 +206,8 @@ namespace PhysX.Test
 
 				var stats = physics.Scene.GetSimulationStatistics();
 
-				Assert.AreEqual(1, stats.NumberOfShapes[GeometryType.Box]);
-				Assert.AreEqual(1, stats.NumberOfDynamicBodies);
+				Assert.AreEqual(1, stats.Shapes[GeometryType.Box]);
+				Assert.AreEqual(1, stats.DynamicBodies);
 			}
 		}
 

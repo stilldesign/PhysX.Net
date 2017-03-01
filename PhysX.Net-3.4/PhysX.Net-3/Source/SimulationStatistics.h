@@ -69,35 +69,56 @@ namespace PhysX
 			/// <summary>
 			/// Gets the number of active Constraint objects (joints etc.) for the current simulation step.
 			/// </summary>
-			property int NumberOfActiveConstraints;
+			property int ActiveConstraints;
 
 			/// <summary>
 			/// Gets the number of active dynamic bodies for the current simulation step.
 			/// </summary>
-			property int NumberOfActiveDynamicBodies;
+			property int ActiveDynamicBodies;
 
 			/// <summary>
 			/// Gets the number of active kinematic bodies for the current simulation step.
 			/// </summary>
-			property int NumberOfActiveKinematicBodies;
+			property int ActiveKinematicBodies;
 
 			/// <summary>
 			/// Gets the number of static bodies for the current simulation step. 
 			/// </summary>
-			property int NumberOfStaticBodies;
+			property int StaticBodies;
 
 			/// <summary>
 			/// Gets the number of dynamic bodies for the current simulation step.
 			/// Note: Includes inactive and kinematic bodies, and articulation links.
 			/// </summary>
-			property int NumberOfDynamicBodies;
+			property int DynamicBodies;
+
+			/// <summary>
+			/// Number of articulations in the scene.
+			/// </summary>
+			property int Articulations;
+
+			/// <summary>
+			/// Total number of (non CCD) pairs reaching narrow phase.
+			/// </summary>
+			property int DiscreteContactPairsTotal;
+
+			/// <summary>
+			/// Total number of (non CCD) pairs for which contacts are successfully cached (<=DiscreteContactPairsTotal). 
+			/// This includes pairs for which no contacts are generated, it still counts as a cache hit.
+			/// </summary>
+			property int DiscreteContactPairsWithCacheHits;
+
+			/// <summary>
+			/// Total number of (non CCD) pairs for which at least 1 contact was generated (<=DiscreteContactPairsTotal).
+			/// </summary>
+			property int DiscreteContactPairsWithContacts;
 
 			/// <summary>
 			/// Gets the number of shapes of each geometry type.
 			/// </summary>
-			property Dictionary<GeometryType, int>^ NumberOfShapes;
+			property Dictionary<GeometryType, int>^ Shapes;
 
-			property Dictionary<VolumeType, int>^ NumberOfBroadPhaseAdds;
-			property Dictionary<VolumeType, int>^ NumberOfBroadPhaseRemoves;
+			property Dictionary<VolumeType, int>^ BroadPhaseAdds;
+			property Dictionary<VolumeType, int>^ BroadPhaseRemoves;
 	};
 };
