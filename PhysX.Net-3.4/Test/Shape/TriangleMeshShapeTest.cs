@@ -19,7 +19,7 @@ namespace PhysX.Test
 				var actor = physics.Physics.CreateRigidDynamic();
 
 				// Triangle mesh can only be created on a kinematic actor
-				actor.Flags = RigidDynamicFlags.Kinematic;
+				actor.RigidBodyFlags = RigidBodyFlag.Kinematic;
 
 				var grid = new ClothTestGrid(10, 10);
 

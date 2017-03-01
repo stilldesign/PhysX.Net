@@ -164,11 +164,6 @@ namespace PhysX
 			}
 
 			/// <summary>
-			/// Marks the object to reset interactions and re-run collision filters in the next simulation step.
-			/// </summary>
-			void ResetFiltering();
-
-			/// <summary>
 			/// Gets the maximum number of particles for this particle system.
 			/// </summary>
 			property int MaximumParticles

@@ -62,32 +62,32 @@ namespace PhysX
 	/// Identifies each type of actor for retrieving actors from a scene.
 	/// </summary>
 	[Flags]
-	public enum class ActorTypeSelectionFlag
+	public enum class ActorTypeFlag
 	{
 		/// <summary>
 		/// A static rigid body.
 		/// </summary>
-		RigidStatic = PxActorTypeSelectionFlag::eRIGID_STATIC,
+		RigidStatic = PxActorTypeFlag::eRIGID_STATIC,
 
 		/// <summary>
 		/// A dynamic rigid body.
 		/// </summary>
-		RigidDynamic = PxActorTypeSelectionFlag::eRIGID_DYNAMIC,
+		RigidDynamic = PxActorTypeFlag::eRIGID_DYNAMIC,
 
 		/// <summary>
 		/// A particle system.
 		/// </summary>
-		ParticleSystem = PxActorTypeSelectionFlag::ePARTICLE_SYSTEM,
+		ParticleSystem = PxActorTypeFlag::ePARTICLE_SYSTEM,
 		
 		/// <summary>
 		/// A particle fluid.
 		/// </summary>
-		ParticleFluid = PxActorTypeSelectionFlag::ePARTICLE_FLUID,
+		ParticleFluid = PxActorTypeFlag::ePARTICLE_FLUID,
 		
 		/// <summary>
 		/// A cloth.
 		/// </summary>
-		Cloth = PxActorTypeSelectionFlag::eCLOTH
+		Cloth = PxActorTypeFlag::eCLOTH
 	};
 
 	/// <summary>
@@ -116,40 +116,13 @@ namespace PhysX
 		Acceleration = PxForceMode::eACCELERATION
 	};
 
-	/// <summary>
-	/// Collection of flags describing the behavior of a dynamic rigid body.
-	/// </summary>
-	public enum class RigidDynamicFlags
-	{
-		/// <summary>
-		/// Enables kinematic mode for the actor.
-		/// Kinematic actors are special dynamic actors that are not influenced by forces (such as gravity),
-		/// and have no momentum. They are considered to have infinite mass and can be moved around the world
-		/// using the moveKinematic() method. They will push regular dynamic actors out of the way.
-		/// Kinematics will not collide with static or other kinematic objects.
-		/// 
-		/// Kinematic actors are great for moving platforms or characters, where direct motion control is desired.
-		/// 
-		/// You can not connect Reduced joints to kinematic actors. Lagrange joints work ok if the platform is
-		/// moving with a relatively low, uniform velocity.
-		/// </summary>
-		Kinematic = PxRigidDynamicFlag::eKINEMATIC,
-
-		/// <summary>
-		/// Use the kinematic target transform for scene queries.
-		/// If this flag is raised, then scene queries will treat the kinematic target
-		/// transform as the current pose of the body (instead of using the actual pose).
-		/// Without this flag, the kinematic target will only take effect with respect
-		/// to scene queries after a simulation step.
-		/// </summary>
-		UseKinematicTargetForSceneQueries = PxRigidDynamicFlag::eUSE_KINEMATIC_TARGET_FOR_SCENE_QUERIES
-	};
-
 	public enum class RigidBodyFlag
 	{
 		Kinematic = PxRigidBodyFlag::eKINEMATIC,
 		UseKinematicTargetForSceneQueries = PxRigidBodyFlag::eUSE_KINEMATIC_TARGET_FOR_SCENE_QUERIES,
 		EnableCCD = PxRigidBodyFlag::eENABLE_CCD,
-		EnableCCDFriction = PxRigidBodyFlag::eENABLE_CCD_FRICTION
+		EnableCCDFriction = PxRigidBodyFlag::eENABLE_CCD_FRICTION,
+		EnablePoseIntegrationPreview = PxRigidBodyFlag::eENABLE_POSE_INTEGRATION_PREVIEW,
+		EnableSpeculativeCCD = PxRigidBodyFlag::eENABLE_SPECULATIVE_CCD
 	};
 };

@@ -41,9 +41,8 @@ namespace PhysX
 			/// </remarks>
 			/// <param name="geometry">The geometry of the shape.</param>
 			/// <param name="material">The material for the shape.</param>
-			/// <param name="localPose">Optional actor-relative pose of the shape.</param>
 			/// <returns>The newly created shape.</returns>
-			Shape^ CreateShape(Geometry^ geometry, Material^ material, [Optional] Nullable<Matrix> localPose);
+			Shape^ CreateShape(Geometry^ geometry, Material^ material);
 		private:
 			void OnShapeDisposed(System::Object ^sender, System::EventArgs ^e);
 

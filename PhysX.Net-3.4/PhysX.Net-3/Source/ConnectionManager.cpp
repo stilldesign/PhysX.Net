@@ -6,18 +6,10 @@
 
 using namespace PhysX;
 using namespace PhysX::VisualDebugger;
-using namespace physx::debugger;
 
-ConnectionManager::ConnectionManager(PvdConnectionManager* manager, PhysX::Physics^ owner)
+ConnectionManager::ConnectionManager()
 {
-	if (manager == NULL)
-		throw gcnew ArgumentNullException("manager");
-	ThrowIfNullOrDisposed(owner, "owner");
 
-	_manager = manager;
-	_physics = owner;
-
-	ObjectTable::Add((intptr_t)_manager, this, owner);
 }
 ConnectionManager::~ConnectionManager()
 {
@@ -45,7 +37,7 @@ bool ConnectionManager::Disposed::get()
 	return (_manager == NULL);
 }
 
-bool ConnectionManager::IsConnected()
+bool ConnectionManager::IsConnected::get()
 {
 	return _manager->isConnected();
 }
@@ -54,31 +46,35 @@ void ConnectionManager::Disconnect()
 	_manager->disconnect();
 }
 
-void ConnectionManager::Connect(System::String^ host, Nullable<int> port, Nullable<TimeSpan> timeout, Nullable<VisualDebuggerConnectionFlag> connectionType, Nullable<bool> doubleBuffered)
+void ConnectionManager::Connect(System::String^ host, Nullable<int> port, Nullable<TimeSpan> timeout, Nullable<InstrumentationFlag> connectionType)
 {
 	if (host == nullptr)
 		throw gcnew ArgumentNullException("host");
 	if (timeout.HasValue && timeout.Value < TimeSpan::Zero)
 		throw gcnew ArgumentOutOfRangeException("Timeout cannot be less than zero", "timeout");
 
-	PxAllocatorCallback* allocator = _physics->Foundation->GetAllocator();
-	auto p = port.GetValueOrDefault(5425);
-	auto to = (int)timeout.GetValueOrDefault(TimeSpan::FromSeconds(10)).TotalMilliseconds;
-	auto f = (PvdConnectionType::Enum)(connectionType.HasValue ? (PxU32)connectionType.Value : (PxU32)PxVisualDebuggerExt::getAllConnectionFlags());
-	auto h = Util::ToUnmanagedString(host);
-	auto db = doubleBuffered.GetValueOrDefault(true);
+	auto port_ = port.GetValueOrDefault(5425);
+	auto timeout_ = (int)timeout.GetValueOrDefault(TimeSpan::FromSeconds(10)).TotalMilliseconds;
+	auto host_ = Util::ToUnmanagedString(host);
 
-	_manager->connect(*allocator, h, p, to, f, db);
+	auto transport = PxDefaultPvdSocketTransportCreate(host_, port_, timeout_);
 
-	Marshal::FreeHGlobal(IntPtr(h));
+	_manager->connect(*transport, PxPvdInstrumentationFlag::eALL);
+
+	Marshal::FreeHGlobal(IntPtr(host_));
 }
 
-PhysX::Physics^ ConnectionManager::Physics::get()
+ConnectionManager^ ConnectionManager::GetInstance(Foundation^ foundation)
 {
-	return _physics;
+	PxPvd* pvd = PxCreatePvd(*foundation->UnmanagedPointer);
+
+	auto connectionManager = gcnew ConnectionManager();
+	connectionManager->_manager = pvd;
+
+	return connectionManager;
 }
 
-PvdConnectionManager* ConnectionManager::UnmanagedPointer::get()
+PxPvd* ConnectionManager::UnmanagedPointer::get()
 {
 	return _manager;
 }

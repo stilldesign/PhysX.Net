@@ -264,7 +264,7 @@ namespace PhysX.Test
 
 				//
 
-				var actors = physics.Scene.GetActors(ActorTypeSelectionFlag.RigidDynamic);
+				var actors = physics.Scene.GetActors(ActorTypeFlag.RigidDynamic);
 
 				Assert.AreEqual(1, actors.Count);
 				Assert.AreEqual(dynamicActor, actors[0]);
@@ -282,7 +282,7 @@ namespace PhysX.Test
 
 				//
 
-				var actors = physics.Scene.GetActors(ActorTypeSelectionFlag.RigidStatic);
+				var actors = physics.Scene.GetActors(ActorTypeFlag.RigidStatic);
 
 				Assert.AreEqual(1, actors.Count);
 				Assert.AreEqual(staticActor, actors[0]);
@@ -324,7 +324,7 @@ namespace PhysX.Test
 
 				//
 
-				var actors = physics.Scene.GetActors(ActorTypeSelectionFlag.Cloth);
+				var actors = physics.Scene.GetActors(ActorTypeFlag.Cloth);
 
 				Assert.AreEqual(1, actors.Count);
 				Assert.AreEqual(cloth, actors[0]);

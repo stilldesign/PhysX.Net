@@ -14,19 +14,15 @@ namespace PhysX.Test
 		// Copy out the dependant DLL files needed for each test run
 		internal static void CopyDependantFiles(TestContext ctx)
 		{
-#if x86
-			const string platform = "x86";
-#elif x64
 			const string platform = "x64";
-#endif
 
-#if CHECKED
-			const string config = "Checked";
+#if DEBUG
+			const string config = "Debug";
 #elif RELEASE
 			const string config = "Release";
 #endif
 
-			string dir = String.Format(@"..\..\Assemblies\{0}\{1}", platform, config);
+			string dir = $@"..\..\Assemblies\{platform}\{config}";
 			dir = Path.Combine(ctx.TestRunDirectory, dir);
 			dir = Path.GetFullPath(dir);
 

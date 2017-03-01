@@ -47,12 +47,6 @@ void Collection::AddId(IPhysXEntity^ object, long reference)
 
 	_collection->addId(*unmanaged, reference);
 }
-void Collection::AddRequired(IPhysXEntity^ object)
-{
-	PxBase* unmanaged = (PxBase*)ObjectTable::GetObject(object);
-
-	_collection->addRequired(*unmanaged);
-}
 
 bool Collection::Contains(IPhysXEntity^ object)
 {

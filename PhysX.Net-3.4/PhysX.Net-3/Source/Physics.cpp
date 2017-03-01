@@ -49,20 +49,26 @@ static Physics::Physics()
 {
 	_instantiated = false;
 }
-Physics::Physics(PhysX::Foundation^ foundation, [Optional] bool checkRuntimeFiles)
+Physics::Physics(PhysX::Foundation^ foundation, [Optional] bool checkRuntimeFiles, [Optional] PhysX::VisualDebugger::ConnectionManager^ connectionManager)
 {
 	ThrowIfNull(foundation, "foundation");
 	if (checkRuntimeFiles)
 		RuntimeFileChecks::Check();
 
 	_foundation = foundation;
+	_connectionManager = connectionManager;
 
 	Init();
 
 	PxFoundation* f = foundation->UnmanagedPointer;
 	PxTolerancesScale s;
 
-	_physics = PxCreatePhysics(PX_PHYSICS_VERSION, *f, s);
+	_physics = PxCreatePhysics(
+		PX_PHYSICS_VERSION,
+		*f,
+		s, 
+		false,
+		connectionManager == nullptr ? nullptr : connectionManager->UnmanagedPointer);
 
 	if (_physics == NULL)
 		throw gcnew Exception("Failed to create physics instance");
@@ -111,22 +117,13 @@ void Physics::PostInit(PhysX::Foundation^ owner)
 
 	// Initalize the extensions. This is required for almost anything useful in the PhysX SDK
 	// The SDK errors catastrophically unless this is called
-	if (!PxInitExtensions(*_physics))
+	if (!PxInitExtensions(
+		*_physics,
+		_connectionManager == nullptr ? nullptr : _connectionManager->UnmanagedPointer))
 		throw gcnew InvalidOperationException("Failed to initalize PhysX extensions");
 
 	// Vehicle SDK
 	_vehicleSDK = gcnew PhysX::VehicleSDK(this);
-
-	// PVD
-	{
-		auto connectionManager = _physics->getPvdConnectionManager();
-
-		// Can be NULL if the version of PhysX is not compiled with PVD support.
-		if (connectionManager != NULL)
-		{
-			_connectionManager = gcnew PhysX::VisualDebugger::ConnectionManager(connectionManager, this);
-		}
-	}
 
 	//
 
@@ -192,11 +189,14 @@ array<Material^>^ Physics::Materials::get()
 #pragma endregion
 
 #pragma region HeightField
-HeightField^ Physics::CreateHeightField(HeightFieldDesc^ desc)
+HeightField^ Physics::CreateHeightField(System::IO::Stream^ stream)
 {
-	ThrowIfDescriptionIsNullOrInvalid(desc, "desc");
+	ThrowIfNull(stream, "stream");
 
-	auto hf = _physics->createHeightField(HeightFieldDesc::ToUnmanaged(desc));
+	// TODO: Memory leak
+	PxDefaultMemoryInputData* ms = Util::StreamToUnmanagedInputStream(stream);
+
+	auto hf = _physics->createHeightField(*ms);
 
 	if (hf == NULL)
 		throw gcnew FailedToCreateObjectException("Failed to create height field object");

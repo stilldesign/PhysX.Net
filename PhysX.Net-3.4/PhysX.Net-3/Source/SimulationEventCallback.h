@@ -9,6 +9,7 @@ namespace PhysX
 	ref class SimulationEventCallback;
 	ref class ContactPairHeader;
 	ref class ContactPair;
+	ref class RigidBody;
 
 	class InternalSimulationEventCallback : public PxSimulationEventCallback
 	{
@@ -22,6 +23,7 @@ namespace PhysX
 		virtual void onSleep (PxActor **actors, PxU32 count);
 		virtual void onContact (const PxContactPairHeader &pairHeader, const PxContactPair *pairs, PxU32 nbPairs);
 		virtual void onTrigger (PxTriggerPair *pairs, PxU32 count);
+		virtual void onAdvance(const PxRigidBody*const* bodyBuffer, const PxTransform* poseBuffer, const PxU32 count);
 	};
 
 	public ref class SimulationEventCallback abstract : IDisposable
@@ -59,6 +61,8 @@ namespace PhysX
 		/// </summary>
 		virtual void OnContact (ContactPairHeader^ pairHeader, array<ContactPair^>^ pairs);
 		virtual void OnTrigger(array<TriggerPair^>^ pairs);
+
+		virtual void OnAdvance(array<RigidBody^>^ rigidBodies, array<Matrix4x4>^ poses);
 
 	internal:
 		property PxSimulationEventCallback* UnmanagedPointer

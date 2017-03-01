@@ -40,8 +40,6 @@ namespace PhysX
 
 		array<float>^ GetRestValues();
 
-		ClothFabricPhaseType GetPhaseType(int phaseIndex);
-
 		array<int>^ GetTetherAnchors();
 		array<float>^ GetTetherLengths();
 

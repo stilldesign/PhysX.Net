@@ -205,11 +205,6 @@ void ParticleBase::SimulationFilterData::set(PhysX::FilterData value)
 	this->UnmanagedPointer->setSimulationFilterData(PhysX::FilterData::ToUnmanaged(value));
 }
 
-void ParticleBase::ResetFiltering()
-{
-	this->UnmanagedPointer->resetFiltering();
-}
-
 int ParticleBase::MaximumParticles::get()
 {
 	return this->UnmanagedPointer->getMaxParticles();

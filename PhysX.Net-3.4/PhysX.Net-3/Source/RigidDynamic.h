@@ -119,15 +119,6 @@ namespace PhysX
 				void set(float value);
 			}
 
-			/// <summary>
-			/// Gets or sets the dynamic rigid body flags.
-			/// </summary>
-			property RigidDynamicFlags Flags
-			{
-				RigidDynamicFlags get();
-				void set(RigidDynamicFlags value);
-			}
-
 		internal:
 			property PxRigidDynamic* UnmanagedPointer
 			{

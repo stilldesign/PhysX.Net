@@ -4,7 +4,7 @@
 
 using namespace PhysX::VisualDebugger;
 
-Connection::Connection(physx::debugger::comm::PvdConnection* connection, PhysX::Physics^ owner)
+Connection::Connection(physx::PxPvd* connection, PhysX::Physics^ owner)
 {
 	if (connection == NULL)
 		throw gcnew ArgumentNullException("connection");
@@ -38,7 +38,12 @@ bool Connection::Disposed::get()
 	return (_connection == NULL);
 }
 
-physx::debugger::comm::PvdConnection* Connection::UnmanagedPointer::get()
+void Connection::Connect()
+{
+	//_connection->connect()
+}
+
+physx::PxPvd* Connection::UnmanagedPointer::get()
 {
 	return _connection;
 }

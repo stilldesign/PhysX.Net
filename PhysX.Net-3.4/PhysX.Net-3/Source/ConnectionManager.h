@@ -3,11 +3,11 @@
 //#include <PvdConnectionManager.h>
 #include "VisualDebuggerEnum.h"
 
-using namespace physx::debugger::comm;
+using namespace physx::pvdsdk;
 
 namespace PhysX
 {
-	ref class Physics;
+	ref class Foundation;
 
 	namespace VisualDebugger
 	{
@@ -20,11 +20,10 @@ namespace PhysX
 			virtual event EventHandler^ OnDisposed;
 
 		private:
-			PvdConnectionManager* _manager;
-			PhysX::Physics^ _physics;
+			PxPvd* _manager;
 
 		public:
-			ConnectionManager(PvdConnectionManager* manager, PhysX::Physics^ owner);
+			ConnectionManager();
 			~ConnectionManager();
 		protected:
 			!ConnectionManager();
@@ -35,22 +34,21 @@ namespace PhysX
 				virtual bool get();
 			}
 
-			bool IsConnected();
+			property bool IsConnected
+			{
+				bool get();
+			}
 
 			void Disconnect();
 
-			//void Connect(NetworkStream^ inStream, NetworkStream^ outStream, ConnectionFlagsType connectionType, bool doubleBuffered);
-			void Connect(String^ host, [Optional] Nullable<int> port, [Optional] Nullable<TimeSpan> timeout, [Optional] Nullable<VisualDebuggerConnectionFlag> connectionType, [Optional] Nullable<bool> doubleBuffered);
+			void Connect(String^ host, [Optional] Nullable<int> port, [Optional] Nullable<TimeSpan> timeout, [Optional] Nullable<InstrumentationFlag> connectionType);
 
-			property PhysX::Physics^ Physics
-			{
-				PhysX::Physics^ get();
-			}
+			static ConnectionManager^ GetInstance(Foundation^ foundation);
 
 		internal:
-			property PvdConnectionManager* UnmanagedPointer
+			property PxPvd* UnmanagedPointer
 			{
-				PvdConnectionManager* get();
+				PxPvd* get();
 			}
 		};
 	};

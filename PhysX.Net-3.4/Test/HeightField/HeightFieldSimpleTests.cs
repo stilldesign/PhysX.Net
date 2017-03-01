@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -29,7 +30,14 @@ namespace PhysX.Test
 				Flags = HeightFieldFlag.NoBoundaryEdges
 			};
 
-			_heightField = _physics.Physics.CreateHeightField(heightFieldDesc);
+			var cooking = _physics.Physics.CreateCooking();
+
+			var stream = new MemoryStream();
+			bool cookResult = cooking.CookHeightField(heightFieldDesc, stream);
+
+			stream.Position = 0;
+
+			_heightField = _physics.Physics.CreateHeightField(stream);
 
 			Assert.IsNotNull(_heightField);
 			Assert.IsFalse(_heightField.Disposed);

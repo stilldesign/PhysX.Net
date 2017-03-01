@@ -46,16 +46,14 @@ Shape^ RigidActor::GetShape(int index)
 	return _shapes[index];
 }
 
-Shape^ RigidActor::CreateShape(Geometry^ geometry, Material^ material, [Optional] Nullable<Matrix> localPose)
+Shape^ RigidActor::CreateShape(Geometry^ geometry, Material^ material)
 {
 	ThrowIfNull(geometry, "geometry");
 	ThrowIfNullOrDisposed(material, "material");
 
-	Matrix pose = localPose.GetValueOrDefault(Matrix::Identity);
-
 	PxGeometry* geom = geometry->ToUnmanaged();
 
-	PxShape* s = this->UnmanagedPointer->createShape(*geom, *material->UnmanagedPointer, MathUtil::MatrixToPxTransform(pose));
+	PxShape* s = this->UnmanagedPointer->createShape(*geom, *material->UnmanagedPointer);
 
 	if (s == NULL)
 		throw gcnew ShapeCreationException("Failed to create shape");

@@ -11,36 +11,26 @@ using namespace System::Security::Cryptography;
 
 void RuntimeFileChecks::Check()
 {
-#if WIN64
-	#if PHYSX_CHECKED
-		CheckFile("PhysX3CHECKED_x64.dll", PhysXDllVersion);
-		CheckFile("PhysX3CommonCHECKED_x64.dll", PhysXDllVersion);
-		CheckFile("PhysX3CookingCHECKED_x64.dll", PhysXDllVersion);
-		//CheckFile("PhysX3GpuCHECKED_x64.dll", PhysXDllVersion);
-	#elif PHYSX_RELEASE
-		CheckFile("PhysX3_x64.dll", PhysXDllVersion);
-		CheckFile("PhysX3Common_x64.dll", PhysXDllVersion);
-		CheckFile("PhysX3Cooking_x64.dll", PhysXDllVersion);
-		//CheckFile("PhysX3Gpu_x64.dll", PhysXDllVersion);
-	#else
-		#error PhysX Build Configuration not specified for x64
-	#endif
-#elif WIN32
-	#if PHYSX_CHECKED
-		CheckFile("PhysX3CHECKED_x86.dll", PhysXDllVersion);
-		CheckFile("PhysX3CommonCHECKED_x86.dll", PhysXDllVersion);
-		CheckFile("PhysX3CookingCHECKED_x86.dll", PhysXDllVersion);
-		CheckFile("PhysX3GpuCHECKED_x86.dll", PhysXDllVersion);
-	#elif PHYSX_RELEASE
-		CheckFile("PhysX3_x86.dll", PhysXDllVersion);
-		CheckFile("PhysX3Common_x86.dll", PhysXDllVersion);
-		CheckFile("PhysX3Cooking_x86.dll", PhysXDllVersion);
-		CheckFile("PhysX3Gpu_x86.dll", PhysXDllVersion);
-	#else
-		#error PhysX Build Configuration not specified for x86
-	#endif
+#if PHYSX_DEBUG
+	CheckFile("PxFoundationDEBUG_x64.dll", FoundationDllVersion);
+
+	CheckFile("PhysX3CharacterKinematicDEBUG_x64.dll", PhysXDllVersion);
+	CheckFile("PhysX3CommonDEBUG_x64.dll", PhysXDllVersion);
+	CheckFile("PhysX3CookingDEBUG_x64.dll", PhysXDllVersion);
+	CheckFile("PhysX3DEBUG_x64.dll", PhysXDllVersion);
+	CheckFile("PhysX3GpuDEBUG_x64.dll", PhysXDllVersion);
+	CheckFile("PxPvdSDKDEBUG_x64.dll", PvdDllVersion);
+#elif PHYSX_RELEASE
+	CheckFile("PxFoundation_x64.dll", FoundationDllVersion);
+
+	CheckFile("PhysX3CharacterKinematic_x64.dll", PhysXDllVersion);
+	CheckFile("PhysX3Common_x64.dll", PhysXDllVersion);
+	CheckFile("PhysX3Cooking_x64.dll", PhysXDllVersion);
+	CheckFile("PhysX3_x64.dll", PhysXDllVersion);
+	CheckFile("PhysX3Gpu_x64.dll", PhysXDllVersion);
+	CheckFile("PxPvdSDK_x64.dll", PvdDllVersion);
 #else
-	#error No platform specified
+	#error PhysX Build Configuration not specified for x64
 #endif
 }
 

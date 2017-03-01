@@ -165,7 +165,7 @@ void CudaContextManager::UsingConcurrentStreams::set(bool value)
 //virtual bool  unregisterResourceInCuda(CUgraphicsResource resource) = 0
 //Unregister a rendering resource with CUDA.
 
-int CudaContextManager::UsingDedicatedPhysXGPU::get()
+int CudaContextManager::UsingDedicatedGPU::get()
 {
-	return _cudaContextManager->usingDedicatedPhysXGPU();
+	return _cudaContextManager->usingDedicatedGPU();
 }

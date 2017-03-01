@@ -24,7 +24,7 @@ namespace PhysX.Test
 			_actor = _physics.Physics.CreateRigidDynamic();
 
 			// Make the actor kinematic because Triangle mesh, heightfield and plane geometry shapes require it.
-			_actor.Flags = RigidDynamicFlags.Kinematic;
+			_actor.RigidBodyFlags = RigidBodyFlag.Kinematic;
 
 			_physics.Scene.AddActor(_actor);
 		}
@@ -96,7 +96,12 @@ namespace PhysX.Test
 				Samples = samples
 			};
 
-			var heightField = _physics.Physics.CreateHeightField(heightFieldDesc);
+			var cooking = _physics.Physics.CreateCooking();
+
+			var stream = new MemoryStream();
+			bool cookResult = cooking.CookHeightField(heightFieldDesc, stream);
+
+			var heightField = _physics.Physics.CreateHeightField(stream);
 
 			Assert.IsNotNull(heightField);
 
@@ -130,7 +135,7 @@ namespace PhysX.Test
 			var actor = _physics.Physics.CreateRigidDynamic();
 
 			// Triangle mesh can only be created on a kinematic actor
-			actor.Flags = RigidDynamicFlags.Kinematic;
+			actor.RigidBodyFlags = RigidBodyFlag.Kinematic;
 
 			var grid = new ClothTestGrid(10, 10);
 

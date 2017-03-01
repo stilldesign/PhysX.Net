@@ -22,7 +22,7 @@ namespace PhysX.Test
 
 				var joint = physics.Scene.CreateJoint<SphericalJoint>(box, Matrix4x4.Identity, null, Matrix4x4.CreateTranslation(0, 50, 0));
 				joint.BreakForce = 0.001f;
-				joint.ConstraintFlag = ConstraintFlag.Reporting;
+				//joint.ConstraintFlag = ConstraintFlag.Reporting;
 
 				for (int i = 0; i < 200; i++)
 				{

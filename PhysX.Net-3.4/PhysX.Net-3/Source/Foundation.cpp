@@ -18,7 +18,7 @@ Foundation::Foundation([Optional] PhysX::ErrorCallback^ errorCallback)
 
 	_allocator = new PxDefaultAllocator();
 
-	_foundation = PxCreateFoundation(PX_PHYSICS_VERSION, *_allocator, *errors);
+	_foundation = PxCreateFoundation(PX_FOUNDATION_VERSION, *_allocator, *errors);
 	
 	if (_foundation == NULL)
 		throw gcnew FailedToCreateObjectException("Failed to create Foundation");

@@ -128,11 +128,6 @@ array<float>^ ClothFabric::GetRestValues()
 	}
 }
 
-ClothFabricPhaseType ClothFabric::GetPhaseType(int phaseIndex)
-{
-	return ToManagedEnum(ClothFabricPhaseType, _clothFabric->getPhaseType(phaseIndex));
-}
-
 array<int>^ ClothFabric::GetTetherAnchors()
 {
 	int n = _clothFabric->getNbTethers();

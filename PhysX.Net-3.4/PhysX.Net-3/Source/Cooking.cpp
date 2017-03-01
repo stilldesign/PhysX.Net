@@ -4,6 +4,7 @@
 #include "TriangleMeshDesc.h"
 #include "ConvexMeshDesc.h"
 #include "ClothMeshDesc.h"
+#include "HeightFieldDesc.h"
 
 Cooking::Cooking(PxCooking* cooking, PhysX::Foundation^ owner)
 {
@@ -37,6 +38,27 @@ bool Cooking::Disposed::get()
 	return _cooking == NULL;
 }
 
+bool Cooking::CookHeightField(HeightFieldDesc^ desc, System::IO::Stream^ stream)
+{
+	ThrowIfDescriptionIsNullOrInvalid(desc, "desc");
+	ThrowIfNull(stream, "stream");
+
+	PxHeightFieldDesc d = HeightFieldDesc::ToUnmanaged(desc);
+
+	if (!d.isValid())
+		throw gcnew ArgumentException("The height field description is invalid");
+
+	PxDefaultMemoryOutputStream cookedStream;
+	bool result = _cooking->cookHeightField(d, cookedStream);
+
+	// Copy the cooked data into the managed stream (only if the cooked stream actually has data)
+	if (result)
+		Util::CopyIntoStream(&cookedStream, stream);
+
+	delete[] d.samples.data;
+
+	return result;
+}
 bool Cooking::CookTriangleMesh(TriangleMeshDesc^ desc, System::IO::Stream^ stream)
 {
 	ThrowIfDescriptionIsNullOrInvalid(desc, "desc");
@@ -81,7 +103,7 @@ ConvexMeshCookingResult Cooking::CookConvexMesh(ConvexMeshDesc^ desc, System::IO
 		Util::CopyIntoStream(&cookedStream, stream);
 
 	delete[] d.points.data;
-	delete[] d.triangles.data;
+	delete[] d.polygons.data;
 
 	return ToManagedEnum(ConvexMeshCookingResult, result);
 }

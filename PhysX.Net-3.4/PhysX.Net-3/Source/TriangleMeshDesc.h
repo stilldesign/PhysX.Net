@@ -22,7 +22,5 @@ namespace PhysX
 			bool IsValid();
 
 			property array<short>^ MaterialIndices;
-
-			property float ConvexEdgeThreshold;
 	};
 };

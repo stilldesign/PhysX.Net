@@ -154,7 +154,7 @@ namespace PhysX
 		/// <summary>
 		/// Visualizes pairwise state.
 		/// </summary>
-		CollisionPairs = PxVisualizationParameter::eCOLLISION_PAIRS,
+		DeprecatedCollisionPairs = PxVisualizationParameter::eDEPRECATED_COLLISION_PAIRS,
 		/// <summary>
 		/// Joint local axes.
 		/// </summary>

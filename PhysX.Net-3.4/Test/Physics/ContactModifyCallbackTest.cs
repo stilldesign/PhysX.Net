@@ -21,7 +21,7 @@ namespace PhysX.Test
 
 				// The ground
 				var ground = CreateBoxActor(physics.Scene, new Vector3(100, 1, 100), new Vector3(0, 0, 0));
-				ground.Flags = RigidDynamicFlags.Kinematic; // Grounds don't move silly :P
+				ground.RigidBodyFlags = RigidBodyFlag.Kinematic; // Grounds don't move silly :P
 
 				// Tell PhysX that the box and ground should raise collision callbacks
 				DefaultSimulationFilterShader.SetGroup(box, 1);

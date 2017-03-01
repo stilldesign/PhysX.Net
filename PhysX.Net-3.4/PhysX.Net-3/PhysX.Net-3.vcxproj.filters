@@ -274,9 +274,6 @@
     <ClCompile Include="Source\ConstraintDesc.cpp">
       <Filter>Constraint</Filter>
     </ClCompile>
-    <ClCompile Include="Source\ConstraintDominance.cpp">
-      <Filter>Constraint</Filter>
-    </ClCompile>
     <ClCompile Include="Source\TolerancesScale.cpp">
       <Filter>Physics</Filter>
     </ClCompile>
@@ -319,9 +316,6 @@
     </ClCompile>
     <ClCompile Include="Source\ClothParticleData.cpp">
       <Filter>Cloth</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\FeatureContact.cpp">
-      <Filter>Contact</Filter>
     </ClCompile>
     <ClCompile Include="Source\SimpleContact.cpp">
       <Filter>Contact</Filter>
@@ -517,9 +511,6 @@
     <ClCompile Include="Source\ConnectionManager.cpp">
       <Filter>PVD</Filter>
     </ClCompile>
-    <ClCompile Include="Source\VisualDebuggerExt.cpp">
-      <Filter>PVD</Filter>
-    </ClCompile>
     <ClCompile Include="Source\TriangleMesh.cpp">
       <Filter>TriangleMesh</Filter>
     </ClCompile>
@@ -555,6 +546,12 @@
     </ClCompile>
     <ClCompile Include="Source\BroadPhaseCallback.cpp">
       <Filter>BroadPhase</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DominanceGroupPair.cpp">
+      <Filter>Constraint</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ExtendedContact.cpp">
+      <Filter>Contact</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -902,9 +899,6 @@
     <ClInclude Include="Source\ConstraintDesc.h">
       <Filter>Constraint</Filter>
     </ClInclude>
-    <ClInclude Include="Source\ConstraintDominance.h">
-      <Filter>Constraint</Filter>
-    </ClInclude>
     <ClInclude Include="Source\ConstraintEnum.h">
       <Filter>Constraint</Filter>
     </ClInclude>
@@ -967,9 +961,6 @@
       <Filter>Cloth</Filter>
     </ClInclude>
     <ClInclude Include="Source\SimpleContact.h">
-      <Filter>Contact</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\FeatureContact.h">
       <Filter>Contact</Filter>
     </ClInclude>
     <ClInclude Include="Source\ModifiableContact.h">
@@ -1205,9 +1196,6 @@
     <ClInclude Include="Source\ConnectionManager.h">
       <Filter>PVD</Filter>
     </ClInclude>
-    <ClInclude Include="Source\VisualDebuggerExt.h">
-      <Filter>PVD</Filter>
-    </ClInclude>
     <ClInclude Include="Source\VisualDebuggerEnum.h">
       <Filter>PVD</Filter>
     </ClInclude>
@@ -1246,6 +1234,12 @@
     </ClInclude>
     <ClInclude Include="Source\BroadPhaseCallback.h">
       <Filter>BroadPhase</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DominanceGroupPair.h">
+      <Filter>Constraint</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ExtendedContact.h">
+      <Filter>Contact</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

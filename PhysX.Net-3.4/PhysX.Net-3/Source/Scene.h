@@ -3,7 +3,7 @@
 #include "SceneEnum.h"
 #include "QueryFilterData.h"
 #include "ActorEnum.h"
-#include "ConstraintDominance.h"
+#include "DominanceGroupPair.h"
 #include "JointEnum.h"
 #include "PhysicsEnum.h"
 
@@ -123,7 +123,7 @@ namespace PhysX
 			/// <summary>
 			/// Retrieve an array of all the actors of certain types in the scene.
 			/// </summary>
-			IReadOnlyList<Actor^>^ GetActors(ActorTypeSelectionFlag types);
+			IReadOnlyList<Actor^>^ GetActors(ActorTypeFlag types);
 
 			property array<RigidDynamic^>^ RigidDynamicActors
 			{
@@ -137,7 +137,7 @@ namespace PhysX
 			/// <summary>
 			/// Retrieve the number of actors of certain types in the scene.
 			/// </summary>
-			int GetNumberOfActors(ActorTypeSelectionFlag types);
+			int GetNumberOfActors(ActorTypeFlag types);
 
 			/// <summary>
 			/// Queries the PxScene for a list of the PxActors whose transforms have been updated during the previous simulation step.
@@ -191,12 +191,12 @@ namespace PhysX
 			/// <summary>
 			/// Samples the dominance matrix.
 			/// </summary>
-			ConstraintDominance GetDominanceGroupPair (Byte group1, Byte group2);
+			DominanceGroupPair GetDominanceGroupPair(Byte group1, Byte group2);
 
 			/// <summary>
 			/// Specifies the dominance behavior of constraints between two actors with two certain dominance groups.
 			/// </summary>
-			void SetDominanceGroupPair(Byte group1, Byte group2, ConstraintDominance dominance);
+			void SetDominanceGroupPair(Byte group1, Byte group2, DominanceGroupPair dominance);
 			#pragma endregion
 
 			#pragma region Simulation

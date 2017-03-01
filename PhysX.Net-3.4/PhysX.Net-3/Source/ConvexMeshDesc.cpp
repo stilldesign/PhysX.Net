@@ -15,10 +15,10 @@ ConvexMeshDesc^ ConvexMeshDesc::ToManaged(PxConvexMeshDesc desc)
 {
 	auto d = gcnew ConvexMeshDesc();
 
-	if (desc.triangles.stride == sizeof(short))
-		d->_triangles = Util::AsManagedArray<short>((void*)desc.triangles.data, desc.triangles.count);
-	else if (desc.triangles.stride == sizeof(int))
-		d->_triangles = Util::AsManagedArray<int>((void*)desc.triangles.data, desc.triangles.count);
+	if (desc.polygons.stride == sizeof(short))
+		d->_triangles = Util::AsManagedArray<short>((void*)desc.polygons.data, desc.polygons.count);
+	else if (desc.polygons.stride == sizeof(int))
+		d->_triangles = Util::AsManagedArray<int>((void*)desc.polygons.data, desc.polygons.count);
 
 	d->_positions = Util::AsManagedArray<Vector3>((void*)desc.points.data, desc.points.count);
 	d->Flags = ToManagedEnum(ConvexFlag, desc.flags);
@@ -54,7 +54,7 @@ PxConvexMeshDesc ConvexMeshDesc::ToUnmanaged(ConvexMeshDesc^ desc)
 	}
 
 	d.points = p;
-	d.triangles = t;
+	d.indices = t;
 	d.flags = ToUnmanagedEnum(PxConvexFlag, desc->Flags);
 
 	return d;

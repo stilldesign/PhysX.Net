@@ -109,7 +109,14 @@ namespace PhysX.Samples.RigidBodiesSample
 				Samples = samples
 			};
 
-			HeightField heightField = scene.Physics.CreateHeightField(heightFieldDesc);
+			var cooking = scene.Physics.CreateCooking();
+
+			var stream = new MemoryStream();
+			bool cookResult = cooking.CookHeightField(heightFieldDesc, stream);
+
+			stream.Position = 0;
+
+			HeightField heightField = scene.Physics.CreateHeightField(stream);
 
 			//
 
@@ -168,7 +175,7 @@ namespace PhysX.Samples.RigidBodiesSample
 			var colladaLoader = new ColladaLoader();
 			var bunny = colladaLoader.Load(@"Teapot.DAE", this.Engine.GraphicsDevice);
 
-			var convexMeshDesc = new ConvexMeshDesc()
+			var convexMeshDesc = new ConvexMeshDesc
 			{
 				Flags = ConvexFlag.ComputeConvex
 			};

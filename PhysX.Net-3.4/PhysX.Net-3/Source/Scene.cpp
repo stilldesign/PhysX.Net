@@ -107,7 +107,7 @@ void Scene::ShiftOrigin(Vector3 shift)
 }
 
 #pragma region Actors
-IReadOnlyList<Actor^>^ Scene::GetActors(ActorTypeSelectionFlag types)
+IReadOnlyList<Actor^>^ Scene::GetActors(ActorTypeFlag types)
 {
 	int n = _scene->getNbActors(ToUnmanagedEnum(PxActorTypeFlag, types));
 
@@ -141,9 +141,9 @@ array<RigidStatic^>^ Scene::RigidStaticActors::get()
 	return ObjectTable::GetObjectsOfOwnerAndType<RigidStatic^>(this->Physics);
 }
 
-int Scene::GetNumberOfActors(ActorTypeSelectionFlag types)
+int Scene::GetNumberOfActors(ActorTypeFlag types)
 {
-	return _scene->getNbActors(ToUnmanagedEnum(PxActorTypeSelectionFlag, types));
+	return _scene->getNbActors(ToUnmanagedEnum(PxActorTypeFlag, types));
 }
 
 array<ActiveTransform^>^ Scene::GetActiveTransforms([Optional] Nullable<int> clientId)
@@ -195,14 +195,14 @@ T Scene::CreateJoint(RigidActor^ actor0, Matrix localFrame0, RigidActor^ actor1,
 #pragma endregion
 
 #pragma region Grouping
-ConstraintDominance Scene::GetDominanceGroupPair(Byte group1, Byte group2)
+DominanceGroupPair Scene::GetDominanceGroupPair(Byte group1, Byte group2)
 {
-	return ConstraintDominance::ToManaged(_scene->getDominanceGroupPair(group1, group2));
+	return DominanceGroupPair::ToManaged(_scene->getDominanceGroupPair(group1, group2));
 }
 
-void Scene::SetDominanceGroupPair(Byte group1, Byte group2, ConstraintDominance dominance)
+void Scene::SetDominanceGroupPair(Byte group1, Byte group2, DominanceGroupPair dominance)
 {
-	_scene->setDominanceGroupPair(group1, group2, ConstraintDominance::ToUnmanaged(dominance));
+	_scene->setDominanceGroupPair(group1, group2, DominanceGroupPair::ToUnmanaged(dominance));
 }
 #pragma endregion
 
@@ -220,7 +220,7 @@ bool Scene::FetchResults([Optional] bool block)
 }
 void Scene::FlushSimulation([Optional] bool sendPendingReports)
 {
-	_scene->flush(sendPendingReports);
+	_scene->flushSimulation(sendPendingReports);
 }
 
 int Scene::SolverBatchSize::get()

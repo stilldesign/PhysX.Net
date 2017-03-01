@@ -11,8 +11,8 @@ using namespace System::Security::Permissions;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 //
-[assembly:AssemblyTitleAttribute("PhysX.Net for NVIDIA PhysX 3.3.4")];
-[assembly:AssemblyDescriptionAttribute(".NET wrapper for NVIDIA PhysX 3.3.4")];
+[assembly:AssemblyTitleAttribute("PhysX.Net for NVIDIA PhysX 3.4")];
+[assembly:AssemblyDescriptionAttribute(".NET wrapper for NVIDIA PhysX 3.4")];
 [assembly:AssemblyConfigurationAttribute("")];
 [assembly:AssemblyCompanyAttribute("StillDesign")];
 [assembly:AssemblyProductAttribute("PhysX.Net")];
@@ -32,7 +32,7 @@ using namespace System::Security::Permissions;
 // by using the '*' as shown below:
 
 // Versioning - http://semver.org/
-[assembly:AssemblyVersionAttribute("0.5.1")];
+[assembly:AssemblyVersionAttribute("0.6.0")];
 
 [assembly:ComVisible(false)];
 

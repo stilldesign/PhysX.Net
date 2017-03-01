@@ -11,9 +11,9 @@ ContactPair::ContactPair(PxContactPair* pair)
 	this->Shape0 = ObjectTable::TryGetObject<Shape^>((intptr_t)pair->shapes[0]);
 	this->Shape1 = ObjectTable::TryGetObject<Shape^>((intptr_t)pair->shapes[1]);
 
-	this->ContactData = (pair->contactStream == NULL) ?
+	this->ContactPoints = (pair->contactPoints == NULL) ?
 		nullptr :
-		Util::AsManagedArray<Byte>(pair->contactStream, pair->contactStreamSize);
+		Util::AsManagedArray<Byte>(pair->contactPoints, pair->contactStreamSize);
 
 	this->RequiredBufferSize = pair->requiredBufferSize;
 	this->ContactCount = pair->contactCount;
@@ -27,7 +27,7 @@ ContactPair::!ContactPair()
 {
 	this->Shape0 = nullptr;
 	this->Shape1 = nullptr;
-	this->ContactData = nullptr;
+	this->ContactPoints = nullptr;
 	this->RequiredBufferSize = 0;
 	this->ContactCount = 0;
 	this->Flags = (ContactPairFlag)0;

@@ -6,7 +6,8 @@ namespace PhysX
 	public ref class SimpleContact
 	{
 	protected:
-		static void PopulateUnmanaged(SimpleContact^ managed, PxSimpleContact& unmanaged);
+		static void PopulateManaged(SimpleContact^ managed, PxContact* unmanaged);
+		static void PopulateUnmanaged(SimpleContact^ managed, PxContact* unmanaged);
 
 	public:
 		property Vector3 Contact;

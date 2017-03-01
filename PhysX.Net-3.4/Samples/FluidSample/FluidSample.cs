@@ -81,7 +81,7 @@ namespace PhysX.Samples.FluidSample
 				Matrix4x4.CreateRotationX(0.2f) *
 				Matrix4x4.CreateTranslation(0, 7, -5.1f);
 			rigidActor.SetMassAndUpdateInertia(10);
-			rigidActor.Flags = RigidDynamicFlags.Kinematic;
+			rigidActor.RigidBodyFlags = RigidBodyFlag.Kinematic;
 
 			scene.AddActor(rigidActor);
 
@@ -96,7 +96,7 @@ namespace PhysX.Samples.FluidSample
 				Matrix4x4.CreateRotationX(-0.2f) *
 				Matrix4x4.CreateTranslation(0, 7, 5.1f);
 			rigidActor2.SetMassAndUpdateInertia(10);
-			rigidActor2.Flags = RigidDynamicFlags.Kinematic;
+			rigidActor2.RigidBodyFlags = RigidBodyFlag.Kinematic;
 
 			scene.AddActor(rigidActor2);
 		}

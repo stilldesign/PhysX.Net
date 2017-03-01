@@ -87,12 +87,6 @@ namespace PhysX
 	public enum class PairFlag
 	{
 		/// <summary>
-		/// Process the contacts of this collision pair in the dynamics solver.
-		/// Note: Only takes effect if the colliding actors are rigid bodies.  
-		/// </summary>
-		ResolveContacts = PxPairFlag::eRESOLVE_CONTACTS,
-
-		/// <summary>
 		/// Call contact modification callback for this collision pair.
 		/// Note: Only takes effect if the colliding actors are rigid bodies.
 		/// </summary>
@@ -217,14 +211,14 @@ namespace PhysX
 	public enum class ContactPairHeaderFlag
 	{
 		/// <summary>
-		/// The actor with index 0 has been deleted.
+		/// The actor with index 0 has been removed from the scene.
 		/// </summary>
-		DeletedActor0 = PxContactPairHeaderFlag::eDELETED_ACTOR_0,
+		RemovedActor0 = PxContactPairHeaderFlag::eREMOVED_ACTOR_0,
 
 		/// <summary>
-		/// The actor with index 1 has been deleted.
+		/// The actor with index 1 has been removed from the scene.
 		/// </summary>
-		DeletedActor1 = PxContactPairHeaderFlag::eDELETED_ACTOR_1
+		RemovedActor1 = PxContactPairHeaderFlag::eREMOVED_ACTOR_1
 	};
 
 	/// <summary>
@@ -235,12 +229,12 @@ namespace PhysX
 		/// <summary>
 		/// The shape with index 0 has been deleted.
 		/// </summary>
-		DeletedShape0 = PxContactPairFlag::eDELETED_SHAPE_0,
+		RemovedShape0 = PxContactPairFlag::eREMOVED_SHAPE_0,
 
 		/// <summary>
 		/// The shape with index 1 has been deleted.
 		/// </summary>
-		DeletedShape1 = PxContactPairFlag::eDELETED_SHAPE_1,
+		RemovedShape1 = PxContactPairFlag::eREMOVED_SHAPE_1,
 
 		/// <summary>
 		/// First actor pair contact
@@ -255,12 +249,6 @@ namespace PhysX
 		/// All contact between the two actors has been lost, no shape pairs remain touching after the current simulation frame.
 		/// </summary>
 		ActorPairLostTouch = PxContactPairFlag::eACTOR_PAIR_LOST_TOUCH,
-
-		/// <summary>
-		/// Internal flag, used by PxContactPair.extractContacts().
-		/// For meshes / heightfields the flag indicates that the contact points provide internal triangle index information.
-		/// </summary>
-		InternalHasFaceIndices = PxContactPairFlag::eINTERNAL_HAS_FACE_INDICES,
 
 		/// <summary>
 		/// Internal flag, used by PxContactPair.extractContacts().

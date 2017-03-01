@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
-    <ProjectConfiguration Include="Checked|x64">
-      <Configuration>Checked</Configuration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="Release|x64">
@@ -12,7 +12,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{FB145A7D-CDF2-417D-A006-F7591481D609}</ProjectGuid>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <Keyword>ManagedCProj</Keyword>
     <RootNamespace>PhysXNet3</RootNamespace>
     <SccProjectName>SAK</SccProjectName>
@@ -24,7 +24,7 @@
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Checked|x64'" Label="Configuration">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CLRSupport>true</CLRSupport>
@@ -40,7 +40,7 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
-  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Checked|x64'" Label="PropertySheets">
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="PhysX.props" />
   </ImportGroup>
@@ -49,9 +49,9 @@
     <Import Project="PhysX.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Checked|x64'">
-    <IncludePath>$(NVIDIAPhysXSDK)\Include\PhysXProfileSDK;$(NVIDIAPhysXSDK)\Include\PhysXVisualDebuggerSDK;$(NVIDIAPhysXSDK)\Include\Vehicle;$(NVIDIAPhysXSDK)\Include\Particles;$(NVIDIAPhysXSDK)\Include\Geometry;$(NVIDIAPhysXSDK)\Include\Extensions;$(NVIDIAPhysXSDK)\Include\Cooking;$(NVIDIAPhysXSDK)\Include\Common;$(NVIDIAPhysXSDK)\Include\Characterkinematic;$(NVIDIAPhysXSDK)\Include\Cloth;$(NVIDIAPhysXSDK)\Include\Foundation;$(NVIDIAPhysXSDK)\Include\PxTask;$(NVIDIAPhysXSDK)\Include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(NVIDIAPhysXSDK)\Lib\vc14win64;$(LibraryPath)</LibraryPath>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>$(NVIDIAPhysX34SDK)\Include;$(NVIDIAPhysX34SDK)\..\PxShared\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(NVIDIAPhysX34SDK)\Lib\vc14win64;$(NVIDIAPhysX34SDK)\..\PxShared\Lib\vc14win64;$(LibraryPath)</LibraryPath>
     <OutDir>$(ProjectDir)bin\x64\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)bin\x64\$(Configuration)\Intermediate\</IntDir>
   </PropertyGroup>
@@ -59,21 +59,21 @@
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(ProjectDir)bin\x64\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)bin\x64\$(Configuration)\Intermediate\</IntDir>
-    <LibraryPath>$(NVIDIAPhysXSDK)\Lib\vc14win64;$(LibraryPath)</LibraryPath>
-    <IncludePath>$(NVIDIAPhysXSDK)\Include\PhysXProfileSDK;$(NVIDIAPhysXSDK)\Include\PhysXVisualDebuggerSDK;$(NVIDIAPhysXSDK)\Include\Vehicle;$(NVIDIAPhysXSDK)\Include\Particles;$(NVIDIAPhysXSDK)\Include\Geometry;$(NVIDIAPhysXSDK)\Include\Extensions;$(NVIDIAPhysXSDK)\Include\Cooking;$(NVIDIAPhysXSDK)\Include\Common;$(NVIDIAPhysXSDK)\Include\Characterkinematic;$(NVIDIAPhysXSDK)\Include\Cloth;$(NVIDIAPhysXSDK)\Include\Foundation;$(NVIDIAPhysXSDK)\Include\PxTask;$(NVIDIAPhysXSDK)\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(NVIDIAPhysX34SDK)\Lib\vc14win64;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(NVIDIAPhysX34SDK)\Include;$(NVIDIAPhysX34SDK)\..\PxShared\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Checked|x64'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN64;NDEBUG;PHYSX_CHECKED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN64;_DEBUG;PHYSX_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>PhysX3CHECKED_x64.lib;PhysX3CommonCHECKED_x64.lib;PhysX3CharacterKinematicCHECKED_x64.lib;PhysX3CookingCHECKED_x64.lib;PhysX3ExtensionsCHECKED.lib;PhysX3VehicleCHECKED.lib;PhysXProfileSDKCHECKED.lib;PhysXVisualDebuggerSDKCHECKED.lib;PxTaskCHECKED.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>PhysX3DEBUG_x64.lib;PhysX3CommonDEBUG_x64.lib;PhysX3CharacterKinematicDEBUG_x64.lib;PhysX3CookingDEBUG_x64.lib;PhysX3ExtensionsDEBUG.lib;PhysX3VehicleDEBUG.lib;PxPvdSDKDEBUG_x64.lib;PxTaskDEBUG_x64.lib;PxFoundationDEBUG_x64.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
     </Link>
     <ProjectReference />
@@ -148,13 +148,13 @@
     <ClInclude Include="Source\Constraint1D.h" />
     <ClInclude Include="Source\ConstraintConnector.h" />
     <ClInclude Include="Source\ConstraintDesc.h" />
-    <ClInclude Include="Source\ConstraintDominance.h" />
+    <ClInclude Include="Source\DominanceGroupPair.h" />
     <ClInclude Include="Source\ConstraintInfo.h" />
     <ClInclude Include="Source\ControllerState.h" />
     <ClInclude Include="Source\CudaContextManager.h" />
     <ClInclude Include="Source\CudaEnum.h" />
     <ClInclude Include="Source\ExtensionsEnum.h" />
-    <ClInclude Include="Source\FeatureContact.h" />
+    <ClInclude Include="Source\ExtendedContact.h" />
     <ClInclude Include="Source\FoundationEnum.h" />
     <ClInclude Include="Source\GeometryHolder.h">
       <FileType>CppHeader</FileType>
@@ -339,7 +339,6 @@
     <ClInclude Include="Source\VehicleWheelData.h" />
     <ClInclude Include="Source\VehicleWheelValues.h" />
     <ClInclude Include="Source\Connection.h" />
-    <ClInclude Include="Source\VisualDebuggerExt.h" />
     <ClInclude Include="Source\XmlParserOptions.h" />
   </ItemGroup>
   <ItemGroup>
@@ -386,11 +385,11 @@
     <ClCompile Include="Source\Constraint1D.cpp" />
     <ClCompile Include="Source\ConstraintConnector.cpp" />
     <ClCompile Include="Source\ConstraintDesc.cpp" />
-    <ClCompile Include="Source\ConstraintDominance.cpp" />
+    <ClCompile Include="Source\DominanceGroupPair.cpp" />
     <ClCompile Include="Source\ConstraintInfo.cpp" />
     <ClCompile Include="Source\ControllerState.cpp" />
     <ClCompile Include="Source\CudaContextManager.cpp" />
-    <ClCompile Include="Source\FeatureContact.cpp" />
+    <ClCompile Include="Source\ExtendedContact.cpp" />
     <ClCompile Include="Source\GeometryHolder.cpp">
       <FileType>CppCode</FileType>
     </ClCompile>
@@ -475,8 +474,8 @@
     <ClCompile Include="Source\Serialization.cpp" />
     <ClCompile Include="Source\SerializationRegistry.cpp" />
     <ClCompile Include="Source\ShapeUtil.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Checked|x64'">NotUsing</PrecompiledHeader>
-      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Checked|x64'">false</CompileAsManaged>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</CompileAsManaged>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
@@ -489,7 +488,7 @@
     <ClCompile Include="Source\SphericalJoint.cpp" />
     <ClCompile Include="Source\Spring.cpp" />
     <ClCompile Include="Source\StdAfx.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Checked|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Source\StreamExtensions.cpp" />
@@ -531,7 +530,6 @@
     <ClCompile Include="Source\VehicleWheelValues.cpp" />
     <ClCompile Include="Source\Connection.cpp" />
     <ClCompile Include="Source\ConnectionManager.cpp" />
-    <ClCompile Include="Source\VisualDebuggerExt.cpp" />
     <ClCompile Include="Source\XmlParserOptions.cpp" />
     <ClInclude Include="Source\GeometryEnum.h" />
     <ClCompile Include="Source\BoxGeometry.cpp" />

@@ -128,15 +128,6 @@ void RigidDynamic::ContactReportThreshold::set(float value)
 	this->UnmanagedPointer->setContactReportThreshold(value);
 }
 
-RigidDynamicFlags RigidDynamic::Flags::get()
-{
-	return ToManagedEnum(RigidDynamicFlags, this->UnmanagedPointer->getRigidDynamicFlags());
-}
-void RigidDynamic::Flags::set(RigidDynamicFlags value)
-{
-	this->UnmanagedPointer->setRigidDynamicFlags(ToUnmanagedEnum2(PxRigidDynamicFlags, value));
-}
-
 PxRigidDynamic* RigidDynamic::UnmanagedPointer::get()
 {
 	return (PxRigidDynamic*)RigidBody::UnmanagedPointer;

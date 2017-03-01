@@ -3,6 +3,7 @@
 #include "ConstraintInfo.h"
 #include "ContactPair.h"
 #include "ContactPairHeader.h"
+#include "RigidBody.h"
 
 using namespace PhysX;
 
@@ -68,6 +69,20 @@ void InternalSimulationEventCallback::onTrigger (PxTriggerPair *pairs, PxU32 cou
 
 	_callback->OnTrigger(p);
 }
+void InternalSimulationEventCallback::onAdvance(const PxRigidBody*const* bodyBuffer, const PxTransform* poseBuffer, const PxU32 count)
+{
+	auto bodies = gcnew array<RigidBody^>(count);
+	auto poses = gcnew array<Matrix4x4>(count);
+
+	for (size_t i = 0; i < count; i++)
+	{
+		bodies[i] = ObjectTable::TryGetObject<RigidBody^>((intptr_t)bodyBuffer[i]);
+
+		poses[i] = MathUtil::PxTransformToMatrix((PxTransform*)&(poseBuffer[i]));
+	}
+
+	_callback->OnAdvance(bodies, poses);
+}
 
 //
 
@@ -112,6 +127,10 @@ void SimulationEventCallback::OnContact(ContactPairHeader^ pairHeader, array<Con
 
 }
 void SimulationEventCallback::OnTrigger(array<TriggerPair^>^ pairs)
+{
+
+}
+void SimulationEventCallback::OnAdvance(array<RigidBody^>^ rigidBodies, array<Matrix4x4>^ poses)
 {
 
 }

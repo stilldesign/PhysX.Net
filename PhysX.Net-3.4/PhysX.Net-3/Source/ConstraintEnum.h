@@ -10,11 +10,11 @@ namespace PhysX
 		ProjectToActor1 = PxConstraintFlag::ePROJECT_TO_ACTOR1,
 		Projection = PxConstraintFlag::ePROJECTION,
 		CollisionEnabled = PxConstraintFlag::eCOLLISION_ENABLED,
-		Reporting = PxConstraintFlag::eREPORTING,
 		Visualization = PxConstraintFlag::eVISUALIZATION,
 		DriveLimitsAreForces = PxConstraintFlag::eDRIVE_LIMITS_ARE_FORCES,
-		
-		ImprovedSlerp = PxConstraintFlag::eIMPROVED_SLERP
+		ImprovedSlerp = PxConstraintFlag::eIMPROVED_SLERP,
+		DisableProcessing = PxConstraintFlag::eDISABLE_PREPROCESSING,
+		GpuCompatible = PxConstraintFlag::eGPU_COMPATIBLE
 	};
 
 	/// <summary>

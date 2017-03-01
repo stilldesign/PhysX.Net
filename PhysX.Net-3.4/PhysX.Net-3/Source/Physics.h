@@ -73,7 +73,7 @@ namespace PhysX
 		static Physics();
 
 		/// <summary>Creates a new instance of the Physics class.</summary>
-		Physics(PhysX::Foundation^ foundation, [Optional] bool checkRuntimeFiles);
+		Physics(PhysX::Foundation^ foundation, [Optional] bool checkRuntimeFiles, [Optional] PhysX::VisualDebugger::ConnectionManager^ connectionManager);
 	public:
 		~Physics();
 	protected:
@@ -168,8 +168,8 @@ namespace PhysX
 		/// Creates a PxHeightField object.
 		/// This can then be instanced into PxShape objects.
 		/// </summary>
-		/// <param name="desc">The descriptor to load the object from.</param>
-		HeightField^ CreateHeightField(HeightFieldDesc^ desc);
+		/// <param name="stream">The stream to load the height field from.</param>
+		HeightField^ CreateHeightField(System::IO::Stream^ stream);
 		#pragma endregion
 
 		#pragma region Rigid Actors

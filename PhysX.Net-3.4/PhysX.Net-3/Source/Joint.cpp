@@ -63,7 +63,7 @@ PhysX::Constraint^ Joint::Constraint::get()
 
 JointType Joint::Type::get()
 {
-	return ToManagedEnum(JointType, _joint->getType());
+	return ToManagedEnum(JointType, _joint->getConcreteType());
 }
 
 PhysX::Actor^ Joint::Actor0::get()

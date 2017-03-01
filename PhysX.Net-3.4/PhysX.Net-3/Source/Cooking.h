@@ -9,6 +9,7 @@ namespace PhysX
 	ref class TriangleMeshDesc;
 	ref class ConvexMeshDesc;
 	ref class ClothMeshDesc;
+	ref class HeightFieldDesc;
 
 	public ref class Cooking : IDisposable
 	{
@@ -31,6 +32,8 @@ namespace PhysX
 			{
 				virtual bool get();
 			}
+
+			bool CookHeightField(HeightFieldDesc^ desc, System::IO::Stream^ stream);
 
 			/// <summary>
 			/// Cooks a triangle mesh. The results are written to the stream.

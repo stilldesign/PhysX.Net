@@ -15,10 +15,10 @@ namespace PhysX
 			virtual event EventHandler^ OnDisposed;
 
 		private:
-			physx::debugger::comm::PvdConnection* _connection;
+			physx::PxPvd* _connection;
 
 		internal:
-			Connection(physx::debugger::comm::PvdConnection* connection, PhysX::Physics^ owner);
+			Connection(physx::PxPvd* connection, PhysX::Physics^ owner);
 		public:
 			~Connection();
 		protected:
@@ -30,10 +30,12 @@ namespace PhysX
 				virtual bool get();
 			}
 
+			void Connect();
+
 		internal:
-			property physx::debugger::comm::PvdConnection* UnmanagedPointer
+			property physx::PxPvd* UnmanagedPointer
 			{
-				physx::debugger::comm::PvdConnection* get();
+				physx::PxPvd* get();
 			}
 		};
 	};

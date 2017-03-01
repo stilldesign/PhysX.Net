@@ -10,7 +10,7 @@
     <RootNamespace>PhysX.Samples.Engine</RootNamespace>
     <AssemblyName>PhysX.Samples.Engine</AssemblyName>
     <SignAssembly>false</SignAssembly>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <IsWebBootstrapper>true</IsWebBootstrapper>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
@@ -35,7 +35,7 @@
     <RestorePackages>true</RestorePackages>
     <NuGetPackageImportStamp>05bee07b</NuGetPackageImportStamp>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Checked|x64'">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\x64\Checked\</OutputPath>
     <DefineConstants>TRACE;DEBUG;WINDOWS</DefineConstants>
@@ -131,24 +131,40 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\..\Assemblies\x64\Checked\nvToolsExt64_1.dll">
+    <Content Include="..\..\Assemblies\x64\Debug\nvToolsExt64_1.dll">
       <Link>nvToolsExt64_1.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\Assemblies\x64\Checked\PhysX3CharacterKinematicCHECKED_x64.dll">
-      <Link>PhysX3CharacterKinematicCHECKED_x64.dll</Link>
+    <Content Include="..\..\Assemblies\x64\Debug\PhysX3CharacterKinematicDEBUG_x64.dll">
+      <Link>PhysX3CharacterKinematicDEBUG_x64.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\Assemblies\x64\Checked\PhysX3CHECKED_x64.dll">
-      <Link>PhysX3CHECKED_x64.dll</Link>
+    <Content Include="..\..\Assemblies\x64\Debug\PhysX3CommonDEBUG_x64.dll">
+      <Link>PhysX3CommonDEBUG_x64.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\Assemblies\x64\Checked\PhysX3CommonCHECKED_x64.dll">
-      <Link>PhysX3CommonCHECKED_x64.dll</Link>
+    <Content Include="..\..\Assemblies\x64\Debug\PhysX3CookingDEBUG_x64.dll">
+      <Link>PhysX3CookingDEBUG_x64.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\Assemblies\x64\Checked\PhysX3CookingCHECKED_x64.dll">
-      <Link>PhysX3CookingCHECKED_x64.dll</Link>
+    <Content Include="..\..\Assemblies\x64\Debug\PhysX3DEBUG_x64.dll">
+      <Link>PhysX3DEBUG_x64.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\Assemblies\x64\Debug\PhysX3GpuDEBUG_x64.dll">
+      <Link>PhysX3GpuDEBUG_x64.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\Assemblies\x64\Debug\PhysXDevice64.dll">
+      <Link>PhysXDevice64.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\Assemblies\x64\Debug\PxFoundationDEBUG_x64.dll">
+      <Link>PxFoundationDEBUG_x64.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\Assemblies\x64\Debug\PxPvdSDKDEBUG_x64.dll">
+      <Link>PxPvdSDKDEBUG_x64.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="sharpdx_direct3d11_effects_x64.dll">

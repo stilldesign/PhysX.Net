@@ -9,7 +9,7 @@ namespace PhysX
 		/// This class has a direct mapping to the PVD::TConnectionType datatype.
 		/// It is redefined here because not all classes including this header have the PVDSDK in their include path. 
 		/// </summary>
-		public enum class VisualDebuggerConnectionFlag
+		public enum class InstrumentationFlag
 		{
 			/// <summary>
 			/// Send debugging information to PVD.
@@ -17,14 +17,14 @@ namespace PhysX
 			/// Sending this information has a noticeable impact on performance and thus this flag should not be set if you
 			/// want an accurate performance profile.
 			/// </summary>
-			Debug = PxVisualDebuggerConnectionFlag::eDEBUG,
+			Debug = PxPvdInstrumentationFlag::eDEBUG,
 
 			/// <summary>
 			/// Send profile information to PVD.
 			/// This information populates PVD's profile view. It has (at this time) negligible cost compared to Debug
 			/// information and makes PVD *much* more useful so it is quite highly recommended. 
 			/// </summary>
-			Profile = PxVisualDebuggerConnectionFlag::ePROFILE,
+			Profile = PxPvdInstrumentationFlag::ePROFILE,
 
 			/// <summary>
 			/// Send memory information to PVD.
@@ -39,7 +39,9 @@ namespace PhysX
 			/// Sending memory information without tracking outstanding allocations means that PVD will accurate information about
 			/// the state of the memory system before the actual connection happened. 
 			/// </summary>
-			Memory = PxVisualDebuggerConnectionFlag::eMEMORY
+			Memory = PxPvdInstrumentationFlag::eMEMORY,
+
+			All = PxPvdInstrumentationFlag::eALL
 		};
 	};
 };

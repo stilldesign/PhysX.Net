@@ -121,32 +121,32 @@ namespace PhysX
 		/// <summary>
 		/// 
 		/// </summary>
-		D6 = PxJointType::eD6,
+		D6 = PxJointConcreteType::eD6,
 
 		/// <summary>
 		/// 
 		/// </summary>
-		Distance = PxJointType::eDISTANCE,
+		Distance = PxJointConcreteType::eDISTANCE,
 
 		/// <summary>
 		/// 
 		/// </summary>
-		Fixed = PxJointType::eFIXED,
+		Fixed = PxJointConcreteType::eFIXED,
 
 		/// <summary>
 		/// 
 		/// </summary>
-		Prismatic = PxJointType::ePRISMATIC,
+		Prismatic = PxJointConcreteType::ePRISMATIC,
 
 		/// <summary>
 		/// 
 		/// </summary>
-		Revolute = PxJointType::eREVOLUTE,
+		Revolute = PxJointConcreteType::eREVOLUTE,
 
 		/// <summary>
 		/// 
 		/// </summary>
-		Spherical = PxJointType::eSPHERICAL
+		Spherical = PxJointConcreteType::eSPHERICAL
 	};
 
 	/// <summary>

@@ -11,7 +11,6 @@ TriangleMeshDesc^ TriangleMeshDesc::ToManaged(PxTriangleMeshDesc desc)
 	auto d = gcnew TriangleMeshDesc();
 
 	d->MaterialIndices = Util::AsManagedArray<short>(desc.materialIndices.data, desc.triangles.count);
-	d->ConvexEdgeThreshold = desc.convexEdgeThreshold;
 
 	return d;
 }
@@ -30,15 +29,12 @@ PxTriangleMeshDesc TriangleMeshDesc::ToUnmanaged(TriangleMeshDesc^ desc)
 		Util::AsUnmanagedArray<short>(desc->MaterialIndices, (void*)i.data, desc->MaterialIndices->Length);
 	}
 	
-	d.convexEdgeThreshold = desc->ConvexEdgeThreshold;
-
 	return d;
 }
 
 void TriangleMeshDesc::SetToDefault()
 {
 	SimpleTriangleMesh::SetToDefault();
-	ConvexEdgeThreshold			= 0.001f;
 }
 bool TriangleMeshDesc::IsValid()
 {

@@ -54,7 +54,7 @@ namespace PhysX
 		/// contact report pair(see PairFlag::NotifyContactPoints).
 		/// Use ExtractContacts() as a reference for the data layout of the stream.
 		/// </summary>
-		property array<Byte>^ ContactData;
+		property array<Byte>^ ContactPoints;
 
 		/// <summary>
 		/// Size of the contact stream [bytes] including force buffer.

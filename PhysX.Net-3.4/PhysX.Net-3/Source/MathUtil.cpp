@@ -5,6 +5,7 @@ using namespace PhysX;
 
 Matrix MathUtil::PxTransformToMatrix(PxTransform* transform)
 {
+	// TODO: This looks less than efficient
 	Quaternion q = Quaternion(transform->q.x, transform->q.y, transform->q.z, transform->q.w);
 	Matrix m = 
 		Matrix::CreateFromQuaternion(q) *
@@ -14,6 +15,7 @@ Matrix MathUtil::PxTransformToMatrix(PxTransform* transform)
 }
 PxTransform MathUtil::MatrixToPxTransform(Matrix matrix)
 {
+	// TODO: This looks less than efficient
 	Quaternion q = Quaternion::CreateFromRotationMatrix(matrix);
 
 	PxTransform t;
@@ -25,6 +27,7 @@ PxTransform MathUtil::MatrixToPxTransform(Matrix matrix)
 
 Matrix MathUtil::PxMat33ToMatrix(PxMat33* matrix)
 {
+	// TODO: memcpy?
 	Matrix m = Matrix::Identity;
 
 	m.M11 = matrix->column0.x;
@@ -43,6 +46,7 @@ Matrix MathUtil::PxMat33ToMatrix(PxMat33* matrix)
 }
 PxMat33 MathUtil::MatrixToPxMat33(Matrix matrix)
 {
+	// TODO: memcpy?
 	float values[9];
 		values[0] = matrix.M11;
 		values[1] = matrix.M21;
