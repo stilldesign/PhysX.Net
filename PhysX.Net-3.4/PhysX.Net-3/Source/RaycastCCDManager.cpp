@@ -19,7 +19,7 @@ PhysX::RaycastCCDManager::~RaycastCCDManager()
 }
 PhysX::RaycastCCDManager::!RaycastCCDManager()
 {
-	delete _manager;
+	SAFE_DELETE(_manager);
 }
 
 bool PhysX::RaycastCCDManager::RegisterRaycastCCDObject(RigidDynamic^ actor, Shape^ shape)
