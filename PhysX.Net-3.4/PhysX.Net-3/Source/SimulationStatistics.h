@@ -93,9 +93,34 @@ namespace PhysX
 			property int DynamicBodies;
 
 			/// <summary>
+			/// Number of aggregates in the scene.
+			/// </summary>
+			property int Aggregates;
+
+			/// <summary>
 			/// Number of articulations in the scene.
 			/// </summary>
 			property int Articulations;
+
+			/// <summary>
+			/// The number of 1D axis constraints(joints + contact) present in the current simulation step.
+			/// </summary>
+			property int AxisSolverConstraints;
+
+			/// <summary>
+			/// The size(in bytes) of the compressed contact stream in the current simulation step.
+			/// </summary>
+			property int CompressedContactSize;
+
+			/// <summary>
+			/// The total required size(in bytes) of the contact constraints in the current simulation step.
+			/// </summary>
+			property int RequiredContactConstraintMemory;
+
+			/// <summary>
+			/// The peak amount of memory(in bytes) that was allocated for constraints(this includes joints) in the current simulation step.
+			/// </summary>
+			property int PeakConstraintMemory;
 
 			/// <summary>
 			/// Total number of (non CCD) pairs reaching narrow phase.
@@ -114,11 +139,45 @@ namespace PhysX
 			property int DiscreteContactPairsWithContacts;
 
 			/// <summary>
+			/// Number of new pairs found by BP this frame.
+			/// </summary>
+			property int NewPairs;
+
+			/// <summary>
+			/// Number of new touches found by NP this frame.
+			/// </summary>
+			property int NewTouches;
+
+			/// <summary>
+			/// Number of lost touches from NP this frame.
+			/// </summary>
+			property int LostTouches;
+
+			/// <summary>
+			/// Number of partitions used by the solver this frame.
+			/// </summary>
+			property int Partitions;
+
+			/// <summary>
 			/// Gets the number of shapes of each geometry type.
 			/// </summary>
 			property Dictionary<GeometryType, int>^ Shapes;
 
 			property Dictionary<VolumeType, int>^ BroadPhaseAdds;
 			property Dictionary<VolumeType, int>^ BroadPhaseRemoves;
+
+			/// <summary>
+			/// Use [GeometryType, GeometryType] to lookup a pair.
+			/// </summary>
+			property array<int, 2>^ ModifiedContactPairs;
+
+			/// <summary>
+			/// Use [GeometryType, GeometryType] to lookup a pair.
+			/// </summary>
+			property array<int, 2>^ TriggerPairs;
+
+			property int ParticlesGpuMeshCacheSize;
+			property int ParticlesGpuMeshCacheUsed;
+			property float ParticlesGpuMeshCacheHitrate;
 	};
 };
