@@ -23,6 +23,8 @@ namespace PhysX
 			static ConvexMeshGeometry^ ToManaged(PxConvexMeshGeometry convexMesh);
 
 		public:
+			int FindFaceIndex(Matrix4x4 geometryPose, Vector3 impactPosition, Vector3 unitDirection);
+
 			property MeshScale Scale;
 			property PhysX::ConvexMesh^ ConvexMesh;
 	};

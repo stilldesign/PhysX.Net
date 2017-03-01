@@ -34,3 +34,18 @@ ConvexMeshGeometry^ ConvexMeshGeometry::ToManaged(PxConvexMeshGeometry convexMes
 
 	return cm;
 }
+
+int ConvexMeshGeometry::FindFaceIndex(Matrix4x4 geometryPose, Vector3 impactPosition, Vector3 unitDirection)
+{
+	auto unmanaged = (PxConvexMeshGeometry*)ToUnmanaged();
+
+	PxU32 faceIndex = PxFindFaceIndex(
+		*unmanaged,
+		MathUtil::MatrixToPxTransform(geometryPose),
+		MathUtil::Vector3ToPxVec3(impactPosition),
+		MathUtil::Vector3ToPxVec3(unitDirection));
+
+	delete unmanaged;
+
+	return faceIndex;
+}
