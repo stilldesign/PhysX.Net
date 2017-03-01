@@ -16,6 +16,9 @@ PxCookingParams CookingParams::ToUnmanaged(CookingParams^ params)
 	p.meshWeldTolerance = params->MeshWeldTolerance;
 	p.meshSizePerformanceTradeOff = params->MeshSizePerformanceTradeOff;
 	p.areaTestEpsilon = params->AreaTestEpsilon;
+	p.convexMeshCookingType = ToUnmanagedEnum(PxConvexMeshCookingType, params->ConvexMeshCookingType);
+	p.buildGPUData = params->BuildGPUData;
+	p.gaussMapLimit = params->GaussMapLimit;
 
 	return p;
 }
@@ -33,6 +36,9 @@ CookingParams^ CookingParams::ToManaged(PxCookingParams params)
 	p->MeshWeldTolerance = params.meshWeldTolerance;
 	p->MeshSizePerformanceTradeOff = params.meshSizePerformanceTradeOff;
 	p->AreaTestEpsilon = params.areaTestEpsilon;
+	p->ConvexMeshCookingType = ToManagedEnum(PhysX::ConvexMeshCookingType, params.convexMeshCookingType);
+	p->BuildGPUData = params.buildGPUData;
+	p->GaussMapLimit = params.gaussMapLimit;
 
 	return p;
 }

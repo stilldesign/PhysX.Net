@@ -91,4 +91,10 @@
 		LargeTriangle = PxTriangleMeshCookingResult::eLARGE_TRIANGLE,
 		Failure = PxTriangleMeshCookingResult::eFAILURE
 	};
+
+	public enum class ConvexMeshCookingType
+	{
+		InflationIncrementalHull = PxConvexMeshCookingType::eINFLATION_INCREMENTAL_HULL,
+		QuickHull = PxConvexMeshCookingType::eQUICKHULL
+	};
  };

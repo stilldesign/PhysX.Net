@@ -16,23 +16,17 @@ namespace PhysX
 
 	public:
 		property Platform TargetPlatform;
-
 		property float SkinWidth;
-
 		property bool SuppressTriangleMeshRemapTable;
-
 		property TolerancesScale Scale;
-
 		property bool BuildTriangleAdjacencies;
-
 		property MeshPreprocessingFlag MeshPreprocessParams;
-
 		property PhysX::MeshCookingHint MeshCookingHint;
-
 		property float MeshWeldTolerance;
-
 		property float MeshSizePerformanceTradeOff;
-
 		property float AreaTestEpsilon;
+		property ConvexMeshCookingType ConvexMeshCookingType;
+		property bool BuildGPUData;
+		property int GaussMapLimit;
 	};
 };
