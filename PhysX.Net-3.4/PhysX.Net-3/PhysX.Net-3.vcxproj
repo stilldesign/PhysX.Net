@@ -212,6 +212,7 @@
     <ClInclude Include="Source\OperationFailedException.h" />
     <ClInclude Include="Source\OverlapHit.h" />
     <ClInclude Include="Source\DefaultSimulationFilterShader.h" />
+    <ClInclude Include="Source\RaycastCCDManager.h" />
     <ClInclude Include="Source\SimulationFilterShader.h" />
     <ClInclude Include="Source\VectorAndMatrixExtensions.h" />
     <ClInclude Include="Source\VehicleWheelConcurrentUpdateData.h" />
@@ -459,6 +460,7 @@
     <ClCompile Include="Source\PrismaticJoint.cpp" />
     <ClCompile Include="Source\QueryCache.cpp" />
     <ClCompile Include="Source\QueryFilterCallback.cpp" />
+    <ClCompile Include="Source\RaycastCCDManager.cpp" />
     <ClCompile Include="Source\RaycastHit.cpp" />
     <ClCompile Include="Source\RaycastQueryResult.cpp" />
     <ClCompile Include="Source\RenderBuffer.cpp" />
