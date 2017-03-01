@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<ImportGroup Label="PropertySheets" />
+	<PropertyGroup Label="UserMacros">
+		<!-- 
+		The location of the NVIDIA PhysX source code (my fork).
+		
+		My fork: https://github.com/stilldesign/PhysX-3.3 - you'll need to be part of the NVIDIA gameworks program to access the PhysX source.
+		If you wish to use your own PhysX SDK source, you'll need to set /MD to enable use to use it as a multi-threaded DLL.
+
+		Create a system-variable 'NVIDIAPhysXSDK' if you wish to have the PhysX SDK in a different directory, e.g. 'D:\PhysX-3.3\PhysXSDK'.
+		This value here is only a default. You'll probably need to restart VS if you do.
+		-->
+		<NVIDIAPhysXSDK Condition="'$(NVIDIAPhysXSDK)' == '' ">..\..\..\StillDesign-PhysX33\PhysX-3.3\PhysXSDK</NVIDIAPhysXSDK>
+	</PropertyGroup>
+	<PropertyGroup />
+	<ItemDefinitionGroup />
+	<ItemGroup>
+		<BuildMacro Include="NVIDIAPhysXSDK">
+			<Value>$(NVIDIAPhysXSDK)</Value>
+		</BuildMacro>
+	</ItemGroup>
+</Project>
