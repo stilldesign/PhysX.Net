@@ -1,5 +1,6 @@
 #include "StdAfx.h"
 #include "CookingParams.h"
+#include "MidphaseDesc.h"
 
 PxCookingParams CookingParams::ToUnmanaged(CookingParams^ params)
 {
@@ -19,6 +20,7 @@ PxCookingParams CookingParams::ToUnmanaged(CookingParams^ params)
 	p.convexMeshCookingType = ToUnmanagedEnum(PxConvexMeshCookingType, params->ConvexMeshCookingType);
 	p.buildGPUData = params->BuildGPUData;
 	p.gaussMapLimit = params->GaussMapLimit;
+	p.midphaseDesc = PhysX::MidphaseDesc::ToUnmanaged(params->MidphaseDesc);
 
 	return p;
 }
@@ -39,6 +41,7 @@ CookingParams^ CookingParams::ToManaged(PxCookingParams params)
 	p->ConvexMeshCookingType = ToManagedEnum(PhysX::ConvexMeshCookingType, params.convexMeshCookingType);
 	p->BuildGPUData = params.buildGPUData;
 	p->GaussMapLimit = params.gaussMapLimit;
+	p->MidphaseDesc = PhysX::MidphaseDesc::ToManaged(params.midphaseDesc);
 
 	return p;
 }

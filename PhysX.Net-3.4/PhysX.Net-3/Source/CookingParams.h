@@ -5,6 +5,8 @@
 
 namespace PhysX
 {
+	ref class MidphaseDesc;
+
 	/// <summary>
 	/// Structure describing parameters affecting mesh cooking.
 	/// </summary>
@@ -28,5 +30,9 @@ namespace PhysX
 		property ConvexMeshCookingType ConvexMeshCookingType;
 		property bool BuildGPUData;
 		property int GaussMapLimit;
+		/// <summary>
+		/// Controls the desired midphase desc structure for triangle meshes.
+		/// </summary>
+		property MidphaseDesc^ MidphaseDesc;
 	};
 };

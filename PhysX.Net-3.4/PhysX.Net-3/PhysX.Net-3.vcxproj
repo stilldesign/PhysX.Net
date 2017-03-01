@@ -114,6 +114,8 @@
     <ClInclude Include="Source\BoxObstacle.h" />
     <ClInclude Include="Source\BroadPhase.h" />
     <ClInclude Include="Source\BroadPhaseCallback.h" />
+    <ClInclude Include="Source\Bvh33MidphaseDesc.h" />
+    <ClInclude Include="Source\Bvh34MidphaseDesc.h" />
     <ClInclude Include="Source\CapsuleController.h" />
     <ClInclude Include="Source\CapsuleControllerDesc.h" />
     <ClInclude Include="Source\CapsuleGeometry.h" />
@@ -172,6 +174,7 @@
     <ClInclude Include="Source\JointLinearLimit.h" />
     <ClInclude Include="Source\LinearSweepMultipleResult.h" />
     <ClInclude Include="Source\LinearSweepSingleResult.h" />
+    <ClInclude Include="Source\MidphaseDesc.h" />
     <ClInclude Include="Source\ModifiableContact.h" />
     <ClInclude Include="Source\Controller.h" />
     <ClInclude Include="Source\ControllerBehaviorCallback.h" />
@@ -361,6 +364,8 @@
     <ClCompile Include="Source\BoxObstacle.cpp" />
     <ClCompile Include="Source\BroadPhase.cpp" />
     <ClCompile Include="Source\BroadPhaseCallback.cpp" />
+    <ClCompile Include="Source\Bvh33MidphaseDesc.cpp" />
+    <ClCompile Include="Source\Bvh34MidphaseDesc.cpp" />
     <ClCompile Include="Source\CapsuleController.cpp" />
     <ClCompile Include="Source\CapsuleControllerDesc.cpp" />
     <ClCompile Include="Source\CapsuleObstacle.cpp" />
@@ -405,6 +410,7 @@
     <ClCompile Include="Source\IVehicleComputeTireForceOutput.cpp" />
     <ClCompile Include="Source\JointAngularLimitPair.cpp" />
     <ClCompile Include="Source\JointLinearLimit.cpp" />
+    <ClCompile Include="Source\MidphaseDesc.cpp" />
     <ClCompile Include="Source\ModifiableContact.cpp" />
     <ClCompile Include="Source\Controller.cpp" />
     <ClCompile Include="Source\ControllerBehaviorCallback.cpp" />

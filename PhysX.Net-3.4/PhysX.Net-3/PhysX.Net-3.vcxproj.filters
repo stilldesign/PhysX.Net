@@ -562,6 +562,15 @@
     <ClCompile Include="Source\TriangleMeshEnum.cpp">
       <Filter>TriangleMesh</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Bvh33MidphaseDesc.cpp">
+      <Filter>Cooking</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Bvh34MidphaseDesc.cpp">
+      <Filter>Cooking</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MidphaseDesc.cpp">
+      <Filter>Cooking</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
@@ -1258,6 +1267,15 @@
     </ClInclude>
     <ClInclude Include="Source\TriangleMeshEnum.h">
       <Filter>TriangleMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Bvh33MidphaseDesc.h">
+      <Filter>Cooking</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Bvh34MidphaseDesc.h">
+      <Filter>Cooking</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\MidphaseDesc.h">
+      <Filter>Cooking</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
