@@ -559,6 +559,9 @@
     <ClCompile Include="Source\VehicleAntiRollBarData.cpp">
       <Filter>Vehicle</Filter>
     </ClCompile>
+    <ClCompile Include="Source\TriangleMeshEnum.cpp">
+      <Filter>TriangleMesh</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
@@ -1252,6 +1255,9 @@
     </ClInclude>
     <ClInclude Include="Source\VehicleAntiRollBarData.h">
       <Filter>Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\TriangleMeshEnum.h">
+      <Filter>TriangleMesh</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
