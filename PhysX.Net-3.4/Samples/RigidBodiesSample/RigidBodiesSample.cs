@@ -146,7 +146,7 @@ namespace PhysX.Samples.RigidBodiesSample
 			var cooking = scene.Physics.CreateCooking();
 
 			var stream = new MemoryStream();
-			bool cookResult = cooking.CookTriangleMesh(triangleMeshDesc, stream);
+			var cookResult = cooking.CookTriangleMesh(triangleMeshDesc, stream);
 
 			stream.Position = 0;
 

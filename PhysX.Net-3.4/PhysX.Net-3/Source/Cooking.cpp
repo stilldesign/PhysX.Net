@@ -59,7 +59,7 @@ bool Cooking::CookHeightField(HeightFieldDesc^ desc, System::IO::Stream^ stream)
 
 	return result;
 }
-bool Cooking::CookTriangleMesh(TriangleMeshDesc^ desc, System::IO::Stream^ stream)
+TriangleMeshCookingResult Cooking::CookTriangleMesh(TriangleMeshDesc^ desc, System::IO::Stream^ stream)
 {
 	ThrowIfDescriptionIsNullOrInvalid(desc, "desc");
 	ThrowIfNull(stream, "stream");
@@ -69,18 +69,20 @@ bool Cooking::CookTriangleMesh(TriangleMeshDesc^ desc, System::IO::Stream^ strea
 	if(!d.isValid())
 		throw gcnew ArgumentException("The triangle mesh description is invalid");
 
+	PxTriangleMeshCookingResult::Enum result;
 	PxDefaultMemoryOutputStream cookedStream;
-	bool result = _cooking->cookTriangleMesh(d, cookedStream);
+
+	_cooking->cookTriangleMesh(d, cookedStream, &result);
 
 	// Copy the cooked data into the managed stream (only if the cooked stream actually has data)
-	if (result)
+	if (result == PxTriangleMeshCookingResult::eSUCCESS)
 		Util::CopyIntoStream(&cookedStream, stream);
 
 	delete[] d.points.data;
 	delete[] d.triangles.data;
 	delete[] d.materialIndices.data;
 
-	return result;
+	return ToManagedEnum(TriangleMeshCookingResult, result);
 }
 
 ConvexMeshCookingResult Cooking::CookConvexMesh(ConvexMeshDesc^ desc, System::IO::Stream^ stream)

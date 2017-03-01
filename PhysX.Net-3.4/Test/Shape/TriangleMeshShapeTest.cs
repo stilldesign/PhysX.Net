@@ -31,9 +31,9 @@ namespace PhysX.Test
 				{
 					var cookedStream = new MemoryStream();
 
-					bool result = cooking.CookTriangleMesh(triangleMeshDesc, cookedStream);
+					var result = cooking.CookTriangleMesh(triangleMeshDesc, cookedStream);
 
-					Assert.IsTrue(result);
+					Assert.AreEqual(TriangleMeshCookingResult.Success, result);
 
 					cookedStream.Position = 0;
 

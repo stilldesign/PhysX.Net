@@ -84,4 +84,11 @@
 		ZeroAreaTestFailed = PxConvexMeshCookingResult::eZERO_AREA_TEST_FAILED,
 		Failure = PxConvexMeshCookingResult::eFAILURE
 	};
+
+	public enum class TriangleMeshCookingResult
+	{
+		Success = PxTriangleMeshCookingResult::eSUCCESS,
+		LargeTriangle = PxTriangleMeshCookingResult::eLARGE_TRIANGLE,
+		Failure = PxTriangleMeshCookingResult::eFAILURE
+	};
  };

@@ -28,9 +28,9 @@ namespace PhysX.Test.Cooking
 
 					var stream = new MemoryStream();
 
-					bool result = cooking.CookTriangleMesh(desc, stream);
+					var result = cooking.CookTriangleMesh(desc, stream);
 
-					Assert.IsTrue(result);
+					Assert.AreEqual(TriangleMeshCookingResult.Success, result);
 				}
 			}
 		}

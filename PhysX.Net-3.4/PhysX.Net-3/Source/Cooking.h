@@ -44,7 +44,7 @@ namespace PhysX
 			/// </summary>
 			/// <param name="desc">The triangle mesh descriptor to read the mesh from.</param>
 			/// <param name="stream">User stream to output the cooked data.</param>
-			bool CookTriangleMesh(TriangleMeshDesc^ desc, System::IO::Stream^ stream);
+			TriangleMeshCookingResult CookTriangleMesh(TriangleMeshDesc^ desc, System::IO::Stream^ stream);
 
 			/// <summary>
 			/// Cooks a convex mesh. The results are written to the stream.
