@@ -556,6 +556,9 @@
     <ClCompile Include="Source\RaycastCCDManager.cpp">
       <Filter>Extensions</Filter>
     </ClCompile>
+    <ClCompile Include="Source\VehicleAntiRollBarData.cpp">
+      <Filter>Vehicle</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
@@ -1246,6 +1249,9 @@
     </ClInclude>
     <ClInclude Include="Source\RaycastCCDManager.h">
       <Filter>Extensions</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VehicleAntiRollBarData.h">
+      <Filter>Vehicle</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

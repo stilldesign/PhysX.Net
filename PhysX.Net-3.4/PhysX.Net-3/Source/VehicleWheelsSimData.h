@@ -7,6 +7,7 @@ namespace PhysX
 	ref class VehicleWheelData;
 	ref class VehicleTireData;
 	ref class VehicleTireLoadFilterData;
+	ref class VehicleAntiRollBarData;
 
 	/// <summary>
 	/// Data structure describing configuration data of a vehicle with up to 20 wheels.
@@ -54,6 +55,13 @@ namespace PhysX
 
 		int GetWheelShapeMapping(int wheelId);
 		void SetWheelShapeMapping(int wheelId, int shapeId);
+
+		VehicleAntiRollBarData^ GetAntiRollBarData(int antiRollBarId);
+		void GetAntiRollBarData(int antiRollBarId, VehicleAntiRollBarData^ data);
+		property int NumberOfAntiRollBars
+		{
+			int get();
+		}
 
 		property int NumberOfWheels
 		{

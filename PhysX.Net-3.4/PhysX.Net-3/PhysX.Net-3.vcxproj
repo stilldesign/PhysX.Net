@@ -215,6 +215,7 @@
     <ClInclude Include="Source\RaycastCCDManager.h" />
     <ClInclude Include="Source\SimulationFilterShader.h" />
     <ClInclude Include="Source\VectorAndMatrixExtensions.h" />
+    <ClInclude Include="Source\VehicleAntiRollBarData.h" />
     <ClInclude Include="Source\VehicleWheelConcurrentUpdateData.h" />
     <ClInclude Include="Source\QueryCache.h" />
     <ClInclude Include="Source\QueryFilterCallback.h" />
@@ -495,6 +496,7 @@
     </ClCompile>
     <ClCompile Include="Source\StreamExtensions.cpp" />
     <ClCompile Include="Source\VectorAndMatrixExtensions.cpp" />
+    <ClCompile Include="Source\VehicleAntiRollBarData.cpp" />
     <ClCompile Include="Source\VehicleConcurrentUpdateData.cpp" />
     <ClCompile Include="Source\VehicleWheelConcurrentUpdateData.cpp" />
     <ClCompile Include="Source\VehicleWheelsDynData.cpp" />

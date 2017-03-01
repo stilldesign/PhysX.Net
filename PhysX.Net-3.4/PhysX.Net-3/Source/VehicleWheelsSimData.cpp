@@ -4,6 +4,7 @@
 #include "VehicleWheelData.h"
 #include "VehicleTyreData.h"
 #include "VehicleTireLoadFilterData.h"
+#include "VehicleAntiRollBarData.h"
 
 VehicleWheelsSimData::VehicleWheelsSimData(int numberOfWheels)
 {
@@ -109,6 +110,19 @@ int VehicleWheelsSimData::GetWheelShapeMapping(int wheelId)
 void VehicleWheelsSimData::SetWheelShapeMapping(int wheelId, int shapeId)
 {
 	_data->setWheelShapeMapping(wheelId, shapeId);
+}
+
+VehicleAntiRollBarData^ VehicleWheelsSimData::GetAntiRollBarData(int antiRollBarId)
+{
+	return VehicleAntiRollBarData::ToManaged(_data->getAntiRollBarData(antiRollBarId));
+}
+void VehicleWheelsSimData::GetAntiRollBarData(int antiRollBarId, VehicleAntiRollBarData^ data)
+{
+	_data->setAntiRollBarData(antiRollBarId, VehicleAntiRollBarData::ToUnmanaged(data));
+}
+int VehicleWheelsSimData::NumberOfAntiRollBars::get()
+{
+	return _data->getNbAntiRollBars();
 }
 
 int VehicleWheelsSimData::NumberOfWheels::get()
