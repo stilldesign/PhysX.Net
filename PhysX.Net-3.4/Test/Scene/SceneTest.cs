@@ -121,8 +121,10 @@ namespace PhysX.Test
 
 				Assert.IsNotNull(hits);
 				Assert.AreEqual(2, hits.Length);
-				Assert.AreEqual(box2, hits[0].Actor);
-				Assert.AreEqual(box1, hits[1].Actor);
+
+				var hitActors = hits.Select(h => h.Actor).ToArray();
+				CollectionAssert.Contains(hitActors, box1);
+				CollectionAssert.Contains(hitActors, box2);
 			}
 		}
 
@@ -242,13 +244,13 @@ namespace PhysX.Test
 		[TestMethod]
 		public void SceneDescFlagsAreMaintained()
 		{
-			var sceneDesc = new SceneDesc
-			{
-				Flags = SceneFlag.EnableActiveTransforms
-			};
-
 			using (var physics = new Physics(new Foundation()))
 			{
+				var sceneDesc = new SceneDesc
+				{
+					Flags = SceneFlag.EnableActiveTransforms
+				};
+
 				var scene = physics.CreateScene(sceneDesc);
 
 				Assert.IsTrue(scene.Flags.HasFlag(SceneFlag.EnableActiveTransforms));

@@ -101,6 +101,8 @@ namespace PhysX.Test
 			var stream = new MemoryStream();
 			bool cookResult = cooking.CookHeightField(heightFieldDesc, stream);
 
+			stream.Position = 0;
+
 			var heightField = _physics.Physics.CreateHeightField(stream);
 
 			Assert.IsNotNull(heightField);

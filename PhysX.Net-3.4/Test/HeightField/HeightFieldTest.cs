@@ -17,7 +17,7 @@ namespace PhysX.Test
 				const int rows = 25, columns = 25;
 				var samples = HeightFieldTestUtil.CreateSampleGrid(rows, columns);
 
-				var heightFieldDesc = new HeightFieldDesc()
+				var heightFieldDesc = new HeightFieldDesc
 				{
 					NumberOfRows = rows,
 					NumberOfColumns = columns,
@@ -28,6 +28,8 @@ namespace PhysX.Test
 
 				var stream = new MemoryStream();
 				bool cookResult = cooking.CookHeightField(heightFieldDesc, stream);
+
+				stream.Position = 0;
 
 				HeightField heightField;
 				using (heightField = physics.Physics.CreateHeightField(stream))
@@ -59,6 +61,8 @@ namespace PhysX.Test
 
 				var stream = new MemoryStream();
 				bool cookResult = cooking.CookHeightField(heightFieldDesc, stream);
+
+				stream.Position = 0;
 
 				HeightField heightField = physics.Physics.CreateHeightField(stream);
 
@@ -96,6 +100,8 @@ namespace PhysX.Test
 					var stream = new MemoryStream();
 					bool cookResult = cooking.CookHeightField(heightFieldDesc, stream);
 
+					stream.Position = 0;
+
 					HeightField heightField = physics.Physics.CreateHeightField(stream);
 				}
 
@@ -115,6 +121,8 @@ namespace PhysX.Test
 
 					var stream = new MemoryStream();
 					bool cookResult = cooking.CookHeightField(heightFieldDesc, stream);
+
+					stream.Position = 0;
 
 					HeightField heightField = physics.Physics.CreateHeightField(stream);
 				}
