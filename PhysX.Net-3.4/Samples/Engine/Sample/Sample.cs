@@ -69,20 +69,8 @@ namespace PhysX.Samples
 
 		protected PhysX.Samples.Engine.Engine Engine { get; private set; }
 
-		public TimeSpan FrameTime
-		{
-			get
-			{
-				return Engine.FrameTime;
-			}
-		}
+		public TimeSpan FrameTime => Engine.FrameTime;
 
-		public Scene Scene
-		{
-			get
-			{
-				return Engine.Scene;
-			}
-		}
+		public Scene Scene => Engine.Scene;
 	}
 }
