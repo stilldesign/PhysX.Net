@@ -163,6 +163,8 @@
     </ClInclude>
     <ClInclude Include="Source\GeometryQuery.h" />
     <ClInclude Include="Source\GpuDispatcher.h" />
+    <ClInclude Include="Source\GpuLoadHookManager.h" />
+    <ClInclude Include="Source\IGpuLoadHook.h" />
     <ClInclude Include="Source\HitCallback.h" />
     <ClInclude Include="Source\InternalOverlapCallback.h" />
     <ClInclude Include="Source\InternalRaycastCallback.h" />
@@ -403,6 +405,8 @@
     </ClCompile>
     <ClCompile Include="Source\GeometryQuery.cpp" />
     <ClCompile Include="Source\GpuDispatcher.cpp" />
+    <ClCompile Include="Source\GpuLoadHookManager.cpp" />
+    <ClCompile Include="Source\IGpuLoadHook.cpp" />
     <ClCompile Include="Source\InternalOverlapCallback.cpp" />
     <ClCompile Include="Source\InternalRaycastCallback.cpp" />
     <ClCompile Include="Source\InternalSweepCallback.cpp" />

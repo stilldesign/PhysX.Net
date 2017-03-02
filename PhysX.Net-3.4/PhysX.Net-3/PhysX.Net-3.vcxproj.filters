@@ -431,10 +431,10 @@
       <Filter>Extensions</Filter>
     </ClCompile>
     <ClCompile Include="Source\GpuDispatcher.cpp">
-      <Filter>CUDA</Filter>
+      <Filter>GPU</Filter>
     </ClCompile>
     <ClCompile Include="Source\CudaContextManager.cpp">
-      <Filter>CUDA</Filter>
+      <Filter>GPU</Filter>
     </ClCompile>
     <ClCompile Include="Source\VehicleConcurrentUpdateData.cpp">
       <Filter>Vehicle</Filter>
@@ -570,6 +570,12 @@
     </ClCompile>
     <ClCompile Include="Source\MidphaseDesc.cpp">
       <Filter>Cooking</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\IGpuLoadHook.cpp">
+      <Filter>GPU</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GpuLoadHookManager.cpp">
+      <Filter>GPU</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1122,13 +1128,13 @@
       <Filter>Extensions</Filter>
     </ClInclude>
     <ClInclude Include="Source\GpuDispatcher.h">
-      <Filter>CUDA</Filter>
+      <Filter>GPU</Filter>
     </ClInclude>
     <ClInclude Include="Source\CudaContextManager.h">
-      <Filter>CUDA</Filter>
+      <Filter>GPU</Filter>
     </ClInclude>
     <ClInclude Include="Source\CudaEnum.h">
-      <Filter>CUDA</Filter>
+      <Filter>GPU</Filter>
     </ClInclude>
     <ClInclude Include="Source\VehicleConcurrentUpdateData.h">
       <Filter>Vehicle</Filter>
@@ -1277,6 +1283,12 @@
     <ClInclude Include="Source\MidphaseDesc.h">
       <Filter>Cooking</Filter>
     </ClInclude>
+    <ClInclude Include="Source\IGpuLoadHook.h">
+      <Filter>GPU</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GpuLoadHookManager.h">
+      <Filter>GPU</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Version.rc" />
@@ -1373,9 +1385,6 @@
     <Filter Include="Base">
       <UniqueIdentifier>{8df59940-efdc-4826-a440-7366f849bd0d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="CUDA">
-      <UniqueIdentifier>{d23aeb3d-7b14-458c-a25c-30163cbfb80a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="DebugRendering">
       <UniqueIdentifier>{d9ffe144-b27b-4597-91ed-454bbdf956d7}</UniqueIdentifier>
     </Filter>
@@ -1399,6 +1408,9 @@
     </Filter>
     <Filter Include="BroadPhase">
       <UniqueIdentifier>{18dd3cae-1ded-4246-ae9d-abd7443a7ac4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GPU">
+      <UniqueIdentifier>{d23aeb3d-7b14-458c-a25c-30163cbfb80a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
