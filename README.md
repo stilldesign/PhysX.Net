@@ -11,13 +11,13 @@ A zip of all relevant DLLs and samples - http://stilldesign.co.nz/PhysX
 
 Development
 -----------
-### PhysX.Net 0.3.0 for NVIDIA PhysX 3.3.1
-* Targets PhysX 3.3.1
-* 32 and 64 bit version
-* .NET 4.5.1 and CRT 12 (2013)
+### PhysX.Net 0.6.0 for NVIDIA PhysX 3.4
+* Targets PhysX 3.4
+* 64 bit version only
+* .NET 4.6.2
 * Remaining:
     * Vehicle sample and a few related classes
-    * Attach/Detach shape from an actor
+    * Attach/Detach shape from an actor (recently added, but needs testing)
     * Getting started guide for people
     * Serialization
     * Broad Phase
