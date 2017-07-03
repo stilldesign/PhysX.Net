@@ -281,7 +281,7 @@ namespace PhysX.Samples.Engine
 			// Clear to a nice blue colour :)
 			this.GraphicsDevice.ImmediateContext.ClearRenderTargetView(_backBuffer, new SharpDX.Color4(0.27f, 0.51f, 0.71f, 1));
 			this.GraphicsDevice.ImmediateContext.ClearDepthStencilView(_depthBuffer, DepthStencilClearFlags.Depth | DepthStencilClearFlags.Stencil, 1, 0);
-			this.GraphicsDevice.ImmediateContext.Rasterizer.SetViewports(new[] { (SharpDX.ViewportF)this.Camera.Viewport }, 1);
+			this.GraphicsDevice.ImmediateContext.Rasterizer.SetViewports(new[] { (SharpDX.Mathematics.Interop.RawViewportF)this.Camera.Viewport }, 1);
 
 			DrawDebug(this.Scene.GetRenderBuffer());
 
