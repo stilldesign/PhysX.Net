@@ -30,9 +30,8 @@ namespace PhysX
 			virtual bool IsValid() override;
 
 			/// <summary>
-			/// Gets or sets the size of box.
-			/// The box size is simply 2xExtents.
-			/// Where X = side extent, Y = height extent, Z = forward extent.
+			/// Gets or sets the size/extents of box.
+			/// The box size is simply 2*[HalfSideExtent, HalfHeight, HalfForwardExtent].
 			/// </summary>
 			property Vector3 Extents
 			{
