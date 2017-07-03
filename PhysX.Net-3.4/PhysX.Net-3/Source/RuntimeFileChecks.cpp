@@ -18,7 +18,9 @@ void RuntimeFileChecks::Check()
 	CheckFile("PhysX3CommonDEBUG_x64.dll", PhysXDllVersion);
 	CheckFile("PhysX3CookingDEBUG_x64.dll", PhysXDllVersion);
 	CheckFile("PhysX3DEBUG_x64.dll", PhysXDllVersion);
-	CheckFile("PhysX3GpuDEBUG_x64.dll", PhysXDllVersion);
+	// TODO: For some reason PhysX3GpuDEBUG_x64.dll has no version number, perhaps this will be restored
+	// in a later release?
+	//CheckFile("PhysX3GpuDEBUG_x64.dll", PhysXDllVersion);
 	CheckFile("PxPvdSDKDEBUG_x64.dll", PvdDllVersion);
 #elif PHYSX_RELEASE
 	CheckFile("PxFoundation_x64.dll", FoundationDllVersion);
@@ -27,7 +29,9 @@ void RuntimeFileChecks::Check()
 	CheckFile("PhysX3Common_x64.dll", PhysXDllVersion);
 	CheckFile("PhysX3Cooking_x64.dll", PhysXDllVersion);
 	CheckFile("PhysX3_x64.dll", PhysXDllVersion);
-	CheckFile("PhysX3Gpu_x64.dll", PhysXDllVersion);
+	// TODO: For some reason PhysX3Gpu_x64.dll has no version number, perhaps this will be restored
+	// in a later release?
+	//CheckFile("PhysX3Gpu_x64.dll", PhysXDllVersion);
 	CheckFile("PxPvdSDK_x64.dll", PvdDllVersion);
 #else
 	#error PhysX Build Configuration not specified for x64

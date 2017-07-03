@@ -11,7 +11,7 @@
 		Create a system-variable 'NVIDIAPhysX34SDK' if you wish to have the PhysX SDK in a different directory, e.g. 'D:\PhysX-3.3\PhysXSDK'.
 		This value here is only a default. You'll probably need to restart VS if you do.
 		-->
-		<NVIDIAPhysX34SDK Condition="'$(NVIDIAPhysX34SDK)' == '' ">F:\NVIDIAGameWorks\PhysX-3.4\PhysX_3.4</NVIDIAPhysX34SDK>
+		<NVIDIAPhysX34SDK Condition="'$(NVIDIAPhysX34SDK)' == '' ">F:\PhysX-3.4\PhysX_3.4</NVIDIAPhysX34SDK>
 	</PropertyGroup>
 	<PropertyGroup />
 	<ItemDefinitionGroup />
