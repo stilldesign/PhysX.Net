@@ -6,6 +6,7 @@
 #include "ShapeCreationException.h"
 #include "Physics.h"
 #include "RigidStatic.h"
+#include "RigidDynamic.h"
 
 RigidActor::RigidActor(PxRigidActor* rigidActor, PhysX::IDisposable^ owner)
 	: Actor(rigidActor, owner)
@@ -116,6 +117,11 @@ void RigidActor::GlobalPose::set(Matrix value)
 IReadOnlyList<Shape^>^ RigidActor::Shapes::get()
 {
 	return _shapes;
+}
+
+bool RigidActor::IsDynamic::get()
+{
+	return IsInstanceOf<RigidDynamic^>(this);
 }
 
 PxRigidActor* RigidActor::UnmanagedPointer::get()

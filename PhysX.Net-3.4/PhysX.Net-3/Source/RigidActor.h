@@ -95,6 +95,14 @@ namespace PhysX
 				IReadOnlyList<Shape^>^ get();
 			}
 
+			/// <summary>
+			/// Is this actor dynamic or static.
+			/// </summary>
+			property bool IsDynamic
+			{
+				bool get();
+			}
+
 		internal:
 			property PxRigidActor* UnmanagedPointer
 			{
