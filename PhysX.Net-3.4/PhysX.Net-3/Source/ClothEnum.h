@@ -12,6 +12,7 @@ namespace PhysX
 		Shearing = PxClothFabricPhaseType::eSHEARING  //!< resists in-plane shearing along (typically) diagonal edges,
 	};
 
+	[Flags]
 	public enum class ClothFlag
 	{
 		/// <summary>
