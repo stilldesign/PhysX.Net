@@ -6,6 +6,7 @@ namespace PhysX
 	/// <summary>
 	/// Flags which affect the behavior of PxShapes.
 	/// </summary>
+	[Flags]
 	public enum class ShapeFlag
 	{
 		SimulationShape = PxShapeFlag::eSIMULATION_SHAPE,
