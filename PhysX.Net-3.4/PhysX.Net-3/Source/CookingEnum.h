@@ -9,6 +9,7 @@
 		ARM = PxPlatform::eARM
 	};
 
+	[Flags]
 	public enum class ConvexFlag
 	{
 		/// <summary>
