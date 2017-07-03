@@ -103,21 +103,4 @@ namespace PhysX
 		/// </summary>
 		Constrained = PxCapsuleClimbingMode::eCONSTRAINED
 	};
-
-	//public enum class ControllerAction
-	//{
-	//	/// <summary>
-	//	/// Don't apply forces to touched actor.
-	//	/// </summary>
-	//	None = PxControllerAction::eNONE,
-	//	/// <summary>
-	//	/// Automatically compute & apply forces to touched actor (push).
-	//	/// </summary>
-	//	Push = PxControllerAction::ePUSH
-	//};
-
-	public enum class ControllerType
-	{
-		PxControllerType
-	};
 };
