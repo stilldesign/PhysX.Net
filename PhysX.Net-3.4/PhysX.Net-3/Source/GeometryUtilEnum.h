@@ -3,6 +3,7 @@
 
 namespace PhysX
 {
+	[Flags]
 	public enum class MeshFlag
 	{
 		/// <summary>
