@@ -38,7 +38,7 @@ namespace PhysX.Samples.Engine
 			//
 
 			Vector3 forward = Mathematics.DirectionFromViewMatrix(Matrix.Invert(this.View));
-			Vector3 position = Mathematics.DecomposeToPosition(Matrix.Invert(this.View));
+			Vector3 position = Matrix.Invert(this.View).TranslationVector;
 
 			Matrix cameraRotation = Matrix.RotationYawPitchRoll(_cameraYaw, _cameraPitch, 0);
 			Vector3 newForward = Vector3.TransformNormal(Vector3.UnitZ, cameraRotation);
