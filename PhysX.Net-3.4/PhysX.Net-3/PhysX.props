@@ -5,7 +5,7 @@
 		<!-- 
 		The location of the NVIDIA PhysX source code (my fork).
 		
-		My fork: https://github.com/stilldesign/PhysX-3.3 - you'll need to be part of the NVIDIA gameworks program to access the PhysX source.
+		My fork: https://github.com/stilldesign/PhysX-3.4 - you'll need to be part of the NVIDIA gameworks program to access the PhysX source.
 		If you wish to use your own PhysX SDK source, you'll need to set /MD to enable use to use it as a multi-threaded DLL.
 
 		Create a system-variable 'NVIDIAPhysX34SDK' if you wish to have the PhysX SDK in a different directory, e.g. 'D:\PhysX-3.3\PhysXSDK'.
