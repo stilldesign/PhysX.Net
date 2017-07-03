@@ -42,6 +42,11 @@ namespace PhysX
 				virtual bool get();
 			}
 
+			/// <summary>
+			/// Retrieves the axis aligned bounding box enclosing the actor.
+			/// </summary>
+			Bounds3 GetWorldBounds();
+
 			virtual String^ ToString() override;
 
 			//
@@ -76,14 +81,6 @@ namespace PhysX
 			{
 				String^ get();
 				void set(String^ value);
-			}
-
-			/// <summary>
-			/// Retrieves the axis aligned bounding box enclosing the actor.
-			/// </summary>
-			property Bounds3 WorldBounds
-			{
-				Bounds3 get();
 			}
 
 			/// <summary>

@@ -46,6 +46,11 @@ Serializable^ Actor::AsSerializable()
 	return gcnew Serializable(_actor);
 }
 
+Bounds3 Actor::GetWorldBounds()
+{
+	return Bounds3::ToManaged(_actor->getWorldBounds());
+}
+
 String^ Actor::ToString()
 {
 	return this->Name;
@@ -82,11 +87,6 @@ void Actor::Name::set(String^ value)
 		Marshal::FreeHGlobal(IntPtr((char*)_actor->getName()));
 
 	_actor->setName(Util::ToUnmanagedString(value));
-}
-
-Bounds3 Actor::WorldBounds::get()
-{
-	return Bounds3::ToManaged(_actor->getWorldBounds());
 }
 
 ActorFlag Actor::Flags::get()
