@@ -173,5 +173,46 @@ namespace PhysX.Test
 			Assert.AreEqual(new MeshScale(new Vector3(1), Quaternion.Identity), retrievedTriangleMeshGeom.Scale);
 			Assert.AreEqual((MeshGeometryFlag)0, retrievedTriangleMeshGeom.MeshFlags);
 		}
+
+		[TestMethod]
+		public void SetGeometry_Box()
+		{
+			var shape = _actor.CreateShape(new BoxGeometry(5, 6, 7), _material);
+
+			{
+				var box = shape.GetBoxGeometry();
+
+				Assert.IsNotNull(box);
+				Assert.AreEqual(5, box.HalfExtents.X);
+				Assert.AreEqual(6, box.HalfExtents.Y);
+				Assert.AreEqual(7, box.HalfExtents.Z);
+			}
+
+			// Change the size of the box
+			shape.SetGeometry(new BoxGeometry(20, 21, 22));
+
+			{
+				var box = shape.GetBoxGeometry();
+
+				Assert.AreEqual(20, box.HalfExtents.X);
+				Assert.AreEqual(21, box.HalfExtents.Y);
+				Assert.AreEqual(22, box.HalfExtents.Z);
+			}
+		}
+
+		[TestMethod]
+		public void SetGeometry_ChangingGeometryTypeShouldHaveNoEffect()
+		{
+			var shape = _actor.CreateShape(new BoxGeometry(5, 6, 7), _material);
+
+			var box = shape.GetBoxGeometry();
+
+			Assert.IsNotNull(box);
+			Assert.AreEqual(GeometryType.Box, box.Type);
+
+			shape.SetGeometry(new SphereGeometry(10));
+
+			Assert.AreEqual(GeometryType.Box, box.Type);
+		}
 	}
 }

@@ -132,6 +132,17 @@ HeightFieldGeometry^ Shape::GetHeightFieldGeometry()
 	return HeightFieldGeometry::ToManaged(heightField);
 }
 
+void Shape::SetGeometry(Geometry^ geometry)
+{
+	ThrowIfNull(geometry);
+
+	PxGeometry* g = geometry->ToUnmanaged();
+
+	_shape->setGeometry(*g);
+
+	SAFE_DELETE(g);
+}
+
 Material^ Shape::GetMaterialFromInternalFaceIndex(int faceIndex)
 {
 	PxMaterial* material = _shape->getMaterialFromInternalFaceIndex(faceIndex);

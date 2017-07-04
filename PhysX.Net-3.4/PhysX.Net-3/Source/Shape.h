@@ -68,6 +68,11 @@ namespace PhysX
 		HeightFieldGeometry^ GetHeightFieldGeometry();
 
 		/// <summary>
+		/// Adjust the geometry of the shape.
+		/// </summary>
+		void SetGeometry(Geometry^ geometry);
+
+		/// <summary>
 		/// Retrieve material from given triangle index.
 		/// The input index is the internal triangle index as used inside the SDK.This is the index returned to
 		/// users by various SDK functions such as raycasts.
