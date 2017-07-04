@@ -42,6 +42,7 @@ namespace PhysX
 	/// <summary>
 	/// Flags which control the behavior of an actor.
 	/// </summary>
+	[Flags]
 	public enum class ActorFlag
 	{
 		/// <summary>
