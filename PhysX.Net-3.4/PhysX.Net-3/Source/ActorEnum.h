@@ -117,6 +117,7 @@ namespace PhysX
 		Acceleration = PxForceMode::eACCELERATION
 	};
 
+	[Flags]
 	public enum class RigidBodyFlag
 	{
 		Kinematic = PxRigidBodyFlag::eKINEMATIC,
