@@ -152,6 +152,12 @@ namespace PhysX
 
 		void SetInertiaScale(float scale);
 
+		/// <summary>
+		/// Returns world space bounding box.
+		/// </summary>
+		/// <returns>Particle bounds in global coordinates.</returns>
+		Bounds3 GetWorldBounds();
+
 		//
 
 		/// <summary>
@@ -384,15 +390,6 @@ namespace PhysX
 		property float PreviousTimestep
 		{
 			float get();
-		}
-
-		/// <summary>
-		/// Returns world space bounding box.
-		/// </summary>
-		/// <returns>Particle bounds in global coordinates.</returns>
-		property Bounds3 WorldBounds
-		{
-			Bounds3 get();
 		}
 
 		/// <summary>

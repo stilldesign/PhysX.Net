@@ -345,6 +345,11 @@ void Cloth::SetInertiaScale(float scale)
 	this->UnmanagedPointer->setInertiaScale(scale);
 }
 
+Bounds3 Cloth::GetWorldBounds()
+{
+	return Bounds3::ToManaged(this->UnmanagedPointer->getWorldBounds());
+}
+
 //
 
 int Cloth::NumberOfParticles::get()
@@ -531,11 +536,6 @@ void Cloth::SleepLinearVelocity::set(float value)
 float Cloth::PreviousTimestep::get()
 {
 	return this->UnmanagedPointer->getPreviousTimeStep();
-}
-
-Bounds3 Cloth::WorldBounds::get()
-{
-	return Bounds3::ToManaged(this->UnmanagedPointer->getWorldBounds());
 }
 
 ClothMotionConstraintConfig Cloth::MotionConstraintConfig::get()
