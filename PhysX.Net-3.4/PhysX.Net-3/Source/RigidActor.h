@@ -43,6 +43,7 @@ namespace PhysX
 			/// <param name="material">The material for the shape.</param>
 			/// <returns>The newly created shape.</returns>
 			Shape^ CreateShape(Geometry^ geometry, Material^ material);
+			Shape^ CreateShape(Geometry^ geometry, array<Material^>^ materials);
 
 			void AttachShape(Shape^ shape);
 		private:

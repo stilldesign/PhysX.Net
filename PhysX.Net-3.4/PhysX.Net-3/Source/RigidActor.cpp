@@ -56,12 +56,33 @@ void RigidActor::AttachShape(Shape^ shape)
 
 Shape^ RigidActor::CreateShape(Geometry^ geometry, Material^ material)
 {
-	ThrowIfNull(geometry, "geometry");
 	ThrowIfNullOrDisposed(material, "material");
+
+	array<Material^>^ materials = { material };
+
+	return CreateShape(geometry, materials);
+}
+Shape^ RigidActor::CreateShape(Geometry^ geometry, array<Material^>^ materials)
+{
+	ThrowIfNull(geometry, "geometry");
+	ThrowIfNull(materials, "materials");
+
+	for each (auto material in materials)
+	{
+		ThrowIfNullOrDisposed(material, "materials");
+	}
+
+	//
 
 	PxGeometry* geom = geometry->ToUnmanaged();
 
-	PxShape* s = this->UnmanagedPointer->createShape(*geom, *material->UnmanagedPointer);
+	PxMaterial** mats = new PxMaterial*[materials->Length];
+	for (size_t i = 0; i < materials->Length; i++)
+	{
+		mats[i] = materials[i]->UnmanagedPointer;
+	}
+
+	PxShape* s = this->UnmanagedPointer->createShape(*geom, mats, materials->Length);
 
 	if (s == NULL)
 		throw gcnew ShapeCreationException("Failed to create shape");
@@ -77,6 +98,7 @@ Shape^ RigidActor::CreateShape(Geometry^ geometry, Material^ material)
 
 	return shape;
 }
+
 void PhysX::RigidActor::OnShapeDisposed(Object ^sender, EventArgs ^e)
 {
 	auto shape = (PhysX::Shape^)sender;
