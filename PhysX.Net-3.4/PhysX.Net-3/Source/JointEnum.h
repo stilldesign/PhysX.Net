@@ -184,6 +184,7 @@ namespace PhysX
 	/// <summary>
 	/// Flags specific to the prismatic joint.
 	/// </summary>
+	[Flags]
 	public enum class RevoluteJointFlag
 	{
 		/// <summary>
