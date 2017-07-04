@@ -2,10 +2,9 @@
 #include "Constraint.h"
 #include "Joint.h"
 #include "Scene.h"
-#include "Actor.h"
+#include "RigidActor.h"
 #include "Serializable.h"
 #include "Physics.h"
-
 
 Joint::Joint(PxJoint* joint, PhysX::Physics^ owner)
 {
@@ -66,7 +65,7 @@ JointType Joint::Type::get()
 	return ToManagedEnum(JointType, _joint->getConcreteType());
 }
 
-PhysX::Actor^ Joint::Actor0::get()
+PhysX::RigidActor^ Joint::Actor0::get()
 {
 	PxRigidActor* a0 = NULL;
 	PxRigidActor* a1 = NULL;
@@ -75,9 +74,9 @@ PhysX::Actor^ Joint::Actor0::get()
 	if (a0 == NULL)
 		return nullptr;
 
-	return ObjectTable::GetObject<Actor^>((intptr_t)a0);
+	return ObjectTable::GetObject<RigidActor^>((intptr_t)a0);
 }
-PhysX::Actor^ Joint::Actor1::get()
+PhysX::RigidActor^ Joint::Actor1::get()
 {
 	PxRigidActor* a0 = NULL;
 	PxRigidActor* a1 = NULL;
@@ -86,7 +85,7 @@ PhysX::Actor^ Joint::Actor1::get()
 	if (a1 == NULL)
 		return nullptr;
 
-	return ObjectTable::GetObject<Actor^>((intptr_t)a1);
+	return ObjectTable::GetObject<RigidActor^>((intptr_t)a1);
 }
 
 Matrix Joint::LocalPose0::get()

@@ -6,7 +6,7 @@
 namespace PhysX
 {
 	ref class Physics;
-	ref class Actor;
+	ref class RigidActor;
 	ref class Constraint;
 	ref class Serializable;
 	
@@ -70,16 +70,16 @@ namespace PhysX
 			/// <summary>
 			/// Gets the first actor for this joint.
 			/// </summary>
-			property PhysX::Actor^ Actor0
+			property PhysX::RigidActor^ Actor0
 			{
-				PhysX::Actor^ get();
+				PhysX::RigidActor^ get();
 			}
 			/// <summary>
 			/// Gets the second actor for this joint.
 			/// </summary>
-			property PhysX::Actor^ Actor1
+			property PhysX::RigidActor^ Actor1
 			{
-				PhysX::Actor^ get();
+				PhysX::RigidActor^ get();
 			}
 
 			/// <summary>
