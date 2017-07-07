@@ -206,6 +206,7 @@ namespace PhysX
 	/// <summary>
 	/// Flags specific to the spherical joint.
 	/// </summary>
+	[Flags]
 	public enum class SphericalJointFlag
 	{
 		/// <summary>
