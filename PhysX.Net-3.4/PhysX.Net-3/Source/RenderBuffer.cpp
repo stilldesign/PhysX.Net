@@ -1,9 +1,10 @@
 #include "StdAfx.h"
 #include "RenderBuffer.h"
 
+// TODO: Enforce creating the array buffers prior to using this class. Allocating arrays every frame is bad.
 RenderBuffer^ RenderBuffer::ToManaged(const PxRenderBuffer& buffer, RenderBufferDataFlags flags)
 {
-	RenderBuffer^ r = gcnew RenderBuffer();
+	auto r = gcnew RenderBuffer();
 
 	if (flags.HasFlag(RenderBufferDataFlags::Points))
 	{
@@ -13,7 +14,6 @@ RenderBuffer^ RenderBuffer::ToManaged(const PxRenderBuffer& buffer, RenderBuffer
 		{
 			r->_points = Util::AsManagedArray<DebugPoint>((void*)buffer.getPoints(), buffer.getNbPoints());
 		}
-
 	}
 
 	if (flags.HasFlag(RenderBufferDataFlags::Lines))
