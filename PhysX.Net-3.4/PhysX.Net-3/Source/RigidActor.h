@@ -91,6 +91,23 @@ namespace PhysX
 			}
 
 			/// <summary>
+			/// Gets or sets the position/translation component of the global pose of the actor.
+			/// </summary>
+			property Vector3 GlobalPosePosition
+			{
+				Vector3 get();
+				void set(Vector3 value);
+			}
+			/// <summary>
+			/// Gets or sets the rotation component of the global pose of the actor.
+			/// </summary>
+			property Quaternion GlobalPoseQuat
+			{
+				Quaternion get();
+				void set(Quaternion value);
+			}
+
+			/// <summary>
 			/// Gets the shapes associated to this rigid actor.
 			/// </summary>
 			property IReadOnlyList<Shape^>^ Shapes

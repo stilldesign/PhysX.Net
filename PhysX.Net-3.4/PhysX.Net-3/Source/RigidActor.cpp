@@ -136,6 +136,29 @@ void RigidActor::GlobalPose::set(Matrix value)
 	return this->UnmanagedPointer->setGlobalPose(MathUtil::MatrixToPxTransform(value));
 }
 
+Vector3 RigidActor::GlobalPosePosition::get()
+{
+	return MV(this->UnmanagedPointer->getGlobalPose().p);
+}
+void RigidActor::GlobalPosePosition::set(Vector3 value)
+{
+	PxTransform t = this->UnmanagedPointer->getGlobalPose();
+	t.p = UV(value);
+
+	this->UnmanagedPointer->setGlobalPose(t);
+}
+Quaternion RigidActor::GlobalPoseQuat::get()
+{
+	return MathUtil::PxQuatToQuaternion(this->UnmanagedPointer->getGlobalPose().q);
+}
+void RigidActor::GlobalPoseQuat::set(Quaternion value)
+{
+	PxTransform t = this->UnmanagedPointer->getGlobalPose();
+	t.q = MathUtil::QuaternionToPxQuat(value);
+
+	this->UnmanagedPointer->setGlobalPose(t);
+}
+
 IReadOnlyList<Shape^>^ RigidActor::Shapes::get()
 {
 	return _shapes;
