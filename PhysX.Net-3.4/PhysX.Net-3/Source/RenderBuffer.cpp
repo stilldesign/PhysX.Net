@@ -1,41 +1,57 @@
 #include "StdAfx.h"
 #include "RenderBuffer.h"
 
-RenderBuffer^ RenderBuffer::ToManaged(const PxRenderBuffer& buffer)
+RenderBuffer^ RenderBuffer::ToManaged(const PxRenderBuffer& buffer, RenderBufferDataFlags flags)
 {
 	RenderBuffer^ r = gcnew RenderBuffer();
 
-	r->NumberOfPoints = buffer.getNbPoints();
-	r->NumberOfLines = buffer.getNbLines();
-	r->NumberOfTriangles = buffer.getNbTriangles();
-	r->NumberOfTexts = buffer.getNbTexts();
-
-	if (buffer.getPoints() != NULL)
+	if (flags.HasFlag(RenderBufferDataFlags::Points))
 	{
-		r->_points = Util::AsManagedArray<DebugPoint>((void*)buffer.getPoints(), buffer.getNbPoints());
-	}
+		r->NumberOfPoints = buffer.getNbPoints();
 
-	if (buffer.getLines() != NULL)
-	{
-		r->_lines = Util::AsManagedArray<DebugLine>((void*)buffer.getLines(), buffer.getNbLines());
-	}
-
-	if (buffer.getTriangles() != NULL)
-	{
-		r->_triangles = Util::AsManagedArray<DebugTriangle>((void*)buffer.getTriangles(), buffer.getNbTriangles());
-	}
-
-	if (buffer.getTexts() != NULL)
-	{
-		r->_texts = gcnew array<DebugText>(buffer.getNbTexts());
-		for (PxU32 i = 0; i < buffer.getNbTexts(); i++)
+		if (buffer.getPoints() != NULL)
 		{
-			const PxDebugText* t = buffer.getTexts() + i;
+			r->_points = Util::AsManagedArray<DebugPoint>((void*)buffer.getPoints(), buffer.getNbPoints());
+		}
 
-			r->_texts[i].Position = MathUtil::PxVec3ToVector3(t->position);
-			r->_texts[i].Size = t->size;
-			r->_texts[i].Color = t->color;
-			r->_texts[i].String = (t->string == NULL ? nullptr : Util::ToManagedString(t->string));
+	}
+
+	if (flags.HasFlag(RenderBufferDataFlags::Lines))
+	{
+		r->NumberOfLines = buffer.getNbLines();
+
+		if (buffer.getLines() != NULL)
+		{
+			r->_lines = Util::AsManagedArray<DebugLine>((void*)buffer.getLines(), buffer.getNbLines());
+		}
+	}
+
+	if (flags.HasFlag(RenderBufferDataFlags::Triangles))
+	{
+		r->NumberOfTriangles = buffer.getNbTriangles();
+
+		if (buffer.getTriangles() != NULL)
+		{
+			r->_triangles = Util::AsManagedArray<DebugTriangle>((void*)buffer.getTriangles(), buffer.getNbTriangles());
+		}
+	}
+
+	if (flags.HasFlag(RenderBufferDataFlags::Text))
+	{
+		r->NumberOfTexts = buffer.getNbTexts();
+
+		if (buffer.getTexts() != NULL)
+		{
+			r->_texts = gcnew array<DebugText>(buffer.getNbTexts());
+			for (PxU32 i = 0; i < buffer.getNbTexts(); i++)
+			{
+				const PxDebugText* t = buffer.getTexts() + i;
+
+				r->_texts[i].Position = MathUtil::PxVec3ToVector3(t->position);
+				r->_texts[i].Size = t->size;
+				r->_texts[i].Color = t->color;
+				r->_texts[i].String = (t->string == NULL ? nullptr : Util::ToManagedString(t->string));
+			}
 		}
 	}
 

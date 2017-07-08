@@ -79,13 +79,11 @@ PhysX::Physics^ Scene::Physics::get()
 	return _physics;
 }
 
-RenderBuffer^ Scene::GetRenderBuffer()
+RenderBuffer^ Scene::GetRenderBuffer([Optional] Nullable<RenderBufferDataFlags> flags)
 {
 	const PxRenderBuffer& buffer = this->UnmanagedPointer->getRenderBuffer();
 
-	auto b = RenderBuffer::ToManaged(buffer);
-
-	return b;
+	return RenderBuffer::ToManaged(buffer, flags.GetValueOrDefault(RenderBufferDataFlags::All));
 }
 
 SimulationStatistics^ Scene::GetSimulationStatistics()

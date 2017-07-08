@@ -7,6 +7,8 @@
 
 namespace PhysX
 {
+	enum class RenderBufferDataFlags;
+
 	public ref class RenderBuffer
 	{
 		private:
@@ -16,7 +18,7 @@ namespace PhysX
 			array<DebugText>^ _texts;
 
 		internal:
-			static RenderBuffer^ ToManaged(const PxRenderBuffer& buffer);
+			static RenderBuffer^ ToManaged(const PxRenderBuffer& buffer, RenderBufferDataFlags flags);
 
 		public:
 			property array<DebugPoint>^ Points
@@ -40,5 +42,16 @@ namespace PhysX
 			property int NumberOfLines;
 			property int NumberOfTriangles;
 			property int NumberOfTexts;
+	};
+
+	[Flags]
+	public enum class RenderBufferDataFlags
+	{
+		Points = (1 << 0),
+		Lines = (1 << 1),
+		Triangles = (1 << 2),
+		Text = (1 << 3),
+
+		All = Points | Lines | Triangles | Text
 	};
 };

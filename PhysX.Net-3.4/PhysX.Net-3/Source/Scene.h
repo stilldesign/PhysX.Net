@@ -6,6 +6,7 @@
 #include "DominanceGroupPair.h"
 #include "JointEnum.h"
 #include "PhysicsEnum.h"
+#include "RenderBuffer.h"
 
 namespace PhysX
 {
@@ -91,7 +92,7 @@ namespace PhysX
 			/// This will contain the results of any active visualization for this scene.
 			/// Note: Do not use this method while the simulation is running. Calls to this method while result in undefined behaviour.
 			/// </summary>
-			RenderBuffer^ GetRenderBuffer();
+			RenderBuffer^ GetRenderBuffer([Optional] Nullable<RenderBufferDataFlags> flags);
 
 			/// <summary>Call this method to retrieve statistics for the current simulation step.</summary>
 			SimulationStatistics^ GetSimulationStatistics();
