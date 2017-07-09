@@ -9,6 +9,7 @@ namespace PhysX
 	ref class RigidActor;
 	ref class Constraint;
 	ref class Serializable;
+	ref class Scene;
 	
 	public ref class Joint abstract : IDisposable
 	{
@@ -81,6 +82,15 @@ namespace PhysX
 			void SetGlobalFrame(Vector3 anchor, Vector3 axis);
 
 			//
+
+			/// <summary>
+			/// Retrieves the scene which this joint belongs to.
+			/// Returns: Owner Scene. NULL if not part of a scene.
+			/// </summary>
+			property PhysX::Scene^ Scene
+			{
+				PhysX::Scene^ get();
+			}
 
 			/// <summary>
 			/// Retrieves the PxConstraint corresponding to this joint.

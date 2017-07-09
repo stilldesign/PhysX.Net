@@ -5,6 +5,7 @@
 #include "RigidActor.h"
 #include "Serializable.h"
 #include "Physics.h"
+#include "Scene.h"
 
 Joint::Joint(PxJoint* joint, PhysX::Physics^ owner)
 {
@@ -73,6 +74,13 @@ Serializable^ Joint::AsSerializable()
 void Joint::SetGlobalFrame(Vector3 anchor, Vector3 axis)
 {
 	PxSetJointGlobalFrame(*this->UnmanagedPointer, &UV(anchor), &UV(axis));
+}
+
+//
+
+PhysX::Scene^ Joint::Scene::get()
+{
+	return ObjectTable::TryGetObject<PhysX::Scene^>((intptr_t)_joint->getScene());
 }
 
 PhysX::Constraint^ Joint::Constraint::get()
