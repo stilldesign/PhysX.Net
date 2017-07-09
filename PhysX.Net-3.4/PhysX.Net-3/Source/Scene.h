@@ -40,6 +40,7 @@ namespace PhysX
 	ref class RigidDynamic;
 	ref class RigidStatic;
 	ref class BroadPhaseCallback;
+	ref class SimulationFilterCallback;
 
 	/// <summary>
 	/// A scene is a collection of bodies, deformables, particle systems and constraints which can interact.
@@ -56,9 +57,12 @@ namespace PhysX
 			Physics^ _physics;
 			PhysX::ContactModifyCallback^ _contactModifyCallback;
 			PhysX::BroadPhaseCallback^ _broadPhaseCallback;
+			PhysX::SimulationFilterCallback^ _simulationFilterCallback;
 
 		internal:
-			Scene(PxScene* scene, PhysX::Physics^ physics, PhysX::BroadPhaseCallback^ broadPhaseCallback);
+			Scene(PxScene* scene, PhysX::Physics^ physics,
+				PhysX::BroadPhaseCallback^ broadPhaseCallback,
+				PhysX::SimulationFilterCallback^ simulationFilterCallback);
 		public:
 			~Scene();
 		protected:
@@ -392,6 +396,11 @@ namespace PhysX
 			{
 				PhysX::BroadPhaseCallback^ get();
 				void set(PhysX::BroadPhaseCallback^ value);
+			}
+
+			property SimulationFilterCallback^ FilterCallback
+			{
+				SimulationFilterCallback^ get();
 			}
 
 			/// <summary>

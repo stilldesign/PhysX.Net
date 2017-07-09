@@ -310,7 +310,6 @@
     <ClCompile Include="Source\SimulationStatistics.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
-    <ClCompile Include="Source\SimulationEventCallback.cpp" />
     <ClCompile Include="Source\ConstraintInfo.cpp">
       <Filter>Constraint</Filter>
     </ClCompile>
@@ -576,6 +575,12 @@
     </ClCompile>
     <ClCompile Include="Source\GpuLoadHookManager.cpp">
       <Filter>GPU</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SimulationEventCallback.cpp">
+      <Filter>Simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SimulationFilterCallback.cpp">
+      <Filter>Simulation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -974,7 +979,6 @@
     <ClInclude Include="Source\SimulationStatistics.h">
       <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Source\SimulationEventCallback.h" />
     <ClInclude Include="Source\ConstraintInfo.h">
       <Filter>Constraint</Filter>
     </ClInclude>
@@ -1289,6 +1293,12 @@
     <ClInclude Include="Source\GpuLoadHookManager.h">
       <Filter>GPU</Filter>
     </ClInclude>
+    <ClInclude Include="Source\SimulationFilterCallback.h">
+      <Filter>Simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SimulationEventCallback.h">
+      <Filter>Simulation</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Version.rc" />
@@ -1411,6 +1421,9 @@
     </Filter>
     <Filter Include="GPU">
       <UniqueIdentifier>{d23aeb3d-7b14-458c-a25c-30163cbfb80a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Simulation">
+      <UniqueIdentifier>{6fe3be76-344f-4bb1-9aac-72d9c2d2e6ea}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

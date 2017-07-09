@@ -12,6 +12,7 @@ namespace PhysX
 	ref class SimulationFilterShader;
 	ref class BroadPhaseCallback;
 	ref class SceneLimits;
+	ref class SimulationFilterCallback;
 
 	public ref class SceneDesc : IDisposable
 	{
@@ -24,7 +25,8 @@ namespace PhysX
 		private:
 			PxSceneDesc* _sceneDesc;
 
-			SimulationEventCallback^ _simulationEventCallback;
+			PhysX::SimulationEventCallback^ _simulationEventCallback;
+			PhysX::SimulationFilterCallback^ _simulationFilterCallback;
 			PhysX::SimulationFilterShader^ _filterShader;
 			PhysX::ContactModifyCallback^ _contactModifyCallback;
 			PhysX::GpuDispatcher^ _gpuDispatcher;
@@ -90,6 +92,12 @@ namespace PhysX
 			{
 				PhysX::SimulationEventCallback^ get();
 				void set(PhysX::SimulationEventCallback^ value);
+			}
+
+			property PhysX::SimulationFilterCallback^ SimulationFilterCallback
+			{
+				PhysX::SimulationFilterCallback^ get();
+				void set(PhysX::SimulationFilterCallback^ value);
 			}
 
 			property PhysX::ContactModifyCallback^ ContactModifyCallback

@@ -84,6 +84,7 @@ namespace PhysX
 		InternalError = PxErrorCode::eINTERNAL_ERROR,
 	};
 
+	[Flags]
 	public enum class PairFlag
 	{
 		/// <summary>
@@ -202,7 +203,7 @@ namespace PhysX
 	public enum class FilterFlag
 	{
 		Kill = PxFilterFlag::eKILL,
-		Supress = PxFilterFlag::eSUPPRESS,
+		Suppress = PxFilterFlag::eSUPPRESS,
 		Callback = PxFilterFlag::eCALLBACK,
 		Notify = PxFilterFlag::eNOTIFY,
 		Default = PxFilterFlag::eDEFAULT

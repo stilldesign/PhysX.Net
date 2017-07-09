@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{27CD93B0-2E6E-42D3-B44A-43EAF972337E}"
 EndProject
@@ -53,6 +53,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventsSample", "EventsSampl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoublePendulumSample", "Samples\DoublePendulumSample\DoublePendulumSample.csproj", "{B6083AFF-4360-4182-A14B-FD7A423EA579}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollisionDisabledSample", "PhysX.Samples.CollisionDisabledSample\CollisionDisabledSample.csproj", "{5251B7F1-E71A-4C1C-9B0E-FA05E692C906}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -103,6 +105,10 @@ Global
 		{B6083AFF-4360-4182-A14B-FD7A423EA579}.Debug|x64.Build.0 = Debug|x64
 		{B6083AFF-4360-4182-A14B-FD7A423EA579}.Release|x64.ActiveCfg = Debug|x64
 		{B6083AFF-4360-4182-A14B-FD7A423EA579}.Release|x64.Build.0 = Debug|x64
+		{5251B7F1-E71A-4C1C-9B0E-FA05E692C906}.Debug|x64.ActiveCfg = Debug|x64
+		{5251B7F1-E71A-4C1C-9B0E-FA05E692C906}.Debug|x64.Build.0 = Debug|x64
+		{5251B7F1-E71A-4C1C-9B0E-FA05E692C906}.Release|x64.ActiveCfg = Release|x64
+		{5251B7F1-E71A-4C1C-9B0E-FA05E692C906}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -117,6 +123,7 @@ Global
 		{9DADC745-6D7C-4655-83C1-EDABC205FAEA} = {E1E0C505-3069-4E15-980D-1C87F241C7F3}
 		{63850BCF-F575-4883-B6F6-8E09C224BB80} = {E1E0C505-3069-4E15-980D-1C87F241C7F3}
 		{B6083AFF-4360-4182-A14B-FD7A423EA579} = {E1E0C505-3069-4E15-980D-1C87F241C7F3}
+		{5251B7F1-E71A-4C1C-9B0E-FA05E692C906} = {E1E0C505-3069-4E15-980D-1C87F241C7F3}
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = PhysX.Net.vsmdi

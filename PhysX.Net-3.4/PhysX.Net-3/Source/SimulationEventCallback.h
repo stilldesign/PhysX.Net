@@ -37,7 +37,6 @@ namespace PhysX
 
 	public:
 		SimulationEventCallback();
-	public:
 		~SimulationEventCallback();
 	protected:
 		!SimulationEventCallback();

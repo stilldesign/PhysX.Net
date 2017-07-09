@@ -19,6 +19,8 @@ namespace PhysX.Samples.Engine
 		public event UpdateEventHandler OnUpdate;
 		public event EventHandler OnDraw;
 
+		private Action<SceneDesc> _sceneDescCallback;
+
 		private Keyboard _keyboard;
 		private VisualizationEffect _visualizationEffect;
 
@@ -29,8 +31,11 @@ namespace PhysX.Samples.Engine
 		private SharpDX.Direct3D11.Buffer _userPrimitivesBuffer;
 		private InputLayout _inputLayout;
 
-		public Engine()
+		// TODO: Clean up this class
+		public Engine(Action<SceneDesc> sceneDescCallback = null)
 		{
+			_sceneDescCallback = sceneDescCallback;
+
 			Window = new SampleWindow();
 			Window.Show();
 
@@ -189,16 +194,7 @@ namespace PhysX.Samples.Engine
 			var cudaContext = new CudaContextManager(foundation);
 #endif
 
-			var sceneDesc = new SceneDesc()
-			{
-				Gravity = new System.Numerics.Vector3(0, -9.81f, 0),
-#if GPU
-				GpuDispatcher = cudaContext.GpuDispatcher
-#endif
-				FilterShader = new SampleFilterShader()
-			};
-
-			this.Scene = this.Physics.CreateScene(sceneDesc);
+			this.Scene = this.Physics.CreateScene(CreateSceneDesc());
 
 			this.Scene.SetVisualizationParameter(VisualizationParameter.Scale, 2.0f);
 			this.Scene.SetVisualizationParameter(VisualizationParameter.CollisionShapes, true);
@@ -214,6 +210,22 @@ namespace PhysX.Samples.Engine
 			}
 
 			CreateGroundPlane();
+		}
+		protected virtual SceneDesc CreateSceneDesc()
+		{
+			var sceneDesc = new SceneDesc
+			{
+				Gravity = new System.Numerics.Vector3(0, -9.81f, 0),
+#if GPU
+				GpuDispatcher = cudaContext.GpuDispatcher
+#endif
+				FilterShader = new SampleFilterShader()
+			};
+
+			if (_sceneDescCallback != null)
+				_sceneDescCallback(sceneDesc);
+
+			return sceneDesc;
 		}
 		private void CreateGroundPlane()
 		{
@@ -379,13 +391,7 @@ namespace PhysX.Samples.Engine
 
 		public SampleWindow Window { get; private set; }
 
-		public Keyboard Keyboard
-		{
-			get
-			{
-				return _keyboard;
-			}
-		}
+		public Keyboard Keyboard => _keyboard;
 
 		public TimeSpan FrameTime { get; private set; }
 	}

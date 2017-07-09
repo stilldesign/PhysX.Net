@@ -162,7 +162,7 @@ Scene^ Physics::CreateScene(SceneDesc^ sceneDesc)
 	if (s == NULL)
 		throw gcnew SceneCreationException("Failed to create scene");
 
-	return gcnew Scene(s, this, sceneDesc->BroadPhaseCallback);
+	return gcnew Scene(s, this, sceneDesc->BroadPhaseCallback, sceneDesc->SimulationFilterCallback);
 }
 
 array<Scene^>^ Physics::Scenes::get()

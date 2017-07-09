@@ -33,7 +33,7 @@
 
 using namespace PhysX;
 
-Scene::Scene(PxScene* scene, PhysX::Physics^ physics, PhysX::BroadPhaseCallback^ broadPhaseCallback)
+Scene::Scene(PxScene* scene, PhysX::Physics^ physics, PhysX::BroadPhaseCallback^ broadPhaseCallback, PhysX::SimulationFilterCallback^ simulationFilterCallback)
 {
 	if (scene == NULL)
 		throw gcnew ArgumentNullException("scene");
@@ -42,6 +42,7 @@ Scene::Scene(PxScene* scene, PhysX::Physics^ physics, PhysX::BroadPhaseCallback^
 	_scene = scene;
 	_physics = physics;
 	_broadPhaseCallback = broadPhaseCallback;
+	_simulationFilterCallback = simulationFilterCallback;
 
 	ObjectTable::Add((intptr_t)scene, this, physics);
 }
@@ -520,6 +521,11 @@ void Scene::BroadPhaseCallback::set(PhysX::BroadPhaseCallback^ value)
 	_broadPhaseCallback = value;
 
 	_scene->setBroadPhaseCallback(value == nullptr ? nullptr : value->UnmanagedPointer);
+}
+
+SimulationFilterCallback^ Scene::FilterCallback::get()
+{
+	return _simulationFilterCallback;
 }
 
 PxScene* Scene::UnmanagedPointer::get()

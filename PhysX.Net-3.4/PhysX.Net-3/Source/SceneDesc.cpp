@@ -8,6 +8,7 @@
 #include "SimulationFilterShader.h"
 #include "BroadPhaseCallback.h"
 #include "SceneLimits.h"
+#include "SimulationFilterCallback.h"
 
 using namespace PhysX;
 
@@ -93,6 +94,17 @@ void SceneDesc::SimulationEventCallback::set(PhysX::SimulationEventCallback^ val
 	_simulationEventCallback = value;
 
 	_sceneDesc->simulationEventCallback = (value == nullptr ? NULL : value->UnmanagedPointer);
+}
+
+PhysX::SimulationFilterCallback^ SceneDesc::SimulationFilterCallback::get()
+{
+	return _simulationFilterCallback;
+}
+void SceneDesc::SimulationFilterCallback::set(PhysX::SimulationFilterCallback^ value)
+{
+	_simulationFilterCallback = value;
+
+	_sceneDesc->filterCallback = GetPointerOrNull(value);
 }
 
 PhysX::ContactModifyCallback^ SceneDesc::ContactModifyCallback::get()

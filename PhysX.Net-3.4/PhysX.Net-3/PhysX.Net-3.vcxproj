@@ -219,6 +219,7 @@
     <ClInclude Include="Source\OverlapHit.h" />
     <ClInclude Include="Source\DefaultSimulationFilterShader.h" />
     <ClInclude Include="Source\RaycastCCDManager.h" />
+    <ClInclude Include="Source\SimulationFilterCallback.h" />
     <ClInclude Include="Source\SimulationFilterShader.h" />
     <ClInclude Include="Source\TriangleMeshEnum.h" />
     <ClInclude Include="Source\VectorAndMatrixExtensions.h" />
@@ -498,6 +499,7 @@
     <ClCompile Include="Source\SimpleTriangleMesh.cpp" />
     <ClCompile Include="Source\SimulationEventCallback.cpp" />
     <ClCompile Include="Source\DefaultSimulationFilterShader.cpp" />
+    <ClCompile Include="Source\SimulationFilterCallback.cpp" />
     <ClCompile Include="Source\SimulationFilterShader.cpp" />
     <ClCompile Include="Source\SimulationStatistics.cpp" />
     <ClCompile Include="Source\SphericalJoint.cpp" />
