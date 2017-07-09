@@ -156,11 +156,11 @@ void Joint::BreakForceTorque::set(float value)
 	_joint->setBreakForce(f, value);
 }
 
-PhysX::ConstraintFlag Joint::ConstraintFlag::get()
+PhysX::ConstraintFlag Joint::ConstraintFlags::get()
 {
 	return ToManagedEnum(PhysX::ConstraintFlag, _joint->getConstraintFlags());
 }
-void Joint::ConstraintFlag::set(PhysX::ConstraintFlag value)
+void Joint::ConstraintFlags::set(PhysX::ConstraintFlag value)
 {
 	_joint->setConstraintFlags(ToUnmanagedEnum2(PxConstraintFlags, value));
 }

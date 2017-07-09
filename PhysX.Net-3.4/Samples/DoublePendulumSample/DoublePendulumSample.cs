@@ -56,15 +56,15 @@ namespace DoublePendulumSample
 
 			var revoluteABJoint = scene.CreateJoint<RevoluteJoint>(sphereA, Matrix4x4.Identity, sphereB, Matrix4x4.Identity);
 			revoluteABJoint.SetGlobalFrame(new Vector3(0, 35, 0), new Vector3(0, 0, 1));
-			revoluteABJoint.ConstraintFlag = ConstraintFlag.Visualization;
+			revoluteABJoint.ConstraintFlags = ConstraintFlag.Visualization;
 
 			var revoluteBCJoint = scene.CreateJoint<RevoluteJoint>(sphereB, Matrix4x4.Identity, sphereC, Matrix4x4.Identity);
 			revoluteBCJoint.SetGlobalFrame(new Vector3(0, 45, 0), new Vector3(0, 0, 1));
-			revoluteBCJoint.ConstraintFlag = ConstraintFlag.Visualization;
+			revoluteBCJoint.ConstraintFlags = ConstraintFlag.Visualization;
 
 			var revoluteAJoint = scene.CreateJoint<RevoluteJoint>(sphereA, Matrix4x4.Identity, null, Matrix4x4.Identity);
 			revoluteAJoint.SetGlobalFrame(new Vector3(0, 30, 0), new Vector3(0, 0, 1));
-			revoluteAJoint.ConstraintFlag = ConstraintFlag.Visualization;
+			revoluteAJoint.ConstraintFlags = ConstraintFlag.Visualization;
 		}
 
 		protected override void Update(TimeSpan elapsed)

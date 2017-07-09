@@ -31,7 +31,7 @@ namespace PhysX.Samples.JointsSample
 				//
 
 				var sphericalJoint = scene.CreateJoint<SphericalJoint>(box, Matrix4x4.CreateTranslation(0, 4, 0), null, Matrix4x4.CreateTranslation(0, 15, 0));
-				sphericalJoint.ConstraintFlag = ConstraintFlag.Visualization;
+				sphericalJoint.ConstraintFlags = ConstraintFlag.Visualization;
 
 				scene.AddActor(box);
 			}
@@ -46,7 +46,7 @@ namespace PhysX.Samples.JointsSample
 				//
 
 				var revoluteJoint = scene.CreateJoint<RevoluteJoint>(box, Matrix4x4.CreateTranslation(0, 4, 0), null, Matrix4x4.CreateTranslation(-10, 15, 0));
-				revoluteJoint.ConstraintFlag = ConstraintFlag.Visualization;
+				revoluteJoint.ConstraintFlags = ConstraintFlag.Visualization;
 
 				scene.AddActor(box);
 			}
@@ -61,7 +61,7 @@ namespace PhysX.Samples.JointsSample
 				//
 
 				var revoluteJoint = scene.CreateJoint<RevoluteJoint>(box, Matrix4x4.CreateTranslation(0, 4, 0), null, Matrix4x4.CreateTranslation(10, 15, 0));
-				revoluteJoint.ConstraintFlag = ConstraintFlag.Visualization;
+				revoluteJoint.ConstraintFlags = ConstraintFlag.Visualization;
 				revoluteJoint.BreakForce = 0.001f;
 
 				scene.AddActor(box);
@@ -77,7 +77,7 @@ namespace PhysX.Samples.JointsSample
 				//
 
 				var distanceJoint = scene.CreateJoint<DistanceJoint>(box, Matrix4x4.CreateTranslation(0, 4, 0), null, Matrix4x4.CreateTranslation(-20, 15, 0));
-				distanceJoint.ConstraintFlag = ConstraintFlag.Visualization;
+				distanceJoint.ConstraintFlags = ConstraintFlag.Visualization;
 				distanceJoint.MinimumDistance = 1;
 				distanceJoint.MaximumDistance = 3;
 
@@ -94,7 +94,7 @@ namespace PhysX.Samples.JointsSample
 				//
 
 				var fixedJoint = scene.CreateJoint<FixedJoint>(box, Matrix4x4.Identity, null, Matrix4x4.CreateTranslation(-30, 15, 0));
-				fixedJoint.ConstraintFlag = ConstraintFlag.Visualization;
+				fixedJoint.ConstraintFlags = ConstraintFlag.Visualization;
 
 				scene.AddActor(box);
 			}
@@ -109,7 +109,7 @@ namespace PhysX.Samples.JointsSample
 				//
 
 				var prismaticJoint = scene.CreateJoint<PrismaticJoint>(box, Matrix4x4.Identity, null, Matrix4x4.CreateTranslation(-40, 15, 0));
-				prismaticJoint.ConstraintFlag = ConstraintFlag.Visualization;
+				prismaticJoint.ConstraintFlags = ConstraintFlag.Visualization;
 
 				scene.AddActor(box);
 			}
@@ -124,7 +124,7 @@ namespace PhysX.Samples.JointsSample
 				//
 
 				var d6Joint = scene.CreateJoint<D6Joint>(box, Matrix4x4.Identity, null, Matrix4x4.CreateTranslation(20, 15, 0));
-				d6Joint.ConstraintFlag = ConstraintFlag.Visualization;
+				d6Joint.ConstraintFlags = ConstraintFlag.Visualization;
 				d6Joint.SetMotion(D6Axis.Twist, D6Motion.Free); // Spin on the X axis
 
 				scene.AddActor(box);

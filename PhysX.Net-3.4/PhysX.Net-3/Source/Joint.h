@@ -152,7 +152,7 @@ namespace PhysX
 			/// <summary>
 			/// Gets or sets constraint flags for this joint to a specified value.
 			/// </summary>
-			property PhysX::ConstraintFlag ConstraintFlag
+			property PhysX::ConstraintFlag ConstraintFlags
 			{
 				PhysX::ConstraintFlag get();
 				void set(PhysX::ConstraintFlag value);
