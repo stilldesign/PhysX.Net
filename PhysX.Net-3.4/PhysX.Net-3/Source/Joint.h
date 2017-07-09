@@ -159,6 +159,40 @@ namespace PhysX
 			}
 
 			/// <summary>
+			/// Gets or sets the inverse mass scale for actor0.
+			/// </summary>
+			property float InverseMassScale0
+			{
+				float get();
+				void set(float value);
+			}
+			/// <summary>
+			/// Gets or sets the inverse mass scale for actor1.
+			/// </summary>
+			property float InverseMassScale1
+			{
+				float get();
+				void set(float value);
+			}
+
+			/// <summary>
+			/// Gets or sets the inverse inertia scale for actor0.
+			/// </summary>
+			property float InverseInertiaScale0
+			{
+				float get();
+				void set(float value);
+			}
+			/// <summary>
+			/// Gets or sets the inverse inertia scale for actor1.
+			/// </summary>
+			property float InverseInertiaScale1
+			{
+				float get();
+				void set(float value);
+			}
+
+			/// <summary>
 			/// Gets or sets the name of the joint.
 			/// </summary>
 			property String^ Name

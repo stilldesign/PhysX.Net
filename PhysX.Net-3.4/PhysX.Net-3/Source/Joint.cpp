@@ -165,6 +165,45 @@ void Joint::ConstraintFlags::set(PhysX::ConstraintFlag value)
 	_joint->setConstraintFlags(ToUnmanagedEnum2(PxConstraintFlags, value));
 }
 
+/// <summary>
+/// Gets or sets the inverse mass scale for actor0.
+/// </summary>
+float Joint::InverseMassScale0::get()
+{
+	return _joint->getInvMassScale0();
+}
+void Joint::InverseMassScale0::set(float value)
+{
+	_joint->setInvMassScale0(value);
+}
+
+float Joint::InverseMassScale1::get()
+{
+	return _joint->getInvMassScale1();
+}
+void Joint::InverseMassScale1::set(float value)
+{
+	_joint->setInvMassScale1(value);
+}
+
+float Joint::InverseInertiaScale0::get()
+{
+	return _joint->getInvInertiaScale0();
+}
+void Joint::InverseInertiaScale0::set(float value)
+{
+	_joint->setInvInertiaScale0(value);
+}
+
+float Joint::InverseInertiaScale1::get()
+{
+	return _joint->getInvInertiaScale1();
+}
+void Joint::InverseInertiaScale1::set(float value)
+{
+	_joint->setInvInertiaScale1(value);
+}
+
 String^ Joint::Name::get()
 {
 	return Util::ToManagedString(_joint->getName());
