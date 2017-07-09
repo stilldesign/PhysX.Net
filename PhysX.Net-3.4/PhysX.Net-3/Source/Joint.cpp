@@ -45,6 +45,21 @@ bool Joint::Disposed::get()
 	return (_joint == NULL);
 }
 
+Vector3 Joint::GetRelativeAngularVelocity()
+{
+	return MV(_joint->getRelativeAngularVelocity());
+}
+
+Vector3 Joint::GetRelativeLinearVelocity()
+{
+	return MV(_joint->getRelativeLinearVelocity());
+}
+
+Matrix Joint::GetRelativeTransform()
+{
+	return MathUtil::PxTransformToMatrix(&_joint->getRelativeTransform());
+}
+
 Serializable^ Joint::AsSerializable()
 {
 	return gcnew Serializable(_joint);

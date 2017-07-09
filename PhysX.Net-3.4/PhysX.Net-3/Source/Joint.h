@@ -34,6 +34,30 @@ namespace PhysX
 				virtual bool get();
 			}
 
+			//
+
+			/// <summary>
+			/// Get the relative angular velocity of the joint.
+			/// This function returns the angular velocity of actor1 relative to actor0. The value is returned
+			/// in the constraint frame of actor0.
+			/// </summary>
+			Vector3 GetRelativeAngularVelocity();
+
+			/// <summary>
+			/// Get the relative linear velocity of the joint.
+			/// This function returns the linear velocity of the origin of the constraint frame of actor1, relative
+			/// to the origin of the constraint frame of actor0.The value is returned in the constraint frame of actor0.
+			/// </summary>
+			Vector3 GetRelativeLinearVelocity();
+
+			/// <summary>
+			/// Get the relative pose for this joint.
+			/// This function returns the pose of the joint frame of actor1 relative to actor0.
+			/// </summary>
+			Matrix GetRelativeTransform();
+
+			//
+
 			/// <summary>
 			/// Gets an object which is responsible for serialization of this type.
 			/// </summary>
