@@ -37,6 +37,14 @@ namespace PhysX
 			//
 
 			/// <summary>
+			/// Set the actors for this joint.
+			/// An actor may be NULL to indicate the world frame. At most one of the actors may be NULL.
+			/// </summary>
+			/// <param name="actor0">The first actor.</param>
+			/// <param name="actor1">The second actor</param>
+			void SetActors(RigidActor^ actor0, RigidActor^ actor1);
+
+			/// <summary>
 			/// Get the relative angular velocity of the joint.
 			/// This function returns the angular velocity of actor1 relative to actor0. The value is returned
 			/// in the constraint frame of actor0.

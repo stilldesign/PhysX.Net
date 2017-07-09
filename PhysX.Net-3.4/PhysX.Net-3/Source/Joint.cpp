@@ -45,6 +45,11 @@ bool Joint::Disposed::get()
 	return (_joint == NULL);
 }
 
+void Joint::SetActors(RigidActor^ actor0, RigidActor^ actor1)
+{
+	_joint->setActors(GetPointerOrNull(actor0), GetPointerOrNull(actor1));
+}
+
 Vector3 Joint::GetRelativeAngularVelocity()
 {
 	return MV(_joint->getRelativeAngularVelocity());
