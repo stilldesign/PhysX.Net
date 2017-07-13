@@ -582,6 +582,9 @@
     <ClCompile Include="Source\SimulationFilterCallback.cpp">
       <Filter>Simulation</Filter>
     </ClCompile>
+    <ClCompile Include="Source\MassProperties.cpp">
+      <Filter>Extensions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
@@ -1298,6 +1301,9 @@
     </ClInclude>
     <ClInclude Include="Source\SimulationEventCallback.h">
       <Filter>Simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\MassProperties.h">
+      <Filter>Extensions</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

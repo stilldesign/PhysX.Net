@@ -177,6 +177,7 @@
     <ClInclude Include="Source\JointLinearLimit.h" />
     <ClInclude Include="Source\LinearSweepMultipleResult.h" />
     <ClInclude Include="Source\LinearSweepSingleResult.h" />
+    <ClInclude Include="Source\MassProperties.h" />
     <ClInclude Include="Source\MidphaseDesc.h" />
     <ClInclude Include="Source\ModifiableContact.h" />
     <ClInclude Include="Source\Controller.h" />
@@ -416,6 +417,7 @@
     <ClCompile Include="Source\IVehicleComputeTireForceOutput.cpp" />
     <ClCompile Include="Source\JointAngularLimitPair.cpp" />
     <ClCompile Include="Source\JointLinearLimit.cpp" />
+    <ClCompile Include="Source\MassProperties.cpp" />
     <ClCompile Include="Source\MidphaseDesc.cpp" />
     <ClCompile Include="Source\ModifiableContact.cpp" />
     <ClCompile Include="Source\Controller.cpp" />

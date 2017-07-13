@@ -9,7 +9,7 @@
 #include "LinearSweepMultipleResult.h"
 #include "SweepHit.h"
 #include "LinearSweepMultipleResult.h"
-
+#include "MassProperties.h"
 
 RigidBody::RigidBody(PxRigidBody* rigidBody, PhysX::IDisposable^ owner)
 	: RigidActor(rigidBody, owner)
@@ -257,6 +257,30 @@ LinearSweepMultipleResult^ RigidBody::LinearSweepMultiple(RigidBody^ body, PhysX
 		touchHitBuffer = NULL;
 		touchHitShapeIndices = NULL;
 	}
+}
+
+MassProperties RigidBody::ComputeMassPropertiesFromShapes(array<Shape^>^ shapes)
+{
+	ThrowIfNull(shapes, "shapes");
+
+	int n = shapes->Length;
+
+	PxShape** s = new PxShape*[n];
+	for (size_t i = 0; i < n; i++)
+	{
+		PxShape* si = shapes[i]->UnmanagedPointer;
+
+		if (si == nullptr)
+			throw gcnew ArgumentException("Shapes array cannot include a null shape");
+
+		s[i] = si;
+	}
+
+	PxMassProperties m = PxRigidBodyExt::computeMassPropertiesFromShapes(s, n);
+
+	delete[] s;
+
+	return MassProperties::ToManaged(m);
 }
 
 //

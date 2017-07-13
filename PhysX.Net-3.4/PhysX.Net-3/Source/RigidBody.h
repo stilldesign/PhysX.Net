@@ -13,6 +13,7 @@ namespace PhysX
 	ref class LinearSweepSingleResult;
 	ref class LinearSweepMultipleResult;
 	ref class QueryCache;
+	value class MassProperties;
 
 	/// <summary>
 	/// RigidBody is a base class shared between dynamic rigid body objects.
@@ -209,6 +210,9 @@ namespace PhysX
 				[Optional] QueryFilterCallback^ filterCall,
 				[Optional] QueryCache^ queryCache,
 				[Optional] Nullable<float> inflation);
+
+			// Extensions
+			static MassProperties ComputeMassPropertiesFromShapes(array<Shape^>^ shapes);
 
 			//
 
