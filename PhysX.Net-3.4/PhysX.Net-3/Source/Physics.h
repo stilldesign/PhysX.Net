@@ -218,6 +218,14 @@ namespace PhysX
 		generic<typename T> where T : Joint
 			T CreateJoint(RigidActor^ actor0, Matrix localFrame0, RigidActor^ actor1, Matrix localFrame1);
 
+		/// <summary>
+		/// Gets the collection of joints.
+		/// </summary>
+		property array<Joint^>^ Joints
+		{
+			array<Joint^>^ get();
+		}
+
 		#pragma endregion
 
 		#pragma region Particle System

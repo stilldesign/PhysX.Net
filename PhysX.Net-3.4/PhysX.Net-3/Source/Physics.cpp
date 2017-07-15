@@ -386,6 +386,11 @@ T Physics::CreateJoint(RigidActor^ actor0, Matrix localFrame0, RigidActor^ actor
 
 	return (T)CreateJoint(type, actor0, localFrame0, actor1, localFrame1);
 }
+
+array<Joint^>^ Physics::Joints::get()
+{
+	return ObjectTable::GetObjectsOfType<Joint^>();
+}
 #pragma endregion
 
 #pragma region Particle System
