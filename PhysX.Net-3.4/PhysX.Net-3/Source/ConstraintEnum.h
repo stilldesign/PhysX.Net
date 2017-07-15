@@ -3,6 +3,7 @@
 
 namespace PhysX
 {
+	[Flags]
 	public enum class ConstraintFlag
 	{
 		Broken = PxConstraintFlag::eBROKEN,
