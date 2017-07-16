@@ -188,17 +188,17 @@ namespace PhysX
 	public enum class RevoluteJointFlag
 	{
 		/// <summary>
-		/// 
+		/// Enable the limit.
 		/// </summary>
 		LimitEnabled = PxRevoluteJointFlag::eLIMIT_ENABLED,
 
 		/// <summary>
-		/// 
+		/// Enable the drive.
 		/// </summary>
 		DriveEnabled = PxRevoluteJointFlag::eDRIVE_ENABLED,
 
 		/// <summary>
-		/// 
+		/// If the existing velocity is beyond the drive velocity, do not add force.
 		/// </summary>
 		DriveFreeSpin = PxRevoluteJointFlag::eDRIVE_FREESPIN
 	};
