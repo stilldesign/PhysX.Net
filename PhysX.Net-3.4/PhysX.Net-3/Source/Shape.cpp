@@ -321,6 +321,8 @@ array<PhysX::Material^>^ Shape::Materials::get()
 }
 void Shape::Materials::set(array<PhysX::Material^>^ value)
 {
+	ThrowIfNull(value, "value");
+
 	int n = value->Length;
 
 	PxMaterial** materials = new PxMaterial*[n];
