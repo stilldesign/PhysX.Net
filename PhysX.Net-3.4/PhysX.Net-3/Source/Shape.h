@@ -135,6 +135,16 @@ namespace PhysX
 			Matrix get();
 		}
 
+		property Vector3 GlobalPosePosition
+		{
+			Vector3 get();
+		}
+
+		property Quaternion GlobalPoseQuat
+		{
+			Quaternion get();
+		}
+
 		/// <summary>
 		/// Gets or set the name of the shape.
 		/// </summary>
@@ -186,6 +196,18 @@ namespace PhysX
 		{
 			Matrix get();
 			void set(Matrix value);
+		}
+
+		property Vector3 LocalPosePosition
+		{
+			Vector3 get();
+			void set(Vector3 value);
+		}
+
+		property Quaternion LocalPoseQuat
+		{
+			Quaternion get();
+			void set(Quaternion value);
 		}
 
 		/// <summary>

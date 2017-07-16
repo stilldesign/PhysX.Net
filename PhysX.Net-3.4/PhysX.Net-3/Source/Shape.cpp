@@ -200,6 +200,26 @@ Matrix Shape::GlobalPose::get()
 	return MathUtil::PxTransformToMatrix(&PxShapeExt::getGlobalPose(*_shape, *actor));
 }
 
+Vector3 Shape::GlobalPosePosition::get()
+{
+	PxRigidActor* actor = _shape->getActor();
+
+	if (actor == NULL)
+		throw gcnew InvalidOperationException("The shape is attached to more than one actor. Use Shape.GetGlobalPose(actor) instead.");
+
+	return MV(PxShapeExt::getGlobalPose(*_shape, *actor).p);
+}
+
+Quaternion Shape::GlobalPoseQuat::get()
+{
+	PxRigidActor* actor = _shape->getActor();
+
+	if (actor == NULL)
+		throw gcnew InvalidOperationException("The shape is attached to more than one actor. Use Shape.GetGlobalPose(actor) instead.");
+
+	return MathUtil::PxQuatToQuaternion(PxShapeExt::getGlobalPose(*_shape, *actor).q);
+}
+
 String^ Shape::Name::get()
 {
 	return Util::ToManagedString(_shape->getName());
@@ -253,6 +273,30 @@ Matrix Shape::LocalPose::get()
 void Shape::LocalPose::set(Matrix value)
 {
 	_shape->setLocalPose(MathUtil::MatrixToPxTransform(value));
+}
+
+Vector3 Shape::LocalPosePosition::get()
+{
+	return MV(_shape->getLocalPose().p);
+}
+void Shape::LocalPosePosition::set(Vector3 value)
+{
+	PxTransform t = _shape->getLocalPose();
+	t.p = UV(value);
+
+	_shape->setLocalPose(t);
+}
+
+Quaternion Shape::LocalPoseQuat::get()
+{
+	return MathUtil::PxQuatToQuaternion(_shape->getLocalPose().q);
+}
+void Shape::LocalPoseQuat::set(Quaternion value)
+{
+	PxTransform t = _shape->getLocalPose();
+	t.q = MathUtil::QuaternionToPxQuat(value);
+
+	_shape->setLocalPose(t);
 }
 
 array<PhysX::Material^>^ Shape::Materials::get()
