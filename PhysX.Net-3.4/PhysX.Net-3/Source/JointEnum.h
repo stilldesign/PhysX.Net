@@ -200,7 +200,7 @@ namespace PhysX
 		/// <summary>
 		/// 
 		/// </summary>
-		DriveFreespin = PxRevoluteJointFlag::eDRIVE_FREESPIN
+		DriveFreeSpin = PxRevoluteJointFlag::eDRIVE_FREESPIN
 	};
 
 	/// <summary>
