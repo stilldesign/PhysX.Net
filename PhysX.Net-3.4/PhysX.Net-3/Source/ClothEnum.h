@@ -16,8 +16,19 @@ namespace PhysX
 	public enum class ClothFlag
 	{
 		/// <summary>
+		/// Default value
+		/// </summary>
+		Default = PxClothFlag::eDEFAULT,
+
+		/// <summary>
+		/// Use CUDA to simulate cloth.
+		/// </summary>
+		CUDA = PxClothFlag::eCUDA,
+
+		/// <summary>
 		/// Turn on/off gpu based solver.
 		/// </summary>
+		[Obsolete]
 		GPU = PxClothFlag::eGPU,
 
 		/// <summary>
