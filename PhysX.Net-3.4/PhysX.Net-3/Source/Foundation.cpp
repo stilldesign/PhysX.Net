@@ -7,6 +7,8 @@
 
 static Foundation::Foundation()
 {
+	_version = gcnew System::Version(PX_PHYSICS_VERSION_MAJOR, PX_PHYSICS_VERSION_MINOR, PX_PHYSICS_VERSION_BUGFIX);
+
 	_initalized = false;
 }
 Foundation::Foundation([Optional] PhysX::ErrorCallback^ errorCallback)
@@ -70,6 +72,11 @@ bool Foundation::Initalized::get()
 PhysX::ErrorCallback^ Foundation::ErrorCallback::get()
 {
 	return _errorCallback;
+}
+
+System::Version^ Foundation::Version::get()
+{
+	return _version;
 }
 
 PxFoundation* Foundation::UnmanagedPointer::get()

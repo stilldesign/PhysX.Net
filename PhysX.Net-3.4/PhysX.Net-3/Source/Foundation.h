@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace PhysX
 {
 	ref class Physics;
@@ -19,6 +18,8 @@ namespace PhysX
 		PxAllocatorCallback* _allocator;
 
 		PhysX::ErrorCallback^ _errorCallback;
+
+		static System::Version^ _version;
 
 	private:
 		static Foundation();
@@ -46,6 +47,14 @@ namespace PhysX
 		property PhysX::ErrorCallback^ ErrorCallback
 		{
 			PhysX::ErrorCallback^ get();
+		}
+
+		/// <summary>
+		/// Gets the PhysX version.
+		/// </summary>
+		property System::Version^ Version
+		{
+			static System::Version^ get();
 		}
 
 	internal:
