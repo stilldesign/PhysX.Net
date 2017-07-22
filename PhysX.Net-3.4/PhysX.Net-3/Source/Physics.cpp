@@ -203,6 +203,11 @@ HeightField^ Physics::CreateHeightField(System::IO::Stream^ stream)
 
 	return gcnew HeightField(hf, this);
 }
+
+array<PhysX::HeightField^>^ Physics::HeightFields::get()
+{
+	return ObjectTable::GetObjectsOfOwnerAndType<PhysX::HeightField^>(this);
+}
 #pragma endregion
 
 #pragma region Triangle Mesh
@@ -220,7 +225,7 @@ TriangleMesh^ Physics::CreateTriangleMesh(System::IO::Stream^ stream)
 		if (triangleMesh == NULL)
 			throw gcnew FailedToCreateObjectException("Failed to create triangle mesh");
 	
-		auto t = gcnew TriangleMesh(triangleMesh, this);
+		auto t = gcnew PhysX::TriangleMesh(triangleMesh, this);
 
 		//delete ms;
 
@@ -230,6 +235,11 @@ TriangleMesh^ Physics::CreateTriangleMesh(System::IO::Stream^ stream)
 	{
 		//delete[] ms.GetMemory();
 	}
+}
+
+array<PhysX::TriangleMesh^>^ Physics::TriangleMesh::get()
+{
+	return ObjectTable::GetObjectsOfOwnerAndType<PhysX::TriangleMesh^>(this);
 }
 #pragma endregion
 
@@ -246,7 +256,7 @@ ConvexMesh^ Physics::CreateConvexMesh(System::IO::Stream^ stream)
 		if (convexMesh == NULL)
 			throw gcnew FailedToCreateObjectException("Failed to create convex mesh");
 	
-		auto cm = gcnew ConvexMesh(convexMesh, this);
+		auto cm = gcnew PhysX::ConvexMesh(convexMesh, this);
 
 		//delete ms;
 
@@ -256,6 +266,11 @@ ConvexMesh^ Physics::CreateConvexMesh(System::IO::Stream^ stream)
 	{
 		//delete[] ms.GetMemory();
 	}
+}
+
+array<PhysX::ConvexMesh^>^ Physics::ConvexMesh::get()
+{
+	return ObjectTable::GetObjectsOfOwnerAndType<PhysX::ConvexMesh^>(this);
 }
 #pragma endregion
 

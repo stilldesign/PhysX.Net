@@ -151,6 +151,14 @@ namespace PhysX
 		/// <param name="stream">The triangle mesh stream.</param>
 		/// <returns>The new triangle mesh.</returns>
 		TriangleMesh^ CreateTriangleMesh(System::IO::Stream^ stream);
+
+		/// <summary>
+		/// Gets the triangle mesh.
+		/// </summary>
+		property array<PhysX::TriangleMesh^>^ TriangleMesh
+		{
+			array<PhysX::TriangleMesh^>^ get();
+		}
 		#pragma endregion
 
 		#pragma region Convex Mesh
@@ -161,15 +169,31 @@ namespace PhysX
 		/// <param name="stream">The stream to load the convex mesh from.</param>
 		/// <returns>The new convex mesh.</returns>
 		ConvexMesh^ CreateConvexMesh(System::IO::Stream^ stream);
+
+		/// <summary>
+		/// Gets the convex mesh.
+		/// </summary>
+		property array<PhysX::ConvexMesh^>^ ConvexMesh
+		{
+			array<PhysX::ConvexMesh^>^ get();
+		}
 		#pragma endregion
 
 		#pragma region HeightField
 		/// <summary>
-		/// Creates a PxHeightField object.
-		/// This can then be instanced into PxShape objects.
+		/// Creates a height field object.
+		/// This can then be instanced into Shape objects.
 		/// </summary>
 		/// <param name="stream">The stream to load the height field from.</param>
 		HeightField^ CreateHeightField(System::IO::Stream^ stream);
+
+		/// <summary>
+		/// Gets the height field.
+		/// </summary>
+		property array<PhysX::HeightField^>^ HeightFields
+		{
+			array<PhysX::HeightField^>^ get();
+		}
 		#pragma endregion
 
 		#pragma region Rigid Actors
