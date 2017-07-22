@@ -224,8 +224,7 @@ namespace PhysX.Samples.Engine
 			sceneDesc.BroadPhaseType |= BroadPhaseType.Gpu;
 #endif
 
-			if (_sceneDescCallback != null)
-				_sceneDescCallback(sceneDesc);
+			_sceneDescCallback?.Invoke(sceneDesc);
 
 			return sceneDesc;
 		}
