@@ -3,6 +3,7 @@
 
 namespace PhysX
 {
+	[Flags]
 	public enum class SceneFlag
 	{
 		EnableActiveActors = PxSceneFlag::eENABLE_ACTIVE_ACTORS,
