@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.15
+VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{27CD93B0-2E6E-42D3-B44A-43EAF972337E}"
 EndProject
@@ -53,7 +53,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventsSample", "EventsSampl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoublePendulumSample", "Samples\DoublePendulumSample\DoublePendulumSample.csproj", "{B6083AFF-4360-4182-A14B-FD7A423EA579}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollisionDisabledSample", "PhysX.Samples.CollisionDisabledSample\CollisionDisabledSample.csproj", "{5251B7F1-E71A-4C1C-9B0E-FA05E692C906}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollisionDisabledSample", "Samples\CollisionDisabledSample\CollisionDisabledSample.csproj", "{5251B7F1-E71A-4C1C-9B0E-FA05E692C906}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
