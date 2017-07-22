@@ -8,6 +8,11 @@ RevoluteJoint::RevoluteJoint(PxRevoluteJoint* joint, PhysX::Physics^ owner)
 	
 }
 
+float RevoluteJoint::Angle::get()
+{
+	return this->UnmanagedPointer->getAngle();
+}
+
 JointAngularLimitPair^ RevoluteJoint::Limit::get()
 {
 	return JointAngularLimitPair::ToManaged(this->UnmanagedPointer->getLimit());

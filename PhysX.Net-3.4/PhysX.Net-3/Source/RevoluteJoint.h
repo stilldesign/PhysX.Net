@@ -17,6 +17,14 @@ namespace PhysX
 
 		public:
 			/// <summary>
+			/// Return the angle of the joint, in the range (-Pi, Pi].
+			/// </summary>
+			property float Angle
+			{
+				float get();
+			}
+
+			/// <summary>
 			/// Gets or sets the joint upper limit parameters.
 			/// </summary>
 			property JointAngularLimitPair^ Limit
