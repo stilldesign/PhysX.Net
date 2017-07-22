@@ -5,6 +5,8 @@ namespace PhysX
 {
 	public enum class SceneFlag
 	{
+		EnableActiveActors = PxSceneFlag::eENABLE_ACTIVE_ACTORS,
+
 		/// <summary>
 		/// Enable Active Transform Notification.
 		/// This flag enables the the Active Transform Notification feature for a scene. This feature
@@ -14,20 +16,26 @@ namespace PhysX
 		/// hence this flag should only be enabled if the application intends to use the feature.
 		/// Default: False 
 		/// </summary>
+		[Obsolete]
 		EnableActiveTransforms = PxSceneFlag::eENABLE_ACTIVETRANSFORMS,
+
 		/// <summary>
 		/// Enables a second broad phase check after integration that makes it possible to prevent objects
 		/// from tunneling through eachother. eSWEPT_INTEGRATION_LINEAR requires this flag to be specified.
 		/// Note: For this feature to be effective for shapes that can move at a significant velocity, the
 		/// user should raise the flag PxShapeFlag::eUSE_SWEPT_BOUNDS for them.
 		/// </summary>
-		CCD = PxSceneFlag::eENABLE_CCD,
+		EnableCcd = PxSceneFlag::eENABLE_CCD,
+
+		DisableCcdResweep = PxSceneFlag::eDISABLE_CCD_RESWEEP,
+
 		/// <summary>
 		/// Enable adaptive forces to accelerate convergence of the solver.
 		/// Note that this flag is not mutable, and must be set in PxSceneDesc at scene creation.
 		/// Default: true 
 		/// </summary>
 		AdaptiveForce = PxSceneFlag::eADAPTIVE_FORCE,
+
 		/// <summary>
 		/// Enable contact pair filtering between kinematic and static rigid bodies.
 		/// By default contacts between kinematic and static rigid bodies are
@@ -37,6 +45,7 @@ namespace PhysX
 		/// Default: false 
 		/// </summary>
 		EnableKinematicStaticPairs = PxSceneFlag::eENABLE_KINEMATIC_STATIC_PAIRS,
+
 		/// <summary>
 		/// Enable contact pair filtering between kinematic rigid bodies.
 		/// By default contacts between kinematic bodies are
@@ -46,6 +55,7 @@ namespace PhysX
 		/// Default: false 
 		/// </summary>
 		EnableKinematicPairs = PxSceneFlag::eENABLE_KINEMATIC_PAIRS,
+
 		/// <summary>
 		/// Enable GJK-based distance collision detection system.
 		/// Note that this flag is not mutable, and must be set in PxSceneDesc at scene creation.
@@ -53,13 +63,28 @@ namespace PhysX
 		/// Default: false 
 		/// </summary>
 		EnablePcm = PxSceneFlag::eENABLE_PCM,
+
 		/// <summary>
 		/// Disable contact report buffer resize. Once the contact buffer is full, the rest of
 		/// the contact reports will not be buffered and sent. 
 		/// Note that this flag is not mutable, and must be set in PxSceneDesc at scene creation.
 		/// Default: false 
 		/// </summary>
-		DisableContactReportBufferSize = PxSceneFlag::eDISABLE_CONTACT_REPORT_BUFFER_RESIZE
+		DisableContactReportBufferSize = PxSceneFlag::eDISABLE_CONTACT_REPORT_BUFFER_RESIZE,
+
+		DisableContactCache = PxSceneFlag::eDISABLE_CONTACT_CACHE,
+
+		RequireReadWriteLock = PxSceneFlag::eREQUIRE_RW_LOCK,
+
+		EnableStabilization = PxSceneFlag::eENABLE_STABILIZATION,
+		EnableAveragePoint = PxSceneFlag::eENABLE_AVERAGE_POINT,
+		DeprecatedTriggerTriggerReports = PxSceneFlag::eDEPRECATED_TRIGGER_TRIGGER_REPORTS,
+		ExcludeKinematicsFromActiveActors = PxSceneFlag::eEXCLUDE_KINEMATICS_FROM_ACTIVE_ACTORS,
+		SuppressEagerSceneQueryRefit = PxSceneFlag::eSUPPRESS_EAGER_SCENE_QUERY_REFIT,
+		EnableGpuDynamics = PxSceneFlag::eENABLE_GPU_DYNAMICS,
+		EnableEnhancedDeterminism = PxSceneFlag::eENABLE_ENHANCED_DETERMINISM,
+
+		MutableFlags = PxSceneFlag::eMUTABLE_FLAGS
 	};
 
 	public enum class VisualizationParameter
@@ -296,7 +321,7 @@ namespace PhysX
 		/// <summary>
 		/// Traverse dynamic shapes.
 		/// </summary>
-		Dynamic = PxQueryFlag::eDYNAMIC, 
+		Dynamic = PxQueryFlag::eDYNAMIC,
 		/// <summary>
 		/// Run the pre-intersection-test filter (see <see cref="SceneQueryFilterCallback.PreFilter" />). 
 		/// </summary>
