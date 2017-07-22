@@ -190,11 +190,7 @@ namespace PhysX.Samples.Engine
 
 			this.Physics = new Physics(foundation, checkRuntimeFiles: true);
 
-#if GPU
-			var cudaContext = new CudaContextManager(foundation);
-#endif
-
-			this.Scene = this.Physics.CreateScene(CreateSceneDesc());
+			this.Scene = this.Physics.CreateScene(CreateSceneDesc(foundation));
 
 			this.Scene.SetVisualizationParameter(VisualizationParameter.Scale, 2.0f);
 			this.Scene.SetVisualizationParameter(VisualizationParameter.CollisionShapes, true);
@@ -211,16 +207,25 @@ namespace PhysX.Samples.Engine
 
 			CreateGroundPlane();
 		}
-		protected virtual SceneDesc CreateSceneDesc()
+		protected virtual SceneDesc CreateSceneDesc(Foundation foundation)
 		{
+#if GPU
+			var cudaContext = new CudaContextManager(foundation);
+#endif
+
 			var sceneDesc = new SceneDesc
 			{
-				Gravity = new System.Numerics.Vector3(0, -9.81f, 0),
+				Gravity = new Vector3(0, -9.81f, 0),
 #if GPU
-				GpuDispatcher = cudaContext.GpuDispatcher
+				GpuDispatcher = cudaContext.GpuDispatcher,
 #endif
 				FilterShader = new SampleFilterShader()
 			};
+
+#if GPU
+			sceneDesc.Flags |= SceneFlag.EnableGpuDynamics;
+			sceneDesc.BroadPhaseType |= BroadPhaseType.Gpu;
+#endif
 
 			if (_sceneDescCallback != null)
 				_sceneDescCallback(sceneDesc);

@@ -7,19 +7,22 @@ CudaContextManager::CudaContextManager(Foundation^ foundation)
 {
 	ThrowIfNullOrDisposed(foundation, "foundation");
 
-	throw gcnew Exception("GPU PhysX isn't available in VS2015 :( We'll have to wait till NVIDIA get this working");
-
 	// TODO: Take a CudaContextManagerDesc^ ctor arg
 	PxCudaContextManagerDesc cudaContextManagerDesc;
 
-	PxCudaContextManager* native = NULL;// PxCreateCudaContextManager(*foundation->UnmanagedPointer, cudaContextManagerDesc, NULL);
+	PxCudaContextManager* native = PxCreateCudaContextManager(*foundation->UnmanagedPointer, cudaContextManagerDesc);
 
 	if (native == NULL)
 		throw gcnew OperationFailedException("Failed to create PxCudaContextManager instance");
 
 	_cudaContextManager = native;
 
-	_gpuDispatcher = gcnew PhysX::GpuDispatcher(native->getGpuDispatcher(), this);
+	{
+		PxGpuDispatcher* gpuDispatcher = native->getGpuDispatcher();
+
+		if (gpuDispatcher != nullptr)
+			_gpuDispatcher = gcnew PhysX::GpuDispatcher(gpuDispatcher, this);
+	}
 
 	ObjectTable::Add((intptr_t)native, this, foundation);
 }
@@ -165,7 +168,10 @@ void CudaContextManager::UsingConcurrentStreams::set(bool value)
 //virtual bool  unregisterResourceInCuda(CUgraphicsResource resource) = 0
 //Unregister a rendering resource with CUDA.
 
-int CudaContextManager::UsingDedicatedGPU::get()
+Nullable<bool> CudaContextManager::UsingDedicatedGPU::get()
 {
-	return _cudaContextManager->usingDedicatedGPU();
+	int d = _cudaContextManager->usingDedicatedGPU();
+
+	return d == 1 ? true :
+		d == 0 ? false : Nullable<bool>();
 }

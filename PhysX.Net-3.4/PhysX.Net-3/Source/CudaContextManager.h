@@ -140,9 +140,9 @@ namespace PhysX
 		//virtual bool  unregisterResourceInCuda(CUgraphicsResource resource) = 0
 		//Unregister a rendering resource with CUDA.
 
-		property int UsingDedicatedGPU
+		property Nullable<bool> UsingDedicatedGPU
 		{
-			int get();
+			Nullable<bool> get();
 		}
 	};
 }
