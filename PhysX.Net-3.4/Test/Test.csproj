@@ -73,6 +73,7 @@
     <Compile Include="Aggregate\AggregateTests.cs" />
     <Compile Include="Articulation\ArticulationTests.cs" />
     <Compile Include="BroadPhase\BroadPhaseTests.cs" />
+    <Compile Include="Cloth\ClothMeshQuadifierTests.cs" />
     <Compile Include="Cloth\ClothTest.cs" />
     <Compile Include="Constraint\ConstraintTest.cs" />
     <Compile Include="Controller\BoxControllerTest.cs" />

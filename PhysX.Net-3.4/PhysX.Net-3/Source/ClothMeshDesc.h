@@ -12,6 +12,7 @@ namespace PhysX
 
 	internal:
 		static PxClothMeshDesc ToUnmanaged(ClothMeshDesc^ desc);
+		static ClothMeshDesc^ ToManaged(PxClothMeshDesc desc);
 
 	public:
 		void SetToDefault();

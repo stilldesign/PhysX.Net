@@ -65,6 +65,38 @@ PxClothMeshDesc ClothMeshDesc::ToUnmanaged(ClothMeshDesc^ desc)
 
 	return d;
 }
+ClothMeshDesc^ ClothMeshDesc::ToManaged(PxClothMeshDesc desc)
+{
+	ClothMeshDesc^ d = gcnew ClothMeshDesc();
+
+	d->Flags = ToManagedEnum(MeshFlag, desc.flags);
+
+	if (desc.invMasses.data != nullptr)
+	{
+		d->InverseMasses = Util::AsManagedArray<float>(
+			desc.invMasses.data,
+			desc.invMasses.count * (desc.invMasses.stride / sizeof(float)));
+	}
+
+	if (desc.points.data != nullptr)
+	{
+		d->Points = Util::AsManagedArray<Vector3>(
+			desc.points.data, 
+			desc.points.count * (desc.points.stride / sizeof(Vector3)));
+	}
+
+	if (desc.quads.data != nullptr)
+	{
+		d->Quads = Util::AsManagedArray<Byte>(desc.quads.data, desc.quads.count * desc.quads.stride);
+	}
+
+	if (desc.triangles.data != nullptr)
+	{
+		d->Triangles = Util::AsManagedArray<Byte>(desc.triangles.data, desc.triangles.count * desc.triangles.stride);
+	}
+
+	return d;
+}
 
 void ClothMeshDesc::SetToDefault()
 {
