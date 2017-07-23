@@ -6,11 +6,6 @@
 using namespace System::Threading;
 using namespace System::Linq;
 
-ObjectTable::ObjectTable()
-{
-
-}
-
 // Add
 void ObjectTable::Add(intptr_t pointer, PhysX::IDisposable^ object, PhysX::IDisposable^ owner)
 {
@@ -45,7 +40,7 @@ void ObjectTable::AddObjectOwner(PhysX::IDisposable^ object, PhysX::IDisposable^
 	if (object == nullptr)
 		throw gcnew ArgumentNullException("object");
 
-	object->OnDisposing += gcnew EventHandler(&ObjectTable::disposableObject_OnDisposing);
+	object->OnDisposing += gcnew EventHandler(this, &ObjectTable::disposableObject_OnDisposing);
 
 	_ownership->Add(object, owner);
 }
@@ -87,7 +82,7 @@ bool ObjectTable::Remove(intptr_t pointer)
 	{
 		IDisposable^ disposableObject = dynamic_cast<PhysX::IDisposable^>(object);
 			
-		disposableObject->OnDisposing -= gcnew EventHandler(&ObjectTable::disposableObject_OnDisposing);
+		disposableObject->OnDisposing -= gcnew EventHandler(this, &ObjectTable::disposableObject_OnDisposing);
 	}
 		
 	// Remove from the pointer-object dictionary
@@ -160,4 +155,9 @@ Dictionary<PhysX::IDisposable^, PhysX::IDisposable^>^ ObjectTable::Ownership::ge
 Dictionary<ObjectTableOwnershipType, List<Object^>^>^ ObjectTable::OwnerTypeLookup::get()
 {
 	return _ownerTypeLookup;
+}
+
+ObjectTable^ ObjectTable::Instance::get()
+{
+	return _instance;
 }

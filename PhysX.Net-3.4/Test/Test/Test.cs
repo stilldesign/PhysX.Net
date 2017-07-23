@@ -27,7 +27,7 @@ namespace PhysX.Test
 				throw new Exception("After a test has run, the Physics singleton should have been disposed");
 			}
 
-			ObjectTable.Clear();
+			ObjectTable.Instance.Clear();
 
 			if (_errorLog != null && _errorLog.HasErrors)
 			{

@@ -25,13 +25,13 @@ void InternalSimulationEventCallback::onConstraintBreak (PxConstraintInfo *const
 }
 void InternalSimulationEventCallback::onWake (PxActor **actors, PxU32 count)
 {
-	array<Actor^>^ a = ObjectTable::GetObjects<Actor^>((intptr_t*)actors, count);
+	array<Actor^>^ a = ObjectTable::Instance->GetObjects<Actor^>((intptr_t*)actors, count);
 
 	_callback->OnWake(a);
 }
 void InternalSimulationEventCallback::onSleep (PxActor **actors, PxU32 count)
 {
-	array<Actor^>^ a = ObjectTable::GetObjects<Actor^>((intptr_t*)actors, count);
+	array<Actor^>^ a = ObjectTable::Instance->GetObjects<Actor^>((intptr_t*)actors, count);
 
 	_callback->OnSleep(a);
 }
@@ -76,7 +76,7 @@ void InternalSimulationEventCallback::onAdvance(const PxRigidBody*const* bodyBuf
 
 	for (size_t i = 0; i < count; i++)
 	{
-		bodies[i] = ObjectTable::TryGetObject<RigidBody^>((intptr_t)bodyBuffer[i]);
+		bodies[i] = ObjectTable::Instance->TryGetObject<RigidBody^>((intptr_t)bodyBuffer[i]);
 
 		poses[i] = MathUtil::PxTransformToMatrix((PxTransform*)&(poseBuffer[i]));
 	}
@@ -90,7 +90,7 @@ SimulationEventCallback::SimulationEventCallback()
 {
 	_callback = new InternalSimulationEventCallback(this);
 
-	ObjectTable::Add((intptr_t)_callback, this, nullptr);
+	ObjectTable::Instance->Add((intptr_t)_callback, this, nullptr);
 }
 SimulationEventCallback::~SimulationEventCallback()
 {

@@ -12,7 +12,7 @@ ArticulationJoint::ArticulationJoint(PxArticulationJoint* joint, PhysX::Scene^ o
 	_joint = joint;
 	_scene = owner;
 
-	ObjectTable::Add((intptr_t)joint, this, owner);
+	ObjectTable::Instance->Add((intptr_t)joint, this, owner);
 }
 ArticulationJoint::~ArticulationJoint()
 {

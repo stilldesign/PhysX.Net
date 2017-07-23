@@ -32,11 +32,11 @@ PxFilterFlags InternalSimulationFilterCallback::pairFound(PxU32 pairID,
 	PxFilterObjectAttributes attributes1, PxFilterData filterData1, const PxActor* a1, const PxShape* s1,
 	PxPairFlags& pairFlags)
 {
-	auto a0_ = ObjectTable::TryGetObject<PhysX::Actor^>((intptr_t)a0);
-	auto a1_ = ObjectTable::TryGetObject<PhysX::Actor^>((intptr_t)a1);
+	auto a0_ = ObjectTable::Instance->TryGetObject<PhysX::Actor^>((intptr_t)a0);
+	auto a1_ = ObjectTable::Instance->TryGetObject<PhysX::Actor^>((intptr_t)a1);
 
-	auto s0_ = ObjectTable::TryGetObject<PhysX::Shape^>((intptr_t)s0);
-	auto s1_ = ObjectTable::TryGetObject<PhysX::Shape^>((intptr_t)s1);
+	auto s0_ = ObjectTable::Instance->TryGetObject<PhysX::Shape^>((intptr_t)s0);
+	auto s1_ = ObjectTable::Instance->TryGetObject<PhysX::Shape^>((intptr_t)s1);
 
 	auto result = _managed->PairFound(pairID,
 		attributes0, FilterData::ToManaged(filterData0), a0_, s0_,

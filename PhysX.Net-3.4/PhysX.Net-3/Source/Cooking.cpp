@@ -14,7 +14,7 @@ Cooking::Cooking(PxCooking* cooking, PhysX::Foundation^ owner)
 
 	_cooking = cooking;
 
-	ObjectTable::Add((intptr_t)_cooking, this, owner);
+	ObjectTable::Instance->Add((intptr_t)_cooking, this, owner);
 }
 Cooking::~Cooking()
 {

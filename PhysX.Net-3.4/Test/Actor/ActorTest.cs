@@ -47,9 +47,9 @@ namespace PhysX.Test.Actor
 
 					physx.PxRigidDynamic* rigidActor1Ptr = rigidActor1.UnmanagedPointer;
 
-					Assert.AreEqual(rigidActor1, ObjectTable.Objects[(long)rigidActor1Ptr]);
-					Assert.AreEqual(physics.Physics, ObjectTable.Ownership[rigidActor1]);
-					Assert.AreEqual(rigidActor1, ObjectTable.OwnerTypeLookup[new ObjectTableOwnershipType
+					Assert.AreEqual(rigidActor1, ObjectTable.Instance.Objects[(long)rigidActor1Ptr]);
+					Assert.AreEqual(physics.Physics, ObjectTable.Instance.Ownership[rigidActor1]);
+					Assert.AreEqual(rigidActor1, ObjectTable.Instance.OwnerTypeLookup[new ObjectTableOwnershipType
 					{
 						Owner = physics.Physics,
 						Type = typeof(RigidDynamic)
@@ -64,11 +64,11 @@ namespace PhysX.Test.Actor
 					// Actor should no longer be in RigidDynamicActors
 					Assert.AreEqual(0, physics.Scene.RigidDynamicActors.Length);
 					// Removed from the list of objects
-					Assert.IsFalse(ObjectTable.Objects.ContainsKey((long)rigidActor1Ptr));
+					Assert.IsFalse(ObjectTable.Instance.Objects.ContainsKey((long)rigidActor1Ptr));
 					// Nor in the ObjectTable's list of object owners
-					Assert.IsFalse(ObjectTable.Ownership.ContainsKey(rigidActor1));
+					Assert.IsFalse(ObjectTable.Instance.Ownership.ContainsKey(rigidActor1));
 					// Nor in the ObjectTable's 'owner type lookup'
-					Assert.IsFalse(ObjectTable.OwnerTypeLookup.ContainsKey(new ObjectTableOwnershipType
+					Assert.IsFalse(ObjectTable.Instance.OwnerTypeLookup.ContainsKey(new ObjectTableOwnershipType
 					{
 						Owner = physics.Physics,
 						Type = typeof(RigidDynamic)

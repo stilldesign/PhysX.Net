@@ -15,7 +15,7 @@ namespace PhysX.Test.Aggregate
 
 				agg.Dispose();
 
-				Assert.IsFalse(ObjectTable.Contains(agg));
+				Assert.IsFalse(ObjectTable.Instance.Contains(agg));
 			}
 		}
 

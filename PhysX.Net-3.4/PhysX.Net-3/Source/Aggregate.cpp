@@ -14,7 +14,7 @@ Aggregate::Aggregate(PxAggregate* aggregate, PhysX::Physics^ owner)
 
 	_aggregate = aggregate;
 
-	ObjectTable::Add((intptr_t)aggregate, this, owner);
+	ObjectTable::Instance->Add((intptr_t)aggregate, this, owner);
 }
 Aggregate::~Aggregate()
 {
@@ -77,7 +77,7 @@ Actor^ Aggregate::GetActor(int index)
 
 	_aggregate->getActors(actors, 1, index);
 
-	auto actor = ObjectTable::GetObject<Actor^>((intptr_t)actors[0]);
+	auto actor = ObjectTable::Instance->GetObject<Actor^>((intptr_t)actors[0]);
 
 	delete[] actors;
 
@@ -90,7 +90,7 @@ array<Actor^>^ Aggregate::GetActors()
 
 	_aggregate->getActors(actors, actorCount, 0);
 
-	auto a = ObjectTable::GetObjects<Actor^>((intptr_t*)actors, actorCount);
+	auto a = ObjectTable::Instance->GetObjects<Actor^>((intptr_t*)actors, actorCount);
 
 	delete[] actors;
 
@@ -106,7 +106,7 @@ Serializable^ Aggregate::AsSerializable()
 
 PhysX::Scene^ Aggregate::Scene::get()
 {
-	return ObjectTable::GetObject<PhysX::Scene^>((intptr_t)_aggregate->getScene());
+	return ObjectTable::Instance->GetObject<PhysX::Scene^>((intptr_t)_aggregate->getScene());
 }
 
 int Aggregate::MaximumNumberOfActors::get()

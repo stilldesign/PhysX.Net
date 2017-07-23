@@ -38,7 +38,7 @@ HeightFieldGeometry^ HeightFieldGeometry::ToManaged(PxHeightFieldGeometry geom)
 {
 	auto g = gcnew HeightFieldGeometry();
 		g->ColumnScale = geom.columnScale;
-		g->HeightField = ObjectTable::GetObject<PhysX::HeightField^>((intptr_t)geom.heightField);
+		g->HeightField = ObjectTable::Instance->GetObject<PhysX::HeightField^>((intptr_t)geom.heightField);
 		g->HeightFieldFlags = ToManagedEnum(MeshGeometryFlag, geom.heightFieldFlags);
 		g->HeightScale = geom.heightScale;
 		g->RowScale = geom.rowScale;

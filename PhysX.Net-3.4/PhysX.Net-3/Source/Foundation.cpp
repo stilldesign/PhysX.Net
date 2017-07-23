@@ -29,7 +29,7 @@ Foundation::Foundation([Optional] PhysX::ErrorCallback^ errorCallback)
 
 	_errorCallback = errorCallback;
 
-	ObjectTable::Add((intptr_t)_foundation, this, nullptr);
+	ObjectTable::Instance->Add((intptr_t)_foundation, this, nullptr);
 }
 Foundation::~Foundation()
 {

@@ -6,8 +6,8 @@
 QueryCache^ QueryCache::ToManaged(PxQueryCache unmanaged)
 {
 	auto managed = gcnew QueryCache();
-		managed->Shape = ObjectTable::GetObject<PhysX::Shape^>((intptr_t)unmanaged.shape);
-		managed->Actor = ObjectTable::GetObject<PhysX::RigidActor^>((intptr_t)unmanaged.actor);
+		managed->Shape = ObjectTable::Instance->GetObject<PhysX::Shape^>((intptr_t)unmanaged.shape);
+		managed->Actor = ObjectTable::Instance->GetObject<PhysX::RigidActor^>((intptr_t)unmanaged.actor);
 		managed->FaceIndex = unmanaged.faceIndex;
 
 	return managed;

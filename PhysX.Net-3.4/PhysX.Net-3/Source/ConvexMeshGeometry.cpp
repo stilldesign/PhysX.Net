@@ -30,7 +30,7 @@ ConvexMeshGeometry^ ConvexMeshGeometry::ToManaged(PxConvexMeshGeometry convexMes
 	cm->Scale = MeshScale::ToManaged(convexMesh.scale);
 	cm->ConvexMesh = convexMesh.convexMesh == NULL ? 
 		nullptr : 
-		ObjectTable::GetObject<PhysX::ConvexMesh^>((intptr_t)convexMesh.convexMesh);
+		ObjectTable::Instance->GetObject<PhysX::ConvexMesh^>((intptr_t)convexMesh.convexMesh);
 
 	return cm;
 }

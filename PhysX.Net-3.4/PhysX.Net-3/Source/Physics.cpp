@@ -107,7 +107,7 @@ void Physics::PostInit(PhysX::Foundation^ owner)
 {
 	ThrowIfNullOrDisposed(owner, "owner");
 
-	ObjectTable::Add((intptr_t)_physics, this, owner);
+	ObjectTable::Instance->Add((intptr_t)_physics, this, owner);
 
 	//
 
@@ -161,7 +161,7 @@ Scene^ Physics::CreateScene(SceneDesc^ sceneDesc)
 
 array<Scene^>^ Physics::Scenes::get()
 {
-	return ObjectTable::GetObjectsOfOwnerAndType<Scene^>(this);
+	return ObjectTable::Instance->GetObjectsOfOwnerAndType<Scene^>(this);
 }
 #pragma endregion
 
@@ -178,7 +178,7 @@ Material^ Physics::CreateMaterial(float staticFriction, float dynamicFriction, f
 
 array<Material^>^ Physics::Materials::get()
 {
-	return ObjectTable::GetObjectsOfOwnerAndType<Material^>(this);
+	return ObjectTable::Instance->GetObjectsOfOwnerAndType<Material^>(this);
 }
 #pragma endregion
 
@@ -200,7 +200,7 @@ HeightField^ Physics::CreateHeightField(System::IO::Stream^ stream)
 
 array<PhysX::HeightField^>^ Physics::HeightFields::get()
 {
-	return ObjectTable::GetObjectsOfOwnerAndType<PhysX::HeightField^>(this);
+	return ObjectTable::Instance->GetObjectsOfOwnerAndType<PhysX::HeightField^>(this);
 }
 #pragma endregion
 
@@ -233,7 +233,7 @@ TriangleMesh^ Physics::CreateTriangleMesh(System::IO::Stream^ stream)
 
 array<PhysX::TriangleMesh^>^ Physics::TriangleMesh::get()
 {
-	return ObjectTable::GetObjectsOfOwnerAndType<PhysX::TriangleMesh^>(this);
+	return ObjectTable::Instance->GetObjectsOfOwnerAndType<PhysX::TriangleMesh^>(this);
 }
 #pragma endregion
 
@@ -264,7 +264,7 @@ ConvexMesh^ Physics::CreateConvexMesh(System::IO::Stream^ stream)
 
 array<PhysX::ConvexMesh^>^ Physics::ConvexMesh::get()
 {
-	return ObjectTable::GetObjectsOfOwnerAndType<PhysX::ConvexMesh^>(this);
+	return ObjectTable::Instance->GetObjectsOfOwnerAndType<PhysX::ConvexMesh^>(this);
 }
 #pragma endregion
 
@@ -293,7 +293,7 @@ RigidStatic^ Physics::CreateRigidStatic([Optional] Nullable<Matrix> pose)
 
 array<RigidActor^>^ Physics::RigidActors::get()
 {
-	return ObjectTable::GetObjectsOfOwnerAndType<RigidActor^>(this);
+	return ObjectTable::Instance->GetObjectsOfOwnerAndType<RigidActor^>(this);
 }
 #pragma endregion
 
@@ -398,7 +398,7 @@ T Physics::CreateJoint(RigidActor^ actor0, Matrix localFrame0, RigidActor^ actor
 
 array<Joint^>^ Physics::Joints::get()
 {
-	return ObjectTable::GetObjectsOfType<Joint^>();
+	return ObjectTable::Instance->GetObjectsOfType<Joint^>();
 }
 #pragma endregion
 
@@ -419,7 +419,7 @@ ParticleSystem^ Physics::CreateParticleSystem(int maxParticles, bool perParticle
 
 array<ParticleSystem^>^ Physics::ParticleSystems::get()
 {
-	return ObjectTable::GetObjectsOfOwnerAndType<ParticleSystem^>(this);
+	return ObjectTable::Instance->GetObjectsOfOwnerAndType<ParticleSystem^>(this);
 }
 #pragma endregion
 
@@ -440,7 +440,7 @@ ParticleFluid^ Physics::CreateParticleFluid(int maximumParticles, bool perPartic
 
 array<ParticleFluid^>^ Physics::ParticleFluids::get()
 {
-	return ObjectTable::GetObjectsOfType<ParticleFluid^>();
+	return ObjectTable::Instance->GetObjectsOfType<ParticleFluid^>();
 }
 #pragma endregion
 
@@ -523,7 +523,7 @@ Cloth^ Physics::CreateCloth(Matrix globalPose, ClothFabric^ fabric, array<ClothP
 
 array<Cloth^>^ Physics::Cloths::get()
 {
-	return ObjectTable::GetObjectsOfOwnerAndType<Cloth^>(this);
+	return ObjectTable::Instance->GetObjectsOfOwnerAndType<Cloth^>(this);
 }
 
 ClothFabric^ Physics::CreateClothFabric(System::IO::Stream^ cookedStream)
@@ -575,7 +575,7 @@ ClothFabric^ Physics::CreateClothFabric(ClothFabricDesc^ desc)
 
 array<ClothFabric^>^ Physics::ClothFabrics::get()
 {
-	return ObjectTable::GetObjectsOfOwnerAndType<ClothFabric^>(this);
+	return ObjectTable::Instance->GetObjectsOfOwnerAndType<ClothFabric^>(this);
 }
 #pragma endregion
 

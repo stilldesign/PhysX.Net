@@ -14,7 +14,7 @@ namespace PhysX.Test
 			// Make sure the object table is completely empty at the beginning of each test
 			// TODO: This need should be elimited once the object table class is changed to be a singleton pattern instead
 			// of a static class
-			ObjectTable.Clear();
+			ObjectTable.Instance.Clear();
 		}
 
 		[TestMethod]
@@ -34,12 +34,12 @@ namespace PhysX.Test
 			var actor1 = new MockActor();
 			var actor2 = new MockActor();
 
-			ObjectTable.Add(1, physics, null);
-			ObjectTable.Add(2, mat1, physics);
-			ObjectTable.Add(3, mat2, physics);
-			ObjectTable.Add(4, scene, physics);
-			ObjectTable.Add(5, actor1, scene);
-			ObjectTable.Add(6, actor2, scene);
+			ObjectTable.Instance.Add(1, physics, null);
+			ObjectTable.Instance.Add(2, mat1, physics);
+			ObjectTable.Instance.Add(3, mat2, physics);
+			ObjectTable.Instance.Add(4, scene, physics);
+			ObjectTable.Instance.Add(5, actor1, scene);
+			ObjectTable.Instance.Add(6, actor2, scene);
 
 			//
 
@@ -61,12 +61,12 @@ namespace PhysX.Test
 			var obj1 = new MockPhysics();
 
 			// Add the object at address '5'
-			ObjectTable.Add(5, obj0, null);
+			ObjectTable.Instance.Add(5, obj0, null);
 
 			// We should not be able to add the same unmanaged address
 			try
 			{
-				ObjectTable.Add(5, obj1, null);
+				ObjectTable.Instance.Add(5, obj1, null);
 
 				Assert.Fail("The unmanaged object/address has already been wrapped and added to the ObjectTable, it can not be added again, instead it should be retrieved");
 			}
@@ -86,11 +86,11 @@ namespace PhysX.Test
 			var material2 = new MockMaterial();
 
 			// Add them to the object table with the physics parent
-			ObjectTable.Add(5, material1, physics);
-			ObjectTable.Add(6, material2, physics);
+			ObjectTable.Instance.Add(5, material1, physics);
+			ObjectTable.Instance.Add(6, material2, physics);
 
 			// Ask for the 2 material owned by the physics
-			var materialsOfPhysics = ObjectTable.GetObjectsOfOwnerAndType<MockMaterial>(physics);
+			var materialsOfPhysics = ObjectTable.Instance.GetObjectsOfOwnerAndType<MockMaterial>(physics);
 
 			Assert.IsNotNull(materialsOfPhysics);
 			Assert.AreEqual(2, materialsOfPhysics.Count());
@@ -106,11 +106,11 @@ namespace PhysX.Test
 			var material2 = new MockMaterial();
 
 			// Add them to the object table with the physics parent
-			ObjectTable.Add(5, material1, physics);
-			ObjectTable.Add(6, material2, physics);
+			ObjectTable.Instance.Add(5, material1, physics);
+			ObjectTable.Instance.Add(6, material2, physics);
 
 			// Ask for the 2 material owned by the physics
-			var materialsOfPhysics = ObjectTable.GetObjectsOfOwnerAndType<MockMaterial>(physics);
+			var materialsOfPhysics = ObjectTable.Instance.GetObjectsOfOwnerAndType<MockMaterial>(physics);
 
 			Assert.IsNotNull(materialsOfPhysics);
 
@@ -129,17 +129,17 @@ namespace PhysX.Test
 			var material1 = new MockMaterial();
 			var material2 = new MockMaterial();
 
-			ObjectTable.Add(5, material1, physics);
-			ObjectTable.Add(6, material2, physics);
+			ObjectTable.Instance.Add(5, material1, physics);
+			ObjectTable.Instance.Add(6, material2, physics);
 
 			// Make sure the objects are present to begin with
-			Assert.IsTrue(ObjectTable.Objects.ContainsValue(material1));
-			Assert.IsTrue(ObjectTable.Objects.ContainsValue(material2));
+			Assert.IsTrue(ObjectTable.Instance.Objects.ContainsValue(material1));
+			Assert.IsTrue(ObjectTable.Instance.Objects.ContainsValue(material2));
 
 			material2.Dispose();
 
-			Assert.IsTrue(ObjectTable.Objects.ContainsValue(material1));
-			Assert.IsFalse(ObjectTable.Objects.ContainsValue(material2));
+			Assert.IsTrue(ObjectTable.Instance.Objects.ContainsValue(material1));
+			Assert.IsFalse(ObjectTable.Instance.Objects.ContainsValue(material2));
 		}
 
 		[TestMethod]
@@ -150,17 +150,17 @@ namespace PhysX.Test
 			var material1 = new MockMaterial();
 			var material2 = new MockMaterial();
 
-			ObjectTable.Add(5, material1, physics);
-			ObjectTable.Add(6, material2, physics);
+			ObjectTable.Instance.Add(5, material1, physics);
+			ObjectTable.Instance.Add(6, material2, physics);
 
 			// Make sure the objects are present to begin with
-			Assert.IsTrue(ObjectTable.Ownership.ContainsKey(material1));
-			Assert.IsTrue(ObjectTable.Ownership.ContainsKey(material2));
+			Assert.IsTrue(ObjectTable.Instance.Ownership.ContainsKey(material1));
+			Assert.IsTrue(ObjectTable.Instance.Ownership.ContainsKey(material2));
 
 			material2.Dispose();
 
-			Assert.IsTrue(ObjectTable.Ownership.ContainsKey(material1));
-			Assert.IsFalse(ObjectTable.Ownership.ContainsKey(material2));
+			Assert.IsTrue(ObjectTable.Instance.Ownership.ContainsKey(material1));
+			Assert.IsFalse(ObjectTable.Instance.Ownership.ContainsKey(material2));
 		}
 
 		[TestMethod]
@@ -171,16 +171,16 @@ namespace PhysX.Test
 			var material1 = new MockMaterial();
 			var material2 = new MockMaterial();
 
-			ObjectTable.Add(5, material1, physics);
-			ObjectTable.Add(6, material2, physics);
+			ObjectTable.Instance.Add(5, material1, physics);
+			ObjectTable.Instance.Add(6, material2, physics);
 
 			// Make sure the objects are present to begin with
 			{
 				var materialKey = new ObjectTableOwnershipType(physics, typeof(MockMaterial));
 
-				Assert.IsTrue(ObjectTable.OwnerTypeLookup.ContainsKey(materialKey));
+				Assert.IsTrue(ObjectTable.Instance.OwnerTypeLookup.ContainsKey(materialKey));
 
-				var materialsOwnedByPhysics = ObjectTable.GetObjectsOfOwnerAndType<MockMaterial>(physics);
+				var materialsOwnedByPhysics = ObjectTable.Instance.GetObjectsOfOwnerAndType<MockMaterial>(physics);
 
 				Assert.IsNotNull(materialsOwnedByPhysics);
 				Assert.AreEqual(2, materialsOwnedByPhysics.Count());
@@ -193,9 +193,9 @@ namespace PhysX.Test
 			{
 				var materialKey = new ObjectTableOwnershipType(physics, typeof(MockMaterial));
 
-				Assert.IsTrue(ObjectTable.OwnerTypeLookup.ContainsKey(materialKey));
+				Assert.IsTrue(ObjectTable.Instance.OwnerTypeLookup.ContainsKey(materialKey));
 
-				var materialsOwnedByPhysics = ObjectTable.GetObjectsOfOwnerAndType<MockMaterial>(physics);
+				var materialsOwnedByPhysics = ObjectTable.Instance.GetObjectsOfOwnerAndType<MockMaterial>(physics);
 
 				Assert.IsNotNull(materialsOwnedByPhysics);
 				Assert.AreEqual(1, materialsOwnedByPhysics.Count());
@@ -211,15 +211,15 @@ namespace PhysX.Test
 			var material1 = new MockMaterial();
 			var material2 = new MockMaterial();
 
-			ObjectTable.Add(5, material1, physics);
-			ObjectTable.Add(6, material2, physics);
+			ObjectTable.Instance.Add(5, material1, physics);
+			ObjectTable.Instance.Add(6, material2, physics);
 
 			// Make sure the objects are present to begin with
 			{
 				var materialKey = new ObjectTableOwnershipType(physics, typeof(MockMaterial));
 
-				Assert.IsTrue(ObjectTable.OwnerTypeLookup.ContainsKey(materialKey));
-				Assert.IsNotNull(ObjectTable.OwnerTypeLookup[materialKey]);
+				Assert.IsTrue(ObjectTable.Instance.OwnerTypeLookup.ContainsKey(materialKey));
+				Assert.IsNotNull(ObjectTable.Instance.OwnerTypeLookup[materialKey]);
 			}
 
 			material1.Dispose();
@@ -230,14 +230,14 @@ namespace PhysX.Test
 
 				// As we have disposed both materials; the entry in the dictionary for Physics-MockMaterial should
 				// be removed
-				Assert.IsFalse(ObjectTable.OwnerTypeLookup.ContainsKey(materialKey));
+				Assert.IsFalse(ObjectTable.Instance.OwnerTypeLookup.ContainsKey(materialKey));
 			}
 		}
 
 		[TestMethod]
 		public void GetObjectHandlesNull()
 		{
-			RigidActor actor = ObjectTable.GetObject<RigidActor>(0);
+			RigidActor actor = ObjectTable.Instance.GetObject<RigidActor>(0);
 
 			Assert.IsNull(actor);
 		}
@@ -246,7 +246,7 @@ namespace PhysX.Test
 		[ExpectedException(typeof(PhysXException))]
 		public void NullKeyIsNotAllowed()
 		{
-			ObjectTable.Add(0, new MockMaterial(), null);
+			ObjectTable.Instance.Add(0, new MockMaterial(), null);
 		}
 
 		//

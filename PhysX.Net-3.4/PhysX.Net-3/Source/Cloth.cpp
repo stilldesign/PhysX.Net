@@ -10,8 +10,8 @@ Cloth::Cloth(PxCloth* cloth, PhysX::Physics^ owner)
 	// Either wrap or get the managed cloth fabric instance
 	PxClothFabric* fabric = cloth->getFabric();
 
-	if (ObjectTable::Contains((intptr_t)fabric))
-		_fabric = ObjectTable::GetObject<PhysX::ClothFabric^>((intptr_t)fabric);
+	if (ObjectTable::Instance->Contains((intptr_t)fabric))
+		_fabric = ObjectTable::Instance->GetObject<PhysX::ClothFabric^>((intptr_t)fabric);
 	else
 		_fabric = gcnew PhysX::ClothFabric(fabric, owner);
 }

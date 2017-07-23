@@ -12,7 +12,7 @@ TriangleMesh::TriangleMesh(PxTriangleMesh* triangleMesh, PhysX::Physics^ physics
 	_triangleMesh = triangleMesh;
 	_physics = physics;
 
-	ObjectTable::Add((intptr_t)triangleMesh, this, physics);
+	ObjectTable::Instance->Add((intptr_t)triangleMesh, this, physics);
 }
 
 TriangleMesh::~TriangleMesh()

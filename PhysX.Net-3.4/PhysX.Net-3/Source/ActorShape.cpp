@@ -8,8 +8,8 @@ using namespace PhysX;
 
 void ActorShape::PopulateManaged(PxActorShape unmanaged)
 {
-	this->Actor = (unmanaged.actor == NULL ? nullptr : ObjectTable::GetObject<RigidActor^>((intptr_t)unmanaged.actor));
-	this->Shape = (unmanaged.shape == NULL ? nullptr : ObjectTable::GetObject<PhysX::Shape^>((intptr_t)unmanaged.shape));
+	this->Actor = (unmanaged.actor == NULL ? nullptr : ObjectTable::Instance->GetObject<RigidActor^>((intptr_t)unmanaged.actor));
+	this->Shape = (unmanaged.shape == NULL ? nullptr : ObjectTable::Instance->GetObject<PhysX::Shape^>((intptr_t)unmanaged.shape));
 }
 void ActorShape::PopulateUnmanaged(PxActorShape& unmanaged)
 {

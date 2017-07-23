@@ -15,7 +15,7 @@ Constraint::Constraint(PxConstraint* constraint, PhysX::IDisposable^ owner, bool
 	_unmanagedOwner = unmanagedOwner;
 
 	// Constraints can be created either as a child of a joint or a child of a physics
-	ObjectTable::Add((intptr_t)constraint, this, owner);
+	ObjectTable::Instance->Add((intptr_t)constraint, this, owner);
 }
 Constraint::~Constraint()
 {
@@ -70,7 +70,7 @@ PhysX::Scene^ Constraint::Scene::get()
 {
 	PxScene* scene = _constraint->getScene();
 
-	return ObjectTable::GetObject<PhysX::Scene^>((intptr_t)scene);
+	return ObjectTable::Instance->GetObject<PhysX::Scene^>((intptr_t)scene);
 }
 
 PhysX::RigidActor^ Constraint::Actor0::get()
@@ -81,7 +81,7 @@ PhysX::RigidActor^ Constraint::Actor0::get()
 	if (a == NULL)
 		return nullptr;
 
-	return ObjectTable::GetObject<RigidActor^>((intptr_t)a);
+	return ObjectTable::Instance->GetObject<RigidActor^>((intptr_t)a);
 }
 void Constraint::Actor0::set(PhysX::RigidActor^ value)
 {
@@ -101,7 +101,7 @@ PhysX::RigidActor^ Constraint::Actor1::get()
 	if (b == NULL)
 		return nullptr;
 
-	return ObjectTable::GetObject<RigidActor^>((intptr_t)b);
+	return ObjectTable::Instance->GetObject<RigidActor^>((intptr_t)b);
 }
 void Constraint::Actor1::set(PhysX::RigidActor^ value)
 {

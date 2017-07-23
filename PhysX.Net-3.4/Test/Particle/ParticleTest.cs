@@ -20,7 +20,7 @@ namespace PhysX.Test
 					GC.Collect();
 
 					Assert.IsFalse(particleSystem.Disposed);
-					Assert.IsTrue(ObjectTable.Contains(particleSystem));
+					Assert.IsTrue(ObjectTable.Instance.Contains(particleSystem));
 				}
 
 				Assert.IsTrue(particleSystem.Disposed);
@@ -36,7 +36,7 @@ namespace PhysX.Test
 
 				ParticleFluid fluid = physics.Physics.CreateParticleFluid(100);
 
-				Assert.IsTrue(ObjectTable.Contains(fluid));
+				Assert.IsTrue(ObjectTable.Instance.Contains(fluid));
 
 				Assert.IsFalse(fluid.Disposed);
 

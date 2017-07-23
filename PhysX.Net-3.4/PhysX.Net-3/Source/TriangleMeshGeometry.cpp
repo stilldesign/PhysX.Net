@@ -35,7 +35,7 @@ TriangleMeshGeometry^ TriangleMeshGeometry::ToManaged(PxTriangleMeshGeometry tri
 		g->MeshFlags = ToManagedEnum(MeshGeometryFlag, triangleMesh.meshFlags);
 		g->TriangleMesh = triangleMesh.triangleMesh == NULL ?
 			nullptr : 
-			ObjectTable::GetObject<PhysX::TriangleMesh^>((intptr_t)triangleMesh.triangleMesh);
+			ObjectTable::Instance->GetObject<PhysX::TriangleMesh^>((intptr_t)triangleMesh.triangleMesh);
 
 	// TODO: paddingFromFlags
 

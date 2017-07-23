@@ -13,7 +13,7 @@ Articulation::Articulation(PxArticulation* articulation, PhysX::Physics^ owner)
 
 	_articulation = articulation;
 
-	ObjectTable::Add((intptr_t)articulation, this, owner);
+	ObjectTable::Instance->Add((intptr_t)articulation, this, owner);
 }
 Articulation::~Articulation()
 {
@@ -46,7 +46,7 @@ Serializable^ Articulation::AsSerializable()
 
 PhysX::Scene^ Articulation::Scene::get()
 {
-	return ObjectTable::GetObject<PhysX::Scene^>((intptr_t)_articulation->getScene());
+	return ObjectTable::Instance->GetObject<PhysX::Scene^>((intptr_t)_articulation->getScene());
 }
 
 int Articulation::MaximumProjectionIterations::get()
@@ -95,7 +95,7 @@ array<ArticulationLink^>^ Articulation::ArticulationLinks::get()
 
 	for (int i = 0; i < n; i++)
 	{
-		links[i] = ObjectTable::GetObject<ArticulationLink^>((intptr_t)l + i);
+		links[i] = ObjectTable::Instance->GetObject<ArticulationLink^>((intptr_t)l + i);
 	}
 
 	free(l);
@@ -122,7 +122,7 @@ Bounds3 Articulation::WorldBounds::get()
 
 PhysX::Aggregate^ Articulation::Aggregate::get()
 {
-	return ObjectTable::GetObject<PhysX::Aggregate^>((intptr_t)_articulation->getAggregate());
+	return ObjectTable::Instance->GetObject<PhysX::Aggregate^>((intptr_t)_articulation->getAggregate());
 }
 
 PxArticulation* Articulation::UnmanagedPointer::get()

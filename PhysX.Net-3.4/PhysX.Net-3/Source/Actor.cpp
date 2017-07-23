@@ -14,7 +14,7 @@ Actor::Actor(PxActor* actor, PhysX::IDisposable^ owner)
 
 	_actor = actor;
 
-	ObjectTable::Add((intptr_t)actor, this, owner);
+	ObjectTable::Instance->Add((intptr_t)actor, this, owner);
 
 	this->UnmanagedOwner = true;
 }
@@ -69,7 +69,7 @@ PhysX::Scene^ Actor::Scene::get()
 {
 	PxScene* scene = _actor->getScene();
 
-	return ObjectTable::GetObject<PhysX::Scene^>((intptr_t)scene);
+	return ObjectTable::Instance->GetObject<PhysX::Scene^>((intptr_t)scene);
 }
 
 ActorType Actor::Type::get()

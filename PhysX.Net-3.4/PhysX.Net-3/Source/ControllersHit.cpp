@@ -14,7 +14,7 @@
 ControllersHit^ ControllersHit::ToManaged(PxControllersHit hit)
 {
 	ControllersHit^ h = gcnew ControllersHit();
-		h->Other = (hit.other == NULL ? nullptr : ObjectTable::GetObject<PhysX::Controller^>((intptr_t)hit.other));
+		h->Other = (hit.other == NULL ? nullptr : ObjectTable::Instance->GetObject<PhysX::Controller^>((intptr_t)hit.other));
 
 	ControllerHit::PopulateManaged(&hit, h);
 

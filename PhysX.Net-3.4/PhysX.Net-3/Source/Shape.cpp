@@ -25,7 +25,7 @@ Shape::Shape(PxShape* shape, PhysX::RigidActor^ parentActor)
 	_shape = shape;
 	_actor = parentActor;
 
-	ObjectTable::Add((intptr_t)_shape, this, parentActor);
+	ObjectTable::Instance->Add((intptr_t)_shape, this, parentActor);
 
 	this->UnmanagedOwner = true;
 }
@@ -154,7 +154,7 @@ Material^ Shape::GetMaterialFromInternalFaceIndex(int faceIndex)
 	if (material == NULL)
 		return nullptr;
 
-	return ObjectTable::GetObject<Material^>((intptr_t)material);
+	return ObjectTable::Instance->GetObject<Material^>((intptr_t)material);
 }
 
 //
@@ -315,7 +315,7 @@ array<PhysX::Material^>^ Shape::Materials::get()
 	for (int i = 0; i < n; i++)
 	{
 		PxMaterial* mat = materials[i];
-		Material^ s = ObjectTable::TryGetObject<Material^>((intptr_t)mat);
+		Material^ s = ObjectTable::Instance->TryGetObject<Material^>((intptr_t)mat);
 		managedMaterials->Add(s);
 	}
 

@@ -9,11 +9,11 @@ ContactModifyPair^ ContactModifyPair::ToManaged(PxContactModifyPair* unmanaged)
 {
 	auto managed = gcnew ContactModifyPair();
 
-	managed->ActorA = (RigidActor^)ObjectTable::GetObject<RigidActor^>((intptr_t)unmanaged->actor[0]);
-	managed->ActorB = (RigidActor^)ObjectTable::GetObject<RigidActor^>((intptr_t)unmanaged->actor[1]);
+	managed->ActorA = (RigidActor^)ObjectTable::Instance->GetObject<RigidActor^>((intptr_t)unmanaged->actor[0]);
+	managed->ActorB = (RigidActor^)ObjectTable::Instance->GetObject<RigidActor^>((intptr_t)unmanaged->actor[1]);
 
-	managed->ShapeA = (Shape^)ObjectTable::GetObject<Shape^>((intptr_t)unmanaged->shape[0]);
-	managed->ShapeB = (Shape^)ObjectTable::GetObject<Shape^>((intptr_t)unmanaged->shape[1]);
+	managed->ShapeA = (Shape^)ObjectTable::Instance->GetObject<Shape^>((intptr_t)unmanaged->shape[0]);
+	managed->ShapeB = (Shape^)ObjectTable::Instance->GetObject<Shape^>((intptr_t)unmanaged->shape[1]);
 
 	managed->TransformA = MM(&unmanaged->transform[0]);
 	managed->TransformB = MM(&unmanaged->transform[1]);

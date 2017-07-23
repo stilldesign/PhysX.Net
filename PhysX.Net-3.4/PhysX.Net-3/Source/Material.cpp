@@ -13,7 +13,7 @@ Material::Material(PxMaterial* material, PhysX::Physics^ owner)
 
 	_material = material;
 
-	ObjectTable::Add((intptr_t)_material, this, owner);
+	ObjectTable::Instance->Add((intptr_t)_material, this, owner);
 }
 Material::~Material()
 {

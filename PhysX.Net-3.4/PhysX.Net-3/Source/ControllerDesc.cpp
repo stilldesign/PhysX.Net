@@ -51,7 +51,7 @@ void ControllerDesc::AssignToManaged(PxControllerDesc& d, ControllerDesc^ desc)
 	desc->ScaleCoefficient = d.scaleCoeff;
 	desc->VolumeGrowth = d.volumeGrowth;
 	desc->NonWalkableMode = ToManagedEnum(ControllerNonWalkableMode, d.nonWalkableMode);
-	desc->Material = ObjectTable::GetObject<PhysX::Material^>((intptr_t)d.material);
-	desc->ReportCallback = ObjectTable::GetObject<PhysX::UserControllerHitReport^>((intptr_t)d.reportCallback);
-	desc->BehaviorCallback = ObjectTable::TryGetObject<PhysX::ControllerBehaviorCallback^>((intptr_t)d.behaviorCallback);
+	desc->Material = ObjectTable::Instance->GetObject<PhysX::Material^>((intptr_t)d.material);
+	desc->ReportCallback = ObjectTable::Instance->GetObject<PhysX::UserControllerHitReport^>((intptr_t)d.reportCallback);
+	desc->BehaviorCallback = ObjectTable::Instance->TryGetObject<PhysX::ControllerBehaviorCallback^>((intptr_t)d.behaviorCallback);
 }

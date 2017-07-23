@@ -8,7 +8,7 @@ void ControllerHit::PopulateManaged(PxControllerHit* unmanaged, ControllerHit^ m
 		throw gcnew ArgumentNullException("unmanaged");
 	ThrowIfNull(managed, "managed");
 
-	managed->Controller = (unmanaged->controller == NULL ? nullptr : ObjectTable::GetObject<PhysX::Controller^>((intptr_t)unmanaged->controller));
+	managed->Controller = (unmanaged->controller == NULL ? nullptr : ObjectTable::Instance->GetObject<PhysX::Controller^>((intptr_t)unmanaged->controller));
 	managed->WorldPosition = MathUtil::PxExtendedVec3ToVector3(unmanaged->worldPos);
 	managed->WorldNormal = MathUtil::PxVec3ToVector3(unmanaged->worldNormal);
 	managed->Direction = MathUtil::PxVec3ToVector3(unmanaged->dir);

@@ -11,7 +11,7 @@ Collection::Collection(PxCollection* collection, PhysX::IDisposable^ owner)
 
 	_collection = collection;
 
-	ObjectTable::Add((intptr_t)collection, this, owner);
+	ObjectTable::Instance->Add((intptr_t)collection, this, owner);
 }
 Collection::~Collection()
 {
@@ -37,20 +37,20 @@ bool Collection::Disposed::get()
 
 void Collection::Add(IPhysXEntity^ object)
 {
-	PxBase* unmanaged = (PxBase*)ObjectTable::GetObject(object);
+	PxBase* unmanaged = (PxBase*)ObjectTable::Instance->GetObject(object);
 
 	_collection->add(*unmanaged);
 }
 void Collection::AddId(IPhysXEntity^ object, long reference)
 {
-	PxBase* unmanaged = (PxBase*)ObjectTable::GetObject(object);
+	PxBase* unmanaged = (PxBase*)ObjectTable::Instance->GetObject(object);
 
 	_collection->addId(*unmanaged, reference);
 }
 
 bool Collection::Contains(IPhysXEntity^ object)
 {
-	PxBase* unmanaged = (PxBase*)ObjectTable::GetObject(object);
+	PxBase* unmanaged = (PxBase*)ObjectTable::Instance->GetObject(object);
 
 	return _collection->contains(*unmanaged);
 }
@@ -68,7 +68,7 @@ IPhysXEntity^ Collection::GetObject(int index)
 
 void Collection::Remove(IPhysXEntity^ object)
 {
-	PxBase* unmanaged = (PxBase*)ObjectTable::GetObject(object);
+	PxBase* unmanaged = (PxBase*)ObjectTable::Instance->GetObject(object);
 
 	_collection->remove(*unmanaged);
 }

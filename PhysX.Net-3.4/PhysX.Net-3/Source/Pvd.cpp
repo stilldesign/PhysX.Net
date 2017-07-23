@@ -12,7 +12,7 @@ Pvd::Pvd(Foundation^ foundation)
 
 	_pvd = PxCreatePvd(*foundation->UnmanagedPointer);
 
-	ObjectTable::Add((intptr_t)_pvd, this, foundation);
+	ObjectTable::Instance->Add((intptr_t)_pvd, this, foundation);
 }
 Pvd::~Pvd()
 {

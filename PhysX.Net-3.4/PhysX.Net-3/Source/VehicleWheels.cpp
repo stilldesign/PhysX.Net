@@ -11,7 +11,7 @@ VehicleWheels::VehicleWheels(PxVehicleWheels* wheels, PhysX::Physics^ owner)
 
 	_wheels = wheels;
 
-	ObjectTable::Add((intptr_t)wheels, this, owner);
+	ObjectTable::Instance->Add((intptr_t)wheels, this, owner);
 }
 VehicleWheels::~VehicleWheels()
 {
@@ -48,7 +48,7 @@ float VehicleWheels::ComputeSidewaysSpeed()
 
 PhysX::Physics^ VehicleWheels::Physics::get()
 {
-	return ObjectTable::GetObject<PhysX::Physics^>((intptr_t)_wheels);
+	return ObjectTable::Instance->GetObject<PhysX::Physics^>((intptr_t)_wheels);
 }
 
 int VehicleWheels::VehicleType::get()
@@ -60,7 +60,7 @@ PhysX::RigidDynamic^ VehicleWheels::Actor::get()
 {
 	PxRigidDynamic* actor = _wheels->getRigidDynamicActor();
 
-	return ObjectTable::GetObject<RigidDynamic^>((intptr_t)actor);
+	return ObjectTable::Instance->GetObject<RigidDynamic^>((intptr_t)actor);
 }
 
 PxVehicleWheels* VehicleWheels::UnmanagedPointer::get()

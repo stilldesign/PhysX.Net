@@ -12,7 +12,7 @@ HeightField::HeightField(PxHeightField* heightField, PhysX::Physics^ owner)
 	_heightField = heightField;
 	_physics = owner;
 
-	ObjectTable::Add((intptr_t)heightField, this, owner);
+	ObjectTable::Instance->Add((intptr_t)heightField, this, owner);
 }
 HeightField::~HeightField()
 {

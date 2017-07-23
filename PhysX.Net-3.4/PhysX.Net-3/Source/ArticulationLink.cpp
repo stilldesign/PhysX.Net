@@ -20,13 +20,13 @@ ArticulationLink::!ArticulationLink()
 
 PhysX::Articulation^ ArticulationLink::Articulation::get()
 {
-	return ObjectTable::GetObject<PhysX::Articulation^>((intptr_t)&this->UnmanagedPointer->getArticulation());
+	return ObjectTable::Instance->GetObject<PhysX::Articulation^>((intptr_t)&this->UnmanagedPointer->getArticulation());
 }
 
 PhysX::ArticulationJoint^ ArticulationLink::ArticulationJoint::get()
 {
 	auto j = this->UnmanagedPointer->getInboundJoint();
-	return ObjectTable::GetObject<PhysX::ArticulationJoint^>((intptr_t)&j);
+	return ObjectTable::Instance->GetObject<PhysX::ArticulationJoint^>((intptr_t)&j);
 }
 
 array<PhysX::ArticulationLink^>^ ArticulationLink::Children::get()
@@ -43,7 +43,7 @@ array<PhysX::ArticulationLink^>^ ArticulationLink::Children::get()
 	for (int i = 0; i < q; i++)
 	{
 		PxArticulation& a = links[i]->getArticulation();
-		auto articulation = ObjectTable::GetObject<PhysX::Articulation^>((intptr_t)&a);
+		auto articulation = ObjectTable::Instance->GetObject<PhysX::Articulation^>((intptr_t)&a);
 
 		l[i] = gcnew ArticulationLink(links[i], articulation);
 	}

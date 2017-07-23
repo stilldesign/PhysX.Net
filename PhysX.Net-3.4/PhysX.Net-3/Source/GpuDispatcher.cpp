@@ -8,7 +8,7 @@ GpuDispatcher::GpuDispatcher(PxGpuDispatcher* gpuDispatcher, PhysX::CudaContextM
 
 	_gpuDispatcher = gpuDispatcher;
 
-	ObjectTable::Add((intptr_t)gpuDispatcher, this, owner);
+	ObjectTable::Instance->Add((intptr_t)gpuDispatcher, this, owner);
 }
 GpuDispatcher::~GpuDispatcher()
 {
@@ -89,7 +89,7 @@ PhysX::CudaContextManager^ GpuDispatcher::CudaContextManager::get()
 {
 	PxCudaContextManager* ccm = _gpuDispatcher->getCudaContextManager();
 
-	return ObjectTable::GetObject<PhysX::CudaContextManager^>((intptr_t)ccm);
+	return ObjectTable::Instance->GetObject<PhysX::CudaContextManager^>((intptr_t)ccm);
 }
 
 PxGpuDispatcher* GpuDispatcher::UnmanagedPointer::get()

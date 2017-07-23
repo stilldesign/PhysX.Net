@@ -24,8 +24,8 @@ UserQueryFilterCallback::UserQueryFilterCallback(QueryFilterCallback^ managed)
 PxQueryHitType::Enum UserQueryFilterCallback::preFilter(const PxFilterData& filterData, const PxShape* shape, const PxRigidActor* actor, PxHitFlags& queryFlags)
 {
 	auto fd = FilterData::ToManaged(filterData);
-	auto s = (shape == NULL ? nullptr : ObjectTable::GetObject<Shape^>((intptr_t)shape));
-	auto a = (actor == NULL ? nullptr : ObjectTable::GetObject<RigidActor^>((intptr_t)actor));
+	auto s = (shape == NULL ? nullptr : ObjectTable::Instance->GetObject<Shape^>((intptr_t)shape));
+	auto a = (actor == NULL ? nullptr : ObjectTable::Instance->GetObject<RigidActor^>((intptr_t)actor));
 	auto qf = ToManagedEnum(HitFlag, queryFlags);
 
 	QueryHitType ret = _managed->PreFilter(fd, s, a, qf);

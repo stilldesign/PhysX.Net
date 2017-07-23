@@ -10,7 +10,7 @@ ObstacleContext::ObstacleContext(PxObstacleContext* context, ControllerManager^ 
 
 	_context = context;
 
-	ObjectTable::Add((intptr_t)context, this, owner);
+	ObjectTable::Instance->Add((intptr_t)context, this, owner);
 }
 ObstacleContext::~ObstacleContext()
 {

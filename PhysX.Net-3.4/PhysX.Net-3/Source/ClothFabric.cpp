@@ -11,7 +11,7 @@ ClothFabric::ClothFabric(PxClothFabric* clothFabric, PhysX::Physics^ owner)
 
 	_clothFabric = clothFabric;
 
-	ObjectTable::Add((intptr_t)_clothFabric, this, owner);
+	ObjectTable::Instance->Add((intptr_t)_clothFabric, this, owner);
 }
 ClothFabric::~ClothFabric()
 {

@@ -18,8 +18,8 @@ void InternalShapeIterator::processShapes(PxU32 count, const PxActorShape* actor
 	{
 		PxActorShape x = actorShapePairs[i];
 
-		auto actor = ObjectTable::GetObject<RigidActor^>((intptr_t)x.actor);
-		auto shape = ObjectTable::GetObject<Shape^>((intptr_t)x.shape);
+		auto actor = ObjectTable::Instance->GetObject<RigidActor^>((intptr_t)x.actor);
+		auto shape = ObjectTable::Instance->GetObject<Shape^>((intptr_t)x.shape);
 
 		as[i] = gcnew ActorShape(actor, shape);
 	}

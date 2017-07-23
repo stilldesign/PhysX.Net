@@ -8,7 +8,7 @@ namespace PhysX
 {
 	ref class ObjectTableEventArgs;
 	
-	// TODO: Make ObjectTable an instance class instead of containing all static data and methods, but then wrap in singleton pattern.
+	// TODO: Make ObjectTable an instance class instead of containing all data and methods, but then wrap in singleton pattern.
 	/// <summary>
 	/// Manages lookups and disposals for unmanaged-managed pairs.
 	/// This class is not thread safe.
@@ -16,23 +16,30 @@ namespace PhysX
 	public ref class ObjectTable sealed
 	{
 		public:
-			static event EventHandler<ObjectTableEventArgs^>^ ObjectAdded;
-			static event EventHandler<ObjectTableEventArgs^>^ ObjectRemoved;
+			event EventHandler<ObjectTableEventArgs^>^ ObjectAdded;
+			event EventHandler<ObjectTableEventArgs^>^ ObjectRemoved;
 			
 		private:
+			static ObjectTable^ _instance;
+
 			// A collection of native objects to their managed version
-			static Dictionary<intptr_t, Object^>^ _objectTable;
+			Dictionary<intptr_t, Object^>^ _objectTable;
 			// A collection of managed objects to their managed owner
-			static Dictionary<IDisposable^, IDisposable^>^ _ownership;
+			Dictionary<IDisposable^, IDisposable^>^ _ownership;
 			// A collection of ownership-type pairs to a collection of objects
 			// This dictionary is used to lookup objects which are owned by X and of type Y. (e.g. property Physics.Cloths > Key: Owner: physics, Type: Cloth yields a collection of Cloth).
-			static Dictionary<ObjectTableOwnershipType, List<Object^>^>^ _ownerTypeLookup;
+			Dictionary<ObjectTableOwnershipType, List<Object^>^>^ _ownerTypeLookup;
 			
-			static bool _performingDisposal;
+			bool _performingDisposal;
 			
+	public:
+		static ObjectTable()
+		{
+			_instance = gcnew ObjectTable();
+		}
+
 		private:
-			ObjectTable();
-			static ObjectTable()
+			ObjectTable()
 			{
 				_objectTable = gcnew Dictionary<intptr_t, Object^>();
 				_ownership = gcnew Dictionary<IDisposable^, IDisposable^>();
@@ -42,62 +49,67 @@ namespace PhysX
 			}
 			
 		public:
-			static void Add(intptr_t pointer, IDisposable^ object, IDisposable^ owner);
-			static void EnsureUnmanagedObjectIsOnlyWrappedOnce(intptr_t unmanaged, Type^ managedType);
+			void Add(intptr_t pointer, IDisposable^ object, IDisposable^ owner);
+			void EnsureUnmanagedObjectIsOnlyWrappedOnce(intptr_t unmanaged, Type^ managedType);
 			
-			static void AddObjectOwner(IDisposable^ object, IDisposable^ owner);
-			static void AddOwnerTypeLookup(Object^ owner, IDisposable^ object);
+			void AddObjectOwner(IDisposable^ object, IDisposable^ owner);
+			void AddOwnerTypeLookup(Object^ owner, IDisposable^ object);
 
-			static bool Remove(intptr_t pointer);
-			static bool Remove(Object^ object);
+			bool Remove(intptr_t pointer);
+			bool Remove(Object^ object);
 				
-			static void Clear();
+			void Clear();
 			
 			generic<typename T>
-			static T GetObject(intptr_t pointer);
+			T GetObject(intptr_t pointer);
 
 			generic<typename T>
-			static T TryGetObject(intptr_t pointer);
+			T TryGetObject(intptr_t pointer);
 
-			static intptr_t GetObject(Object^ object);
+			intptr_t GetObject(Object^ object);
 
 			generic<typename T>
-			static array<T>^ GetObjects(intptr_t* pointers, int count);
+			array<T>^ GetObjects(intptr_t* pointers, int count);
 			
 			generic<typename T> where T : ref class
-			static array<T>^ GetObjectsOfType();
+			array<T>^ GetObjectsOfType();
 
 			generic<typename T> where T : ref class
-			static array<T>^ GetObjectsOfOwnerAndType(Object^ owner);
+			array<T>^ GetObjectsOfOwnerAndType(Object^ owner);
 
-			static bool Contains(intptr_t pointer);
-			static bool Contains(Object^ object);
+			bool Contains(intptr_t pointer);
+			bool Contains(Object^ object);
 			
 		private:
-			static void disposableObject_OnDisposing(Object^ sender, EventArgs^ e);
+			void disposableObject_OnDisposing(Object^ sender, EventArgs^ e);
 
-			static void DisposeOfObjectAndDependents(IDisposable^ disposable);
+			void DisposeOfObjectAndDependents(IDisposable^ disposable);
 
-			static array<IDisposable^>^ GetDependents(IDisposable^ disposable);
-			static void GetDependents(IDisposable^ disposable, List<IDisposable^>^ disposables);
+			array<IDisposable^>^ GetDependents(IDisposable^ disposable);
+			void GetDependents(IDisposable^ disposable, List<IDisposable^>^ disposables);
 			
 		public:
 			property int Count
 			{
-				static int get();
+				int get();
 			}
 
 			property Dictionary<intptr_t, Object^>^ Objects
 			{
-				static Dictionary<intptr_t, Object^>^ get();
+				Dictionary<intptr_t, Object^>^ get();
 			}
 			property Dictionary<IDisposable^, IDisposable^>^ Ownership
 			{
-				static Dictionary<IDisposable^, IDisposable^>^ get();
+				Dictionary<IDisposable^, IDisposable^>^ get();
 			}
 			property Dictionary<ObjectTableOwnershipType, List<Object^>^>^ OwnerTypeLookup
 			{
-				static Dictionary<ObjectTableOwnershipType, List<Object^>^>^ get();
+				Dictionary<ObjectTableOwnershipType, List<Object^>^>^ get();
+			}
+
+			property ObjectTable^ Instance
+			{
+				static ObjectTable^ get();
 			}
 	};
 };

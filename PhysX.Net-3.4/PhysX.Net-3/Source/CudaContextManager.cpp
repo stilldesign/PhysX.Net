@@ -24,7 +24,7 @@ CudaContextManager::CudaContextManager(Foundation^ foundation)
 			_gpuDispatcher = gcnew PhysX::GpuDispatcher(gpuDispatcher, this);
 	}
 
-	ObjectTable::Add((intptr_t)native, this, foundation);
+	ObjectTable::Instance->Add((intptr_t)native, this, foundation);
 }
 CudaContextManager::~CudaContextManager()
 {

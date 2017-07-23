@@ -19,7 +19,7 @@ Joint::Joint(PxJoint* joint, PhysX::Physics^ owner)
 	// Constraint
 	_constraint = gcnew PhysX::Constraint(_joint->getConstraint(), this, false);
 
-	ObjectTable::Add((intptr_t)joint, this, owner);
+	ObjectTable::Instance->Add((intptr_t)joint, this, owner);
 }
 Joint::~Joint()
 {
@@ -80,7 +80,7 @@ void Joint::SetGlobalFrame(Vector3 anchor, Vector3 axis)
 
 PhysX::Scene^ Joint::Scene::get()
 {
-	return ObjectTable::TryGetObject<PhysX::Scene^>((intptr_t)_joint->getScene());
+	return ObjectTable::Instance->TryGetObject<PhysX::Scene^>((intptr_t)_joint->getScene());
 }
 
 PhysX::Constraint^ Joint::Constraint::get()
@@ -102,7 +102,7 @@ PhysX::RigidActor^ Joint::Actor0::get()
 	if (a0 == NULL)
 		return nullptr;
 
-	return ObjectTable::GetObject<RigidActor^>((intptr_t)a0);
+	return ObjectTable::Instance->GetObject<RigidActor^>((intptr_t)a0);
 }
 PhysX::RigidActor^ Joint::Actor1::get()
 {
@@ -113,7 +113,7 @@ PhysX::RigidActor^ Joint::Actor1::get()
 	if (a1 == NULL)
 		return nullptr;
 
-	return ObjectTable::GetObject<RigidActor^>((intptr_t)a1);
+	return ObjectTable::Instance->GetObject<RigidActor^>((intptr_t)a1);
 }
 
 Matrix Joint::LocalPose0::get()

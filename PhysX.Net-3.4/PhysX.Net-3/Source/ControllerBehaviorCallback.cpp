@@ -7,7 +7,7 @@ ControllerBehaviorCallback::ControllerBehaviorCallback()
 {
 	_internalCallback = new InternalControllerBehaviorCallback(this);
 
-	ObjectTable::Add((intptr_t)_internalCallback, this, nullptr);
+	ObjectTable::Instance->Add((intptr_t)_internalCallback, this, nullptr);
 }
 ControllerBehaviorCallback::~ControllerBehaviorCallback()
 {
@@ -37,8 +37,8 @@ InternalControllerBehaviorCallback::InternalControllerBehaviorCallback(gcroot<Co
 
 PxControllerBehaviorFlags InternalControllerBehaviorCallback::getBehaviorFlags(const PxShape &shape, const PxActor &actor)
 {
-	auto s = ObjectTable::TryGetObject<Shape^>((intptr_t)&shape);
-	auto a = ObjectTable::TryGetObject<Actor^>((intptr_t)&actor);
+	auto s = ObjectTable::Instance->TryGetObject<Shape^>((intptr_t)&shape);
+	auto a = ObjectTable::Instance->TryGetObject<Actor^>((intptr_t)&actor);
 
 	auto cbf = _managed->GetBehaviorFlags(s, a);
 
@@ -46,7 +46,7 @@ PxControllerBehaviorFlags InternalControllerBehaviorCallback::getBehaviorFlags(c
 }
 PxControllerBehaviorFlags InternalControllerBehaviorCallback::getBehaviorFlags(const PxController &controller)
 {
-	auto c = ObjectTable::TryGetObject<Controller^>((intptr_t)&controller);
+	auto c = ObjectTable::Instance->TryGetObject<Controller^>((intptr_t)&controller);
 
 	auto cbf = _managed->GetBehaviorFlags(c);
 
@@ -54,7 +54,7 @@ PxControllerBehaviorFlags InternalControllerBehaviorCallback::getBehaviorFlags(c
 }
 PxControllerBehaviorFlags InternalControllerBehaviorCallback::getBehaviorFlags(const PxObstacle &obstacle)
 {
-	auto o = ObjectTable::TryGetObject<Obstacle^>((intptr_t)&obstacle);
+	auto o = ObjectTable::Instance->TryGetObject<Obstacle^>((intptr_t)&obstacle);
 
 	auto cbf = _managed->GetBehaviorFlags(o);
 

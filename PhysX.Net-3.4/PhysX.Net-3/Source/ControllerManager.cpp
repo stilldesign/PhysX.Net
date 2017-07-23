@@ -17,7 +17,7 @@ PhysX::ControllerManager::ControllerManager(PxControllerManager* manager, PhysX:
 		throw gcnew ArgumentNullException("manager");
 	ThrowIfNullOrDisposed(owner, "owner");
 
-	ObjectTable::Add((intptr_t)manager, this, owner);
+	ObjectTable::Instance->Add((intptr_t)manager, this, owner);
 
 	_manager = manager;
 	_scene = owner;
@@ -143,7 +143,7 @@ IReadOnlyList<Controller^>^ ControllerManager::Controllers::get()
 
 array<ObstacleContext^>^ ControllerManager::ObstacleContexts::get()
 {
-	return ObjectTable::GetObjectsOfOwnerAndType<ObstacleContext^>(this);
+	return ObjectTable::Instance->GetObjectsOfOwnerAndType<ObstacleContext^>(this);
 }
 
 PxControllerManager* ControllerManager::UnmanagedPointer::get()

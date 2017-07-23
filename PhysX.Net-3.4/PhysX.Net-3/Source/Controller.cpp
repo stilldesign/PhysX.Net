@@ -18,7 +18,7 @@ Controller::Controller(PxController* controller, PhysX::ControllerManager^ owner
 	_controller = controller;
 	_controllerManager = owner;
 
-	ObjectTable::Add((intptr_t)controller, this, owner);
+	ObjectTable::Instance->Add((intptr_t)controller, this, owner);
 
 	// The Actor class holds the PxActor, but should not dispose of it, as it is owned entirely
 	// by the PxController instance

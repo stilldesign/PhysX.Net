@@ -44,7 +44,7 @@ Scene::Scene(PxScene* scene, PhysX::Physics^ physics, PhysX::BroadPhaseCallback^
 	_broadPhaseCallback = broadPhaseCallback;
 	_simulationFilterCallback = simulationFilterCallback;
 
-	ObjectTable::Add((intptr_t)scene, this, physics);
+	ObjectTable::Instance->Add((intptr_t)scene, this, physics);
 }
 Scene::~Scene()
 {
@@ -120,7 +120,7 @@ IReadOnlyList<Actor^>^ Scene::GetActors(ActorTypeFlag types)
 
 	for (size_t i = 0; i < n; i++)
 	{
-		auto obj = ObjectTable::TryGetObject<Actor^>((intptr_t)unmanaged[i]);
+		auto obj = ObjectTable::Instance->TryGetObject<Actor^>((intptr_t)unmanaged[i]);
 
 		if (obj != nullptr)
 			managed->Add(obj);
@@ -133,11 +133,11 @@ IReadOnlyList<Actor^>^ Scene::GetActors(ActorTypeFlag types)
 
 array<RigidDynamic^>^ Scene::RigidDynamicActors::get()
 {
-	return ObjectTable::GetObjectsOfOwnerAndType<RigidDynamic^>(this->Physics);
+	return ObjectTable::Instance->GetObjectsOfOwnerAndType<RigidDynamic^>(this->Physics);
 }
 array<RigidStatic^>^ Scene::RigidStaticActors::get()
 {
-	return ObjectTable::GetObjectsOfOwnerAndType<RigidStatic^>(this->Physics);
+	return ObjectTable::Instance->GetObjectsOfOwnerAndType<RigidStatic^>(this->Physics);
 }
 
 int Scene::GetNumberOfActors(ActorTypeFlag types)
@@ -176,7 +176,7 @@ void Scene::RemoveActor(Actor^ actor)
 
 array<Articulation^>^ Scene::Articulations::get()
 {
-	return ObjectTable::GetObjectsOfOwnerAndType<Articulation^>(this);
+	return ObjectTable::Instance->GetObjectsOfOwnerAndType<Articulation^>(this);
 }
 #pragma endregion
 
@@ -399,7 +399,7 @@ void Scene::RemoveAggregate(Aggregate^ aggregate)
 
 array<Aggregate^>^ Scene::Aggregates::get()
 {
-	return ObjectTable::GetObjectsOfOwnerAndType<Aggregate^>(this);
+	return ObjectTable::Instance->GetObjectsOfOwnerAndType<Aggregate^>(this);
 }
 #pragma endregion
 
@@ -420,8 +420,8 @@ SimulationEventCallback^ Scene::GetSimulationEventCallback(int clientId)
 		return nullptr;
 
 	// Get the SimulationEventCallback instance wrapping the unmanaged class
-	if (ObjectTable::Contains((intptr_t)c))
-		return ObjectTable::GetObject<SimulationEventCallback^>((intptr_t)c);
+	if (ObjectTable::Instance->Contains((intptr_t)c))
+		return ObjectTable::Instance->GetObject<SimulationEventCallback^>((intptr_t)c);
 	else
 		return nullptr;
 }

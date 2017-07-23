@@ -16,7 +16,7 @@ VehicleSDK::VehicleSDK(PhysX::Physics^ physics)
 
 	_physics = physics;
 
-	ObjectTable::AddObjectOwner(this, physics);
+	ObjectTable::Instance->AddObjectOwner(this, physics);
 }
 VehicleSDK::~VehicleSDK()
 {
@@ -137,7 +137,7 @@ VehicleWheels^ VehicleSDK::VehicleUpdateCMassLocalPose(Matrix oldCMassLocalPose,
 	);
 
 	// The fourth parameter is [in, out], se we'll find the managed object it represents
-	auto outWheel = ObjectTable::GetObject<VehicleWheels^>((intptr_t)w);
+	auto outWheel = ObjectTable::Instance->GetObject<VehicleWheels^>((intptr_t)w);
 
 	return outWheel;
 }
