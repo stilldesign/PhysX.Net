@@ -65,7 +65,7 @@ ControllerCollisionFlag Controller::Move(Vector3 displacement, TimeSpan elapsedT
 	auto disp = MathUtil::Vector3ToPxVec3(displacement);
 	auto et = (float)elapsedTime.TotalSeconds;
 	auto f = ControllerFilters::ToUnmanaged(filters);
-	auto oc = (obstacles == nullptr ? NULL : obstacles->UnmanagedPointer);
+	auto oc = GetPointerOrNull(obstacles);
 
 	PxU32 returnFlags = _controller->move(disp, minimumDistance, et, f, oc);
 
