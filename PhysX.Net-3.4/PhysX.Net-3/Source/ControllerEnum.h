@@ -3,7 +3,8 @@
 
 namespace PhysX
 {
-	public enum class ControllerBehaviorFlag
+	[Flags]
+	public enum class ControllerBehaviorFlags
 	{
 		CctCanRideOnObject = PxControllerBehaviorFlag::eCCT_CAN_RIDE_ON_OBJECT,
 		CctSlide = PxControllerBehaviorFlag::eCCT_SLIDE,

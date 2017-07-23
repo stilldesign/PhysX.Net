@@ -8,6 +8,7 @@ namespace PhysX
 	ref class Scene;
 	value class FilterData;
 	ref class UserControllerHitReport;
+	ref class ControllerBehaviorCallback;
 
 	/// <summary>
 	/// Descriptor class for a character controller.
@@ -110,5 +111,12 @@ namespace PhysX
 		/// Gets or sets the user callback class for character controller events.
 		/// </summary>
 		property UserControllerHitReport^ ReportCallback;
+
+		/// <summary>
+		/// Specifies a user behavior callback.
+		/// This behavior callback is called to customize the controller's behavior w.r.t. touched shapes.
+		/// Setting this to null disables the callback.
+		/// </summary>
+		property ControllerBehaviorCallback^ BehaviorCallback;
 	};
 };

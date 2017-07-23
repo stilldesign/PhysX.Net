@@ -6,10 +6,20 @@
 
 namespace PhysX
 {
-	public ref class ControllerBehaviorCallback
+	class InternalControllerBehaviorCallback;
+
+	ref class Obstacle;
+
+	public ref class ControllerBehaviorCallback abstract : IDisposable
 	{
+	public:
+		/// <summary>Raised before any disposing is performed.</summary>
+		virtual event EventHandler^ OnDisposing;
+		/// <summary>Raised once all disposing is performed.</summary>
+		virtual event EventHandler^ OnDisposed;
+
 	private:
-		PxControllerBehaviorCallback* _callback;
+		InternalControllerBehaviorCallback* _internalCallback;
 
 	protected:
 		ControllerBehaviorCallback();
@@ -17,13 +27,18 @@ namespace PhysX
 	public:
 		!ControllerBehaviorCallback();
 
+		property bool Disposed
+		{
+			virtual bool get();
+		}
+
 		/// <summary>
 		/// Retrieve behavior flags for a shape.
 		/// When the CCT touches a shape, the CCT's behavior w.r.t. this shape can be customized
 		/// by users. This function retrives the desired ControllerBehaviorFlag flags capturing
 		/// the desired behavior.
 		/// </summary>
-		ControllerBehaviorFlag GetBehaviorFlags(Shape^ shape);
+		virtual ControllerBehaviorFlags GetBehaviorFlags(Shape^ shape, Actor^ actor) abstract;
 
 		/// <summary>
 		/// Retrieve behavior flags for a controller.
@@ -31,17 +46,32 @@ namespace PhysX
 		/// by users. This function retrives the desired PxControllerBehaviorFlag flags capturing
 		/// the desired behavior.
 		/// </summary>
-		ControllerBehaviorFlag GetBehaviorFlags(Controller^ controller);
+		virtual ControllerBehaviorFlags GetBehaviorFlags(Controller^ controller) abstract;
 
 		/// <summary>
 		/// 
 		/// </summary>
-		//ControllerBehaviorFlag GetBehaviorFlags(Obstacle^ obstacle);
+		virtual ControllerBehaviorFlags GetBehaviorFlags(Obstacle^ obstacle) abstract;
 	
 	internal:
-		property PxControllerBehaviorCallback* UnmanagedPointer
+		property InternalControllerBehaviorCallback* UnmanagedPointer
 		{
-			PxControllerBehaviorCallback* get();
+			InternalControllerBehaviorCallback* get();
 		}
+	};
+
+	//
+
+	class InternalControllerBehaviorCallback : public PxControllerBehaviorCallback
+	{
+	private:
+		gcroot<ControllerBehaviorCallback^> _managed;
+
+	public:
+		InternalControllerBehaviorCallback(gcroot<ControllerBehaviorCallback^> managed);
+
+		virtual PxControllerBehaviorFlags getBehaviorFlags(const PxShape &shape, const PxActor &actor);
+		virtual PxControllerBehaviorFlags getBehaviorFlags(const PxController &controller);
+		virtual PxControllerBehaviorFlags getBehaviorFlags(const PxObstacle &obstacle);
 	};
 };

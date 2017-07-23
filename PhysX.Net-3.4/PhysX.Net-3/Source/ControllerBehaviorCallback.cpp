@@ -1,10 +1,13 @@
 #include "StdAfx.h"
 #include "RigidActor.h"
 #include "ControllerBehaviorCallback.h"
+#include "Obstacle.h"
 
 ControllerBehaviorCallback::ControllerBehaviorCallback()
 {
+	_internalCallback = new InternalControllerBehaviorCallback(this);
 
+	ObjectTable::Add((intptr_t)_internalCallback, this, nullptr);
 }
 ControllerBehaviorCallback::~ControllerBehaviorCallback()
 {
@@ -12,31 +15,48 @@ ControllerBehaviorCallback::~ControllerBehaviorCallback()
 }
 ControllerBehaviorCallback::!ControllerBehaviorCallback()
 {
-	_callback = NULL;
+	SAFE_DELETE(_internalCallback);
 }
 
-ControllerBehaviorFlag ControllerBehaviorCallback::GetBehaviorFlags(Shape^ shape)
+bool ControllerBehaviorCallback::Disposed::get()
 {
-	ThrowIfNullOrDisposed(shape, "shape");
-
-	PxU32 bf = _callback->getBehaviorFlags(*shape->UnmanagedPointer, *shape->Actor->UnmanagedPointer);
-
-	return (ControllerBehaviorFlag)bf;
+	return _internalCallback == nullptr;
 }
-ControllerBehaviorFlag ControllerBehaviorCallback::GetBehaviorFlags(Controller^ controller)
+
+InternalControllerBehaviorCallback* ControllerBehaviorCallback::UnmanagedPointer::get()
 {
-	ThrowIfNullOrDisposed(controller, "controller");
-
-	PxU32 bf = _callback->getBehaviorFlags(*controller->UnmanagedPointer);
-
-	return (ControllerBehaviorFlag)bf;
+	return _internalCallback;
 }
-//ControllerBehaviorFlag ControllerBehaviorCallback::GetBehaviorFlags(Obstacle^ obstacle)
-//{
+
 //
-//}
 
-PxControllerBehaviorCallback* ControllerBehaviorCallback::UnmanagedPointer::get()
+InternalControllerBehaviorCallback::InternalControllerBehaviorCallback(gcroot<ControllerBehaviorCallback^> managed)
 {
-	return _callback;
+	_managed = managed;
+}
+
+PxControllerBehaviorFlags InternalControllerBehaviorCallback::getBehaviorFlags(const PxShape &shape, const PxActor &actor)
+{
+	auto s = ObjectTable::TryGetObject<Shape^>((intptr_t)&shape);
+	auto a = ObjectTable::TryGetObject<Actor^>((intptr_t)&actor);
+
+	auto cbf = _managed->GetBehaviorFlags(s, a);
+
+	return ToUnmanagedEnum(PxControllerBehaviorFlag, cbf);
+}
+PxControllerBehaviorFlags InternalControllerBehaviorCallback::getBehaviorFlags(const PxController &controller)
+{
+	auto c = ObjectTable::TryGetObject<Controller^>((intptr_t)&controller);
+
+	auto cbf = _managed->GetBehaviorFlags(c);
+
+	return ToUnmanagedEnum(PxControllerBehaviorFlag, cbf);
+}
+PxControllerBehaviorFlags InternalControllerBehaviorCallback::getBehaviorFlags(const PxObstacle &obstacle)
+{
+	auto o = ObjectTable::TryGetObject<Obstacle^>((intptr_t)&obstacle);
+
+	auto cbf = _managed->GetBehaviorFlags(o);
+
+	return ToUnmanagedEnum(PxControllerBehaviorFlag, cbf);
 }

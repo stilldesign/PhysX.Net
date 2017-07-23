@@ -3,6 +3,7 @@
 #include "Material.h"
 #include "FilterData.h"
 #include "UserControllerHitReport.h"
+#include "ControllerBehaviorCallback.h"
 
 ControllerDesc::ControllerDesc(ControllerShapeType type)
 {
@@ -33,6 +34,7 @@ void ControllerDesc::AssignToUnmanaged(ControllerDesc^ desc, PxControllerDesc& d
 	d.nonWalkableMode = ToUnmanagedEnum(PxControllerNonWalkableMode, desc->NonWalkableMode);
 	d.material = (desc->Material == nullptr ? NULL : desc->Material->UnmanagedPointer);
 	d.reportCallback = (desc->ReportCallback == nullptr ? NULL : desc->ReportCallback->UnmanagedPointer);
+	d.behaviorCallback = GetPointerOrNull(desc->BehaviorCallback);
 }
 void ControllerDesc::AssignToManaged(PxControllerDesc& d, ControllerDesc^ desc)
 {
@@ -51,4 +53,5 @@ void ControllerDesc::AssignToManaged(PxControllerDesc& d, ControllerDesc^ desc)
 	desc->NonWalkableMode = ToManagedEnum(ControllerNonWalkableMode, d.nonWalkableMode);
 	desc->Material = ObjectTable::GetObject<PhysX::Material^>((intptr_t)d.material);
 	desc->ReportCallback = ObjectTable::GetObject<PhysX::UserControllerHitReport^>((intptr_t)d.reportCallback);
+	desc->BehaviorCallback = ObjectTable::TryGetObject<PhysX::ControllerBehaviorCallback^>((intptr_t)d.behaviorCallback);
 }
