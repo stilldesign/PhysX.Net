@@ -8,7 +8,6 @@ namespace PhysX
 {
 	ref class ObjectTableEventArgs;
 	
-	// TODO: Make ObjectTable an instance class instead of containing all data and methods, but then wrap in singleton pattern.
 	/// <summary>
 	/// Manages lookups and disposals for unmanaged-managed pairs.
 	/// This class is not thread safe.
