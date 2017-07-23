@@ -96,6 +96,8 @@ Shape^ RigidActor::CreateShape(Geometry^ geometry, array<Material^>^ materials)
 
 	_shapes->Add(shape);
 
+	OnShapeAdded(shape);
+
 	return shape;
 }
 
@@ -106,6 +108,8 @@ void PhysX::RigidActor::OnShapeDisposed(Object ^sender, EventArgs ^e)
 	shape->OnDisposed -= gcnew EventHandler(this, &RigidActor::OnShapeDisposed);
 
 	_shapes->Remove(shape);
+
+	OnShapeRemoved(shape);
 }
 
 void RigidActor::Scale(float scale)

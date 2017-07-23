@@ -14,6 +14,10 @@ namespace PhysX
 	/// </summary>
 	public ref class RigidActor abstract : Actor
 	{
+	public:
+		event Action<Shape^>^ OnShapeAdded;
+		event Action<Shape^>^ OnShapeRemoved;
+
 		private:
 			List<Shape^>^ _shapes;
 
