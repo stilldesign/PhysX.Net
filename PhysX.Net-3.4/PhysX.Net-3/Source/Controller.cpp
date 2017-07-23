@@ -85,9 +85,7 @@ ControllerState^ Controller::GetState()
 	PxControllerState state;
 	_controller->getState(state);
 
-	auto managedState = ControllerState::ToManaged(state);
-
-	return managedState;
+	return ControllerState::ToManaged(state);
 }
 
 void Controller::InvalidateCache()
