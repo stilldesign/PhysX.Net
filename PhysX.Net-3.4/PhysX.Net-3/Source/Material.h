@@ -58,10 +58,10 @@ namespace PhysX
 			}
 				
 			/// <summary>Get or sets the material flags (a combination of <see cref="MaterialFlag" />).</summary>
-			property MaterialFlag Flags
+			property MaterialFlags Flags
 			{
-				MaterialFlag get();
-				void set(MaterialFlag value);
+				MaterialFlags get();
+				void set(MaterialFlags value);
 			}
 			/// <summary>Gets or sets the the friction combine mode.</summary>
 			property CombineMode FrictionCombineMode

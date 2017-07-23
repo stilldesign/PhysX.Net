@@ -80,11 +80,11 @@ void Material::Restitution::set(float value)
 	_material->setRestitution(value);
 }
 
-MaterialFlag Material::Flags::get()
+MaterialFlags Material::Flags::get()
 {
-	return ToManagedEnum(MaterialFlag, _material->getFlags());
+	return ToManagedEnum(MaterialFlags, _material->getFlags());
 }
-void Material::Flags::set(MaterialFlag value)
+void Material::Flags::set(MaterialFlags value)
 {
 	_material->setFlags(ToUnmanagedEnum(PxMaterialFlag, value));
 }

@@ -48,10 +48,10 @@ namespace PhysX.Test
 			{
 				var material = physics.Physics.CreateMaterial(5, 6, 7);
 
-				material.Flags = MaterialFlag.DisableFriction | MaterialFlag.DisableStrongFriction;
+				material.Flags = MaterialFlags.DisableFriction | MaterialFlags.DisableStrongFriction;
 
-				Assert.IsTrue(material.Flags.HasFlag(MaterialFlag.DisableFriction));
-				Assert.IsTrue(material.Flags.HasFlag(MaterialFlag.DisableStrongFriction));
+				Assert.IsTrue(material.Flags.HasFlag(MaterialFlags.DisableFriction));
+				Assert.IsTrue(material.Flags.HasFlag(MaterialFlags.DisableStrongFriction));
 			}
 		}
 
