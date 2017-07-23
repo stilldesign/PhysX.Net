@@ -41,8 +41,7 @@ namespace PhysX.Samples.CharacterSample
                     Material = material,
                     UpDirection = new Vector3(0, 1, 0),
                     Position = new Vector3(0, 3, 0),
-                    // TODO: I think this is coming back in 3.3 (> beta 2)
-                    //Callback = new ControllerHitReport()
+                    ReportCallback = new ControllerHitReport()
                 };
 
                 _controller = controllerManager.CreateController<CapsuleController>(desc);
