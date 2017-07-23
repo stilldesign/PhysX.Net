@@ -46,23 +46,21 @@ Matrix MathUtil::PxMat33ToMatrix(PxMat33* matrix)
 }
 PxMat33 MathUtil::MatrixToPxMat33(Matrix matrix)
 {
-	// TODO: memcpy?
-	float values[9];
-		values[0] = matrix.M11;
-		values[1] = matrix.M21;
-		values[2] = matrix.M31;
+	PxMat33 mat33;
 
-		values[3] = matrix.M12;
-		values[4] = matrix.M22;
-		values[5] = matrix.M32;
+	mat33.column0.x = matrix.M11;
+	mat33.column0.y = matrix.M21;
+	mat33.column0.z = matrix.M31;
 
-		values[6] = matrix.M13;
-		values[7] = matrix.M23;
-		values[8] = matrix.M33;
+	mat33.column1.x = matrix.M12;
+	mat33.column1.y = matrix.M22;
+	mat33.column1.z = matrix.M32;
 
-	PxMat33 m(values);
+	mat33.column2.x = matrix.M13;
+	mat33.column2.y = matrix.M23;
+	mat33.column2.z = matrix.M33;
 
-	return m;
+	return mat33;
 }
 
 Matrix MathUtil::PxMat44ToMatrix(PxMat44* mat44)
