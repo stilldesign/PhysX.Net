@@ -132,15 +132,11 @@ void Controller::Position::set(Vector3 value)
 
 Vector3 Controller::FootPosition::get()
 {
-	PxExtendedVec3 p = _controller->getFootPosition();
-
-	return MathUtil::PxExtendedVec3ToVector3(p);
+	return MathUtil::PxExtendedVec3ToVector3(_controller->getFootPosition());
 }
 void Controller::FootPosition::set(Vector3 value)
 {
-	PxExtendedVec3 p = MathUtil::Vector3ToPxExtendedVec3(value);
-
-	_controller->setFootPosition(p);
+	_controller->setFootPosition(MathUtil::Vector3ToPxExtendedVec3(value));
 }
 
 float Controller::StepOffset::get()
