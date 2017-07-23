@@ -40,10 +40,14 @@ Shape::!Shape()
 	if (this->Disposed)
 		return;
 
-	if (_shape->isExclusive())
-		_shape->getActor()->detachShape(*_shape);
-	else
-		_shape->release();
+	if (this->UnmanagedOwner)
+	{
+		if (_shape->isExclusive())
+			_shape->getActor()->detachShape(*_shape);
+		else
+			_shape->release();
+	}
+
 	_shape = NULL;
 
 	OnDisposed(this, nullptr);
