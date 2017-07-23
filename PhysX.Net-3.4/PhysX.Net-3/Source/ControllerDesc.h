@@ -62,6 +62,16 @@ namespace PhysX
 		property float SlopeLimit;
 
 		/// <summary>
+		/// Height of invisible walls created around non-walkable triangles.
+		/// </summary>
+		property float InvisibleWallHeight;
+
+		/// <summary>
+		/// Maximum height a jumping character can reach.
+		/// </summary>
+		property float MaxJumpHeight;
+
+		/// <summary>
 		/// Gets or sets the contact offset used by the controller.
 		/// </summary>
 		property float ContactOffset;
@@ -80,6 +90,11 @@ namespace PhysX
 		/// Gets or sets scale coeff for underlying kinematic actor.
 		/// </summary>
 		property float ScaleCoefficient;
+
+		/// <summary>
+		/// Cached volume growth.
+		/// </summary>
+		property float VolumeGrowth;
 
 		/// <summary>
 		/// Gets or sets the non-walkable mode controls if a character controller slides or not on a non-walkable part.
