@@ -38,14 +38,7 @@ namespace PhysX
 		}
 
 		private:
-			ObjectTable()
-			{
-				_objectTable = gcnew Dictionary<intptr_t, Object^>();
-				_ownership = gcnew Dictionary<IDisposable^, IDisposable^>();
-				_ownerTypeLookup = gcnew Dictionary<ObjectTableOwnershipType, List<Object^>^>();
-				
-				_performingDisposal = false;
-			}
+			ObjectTable();
 			
 		public:
 			void Add(intptr_t pointer, IDisposable^ object, IDisposable^ owner);

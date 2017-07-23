@@ -6,6 +6,15 @@
 using namespace System::Threading;
 using namespace System::Linq;
 
+ObjectTable::ObjectTable()
+{
+	_objectTable = gcnew Dictionary<intptr_t, Object^>();
+	_ownership = gcnew Dictionary<IDisposable^, IDisposable^>();
+	_ownerTypeLookup = gcnew Dictionary<ObjectTableOwnershipType, List<Object^>^>();
+
+	_performingDisposal = false;
+}
+
 // Add
 void ObjectTable::Add(intptr_t pointer, PhysX::IDisposable^ object, PhysX::IDisposable^ owner)
 {
