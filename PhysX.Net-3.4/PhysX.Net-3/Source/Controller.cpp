@@ -157,15 +157,6 @@ void Controller::NonWalkableMode::set(ControllerNonWalkableMode value)
 	_controller->setNonWalkableMode(ToUnmanagedEnum(PxControllerNonWalkableMode, value));
 }
 
-//CCTInteractionMode Controller::Interaction::get()
-//{
-//	return ToManagedEnum(CCTInteractionMode, _controller->getInteraction());
-//}
-//void Controller::Interaction::set(CCTInteractionMode value)
-//{
-//	_controller->setInteraction(ToUnmanagedEnum(PxCCTInteractionMode, value));
-//}
-
 float Controller::ContactOffset::get()
 {
 	return _controller->getContactOffset();

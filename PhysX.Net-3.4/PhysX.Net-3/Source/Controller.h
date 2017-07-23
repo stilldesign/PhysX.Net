@@ -137,15 +137,6 @@ namespace PhysX
 				void set(ControllerNonWalkableMode value);
 			}
 
-			///// <summary>
-			///// Sets the interaction mode for the CCT.
-			///// </summary>
-			//property CCTInteractionMode Interaction
-			//{
-			//	CCTInteractionMode get();
-			//	void set(CCTInteractionMode value);
-			//}
-
 			/// <summary>
 			/// Retrieve the contact offset.
 			/// </summary>
