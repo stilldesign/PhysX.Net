@@ -585,6 +585,9 @@
     <ClCompile Include="Source\Pvd.cpp">
       <Filter>PVD</Filter>
     </ClCompile>
+    <ClCompile Include="Source\ControllerStats.cpp">
+      <Filter>Character</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
@@ -1304,6 +1307,9 @@
     </ClInclude>
     <ClInclude Include="Source\PvdEnum.h">
       <Filter>PVD</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ControllerStats.h">
+      <Filter>Character</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

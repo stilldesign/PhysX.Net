@@ -10,6 +10,7 @@ namespace PhysX
 	ref class RigidDynamic;
 	ref class Shape;
 	ref class ControllerState;
+	value class ControllerStats;
 
 	/// <summary>
 	/// Base class for character controllers.
@@ -55,6 +56,11 @@ namespace PhysX
 			/// when such changes have been made. 
 			/// </summary>
 			void InvalidateCache();
+
+			/// <summary>
+			/// Returns the controller's internal statistics.
+			/// </summary>
+			ControllerStats GetStats();
 
 			/// <summary>
 			/// Resizes the controller.

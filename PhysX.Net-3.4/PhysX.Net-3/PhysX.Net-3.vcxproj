@@ -152,6 +152,7 @@
     <ClInclude Include="Source\Constraint1D.h" />
     <ClInclude Include="Source\ConstraintConnector.h" />
     <ClInclude Include="Source\ConstraintDesc.h" />
+    <ClInclude Include="Source\ControllerStats.h" />
     <ClInclude Include="Source\DominanceGroupPair.h" />
     <ClInclude Include="Source\ConstraintInfo.h" />
     <ClInclude Include="Source\ControllerState.h" />
@@ -399,6 +400,7 @@
     <ClCompile Include="Source\Constraint1D.cpp" />
     <ClCompile Include="Source\ConstraintConnector.cpp" />
     <ClCompile Include="Source\ConstraintDesc.cpp" />
+    <ClCompile Include="Source\ControllerStats.cpp" />
     <ClCompile Include="Source\DominanceGroupPair.cpp" />
     <ClCompile Include="Source\ConstraintInfo.cpp" />
     <ClCompile Include="Source\ControllerState.cpp" />

@@ -6,6 +6,7 @@
 #include "RigidDynamic.h"
 #include "Shape.h"
 #include "ControllerState.h"
+#include "ControllerStats.h"
 
 using namespace System::Linq;
 
@@ -92,6 +93,14 @@ ControllerState^ Controller::GetState()
 void Controller::InvalidateCache()
 {
 	_controller->invalidateCache();
+}
+
+ControllerStats Controller::GetStats()
+{
+	PxControllerStats s;
+	_controller->getStats(s);
+
+	return ControllerStats::ToManaged(s);
 }
 
 void Controller::Resize(float height)
