@@ -19,7 +19,6 @@ void ControllerDesc::SetToDefault()
 	StepOffset			= 0.5f;
 	Density				= 10.0f;
 	ScaleCoefficient	= 0.8f;
-	UserData			= nullptr;
 	Position			= Vector3(0, 0, 0);
 	Material			= nullptr;
 }
