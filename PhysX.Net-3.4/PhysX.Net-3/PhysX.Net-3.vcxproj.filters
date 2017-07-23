@@ -1332,9 +1332,6 @@
     <Filter Include="Character">
       <UniqueIdentifier>{00643cd6-e173-4d1c-bdac-4435a4b5e99d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Common">
-      <UniqueIdentifier>{e5495bed-2009-42b4-9b32-369b06ec4953}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Cooking">
       <UniqueIdentifier>{7335a60c-096c-4e73-b4eb-e3217776a84c}</UniqueIdentifier>
     </Filter>
