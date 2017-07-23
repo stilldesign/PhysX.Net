@@ -58,6 +58,9 @@ namespace PhysX
 		/// <summary>Raised once all disposing is performed.</summary>
 		virtual event EventHandler^ OnDisposed;
 
+		event Action<Material^>^ OnMaterialAdded;
+		event Action<Material^>^ OnMaterialRemoved;
+
 	private:
 		static bool _instantiated;
 
@@ -87,6 +90,9 @@ namespace PhysX
 	private:
 		void Init();
 		void PostInit(Foundation^ owner);
+
+		void OnObjectTableAdded(Object^ sender, ObjectTableEventArgs^ e);
+		void OnObjectTableRemoved(Object^ sender, ObjectTableEventArgs^ e);
 
 	public:
 		property bool Instantiated

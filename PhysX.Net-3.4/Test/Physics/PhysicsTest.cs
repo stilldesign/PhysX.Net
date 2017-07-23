@@ -86,5 +86,44 @@ namespace PhysX.Test
 				Assert.IsNotNull(physics.Physics.VehicleSDK);
 			}
 		}
+
+		[TestMethod]
+		public void OnMaterialAdded()
+		{
+			bool onMaterialAddedCalled = false;
+
+			using (var physics = CreatePhysicsAndScene())
+			{
+				physics.Physics.OnMaterialAdded += mat =>
+				{
+					onMaterialAddedCalled = true;
+				};
+
+				var material = physics.Physics.CreateMaterial(10, 5, 0.5f);
+			}
+
+			Assert.IsTrue(onMaterialAddedCalled);
+		}
+
+		[TestMethod]
+		public void OnMaterialRemoved()
+		{
+			bool onMaterialRemovedCalled = false;
+
+			using (var physics = CreatePhysicsAndScene())
+			{
+				physics.Physics.OnMaterialRemoved += mat =>
+				{
+					onMaterialRemovedCalled = true;
+				};
+
+				var material = physics.Physics.CreateMaterial(10, 5, 0.5f);
+
+				// Dispose a material should raise OnMaterialRemoved event
+				material.Dispose();
+			}
+
+			Assert.IsTrue(onMaterialRemovedCalled);
+		}
 	}
 }

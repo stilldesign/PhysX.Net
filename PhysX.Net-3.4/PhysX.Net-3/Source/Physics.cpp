@@ -128,6 +128,22 @@ void Physics::PostInit(PhysX::Foundation^ owner)
 	{
 		auto material = gcnew Material(materials[i], this);
 	}
+
+	//
+
+	ObjectTable::Instance->ObjectAdded += gcnew EventHandler<ObjectTableEventArgs^>(this, &Physics::OnObjectTableAdded);
+	ObjectTable::Instance->ObjectRemoved += gcnew EventHandler<ObjectTableEventArgs^>(this, &Physics::OnObjectTableRemoved);
+}
+
+void Physics::OnObjectTableAdded(Object^ sender, ObjectTableEventArgs^ e)
+{
+	if (IsInstanceOf<Material^>(e->ManagedObject))
+		OnMaterialAdded(dynamic_cast<Material^>(e->ManagedObject));
+}
+void Physics::OnObjectTableRemoved(Object^ sender, ObjectTableEventArgs^ e)
+{
+	if (IsInstanceOf<Material^>(e->ManagedObject))
+		OnMaterialRemoved(dynamic_cast<Material^>(e->ManagedObject));
 }
 
 bool Physics::Instantiated::get()
