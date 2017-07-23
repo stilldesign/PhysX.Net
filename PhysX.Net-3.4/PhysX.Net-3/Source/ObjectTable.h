@@ -53,13 +53,11 @@ namespace PhysX
 				
 			static void Clear();
 			
-			static Object^ GetObject(intptr_t pointer);
 			generic<typename T>
 			static T GetObject(intptr_t pointer);
 
-			static Object^ ObjectTable::TryGetObject(intptr_t pointer);
 			generic<typename T>
-			static T ObjectTable::TryGetObject(intptr_t pointer);
+			static T TryGetObject(intptr_t pointer);
 
 			static intptr_t GetObject(Object^ object);
 

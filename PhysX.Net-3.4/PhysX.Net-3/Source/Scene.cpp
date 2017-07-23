@@ -120,10 +120,10 @@ IReadOnlyList<Actor^>^ Scene::GetActors(ActorTypeFlag types)
 
 	for (size_t i = 0; i < n; i++)
 	{
-		auto obj = ObjectTable::TryGetObject((intptr_t)unmanaged[i]);
+		auto obj = ObjectTable::TryGetObject<Actor^>((intptr_t)unmanaged[i]);
 
 		if (obj != nullptr)
-			managed->Add(dynamic_cast<Actor^>(obj));
+			managed->Add(obj);
 	}
 
 	delete[] unmanaged;

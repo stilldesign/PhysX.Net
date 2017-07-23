@@ -6,10 +6,6 @@
 using namespace System::Threading;
 using namespace System::Linq;
 
-Object^ ObjectTable::GetObject(intptr_t pointer)
-{
-	return GetObject<Object^>(pointer);
-}
 generic<typename T>
 T ObjectTable::GetObject(intptr_t pointer)
 {
@@ -26,10 +22,6 @@ T ObjectTable::GetObject(intptr_t pointer)
 	return (T)obj;
 }
 
-Object^ ObjectTable::TryGetObject(intptr_t pointer)
-{
-	return TryGetObject<Object^>(pointer);
-}
 generic<typename T>
 T ObjectTable::TryGetObject(intptr_t pointer)
 {

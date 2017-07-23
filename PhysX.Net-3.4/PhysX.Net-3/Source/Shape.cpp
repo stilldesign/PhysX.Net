@@ -311,7 +311,7 @@ array<PhysX::Material^>^ Shape::Materials::get()
 	for (int i = 0; i < n; i++)
 	{
 		PxMaterial* mat = materials[i];
-		Material^ s = (Material^)ObjectTable::TryGetObject((intptr_t)mat);
+		Material^ s = ObjectTable::TryGetObject<Material^>((intptr_t)mat);
 		managedMaterials->Add(s);
 	}
 
