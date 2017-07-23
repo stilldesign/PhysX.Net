@@ -123,15 +123,11 @@ PhysX::Shape^ Controller::Shape::get()
 
 Vector3 Controller::Position::get()
 {
-	PxExtendedVec3 p = _controller->getPosition();
-
-	return MathUtil::PxExtendedVec3ToVector3(p);
+	return MathUtil::PxExtendedVec3ToVector3(_controller->getPosition());
 }
 void Controller::Position::set(Vector3 value)
 {
-	PxExtendedVec3 p = MathUtil::Vector3ToPxExtendedVec3(value);
-
-	_controller->setPosition(p);
+	_controller->setPosition(MathUtil::Vector3ToPxExtendedVec3(value));
 }
 
 Vector3 Controller::FootPosition::get()
