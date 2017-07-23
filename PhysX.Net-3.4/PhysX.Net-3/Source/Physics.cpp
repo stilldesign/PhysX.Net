@@ -21,8 +21,7 @@
 #include "RuntimeFileChecks.h"
 #include "ParticleFluid.h"
 #include "Collection.h"
-#include "Connection.h"
-#include "ConnectionManager.h"
+#include "Pvd.h"
 #include "ConvexMesh.h"
 #include "VehicleSDK.h"
 #include "ClothFabric.h"
@@ -40,23 +39,20 @@
 #include "RevoluteJoint.h"
 #include "SphericalJoint.h"
 
-//#include <PvdConnection.h>
-//#include <extensions\PxCollectionExt.h>
-
 using namespace PhysX;
 
 static Physics::Physics()
 {
 	_instantiated = false;
 }
-Physics::Physics(PhysX::Foundation^ foundation, [Optional] bool checkRuntimeFiles, [Optional] PhysX::VisualDebugger::ConnectionManager^ connectionManager)
+Physics::Physics(PhysX::Foundation^ foundation, [Optional] bool checkRuntimeFiles, [Optional] PhysX::VisualDebugger::Pvd^ pvd)
 {
 	ThrowIfNull(foundation, "foundation");
 	if (checkRuntimeFiles)
 		RuntimeFileChecks::Check();
 
 	_foundation = foundation;
-	_connectionManager = connectionManager;
+	_pvd = pvd;
 
 	Init();
 
@@ -68,7 +64,7 @@ Physics::Physics(PhysX::Foundation^ foundation, [Optional] bool checkRuntimeFile
 		*f,
 		s, 
 		false,
-		connectionManager == nullptr ? nullptr : connectionManager->UnmanagedPointer);
+		GetPointerOrNull(pvd));
 
 	if (_physics == NULL)
 		throw gcnew Exception("Failed to create physics instance");
@@ -85,7 +81,7 @@ Physics::!Physics()
 
 	if (Disposed)
 		return;
-
+	
 	PxCloseExtensions();
 
 	_physics->release();
@@ -117,9 +113,7 @@ void Physics::PostInit(PhysX::Foundation^ owner)
 
 	// Initalize the extensions. This is required for almost anything useful in the PhysX SDK
 	// The SDK errors catastrophically unless this is called
-	if (!PxInitExtensions(
-		*_physics,
-		_connectionManager == nullptr ? nullptr : _connectionManager->UnmanagedPointer))
+	if (!PxInitExtensions(*_physics, GetPointerOrNull(_pvd)))
 		throw gcnew InvalidOperationException("Failed to initalize PhysX extensions");
 
 	// Vehicle SDK
@@ -473,13 +467,9 @@ Collection^ Physics::CreateCollection()
 #pragma endregion
 
 #pragma region Remote Debugger
-PhysX::VisualDebugger::ConnectionManager^ Physics::PvdConnectionManager::get()
+PhysX::VisualDebugger::Pvd^ Physics::Pvd::get()
 {
-	return _connectionManager;
-}
-PhysX::VisualDebugger::ConnectionManager^ Physics::RemoteDebugger::get()
-{
-	return PvdConnectionManager;
+	return _pvd;
 }
 #pragma endregion
 

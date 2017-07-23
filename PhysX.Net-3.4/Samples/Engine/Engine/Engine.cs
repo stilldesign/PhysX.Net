@@ -188,7 +188,9 @@ namespace PhysX.Samples.Engine
 
 			Foundation foundation = new Foundation(errorOutput);
 
-			this.Physics = new Physics(foundation, checkRuntimeFiles: true);
+			var pvd = new VisualDebugger.Pvd(foundation);
+
+			this.Physics = new Physics(foundation, true, pvd);
 
 			this.Scene = this.Physics.CreateScene(CreateSceneDesc(foundation));
 
@@ -199,8 +201,8 @@ namespace PhysX.Samples.Engine
 			this.Scene.SetVisualizationParameter(VisualizationParameter.ParticleSystemPosition, true);
 			this.Scene.SetVisualizationParameter(VisualizationParameter.ActorAxes, true);
 
-			// Connect to the remote debugger (if it's there)
-			this.Physics.RemoteDebugger?.Connect("localhost");
+			// Connect to the PhysX Visual Debugger (if the PVD application is running)
+			this.Physics.Pvd.Connect("localhost");
 
 			CreateGroundPlane();
 		}

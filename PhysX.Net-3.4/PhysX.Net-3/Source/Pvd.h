@@ -1,7 +1,6 @@
 #pragma once
 
-//#include <PvdConnectionManager.h>
-#include "VisualDebuggerEnum.h"
+#include "PvdEnum.h"
 
 using namespace physx::pvdsdk;
 
@@ -11,7 +10,7 @@ namespace PhysX
 
 	namespace VisualDebugger
 	{
-		public ref class ConnectionManager : IDisposable
+		public ref class Pvd : IDisposable
 		{
 		public:
 			/// <summary>Raised before any disposing is performed.</summary>
@@ -20,13 +19,13 @@ namespace PhysX
 			virtual event EventHandler^ OnDisposed;
 
 		private:
-			PxPvd* _manager;
+			PxPvd* _pvd;
 
 		public:
-			ConnectionManager();
-			~ConnectionManager();
+			Pvd(Foundation^ foundation);
+			~Pvd();
 		protected:
-			!ConnectionManager();
+			!Pvd();
 
 		public:
 			property bool Disposed
@@ -34,16 +33,10 @@ namespace PhysX
 				virtual bool get();
 			}
 
-			property bool IsConnected
-			{
-				bool get();
-			}
-
+			void Connect(String^ host, [Optional] Nullable<int> port, [Optional] Nullable<TimeSpan> timeout, [Optional] Nullable<InstrumentationFlag> connectionType);
 			void Disconnect();
 
-			void Connect(String^ host, [Optional] Nullable<int> port, [Optional] Nullable<TimeSpan> timeout, [Optional] Nullable<InstrumentationFlag> connectionType);
-
-			static ConnectionManager^ GetInstance(Foundation^ foundation);
+			bool IsConnected(bool useCachedStatus);
 
 		internal:
 			property PxPvd* UnmanagedPointer

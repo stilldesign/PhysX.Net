@@ -504,12 +504,6 @@
     <ClCompile Include="Source\InputStream.cpp">
       <Filter>Stream</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Connection.cpp">
-      <Filter>PVD</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ConnectionManager.cpp">
-      <Filter>PVD</Filter>
-    </ClCompile>
     <ClCompile Include="Source\TriangleMesh.cpp">
       <Filter>TriangleMesh</Filter>
     </ClCompile>
@@ -587,6 +581,9 @@
     </ClCompile>
     <ClCompile Include="Source\ClothMeshQuadifier.cpp">
       <Filter>Cloth</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Pvd.cpp">
+      <Filter>PVD</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1224,15 +1221,6 @@
     <ClInclude Include="Source\InputStream.h">
       <Filter>Stream</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Connection.h">
-      <Filter>PVD</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ConnectionManager.h">
-      <Filter>PVD</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\VisualDebuggerEnum.h">
-      <Filter>PVD</Filter>
-    </ClInclude>
     <ClInclude Include="Source\TriangleMesh.h">
       <Filter>TriangleMesh</Filter>
     </ClInclude>
@@ -1310,6 +1298,12 @@
     </ClInclude>
     <ClInclude Include="Source\ClothMeshQuadifier.h">
       <Filter>Cloth</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Pvd.h">
+      <Filter>PVD</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\PvdEnum.h">
+      <Filter>PVD</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

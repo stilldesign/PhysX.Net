@@ -208,7 +208,7 @@
     <ClInclude Include="Source\DistanceJoint.h" />
     <ClInclude Include="Source\EnumUtil.h" />
     <ClInclude Include="Source\ErrorCallback.h" />
-    <ClInclude Include="Source\ConnectionManager.h" />
+    <ClInclude Include="Source\Pvd.h" />
     <ClInclude Include="Source\ConstraintEnum.h" />
     <ClInclude Include="Source\FoundationAlreadyInitalizedException.h" />
     <ClInclude Include="Source\ISerializable.h" />
@@ -254,7 +254,7 @@
     <ClInclude Include="Source\VehicleWheelQueryResult.h" />
     <ClInclude Include="Source\VehicleWheels.h" />
     <ClInclude Include="Source\VehicleWheelsSimData.h" />
-    <ClInclude Include="Source\VisualDebuggerEnum.h" />
+    <ClInclude Include="Source\PvdEnum.h" />
     <ClInclude Include="Source\FailedToCreateObjectException.h" />
     <ClInclude Include="Source\FilterData.h" />
     <ClInclude Include="Source\FixedJoint.h" />
@@ -350,7 +350,6 @@
     <ClInclude Include="Source\VehicleTireLoadFilterData.h" />
     <ClInclude Include="Source\VehicleWheelData.h" />
     <ClInclude Include="Source\VehicleWheelValues.h" />
-    <ClInclude Include="Source\Connection.h" />
     <ClInclude Include="Source\XmlParserOptions.h" />
   </ItemGroup>
   <ItemGroup>
@@ -551,8 +550,7 @@
     <ClCompile Include="Source\VehicleWheels.cpp" />
     <ClCompile Include="Source\VehicleWheelsSimData.cpp" />
     <ClCompile Include="Source\VehicleWheelValues.cpp" />
-    <ClCompile Include="Source\Connection.cpp" />
-    <ClCompile Include="Source\ConnectionManager.cpp" />
+    <ClCompile Include="Source\Pvd.cpp" />
     <ClCompile Include="Source\XmlParserOptions.cpp" />
     <ClInclude Include="Source\GeometryEnum.h" />
     <ClCompile Include="Source\BoxGeometry.cpp" />

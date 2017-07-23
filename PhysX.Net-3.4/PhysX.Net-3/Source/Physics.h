@@ -44,7 +44,7 @@ namespace PhysX
 	namespace VisualDebugger
 	{
 		ref class Connection;
-		ref class ConnectionManager;
+		ref class Pvd;
 	};
 
 	/// <summary>
@@ -67,13 +67,13 @@ namespace PhysX
 
 		VehicleSDK^ _vehicleSDK;
 
-		PhysX::VisualDebugger::ConnectionManager^ _connectionManager;
+		PhysX::VisualDebugger::Pvd^ _pvd;
 
 	public:
 		static Physics();
 
 		/// <summary>Creates a new instance of the Physics class.</summary>
-		Physics(PhysX::Foundation^ foundation, [Optional] bool checkRuntimeFiles, [Optional] PhysX::VisualDebugger::ConnectionManager^ connectionManager);
+		Physics(PhysX::Foundation^ foundation, [Optional] bool checkRuntimeFiles, [Optional] PhysX::VisualDebugger::Pvd^ pvd);
 	public:
 		~Physics();
 	protected:
@@ -310,28 +310,16 @@ namespace PhysX
 		Collection^ CreateCollection();
 		#pragma endregion
 
-		#pragma region Remote Debugger
+		#pragma region PVD
 		/// <summary>
 		/// The factory manager allows notifications when a new connection to pvd is made.
 		/// It also allows the users to specify a scheme to handle the read-side of a
 		/// network connection. By default, the SDK specifies that a thread gets launched
 		/// which blocks reading on the network socket.
 		/// </summary>
-		property PhysX::VisualDebugger::ConnectionManager^ PvdConnectionManager
+		property PhysX::VisualDebugger::Pvd^ Pvd
 		{
-			PhysX::VisualDebugger::ConnectionManager^ get();
-		}
-
-		/// <summary>
-		/// The factory manager allows notifications when a new connection to pvd is made.
-		/// It also allows the users to specify a scheme to handle the read-side of a
-		/// network connection. By default, the SDK specifies that a thread gets launched
-		/// which blocks reading on the network socket.
-		/// </summary>
-		/// <remarks>This property is simply an alias to Physics.PvdConnectionManager.</remarks>
-		property PhysX::VisualDebugger::ConnectionManager^ RemoteDebugger
-		{
-			PhysX::VisualDebugger::ConnectionManager^ get();
+			PhysX::VisualDebugger::Pvd^ get();
 		}
 		#pragma endregion
 
