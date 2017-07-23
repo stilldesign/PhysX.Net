@@ -164,11 +164,6 @@ namespace PhysX
 			}
 
 			/// <summary>
-			/// Gets or sets the user data associated with this controller.
-			/// </summary>
-			property Object^ UserData;
-
-			/// <summary>
 			/// Gets or sets the type of controller.
 			/// </summary>
 			property ControllerShapeType Type

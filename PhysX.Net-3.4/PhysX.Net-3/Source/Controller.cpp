@@ -45,8 +45,6 @@ Controller::!Controller()
 	_controller->release();
 	_controller = NULL;
 
-	UserData = nullptr;
-
 	OnDisposed(this, nullptr);
 }
 bool Controller::Disposed::get()
