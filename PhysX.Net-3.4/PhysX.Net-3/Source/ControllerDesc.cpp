@@ -11,18 +11,6 @@ ControllerDesc::ControllerDesc(ControllerShapeType type)
 	SetToDefault();
 }
 
-void ControllerDesc::SetToDefault()
-{
-	UpDirection			= Vector3(0.0f, 1.0f, 0.0f);
-	SlopeLimit			= 0.707f;
-	ContactOffset		= 0.1f;
-	StepOffset			= 0.5f;
-	Density				= 10.0f;
-	ScaleCoefficient	= 0.8f;
-	Position			= Vector3(0, 0, 0);
-	Material			= nullptr;
-}
-
 ControllerShapeType ControllerDesc::Type::get()
 {
 	return _type;

@@ -7,52 +7,46 @@ CapsuleControllerDesc::CapsuleControllerDesc()
 	
 }
 
-PxCapsuleControllerDesc CapsuleControllerDesc::ToUnmanaged(CapsuleControllerDesc^ desc)
+PxCapsuleControllerDesc CapsuleControllerDesc::ToUnmanaged(CapsuleControllerDesc^ m)
 {
-	PxCapsuleControllerDesc d;
+	PxCapsuleControllerDesc u;
 
-	// Populate the base classes properties
-	ControllerDesc::AssignToUnmanaged(desc, d);
+	ControllerDesc::AssignToUnmanaged(m, u);
+	AssignToUnmanaged(m, &u);
 
-	// Assign our specific properties
-	d.radius = desc->Radius;
-	d.height = desc->Height;
-	d.climbingMode = ToUnmanagedEnum(PxCapsuleClimbingMode, desc->ClimbingMode);
-
-	return d;
+	return u;
 }
-CapsuleControllerDesc^ CapsuleControllerDesc::ToManaged(PxCapsuleControllerDesc desc)
+CapsuleControllerDesc^ CapsuleControllerDesc::ToManaged(PxCapsuleControllerDesc u)
 {
-	CapsuleControllerDesc^ d = gcnew CapsuleControllerDesc();
+	auto m = gcnew CapsuleControllerDesc();
 
-	// Populate the base classes properties
-	ControllerDesc::AssignToManaged(desc, d);
+	ControllerDesc::AssignToManaged(u, m);
+	AssignToManaged(m, &u);
 
-	// Assign our specific properties
-	d->Radius = desc.radius;
-	d->Height = desc.height;
-	d->ClimbingMode = ToManagedEnum(CapsuleClimbingMode, desc.climbingMode);
-
-	return d;
+	return m;
 }
 
-PxCapsuleControllerDesc CapsuleControllerDesc::ToUnmanaged()
+void CapsuleControllerDesc::AssignToManaged(CapsuleControllerDesc^ m, PxCapsuleControllerDesc* u)
 {
-	return CapsuleControllerDesc::ToUnmanaged(this);
+	m->Radius = u->radius;
+	m->Height = u->height;
+	m->ClimbingMode = ToManagedEnum(CapsuleClimbingMode, u->climbingMode);
+}
+void CapsuleControllerDesc::AssignToUnmanaged(CapsuleControllerDesc^ m, PxCapsuleControllerDesc* u)
+{
+	u->radius = m->Radius;
+	u->height = m->Height;
+	u->climbingMode = ToUnmanagedEnum(PxCapsuleClimbingMode, m->ClimbingMode);
 }
 
 void CapsuleControllerDesc::SetToDefault()
 {
-	ControllerDesc::SetToDefault();
+	PxCapsuleControllerDesc d;
 
-	// Values from PxCapsuleControllerDesc::setToDefault()
-	Radius = 0;
-	Height = 0;
-	ClimbingMode = CapsuleClimbingMode::Easy;
+	ControllerDesc::AssignToManaged(d, this);
+	AssignToManaged(this, &d);
 }
 bool CapsuleControllerDesc::IsValid()
 {
-	auto desc = ToUnmanaged(this);
-
-	return desc.isValid();
+	return ToUnmanaged(this).isValid();
 }

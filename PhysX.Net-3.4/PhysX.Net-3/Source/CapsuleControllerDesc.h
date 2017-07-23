@@ -17,7 +17,8 @@ namespace PhysX
 			static PxCapsuleControllerDesc ToUnmanaged(CapsuleControllerDesc^ desc);
 			static CapsuleControllerDesc^ ToManaged(PxCapsuleControllerDesc desc);
 
-			PxCapsuleControllerDesc ToUnmanaged();
+			static void AssignToManaged(CapsuleControllerDesc^ m, PxCapsuleControllerDesc* u);
+			static void AssignToUnmanaged(CapsuleControllerDesc^ m, PxCapsuleControllerDesc* u);
 
 		public:
 			/// <summary>

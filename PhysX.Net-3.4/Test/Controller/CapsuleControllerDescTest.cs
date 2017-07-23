@@ -46,9 +46,8 @@ namespace PhysX.Test.Controller
 				Assert.AreEqual(0.5f, c.StepOffset);
 				Assert.AreEqual(10.0f, c.Density);
 				Assert.AreEqual(0.8f, c.ScaleCoefficient);
-				Assert.AreEqual(null, c.UserData);
 				Assert.AreEqual(new Vector3(0, 0, 0), c.Position);
-				Assert.AreEqual(null, c.Material);
+				Assert.IsNull(c.Material);
 			}
 		}
 	}

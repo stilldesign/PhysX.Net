@@ -30,7 +30,7 @@ namespace PhysX
 		/// <summary>
 		/// Resets the structure to the default.
 		/// </summary>
-		virtual void SetToDefault();
+		virtual void SetToDefault() abstract;
 		/// <summary>
 		/// Returns true if the current settings are valid.
 		/// </summary>

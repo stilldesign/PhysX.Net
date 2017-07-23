@@ -17,7 +17,8 @@ namespace PhysX
 			static PxBoxControllerDesc ToUnmanaged(BoxControllerDesc^ desc);
 			static BoxControllerDesc^ ToManaged(PxBoxControllerDesc desc);
 
-			PxBoxControllerDesc ToUnmanaged();
+			static void BoxControllerDesc::AssignToManaged(BoxControllerDesc^ m, PxBoxControllerDesc* u);
+			static void BoxControllerDesc::AssignToUnmanaged(BoxControllerDesc^ m, PxBoxControllerDesc* u);
 
 		public:
 			/// <summary>

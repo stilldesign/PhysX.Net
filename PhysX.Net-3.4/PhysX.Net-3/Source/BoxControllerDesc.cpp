@@ -7,54 +7,48 @@ BoxControllerDesc::BoxControllerDesc()
 	
 }
 
-PxBoxControllerDesc BoxControllerDesc::ToUnmanaged(BoxControllerDesc^ desc)
+PxBoxControllerDesc BoxControllerDesc::ToUnmanaged(BoxControllerDesc^ m)
 {
-	PxBoxControllerDesc d;
+	PxBoxControllerDesc u;
 	
-	// Populate the base classes properties
-	ControllerDesc::AssignToUnmanaged(desc, d);
+	ControllerDesc::AssignToUnmanaged(m, u);
+	AssignToUnmanaged(m, &u);
 
-	// Assign our specific properties
-	d.halfForwardExtent = desc->HalfForwardExtent;
-	d.halfHeight = desc->HalfHeight;
-	d.halfSideExtent = desc->HalfSideExtent;
-
-	return d;
+	return u;
 }
-BoxControllerDesc^ BoxControllerDesc::ToManaged(PxBoxControllerDesc desc)
+BoxControllerDesc^ BoxControllerDesc::ToManaged(PxBoxControllerDesc u)
 {
-	BoxControllerDesc^ d = gcnew BoxControllerDesc();
+	auto m = gcnew BoxControllerDesc();
 
-	// Populate the base classes properties
-	ControllerDesc::AssignToManaged(desc, d);
+	ControllerDesc::AssignToManaged(u, m);
+	AssignToManaged(m, &u);
 
-	// Assign our specific properties
-	d->HalfForwardExtent = desc.halfForwardExtent;
-	d->HalfHeight = desc.halfHeight;
-	d->HalfSideExtent = desc.halfSideExtent;
-
-	return d;
+	return m;
 }
 
-PxBoxControllerDesc BoxControllerDesc::ToUnmanaged()
+void BoxControllerDesc::AssignToManaged(BoxControllerDesc^ m, PxBoxControllerDesc* u)
 {
-	return BoxControllerDesc::ToUnmanaged(this);
+	m->HalfForwardExtent = u->halfForwardExtent;
+	m->HalfHeight = u->halfHeight;
+	m->HalfSideExtent = u->halfSideExtent;
+}
+void BoxControllerDesc::AssignToUnmanaged(BoxControllerDesc^ m, PxBoxControllerDesc* u)
+{
+	u->halfForwardExtent = m->HalfForwardExtent;
+	u->halfHeight = m->HalfHeight;
+	u->halfSideExtent = m->HalfSideExtent;
 }
 
 void BoxControllerDesc::SetToDefault()
 {
-	ControllerDesc::SetToDefault();
+	PxBoxControllerDesc d;
 
-	// Values from PxBoxControllerDesc
-	HalfHeight = 1.0f;
-	HalfSideExtent = 0.5f;
-	HalfForwardExtent = 0.5f;
+	ControllerDesc::AssignToManaged(d, this);
+	AssignToManaged(this, &d);
 }
 bool BoxControllerDesc::IsValid()
 {
-	auto desc = ToUnmanaged(this);
-
-	return desc.isValid();
+	return ToUnmanaged(this).isValid();
 }
 
 Vector3 BoxControllerDesc::Extents::get()
