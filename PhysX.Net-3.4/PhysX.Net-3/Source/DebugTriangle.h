@@ -2,19 +2,17 @@
 
 namespace PhysX
 {
-	[StructLayout(LayoutKind::Sequential)]
+	[StructLayout(LayoutKind::Explicit)]
 	public value class DebugTriangle
 	{
 		public:
-			DebugTriangle(Vector3 point0, int color0, Vector3 point1, int color1, Vector3 point2, int color2);
+			[FieldOffset(0)]	Vector3 Point0;
+			[FieldOffset(12)]	int Color0;
 
-			property Vector3 Point0;
-			property int Color0;
+			[FieldOffset(16)]	Vector3 Point1;
+			[FieldOffset(28)]	int Color1;
 
-			property Vector3 Point1;
-			property int Color1;
-
-			property Vector3 Point2;
-			property int Color2;
+			[FieldOffset(32)]	Vector3 Point2;
+			[FieldOffset(44)]	int Color2;
 	};
 };

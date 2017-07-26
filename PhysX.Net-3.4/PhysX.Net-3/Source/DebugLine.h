@@ -2,16 +2,14 @@
 
 namespace PhysX
 {
-	[StructLayout(LayoutKind::Sequential)]
+	[StructLayout(LayoutKind::Explicit)]
 	public value class DebugLine
 	{
 		public:
-			DebugLine(Vector3 point0, int color0, Vector3 point1, int color1);
+			[FieldOffset(0)]	Vector3 Point0;
+			[FieldOffset(12)]	int Color0;
 
-			property Vector3 Point0;
-			property int Color0;
-
-			property Vector3 Point1;
-			property int Color1;
+			[FieldOffset(16)]	Vector3 Point1;
+			[FieldOffset(28)]	int Color1;
 	};
 };
