@@ -6,6 +6,7 @@
 namespace PhysX
 {
 	value class SolverIterationCounts;
+	ref class Physics;
 
 	/// <summary>
 	/// RigidDynamic represents a dynamic rigid simulation object in the physics SDK.
@@ -35,7 +36,14 @@ namespace PhysX
 			/// </summary>
 			void PutToSleep();
 
+			/// <summary>
+			/// Clones the Rigid Dynamic into the same Physics. This Rigid Dynamic have been added to a Scene.
+			/// </summary>
 			RigidDynamic^ CloneDynamic(Matrix transform);
+			/// <summary>
+			/// Clones the Rigid Dynamic.
+			/// </summary>
+			RigidDynamic^ CloneDynamic(Matrix transform, PhysX::Physics^ physics);
 
 			//
 

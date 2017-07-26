@@ -36,12 +36,23 @@ void RigidDynamic::PutToSleep()
 
 RigidDynamic^ RigidDynamic::CloneDynamic(Matrix transform)
 {
+	if (this->Physics == nullptr)
+		throw gcnew InvalidOperationException("Cannot clone a RigidDynamic if it has not been added to a scene. Try CloneDynamic(Matrix4x4, Physics) overload.");
+
+	// We must have been added to a scene because to clone a Rigid Dyanmic we need to get the current Physics instance it belongs to
+	// the only way to access this is through getScene().
+	return CloneDynamic(transform, this->Physics);
+}
+RigidDynamic^ RigidDynamic::CloneDynamic(Matrix transform, PhysX::Physics^ physics)
+{
+	ThrowIfNullOrDisposed(physics, "physics");
+
 	PxRigidDynamic* rigidDynamic = PxCloneDynamic(
-		*this->Scene->Physics->UnmanagedPointer, 
+		*physics->UnmanagedPointer,
 		MathUtil::MatrixToPxTransform(transform),
 		*this->UnmanagedPointer);
 
-	return gcnew RigidDynamic(rigidDynamic, this->Physics);
+	return gcnew RigidDynamic(rigidDynamic, physics);
 }
 
 //
