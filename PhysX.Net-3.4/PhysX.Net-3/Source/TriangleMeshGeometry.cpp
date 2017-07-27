@@ -5,10 +5,10 @@
 TriangleMeshGeometry::TriangleMeshGeometry()
 	: Geometry(GeometryType::TriangleMesh)
 {
-
+	this->Scale = MeshScale::Identity;
 }
 TriangleMeshGeometry::TriangleMeshGeometry(PhysX::TriangleMesh^ triangleMesh, [Optional] Nullable<MeshScale> scaling, [Optional] Nullable<MeshGeometryFlag> flags)
-	: Geometry(GeometryType::TriangleMesh)
+	: TriangleMeshGeometry()
 {
 	ThrowIfNullOrDisposed(triangleMesh, "triangleMesh");
 
