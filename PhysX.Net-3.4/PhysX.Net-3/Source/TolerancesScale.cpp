@@ -21,3 +21,8 @@ TolerancesScale TolerancesScale::ToManaged(PxTolerancesScale scale)
 
 	return s;
 }
+
+TolerancesScale TolerancesScale::Default::get()
+{
+	return ToManaged(PxTolerancesScale());
+}

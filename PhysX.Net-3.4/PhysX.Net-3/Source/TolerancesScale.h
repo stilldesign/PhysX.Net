@@ -29,5 +29,15 @@ namespace PhysX
 			/// For normal physical environments, a good choice is the approximate speed of an object falling under gravity for one second.
 			/// </summary>
 			property float Speed;
+
+			//
+
+			/// <summary>
+			/// Gets a new instance of TolerancesScale with its fields set to default values.
+			/// </summary>
+			property TolerancesScale Default
+			{
+				static TolerancesScale get();
+			}
 	};
 };
