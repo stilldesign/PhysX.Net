@@ -127,6 +127,15 @@ namespace PhysX
 				void set(float value);
 			}
 
+			/// <summary>
+			/// Gets or sets the rigid dynamic lock flags.
+			/// </summary>
+			property PhysX::RigidDynamicLockFlags RigidDynamicLockFlags
+			{
+				PhysX::RigidDynamicLockFlags get();
+				void set(PhysX::RigidDynamicLockFlags value);
+			}
+
 		internal:
 			property PxRigidDynamic* UnmanagedPointer
 			{

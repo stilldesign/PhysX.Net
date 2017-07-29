@@ -127,4 +127,16 @@ namespace PhysX
 		EnablePoseIntegrationPreview = PxRigidBodyFlag::eENABLE_POSE_INTEGRATION_PREVIEW,
 		EnableSpeculativeCCD = PxRigidBodyFlag::eENABLE_SPECULATIVE_CCD
 	};
+
+	[Flags]
+	public enum class RigidDynamicLockFlags
+	{
+		LinearX = PxRigidDynamicLockFlag::eLOCK_LINEAR_X,
+		LinearY = PxRigidDynamicLockFlag::eLOCK_LINEAR_Y,
+		LinearZ = PxRigidDynamicLockFlag::eLOCK_LINEAR_Z,
+
+		AngularX = PxRigidDynamicLockFlag::eLOCK_ANGULAR_X,
+		AngularY = PxRigidDynamicLockFlag::eLOCK_ANGULAR_Y,
+		AngularZ = PxRigidDynamicLockFlag::eLOCK_ANGULAR_Z
+	};
 };

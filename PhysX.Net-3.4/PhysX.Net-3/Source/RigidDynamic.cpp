@@ -3,6 +3,7 @@
 #include "SolverIterationCounts.h"
 #include "Physics.h"
 #include "Scene.h"
+#include "ActorEnum.h"
 
 RigidDynamic::RigidDynamic(PxRigidDynamic* rigidDynamic, PhysX::IDisposable^ owner)
 	: RigidBody(rigidDynamic, owner)
@@ -137,6 +138,15 @@ float RigidDynamic::ContactReportThreshold::get()
 void RigidDynamic::ContactReportThreshold::set(float value)
 {
 	this->UnmanagedPointer->setContactReportThreshold(value);
+}
+
+PhysX::RigidDynamicLockFlags RigidDynamic::RigidDynamicLockFlags::get()
+{
+	return ToManagedEnum(PhysX::RigidDynamicLockFlags, this->UnmanagedPointer->getRigidDynamicLockFlags());
+}
+void RigidDynamic::RigidDynamicLockFlags::set(PhysX::RigidDynamicLockFlags value)
+{
+	this->UnmanagedPointer->setRigidDynamicLockFlags(ToUnmanagedEnum(PxRigidDynamicLockFlag, value));
 }
 
 PxRigidDynamic* RigidDynamic::UnmanagedPointer::get()
