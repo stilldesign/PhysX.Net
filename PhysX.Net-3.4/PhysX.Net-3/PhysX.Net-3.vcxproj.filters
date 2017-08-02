@@ -1320,9 +1320,6 @@
     <None Include="..\samples\rigidbodiessample\packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="PhysXExtensions">
-      <UniqueIdentifier>{8b0ce4ef-6049-4539-b15d-273e4d2d2b26}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Vehicle">
       <UniqueIdentifier>{5892e8a6-22a0-4a98-bb0c-c7fe2c35eb93}</UniqueIdentifier>
     </Filter>
