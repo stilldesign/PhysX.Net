@@ -127,18 +127,18 @@ namespace PhysX
 			/// <summary>
 			/// Gets or sets the joint local pose for an actor 0.
 			/// </summary>
-			property Matrix LocalPose0
+			property Transform LocalPose0
 			{
-				Matrix get();
-				void set(Matrix value);
+				Transform get();
+				void set(Transform value);
 			}
 			/// <summary>
 			/// Gets or sets the joint local pose for an actor 1.
 			/// </summary>
-			property Matrix LocalPose1
+			property Transform LocalPose1
 			{
-				Matrix get();
-				void set(Matrix value);
+				Transform get();
+				void set(Transform value);
 			}
 
 			/// <summary>

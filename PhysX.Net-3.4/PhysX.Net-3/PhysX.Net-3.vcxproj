@@ -224,6 +224,7 @@
     <ClInclude Include="Source\RaycastCCDManager.h" />
     <ClInclude Include="Source\SimulationFilterCallback.h" />
     <ClInclude Include="Source\SimulationFilterShader.h" />
+    <ClInclude Include="Source\Transform.h" />
     <ClInclude Include="Source\TriangleMeshEnum.h" />
     <ClInclude Include="Source\VectorAndMatrixExtensions.h" />
     <ClInclude Include="Source\VehicleAntiRollBarData.h" />
@@ -514,6 +515,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Source\StreamExtensions.cpp" />
+    <ClCompile Include="Source\Transform.cpp" />
     <ClCompile Include="Source\TriangleMeshEnum.cpp" />
     <ClCompile Include="Source\VectorAndMatrixExtensions.cpp" />
     <ClCompile Include="Source\VehicleAntiRollBarData.cpp" />

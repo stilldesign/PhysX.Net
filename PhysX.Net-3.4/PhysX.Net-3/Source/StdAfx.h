@@ -53,11 +53,7 @@ using namespace System::Numerics;
 #include "IPhysXEntity.h"
 #include "OperationFailedException.h"
 #include "Util.h"
-//#include "Vector2.h"
-//#include "Vector3.h"
-//#include "Vector4.h"
-//#include "Quaternion.h"
-//#include "Matrix.h"
+#include "Transform.h"
 #include "MathUtil.h"
 #include "ObjectTable.h"
 

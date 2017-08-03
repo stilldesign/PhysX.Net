@@ -588,6 +588,9 @@
     <ClCompile Include="Source\ControllerStats.cpp">
       <Filter>Character</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Transform.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
@@ -1310,6 +1313,9 @@
     </ClInclude>
     <ClInclude Include="Source\ControllerStats.h">
       <Filter>Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Transform.h">
+      <Filter>Math</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

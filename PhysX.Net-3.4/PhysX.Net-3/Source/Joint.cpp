@@ -116,22 +116,22 @@ PhysX::RigidActor^ Joint::Actor1::get()
 	return ObjectTable::Instance->GetObject<RigidActor^>((intptr_t)a1);
 }
 
-Matrix Joint::LocalPose0::get()
+Transform Joint::LocalPose0::get()
 {
-	return MathUtil::PxTransformToMatrix(&_joint->getLocalPose(PxJointActorIndex::eACTOR0));
+	return Transform::ToManaged(_joint->getLocalPose(PxJointActorIndex::eACTOR0));
 }
-void Joint::LocalPose0::set(Matrix value)
+void Joint::LocalPose0::set(Transform value)
 {
-	_joint->setLocalPose(PxJointActorIndex::eACTOR0, MathUtil::MatrixToPxTransform(value));
+	_joint->setLocalPose(PxJointActorIndex::eACTOR0, Transform::ToUnmanaged(value));
 }
 
-Matrix Joint::LocalPose1::get()
+Transform Joint::LocalPose1::get()
 {
-	return MathUtil::PxTransformToMatrix(&_joint->getLocalPose(PxJointActorIndex::eACTOR1));
+	return Transform::ToManaged(_joint->getLocalPose(PxJointActorIndex::eACTOR1));
 }
-void Joint::LocalPose1::set(Matrix value)
+void Joint::LocalPose1::set(Transform value)
 {
-	_joint->setLocalPose(PxJointActorIndex::eACTOR1, MathUtil::MatrixToPxTransform(value));
+	_joint->setLocalPose(PxJointActorIndex::eACTOR1, Transform::ToUnmanaged(value));
 }
 
 float Joint::BreakForce::get()

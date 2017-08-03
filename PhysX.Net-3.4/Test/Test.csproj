@@ -98,6 +98,7 @@
     <Compile Include="Joint\SphericalJointTest.cs" />
     <Compile Include="Material\MaterialCreationAndDisposalTest.cs" />
     <Compile Include="Material\MaterialTest.cs" />
+    <Compile Include="Math\TransformTests.cs" />
     <Compile Include="ObservableTest.cs" />
     <Compile Include="Particle\ParticleFluidTest.cs" />
     <Compile Include="Particle\ParticleTest.cs" />
