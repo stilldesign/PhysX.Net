@@ -21,6 +21,7 @@ namespace PhysX
 	/// <summary>
 	/// Some flags to control the simulated behavior of the mesh geometry.
 	/// </summary>
+	[Flags]
 	public enum class MeshGeometryFlag
 	{
 		/// <summary>
