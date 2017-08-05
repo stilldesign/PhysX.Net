@@ -44,6 +44,7 @@
 		ShiftVertices = PxConvexFlag::eSHIFT_VERTICES
 	};
 
+	[Flags]
 	public enum class MeshPreprocessingFlag
 	{
 		/// <summary>
