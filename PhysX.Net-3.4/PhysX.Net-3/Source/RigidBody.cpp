@@ -295,6 +295,24 @@ VelocityDeltaFromImpulseResult RigidBody::ComputeVelocityDeltaFromImpulse(Vector
 	result.DeltaAngularVelocity = MV(deltaAngularVelocity);
 	return result;
 }
+VelocityDeltaFromImpulseResult RigidBody::ComputeVelocityDeltaFromImpulse(Transform globalPose, Vector3 point, Vector3 impulse, float invMassScale, float invInertiaScale)
+{
+	PxVec3 deltaLinearVelocity, deltaAngularVelocity;
+
+	PxRigidBodyExt::computeVelocityDeltaFromImpulse(
+		*this->UnmanagedPointer,
+		Transform::ToUnmanaged(globalPose),
+		UV(point),
+		UV(impulse),
+		invMassScale,
+		invInertiaScale,
+		deltaLinearVelocity, deltaAngularVelocity);
+
+	VelocityDeltaFromImpulseResult result;
+	result.DeltaLinearVelocity = MV(deltaLinearVelocity);
+	result.DeltaAngularVelocity = MV(deltaAngularVelocity);
+	return result;
+}
 
 //
 
