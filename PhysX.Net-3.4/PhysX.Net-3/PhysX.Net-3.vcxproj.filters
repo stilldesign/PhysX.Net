@@ -1323,6 +1323,9 @@
     <ClInclude Include="Source\ClothTetherConfig.h">
       <Filter>Cloth</Filter>
     </ClInclude>
+    <ClInclude Include="Source\VelocityDeltaFromImpulseResult.h">
+      <Filter>Actor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Version.rc" />

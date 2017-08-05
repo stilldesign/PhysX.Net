@@ -245,6 +245,7 @@
     <ClInclude Include="Source\Spring.h" />
     <ClInclude Include="Source\VehicleConcurrentUpdateData.h" />
     <ClInclude Include="Source\VehicleWheelsDynData.h" />
+    <ClInclude Include="Source\VelocityDeltaFromImpulseResult.h" />
     <ClInclude Include="Source\VolumeCache.h" />
     <ClInclude Include="Source\VehicleDrive.h" />
     <ClInclude Include="Source\VehicleDrive4W.h" />

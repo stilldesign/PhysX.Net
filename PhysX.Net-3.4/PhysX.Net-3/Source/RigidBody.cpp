@@ -10,6 +10,7 @@
 #include "SweepHit.h"
 #include "LinearSweepMultipleResult.h"
 #include "MassProperties.h"
+#include "VelocityDeltaFromImpulseResult.h"
 
 RigidBody::RigidBody(PxRigidBody* rigidBody, PhysX::IDisposable^ owner)
 	: RigidActor(rigidBody, owner)
@@ -281,6 +282,18 @@ MassProperties RigidBody::ComputeMassPropertiesFromShapes(array<Shape^>^ shapes)
 	delete[] s;
 
 	return MassProperties::ToManaged(m);
+}
+
+VelocityDeltaFromImpulseResult RigidBody::ComputeVelocityDeltaFromImpulse(Vector3 impulsiveForce, Vector3 impulsiveTorque)
+{
+	PxVec3 deltaLinearVelocity, deltaAngularVelocity;
+
+	PxRigidBodyExt::computeVelocityDeltaFromImpulse(*this->UnmanagedPointer, UV(impulsiveForce), UV(impulsiveTorque), deltaLinearVelocity, deltaAngularVelocity);
+
+	VelocityDeltaFromImpulseResult result;
+	result.DeltaLinearVelocity = MV(deltaLinearVelocity);
+	result.DeltaAngularVelocity = MV(deltaAngularVelocity);
+	return result;
 }
 
 //

@@ -14,6 +14,7 @@ namespace PhysX
 	ref class LinearSweepMultipleResult;
 	ref class QueryCache;
 	value class MassProperties;
+	value class VelocityDeltaFromImpulseResult;
 
 	/// <summary>
 	/// RigidBody is a base class shared between dynamic rigid body objects.
@@ -213,6 +214,17 @@ namespace PhysX
 
 			// Extensions
 			static MassProperties ComputeMassPropertiesFromShapes(array<Shape^>^ shapes);
+
+			/// <summary>
+			/// Compute the change to linear and angular velocity that would occur if an impulsive force and torque were to be applied to a specified rigid body.
+			/// </summary>
+			/// <param name="impulsiveForce">The impulsive force that would be applied to the specified rigid body.</param>
+			/// <param name="impulsiveTorque">The impulsive torque that would be applied to the specified rigid body.</param>
+			/// <returns>
+			/// The change in linear velocity that would arise if impulsiveForce was to be applied to the specified rigid body.
+			/// The change in angular velocity that would arise if impulsiveTorque was to be applied to the specified rigid body.
+			/// </returns>
+			VelocityDeltaFromImpulseResult ComputeVelocityDeltaFromImpulse(Vector3 impulsiveForce, Vector3 impulsiveTorque);
 
 			//
 
