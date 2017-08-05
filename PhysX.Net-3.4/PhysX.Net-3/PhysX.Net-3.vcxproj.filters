@@ -591,6 +591,9 @@
     <ClCompile Include="Source\Transform.cpp">
       <Filter>Math</Filter>
     </ClCompile>
+    <ClCompile Include="Source\ClothTetherConfig.cpp">
+      <Filter>Cloth</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
@@ -1316,6 +1319,9 @@
     </ClInclude>
     <ClInclude Include="Source\Transform.h">
       <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ClothTetherConfig.h">
+      <Filter>Cloth</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

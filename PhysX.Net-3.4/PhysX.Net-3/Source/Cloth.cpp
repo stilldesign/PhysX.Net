@@ -3,6 +3,7 @@
 #include "ClothFabric.h"
 #include "Bounds3.h"
 #include "ClothParticleData.h"
+#include "ClothTetherConfig.h"
 
 Cloth::Cloth(PxCloth* cloth, PhysX::Physics^ owner)
 	: Actor(cloth, owner)
@@ -574,6 +575,15 @@ Vector3 Cloth::CentrifugalInertiaScale::get()
 void Cloth::CentrifugalInertiaScale::set(Vector3 value)
 {
 	this->UnmanagedPointer->setCentrifugalInertiaScale(UV(value));
+}
+
+ClothTetherConfig^ Cloth::TetherConfig::get()
+{
+	return ClothTetherConfig::ToManaged(this->UnmanagedPointer->getTetherConfig());
+}
+void Cloth::TetherConfig::set(ClothTetherConfig^ value)
+{
+	this->UnmanagedPointer->setTetherConfig(ClothTetherConfig::ToUnmanaged(value));
 }
 
 

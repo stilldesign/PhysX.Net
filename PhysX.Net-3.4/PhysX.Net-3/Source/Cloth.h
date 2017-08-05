@@ -16,6 +16,7 @@ namespace PhysX
 {
 	ref class ClothFabric;
 	ref class ClothParticleData;
+	ref class ClothTetherConfig;
 
 	public ref class Cloth : Actor
 	{
@@ -415,6 +416,12 @@ namespace PhysX
 		{
 			Vector3 get();
 			void set(Vector3 value);
+		}
+
+		property ClothTetherConfig^ TetherConfig
+		{
+			ClothTetherConfig^ get();
+			void set(ClothTetherConfig^ value);
 		}
 
 	internal:

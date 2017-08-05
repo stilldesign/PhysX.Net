@@ -124,6 +124,7 @@
     <ClInclude Include="Source\ClothFabricDesc.h" />
     <ClInclude Include="Source\ClothFabricPhase.h" />
     <ClInclude Include="Source\ClothMeshQuadifier.h" />
+    <ClInclude Include="Source\ClothTetherConfig.h" />
     <ClInclude Include="Source\ConstraintShaderTable.h" />
     <ClInclude Include="Source\ContactModifyCallback.h" />
     <ClInclude Include="Source\ContactModifyPair.h" />
@@ -379,6 +380,7 @@
     <ClCompile Include="Source\ClothFabricDesc.cpp" />
     <ClCompile Include="Source\ClothMeshQuadifier.cpp" />
     <ClCompile Include="Source\ClothMotionConstraintConfig.cpp" />
+    <ClCompile Include="Source\ClothTetherConfig.cpp" />
     <ClCompile Include="Source\ConstraintShaderTable.cpp" />
     <ClCompile Include="Source\ContactModifyCallback.cpp" />
     <ClCompile Include="Source\ContactModifyPair.cpp" />
