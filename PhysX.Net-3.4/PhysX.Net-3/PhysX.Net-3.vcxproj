@@ -178,6 +178,7 @@
     <ClInclude Include="Source\IVehicleComputeTireForceOutput.h" />
     <ClInclude Include="Source\JointAngularLimitPair.h" />
     <ClInclude Include="Source\JointLinearLimit.h" />
+    <ClInclude Include="Source\LinearAngularImpulseResult.h" />
     <ClInclude Include="Source\LinearSweepMultipleResult.h" />
     <ClInclude Include="Source\LinearSweepSingleResult.h" />
     <ClInclude Include="Source\MassProperties.h" />

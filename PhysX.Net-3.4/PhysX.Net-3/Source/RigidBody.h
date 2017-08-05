@@ -15,6 +15,7 @@ namespace PhysX
 	ref class QueryCache;
 	value class MassProperties;
 	value class VelocityDeltaFromImpulseResult;
+	value class LinearAngularImpulseResult;
 
 	/// <summary>
 	/// RigidBody is a base class shared between dynamic rigid body objects.
@@ -235,6 +236,20 @@ namespace PhysX
 			/// The change in angular velocity that would arise if impulsiveTorque was to be applied to the specified rigid body.
 			/// </returns>
 			VelocityDeltaFromImpulseResult ComputeVelocityDeltaFromImpulse(Transform globalPose, Vector3 point, Vector3 impulse, float invMassScale, float invInertiaScale);
+
+			/// <summary>
+			/// Computes the linear and angular impulse vectors for a given impulse at a world space position taking a mass and inertia scale into account. 
+			/// This function is useful for extracting the respective linear and angular impulses from a contact or joint when the mass / inertia ratios have been adjusted.
+			/// </summary>
+			/// <param name="globalPose">The body's world space transform.</param>
+			/// <param name="point">The point in world space where the impulse is applied.</param>
+			/// <param name="impulse">The impulse vector in world space.</param>
+			/// <param name="invMassScale">The inverse mass scale.</param>
+			/// <param name="invInertiaScale">The inverse inertia scale.</param>
+			/// <returns>
+			/// The linear impulse and the angular impulse.
+			/// </returns>
+			LinearAngularImpulseResult ComputeLinearAngularImpulse(Transform globalPose, Vector3 point, Vector3 impulse, float invMassScale, float invInertiaScale);
 
 			//
 

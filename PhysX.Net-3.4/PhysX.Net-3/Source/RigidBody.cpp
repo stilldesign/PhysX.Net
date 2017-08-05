@@ -11,6 +11,7 @@
 #include "LinearSweepMultipleResult.h"
 #include "MassProperties.h"
 #include "VelocityDeltaFromImpulseResult.h"
+#include "LinearAngularImpulseResult.h"
 
 RigidBody::RigidBody(PxRigidBody* rigidBody, PhysX::IDisposable^ owner)
 	: RigidActor(rigidBody, owner)
@@ -311,6 +312,26 @@ VelocityDeltaFromImpulseResult RigidBody::ComputeVelocityDeltaFromImpulse(Transf
 	VelocityDeltaFromImpulseResult result;
 	result.DeltaLinearVelocity = MV(deltaLinearVelocity);
 	result.DeltaAngularVelocity = MV(deltaAngularVelocity);
+	return result;
+}
+
+LinearAngularImpulseResult RigidBody::ComputeLinearAngularImpulse(Transform globalPose, Vector3 point, Vector3 impulse, float invMassScale, float invInertiaScale)
+{
+	PxVec3 linearImpulse, angularImpulse;
+
+	PxRigidBodyExt::computeLinearAngularImpulse(
+		*this->UnmanagedPointer,
+		Transform::ToUnmanaged(globalPose),
+		UV(point),
+		UV(impulse),
+		invMassScale,
+		invInertiaScale,
+		linearImpulse,
+		angularImpulse);
+
+	LinearAngularImpulseResult result;
+	result.LinearImpulse = MV(linearImpulse);
+	result.AngularImpulse = MV(angularImpulse);
 	return result;
 }
 
