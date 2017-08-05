@@ -1,1 +1,1 @@
-.nuget\NuGet.exe pack PhysX.Net-x64.nuspec
+.nuget\NuGet.exe pack PhysX.Net.nuspec
