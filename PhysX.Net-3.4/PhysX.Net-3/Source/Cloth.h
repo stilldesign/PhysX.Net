@@ -469,6 +469,11 @@ namespace PhysX
 			int get();
 		}
 
+		property int NumberOfRestPositions
+		{
+			int get();
+		}
+
 	internal:
 		property PxCloth* UnmanagedPointer
 		{

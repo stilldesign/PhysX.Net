@@ -653,6 +653,11 @@ int Cloth::NumberOfSelfCollisionIndices::get()
 	return this->UnmanagedPointer->getNbSelfCollisionIndices();
 }
 
+int Cloth::NumberOfRestPositions::get()
+{
+	return this->UnmanagedPointer->getNbRestPositions();
+}
+
 PxCloth* Cloth::UnmanagedPointer::get()
 {
 	return (PxCloth*)Actor::UnmanagedPointer;
