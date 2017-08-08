@@ -159,6 +159,8 @@ namespace PhysX
 		/// <returns>Particle bounds in global coordinates.</returns>
 		Bounds3 GetWorldBounds();
 
+		void SetDragCoefficient(PxReal scale);
+
 		//
 
 		/// <summary>

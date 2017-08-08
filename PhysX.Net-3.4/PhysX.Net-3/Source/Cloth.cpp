@@ -351,6 +351,11 @@ Bounds3 Cloth::GetWorldBounds()
 	return Bounds3::ToManaged(this->UnmanagedPointer->getWorldBounds());
 }
 
+void Cloth::SetDragCoefficient(float scale)
+{
+	this->UnmanagedPointer->setDragCoefficient(scale);
+}
+
 //
 
 int Cloth::NumberOfParticles::get()
