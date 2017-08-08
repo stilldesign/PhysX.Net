@@ -64,11 +64,8 @@ namespace PhysX
 		/// </summary>
 		void ClearInterpolation();
 
-		// TODO: Do these really need Vector4 or just Vector3?
 		array<Vector4>^ GetParticleAccelerations();
-		array<Vector3>^ GetParticleAccelerations3();
 		void SetParticleAccelerations(array<Vector4>^ particleAccelerations);
-		void SetParticleAccelerations(array<Vector3>^ particleAccelerations);
 
 		/// <summary>
 		/// Updates location and radii of collision spheres.

@@ -153,23 +153,6 @@ array<Vector4>^ Cloth::GetParticleAccelerations()
 
 	return a;
 }
-array<Vector3>^ Cloth::GetParticleAccelerations3()
-{
-	int n = this->UnmanagedPointer->getNbParticleAccelerations();
-	PxVec4* v = new PxVec4[n];
-	
-	this->UnmanagedPointer->getParticleAccelerations(v);
-
-	auto v3 = gcnew array<Vector3>(n);
-	for (int i = 0; i < n; i++)
-	{
-		v3[i].X = (v + i)->x;
-		v3[i].Y = (v + i)->y;
-		v3[i].Z = (v + i)->z;
-	}
-
-	return v3;
-}
 void Cloth::SetParticleAccelerations(array<Vector4>^ particleAccelerations)
 {
 	if (particleAccelerations == nullptr)
@@ -181,33 +164,6 @@ void Cloth::SetParticleAccelerations(array<Vector4>^ particleAccelerations)
 		pin_ptr<Vector4> a = &particleAccelerations[0];
 
 		this->UnmanagedPointer->setParticleAccelerations((PxVec4*)a);
-	}
-}
-void Cloth::SetParticleAccelerations(array<Vector3>^ particleAccelerations)
-{
-	if (particleAccelerations == nullptr)
-	{
-		this->UnmanagedPointer->setParticleAccelerations(NULL);
-	}
-	else
-	{
-		int particleCount = this->UnmanagedPointer->getNbParticles();
-
-		if (particleAccelerations->Length != particleCount)
-			throw gcnew ArgumentException(String::Format("Particle accelerations array must of length {0} to match what particles are in the cloth currently", particleCount));
-
-		pin_ptr<Vector3> a = &particleAccelerations[0];
-		PxVec3* apin = new PxVec3[particleCount];
-
-		PxVec4* a4 = new PxVec4[particleCount];
-
-		for (int i = 0; i < particleCount; i++)
-		{
-			PxVec3* q = apin + i;
-			*(a4 + i) = PxVec4(q->x, q->y, q->z, 0);
-		}
-
-		this->UnmanagedPointer->setParticleAccelerations(a4);
 	}
 }
 
