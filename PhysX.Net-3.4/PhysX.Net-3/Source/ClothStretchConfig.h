@@ -7,11 +7,11 @@ namespace PhysX
 	/// <summary>
 	/// Solver configuration parameters for a cloth fabric phase type.
 	/// </summary>
-	public ref class ClothPhaseSolverConfig
+	public ref class ClothStretchConfig
 	{
 	internal:
-		static ClothPhaseSolverConfig^ ToManaged(PxClothStretchConfig config);
-		static PxClothStretchConfig ToUnmanaged(ClothPhaseSolverConfig^ config);
+		static ClothStretchConfig^ ToManaged(PxClothStretchConfig config);
+		static PxClothStretchConfig ToUnmanaged(ClothStretchConfig^ config);
 
 	public:
 		/// <summary>

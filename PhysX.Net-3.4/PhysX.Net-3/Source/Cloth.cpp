@@ -4,6 +4,7 @@
 #include "Bounds3.h"
 #include "ClothParticleData.h"
 #include "ClothTetherConfig.h"
+#include "ClothStretchConfig.h"
 
 Cloth::Cloth(PxCloth* cloth, PhysX::Physics^ owner)
 	: Actor(cloth, owner)
@@ -310,6 +311,15 @@ Bounds3 Cloth::GetWorldBounds()
 void Cloth::SetDragCoefficient(float scale)
 {
 	this->UnmanagedPointer->setDragCoefficient(scale);
+}
+
+ClothStretchConfig^ Cloth::GetStretchConfig(ClothFabricPhaseType type)
+{
+	return ClothStretchConfig::ToManaged(this->UnmanagedPointer->getStretchConfig(ToUnmanagedEnum(PxClothFabricPhaseType, type)));
+}
+void Cloth::SetStretchConfig(ClothFabricPhaseType type, ClothStretchConfig^ config)
+{
+	this->UnmanagedPointer->setStretchConfig(ToUnmanagedEnum(PxClothFabricPhaseType, type), ClothStretchConfig::ToUnmanaged(config));
 }
 
 //

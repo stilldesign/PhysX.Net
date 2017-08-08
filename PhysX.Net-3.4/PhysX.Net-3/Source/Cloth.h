@@ -17,6 +17,7 @@ namespace PhysX
 	ref class ClothFabric;
 	ref class ClothParticleData;
 	ref class ClothTetherConfig;
+	ref class ClothStretchConfig;
 
 	public ref class Cloth : Actor
 	{
@@ -156,7 +157,10 @@ namespace PhysX
 		/// <returns>Particle bounds in global coordinates.</returns>
 		Bounds3 GetWorldBounds();
 
-		void SetDragCoefficient(PxReal scale);
+		void SetDragCoefficient(float scale);
+
+		ClothStretchConfig^ GetStretchConfig(ClothFabricPhaseType type);
+		void SetStretchConfig(ClothFabricPhaseType type, ClothStretchConfig^ config);
 
 		//
 

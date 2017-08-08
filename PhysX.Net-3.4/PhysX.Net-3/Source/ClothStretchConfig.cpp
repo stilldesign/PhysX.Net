@@ -1,9 +1,9 @@
 #include "StdAfx.h"
 #include "ClothStretchConfig.h"
 
-ClothPhaseSolverConfig^ ClothPhaseSolverConfig::ToManaged(PxClothStretchConfig config)
+ClothStretchConfig^ ClothStretchConfig::ToManaged(PxClothStretchConfig config)
 {
-	auto c = gcnew ClothPhaseSolverConfig();
+	auto c = gcnew ClothStretchConfig();
 		c->Stiffness = config.stiffness;
 		c->StiffnessMultiplier = config.stiffnessMultiplier;
 		c->CompressionLimit = config.compressionLimit;
@@ -11,7 +11,7 @@ ClothPhaseSolverConfig^ ClothPhaseSolverConfig::ToManaged(PxClothStretchConfig c
 
 	return c;
 }
-PxClothStretchConfig ClothPhaseSolverConfig::ToUnmanaged(ClothPhaseSolverConfig^ config)
+PxClothStretchConfig ClothStretchConfig::ToUnmanaged(ClothStretchConfig^ config)
 {
 	ThrowIfNull(config, "config");
 
