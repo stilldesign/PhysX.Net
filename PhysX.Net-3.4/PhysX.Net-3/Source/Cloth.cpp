@@ -658,6 +658,24 @@ int Cloth::NumberOfRestPositions::get()
 	return this->UnmanagedPointer->getNbRestPositions();
 }
 
+float Cloth::ContactOffset::get()
+{
+	return this->UnmanagedPointer->getContactOffset();
+}
+void Cloth::ContactOffset::set(float value)
+{
+	this->UnmanagedPointer->setContactOffset(value);
+}
+
+float Cloth::RestOffset::get()
+{
+	return this->UnmanagedPointer->getRestOffset();
+}
+void Cloth::RestOffset::set(float value)
+{
+	this->UnmanagedPointer->setRestOffset(value);
+}
+
 PxCloth* Cloth::UnmanagedPointer::get()
 {
 	return (PxCloth*)Actor::UnmanagedPointer;

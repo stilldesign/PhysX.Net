@@ -474,6 +474,18 @@ namespace PhysX
 			int get();
 		}
 
+		property float ContactOffset
+		{
+			float get();
+			void set(float value);
+		}
+
+		property float RestOffset
+		{
+			float get();
+			void set(float value);
+		}
+
 	internal:
 		property PxCloth* UnmanagedPointer
 		{
