@@ -539,6 +539,15 @@ float Cloth::PreviousTimestep::get()
 	return this->UnmanagedPointer->getPreviousTimeStep();
 }
 
+float Cloth::StiffnessFrequency::get()
+{
+	return this->UnmanagedPointer->getStiffnessFrequency();
+}
+void Cloth::StiffnessFrequency::set(float value)
+{
+	this->UnmanagedPointer->setStiffnessFrequency(value);
+}
+
 ClothMotionConstraintConfig Cloth::MotionConstraintConfig::get()
 {
 	PxClothMotionConstraintConfig config = this->UnmanagedPointer->getMotionConstraintConfig();

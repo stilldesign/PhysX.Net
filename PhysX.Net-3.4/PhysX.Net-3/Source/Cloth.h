@@ -394,6 +394,15 @@ namespace PhysX
 		}
 
 		/// <summary>
+		/// Gets or sets the stiffness frequency parameter.
+		/// </summary>
+		property float StiffnessFrequency
+		{
+			float get();
+			void set(float value);
+		}
+
+		/// <summary>
 		/// 
 		/// </summary>
 		property ClothMotionConstraintConfig MotionConstraintConfig
