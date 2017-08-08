@@ -184,6 +184,10 @@ void Cloth::SetCollisionSpheres(array<ClothCollisionSphere>^ spheres)
 		this->UnmanagedPointer->setCollisionSpheres(first, spheres->Length);
 	}
 }
+void Cloth::RemoveCollisionSphere(int index)
+{
+	this->UnmanagedPointer->removeCollisionSphere(index);
+}
 
 void Cloth::AddCollisionPlane(ClothCollisionPlane plane)
 {

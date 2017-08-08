@@ -72,6 +72,10 @@ namespace PhysX
 		/// Updates location and radii of collision spheres.
 		/// </summary>
 		void SetCollisionSpheres(array<ClothCollisionSphere>^ spheres);
+		/// <summary>
+		/// Removes collision sphere.
+		/// </summary>
+		void RemoveCollisionSphere(int index);
 
 		/// <summary>
 		/// Adds a collision plane.
