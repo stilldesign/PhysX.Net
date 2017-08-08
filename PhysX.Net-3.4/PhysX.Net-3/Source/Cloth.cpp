@@ -17,7 +17,7 @@ Cloth::Cloth(PxCloth* cloth, PhysX::Physics^ owner)
 		_fabric = gcnew PhysX::ClothFabric(fabric, owner);
 }
 
-PhysX::ClothFabric^ Cloth::ClothFabric::get()
+PhysX::ClothFabric^ Cloth::Fabric::get()
 {
 	return _fabric;
 }

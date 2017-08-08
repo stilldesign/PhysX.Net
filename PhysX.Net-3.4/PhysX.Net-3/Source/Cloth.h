@@ -162,9 +162,9 @@ namespace PhysX
 		//
 
 		/// <summary>
-		/// Returns a pointer to the corresponding cloth fabric.
+		/// Gets the corresponding cloth fabric.
 		/// </summary>
-		property PhysX::ClothFabric^ ClothFabric
+		property PhysX::ClothFabric^ Fabric
 		{
 			PhysX::ClothFabric^ get();
 		}
