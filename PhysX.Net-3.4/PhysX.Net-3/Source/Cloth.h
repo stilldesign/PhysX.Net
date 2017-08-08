@@ -166,6 +166,15 @@ namespace PhysX
 		ClothStretchConfig^ GetStretchConfig(ClothFabricPhaseType type);
 		void SetStretchConfig(ClothFabricPhaseType type, ClothStretchConfig^ config);
 
+		/// <summary>
+		/// Copies array of particles participating in self - collision to the user provided buffer.
+		/// </summary>
+		array<int>^ GetSelfCollisionIndices();
+		/// <summary>
+		/// Sets a subset of cloth particles which participate in self - collision.
+		/// </summary>
+		void SetSelfCollisionIndices(array<int>^ indices);
+
 		//
 
 		/// <summary>
@@ -450,6 +459,11 @@ namespace PhysX
 		{
 			float get();
 			void set(float value);
+		}
+
+		property int NumberOfSelfCollisionIndices
+		{
+			int get();
 		}
 
 	internal:

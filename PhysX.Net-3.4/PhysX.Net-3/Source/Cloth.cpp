@@ -326,6 +326,32 @@ void Cloth::SetStretchConfig(ClothFabricPhaseType type, ClothStretchConfig^ conf
 	this->UnmanagedPointer->setStretchConfig(ToUnmanagedEnum(PxClothFabricPhaseType, type), ClothStretchConfig::ToUnmanaged(config));
 }
 
+array<int>^ Cloth::GetSelfCollisionIndices()
+{
+	int n = this->UnmanagedPointer->getNbSelfCollisionIndices();
+
+	PxU32* i = new PxU32[n];
+	array<int>^ m = nullptr;
+
+	if (this->UnmanagedPointer->getSelfCollisionIndices(i))
+		m = Util::AsManagedArray<int>(i, n);
+
+	delete[] i;
+
+	return m;
+}
+void Cloth::SetSelfCollisionIndices(array<int>^ indices)
+{
+	ThrowIfNull(indices);
+
+	PxU32* i = new PxU32[indices->Length];
+	Util::AsUnmanagedArray(indices, i);
+
+	this->UnmanagedPointer->setSelfCollisionIndices(i, indices->Length);
+
+	delete[] i;
+}
+
 //
 
 int Cloth::NumberOfParticles::get()
@@ -586,6 +612,11 @@ float Cloth::SelfCollisionStiffness::get()
 void Cloth::SelfCollisionStiffness::set(float value)
 {
 	this->UnmanagedPointer->setSelfCollisionStiffness(value);
+}
+
+int Cloth::NumberOfSelfCollisionIndices::get()
+{
+	return this->UnmanagedPointer->getNbSelfCollisionIndices();
 }
 
 PxCloth* Cloth::UnmanagedPointer::get()
