@@ -440,6 +440,12 @@ namespace PhysX
 			void set(ClothTetherConfig^ value);
 		}
 
+		property float SelfCollisionDistance
+		{
+			float get();
+			void set(float value);
+		}
+
 	internal:
 		property PxCloth* UnmanagedPointer
 		{

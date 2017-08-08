@@ -570,6 +570,14 @@ void Cloth::TetherConfig::set(ClothTetherConfig^ value)
 	this->UnmanagedPointer->setTetherConfig(ClothTetherConfig::ToUnmanaged(value));
 }
 
+float Cloth::SelfCollisionDistance::get()
+{
+	return this->UnmanagedPointer->getSelfCollisionDistance();
+}
+void Cloth::SelfCollisionDistance::set(float value)
+{
+	this->UnmanagedPointer->setSelfCollisionDistance(value);
+}
 
 PxCloth* Cloth::UnmanagedPointer::get()
 {
