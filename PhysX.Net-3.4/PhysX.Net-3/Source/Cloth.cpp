@@ -352,6 +352,40 @@ void Cloth::SetSelfCollisionIndices(array<int>^ indices)
 	delete[] i;
 }
 
+array<Vector4>^ Cloth::GetRestPositions()
+{
+	int n = this->UnmanagedPointer->getNbParticles();
+
+	PxVec4* p = new PxVec4[n];
+	array<Vector4>^ m = nullptr;
+
+	if (this->UnmanagedPointer->getRestPositions(p))
+		m = Util::AsManagedArray<Vector4>(p, n);
+
+	delete[] p;
+
+	return m;
+}
+void Cloth::SetRestPositions(array<Vector4>^ restPositions)
+{
+	if (restPositions == nullptr)
+	{
+		this->UnmanagedPointer->setRestPositions(NULL);
+	}
+	else
+	{
+		if (restPositions->Length != this->UnmanagedPointer->getNbParticles())
+			throw gcnew ArgumentException("Length of restPositions must be the same as NumberOfParticles");
+
+		PxVec4* p = new PxVec4[restPositions->Length];
+		Util::AsUnmanagedArray(restPositions, p);
+
+		this->UnmanagedPointer->setRestPositions(p);
+
+		delete[] p;
+	}
+}
+
 //
 
 int Cloth::NumberOfParticles::get()

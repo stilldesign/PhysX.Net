@@ -175,6 +175,9 @@ namespace PhysX
 		/// </summary>
 		void SetSelfCollisionIndices(array<int>^ indices);
 
+		array<Vector4>^ GetRestPositions();
+		void SetRestPositions(array<Vector4>^ restPositions);
+
 		//
 
 		/// <summary>
