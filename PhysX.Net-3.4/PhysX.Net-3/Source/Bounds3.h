@@ -3,6 +3,7 @@
 
 namespace PhysX
 {
+	[StructLayout(LayoutKind::Sequential)]
 	public value class Bounds3
 	{
 		public:

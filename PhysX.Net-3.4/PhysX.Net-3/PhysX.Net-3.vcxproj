@@ -115,6 +115,7 @@
     <ClInclude Include="Source\BoxObstacle.h" />
     <ClInclude Include="Source\BroadPhase.h" />
     <ClInclude Include="Source\BroadPhaseCallback.h" />
+    <ClInclude Include="Source\BroadPhaseExt.h" />
     <ClInclude Include="Source\Bvh33MidphaseDesc.h" />
     <ClInclude Include="Source\Bvh34MidphaseDesc.h" />
     <ClInclude Include="Source\CapsuleController.h" />
@@ -374,6 +375,7 @@
     <ClCompile Include="Source\BoxObstacle.cpp" />
     <ClCompile Include="Source\BroadPhase.cpp" />
     <ClCompile Include="Source\BroadPhaseCallback.cpp" />
+    <ClCompile Include="Source\BroadPhaseExt.cpp" />
     <ClCompile Include="Source\Bvh33MidphaseDesc.cpp" />
     <ClCompile Include="Source\Bvh34MidphaseDesc.cpp" />
     <ClCompile Include="Source\CapsuleController.cpp" />

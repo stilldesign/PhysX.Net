@@ -594,6 +594,9 @@
     <ClCompile Include="Source\ClothTetherConfig.cpp">
       <Filter>Cloth</Filter>
     </ClCompile>
+    <ClCompile Include="Source\BroadPhaseExt.cpp">
+      <Filter>BroadPhase</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
@@ -1328,6 +1331,9 @@
     </ClInclude>
     <ClInclude Include="Source\LinearAngularImpulseResult.h">
       <Filter>Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\BroadPhaseExt.h">
+      <Filter>BroadPhase</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
