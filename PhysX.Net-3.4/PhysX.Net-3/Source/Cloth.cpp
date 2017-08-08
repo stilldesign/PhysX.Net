@@ -579,6 +579,15 @@ void Cloth::SelfCollisionDistance::set(float value)
 	this->UnmanagedPointer->setSelfCollisionDistance(value);
 }
 
+float Cloth::SelfCollisionStiffness::get()
+{
+	return this->UnmanagedPointer->getSelfCollisionStiffness();
+}
+void Cloth::SelfCollisionStiffness::set(float value)
+{
+	this->UnmanagedPointer->setSelfCollisionStiffness(value);
+}
+
 PxCloth* Cloth::UnmanagedPointer::get()
 {
 	return (PxCloth*)Actor::UnmanagedPointer;

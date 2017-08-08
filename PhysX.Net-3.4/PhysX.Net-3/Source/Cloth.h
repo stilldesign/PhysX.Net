@@ -446,6 +446,12 @@ namespace PhysX
 			void set(float value);
 		}
 
+		property float SelfCollisionStiffness
+		{
+			float get();
+			void set(float value);
+		}
+
 	internal:
 		property PxCloth* UnmanagedPointer
 		{
