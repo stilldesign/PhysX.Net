@@ -3,7 +3,7 @@ PhysX.Net
 
 Nuget
 -----
-PM> Install-Package PhysX.Net-x64
+PM> Install-Package PhysX.Net -Prerelease
 
 Build all the things!
 --------------
