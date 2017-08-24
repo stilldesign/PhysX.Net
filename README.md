@@ -11,7 +11,7 @@ A zip of all relevant DLLs and samples - http://stilldesign.co.nz/PhysX
 
 Development
 -----------
-### PhysX.Net 0.7.0 for NVIDIA PhysX 3.4.0
+### PhysX.Net 0.7.2 for NVIDIA PhysX 3.4.0
 * Targets PhysX 3.4.0
 * 64 bit version only
 * Dependencies
