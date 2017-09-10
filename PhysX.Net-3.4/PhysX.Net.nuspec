@@ -2,15 +2,15 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 	<metadata>
 		<id>PhysX.Net</id>
-		<version>0.7.2-alpha</version>
+		<version>0.7.3-alpha</version>
 		<authors>StillDesign</authors>
 		<description>.NET wrapper for NVIDIA PhysX 3.4.0</description>
 		<language>en-US</language>
 		<projectUrl>https://github.com/stilldesign/PhysX.Net</projectUrl>
 		<tags>nvidia physx wrapper physics .net c#</tags>
-		<dependencies>
-			<dependency id="System.Numerics.Vectors" version="4.0.0" />
-		</dependencies>
+		<frameworkAssemblies>
+			<frameworkAssembly assemblyName="System.Numerics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"  />
+		</frameworkAssemblies>
 	</metadata>
 	<files>
 		<!-- x64 -->
