@@ -79,6 +79,28 @@ Serializable^ Shape::AsSerializable()
 	return gcnew Serializable(_shape);
 }
 
+Geometry^ Shape::GetGeometry()
+{
+	switch (_shape->getGeometryType())
+	{
+	case PxGeometryType::eBOX:
+		return this->GetBoxGeometry();
+	case PxGeometryType::eCAPSULE:
+		return this->GetCapsuleGeometry();
+	case PxGeometryType::eCONVEXMESH:
+		return this->GetConvexMeshGeometry();
+	case PxGeometryType::eHEIGHTFIELD:
+		return this->GetHeightFieldGeometry();
+	case PxGeometryType::ePLANE:
+		return this->GetPlaneGeometry();
+	case PxGeometryType::eSPHERE:
+		return this->GetSphereGeometry();
+	case PxGeometryType::eTRIANGLEMESH:
+		return this->GetTriangleMeshGeometry();
+
+	default: return nullptr;
+	}
+}
 BoxGeometry^ Shape::GetBoxGeometry()
 {
 	PxBoxGeometry box;

@@ -59,6 +59,7 @@ namespace PhysX
 		/// </summary>
 		Serializable^ AsSerializable();
 
+		Geometry^ GetGeometry();
 		BoxGeometry^ GetBoxGeometry();
 		SphereGeometry^ GetSphereGeometry();
 		CapsuleGeometry^ GetCapsuleGeometry();
