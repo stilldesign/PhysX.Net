@@ -67,7 +67,7 @@ array<T>^ ObjectTable::GetObjectsOfType()
 		if (obj == nullptr)
 			continue;
 
-		if (obj->GetType() == T::typeid)
+		if (T::typeid->IsAssignableFrom(obj->GetType()))
 			objects->Add((T)obj);
 	}
 

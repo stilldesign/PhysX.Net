@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -124,6 +125,26 @@ namespace PhysX.Test
 			}
 
 			Assert.IsTrue(onMaterialRemovedCalled);
+		}
+
+		/// <summary>
+		/// Test getting all the created <see cref="PhysX.Joint"/> objects.
+		/// </summary>
+		[TestMethod]
+		public void GetJoints()
+		{
+			using (var physics = CreatePhysicsAndScene())
+			{
+				var material = physics.Physics.CreateMaterial(0.2f, 0.1f, 0.2f);
+				var rigid = physics.Physics.CreateRigidDynamic();
+
+				var sphericalJoint = physics.Scene.CreateJoint<SphericalJoint>(rigid, Matrix4x4.Identity, null, Matrix4x4.Identity);
+
+				var joints = physics.Physics.Joints;
+
+				Assert.AreEqual(1, joints.Length);
+				Assert.AreEqual(sphericalJoint, joints[0]);
+			}
 		}
 	}
 }
