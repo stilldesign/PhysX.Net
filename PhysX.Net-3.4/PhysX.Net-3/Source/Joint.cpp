@@ -16,8 +16,10 @@ Joint::Joint(PxJoint* joint, PhysX::Physics^ owner)
 	_joint = joint;
 	_owner = owner;
 
-	// Constraint
-	_constraint = gcnew PhysX::Constraint(_joint->getConstraint(), this, false);
+	// Constraint objects appear to be reused, so try get the existing wrapped one, otherwise create it
+	_constraint = ObjectTable::Instance->TryGetObject<PhysX::Constraint^>((intptr_t)_joint->getConstraint());
+	if (_constraint == nullptr)
+		_constraint = gcnew PhysX::Constraint(_joint->getConstraint(), this, false);
 
 	ObjectTable::Instance->Add((intptr_t)joint, this, owner);
 }
