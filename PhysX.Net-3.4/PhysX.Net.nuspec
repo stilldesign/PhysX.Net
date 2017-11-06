@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 	<metadata>
 		<id>PhysX.Net</id>
-		<version>0.8.1-alpha</version>
+		<version>0.8.2-alpha</version>
 		<authors>StillDesign</authors>
 		<description>.NET wrapper for NVIDIA PhysX 3.4.0</description>
 		<language>en-US</language>
