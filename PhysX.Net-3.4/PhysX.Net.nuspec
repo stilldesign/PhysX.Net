@@ -24,7 +24,7 @@
 		
 		<!-- Dependencies -->
 		<!-- The native PhysX DLL files -->
-		<file src="Assemblies\x64\Debug\*.dll" target="lib" />
+		<file src="Assemblies\x64\Debug\*.dll" target="lib\x64" />
 		<file src="Assemblies\x64\Debug\*.pdb" target="pdb" />
 
 		<file src="PhysX.Net-3\PhysX.Net.targets" target="Build\" />
