@@ -1342,6 +1342,7 @@
   <ItemGroup>
     <None Include="Changelog.txt" />
     <None Include="..\samples\rigidbodiessample\packages.config" />
+    <None Include="PhysX.Net.targets" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vehicle">

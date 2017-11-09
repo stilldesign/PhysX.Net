@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.16
+VisualStudioVersion = 15.0.27004.2008
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{27CD93B0-2E6E-42D3-B44A-43EAF972337E}"
 EndProject
@@ -44,7 +44,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{1E724E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuspec", "nuspec", "{A965FAAA-D802-4E8B-97ED-D32167027628}"
 	ProjectSection(SolutionItems) = preProject
-		Install.ps1 = Install.ps1
 		Packaging.txt = Packaging.txt
 		PhysX.Net.nuspec = PhysX.Net.nuspec
 	EndProjectSection
@@ -124,6 +123,9 @@ Global
 		{63850BCF-F575-4883-B6F6-8E09C224BB80} = {E1E0C505-3069-4E15-980D-1C87F241C7F3}
 		{B6083AFF-4360-4182-A14B-FD7A423EA579} = {E1E0C505-3069-4E15-980D-1C87F241C7F3}
 		{5251B7F1-E71A-4C1C-9B0E-FA05E692C906} = {E1E0C505-3069-4E15-980D-1C87F241C7F3}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D5664471-1B27-4DBD-938F-1EEEA717E889}
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = PhysX.Net.vsmdi

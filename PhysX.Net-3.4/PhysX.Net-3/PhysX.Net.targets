@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<ItemGroup>
+		<None Include="$(MSBuildThisFileDirectory)..\lib\nvToolsExt64_1.dll">
+			<Link>nvToolsExt64_1.dll</Link>
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+
+		<None Include="$(MSBuildThisFileDirectory)..\lib\PhysX3CharacterKinematicDEBUG_x64.dll">
+			<Link>PhysX3CharacterKinematicDEBUG_x64.dll</Link>
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+
+		<None Include="$(MSBuildThisFileDirectory)..\lib\PhysX3CommonDEBUG_x64.dll">
+			<Link>PhysX3CommonDEBUG_x64.dll</Link>
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+
+		<None Include="$(MSBuildThisFileDirectory)..\lib\PhysX3CookingDEBUG_x64.dll">
+			<Link>PhysX3CookingDEBUG_x64.dll</Link>
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+
+		<None Include="$(MSBuildThisFileDirectory)..\lib\PhysX3DEBUG_x64.dll">
+			<Link>PhysX3DEBUG_x64.dll</Link>
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+
+		<None Include="$(MSBuildThisFileDirectory)..\lib\PhysX3GpuDEBUG_x64.dll">
+			<Link>PhysX3GpuDEBUG_x64.dll</Link>
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+
+		<None Include="$(MSBuildThisFileDirectory)..\lib\PhysXDevice64.dll">
+			<Link>PhysXDevice64.dll</Link>
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+
+		<None Include="$(MSBuildThisFileDirectory)..\lib\PxFoundationDEBUG_x64.dll">
+			<Link>PxFoundationDEBUG_x64.dll</Link>
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+
+		<None Include="$(MSBuildThisFileDirectory)..\lib\PxPvdSDKDEBUG_x64.dll">
+			<Link>PxPvdSDKDEBUG_x64.dll</Link>
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+</Project>
