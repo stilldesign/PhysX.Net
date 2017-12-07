@@ -120,7 +120,7 @@ namespace PhysX
 		/// <summary>
 		/// Visualize the bodies joint projection group.
 		/// </summary>
-		BodyJointGroups = PxVisualizationParameter::eBODY_JOINT_GROUPS,
+		DeprecatedBodyJointGroups = PxVisualizationParameter::eDEPRECATED_BODY_JOINT_GROUPS,
 		/// <summary>
 		/// Visualize contact points. Will enable contact information.
 		/// </summary>
