@@ -196,6 +196,15 @@ namespace PhysX
 				void set(Bounds3 value);
 			}
 
+			/// <summary>
+			/// A slop value used to zero contact offsets from the body's COM on an axis if the offset along that axis is smaller than this threshold. Can be used to compensate for small numerical errors in contact generation.
+			/// </summary>
+			property float SolverOffsetSlop
+			{
+				float get();
+				void set(float value);
+			}
+
 		internal:
 			property PxSceneDesc* UnmanagedPointer
 			{

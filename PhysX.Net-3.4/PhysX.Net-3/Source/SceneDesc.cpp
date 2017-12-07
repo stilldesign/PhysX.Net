@@ -261,6 +261,15 @@ void SceneDesc::SanityBounds::set(Bounds3 value)
 	_sceneDesc->sanityBounds = Bounds3::ToUnmanaged(value);
 }
 
+float SceneDesc::SolverOffsetSlop::get()
+{
+	return _sceneDesc->solverOffsetSlop;
+}
+void SceneDesc::SolverOffsetSlop::set(float value)
+{
+	_sceneDesc->solverOffsetSlop = value;
+}
+
 PxSceneDesc* SceneDesc::UnmanagedPointer::get()
 {
 	return _sceneDesc;
