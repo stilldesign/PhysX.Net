@@ -125,7 +125,8 @@ namespace PhysX
 		EnableCCD = PxRigidBodyFlag::eENABLE_CCD,
 		EnableCCDFriction = PxRigidBodyFlag::eENABLE_CCD_FRICTION,
 		EnablePoseIntegrationPreview = PxRigidBodyFlag::eENABLE_POSE_INTEGRATION_PREVIEW,
-		EnableSpeculativeCCD = PxRigidBodyFlag::eENABLE_SPECULATIVE_CCD
+		EnableSpeculativeCCD = PxRigidBodyFlag::eENABLE_SPECULATIVE_CCD,
+		EnableCCDMaxContactImpulse = PxRigidBodyFlag::eENABLE_CCD_MAX_CONTACT_IMPULSE
 	};
 
 	[Flags]
