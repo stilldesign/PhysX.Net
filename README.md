@@ -11,12 +11,12 @@ A zip of all relevant DLLs and samples - http://stilldesign.co.nz/PhysX
 
 Development
 -----------
-### PhysX.Net 0.8.3-alpha for NVIDIA PhysX 3.4.0
-* Targets PhysX 3.4.0
+### PhysX.Net 0.10.0-alpha for NVIDIA PhysX 3.4.0
+* Targets PhysX 3.4.1
 * 64 bit version only
 * Dependencies
 	* .NET 4.6.2
-	* CRT 2017 - https://go.microsoft.com/fwlink/?LinkId=746572
+	* C runtime 2017 - https://go.microsoft.com/fwlink/?LinkId=746572
 * Remaining:
     * Vehicle sample and a few related classes
     * Attach/Detach shape from an actor (recently added, but needs testing)
@@ -28,7 +28,7 @@ Development
 # Building
 ## Dependencies
 * Visual Studio 2017
-* VC++ 2015.3 v140 toolset for desktop (x86,x64) - needed to build PhysX itself. If you've built PhysX already, this could be ignored.
+* VC++ 2015.4 v140 toolset for desktop (x86,x64) - needed to build PhysX itself. If you've built PhysX already, this could be ignored.
 
 ## Compiling
 ### Compile PhysX
