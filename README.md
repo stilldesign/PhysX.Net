@@ -16,7 +16,7 @@ Development
 * 64 bit version only
 * Dependencies
 	* .NET 4.6.2
-	* C runtime 2017 - https://go.microsoft.com/fwlink/?LinkId=746572
+	* C runtime 2017 - https://aka.ms/vs/15/release/vc_redist.x64.exe
 * Remaining:
     * Vehicle sample and a few related classes
     * Attach/Detach shape from an actor (recently added, but needs testing)
