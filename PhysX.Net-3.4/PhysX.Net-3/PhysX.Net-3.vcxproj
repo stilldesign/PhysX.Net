@@ -12,7 +12,6 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{FB145A7D-CDF2-417D-A006-F7591481D609}</ProjectGuid>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <Keyword>ManagedCProj</Keyword>
     <RootNamespace>PhysXNet3</RootNamespace>
     <SccProjectName>SAK</SccProjectName>
@@ -22,7 +21,8 @@
     <ProjectName>PhysX.Net</ProjectName>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <WindowsTargetPlatformVersion>10.0.14393.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
@@ -52,7 +52,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>$(NVIDIAPhysX34SDK)\Include;$(NVIDIAPhysX34SDK)\..\PxShared\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(NVIDIAPhysX34SDK)\Lib\vc14win64;$(NVIDIAPhysX34SDK)\..\PxShared\Lib\vc14win64;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(NVIDIAPhysX34SDK)\Lib\vc15win64;$(NVIDIAPhysX34SDK)\..\PxShared\Lib\vc15win64;$(LibraryPath)</LibraryPath>
     <OutDir>$(ProjectDir)bin\x64\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)bin\x64\$(Configuration)\Intermediate\</IntDir>
   </PropertyGroup>
