@@ -60,7 +60,7 @@
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(ProjectDir)bin\x64\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)bin\x64\$(Configuration)\Intermediate\</IntDir>
-    <LibraryPath>$(NVIDIAPhysX34SDK)\Lib\vc14win64;$(NVIDIAPhysX34SDK)\..\PxShared\Lib\vc14win64;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(NVIDIAPhysX34SDK)\Lib\vc15win64;$(NVIDIAPhysX34SDK)\..\PxShared\Lib\vc15win64;$(LibraryPath)</LibraryPath>
     <IncludePath>$(NVIDIAPhysX34SDK)\Include;$(NVIDIAPhysX34SDK)\..\PxShared\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
