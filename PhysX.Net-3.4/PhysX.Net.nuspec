@@ -4,7 +4,7 @@
 		<id>PhysX.Net</id>
 		<version>0.11.0-alpha</version>
 		<authors>StillDesign</authors>
-		<description>.NET wrapper for NVIDIA PhysX 3.4.1</description>
+		<description>.NET wrapper for NVIDIA PhysX 3.4.1 @ 23584284</description>
 		<language>en-US</language>
 		<projectUrl>https://github.com/stilldesign/PhysX.Net</projectUrl>
 		<tags>nvidia physx wrapper physics .net c#</tags>
@@ -12,15 +12,15 @@
 			<frameworkAssembly assemblyName="System.Numerics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"  />
 		</frameworkAssemblies>
 		<references>
-			<group targetFramework="net462">
+			<group targetFramework="net471">
 				<reference file="PhysX.Net.dll" />
 			</group>
 		</references>
 	</metadata>
 	<files>
 		<!-- x64 -->
-		<file src="PhysX.Net-3\bin\x64\Debug\PhysX.Net.dll" target="lib\net462" />
-		<file src="PhysX.Net-3\bin\x64\Debug\PhysX.Net.pdb" target="lib\net462" />
+		<file src="PhysX.Net-3\bin\x64\Debug\PhysX.Net.dll" target="lib\net471" />
+		<file src="PhysX.Net-3\bin\x64\Debug\PhysX.Net.pdb" target="lib\net471" />
 		
 		<!-- Dependencies -->
 		<!-- The native PhysX DLL files -->
