@@ -45,6 +45,7 @@ namespace PhysX
 		/// Note that this flag is not mutable, and must be set in PxSceneDesc at scene creation.
 		/// Default: false 
 		/// </summary>
+		[ObsoleteAttribute]
 		EnableKinematicStaticPairs = PxSceneFlag::eENABLE_KINEMATIC_STATIC_PAIRS,
 
 		/// <summary>
@@ -55,6 +56,7 @@ namespace PhysX
 		/// Note that this flag is not mutable, and must be set in PxSceneDesc at scene creation.
 		/// Default: false 
 		/// </summary>
+		[ObsoleteAttribute]
 		EnableKinematicPairs = PxSceneFlag::eENABLE_KINEMATIC_PAIRS,
 
 		/// <summary>
