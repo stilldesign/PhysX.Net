@@ -85,7 +85,9 @@ array<T>^ ObjectTable::GetObjectsOfOwnerAndType(Object^ owner)
 
 	auto items = _ownerTypeLookup[key];
 
-	return Enumerable::ToArray(Enumerable::Cast<T>(items));
+	auto typedItems = Enumerable::Cast<T>(items);
+
+	return Enumerable::ToArray(typedItems);
 }
 
 bool ObjectTable::Contains(intptr_t pointer)
