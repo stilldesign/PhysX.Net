@@ -83,6 +83,7 @@ namespace PhysX
 		EnableAveragePoint = PxSceneFlag::eENABLE_AVERAGE_POINT,
 		DeprecatedTriggerTriggerReports = PxSceneFlag::eDEPRECATED_TRIGGER_TRIGGER_REPORTS,
 		ExcludeKinematicsFromActiveActors = PxSceneFlag::eEXCLUDE_KINEMATICS_FROM_ACTIVE_ACTORS,
+		[ObsoleteAttribute]
 		SuppressEagerSceneQueryRefit = PxSceneFlag::eSUPPRESS_EAGER_SCENE_QUERY_REFIT,
 		EnableGpuDynamics = PxSceneFlag::eENABLE_GPU_DYNAMICS,
 		EnableEnhancedDeterminism = PxSceneFlag::eENABLE_ENHANCED_DETERMINISM,
