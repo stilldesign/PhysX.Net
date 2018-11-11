@@ -2,6 +2,7 @@
 #include "HeightField.h"
 #include "Physics.h"
 #include "Serializable.h"
+#include "HeightFieldSample.h"
 
 HeightField::HeightField(PxHeightField* heightField, PhysX::Physics^ owner)
 {
@@ -56,6 +57,11 @@ float HeightField::GetHeight(float x, float z)
 short HeightField::GetTriangleMaterialIndex(int triangleIndex)
 {
 	return _heightField->getTriangleMaterialIndex(triangleIndex);
+}
+
+HeightFieldSample^ HeightField::GetSample(int row, int column)
+{
+	return HeightFieldSample::ToManaged(_heightField->getSample(row, column));
 }
 
 //

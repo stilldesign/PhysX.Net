@@ -6,6 +6,7 @@ namespace PhysX
 {
 	ref class Physics;
 	ref class Serializable;
+	ref class HeightFieldSample;
 
 	/// <summary>
 	/// A height field class.
@@ -42,6 +43,14 @@ namespace PhysX
 			/// Retrieves the material table index of given triangle. 
 			/// </summary>
 			short GetTriangleMaterialIndex(int triangleIndex);
+
+			/// <summary>
+			/// Returns heightfield sample of given row and column.
+			/// </summary>
+			/// <param name="row">Given heightfield row.</param>
+			/// <param name="column">Given heightfield column.</param>
+			/// <returns>Heightfield sample.</returns>
+			HeightFieldSample^ GetSample(int row, int column);
 
 			/// <summary>
 			/// Gets an object which is responsible for serialization of this type.

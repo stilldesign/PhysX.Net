@@ -14,6 +14,7 @@ namespace PhysX
 
 		internal:
 			static PxHeightFieldSample ToUnmanaged(HeightFieldSample^ sample);
+			static HeightFieldSample^ ToManaged(PxHeightFieldSample sample);
 
 		public:
 			/// <summary>

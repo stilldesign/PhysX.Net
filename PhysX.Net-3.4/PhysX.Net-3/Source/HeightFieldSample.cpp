@@ -15,3 +15,12 @@ PxHeightFieldSample HeightFieldSample::ToUnmanaged(HeightFieldSample^ sample)
 
 	return s;
 }
+HeightFieldSample^ HeightFieldSample::ToManaged(PxHeightFieldSample sample)
+{
+	auto h = gcnew HeightFieldSample();
+		h->Height = sample.height;
+		h->MaterialIndex0 = BitAndByte(sample.materialIndex0, sample.materialIndex0.isBitSet());
+		h->MaterialIndex1 = BitAndByte(sample.materialIndex1, sample.materialIndex1.isBitSet());
+
+	return h;
+}
