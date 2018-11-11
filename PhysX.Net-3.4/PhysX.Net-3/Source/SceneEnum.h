@@ -341,4 +341,20 @@ namespace PhysX
 	{
 
 	};
+
+	public enum class SceneQueryUpdateMode
+	{
+		/// <summary>
+		/// Both scene query build and commit are executed.
+		/// </summary>
+		EnabledCommitEnabled = PxSceneQueryUpdateMode::eBUILD_ENABLED_COMMIT_ENABLED,
+		/// <summary>
+		/// Scene query build only is executed.
+		/// </summary>
+		EnabledCommitDisabled = PxSceneQueryUpdateMode::eBUILD_ENABLED_COMMIT_DISABLED,
+		/// <summary>
+		/// No work is done, no update of scene queries.
+		/// </summary>
+		DisabledCommitDisabled = PxSceneQueryUpdateMode::eBUILD_DISABLED_COMMIT_DISABLED,
+	};
 };

@@ -487,6 +487,15 @@ SceneFlag Scene::Flags::get()
 	return ToManagedEnum(SceneFlag, _scene->getFlags());
 }
 
+PhysX::SceneQueryUpdateMode Scene::SceneQueryUpdateMode::get()
+{
+	return (PhysX::SceneQueryUpdateMode)_scene->getSceneQueryUpdateMode();
+}
+void Scene::SceneQueryUpdateMode::set(PhysX::SceneQueryUpdateMode value)
+{
+	_scene->setSceneQueryUpdateMode(ToUnmanagedEnum(PxSceneQueryUpdateMode, value));
+}
+
 int Scene::SceneQueryStaticTimestamp::get()
 {
 	return _scene->getSceneQueryStaticTimestamp();

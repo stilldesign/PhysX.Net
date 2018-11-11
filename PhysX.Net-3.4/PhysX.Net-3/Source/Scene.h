@@ -372,6 +372,12 @@ namespace PhysX
 				SceneFlag get();
 			}
 
+			property PhysX::SceneQueryUpdateMode SceneQueryUpdateMode
+			{
+				PhysX::SceneQueryUpdateMode get();
+				void set(PhysX::SceneQueryUpdateMode value);
+			}
+
 			/// <summary>
 			/// Retrieves the scene's internal scene query timestamp, increased each time a change to the static scene query structure is performed.
 			/// </summary>
