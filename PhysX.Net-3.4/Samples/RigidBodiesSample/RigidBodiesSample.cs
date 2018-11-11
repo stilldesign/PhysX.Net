@@ -212,7 +212,7 @@ namespace PhysX.Samples.RigidBodiesSample
 			scene.AddActor(rigidActor);
 		}
 
-		private HeightFieldSample[] CreateSampleGrid(int rows, int columns)
+		private static HeightFieldSample[] CreateSampleGrid(int rows, int columns)
 		{
 			const float height = 2;
 
