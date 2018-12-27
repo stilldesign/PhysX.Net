@@ -198,7 +198,6 @@ namespace PhysX.Samples.Engine
 			this.Scene.SetVisualizationParameter(VisualizationParameter.CollisionShapes, true);
 			this.Scene.SetVisualizationParameter(VisualizationParameter.JointLocalFrames, true);
 			this.Scene.SetVisualizationParameter(VisualizationParameter.JointLimits, true);
-			this.Scene.SetVisualizationParameter(VisualizationParameter.ParticleSystemPosition, true);
 			this.Scene.SetVisualizationParameter(VisualizationParameter.ActorAxes, true);
 
 			// Connect to the PhysX Visual Debugger (if the PVD application is running)

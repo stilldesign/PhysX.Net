@@ -216,24 +216,6 @@
     <ClCompile Include="Source\HeightFieldSample.cpp">
       <Filter>HeightField</Filter>
     </ClCompile>
-    <ClCompile Include="Source\ParticleBase.cpp">
-      <Filter>Particles</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ParticleCreationData.cpp">
-      <Filter>Particles</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ParticleFluid.cpp">
-      <Filter>Particles</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ParticleFluidReadData.cpp">
-      <Filter>Particles</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ParticleReadData.cpp">
-      <Filter>Particles</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ParticleSystem.cpp">
-      <Filter>Particles</Filter>
-    </ClCompile>
     <ClCompile Include="Source\CapsuleGeometry.cpp">
       <Filter>Geometry</Filter>
     </ClCompile>
@@ -821,27 +803,6 @@
     <ClInclude Include="Source\HeightFieldEnum.h">
       <Filter>HeightField</Filter>
     </ClInclude>
-    <ClInclude Include="Source\ParticleSystem.h">
-      <Filter>Particles</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ParticleBase.h">
-      <Filter>Particles</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ParticleCreationData.h">
-      <Filter>Particles</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ParticleEnum.h">
-      <Filter>Particles</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ParticleFluid.h">
-      <Filter>Particles</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ParticleFluidReadData.h">
-      <Filter>Particles</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ParticleReadData.h">
-      <Filter>Particles</Filter>
-    </ClInclude>
     <ClInclude Include="Source\CapsuleGeometry.h">
       <Filter>Geometry</Filter>
     </ClInclude>
@@ -1279,9 +1240,6 @@
     </Filter>
     <Filter Include="GeomUtils">
       <UniqueIdentifier>{123b0f1a-881e-48b3-a9c4-f057f7fd0426}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Particles">
-      <UniqueIdentifier>{158039ca-df02-4e54-aa78-c3b99459e1ee}</UniqueIdentifier>
     </Filter>
     <Filter Include="PVD">
       <UniqueIdentifier>{9da63bcf-e4a9-44f1-895e-601382702b86}</UniqueIdentifier>

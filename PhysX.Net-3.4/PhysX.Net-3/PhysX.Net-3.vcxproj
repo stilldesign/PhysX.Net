@@ -274,13 +274,6 @@
     <ClInclude Include="Source\ObjectTable.h" />
     <ClInclude Include="Source\DefaultMemoryOutputStream.h" />
     <ClInclude Include="Source\OutputStream.h" />
-    <ClInclude Include="Source\ParticleBase.h" />
-    <ClInclude Include="Source\ParticleCreationData.h" />
-    <ClInclude Include="Source\ParticleEnum.h" />
-    <ClInclude Include="Source\ParticleFluid.h" />
-    <ClInclude Include="Source\ParticleFluidReadData.h" />
-    <ClInclude Include="Source\ParticleReadData.h" />
-    <ClInclude Include="Source\ParticleSystem.h" />
     <ClInclude Include="Source\Physics.h" />
     <ClInclude Include="Source\PhysicsAlreadyInstantiatedException.h" />
     <ClInclude Include="Source\PhysicsEnum.h" />
@@ -446,12 +439,6 @@
     <ClCompile Include="Source\OperationFailedException.cpp" />
     <ClCompile Include="Source\OutputStream.cpp" />
     <ClCompile Include="Source\OverlapHit.cpp" />
-    <ClCompile Include="Source\ParticleBase.cpp" />
-    <ClCompile Include="Source\ParticleCreationData.cpp" />
-    <ClCompile Include="Source\ParticleFluid.cpp" />
-    <ClCompile Include="Source\ParticleFluidReadData.cpp" />
-    <ClCompile Include="Source\ParticleReadData.cpp" />
-    <ClCompile Include="Source\ParticleSystem.cpp" />
     <ClCompile Include="Source\PhysXEntity.cpp" />
     <ClCompile Include="Source\PrismaticJoint.cpp" />
     <ClCompile Include="Source\QueryCache.cpp" />

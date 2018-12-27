@@ -97,8 +97,6 @@
     <Compile Include="Material\MaterialTest.cs" />
     <Compile Include="Math\TransformTests.cs" />
     <Compile Include="ObservableTest.cs" />
-    <Compile Include="Particle\ParticleFluidTest.cs" />
-    <Compile Include="Particle\ParticleTest.cs" />
     <Compile Include="ErrorOutput.cs" />
     <Compile Include="Joint\PrismaticJointTest.cs" />
     <Compile Include="Joint\FixedJointTest.cs" />
