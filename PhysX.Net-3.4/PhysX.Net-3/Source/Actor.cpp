@@ -116,15 +116,6 @@ void Actor::OwnerClient::set(int value)
 	_actor->setOwnerClient((PxClientID)value);
 }
 
-ActorClientBehaviorFlag Actor::ClientBehaviorFlags::get()
-{
-	return ToManagedEnum(ActorClientBehaviorFlag, _actor->getClientBehaviorFlags());
-}
-void Actor::ClientBehaviorFlags::set(ActorClientBehaviorFlag value)
-{
-	_actor->setClientBehaviorFlags(ToUnmanagedEnum(PxActorClientBehaviorFlag, value));
-}
-
 PxActor* Actor::UnmanagedPointer::get()
 {
 	return _actor;

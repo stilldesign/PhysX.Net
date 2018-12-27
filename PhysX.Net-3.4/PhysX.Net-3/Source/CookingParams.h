@@ -34,5 +34,6 @@ namespace PhysX
 		/// Controls the desired midphase desc structure for triangle meshes.
 		/// </summary>
 		property MidphaseDesc^ MidphaseDesc;
+		property float PlaneTolerance;
 	};
 };

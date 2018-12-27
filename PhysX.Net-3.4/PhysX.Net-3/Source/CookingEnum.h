@@ -30,12 +30,6 @@
 		/// </summary>
 		CheckZeroAreaTriangles = PxConvexFlag::eCHECK_ZERO_AREA_TRIANGLES,
 
-		/// <summary>
-		/// Inflates the convex object according to skin width.
-		/// Note: This flag is only used in combination with ComputeConvex.
-		/// </summary>
-		InflateConvex = PxConvexFlag::eINFLATE_CONVEX,
-
 		QuantizeInput = PxConvexFlag::eQUANTIZE_INPUT,
 		DisableMeshValidation = PxConvexFlag::eDISABLE_MESH_VALIDATION,
 		PlaneShifting = PxConvexFlag::ePLANE_SHIFTING,
@@ -96,7 +90,6 @@
 
 	public enum class ConvexMeshCookingType
 	{
-		InflationIncrementalHull = PxConvexMeshCookingType::eINFLATION_INCREMENTAL_HULL,
 		QuickHull = PxConvexMeshCookingType::eQUICKHULL
 	};
  };
