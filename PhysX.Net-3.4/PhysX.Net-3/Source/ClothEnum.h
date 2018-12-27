@@ -3,15 +3,6 @@
 
 namespace PhysX
 {
-	public enum class ClothFabricPhaseType
-	{
-		Invalid = PxClothFabricPhaseType::eINVALID,  //!< invalid type 
-		Vertical = PxClothFabricPhaseType::eVERTICAL,  //!< resists stretching or compression, usually along the gravity
-		Horizontal = PxClothFabricPhaseType::eHORIZONTAL,  //!< resists stretching or compression, perpendicular to the gravity
-		Bending = PxClothFabricPhaseType::eBENDING,  //!< resists out-of-plane bending in angle-based formulation
-		Shearing = PxClothFabricPhaseType::eSHEARING  //!< resists in-plane shearing along (typically) diagonal edges,
-	};
-
 	[Flags]
 	public enum class ClothFlag
 	{

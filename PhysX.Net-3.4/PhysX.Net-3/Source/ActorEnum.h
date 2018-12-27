@@ -19,21 +19,6 @@ namespace PhysX
 		RigidDynamic = PxActorType::eRIGID_DYNAMIC,
 		
 		/// <summary>
-		/// A particle system.
-		/// </summary>
-		ParticleSystem = PxActorType::ePARTICLE_SYSTEM,
-
-		/// <summary>
-		/// A particle fluid.
-		/// </summary>
-		ParticleFluid = PxActorType::ePARTICLE_FLUID,
-
-		/// <summary>
-		/// A cloth.
-		/// </summary>
-		Cloth = PxActorType::eCLOTH,
-
-		/// <summary>
 		/// An articulation link.
 		/// </summary>
 		ArticulationLink = PxActorType::eARTICULATION_LINK
@@ -73,22 +58,7 @@ namespace PhysX
 		/// <summary>
 		/// A dynamic rigid body.
 		/// </summary>
-		RigidDynamic = PxActorTypeFlag::eRIGID_DYNAMIC,
-
-		/// <summary>
-		/// A particle system.
-		/// </summary>
-		ParticleSystem = PxActorTypeFlag::ePARTICLE_SYSTEM,
-		
-		/// <summary>
-		/// A particle fluid.
-		/// </summary>
-		ParticleFluid = PxActorTypeFlag::ePARTICLE_FLUID,
-		
-		/// <summary>
-		/// A cloth.
-		/// </summary>
-		Cloth = PxActorTypeFlag::eCLOTH
+		RigidDynamic = PxActorTypeFlag::eRIGID_DYNAMIC
 	};
 
 	/// <summary>

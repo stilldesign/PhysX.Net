@@ -96,7 +96,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
-    <ClInclude Include="Source\ActiveTransform.h" />
     <ClInclude Include="Source\Actor.h" />
     <ClInclude Include="Source\ActorEnum.h" />
     <ClInclude Include="Source\ActorShape.h" />
@@ -359,7 +358,6 @@
     <ClInclude Include="Source\XmlParserOptions.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\ActiveTransform.cpp" />
     <ClCompile Include="Source\Actor.cpp" />
     <ClCompile Include="Source\ActorShape.cpp" />
     <ClCompile Include="Source\Aggregate.cpp" />

@@ -113,16 +113,6 @@ namespace PhysX
 				void set(int value);
 			}
 
-			/// <summary>
-			/// Gets or sets the behavior bits of the actor.
-			/// The behavior bits determine which types of events the actor will broadcast to foreign clients.
-			/// </summary>
-			property ActorClientBehaviorFlag ClientBehaviorFlags
-			{
-				ActorClientBehaviorFlag get();
-				void set(ActorClientBehaviorFlag value);
-			}
-
 			/// <summary>Gets or sets an object, usually to create a 1:1 relationship with a user object.</summary>
 			property Object^ UserData;
 

@@ -9,18 +9,6 @@ namespace PhysX
 		EnableActiveActors = PxSceneFlag::eENABLE_ACTIVE_ACTORS,
 
 		/// <summary>
-		/// Enable Active Transform Notification.
-		/// This flag enables the the Active Transform Notification feature for a scene. This feature
-		/// defaults to disabled. When disabled, the function PxScene::getActiveTransforms() will
-		/// always return a NULL list.
-		/// Note: There may be a performance penalty for enabling the Active Transform Notification,
-		/// hence this flag should only be enabled if the application intends to use the feature.
-		/// Default: False 
-		/// </summary>
-		[Obsolete]
-		EnableActiveTransforms = PxSceneFlag::eENABLE_ACTIVETRANSFORMS,
-
-		/// <summary>
 		/// Enables a second broad phase check after integration that makes it possible to prevent objects
 		/// from tunneling through eachother. eSWEPT_INTEGRATION_LINEAR requires this flag to be specified.
 		/// Note: For this feature to be effective for shapes that can move at a significant velocity, the
@@ -81,10 +69,7 @@ namespace PhysX
 
 		EnableStabilization = PxSceneFlag::eENABLE_STABILIZATION,
 		EnableAveragePoint = PxSceneFlag::eENABLE_AVERAGE_POINT,
-		DeprecatedTriggerTriggerReports = PxSceneFlag::eDEPRECATED_TRIGGER_TRIGGER_REPORTS,
 		ExcludeKinematicsFromActiveActors = PxSceneFlag::eEXCLUDE_KINEMATICS_FROM_ACTIVE_ACTORS,
-		[ObsoleteAttribute]
-		SuppressEagerSceneQueryRefit = PxSceneFlag::eSUPPRESS_EAGER_SCENE_QUERY_REFIT,
 		EnableGpuDynamics = PxSceneFlag::eENABLE_GPU_DYNAMICS,
 		EnableEnhancedDeterminism = PxSceneFlag::eENABLE_ENHANCED_DETERMINISM,
 
@@ -120,10 +105,6 @@ namespace PhysX
 		/// Visualize the bodies angular velocity.
 		/// </summary>
 		AngularVelocity = PxVisualizationParameter::eBODY_ANG_VELOCITY,
-		/// <summary>
-		/// Visualize the bodies joint projection group.
-		/// </summary>
-		DeprecatedBodyJointGroups = PxVisualizationParameter::eDEPRECATED_BODY_JOINT_GROUPS,
 		/// <summary>
 		/// Visualize contact points. Will enable contact information.
 		/// </summary>
@@ -193,57 +174,9 @@ namespace PhysX
 		/// </summary>
 		JointLimits = PxVisualizationParameter::eJOINT_LIMITS,
 		/// <summary>
-		/// Particle position visualization.
-		/// </summary>
-		ParticleSystemPosition = PxVisualizationParameter::ePARTICLE_SYSTEM_POSITION,
-		/// <summary>
-		/// Particle velocity visualization.
-		/// </summary>
-		ParticleSystemVelocity = PxVisualizationParameter::ePARTICLE_SYSTEM_VELOCITY,
-		/// <summary>
-		/// Particle collision normal visualization.
-		/// </summary>
-		ParticleSystemCollisionNormal = PxVisualizationParameter::ePARTICLE_SYSTEM_COLLISION_NORMAL,
-		/// <summary>
-		/// ParticleSystem AABB visualization.
-		/// </summary>
-		ParticleSystemBounds = PxVisualizationParameter::ePARTICLE_SYSTEM_BOUNDS,
-		/// <summary>
-		/// Particle grid visualization.
-		/// </summary>
-		ParticleSystemGrid = PxVisualizationParameter::ePARTICLE_SYSTEM_GRID,
-		/// <summary>
-		/// Particle system broad phase bounds.
-		/// </summary>
-		ParticleSystemBroadphaseBounds = PxVisualizationParameter::ePARTICLE_SYSTEM_BROADPHASE_BOUNDS,
-		/// <summary>
-		/// ParticleSystem maximum motion distance visualization.
-		/// </summary>
-		ParticleSystemMaxMotionDistance = PxVisualizationParameter::ePARTICLE_SYSTEM_MAX_MOTION_DISTANCE,
-		/// <summary>
 		/// Debug visualization culling.
 		/// </summary>
 		CullBox = PxVisualizationParameter::eCULL_BOX,
-		/// <summary>
-		/// Cloth fabric vertical sets.
-		/// </summary>
-		ClothVertical = PxVisualizationParameter::eCLOTH_VERTICAL,
-		/// <summary>
-		/// 
-		/// </summary>
-		ClothHorizontal = PxVisualizationParameter::eCLOTH_HORIZONTAL,
-		/// <summary>
-		/// 
-		/// </summary>
-		ClothBending = PxVisualizationParameter::eCLOTH_BENDING,
-		/// <summary>
-		/// Cloth fabric shearing sets.
-		/// </summary>
-		ClothShearing = PxVisualizationParameter::eCLOTH_SHEARING,
-		/// <summary>
-		/// Cloth virtual particles.
-		/// </summary>
-		ClothVirtualParticles = PxVisualizationParameter::eCLOTH_VIRTUAL_PARTICLES,
 		/// <summary>
 		/// MBP regions.
 		/// </summary>
@@ -261,11 +194,6 @@ namespace PhysX
 		/// "normal" member of PxQueryHit is valid.
 		/// </summary>
 		Normal = PxHitFlag::eNORMAL,
-
-		/// <summary>
-		/// "distance" member of PxQueryHit is valid.
-		/// </summary>
-		Distance = PxHitFlag::eDISTANCE,
 
 		/// <summary>
 		/// "u" and "v" barycentric coordinates of PxQueryHit are valid. Not applicable to sweep queries.

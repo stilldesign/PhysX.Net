@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace PhysX
 {
 	public enum class ConcreteType
@@ -10,15 +9,11 @@ namespace PhysX
 		ConvexMesh = PxConcreteType::eCONVEX_MESH, 
 		TriangleMeshBVH33 = PxConcreteType::eTRIANGLE_MESH_BVH33,
 		TriangleMeshBVH34 = PxConcreteType::eTRIANGLE_MESH_BVH34,
-		ClothFabric = PxConcreteType::eCLOTH_FABRIC, 
 		RigidDynamic = PxConcreteType::eRIGID_DYNAMIC, 
 		RigidStatic = PxConcreteType::eRIGID_STATIC, 
 		Shape = PxConcreteType::eSHAPE, 
 		Material = PxConcreteType::eMATERIAL, 
 		Constraint = PxConcreteType::eCONSTRAINT, 
-		Cloth = PxConcreteType::eCLOTH, 
-		ParticleSystem = PxConcreteType::ePARTICLE_SYSTEM, 
-		ParticleFluid = PxConcreteType::ePARTICLE_FLUID, 
 		Aggregate = PxConcreteType::eAGGREGATE, 
 		Articulation = PxConcreteType::eARTICULATION, 
 		ArticulationLink = PxConcreteType::eARTICULATION_LINK, 

@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace PhysX
 {
 	/// <summary>
@@ -12,7 +11,6 @@ namespace PhysX
 		SimulationShape = PxShapeFlag::eSIMULATION_SHAPE,
 		SceneQueryShape = PxShapeFlag::eSCENE_QUERY_SHAPE,
 		TriggerShape = PxShapeFlag::eTRIGGER_SHAPE,
-		Visualization = PxShapeFlag::eVISUALIZATION,
-		ParticleDrain = PxShapeFlag::ePARTICLE_DRAIN
+		Visualization = PxShapeFlag::eVISUALIZATION
 	};
 };
