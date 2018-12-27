@@ -29,7 +29,7 @@ namespace PhysX.Test.Cooking
 				{
 					for (int c = 0; c < numVertsZ; c++)
 					{
-						// Make the cloth slightly crumpled (randomize the z position between -0.2 and 0.2)
+						// Make the grid slightly crumpled (randomize the z position between -0.2 and 0.2)
 						float z = -0.2f + (float)rnd.NextDouble() * 0.4f;
 
 						points[r * numVertsZ + c] = new Vector3(r, c, z);

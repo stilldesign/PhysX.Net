@@ -75,8 +75,6 @@
     <Compile Include="Articulation\ArticulationTests.cs" />
     <Compile Include="BroadPhase\BroadPhaseTests.cs" />
     <Compile Include="BroadPhase\BroadPhaseExtTests.cs" />
-    <Compile Include="Cloth\ClothMeshQuadifierTests.cs" />
-    <Compile Include="Cloth\ClothTest.cs" />
     <Compile Include="Constraint\ConstraintTest.cs" />
     <Compile Include="Controller\BoxControllerTest.cs" />
     <Compile Include="Controller\CapsuleControllerDescTest.cs" />
@@ -84,9 +82,7 @@
     <Compile Include="Controller\ObstacleTest.cs" />
     <Compile Include="Controller\ControllerTest.cs" />
     <Compile Include="Cooking\CookingTriangleMeshTests.cs" />
-    <Compile Include="Cooking\CookingClothTests.cs" />
     <Compile Include="Cooking\CookConvexMeshTests.cs" />
-    <Compile Include="Cloth\ClothTestGrid.cs" />
     <Compile Include="Cooking\CookingTests.cs" />
     <Compile Include="Cooking\VertexGrid.cs" />
     <Compile Include="FoundationTest.cs" />

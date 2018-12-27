@@ -1,7 +1,5 @@
 #pragma once
 
-#include "ClothEnum.h"
-#include "ClothParticle.h"
 #include "JointEnum.h"
 
 namespace PhysX
@@ -337,50 +335,6 @@ namespace PhysX
 		#pragma endregion
 
 		Constraint^ CreateConstraint(RigidActor^ actor0, RigidActor^ actor1, ConstraintConnector^ connector, ConstraintShaderTable^ shaders, int dataSize);
-
-		#pragma region Cloth
-		/// <summary>
-		/// Creates a cloth.
-		/// </summary>
-		/// <param name="globalPose">The world space transform of the cloth.</param>
-		/// <param name="fabric">The fabric the cloth should use.</param>
-		/// <param name="particles">Particle definition buffer. The size of the buffer has to match the number of points of the cloth mesh which elements must match with the provided.</param>
-		/// <param name="collisionData">Collision information.</param>
-		/// <param name="flags">Cloth flags.</param>
-		Cloth^ CreateCloth(Matrix globalPose, ClothFabric^ fabric, array<ClothParticle>^ particles, ClothFlag flags);
-
-		/// <summary>
-		/// Gets cloths.
-		/// </summary>
-		property array<Cloth^>^ Cloths
-		{
-			array<Cloth^>^ get();
-		}
-
-		/// <summary>
-		/// Creates a cloth fabric object.
-		/// This can then be instanced into PxCloth objects.
-		/// </summary>
-		/// <param name="cookedStream">The stream to load the cloth fabric from.</param>
-		ClothFabric^ CreateClothFabric(System::IO::Stream^ cookedStream);
-		/// <summary>
-		/// Creates a cloth fabric object from particle connectivity and restlength information.
-		/// This can then be instanced into PxCloth objects.
-		/// Note: We recommended using PxCooking.cookClothFabric() to create cloth fabrics from meshes and then
-		/// using createClothFabric(const PxInputStream& stream). This method should only be used if you need
-		/// to provide fully customized particle fiber/connectivity information for your fabric or if you did
-		/// custom cloth fabric serialization and want to deserialize.
-		/// </summary>
-		ClothFabric^ CreateClothFabric(ClothFabricDesc^ desc);
-
-		/// <summary>
-		/// Gets cloth fabrics.
-		/// </summary>
-		property array<ClothFabric^>^ ClothFabrics
-		{
-			array<ClothFabric^>^ get();
-		}
-		#pragma endregion
 
 		#pragma region Articulation
 		Articulation^ CreateArticulation();

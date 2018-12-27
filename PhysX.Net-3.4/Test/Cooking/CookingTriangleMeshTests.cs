@@ -15,7 +15,7 @@ namespace PhysX.Test.Cooking
 		{
 			using (var physics = CreatePhysicsAndScene())
 			{
-				// Create a grid of triangles to be our cloth
+				// Create a grid of triangles to be our triangle-mesh
 				var clothGrid = new VertexGrid(25, 25);
 
 				using (var cooking = physics.Physics.CreateCooking())

@@ -164,20 +164,11 @@
     <ClCompile Include="Source\VehicleDriveSimData.cpp">
       <Filter>Vehicle</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Cloth.cpp">
-      <Filter>Cloth</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ClothFabric.cpp">
-      <Filter>Cloth</Filter>
-    </ClCompile>
     <ClCompile Include="Source\OperationFailedException.cpp">
       <Filter>Exception</Filter>
     </ClCompile>
     <ClCompile Include="Source\Util.cpp">
       <Filter>Util</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ClothCollisionData.cpp">
-      <Filter>Cloth</Filter>
     </ClCompile>
     <ClCompile Include="Source\ObjectTable.cpp">
       <Filter>ObjectTable</Filter>
@@ -206,12 +197,6 @@
     </ClCompile>
     <ClCompile Include="Source\Serializable.cpp">
       <Filter>Serialization</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ClothMeshDesc.cpp">
-      <Filter>Cloth</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ClothParticle.cpp">
-      <Filter>Cloth</Filter>
     </ClCompile>
     <ClCompile Include="Source\Joint.cpp">
       <Filter>Joints</Filter>
@@ -312,9 +297,6 @@
     <ClCompile Include="Source\ConstraintInfo.cpp">
       <Filter>Constraint</Filter>
     </ClCompile>
-    <ClCompile Include="Source\ClothParticleData.cpp">
-      <Filter>Cloth</Filter>
-    </ClCompile>
     <ClCompile Include="Source\SimpleContact.cpp">
       <Filter>Contact</Filter>
     </ClCompile>
@@ -332,9 +314,6 @@
     </ClCompile>
     <ClCompile Include="Source\ActorShape.cpp">
       <Filter>Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ClothStretchConfig.cpp">
-      <Filter>Cloth</Filter>
     </ClCompile>
     <ClCompile Include="Source\QueryFilterCallback.cpp">
       <Filter>Character</Filter>
@@ -355,9 +334,6 @@
     <ClCompile Include="Source\VehicleWheelsDynData.cpp">
       <Filter>Vehicle</Filter>
     </ClCompile>
-    <ClCompile Include="Source\ClothMotionConstraintConfig.cpp">
-      <Filter>Cloth</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Spring.cpp">
       <Filter>Extensions</Filter>
     </ClCompile>
@@ -375,9 +351,6 @@
     </ClCompile>
     <ClCompile Include="Source\JointLinearLimit.cpp">
       <Filter>Joints\Limits</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ClothFabricDesc.cpp">
-      <Filter>Cloth</Filter>
     </ClCompile>
     <ClCompile Include="Source\Serialization.cpp">
       <Filter>Serialization</Filter>
@@ -578,9 +551,6 @@
     <ClCompile Include="Source\MassProperties.cpp">
       <Filter>Extensions</Filter>
     </ClCompile>
-    <ClCompile Include="Source\ClothMeshQuadifier.cpp">
-      <Filter>Cloth</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Pvd.cpp">
       <Filter>PVD</Filter>
     </ClCompile>
@@ -589,9 +559,6 @@
     </ClCompile>
     <ClCompile Include="Source\Transform.cpp">
       <Filter>Math</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ClothTetherConfig.cpp">
-      <Filter>Cloth</Filter>
     </ClCompile>
     <ClCompile Include="Source\BroadPhaseExt.cpp">
       <Filter>BroadPhase</Filter>
@@ -775,41 +742,14 @@
     <ClInclude Include="Source\VehicleDriveSimData.h">
       <Filter>Vehicle</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Cloth.h">
-      <Filter>Cloth</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ClothFabric.h">
-      <Filter>Cloth</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ClothEnum.h">
-      <Filter>Cloth</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ClothParticle.h">
-      <Filter>Cloth</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ClothParticleMotionConstraint.h">
-      <Filter>Cloth</Filter>
-    </ClInclude>
     <ClInclude Include="Source\OperationFailedException.h">
       <Filter>Exception</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ClothParticleSeparationConstraint.h">
-      <Filter>Cloth</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ClothCollisionSphere.h">
-      <Filter>Cloth</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ClothCollisionPlane.h">
-      <Filter>Cloth</Filter>
     </ClInclude>
     <ClInclude Include="Source\Util.h">
       <Filter>Util</Filter>
     </ClInclude>
     <ClInclude Include="Source\EnumUtil.h">
       <Filter>Util</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ClothCollisionData.h">
-      <Filter>Cloth</Filter>
     </ClInclude>
     <ClInclude Include="Source\ObjectTable.h">
       <Filter>ObjectTable</Filter>
@@ -853,9 +793,6 @@
     </ClInclude>
     <ClInclude Include="Source\SerializableEnum.h">
       <Filter>Serialization</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ClothMeshDesc.h">
-      <Filter>Cloth</Filter>
     </ClInclude>
     <ClInclude Include="Source\FailedToCreateObjectException.h">
       <Filter>Exception</Filter>
@@ -998,9 +935,6 @@
     <ClInclude Include="Source\DeletionListener.h">
       <Filter>DeletionListener</Filter>
     </ClInclude>
-    <ClInclude Include="Source\ClothParticleData.h">
-      <Filter>Cloth</Filter>
-    </ClInclude>
     <ClInclude Include="Source\SimpleContact.h">
       <Filter>Contact</Filter>
     </ClInclude>
@@ -1022,9 +956,6 @@
     <ClInclude Include="Source\ActorShape.h">
       <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Source\ClothStretchConfig.h">
-      <Filter>Cloth</Filter>
-    </ClInclude>
     <ClInclude Include="Source\QueryFilterCallback.h">
       <Filter>Character</Filter>
     </ClInclude>
@@ -1044,9 +975,6 @@
     <ClInclude Include="Source\LinearSweepMultipleResult.h">
       <Filter>Actor</Filter>
     </ClInclude>
-    <ClInclude Include="Source\ClothFabricPhase.h">
-      <Filter>Cloth</Filter>
-    </ClInclude>
     <ClInclude Include="Source\VehicleWheelsDynData.h">
       <Filter>Vehicle</Filter>
     </ClInclude>
@@ -1055,9 +983,6 @@
     </ClInclude>
     <ClInclude Include="Source\IVehicleComputeTireForceOutput.h">
       <Filter>Vehicle</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ClothMotionConstraintConfig.h">
-      <Filter>Cloth</Filter>
     </ClInclude>
     <ClInclude Include="Source\Spring.h">
       <Filter>Extensions</Filter>
@@ -1079,9 +1004,6 @@
     </ClInclude>
     <ClInclude Include="Source\FoundationEnum.h">
       <Filter>Foundation</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ClothFabricDesc.h">
-      <Filter>Cloth</Filter>
     </ClInclude>
     <ClInclude Include="Source\Serialization.h">
       <Filter>Serialization</Filter>
@@ -1306,9 +1228,6 @@
     <ClInclude Include="Source\MassProperties.h">
       <Filter>Extensions</Filter>
     </ClInclude>
-    <ClInclude Include="Source\ClothMeshQuadifier.h">
-      <Filter>Cloth</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Pvd.h">
       <Filter>PVD</Filter>
     </ClInclude>
@@ -1320,9 +1239,6 @@
     </ClInclude>
     <ClInclude Include="Source\Transform.h">
       <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ClothTetherConfig.h">
-      <Filter>Cloth</Filter>
     </ClInclude>
     <ClInclude Include="Source\VelocityDeltaFromImpulseResult.h">
       <Filter>Actor</Filter>
@@ -1345,9 +1261,6 @@
   <ItemGroup>
     <Filter Include="Vehicle">
       <UniqueIdentifier>{5892e8a6-22a0-4a98-bb0c-c7fe2c35eb93}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Cloth">
-      <UniqueIdentifier>{d2b6474b-f4a8-435e-b0b3-2c1178548e17}</UniqueIdentifier>
     </Filter>
     <Filter Include="Physics">
       <UniqueIdentifier>{b82288c4-e4e0-41a7-bb1d-35ead323f1e3}</UniqueIdentifier>
