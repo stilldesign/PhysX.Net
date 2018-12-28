@@ -3,12 +3,6 @@
 
  namespace PhysX
  {
-	public enum class Platform
-	{
-		PC = PxPlatform::ePC,
-		ARM = PxPlatform::eARM
-	};
-
 	[Flags]
 	public enum class ConvexFlag
 	{
