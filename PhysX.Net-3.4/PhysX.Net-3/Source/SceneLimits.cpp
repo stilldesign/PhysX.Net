@@ -11,7 +11,7 @@ PxSceneLimits SceneLimits::ToUnmanaged(SceneLimits^ managed)
 		unmanaged.maxNbAggregates = managed->MaxAggregates;
 		unmanaged.maxNbConstraints = managed->MaxConstraints;
 		unmanaged.maxNbRegions = managed->MaxRegions;
-		unmanaged.maxNbObjectsPerRegion = managed->MaxObjectsPerRegion;
+		unmanaged.maxNbBroadPhaseOverlaps = managed->MaxBroadPhaseOverlaps;
 
 	return unmanaged;
 }
@@ -25,7 +25,7 @@ SceneLimits^ SceneLimits::ToManaged(PxSceneLimits unmanaged)
 		managed->MaxAggregates = unmanaged.maxNbAggregates;
 		managed->MaxConstraints = unmanaged.maxNbConstraints;
 		managed->MaxRegions = unmanaged.maxNbRegions;
-		managed->MaxObjectsPerRegion = unmanaged.maxNbObjectsPerRegion;
+		managed->MaxBroadPhaseOverlaps = unmanaged.maxNbBroadPhaseOverlaps;
 
 	return managed;
 }
@@ -39,7 +39,7 @@ void SceneLimits::SetToDefault()
 	MaxAggregates = 0;
 	MaxConstraints = 0;
 	MaxRegions = 0;
-	MaxObjectsPerRegion = 0;
+	MaxBroadPhaseOverlaps = 0;
 }
 bool SceneLimits::IsValid()
 {

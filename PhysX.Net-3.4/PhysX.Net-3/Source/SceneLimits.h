@@ -54,8 +54,8 @@ namespace PhysX
 		property int MaxRegions;
 
 		/// <summary>
-		/// Expected maximum number of objects in one broad-phase region.
+		/// Expected maximum number of broad-phase overlaps.
 		/// </summary>
-		property int MaxObjectsPerRegion;
+		property int MaxBroadPhaseOverlaps;
 	};
 }

@@ -48,7 +48,6 @@ PxHeightFieldDesc HeightFieldDesc::ToUnmanaged(HeightFieldDesc^ desc)
 		d.nbColumns = desc->NumberOfColumns;
 		d.nbRows = desc->NumberOfRows;
 		d.samples = samples;
-		d.thickness = desc->Thickness;
 
 	return d;
 }
