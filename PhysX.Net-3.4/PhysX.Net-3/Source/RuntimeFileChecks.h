@@ -3,10 +3,7 @@
 using namespace System;
 using namespace System::Reflection;
 
-// It's technically 3.4.2, but the version number hasn't been updated correctly - hopefully it will be in the future.
-#define PhysXDllVersion "3.4.1.0"
-#define FoundationDllVersion "1.0.0.0"
-#define PvdDllVersion "1.0.0.0"
+#define PhysXDllVersion "4.0.0.0"
 
 namespace PhysX
 {

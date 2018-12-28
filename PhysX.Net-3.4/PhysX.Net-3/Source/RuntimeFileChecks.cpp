@@ -11,31 +11,10 @@ using namespace System::Security::Cryptography;
 
 void RuntimeFileChecks::Check()
 {
-#if PHYSX_DEBUG
-	CheckFile("PxFoundationDEBUG_x64.dll", FoundationDllVersion);
-
-	CheckFile("PhysX3CharacterKinematicDEBUG_x64.dll", PhysXDllVersion);
-	CheckFile("PhysX3CommonDEBUG_x64.dll", PhysXDllVersion);
-	CheckFile("PhysX3CookingDEBUG_x64.dll", PhysXDllVersion);
-	CheckFile("PhysX3DEBUG_x64.dll", PhysXDllVersion);
-	// TODO: For some reason PhysX3GpuDEBUG_x64.dll has no version number, perhaps this will be restored
-	// in a later release?
-	//CheckFile("PhysX3GpuDEBUG_x64.dll", PhysXDllVersion);
-	CheckFile("PxPvdSDKDEBUG_x64.dll", PvdDllVersion);
-#elif PHYSX_RELEASE
-	CheckFile("PxFoundation_x64.dll", FoundationDllVersion);
-
-	CheckFile("PhysX3CharacterKinematic_x64.dll", PhysXDllVersion);
-	CheckFile("PhysX3Common_x64.dll", PhysXDllVersion);
-	CheckFile("PhysX3Cooking_x64.dll", PhysXDllVersion);
-	CheckFile("PhysX3_x64.dll", PhysXDllVersion);
-	// TODO: For some reason PhysX3Gpu_x64.dll has no version number, perhaps this will be restored
-	// in a later release?
-	//CheckFile("PhysX3Gpu_x64.dll", PhysXDllVersion);
-	CheckFile("PxPvdSDK_x64.dll", PvdDllVersion);
-#else
-	#error PhysX Build Configuration not specified for x64
-#endif
+	CheckFile("PhysX_64.dll", PhysXDllVersion);
+	CheckFile("PhysXCommon_64.dll", PhysXDllVersion);
+	CheckFile("PhysXCooking_64.dll", PhysXDllVersion);
+	CheckFile("PhysXFoundation_64.dll", PhysXDllVersion);
 }
 
 void RuntimeFileChecks::CheckFile(String^ filename, String^ requiredVersion)
@@ -51,11 +30,11 @@ void RuntimeFileChecks::CheckFile(String^ filename, Version^ requiredVersion)
 
 		// Compare the file version of the DLL to the required version
 		if(version != requiredVersion)
-			throw gcnew DllNotFoundException(String::Format("PhysX library \"{0}\" is not the correct version. Given: {1}. Required: {2}.", filename, version->ToString(4), requiredVersion));
+			throw gcnew DllNotFoundException(String::Format("PhysX library '{0}' is not the correct version. Given: {1}. Required: {2}.", filename, version->ToString(4), requiredVersion));
 	}
 	catch(FileNotFoundException^ exception)
 	{
-		throw gcnew DllNotFoundException(String::Format("PhysX library \"{0}\" is missing.", filename), exception);
+		throw gcnew DllNotFoundException(String::Format("PhysX library '{0}' is missing.", filename), exception);
 	}
 	catch(Exception^ ex)
 	{

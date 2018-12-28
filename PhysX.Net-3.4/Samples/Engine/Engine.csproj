@@ -134,40 +134,20 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\..\Assemblies\x64\Debug\nvToolsExt64_1.dll">
-      <Link>nvToolsExt64_1.dll</Link>
+    <Content Include="..\..\Assemblies\x64\Debug\PhysXCommon_64.dll">
+      <Link>PhysXCommon_64.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\Assemblies\x64\Debug\PhysX3CharacterKinematicDEBUG_x64.dll">
-      <Link>PhysX3CharacterKinematicDEBUG_x64.dll</Link>
+    <Content Include="..\..\Assemblies\x64\Debug\PhysXCooking_64.dll">
+      <Link>PhysXCooking_64.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\Assemblies\x64\Debug\PhysX3CommonDEBUG_x64.dll">
-      <Link>PhysX3CommonDEBUG_x64.dll</Link>
+    <Content Include="..\..\Assemblies\x64\Debug\PhysXFoundation_64.dll">
+      <Link>PhysXFoundation_64.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\Assemblies\x64\Debug\PhysX3CookingDEBUG_x64.dll">
-      <Link>PhysX3CookingDEBUG_x64.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\Assemblies\x64\Debug\PhysX3DEBUG_x64.dll">
-      <Link>PhysX3DEBUG_x64.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\Assemblies\x64\Debug\PhysX3GpuDEBUG_x64.dll">
-      <Link>PhysX3GpuDEBUG_x64.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\Assemblies\x64\Debug\PhysXDevice64.dll">
-      <Link>PhysXDevice64.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\Assemblies\x64\Debug\PxFoundationDEBUG_x64.dll">
-      <Link>PxFoundationDEBUG_x64.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\Assemblies\x64\Debug\PxPvdSDKDEBUG_x64.dll">
-      <Link>PxPvdSDKDEBUG_x64.dll</Link>
+    <Content Include="..\..\Assemblies\x64\Debug\PhysX_64.dll">
+      <Link>PhysX_64.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="sharpdx_direct3d11_1_effects_x64.dll">
