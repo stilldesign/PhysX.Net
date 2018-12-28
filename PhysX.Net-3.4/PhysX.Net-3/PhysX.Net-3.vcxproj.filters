@@ -300,7 +300,6 @@
     <ClCompile Include="Source\QueryFilterCallback.cpp">
       <Filter>Character</Filter>
     </ClCompile>
-    <ClCompile Include="Source\VolumeCache.cpp" />
     <ClCompile Include="Source\QueryFilterData.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
@@ -920,7 +919,6 @@
     <ClInclude Include="Source\QueryFilterCallback.h">
       <Filter>Character</Filter>
     </ClInclude>
-    <ClInclude Include="Source\VolumeCache.h" />
     <ClInclude Include="Source\HitCallback.h">
       <Filter>SceneQuery</Filter>
     </ClInclude>

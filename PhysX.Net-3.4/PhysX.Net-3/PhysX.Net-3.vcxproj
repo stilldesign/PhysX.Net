@@ -230,7 +230,6 @@
     <ClInclude Include="Source\VehicleConcurrentUpdateData.h" />
     <ClInclude Include="Source\VehicleWheelsDynData.h" />
     <ClInclude Include="Source\VelocityDeltaFromImpulseResult.h" />
-    <ClInclude Include="Source\VolumeCache.h" />
     <ClInclude Include="Source\VehicleDrive.h" />
     <ClInclude Include="Source\VehicleDrive4W.h" />
     <ClInclude Include="Source\VehicleDriveDynData.h" />
@@ -485,7 +484,6 @@
     <ClCompile Include="Source\VehicleConcurrentUpdateData.cpp" />
     <ClCompile Include="Source\VehicleWheelConcurrentUpdateData.cpp" />
     <ClCompile Include="Source\VehicleWheelsDynData.cpp" />
-    <ClCompile Include="Source\VolumeCache.cpp" />
     <ClCompile Include="Source\SweepHit.cpp" />
     <ClCompile Include="Source\TriangleMesh.cpp" />
     <ClCompile Include="Source\TriangleMeshDesc.cpp" />

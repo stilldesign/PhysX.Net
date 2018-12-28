@@ -5,7 +5,6 @@
 #include "QueryFilterData.h"
 #include "Geometry.h"
 #include "Actor.h"
-#include "ActiveTransform.h"
 #include "Physics.h"
 #include "ControllerManager.h"
 #include "Shape.h"
@@ -18,7 +17,6 @@
 #include "SweepHit.h"
 #include "FailedToCreateObjectException.h"
 #include "RenderBuffer.h"
-#include "VolumeCache.h"
 #include "InternalRaycastCallback.h"
 #include "InternalSweepCallback.h"
 #include "QueryFilterCallback.h"
@@ -143,22 +141,6 @@ array<RigidStatic^>^ Scene::RigidStaticActors::get()
 int Scene::GetNumberOfActors(ActorTypeFlag types)
 {
 	return _scene->getNbActors(ToUnmanagedEnum(PxActorTypeFlag, types));
-}
-
-array<ActiveTransform^>^ Scene::GetActiveTransforms([Optional] Nullable<int> clientId)
-{
-	int c = clientId.GetValueOrDefault(PX_DEFAULT_CLIENT);
-
-	PxU32 n;
-	const PxActiveTransform* t = _scene->getActiveTransforms(n, c);
-
-	auto transforms = gcnew array<ActiveTransform^>(n);
-	for (PxU32 i = 0; i < n; i++)
-	{
-		transforms[i] = ActiveTransform::ToManaged(t[i]);
-	}
-
-	return transforms;
 }
 
 void Scene::AddActor(Actor^ actor)
@@ -450,13 +432,6 @@ void Scene::ResetFiltering(RigidActor^ actor, array<Shape^>^ shapes)
 int Scene::CreateClient()
 {
 	return _scene->createClient();
-}
-
-VolumeCache^ Scene::CreateVolumeCache(int maxStaticShapes, int maxDynamicShapes)
-{
-	PxVolumeCache* vc = _scene->createVolumeCache(maxStaticShapes, maxDynamicShapes);
-
-	return gcnew VolumeCache(vc);
 }
 
 int Scene::DynamicTreeRebuildRateHint::get()

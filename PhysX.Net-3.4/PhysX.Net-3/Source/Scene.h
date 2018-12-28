@@ -30,7 +30,6 @@ namespace PhysX
 	ref class RenderBuffer;
 	ref class SweepCache;
 	ref class SimulationEventCallback;
-	ref class VolumeCache;
 	ref class QueryFilterCallback;
 	ref class QueryCache;
 	ref class OverlapHit;
@@ -330,11 +329,6 @@ namespace PhysX
 			/// are created. 
 			/// </summary>
 			int CreateClient();
-
-			/// <summary>
-			/// Creates a volume cache. See the Guide, "Scene Queries" section, "Volume Caching" subsection for more information.
-			/// </summary>
-			VolumeCache^ CreateVolumeCache(int maxStaticShapes, int maxDynamicShapes);
 
 			/// <summary>
 			/// Gets or sets the rebuild rate of the dynamic tree pruning structure.
