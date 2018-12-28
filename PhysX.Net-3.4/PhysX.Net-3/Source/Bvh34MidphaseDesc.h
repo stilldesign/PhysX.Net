@@ -17,6 +17,6 @@ namespace PhysX
 		/// <summary>
 		/// Mesh cooking hint for max triangles per leaf limit. Less triangles per leaf produces larger meshes with better runtime performance and worse cooking performance. More triangles per leaf results in faster cooking speed and smaller mesh sizes, but with worse runtime performance. 
 		/// </summary>
-		property int TrianglesPerLeaf;
+		property int PrimitivesPerLeaf;
 	};
 }
