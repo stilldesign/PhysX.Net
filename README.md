@@ -41,3 +41,15 @@ Development
 * Clone this repo
 * The default location of the PhysX 4.0 repo directory is *C:\NVIDIAGameWorks\PhysX-4.0*
   * To specify an alternative location on your computer: define the environment variable **NVIDIAPhysX40SDK**. You can do this by running ```setx NVIDIAPhysX40SDK "C:\NVIDIAGameWorks\PhysX-4.0" /M``` (as *administrator*).
+
+# PhysX 3.4.2 vs 4.0.0
+Change log: https://github.com/NVIDIAGameWorks/PhysX/blob/4.0/physx/release_notes.html
+
+The main changes are:
+* New solver for accuracy
+* ```RigidActor.CreateShape``` is removed
+  * Use ```RigidActorExt.CreateExclusiveShape``` instead (or create a simple C# extension method to provide backward compatibility)
+* Particles have been removed
+    * This is now provided by [FleX](https://github.com/NVIDIAGameWorks/FleX)
+* Cloth has been removed
+  * This is now provided by [NvCloth](https://github.com/NVIDIAGameWorks/NvCloth)
