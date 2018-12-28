@@ -7,7 +7,7 @@ PM> ~~Install-Package PhysX.Net-4 -Prerelease~~
 
 Build all the things!
 --------------
-A zip of all relevant DLLs and samples - http://stilldesign.co.nz/PhysX
+A zip of all relevant DLLs and samples - http://stilldesign.co.nz/physxdotnet/
 
 Development
 -----------
