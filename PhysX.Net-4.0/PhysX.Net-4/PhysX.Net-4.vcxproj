@@ -60,7 +60,7 @@
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(ProjectDir)bin\x64\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)bin\x64\$(Configuration)\Intermediate\</IntDir>
-    <LibraryPath>$(NVIDIAPhysX40SDK)\physx\bin\win.x86_64.vc141.md\debug;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(NVIDIAPhysX40SDK)\physx\bin\win.x86_64.vc141.mt\release;$(LibraryPath)</LibraryPath>
     <IncludePath>$(NVIDIAPhysX40SDK)\physx\Include;$(NVIDIAPhysX40SDK)\PxShared\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
