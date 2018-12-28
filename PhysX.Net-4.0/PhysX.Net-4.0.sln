@@ -40,7 +40,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuspec", "nuspec", "{A965FAAA-D802-4E8B-97ED-D32167027628}"
 	ProjectSection(SolutionItems) = preProject
 		Packaging.txt = Packaging.txt
-		PhysX.Net.nuspec = PhysX.Net.nuspec
+		PhysX.Net-4.nuspec = PhysX.Net-4.nuspec
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventsSample", "EventsSample\EventsSample.csproj", "{63850BCF-F575-4883-B6F6-8E09C224BB80}"
