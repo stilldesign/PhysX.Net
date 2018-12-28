@@ -59,7 +59,7 @@ void BatchQuery::Raycast(
 	PxVec3 d = UV(unitDirection);
 	float dis = distance.GetValueOrDefault(PX_MAX_F32);
 	PxU16 max = (PxU16)maximumTouchHits.GetValueOrDefault(0);
-	PxHitFlags hf = ToUnmanagedEnum2(PxHitFlags, hitFlags.GetValueOrDefault(HitFlag::Position | HitFlag::Normal | HitFlag::Distance));
+	PxHitFlags hf = ToUnmanagedEnum2(PxHitFlags, hitFlags.GetValueOrDefault(HitFlag::Default));
 	PxQueryFilterData qfd = QueryFilterData::ToUnmanaged(filterData.GetValueOrDefault(QueryFilterData()));
 	PxQueryCache* qc = cache == nullptr ? NULL : &QueryCache::ToUnmanaged(cache);
 
@@ -69,11 +69,6 @@ void BatchQuery::Raycast(
 int BatchQuery::FilterShaderDataSize::get()
 {
 	return _batchQuery->getFilterShaderDataSize();
-}
-
-int BatchQuery::OwnerClient::get()
-{
-	return _batchQuery->getOwnerClient();
 }
 
 BatchQueryPreFilterShader^ BatchQuery::PreFilterShader::get()

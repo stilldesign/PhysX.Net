@@ -63,11 +63,6 @@ namespace PhysX
 			int get();
 		}
 
-		property int OwnerClient
-		{
-			int get();
-		}
-
 		property BatchQueryPreFilterShader^ PreFilterShader
 		{
 			BatchQueryPreFilterShader^ get();
