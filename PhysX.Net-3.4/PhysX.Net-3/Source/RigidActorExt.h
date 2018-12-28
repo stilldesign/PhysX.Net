@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ShapeFlag.h"
+#include "Bounds3.h"
 
 namespace PhysX
 {
@@ -23,5 +24,7 @@ namespace PhysX
 			Geometry^ geometry,
 			array<Material^>^ materials,
 			Nullable<ShapeFlag> shapeFlags);
+
+		array<Bounds3>^ GetRigidActorShapeLocalBoundsList(RigidActor^ actor);
 	};
 }

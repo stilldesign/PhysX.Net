@@ -58,3 +58,21 @@ Shape^ RigidActorExt::CreateExclusiveShape(
 
 	return gcnew Shape(s, actor);
 }
+
+array<Bounds3>^ RigidActorExt::GetRigidActorShapeLocalBoundsList(RigidActor^ actor)
+{
+	ThrowIfNullOrDisposed(actor, "actor");
+
+	PxU32 numBounds = 0;
+	PxBounds3* b = PxRigidActorExt::getRigidActorShapeLocalBoundsList(
+		*actor->UnmanagedPointer,
+		numBounds);
+
+	auto bounds = gcnew array<Bounds3>(numBounds);
+	for (size_t i = 0; i < numBounds; i++)
+	{
+		bounds[i] = Bounds3::ToManaged(b[i]);
+	}
+
+	return bounds;
+}
