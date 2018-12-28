@@ -29,7 +29,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CharacterSample", "Samples\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleSample", "Samples\VehicleSample\VehicleSample.csproj", "{9DADC745-6D7C-4655-83C1-EDABC205FAEA}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PhysX.Net", "PhysX.Net-3\PhysX.Net-3.vcxproj", "{FB145A7D-CDF2-417D-A006-F7591481D609}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PhysX.Net", "PhysX.Net-4\PhysX.Net-4.vcxproj", "{FB145A7D-CDF2-417D-A006-F7591481D609}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{1E724E10-CBF3-4755-A9A7-E15689A1B798}"
 	ProjectSection(SolutionItems) = preProject
