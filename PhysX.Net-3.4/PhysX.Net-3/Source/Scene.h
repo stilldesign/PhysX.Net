@@ -16,7 +16,6 @@ namespace PhysX
 	ref class Shape;
 	ref class Geometry;
 	ref class Actor;
-	ref class ActiveTransform;
 	ref class Physics;
 	ref class ControllerManager;
 	ref class RaycastHit;
@@ -142,11 +141,6 @@ namespace PhysX
 			/// Retrieve the number of actors of certain types in the scene.
 			/// </summary>
 			int GetNumberOfActors(ActorTypeFlag types);
-
-			/// <summary>
-			/// Queries the PxScene for a list of the PxActors whose transforms have been updated during the previous simulation step.
-			/// </summary>
-			array<ActiveTransform^>^ GetActiveTransforms([Optional] Nullable<int> clientId);
 
 			/// <summary>
 			/// Adds an actor to this scene.

@@ -3,7 +3,6 @@
 #include "Foundation.h"
 #include "TriangleMeshDesc.h"
 #include "ConvexMeshDesc.h"
-#include "ClothMeshDesc.h"
 #include "HeightFieldDesc.h"
 
 Cooking::Cooking(PxCooking* cooking, PhysX::Foundation^ owner)
@@ -108,30 +107,6 @@ ConvexMeshCookingResult Cooking::CookConvexMesh(ConvexMeshDesc^ desc, System::IO
 	delete[] d.polygons.data;
 
 	return ToManagedEnum(ConvexMeshCookingResult, result);
-}
-
-void Cooking::CookClothFabric(ClothMeshDesc^ desc, Vector3 gravityDirection, System::IO::Stream^ stream)
-{
-	ThrowIfDescriptionIsNullOrInvalid(desc, "desc");
-	ThrowIfNull(stream, "stream");
-
-	PxClothMeshDesc d = ClothMeshDesc::ToUnmanaged(desc);
-	PxVec3 g = UV(gravityDirection);
-
-	if (!d.isValid())
-		throw gcnew ArgumentException("The cloth mesh description is invalid");
-
-	PxClothFabricCooker* clothCooker = new PxClothFabricCooker(d, g);
-
-	PxDefaultMemoryOutputStream cookedStream;
-	clothCooker->save(cookedStream, false);
-
-	Util::CopyIntoStream(&cookedStream, stream);
-
-	delete[] d.points.data;
-	delete[] d.triangles.data;
-	delete[] d.quads.data;
-	delete[] d.invMasses.data;
 }
 
 //

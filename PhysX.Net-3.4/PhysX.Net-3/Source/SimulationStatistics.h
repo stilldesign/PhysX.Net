@@ -17,19 +17,28 @@ namespace PhysX
 			enum class VolumeType
 			{
 				/// <summary>
-				/// A volume belonging to a rigid body object.
+				/// Shape pairs processed as discrete contact pairs for the current simulation step.
 				/// </summary>
-				RigidBody = PxSimulationStatistics::eRIGID_BODY, 
+				DiscreteContactPairs = PxSimulationStatistics::eDISCRETE_CONTACT_PAIRS,
 
 				/// <summary>
-				/// A volume belonging to a particle system.
+				/// Shape pairs processed as swept integration pairs for the current simulation step.
 				/// </summary>
-				ParticleSystem = PxSimulationStatistics::ePARTICLE_SYSTEM, 
+				/// <remarks>
+				/// Counts the pairs for which special CCD (continuous collision detection) work was actually done and NOT the number of pairs which were configured for CCD.
+				/// Furthermore, there can be multiple CCD passes and all processed pairs of all passes are summed up, hence the number can be larger than the amount of pairs which have been configured for CCD.
+				/// </remarks>
+				CcdPairs = PxSimulationStatistics::eCCD_PAIRS,
 
 				/// <summary>
-				/// A volume belonging to a rigid body object.
+				/// Shape pairs processed with user contact modification enabled for the current simulation step.
 				/// </summary>
-				VolumnCount = PxSimulationStatistics::eVOLUME_COUNT 
+				ModifiedContactPairs = PxSimulationStatistics::eMODIFIED_CONTACT_PAIRS,
+
+				/// <summary>
+				/// Trigger shape pairs processed for the current simulation step.
+				/// </summary>
+				TriggerPairs = PxSimulationStatistics::eTRIGGER_PAIRS
 			};
 
 			/// <summary>
@@ -163,8 +172,8 @@ namespace PhysX
 			/// </summary>
 			property Dictionary<GeometryType, int>^ Shapes;
 
-			property Dictionary<VolumeType, int>^ BroadPhaseAdds;
-			property Dictionary<VolumeType, int>^ BroadPhaseRemoves;
+			property int BroadPhaseAdds;
+			property int BroadPhaseRemoves;
 
 			/// <summary>
 			/// Use [GeometryType, GeometryType] to lookup a pair.

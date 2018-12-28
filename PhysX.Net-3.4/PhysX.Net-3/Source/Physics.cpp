@@ -11,7 +11,6 @@
 #include "ErrorCallback.h"
 #include "HeightFieldDesc.h"
 #include "HeightField.h"
-#include "ParticleSystem.h"
 #include "FailedToCreateObjectException.h"
 #include "Foundation.h"
 #include "CookingParams.h"
@@ -19,15 +18,10 @@
 #include "TriangleMesh.h"
 #include "Shape.h"
 #include "RuntimeFileChecks.h"
-#include "ParticleFluid.h"
 #include "Collection.h"
 #include "Pvd.h"
 #include "ConvexMesh.h"
 #include "VehicleSDK.h"
-#include "ClothFabric.h"
-#include "Cloth.h"
-#include "ClothCollisionData.h"
-#include "ClothFabricDesc.h"
 #include "ConstraintShaderTable.h"
 #include "Articulation.h"
 #include "Aggregate.h"
@@ -418,48 +412,6 @@ array<Joint^>^ Physics::Joints::get()
 }
 #pragma endregion
 
-#pragma region Particle System
-ParticleSystem^ Physics::CreateParticleSystem(int maxParticles)
-{
-	return CreateParticleSystem(maxParticles, false);
-}
-ParticleSystem^ Physics::CreateParticleSystem(int maxParticles, bool perParticleRestOffset)
-{
-	auto s = _physics->createParticleSystem(maxParticles, perParticleRestOffset);
-
-	if (s == NULL)
-		throw gcnew FailedToCreateObjectException("Failed to create particle system");
-
-	return gcnew ParticleSystem(s, this);
-}
-
-array<ParticleSystem^>^ Physics::ParticleSystems::get()
-{
-	return ObjectTable::Instance->GetObjectsOfOwnerAndType<ParticleSystem^>(this);
-}
-#pragma endregion
-
-#pragma region Particle Fluid
-ParticleFluid^ Physics::CreateParticleFluid(int maximumParticles)
-{
-	return CreateParticleFluid(maximumParticles, false);
-}
-ParticleFluid^ Physics::CreateParticleFluid(int maximumParticles, bool perParticleRestOffset)
-{
-	PxParticleFluid* particleFluid = _physics->createParticleFluid(maximumParticles, perParticleRestOffset);
-
-	if (particleFluid == NULL)
-		throw gcnew FailedToCreateObjectException("Failed to create particle fluid");
-
-	return gcnew ParticleFluid(particleFluid, this);
-}
-
-array<ParticleFluid^>^ Physics::ParticleFluids::get()
-{
-	return ObjectTable::Instance->GetObjectsOfType<ParticleFluid^>();
-}
-#pragma endregion
-
 #pragma region Cooking
 Cooking^ Physics::CreateCooking([Optional] CookingParams^ parameters)
 {
@@ -506,94 +458,6 @@ Constraint^ Physics::CreateConstraint(RigidActor^ actor0, RigidActor^ actor1, Co
 
 	//return gcnew Constraint(c);
 }
-
-#pragma region Cloth
-Cloth^ Physics::CreateCloth(Matrix globalPose, ClothFabric^ fabric, array<ClothParticle>^ particles, ClothFlag flags)
-{
-	PxTransform gp = MathUtil::MatrixToPxTransform(globalPose);
-	PxClothFabric* cf = fabric->UnmanagedPointer;
-
-	PxClothParticle* cp;
-	if (particles->Length == 0)
-	{
-		cp = NULL;
-	}
-	else
-	{
-		pin_ptr<ClothParticle> cp_pin = &particles[0];
-
-		cp = (PxClothParticle*)cp_pin;
-	}
-
-	PxClothFlags f = ToUnmanagedEnum(PxClothFlag, flags);
-
-	PxCloth* cloth = _physics->createCloth(gp, *cf, cp, f);
-
-	if (cloth == NULL)
-		throw gcnew FailedToCreateObjectException("Failed to create PxCloth instance. See the error log of the Physics instance.");
-
-	Cloth^ c = gcnew Cloth(cloth, this);
-
-	return c;
-}
-
-array<Cloth^>^ Physics::Cloths::get()
-{
-	return ObjectTable::Instance->GetObjectsOfOwnerAndType<Cloth^>(this);
-}
-
-ClothFabric^ Physics::CreateClothFabric(System::IO::Stream^ cookedStream)
-{
-	ThrowIfNull(cookedStream, "cookedStream");
-	if (!cookedStream->CanRead)
-		throw gcnew ArgumentNullException("Cannot read from cooked stream", "cookedStream");
-	if (cookedStream->Length == 0)
-		throw gcnew ArgumentNullException("Cooked stream is of zero length", "cookedStream");
-
-	int n = (int)cookedStream->Length;
-
-	// Read the data from the stream
-	array<Byte>^ cookedData = gcnew array<Byte>(n);
-	cookedStream->Read(cookedData, 0, n);
-
-	// Get a pointer to the first byte
-	pin_ptr<Byte> pin = &cookedData[0];
-
-	// Create an PxInputStream around the data
-	PxDefaultMemoryInputData in(pin, n);
-
-	// Create the cloth fabric
-	PxClothFabric* clothFabric = _physics->createClothFabric(in);
-
-	if (clothFabric == NULL)
-		throw gcnew FailedToCreateObjectException("Failed to create PxClothFabric instance. See your error output instance for any details");
-
-	// Create a managed version of the cloth fabric
-	ClothFabric^ cf = gcnew ClothFabric(clothFabric, this);
-
-	return cf;
-}
-ClothFabric^ Physics::CreateClothFabric(ClothFabricDesc^ desc)
-{
-	ThrowIfNull(desc, "desc");
-	
-	PxClothFabricDesc d = ClothFabricDesc::ToUnmanaged(desc);
-
-	if (!d.isValid())
-		throw gcnew ArgumentException("The description is invalid", "desc");
-
-	PxClothFabric* clothFabric = _physics->createClothFabric(d);
-
-	ClothFabric^ cf = gcnew ClothFabric(clothFabric, this);
-
-	return cf;
-}
-
-array<ClothFabric^>^ Physics::ClothFabrics::get()
-{
-	return ObjectTable::Instance->GetObjectsOfOwnerAndType<ClothFabric^>(this);
-}
-#pragma endregion
 
 PhysX::VehicleSDK^ Physics::VehicleSDK::get()
 {

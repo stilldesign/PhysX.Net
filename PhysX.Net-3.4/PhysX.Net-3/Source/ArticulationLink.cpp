@@ -42,7 +42,7 @@ array<PhysX::ArticulationLink^>^ ArticulationLink::Children::get()
 
 	for (int i = 0; i < q; i++)
 	{
-		PxArticulation& a = links[i]->getArticulation();
+		PxArticulationBase& a = links[i]->getArticulation();
 		auto articulation = ObjectTable::Instance->GetObject<PhysX::Articulation^>((intptr_t)&a);
 
 		l[i] = gcnew ArticulationLink(links[i], articulation);

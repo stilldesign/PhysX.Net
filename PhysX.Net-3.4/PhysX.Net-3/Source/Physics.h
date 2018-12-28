@@ -12,17 +12,14 @@ namespace PhysX
 	ref class Actor;
 	ref class RigidStatic;
 	ref class RigidActor;
-	ref class ParticleSystem;
 	ref class ErrorCallback;
 	ref class HeightFieldDesc;
 	ref class HeightField;
-	ref class ParticleFluid;
 	ref class Foundation;
 	ref class Cooking;
 	ref class CookingParams;
 	ref class Attachment;
 	ref class Shape;
-	ref class ParticleFluidDesc;
 	ref class Collection;
 	ref class ConvexMesh;
 	ref class Constraint;
@@ -30,10 +27,6 @@ namespace PhysX
 	ref class ConstraintShaderTable;
 	ref class OutputStream;
 	ref class VehicleSDK;
-	ref class Cloth;
-	ref class ClothFabric;
-	ref class ClothCollisionData;
-	ref class ClothFabricDesc;
 	ref class Articulation;
 	ref class Aggregate;
 	ref class Joint;
@@ -239,9 +232,9 @@ namespace PhysX
 		/// </summary>
 		/// <param name="type">The type of the joint.</param>
 		/// <param name="actor0">An actor to which the joint is attached. Null may be used to attach the joint to a specific point in the world frame.</param>
-		/// <param name="">The position and orientation of the joint relative to actor0.</param>
+		/// <param name="localFrame0">The position and orientation of the joint relative to actor0.</param>
 		/// <param name="actor1">An actor to which the joint is attached. Null may be used to attach the joint to a specific point in the world frame.</param>
-		/// <param name="">The position and orientation of the joint relative to actor1.</param>
+		/// <param name="localFrame1">The position and orientation of the joint relative to actor1.</param>
 		/// <returns>A joint of the specified type.</returns>
 		generic<typename T> where T : Joint
 			T CreateJoint(RigidActor^ actor0, Matrix localFrame0, RigidActor^ actor1, Matrix localFrame1);
@@ -254,47 +247,6 @@ namespace PhysX
 			array<Joint^>^ get();
 		}
 
-		#pragma endregion
-
-		#pragma region Particle System
-		/// <summary>
-		/// Creates a particle system.
-		/// </summary>
-		ParticleSystem^ CreateParticleSystem(int maxParticles);
-		/// <summary>
-		/// Creates a particle system.
-		/// </summary>
-		ParticleSystem^ CreateParticleSystem(int maxParticles, bool perParticleRestOffset);
-
-		/// <summary>
-		///	Gets the particle systems.
-		/// </summary>
-		property array<ParticleSystem^>^ ParticleSystems
-		{
-			array<ParticleSystem^>^ get();
-		}
-		#pragma endregion
-
-		#pragma region Particle Fluid
-		/// <summary>
-		/// Creates a particle fluid.
-		/// </summary>
-		/// <param name="maximumParticles">The maximum number of particles that may be placed in the particle fluid.</param>
-		ParticleFluid^ CreateParticleFluid(int maximumParticles);
-		/// <summary>
-		/// Creates a particle fluid.
-		/// </summary>
-		/// <param name="maximumParticles">The maximum number of particles that may be placed in the particle fluid.</param>
-		/// <param name="perParticleRestOffset">Whether the ParticleFluid supports perParticleRestOffset.</param>
-		ParticleFluid^ CreateParticleFluid(int maximumParticles, bool perParticleRestOffset);
-
-		/// <summary>
-		/// Gets the particle fluids.
-		/// </summary>
-		property array<ParticleFluid^>^ ParticleFluids
-		{
-			array<ParticleFluid^>^ get();
-		}
 		#pragma endregion
 
 		#pragma region Cooking

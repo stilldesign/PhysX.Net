@@ -57,14 +57,6 @@ namespace PhysX
 			/// <param name="stream">User stream to output the cooked data.</param>
 			ConvexMeshCookingResult CookConvexMesh(ConvexMeshDesc^ desc, System::IO::Stream^ stream);
 
-			/// <summary>
-			/// Cooks a triangle mesh to a cloth fabric.
-			/// </summary>
-			/// <param name="desc">The cloth mesh descriptor on which the generation of the cooked mesh depends.</param>
-			/// <param name="gravityDirection">A normalized vector which specifies the direction of gravity. This information allows the cooker to generate a fabric with higher quality simulation behavior.</param>
-			/// <param name="stream">The stream the cooked fabric is written to.</param>
-			void CookClothFabric(ClothMeshDesc^ desc, Vector3 gravityDirection, System::IO::Stream^ stream);
-
 			//
 
 			/// <summary>

@@ -37,17 +37,8 @@ SimulationStatistics^ SimulationStatistics::ToManaged(PxSimulationStatistics* st
 			s->Shapes[(GeometryType)i] = stats->nbShapes[i];
 		}
 
-		s->BroadPhaseAdds = gcnew Dictionary<VolumeType, int>();
-		for (int i = 0; i < PxSimulationStatistics::eVOLUME_COUNT; i++)
-		{
-			s->BroadPhaseAdds[(VolumeType)i] = stats->nbBroadPhaseAdds[i];
-		}
-
-		s->BroadPhaseRemoves = gcnew Dictionary<VolumeType, int>();
-		for (int i = 0; i < PxSimulationStatistics::eVOLUME_COUNT; i++)
-		{
-			s->BroadPhaseRemoves[(VolumeType)i] = stats->nbBroadPhaseRemoves[i];
-		}
+		s->BroadPhaseAdds = stats->getNbBroadPhaseAdds();
+		s->BroadPhaseRemoves = stats->getNbBroadPhaseRemoves();
 
 		s->ModifiedContactPairs = gcnew array<int, 2>(PxGeometryType::eGEOMETRY_COUNT, PxGeometryType::eGEOMETRY_COUNT);
 		for (size_t i = 0; i < PxGeometryType::eGEOMETRY_COUNT; i++)
@@ -66,10 +57,6 @@ SimulationStatistics^ SimulationStatistics::ToManaged(PxSimulationStatistics* st
 				s->TriggerPairs[i, j] = stats->nbTriggerPairs[i][j];
 			}
 		}
-
-		s->ParticlesGpuMeshCacheSize = stats->particlesGpuMeshCacheSize;
-		s->ParticlesGpuMeshCacheUsed = stats->particlesGpuMeshCacheUsed;
-		s->ParticlesGpuMeshCacheHitrate = stats->particlesGpuMeshCacheHitrate;
 
 	return s;
 }

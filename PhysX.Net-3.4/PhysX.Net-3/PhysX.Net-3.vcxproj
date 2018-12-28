@@ -52,7 +52,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>$(NVIDIAPhysX40SDK)\physx\Include;$(NVIDIAPhysX40SDK)\PxShared\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(NVIDIAPhysX40SDK)\physx\bin\win.x86_64.vc141.mt\debug;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(NVIDIAPhysX40SDK)\physx\bin\win.x86_64.vc141.md\debug;$(LibraryPath)</LibraryPath>
     <OutDir>$(ProjectDir)bin\x64\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)bin\x64\$(Configuration)\Intermediate\</IntDir>
   </PropertyGroup>
@@ -74,7 +74,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>PhysX3DEBUG_x64.lib;PhysX3CommonDEBUG_x64.lib;PhysX3CharacterKinematicDEBUG_x64.lib;PhysX3CookingDEBUG_x64.lib;PhysX3ExtensionsDEBUG.lib;PhysX3VehicleDEBUG.lib;PxPvdSDKDEBUG_x64.lib;PxTaskDEBUG_x64.lib;PxFoundationDEBUG_x64.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>FastXml_static_64.lib;PhysX_64.lib;PhysXCharacterKinematic_static_64.lib;PhysXCommon_64.lib;PhysXCooking_64.lib;PhysXExtensions_static_64.lib;PhysXFoundation_64.lib;PhysXPvdSDK_static_64.lib;PhysXTask_static_64.lib;PhysXVehicle_static_64.lib;SceneQuery_static_64.lib;SimulationController_static_64.lib;LowLevel_static_64.lib;LowLevelAABB_static_64.lib;LowLevelDynamics_static_64.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
     </Link>
     <ProjectReference />

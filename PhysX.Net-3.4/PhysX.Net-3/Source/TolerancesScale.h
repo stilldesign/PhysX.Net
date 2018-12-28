@@ -21,10 +21,6 @@ namespace PhysX
 			/// </summary>
 			property float Length;
 			/// <summary>
-			/// The approximate mass of a lengthScale * lengthScale * lengthScale block. If using metric scale for character sized objects and measuring mass in kilogrammes, 1000 is a good choice.
-			/// </summary>
-			property float Mass;
-			/// <summary>
 			/// The typical magnitude of velocities of objects in simulation. This is used to estimate whether a contact should be treated as bouncing or resting based on its impact velocity, and a kinetic energy threshold below which the simulation may put objects to sleep.
 			/// For normal physical environments, a good choice is the approximate speed of an object falling under gravity for one second.
 			/// </summary>
