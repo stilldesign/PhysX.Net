@@ -160,7 +160,7 @@ HeightFieldGeometry^ Shape::GetHeightFieldGeometry()
 
 void Shape::SetGeometry(Geometry^ geometry)
 {
-	ThrowIfNull(geometry);
+	ThrowIfNull(geometry, "geometry");
 
 	PxGeometry* g = geometry->ToUnmanaged();
 

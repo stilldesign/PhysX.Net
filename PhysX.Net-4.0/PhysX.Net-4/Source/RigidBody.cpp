@@ -268,7 +268,7 @@ MassProperties RigidBody::ComputeMassPropertiesFromShapes(array<Shape^>^ shapes)
 	int n = shapes->Length;
 
 	PxShape** s = new PxShape*[n];
-	for (size_t i = 0; i < n; i++)
+	for (int i = 0; i < n; i++)
 	{
 		PxShape* si = shapes[i]->UnmanagedPointer;
 

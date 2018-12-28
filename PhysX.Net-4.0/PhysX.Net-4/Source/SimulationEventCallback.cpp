@@ -40,7 +40,7 @@ void InternalSimulationEventCallback::onContact (const PxContactPairHeader &pair
 	auto ph = ContactPairHeader::ToManaged(pairHeader);
 
 	auto p = gcnew array<ContactPair^>(nbPairs);
-	for (int i = 0; i < nbPairs; i++)
+	for (unsigned int i = 0; i < nbPairs; i++)
 	{
 		PxContactPair x = pairs[i];
 
@@ -74,7 +74,7 @@ void InternalSimulationEventCallback::onAdvance(const PxRigidBody*const* bodyBuf
 	auto bodies = gcnew array<RigidBody^>(count);
 	auto poses = gcnew array<Matrix4x4>(count);
 
-	for (size_t i = 0; i < count; i++)
+	for (unsigned int i = 0; i < count; i++)
 	{
 		bodies[i] = ObjectTable::Instance->TryGetObject<RigidBody^>((intptr_t)bodyBuffer[i]);
 

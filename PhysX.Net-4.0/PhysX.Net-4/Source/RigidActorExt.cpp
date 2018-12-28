@@ -76,7 +76,7 @@ array<Bounds3>^ RigidActorExt::GetRigidActorShapeLocalBoundsList(RigidActor^ act
 		numBounds);
 
 	auto bounds = gcnew array<Bounds3>(numBounds);
-	for (size_t i = 0; i < numBounds; i++)
+	for (int i = 0; i < numBounds; i++)
 	{
 		bounds[i] = Bounds3::ToManaged(b[i]);
 	}
