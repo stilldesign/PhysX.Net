@@ -86,11 +86,6 @@ int HeightField::SampleStride::get()
 	return _heightField->getSampleStride();
 }
 
-float HeightField::Thickness::get()
-{
-	return _heightField->getThickness();
-}
-
 float HeightField::ConvexEdgeThreshold::get()
 {
 	return _heightField->getConvexEdgeThreshold();

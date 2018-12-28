@@ -100,14 +100,6 @@ namespace PhysX
 			}
 
 			/// <summary>
-			/// Gets the thickness of the height volume in the vertical direction.
-			/// </summary>
-			property float Thickness
-			{
-				float get();
-			}
-
-			/// <summary>
 			/// Gets the convex edge threshold.
 			/// </summary>
 			property float ConvexEdgeThreshold
