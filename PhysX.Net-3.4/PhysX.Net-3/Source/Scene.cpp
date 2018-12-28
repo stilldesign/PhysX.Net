@@ -394,9 +394,9 @@ Collection^ Scene::CreateCollection()
 }
 #pragma endregion
 
-SimulationEventCallback^ Scene::GetSimulationEventCallback(int clientId)
+SimulationEventCallback^ Scene::GetSimulationEventCallback()
 {
-	PxSimulationEventCallback* c = _scene->getSimulationEventCallback(clientId);
+	PxSimulationEventCallback* c = _scene->getSimulationEventCallback();
 
 	if (c == NULL)
 		return nullptr;
@@ -407,9 +407,9 @@ SimulationEventCallback^ Scene::GetSimulationEventCallback(int clientId)
 	else
 		return nullptr;
 }
-void Scene::SetSimulationEventCallback(SimulationEventCallback^ callback, int clientId)
+void Scene::SetSimulationEventCallback(SimulationEventCallback^ callback)
 {
-	_scene->setSimulationEventCallback(callback == nullptr ? NULL : callback->UnmanagedPointer, clientId);
+	_scene->setSimulationEventCallback(callback == nullptr ? NULL : callback->UnmanagedPointer);
 }
 
 void Scene::ResetFiltering(Actor^ actor)

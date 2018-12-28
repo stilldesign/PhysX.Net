@@ -313,11 +313,11 @@ namespace PhysX
 			/// <summary>
 			/// Retrieves the SimulationEventCallback object set with SetSimulationEventCallback().
 			/// </summary>
-			SimulationEventCallback^ GetSimulationEventCallback(int clientId);
+			SimulationEventCallback^ GetSimulationEventCallback();
 			/// <summary>
 			/// Sets a user notify object which receives special simulation events when they occur.
 			/// </summary>
-			void SetSimulationEventCallback(SimulationEventCallback^ callback, int clientId);
+			void SetSimulationEventCallback(SimulationEventCallback^ callback);
 
 			void ResetFiltering(Actor^ actor);
 			void ResetFiltering(RigidActor^ actor, array<Shape^>^ shapes);
