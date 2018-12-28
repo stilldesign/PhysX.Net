@@ -25,7 +25,7 @@ namespace PhysX
 	ref class Actor;
 	ref class Aggregate;
 
-	public ref class BroadPhaseCallback
+	public ref class BroadPhaseCallback abstract
 	{
 	private:
 		InternalBroadPhaseCallback* _internal;
