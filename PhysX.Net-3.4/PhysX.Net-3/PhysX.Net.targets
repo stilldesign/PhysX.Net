@@ -1,48 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 	<ItemGroup>
-		<None Include="$(MSBuildThisFileDirectory)..\lib\x64\nvToolsExt64_1.dll">
-			<Link>nvToolsExt64_1.dll</Link>
+		<None Include="$(MSBuildThisFileDirectory)..\lib\x64\PhysX_64.dll">
+			<Link>PhysX_64.dll</Link>
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 
-		<None Include="$(MSBuildThisFileDirectory)..\lib\x64\PhysX3CharacterKinematicDEBUG_x64.dll">
-			<Link>PhysX3CharacterKinematicDEBUG_x64.dll</Link>
+		<None Include="$(MSBuildThisFileDirectory)..\lib\x64\PhysXCommon_64.dll">
+			<Link>PhysXCommon_64.dll</Link>
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 
-		<None Include="$(MSBuildThisFileDirectory)..\lib\x64\PhysX3CommonDEBUG_x64.dll">
-			<Link>PhysX3CommonDEBUG_x64.dll</Link>
+		<None Include="$(MSBuildThisFileDirectory)..\lib\x64\PhysXCooking_64.dll">
+			<Link>PhysXCooking_64.dll</Link>
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 
-		<None Include="$(MSBuildThisFileDirectory)..\lib\x64\PhysX3CookingDEBUG_x64.dll">
-			<Link>PhysX3CookingDEBUG_x64.dll</Link>
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-
-		<None Include="$(MSBuildThisFileDirectory)..\lib\x64\PhysX3DEBUG_x64.dll">
-			<Link>PhysX3DEBUG_x64.dll</Link>
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-
-		<None Include="$(MSBuildThisFileDirectory)..\lib\x64\PhysX3GpuDEBUG_x64.dll">
-			<Link>PhysX3GpuDEBUG_x64.dll</Link>
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-
-		<None Include="$(MSBuildThisFileDirectory)..\lib\x64\PhysXDevice64.dll">
-			<Link>PhysXDevice64.dll</Link>
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-
-		<None Include="$(MSBuildThisFileDirectory)..\lib\x64\PxFoundationDEBUG_x64.dll">
-			<Link>PxFoundationDEBUG_x64.dll</Link>
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-
-		<None Include="$(MSBuildThisFileDirectory)..\lib\x64\PxPvdSDKDEBUG_x64.dll">
-			<Link>PxPvdSDKDEBUG_x64.dll</Link>
+		<None Include="$(MSBuildThisFileDirectory)..\lib\x64\PhysXFoundation_64.dll">
+			<Link>PhysXFoundation_64.dll</Link>
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 	</ItemGroup>

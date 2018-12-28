@@ -2,9 +2,9 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 	<metadata>
 		<id>PhysX.Net</id>
-		<version>0.11.0-alpha</version>
+		<version>0.1.0-alpha</version>
 		<authors>StillDesign</authors>
-		<description>.NET wrapper for NVIDIA PhysX 3.4.1 @ 23584284</description>
+		<description>.NET wrapper for NVIDIA PhysX 4.0.0 @ 25462362</description>
 		<language>en-US</language>
 		<projectUrl>https://github.com/stilldesign/PhysX.Net</projectUrl>
 		<tags>nvidia physx wrapper physics .net c#</tags>
@@ -19,14 +19,14 @@
 	</metadata>
 	<files>
 		<!-- x64 -->
-		<file src="PhysX.Net-3\bin\x64\Debug\PhysX.Net.dll" target="lib\net471" />
-		<file src="PhysX.Net-3\bin\x64\Debug\PhysX.Net.pdb" target="lib\net471" />
+		<file src="PhysX.Net-4\bin\x64\Debug\PhysX.Net.dll" target="lib\net471" />
+		<file src="PhysX.Net-4\bin\x64\Debug\PhysX.Net.pdb" target="lib\net471" />
 		
 		<!-- Dependencies -->
 		<!-- The native PhysX DLL files -->
 		<file src="Assemblies\x64\Debug\*.dll" target="lib\x64" />
 		<file src="Assemblies\x64\Debug\*.pdb" target="pdb" />
 
-		<file src="PhysX.Net-3\PhysX.Net.targets" target="Build\" />
+		<file src="PhysX.Net-4\PhysX.Net.targets" target="Build\" />
 	</files>
 </package>
