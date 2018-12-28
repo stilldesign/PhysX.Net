@@ -73,7 +73,7 @@ namespace PhysX.Test
 						// Return hit again (PxAgain)
 						return true;
 					},
-					hitFlag: HitFlag.Distance | HitFlag.Normal | HitFlag.Position
+					hitFlag: HitFlag.Normal | HitFlag.Position
 				);
 
 				Assert.IsNotNull(hits);
@@ -224,9 +224,10 @@ namespace PhysX.Test
 					MaxBodies = 2,
 					MaxConstraints = 3,
 					MaxDynamicShapes = 4,
-					MaxObjectsPerRegion = 5,
-					MaxRegions = 6,
-					MaxStaticShapes = 7
+					MaxRegions = 5,
+					MaxStaticShapes = 6,
+					MaxAggregates = 7,
+					MaxBroadPhaseOverlaps = 8
 				};
 
 				var limits = physics.Scene.SceneLimits;
@@ -235,9 +236,10 @@ namespace PhysX.Test
 				Assert.AreEqual(2, limits.MaxBodies);
 				Assert.AreEqual(3, limits.MaxConstraints);
 				Assert.AreEqual(4, limits.MaxDynamicShapes);
-				Assert.AreEqual(5, limits.MaxObjectsPerRegion);
-				Assert.AreEqual(6, limits.MaxRegions);
-				Assert.AreEqual(7, limits.MaxStaticShapes);
+				Assert.AreEqual(5, limits.MaxRegions);
+				Assert.AreEqual(6, limits.MaxStaticShapes);
+				Assert.AreEqual(7, limits.MaxAggregates);
+				Assert.AreEqual(8, limits.MaxBroadPhaseOverlaps);
 			}
 		}
 
@@ -248,12 +250,13 @@ namespace PhysX.Test
 			{
 				var sceneDesc = new SceneDesc
 				{
-					Flags = SceneFlag.EnableActiveTransforms
+					Flags = SceneFlag.EnableGpuDynamics | SceneFlag.EnableStabilization
 				};
 
 				var scene = physics.CreateScene(sceneDesc);
 
-				Assert.IsTrue(scene.Flags.HasFlag(SceneFlag.EnableActiveTransforms));
+				Assert.IsTrue(scene.Flags.HasFlag(SceneFlag.EnableGpuDynamics));
+				Assert.IsTrue(scene.Flags.HasFlag(SceneFlag.EnableStabilization));
 			}
 		}
 

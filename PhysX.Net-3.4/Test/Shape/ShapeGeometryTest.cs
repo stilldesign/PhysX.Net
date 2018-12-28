@@ -139,7 +139,7 @@ namespace PhysX.Test
 			// Triangle mesh can only be created on a kinematic actor
 			actor.RigidBodyFlags = RigidBodyFlag.Kinematic;
 
-			var grid = new ClothTestGrid(10, 10);
+			var grid = new TestGrid(10, 10);
 
 			var triangleMeshDesc = new TriangleMeshDesc();
 			triangleMeshDesc.Points = grid.Points;

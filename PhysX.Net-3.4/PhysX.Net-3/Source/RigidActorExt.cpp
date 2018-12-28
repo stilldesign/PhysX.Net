@@ -10,6 +10,13 @@ using namespace PhysX;
 Shape^ RigidActorExt::CreateExclusiveShape(
 	RigidActor^ actor,
 	Geometry^ geometry,
+	Material^ material)
+{
+	return RigidActorExt::CreateExclusiveShape(actor, geometry, material, Nullable<ShapeFlag>());
+}
+Shape^ RigidActorExt::CreateExclusiveShape(
+	RigidActor^ actor,
+	Geometry^ geometry,
 	Material^ material,
 	Nullable<ShapeFlag> shapeFlags)
 {

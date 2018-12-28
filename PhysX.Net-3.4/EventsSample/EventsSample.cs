@@ -47,7 +47,7 @@ namespace PhysX.Samples.EventsSample
 
 			// Tell PhysX what to call when a contact/touch occurs
 			var callback = new EventCallback(this);
-			scene.SetSimulationEventCallback(callback, 0);
+			scene.SetSimulationEventCallback(callback);
 		}
 
 		protected override void Update(TimeSpan elapsed)

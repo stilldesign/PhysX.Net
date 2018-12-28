@@ -16,7 +16,7 @@ namespace PhysX.Test
 			{
 				var callback = new MockSimulationEventCallback();
 
-				physics.Scene.SetSimulationEventCallback(callback, 0);
+				physics.Scene.SetSimulationEventCallback(callback);
 
 				var box = CreateBoxActor(physics.Scene, new Vector3(5, 5, 5), new Vector3(0, 10, 0));
 

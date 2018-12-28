@@ -71,12 +71,6 @@ namespace PhysX.Test
 		}
 
 		[TestMethod]
-		public void GetThickness()
-		{
-			Assert.AreEqual(4.2f, _heightField.Thickness);
-		}
-
-		[TestMethod]
 		public void GetConvexEdgeThreshold()
 		{
 			Assert.AreEqual(6.6f, _heightField.ConvexEdgeThreshold);

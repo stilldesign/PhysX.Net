@@ -69,7 +69,7 @@ namespace PhysX.Samples.Engine
 			var rigidActor = this.Scene.Physics.CreateRigidDynamic();
 
 			var sphereGeom = new SphereGeometry(2);
-			var boxShape = rigidActor.CreateShape(sphereGeom, material);
+			var boxShape = RigidActorExt.CreateExclusiveShape(rigidActor, sphereGeom, material, null);
 
 			rigidActor.GlobalPose = Matrix4x4.CreateTranslation(cameraPos);
 			rigidActor.SetMassAndUpdateInertia(100);
@@ -239,7 +239,7 @@ namespace PhysX.Samples.Engine
 
 			var planeGeom = new PlaneGeometry();
 
-			groundPlane.CreateShape(planeGeom, groundPlaneMaterial);
+			RigidActorExt.CreateExclusiveShape(groundPlane, planeGeom, groundPlaneMaterial, null);
 
 			this.Scene.AddActor(groundPlane);
 		}

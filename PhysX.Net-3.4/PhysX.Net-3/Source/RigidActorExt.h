@@ -16,6 +16,10 @@ namespace PhysX
 		static Shape^ CreateExclusiveShape(
 			RigidActor^ actor,
 			Geometry^ geometry,
+			Material^ material);
+		static Shape^ CreateExclusiveShape(
+			RigidActor^ actor,
+			Geometry^ geometry,
 			Material^ material,
 			Nullable<ShapeFlag> shapeFlags);
 
