@@ -544,6 +544,9 @@
     <ClCompile Include="Source\BroadPhaseExt.cpp">
       <Filter>BroadPhase</Filter>
     </ClCompile>
+    <ClCompile Include="Source\RigidActorExt.cpp">
+      <Filter>Actor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
@@ -1207,6 +1210,9 @@
     </ClInclude>
     <ClInclude Include="Source\BroadPhaseExt.h">
       <Filter>BroadPhase</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\RigidActorExt.h">
+      <Filter>Actor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

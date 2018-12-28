@@ -207,6 +207,7 @@
     <ClInclude Include="Source\OverlapHit.h" />
     <ClInclude Include="Source\DefaultSimulationFilterShader.h" />
     <ClInclude Include="Source\RaycastCCDManager.h" />
+    <ClInclude Include="Source\RigidActorExt.h" />
     <ClInclude Include="Source\SimulationFilterCallback.h" />
     <ClInclude Include="Source\SimulationFilterShader.h" />
     <ClInclude Include="Source\Transform.h" />
@@ -447,6 +448,7 @@
     <ClCompile Include="Source\RaycastQueryResult.cpp" />
     <ClCompile Include="Source\RenderBuffer.cpp" />
     <ClCompile Include="Source\RevoluteJoint.cpp" />
+    <ClCompile Include="Source\RigidActorExt.cpp" />
     <ClCompile Include="Source\RigidBody.cpp" />
     <ClCompile Include="Source\RigidDynamic.cpp" />
     <ClCompile Include="Source\RigidStatic.cpp" />

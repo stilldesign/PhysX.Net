@@ -3,7 +3,7 @@
 namespace PhysX
 {
 	/// <summary>
-	/// Flags which affect the behavior of PxShapes.
+	/// Flags which affect the behavior of Shapes.
 	/// </summary>
 	[Flags]
 	public enum class ShapeFlag
