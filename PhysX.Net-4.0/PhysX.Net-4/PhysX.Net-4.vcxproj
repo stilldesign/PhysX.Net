@@ -60,8 +60,8 @@
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(ProjectDir)bin\x64\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)bin\x64\$(Configuration)\Intermediate\</IntDir>
-    <LibraryPath>$(NVIDIAPhysX34SDK)\Lib\vc15win64;$(NVIDIAPhysX34SDK)\..\PxShared\Lib\vc15win64;$(LibraryPath)</LibraryPath>
-    <IncludePath>$(NVIDIAPhysX34SDK)\Include;$(NVIDIAPhysX34SDK)\..\PxShared\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(NVIDIAPhysX40SDK)\physx\bin\win.x86_64.vc141.md\debug;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(NVIDIAPhysX40SDK)\physx\Include;$(NVIDIAPhysX40SDK)\PxShared\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -89,7 +89,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>PhysX3_x64.lib;PhysX3Common_x64.lib;PhysX3CharacterKinematic_x64.lib;PhysX3Cooking_x64.lib;PhysX3Extensions.lib;PhysX3Vehicle.lib;PxPvdSDK_x64.lib;PxTask_x64.lib;PxFoundation_x64.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>FastXml_static_64.lib;PhysX_64.lib;PhysXCharacterKinematic_static_64.lib;PhysXCommon_64.lib;PhysXCooking_64.lib;PhysXExtensions_static_64.lib;PhysXFoundation_64.lib;PhysXPvdSDK_static_64.lib;PhysXTask_static_64.lib;PhysXVehicle_static_64.lib;SceneQuery_static_64.lib;SimulationController_static_64.lib;LowLevel_static_64.lib;LowLevelAABB_static_64.lib;LowLevelDynamics_static_64.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>
       </IgnoreSpecificDefaultLibraries>
     </Link>
