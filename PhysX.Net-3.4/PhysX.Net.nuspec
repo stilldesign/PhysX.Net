@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 	<metadata>
-		<id>PhysX.Net</id>
+		<id>PhysX.Net-4</id>
 		<version>0.1.0-alpha</version>
 		<authors>StillDesign</authors>
 		<description>.NET wrapper for NVIDIA PhysX 4.0.0 @ 25462362</description>
