@@ -44,6 +44,15 @@ void SphericalJoint::ProjectionLinearTolerance::set(float value)
 	this->UnmanagedPointer->setProjectionLinearTolerance(value);
 }
 
+float SphericalJoint::SwingYAngle::get()
+{
+	return this->UnmanagedPointer->getSwingYAngle();
+}
+float SphericalJoint::SwingZAngle::get()
+{
+	return this->UnmanagedPointer->getSwingZAngle();
+}
+
 PxSphericalJoint* SphericalJoint::UnmanagedPointer::get()
 {
 	return (PxSphericalJoint*)Joint::UnmanagedPointer;

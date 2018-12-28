@@ -43,6 +43,15 @@ namespace PhysX
 				void set(float value);
 			}
 
+			property float SwingYAngle
+			{
+				float get();
+			}
+			property float SwingZAngle
+			{
+				float get();
+			}
+
 		internal:
 			property PxSphericalJoint* UnmanagedPointer
 			{
