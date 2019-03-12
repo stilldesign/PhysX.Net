@@ -286,4 +286,23 @@ namespace PhysX
 		/// </summary>
 		DisabledCommitDisabled = PxSceneQueryUpdateMode::eBUILD_DISABLED_COMMIT_DISABLED,
 	};
+
+	/// <summary>
+	/// Enum for selecting the type of solver used for the simulation.
+	/// </summary>
+	public enum class SolverType
+	{
+		/// <summary>
+		/// Selects the default iterative sequential impulse solver. This is the same kind of solver
+		/// used in PhysX 3.4 and earlier releases.
+		/// </summary>
+		PGS = PxSolverType::ePGS,
+
+		/// <summary>
+		/// Selects a non linear iterative solver. This kind of solver can lead to improved convergence
+		/// and handle large mass ratios, long chains and jointed systems better. It is slightly more expensive 
+		/// than the default solver and can introduce more energy to correct joint and contact errors.
+		/// </summary>
+		TGS = PxSolverType::eTGS
+	};
 };

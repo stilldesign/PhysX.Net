@@ -270,6 +270,15 @@ void SceneDesc::SolverOffsetSlop::set(float value)
 	_sceneDesc->solverOffsetSlop = value;
 }
 
+PhysX::SolverType SceneDesc::SolverType::get()
+{
+	return ToUnmanagedEnum2(PhysX::SolverType, _sceneDesc->solverType);
+}
+void SceneDesc::SolverType::set(PhysX::SolverType value)
+{
+	_sceneDesc->solverType = ToManagedEnum(PxSolverType::Enum, value);
+}
+
 PxSceneDesc* SceneDesc::UnmanagedPointer::get()
 {
 	return _sceneDesc;

@@ -293,5 +293,22 @@ namespace PhysX.Test
 				Assert.AreEqual(staticActor, actors[0]);
 			}
 		}
+
+		[TestMethod]
+		public void CreateSceneWithTemporalGaussSeidelSolver()
+		{
+			using (var physics = CreatePhysics())
+			{
+				var sceneDesc = new SceneDesc
+				{
+					SolverType = SolverType.TGS
+				};
+
+				using (var scene = physics.CreateScene(sceneDesc))
+				{
+					
+				}
+			}
+		}
 	}
 }

@@ -52,7 +52,7 @@ namespace PhysX.Test
 				throw new Exception("Before a test run, the Physics singleton should not be initalized. Probably spill over from a previous test.");
 		}
 
-		private Physics CreatePhysics(ErrorCallback errorCallback = null)
+		protected Physics CreatePhysics(ErrorCallback errorCallback = null)
 		{
 			if (Physics.Instantiated)
 				Assert.Fail("Physics is still created");

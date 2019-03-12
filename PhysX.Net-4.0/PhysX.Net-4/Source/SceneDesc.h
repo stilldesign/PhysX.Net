@@ -205,6 +205,15 @@ namespace PhysX
 				void set(float value);
 			}
 
+			/// <summary>
+			/// Selects the solver algorithm to use.
+			/// </summary>
+			property PhysX::SolverType SolverType
+			{
+				PhysX::SolverType get();
+				void set(PhysX::SolverType value);
+			}
+
 		internal:
 			property PxSceneDesc* UnmanagedPointer
 			{
