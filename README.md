@@ -4,7 +4,7 @@ A .NET wrapper for NVIDIA PhysX 4.1.0 written using C++/CLI.
 
 Nuget
 -----
-PM> `Install-Package PhysX.Net -Prerelease`
+~~PM> Install-Package PhysX.Net -Prerelease~~
 
 Build all the things!
 --------------
