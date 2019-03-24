@@ -17,6 +17,7 @@ SimulationStatistics^ SimulationStatistics::ToManaged(PxSimulationStatistics* st
 		s->ActiveKinematicBodies = stats->nbActiveKinematicBodies;
 		s->StaticBodies = stats->nbStaticBodies;
 		s->DynamicBodies = stats->nbDynamicBodies;
+		s->KinematicBodies = stats->nbKinematicBodies;
 		s->Aggregates = stats->nbAggregates;
 		s->Articulations = stats->nbArticulations;
 		s->AxisSolverConstraints = stats->nbAxisSolverConstraints;

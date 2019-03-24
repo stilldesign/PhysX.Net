@@ -97,9 +97,15 @@ namespace PhysX
 
 			/// <summary>
 			/// Gets the number of dynamic bodies for the current simulation step.
-			/// Note: Includes inactive and kinematic bodies, and articulation links.
+			/// Note: Includes inactive bodies and articulation links.
+			/// Note: Does not include kinematic bodies.
 			/// </summary>
 			property int DynamicBodies;
+
+			/// <summary>
+			/// Number of kinematic bodies for the current simulation step.
+			/// </summary>
+			property int KinematicBodies;
 
 			/// <summary>
 			/// Number of aggregates in the scene.
