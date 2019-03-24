@@ -26,28 +26,6 @@ namespace PhysX
 		AdaptiveForce = PxSceneFlag::eADAPTIVE_FORCE,
 
 		/// <summary>
-		/// Enable contact pair filtering between kinematic and static rigid bodies.
-		/// By default contacts between kinematic and static rigid bodies are
-		/// suppressed (see PxFilterFlag::eSUPPRESS) and don't get reported to the filter
-		/// mechanism. Raise this flag if these pairs should go through the filtering pipeline nonetheless.
-		/// Note that this flag is not mutable, and must be set in PxSceneDesc at scene creation.
-		/// Default: false 
-		/// </summary>
-		[ObsoleteAttribute]
-		EnableKinematicStaticPairs = PxSceneFlag::eENABLE_KINEMATIC_STATIC_PAIRS,
-
-		/// <summary>
-		/// Enable contact pair filtering between kinematic rigid bodies.
-		/// By default contacts between kinematic bodies are
-		/// suppressed (see PxFilterFlag::eSUPPRESS) and don't get reported to the
-		/// filter mechanism. Raise this flag if these pairs should go through the filtering pipeline nonetheless.
-		/// Note that this flag is not mutable, and must be set in PxSceneDesc at scene creation.
-		/// Default: false 
-		/// </summary>
-		[ObsoleteAttribute]
-		EnableKinematicPairs = PxSceneFlag::eENABLE_KINEMATIC_PAIRS,
-
-		/// <summary>
 		/// Enable GJK-based distance collision detection system.
 		/// Note that this flag is not mutable, and must be set in PxSceneDesc at scene creation.
 		/// In order to use this system, we need to register the system in the PxCreatePhysics
