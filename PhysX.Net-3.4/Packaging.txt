@@ -1,2 +1,0 @@
-.nuget\NuGet.exe pack PhysX.Net.nuspec
-.nuget\NuGet.exe push .\PhysX.Net.0.11.0-alpha.nupkg -Source https://www.nuget.org/api/v2/package -Timeout 2500
