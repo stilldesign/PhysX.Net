@@ -36,7 +36,7 @@
     <Compile Include="CollisionDisabledSimulationFilterCallback.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\PhysX.Net\PhysX.Net-4.vcxproj">
+    <ProjectReference Include="..\..\PhysX.Net\PhysX.Net.vcxproj">
       <Project>{fb145a7d-cdf2-417d-a006-f7591481d609}</Project>
       <Name>PhysX.Net</Name>
     </ProjectReference>
