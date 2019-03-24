@@ -13,7 +13,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{FB145A7D-CDF2-417D-A006-F7591481D609}</ProjectGuid>
     <Keyword>ManagedCProj</Keyword>
-    <RootNamespace>PhysXNet3</RootNamespace>
+    <RootNamespace>PhysXNet41</RootNamespace>
     <SccProjectName>SAK</SccProjectName>
     <SccAuxPath>SAK</SccAuxPath>
     <SccLocalPath>SAK</SccLocalPath>
