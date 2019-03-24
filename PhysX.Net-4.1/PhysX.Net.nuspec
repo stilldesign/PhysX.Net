@@ -19,14 +19,14 @@
 	</metadata>
 	<files>
 		<!-- x64 -->
-		<file src="PhysX.Net-4\bin\x64\Debug\PhysX.Net.dll" target="lib\net471" />
-		<file src="PhysX.Net-4\bin\x64\Debug\PhysX.Net.pdb" target="lib\net471" />
+		<file src="PhysX.Net\bin\x64\Debug\PhysX.Net.dll" target="lib\net471" />
+		<file src="PhysX.Net\bin\x64\Debug\PhysX.Net.pdb" target="lib\net471" />
 		
 		<!-- Dependencies -->
 		<!-- The native PhysX DLL files -->
 		<file src="Assemblies\x64\Debug\*.dll" target="lib\x64" />
 		<file src="Assemblies\x64\Debug\*.pdb" target="pdb" />
 
-		<file src="PhysX.Net-4\PhysX.Net.targets" target="Build\" />
+		<file src="PhysX.Net\PhysX.Net.targets" target="Build\" />
 	</files>
 </package>
