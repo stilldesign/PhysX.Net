@@ -3,7 +3,8 @@
 using namespace System;
 using namespace System::Reflection;
 
-#define PhysXDllVersion "4.1.0.0"
+// Unfortunately they forgot to update the version to 4.1
+#define PhysXDllVersion "4.0.0.0"
 
 namespace PhysX
 {
