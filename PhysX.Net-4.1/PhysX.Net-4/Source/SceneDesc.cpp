@@ -4,11 +4,11 @@
 #include "PhysicsEnum.h"
 #include "ContactModifyCallback.h"
 #include "SceneDesc.h"
-#include "GpuDispatcher.h"
 #include "SimulationFilterShader.h"
 #include "BroadPhaseCallback.h"
 #include "SceneLimits.h"
 #include "SimulationFilterCallback.h"
+#include "CudaContextManager.h"
 
 using namespace PhysX;
 
@@ -140,15 +140,15 @@ void SceneDesc::CCDMaximumPasses::set(int value)
 	_sceneDesc->ccdMaxPasses = value;
 }
 
-PhysX::GpuDispatcher^ SceneDesc::GpuDispatcher::get()
+PhysX::CudaContextManager^ SceneDesc::CudaContextManager::get()
 {
-	return _gpuDispatcher;
+	return _cudaContextManager;
 }
-void SceneDesc::GpuDispatcher::set(PhysX::GpuDispatcher^ value)
+void SceneDesc::CudaContextManager::set(PhysX::CudaContextManager^ value)
 {
-	_gpuDispatcher = value;
+	_cudaContextManager = value;
 
-	_sceneDesc->gpuDispatcher = (value == nullptr ? NULL : value->UnmanagedPointer);
+	_sceneDesc->cudaContextManager = (value == nullptr ? NULL : value->UnmanagedPointer);
 }
 
 PhysX::BroadPhaseCallback^ SceneDesc::BroadPhaseCallback::get()

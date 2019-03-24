@@ -1,7 +1,6 @@
 #include "StdAfx.h"
 #include "CudaContextManager.h"
 #include "Foundation.h"
-#include "GpuDispatcher.h"
 
 CudaContextManager::CudaContextManager(Foundation^ foundation)
 {
@@ -16,13 +15,6 @@ CudaContextManager::CudaContextManager(Foundation^ foundation)
 		throw gcnew OperationFailedException("Failed to create PxCudaContextManager instance");
 
 	_cudaContextManager = native;
-
-	{
-		PxGpuDispatcher* gpuDispatcher = native->getGpuDispatcher();
-
-		if (gpuDispatcher != nullptr)
-			_gpuDispatcher = gcnew PhysX::GpuDispatcher(gpuDispatcher, this);
-	}
 
 	ObjectTable::Instance->Add((intptr_t)native, this, foundation);
 }
@@ -59,11 +51,6 @@ void CudaContextManager::ReleaseContext()
 }
 
 //PxCudaMemoryManager *  getMemoryManager() = 0
-
-PhysX::GpuDispatcher^ CudaContextManager::GpuDispatcher::get()
-{
-	return _gpuDispatcher;
-}
 
 bool CudaContextManager::ContextIsValid::get()
 {
@@ -174,4 +161,9 @@ Nullable<bool> CudaContextManager::UsingDedicatedGPU::get()
 
 	return d == 1 ? true :
 		d == 0 ? false : Nullable<bool>();
+}
+
+PxCudaContextManager* CudaContextManager::UnmanagedPointer::get()
+{
+	return _cudaContextManager;
 }

@@ -5,7 +5,6 @@
 namespace PhysX
 {
 	ref class Foundation;
-	ref class GpuDispatcher;
 
 	public ref class CudaContextManager : IDisposable
 	{
@@ -15,7 +14,6 @@ namespace PhysX
 
 	private:
 		PxCudaContextManager* _cudaContextManager;
-		PhysX::GpuDispatcher^ _gpuDispatcher;
 
 	public:
 		CudaContextManager(Foundation^ foundation);
@@ -34,11 +32,6 @@ namespace PhysX
 		void ReleaseContext();
 
 		//PxCudaMemoryManager *  getMemoryManager() = 0
-
-		property PhysX::GpuDispatcher^ GpuDispatcher
-		{
-			PhysX::GpuDispatcher^ get();
-		}
 
 		property bool ContextIsValid
 		{
@@ -143,6 +136,11 @@ namespace PhysX
 		property Nullable<bool> UsingDedicatedGPU
 		{
 			Nullable<bool> get();
+		}
+
+		property PxCudaContextManager* UnmanagedPointer
+		{
+			PxCudaContextManager* get();
 		}
 	};
 }

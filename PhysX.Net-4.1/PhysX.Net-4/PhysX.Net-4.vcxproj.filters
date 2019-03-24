@@ -382,9 +382,6 @@
     <ClCompile Include="Source\DefaultSimulationFilterShader.cpp">
       <Filter>Extensions</Filter>
     </ClCompile>
-    <ClCompile Include="Source\GpuDispatcher.cpp">
-      <Filter>GPU</Filter>
-    </ClCompile>
     <ClCompile Include="Source\CudaContextManager.cpp">
       <Filter>GPU</Filter>
     </ClCompile>
@@ -1027,9 +1024,6 @@
     </ClInclude>
     <ClInclude Include="Source\ExtensionsEnum.h">
       <Filter>Extensions</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\GpuDispatcher.h">
-      <Filter>GPU</Filter>
     </ClInclude>
     <ClInclude Include="Source\CudaContextManager.h">
       <Filter>GPU</Filter>

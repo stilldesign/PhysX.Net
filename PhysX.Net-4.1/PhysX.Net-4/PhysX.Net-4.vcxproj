@@ -150,7 +150,6 @@
       <FileType>CppHeader</FileType>
     </ClInclude>
     <ClInclude Include="Source\GeometryQuery.h" />
-    <ClInclude Include="Source\GpuDispatcher.h" />
     <ClInclude Include="Source\GpuLoadHookManager.h" />
     <ClInclude Include="Source\IGpuLoadHook.h" />
     <ClInclude Include="Source\HitCallback.h" />
@@ -380,7 +379,6 @@
       <FileType>CppCode</FileType>
     </ClCompile>
     <ClCompile Include="Source\GeometryQuery.cpp" />
-    <ClCompile Include="Source\GpuDispatcher.cpp" />
     <ClCompile Include="Source\GpuLoadHookManager.cpp" />
     <ClCompile Include="Source\IGpuLoadHook.cpp" />
     <ClCompile Include="Source\InternalOverlapCallback.cpp" />

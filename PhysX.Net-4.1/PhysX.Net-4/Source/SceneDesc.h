@@ -8,11 +8,11 @@
 namespace PhysX
 {
 	ref class ContactModifyCallback;
-	ref class GpuDispatcher;
 	ref class SimulationFilterShader;
 	ref class BroadPhaseCallback;
 	ref class SceneLimits;
 	ref class SimulationFilterCallback;
+	ref class CudaContextManager;
 
 	public ref class SceneDesc : IDisposable
 	{
@@ -29,7 +29,7 @@ namespace PhysX
 			PhysX::SimulationFilterCallback^ _simulationFilterCallback;
 			PhysX::SimulationFilterShader^ _filterShader;
 			PhysX::ContactModifyCallback^ _contactModifyCallback;
-			PhysX::GpuDispatcher^ _gpuDispatcher;
+			PhysX::CudaContextManager^ _cudaContextManager;
 			PhysX::BroadPhaseCallback^ _broadPhaseCallback;
 
 		public:
@@ -118,10 +118,10 @@ namespace PhysX
 				void set(int value);
 			}
 
-			property PhysX::GpuDispatcher^ GpuDispatcher
+			property PhysX::CudaContextManager^ CudaContextManager
 			{
-				PhysX::GpuDispatcher^ get();
-				void set(PhysX::GpuDispatcher^ value);
+				PhysX::CudaContextManager^ get();
+				void set(PhysX::CudaContextManager^ value);
 			}
 
 			property PhysX::BroadPhaseCallback^ BroadPhaseCallback
