@@ -3,23 +3,23 @@
 	<ImportGroup Label="PropertySheets" />
 	<PropertyGroup Label="UserMacros">
 		<!-- 
-		The location of the NVIDIA PhysX 4.0 source code.
+		The location of the NVIDIA PhysX 4.1 source code.
 		You'll need to set /MD on all the VC++ projects to compile them as multi-threaded DLL.
 
-		Create a system-variable 'NVIDIAPhysX40SDK' if you wish to have the PhysX SDK in a different directory.
+		Create a system-variable 'NVIDIAPhysX41SDK' if you wish to have the PhysX SDK in a different directory.
 		This path below is the default, the system-variable will override this.
 		(You'll probably need to restart Visual Studio if you do).
 		
 		For example, run (as administrator):
-			setx NVIDIAPhysX40SDK "C:\NVIDIAGameWorks\PhysX-4.0" /M
+			setx NVIDIAPhysX41SDK "C:\NVIDIAGameWorks\PhysX" /M
 		-->
-		<NVIDIAPhysX40SDK Condition="'$(NVIDIAPhysX40SDK)' == '' ">C:\NVIDIAGameWorks\PhysX-4.0</NVIDIAPhysX40SDK>
+		<NVIDIAPhysX41SDK Condition="'$(NVIDIAPhysX41SDK)' == '' ">C:\NVIDIAGameWorks\PhysX</NVIDIAPhysX41SDK>
 	</PropertyGroup>
 	<PropertyGroup />
 	<ItemDefinitionGroup />
 	<ItemGroup>
-		<BuildMacro Include="NVIDIAPhysX40SDK">
-			<Value>$(NVIDIAPhysX40SDK)</Value>
+		<BuildMacro Include="NVIDIAPhysX41SDK">
+			<Value>$(NVIDIAPhysX41SDK)</Value>
 		</BuildMacro>
 	</ItemGroup>
 </Project>
