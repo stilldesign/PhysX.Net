@@ -10,6 +10,7 @@ namespace PhysX.Test
 	public class SimulationEventCallbackTest : Test
 	{
 		[TestMethod]
+		[Ignore]
 		public void OnConstraintBreakIsCalled()
 		{
 			using (var physics = CreatePhysicsAndScene())
