@@ -31,7 +31,7 @@ namespace PhysX.Test
 		[TestCleanup]
 		public void TestCleanup()
 		{
-			_physics.Dispose();
+			_physics?.Dispose();
 			_physics = null;
 
 			_actor = null;
