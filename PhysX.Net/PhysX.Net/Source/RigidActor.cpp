@@ -11,12 +11,10 @@
 RigidActor::RigidActor(PxRigidActor* rigidActor, PhysX::IDisposable^ owner)
 	: Actor(rigidActor, owner)
 {
-	auto existingShapes = CreateShapesInActor(rigidActor);
-
-	_shapes = gcnew List<Shape^>(existingShapes);
+	
 }
 
-array<Shape^>^ RigidActor::CreateShapesInActor(PxRigidActor* actor)
+List<Shape^>^ RigidActor::GetOrCreateShapesOfActor(PxRigidActor* actor)
 {
 	auto managedShapes = gcnew List<Shape^>();
 
@@ -29,22 +27,26 @@ array<Shape^>^ RigidActor::CreateShapesInActor(PxRigidActor* actor)
 	{
 		PxShape* shape = shapes[i];
 
-		Shape^ s = gcnew Shape(shape, this);
+		// Try to get the existing managed Shape instance, or create a new one
+		// if it doesn't already exist
+		Shape^ managedShape = ObjectTable::Instance->TryGetObject<Shape^>((intptr_t)shape);
+		if (managedShape == nullptr)
+			managedShape = gcnew Shape(shape, this);
 
-		managedShapes->Add(s);
+		managedShapes->Add(managedShape);
 	}
 
 	delete[] shapes;
 
-	return managedShapes->ToArray();
+	return managedShapes;
 }
 
 Shape^ RigidActor::GetShape(int index)
 {
-	if (index < 0 || index >= _shapes->Count)
+	if (index < 0 || index >= this->Shapes->Count)
 		throw gcnew ArgumentOutOfRangeException("index");
 
-	return _shapes[index];
+	return this->Shapes[index];
 }
 
 void RigidActor::AttachShape(Shape^ shape)
@@ -52,64 +54,6 @@ void RigidActor::AttachShape(Shape^ shape)
 	ThrowIfNullOrDisposed(shape, "shape");
 
 	this->UnmanagedPointer->attachShape(*shape->UnmanagedPointer);
-}
-
-//Shape^ RigidActor::CreateShape(Geometry^ geometry, Material^ material)
-//{
-//	ThrowIfNullOrDisposed(material, "material");
-//
-//	array<Material^>^ materials = { material };
-//
-//	return CreateShape(geometry, materials);
-//}
-//Shape^ RigidActor::CreateShape(Geometry^ geometry, array<Material^>^ materials)
-//{
-//	ThrowIfNull(geometry, "geometry");
-//	ThrowIfNull(materials, "materials");
-//
-//	for each (auto material in materials)
-//	{
-//		ThrowIfNullOrDisposed(material, "materials");
-//	}
-//
-//	//
-//
-//	PxGeometry* geom = geometry->ToUnmanaged();
-//
-//	PxMaterial** mats = new PxMaterial*[materials->Length];
-//	for (size_t i = 0; i < materials->Length; i++)
-//	{
-//		mats[i] = materials[i]->UnmanagedPointer;
-//	}
-//
-//	PxShape* s = this->UnmanagedPointer->create(*geom, mats, materials->Length);
-//
-//	if (s == NULL)
-//		throw gcnew ShapeCreationException("Failed to create shape");
-//
-//	// PxGeometry instances are created when we call ToUnmanaged()
-//	SAFE_DELETE(geom);
-//
-//	Shape^ shape = gcnew Shape(s, this);
-//
-//	shape->OnDisposed += gcnew EventHandler(this, &RigidActor::OnShapeDisposed);
-//
-//	_shapes->Add(shape);
-//
-//	OnShapeAdded(shape);
-//
-//	return shape;
-//}
-
-void PhysX::RigidActor::OnShapeDisposed(Object ^sender, EventArgs ^e)
-{
-	auto shape = (PhysX::Shape^)sender;
-
-	shape->OnDisposed -= gcnew EventHandler(this, &RigidActor::OnShapeDisposed);
-
-	_shapes->Remove(shape);
-
-	OnShapeRemoved(shape);
 }
 
 void RigidActor::Scale(float scale)
@@ -165,7 +109,7 @@ void RigidActor::GlobalPoseQuat::set(Quaternion value)
 
 IReadOnlyList<Shape^>^ RigidActor::Shapes::get()
 {
-	return _shapes;
+	return GetOrCreateShapesOfActor(this->UnmanagedPointer);
 }
 
 bool RigidActor::IsDynamic::get()
