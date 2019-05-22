@@ -14,18 +14,16 @@ namespace PhysX
 	/// </summary>
 	public ref class RigidActor abstract : Actor
 	{
-	public:
-		event Action<Shape^>^ OnShapeAdded;
-		event Action<Shape^>^ OnShapeRemoved;
-
-		private:
-			List<Shape^>^ _shapes;
-
 		internal:
 			RigidActor(PxRigidActor* rigidActor, PhysX::IDisposable^ owner);
 
 		private:
-			array<Shape^>^ CreateShapesInActor(PxRigidActor* actor);
+			/// <summary>
+			/// Gets a list of shapes attached to this actor.
+			/// This method will first lookup the shape in the ObjectTable, then if not found
+			/// it will create a managed Shape for it.
+			/// </summary>
+			List<Shape^>^ GetOrCreateShapesOfActor(PxRigidActor* actor);
 
 		public:
 			Shape^ GetShape(int index);
@@ -52,8 +50,6 @@ namespace PhysX
 			//Shape^ CreateShape(Geometry^ geometry, array<Material^>^ materials);
 
 			void AttachShape(Shape^ shape);
-		private:
-			void OnShapeDisposed(System::Object ^sender, System::EventArgs ^e);
 
 		public:
 			/// <summary>
