@@ -1213,7 +1213,6 @@
     <ResourceCompile Include="Version.rc" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\samples\rigidbodiessample\packages.config" />
     <None Include="PhysX.Net.targets" />
   </ItemGroup>
   <ItemGroup>

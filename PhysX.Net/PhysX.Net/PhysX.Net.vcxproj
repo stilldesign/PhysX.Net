@@ -544,7 +544,6 @@
     <Reference Include="System.Numerics" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\samples\rigidbodiessample\packages.config" />
     <None Include="PhysX.Net.targets" />
   </ItemGroup>
   <ItemGroup>
