@@ -12,7 +12,7 @@ A zip of all relevant DLLs and samples - https://github.com/stilldesign/PhysX.Ne
 
 Development
 -----------
-### PhysX.Net 1.0.0-alpha for NVIDIA PhysX 4.1.1
+### PhysX.Net 1.1.0-alpha for NVIDIA PhysX 4.1.1
 * Targets PhysX 4.1.1
 * 64 bit version only
 * Dependencies
