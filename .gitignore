@@ -15,8 +15,7 @@ build/
 [Oo]bj/
 
 # Keep our PhysX assemblies directory
-!PhysX.Net-4.1/Assemblies/*/Debug
-!PhysX.Net-4.1/Assemblies/*/Release
+!PhysX.Net/Assemblies/**
 
 # Enable "build/" folder in the NuGet Packages folder since NuGet packages use it for MSBuild targets
 !packages/*/build/

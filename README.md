@@ -40,8 +40,8 @@ Development
   * Select the projects in the solution explorer, right click, properties, C/C++, Code Generation and change **Runtime Library** to **Multi-threaded Debug DLL (/MDd)**
 ### Compile PhysX.Net
 * Clone this repo
-* The default location of the PhysX 4.1 repo directory is *C:\NVIDIAGameWorks\PhysX*
-  * To specify an alternative location on your computer: define the environment variable **NVIDIAPhysX41SDK**. You can do this by running ```setx NVIDIAPhysX41SDK "C:\NVIDIAGameWorks\PhysX" /M``` (as *administrator*).
+* The default location of the PhysX 4.1.1 repo directory is *C:\NVIDIAGameWorks\PhysX*
+  * To specify an alternative location on your computer: define the environment variable **NVIDIAPhysX411SDK**. You can do this by running ```setx NVIDIAPhysX411SDK "C:\NVIDIAGameWorks\PhysX" /M``` (as *administrator*).
 
 # PhysX 3.4.2 vs 4.1.0
 Change log: https://github.com/NVIDIAGameWorks/PhysX/blob/4.1/physx/release_notes.html
