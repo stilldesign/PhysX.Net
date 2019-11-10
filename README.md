@@ -1,6 +1,6 @@
 PhysX.Net
 =========
-A .NET wrapper for NVIDIA PhysX 4.1.0 written using C++/CLI.
+A .NET wrapper for NVIDIA PhysX 4.1.1 written using C++/CLI.
 
 Nuget
 -----
@@ -12,8 +12,8 @@ A zip of all relevant DLLs and samples - https://github.com/stilldesign/PhysX.Ne
 
 Development
 -----------
-### PhysX.Net 1.0.0-alpha for NVIDIA PhysX 4.1.0.25992954
-* Targets PhysX 4.1.0.25992954
+### PhysX.Net 1.0.0-alpha for NVIDIA PhysX 4.1.1
+* Targets PhysX 4.1.1
 * 64 bit version only
 * Dependencies
 	* .NET 4.7.1
@@ -29,7 +29,7 @@ Development
 # Building
 ## Dependencies
 * Visual Studio 2019
-* VC++ 2015.4 v140 toolset for desktop (x86,x64) - needed to build PhysX itself. If you've built PhysX already, this could be ignored.
+* VC++ v142 toolset for desktop - needed to build PhysX itself. If you've built PhysX already, this could be ignored.
 
 ## Compiling
 ### Compile PhysX
