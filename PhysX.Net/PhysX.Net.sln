@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27004.2008
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29505.145
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{27CD93B0-2E6E-42D3-B44A-43EAF972337E}"
 EndProject
@@ -10,7 +10,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Package.bat = Package.bat
 		PhysX.Net\PhysX.props = PhysX.Net\PhysX.props
 		..\README.md = ..\README.md
-		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
 		x64.testsettings = x64.testsettings
 	EndProjectSection
 EndProject
