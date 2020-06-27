@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 	<metadata>
 		<id>PhysX.Net</id>
-		<version>2.0.0-alpha3</version>
+		<version>2.0.0-alpha6</version>
 		<authors>StillDesign</authors>
 		<description>.NET wrapper for NVIDIA PhysX 4.1.1 (debug configuration)</description>
 		<language>en-US</language>
@@ -18,11 +18,12 @@
 		</references>
 	</metadata>
 	<files>
-		<!-- x64 -->
 		<file src="PhysX.Net\bin\x64\Debug\PhysX.Net.dll" target="lib\netcoreapp3.1" />
 		<file src="PhysX.Net\bin\x64\Debug\PhysX.Net.pdb" target="lib\netcoreapp3.1" />
 		
 		<!-- Dependencies -->
+		<!-- Required to run in 64 bit mode. If not present then a BadImageFormatException is thrown. -->
+		<file src="PhysX.Net\bin\x64\Debug\Ijwhost.dll" target="lib\x64" />
 		<!-- The native PhysX DLL files -->
 		<file src="Assemblies\x64\Debug\*.dll" target="lib\x64" />
 		<file src="Assemblies\x64\Debug\*.pdb" target="pdb" />

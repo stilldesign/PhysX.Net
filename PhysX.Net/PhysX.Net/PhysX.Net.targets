@@ -20,5 +20,10 @@
 			<Link>PhysXFoundation_64.dll</Link>
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
+
+		<None Include="$(MSBuildThisFileDirectory)..\lib\x64\Ijwhost.dll">
+			<Link>Ijwhost.dll</Link>
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
 	</ItemGroup>
 </Project>
