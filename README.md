@@ -12,11 +12,11 @@ A zip of all relevant DLLs and samples - https://github.com/stilldesign/PhysX.Ne
 
 Development
 -----------
-### PhysX.Net 1.1.0-alpha for NVIDIA PhysX 4.1.1
+### PhysX.Net 2.0.0-alpha for NVIDIA PhysX 4.1.1
 * Targets PhysX 4.1.1
 * 64 bit version only
 * Dependencies
-	* .NET 4.7.1
+	* .NET Core 3.1
 	* C runtime 2019 - https://aka.ms/vs/16/release/VC_redist.x64.exe
 * Remaining:
     * Vehicle sample and a few related classes
