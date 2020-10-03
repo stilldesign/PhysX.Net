@@ -1213,9 +1213,6 @@
     <ResourceCompile Include="Version.rc" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="PhysX.Net.targets" />
-  </ItemGroup>
-  <ItemGroup>
     <Filter Include="Vehicle">
       <UniqueIdentifier>{5892e8a6-22a0-4a98-bb0c-c7fe2c35eb93}</UniqueIdentifier>
     </Filter>
@@ -1321,5 +1318,8 @@
     <Filter Include="Simulation">
       <UniqueIdentifier>{6fe3be76-344f-4bb1-9aac-72d9c2d2e6ea}</UniqueIdentifier>
     </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RuntimeFiles.targets" />
   </ItemGroup>
 </Project>

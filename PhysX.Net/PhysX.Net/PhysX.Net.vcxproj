@@ -537,7 +537,7 @@
     <ClCompile Include="Source\Util.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="PhysX.Net.targets" />
+    <None Include="RuntimeFiles.targets" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Version.rc" />

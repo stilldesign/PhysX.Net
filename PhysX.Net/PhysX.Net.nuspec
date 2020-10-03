@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 	<metadata>
 		<id>PhysX.Net</id>
-		<version>2.0.0-alpha6</version>
+		<version>2.0.0-alpha8</version>
 		<authors>StillDesign</authors>
 		<description>.NET wrapper for NVIDIA PhysX 4.1.1 (debug configuration)</description>
 		<language>en-US</language>
@@ -22,12 +22,19 @@
 		<file src="PhysX.Net\bin\x64\Debug\PhysX.Net.pdb" target="lib\netcoreapp3.1" />
 		
 		<!-- Dependencies -->
-		<!-- Required to run in 64 bit mode. If not present then a BadImageFormatException is thrown. -->
+		<!--
+			Required to run in 64 bit mode.
+			If they are not present then a BadImageFormatException will be thrown.
+		-->
 		<file src="PhysX.Net\bin\x64\Debug\Ijwhost.dll" target="lib\x64" />
 		<!-- The native PhysX DLL files -->
 		<file src="Assemblies\x64\Debug\*.dll" target="lib\x64" />
 		<file src="Assemblies\x64\Debug\*.pdb" target="pdb" />
 
-		<file src="PhysX.Net\PhysX.Net.targets" target="Build\" />
+		<!--
+			A helper .targets file which will add the required native dlls to the root of a project and set them to copy to the output dir.
+			See the README.md on how to use this in your csproj file.
+		-->
+		<file src="PhysX.Net\RuntimeFiles.targets" target="lib" />
 	</files>
 </package>

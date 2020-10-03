@@ -10,9 +10,22 @@ Build all the things!
 --------------
 A zip of all relevant DLLs and samples - https://github.com/stilldesign/PhysX.Net/releases
 
+# Usage
+## Runtime files
+You must have `PhysX_64.dll`, `PhysXCommon_64.dll`, `PhysXCooking_64.dll`, `PhysXFoundation_64.dll` and `Ijwhost.dll` in the same directory as your executable.
+
+There is a helper `.targets` file which will add links of these to the root of your project. Each file has `Copy to Output Directory` set.
+1. Set `GeneratePathProperty="true"` on the PhysX.Net `<PackageReference />`.
+2. Add the follow to your `.csproj` file:
+```
+<ImportGroup>
+	<Import Project="$(PkgPhysX_Net)\lib\RuntimeFiles.targets"/>
+</ImportGroup>
+```
+
 Development
 -----------
-### PhysX.Net 2.0.0-alpha for NVIDIA PhysX 4.1.1
+### PhysX.Net 2.0.0-alpha8 for NVIDIA PhysX 4.1.1
 * Targets PhysX 4.1.1
 * 64 bit version only
 * Dependencies
