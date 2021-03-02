@@ -1,10 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 	<PropertyGroup>
 		<OutputType>Library</OutputType>
-		<TargetFramework>netcoreapp3.1</TargetFramework>
 		<UseWPF>true</UseWPF>
 		<UseWindowsForms>true</UseWindowsForms>
-		<LangVersion>8.0</LangVersion>
 		<RootNamespace>PhysX.Samples.Engine</RootNamespace>
 		<AssemblyName>PhysX.Samples.Engine</AssemblyName>
 		<EmbeddedResourceUseDependentUponConvention>false</EmbeddedResourceUseDependentUponConvention>

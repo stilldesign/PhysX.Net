@@ -2,33 +2,39 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 	<metadata>
 		<id>PhysX.Net</id>
-		<version>2.0.0-alpha8</version>
+		<version>3.0.0-alpha1</version>
 		<authors>StillDesign</authors>
 		<description>.NET wrapper for NVIDIA PhysX 4.1.1 (debug configuration)</description>
 		<language>en-US</language>
 		<projectUrl>https://github.com/stilldesign/PhysX.Net</projectUrl>
+		<repository type="git" url="https://github.com/stilldesign/PhysX.Net" />
 		<tags>nvidia physx wrapper physics .net c#</tags>
 		<frameworkAssemblies>
 			<frameworkAssembly assemblyName="System.Numerics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"  />
 		</frameworkAssemblies>
 		<references>
-			<group targetFramework="netcoreapp3.1">
+			<group targetFramework="net50">
 				<reference file="PhysX.Net.dll" />
 			</group>
 		</references>
+		<dependencies>
+			<group targetFramework="net50" />
+		</dependencies>
 	</metadata>
 	<files>
-		<file src="PhysX.Net\bin\x64\Debug\PhysX.Net.dll" target="lib\netcoreapp3.1" />
-		<file src="PhysX.Net\bin\x64\Debug\PhysX.Net.pdb" target="lib\netcoreapp3.1" />
+		<file src="PhysX.Net\bin\x64\Debug\PhysX.Net.dll" target="lib\net50" />
+		<file src="PhysX.Net\bin\x64\Debug\PhysX.Net.pdb" target="lib\net50" />
+		
+		<file src="PhysX.Net\bin\x64\Debug\PhysX.Net.dll" target="ref\net50" />
 		
 		<!-- Dependencies -->
 		<!--
 			Required to run in 64 bit mode.
 			If they are not present then a BadImageFormatException will be thrown.
 		-->
-		<file src="PhysX.Net\bin\x64\Debug\Ijwhost.dll" target="lib\x64" />
+		<file src="PhysX.Net\bin\x64\Debug\Ijwhost.dll" target="runtimes/win-x64/native" />
 		<!-- The native PhysX DLL files -->
-		<file src="Assemblies\x64\Debug\*.dll" target="lib\x64" />
+		<file src="Assemblies\x64\Debug\*.dll" target="runtimes/win-x64/native" />
 		<file src="Assemblies\x64\Debug\*.pdb" target="pdb" />
 
 		<!--

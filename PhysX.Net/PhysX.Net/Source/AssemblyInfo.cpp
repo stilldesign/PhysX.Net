@@ -16,7 +16,7 @@ using namespace System::Security::Permissions;
 [assembly:AssemblyConfigurationAttribute("")];
 [assembly:AssemblyCompanyAttribute("StillDesign")];
 [assembly:AssemblyProductAttribute("PhysX.Net")];
-[assembly:AssemblyCopyrightAttribute("Copyright (c) StillDesign 2019")];
+[assembly:AssemblyCopyrightAttribute("Copyright (c) StillDesign 2021")];
 [assembly:AssemblyTrademarkAttribute("")];
 [assembly:AssemblyCultureAttribute("")];
 
@@ -32,7 +32,7 @@ using namespace System::Security::Permissions;
 // by using the '*' as shown below:
 
 // Versioning - http://semver.org/
-[assembly:AssemblyVersionAttribute("2.0.0")];
+[assembly:AssemblyVersionAttribute("3.0.0")];
 
 [assembly:ComVisible(false)];
 

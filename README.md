@@ -25,11 +25,11 @@ There is a helper `.targets` file which will add links of these to the root of y
 
 Development
 -----------
-### PhysX.Net 2.0.0-alpha8 for NVIDIA PhysX 4.1.1
+### PhysX.Net 3.0.0-alpha1 for NVIDIA PhysX 4.1.1
 * Targets PhysX 4.1.1
 * 64 bit version only
 * Dependencies
-	* .NET Core 3.1
+	* .NET 5
 	* C runtime 2019 - https://aka.ms/vs/16/release/VC_redist.x64.exe
 * Remaining:
     * Vehicle sample and a few related classes

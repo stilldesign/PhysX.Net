@@ -1,10 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>netcoreapp3.1</TargetFramework>
 		<RootNamespace>PhysX.Test</RootNamespace>
 		<AssemblyName>PhysX.Test</AssemblyName>
 	  <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	</PropertyGroup>
+	<ItemGroup>
+	  <None Include="..\Assemblies\x64\Debug\*.dll" Link="%(Filename)%(Extension)">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.6.1" />
 		<PackageReference Include="MSTest.TestAdapter" Version="2.1.2" />
@@ -13,4 +17,5 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\PhysX.Net\PhysX.Net.vcxproj" />
 	</ItemGroup>
+	
 </Project>
