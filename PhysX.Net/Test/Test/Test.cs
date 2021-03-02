@@ -1,14 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Numerics;
-using System.Runtime.CompilerServices;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace PhysX.Test
 {
 	[TestClass]
+	[DeploymentItem("PhysX_64.dll")]
+	[DeploymentItem("PhysXCommon_64.dll")]
+	[DeploymentItem("PhysXCooking_64.dll")]
+	[DeploymentItem("PhysXDevice64.dll")]
+	[DeploymentItem("PhysXFoundation_64.dll")]
+	[DeploymentItem("PhysXGpu_64.dll")]
 	public abstract class Test
 	{
 		private ErrorLog _errorLog;
@@ -37,17 +40,9 @@ namespace PhysX.Test
 			_errorLog = null;
 		}
 
-		[AssemblyInitialize]
-		public static void AssemblyInit(TestContext ctx)
-		{
-			TestDependantFiles.CopyDependantFiles(ctx);
-		}
-
 		[TestInitialize]
 		public void TestInitialize()
 		{
-			Trace.WriteLine(GetCurrentMethod());
-
 			if (Physics.Instantiated)
 				throw new Exception("Before a test run, the Physics singleton should not be initalized. Probably spill over from a previous test.");
 		}
@@ -116,15 +111,6 @@ namespace PhysX.Test
 		protected void AssertNoPhysXErrors(PhysicsAndSceneTestUnit physics)
 		{
 			Assert.IsFalse(physics.ErrorOutput.HasErrors, physics.ErrorOutput.LastError);
-		}
-
-		[MethodImpl(MethodImplOptions.NoInlining)]
-		public string GetCurrentMethod()
-		{
-			StackTrace st = new StackTrace();
-			StackFrame sf = st.GetFrame(1);
-
-			return sf.GetMethod().Name;
 		}
 	}
 }

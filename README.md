@@ -1,6 +1,6 @@
 PhysX.Net
 =========
-A .NET wrapper for NVIDIA PhysX 4.1.0 written using C++/CLI.
+A .NET wrapper for NVIDIA PhysX 4.1.1 written using C++/CLI.
 
 Nuget
 -----
@@ -10,13 +10,26 @@ Build all the things!
 --------------
 A zip of all relevant DLLs and samples - https://github.com/stilldesign/PhysX.Net/releases
 
+# Usage
+## Runtime files
+You must have `PhysX_64.dll`, `PhysXCommon_64.dll`, `PhysXCooking_64.dll`, `PhysXFoundation_64.dll` and `Ijwhost.dll` in the same directory as your executable.
+
+There is a helper `.targets` file which will add links of these to the root of your project. Each file has `Copy to Output Directory` set.
+1. Set `GeneratePathProperty="true"` on the PhysX.Net `<PackageReference />`.
+2. Add the follow to your `.csproj` file:
+```
+<ImportGroup>
+	<Import Project="$(PkgPhysX_Net)\lib\RuntimeFiles.targets"/>
+</ImportGroup>
+```
+
 Development
 -----------
-### PhysX.Net 1.0.0-alpha for NVIDIA PhysX 4.1.0.25992954
-* Targets PhysX 4.1.0.25992954
+### PhysX.Net 3.0.0-alpha1 for NVIDIA PhysX 4.1.1
+* Targets PhysX 4.1.1
 * 64 bit version only
 * Dependencies
-	* .NET 4.7.1
+	* .NET 5
 	* C runtime 2019 - https://aka.ms/vs/16/release/VC_redist.x64.exe
 * Remaining:
     * Vehicle sample and a few related classes
@@ -29,7 +42,7 @@ Development
 # Building
 ## Dependencies
 * Visual Studio 2019
-* VC++ 2015.4 v140 toolset for desktop (x86,x64) - needed to build PhysX itself. If you've built PhysX already, this could be ignored.
+* VC++ v142 toolset for desktop - needed to build PhysX itself. If you've built PhysX already, this could be ignored.
 
 ## Compiling
 ### Compile PhysX
@@ -40,8 +53,8 @@ Development
   * Select the projects in the solution explorer, right click, properties, C/C++, Code Generation and change **Runtime Library** to **Multi-threaded Debug DLL (/MDd)**
 ### Compile PhysX.Net
 * Clone this repo
-* The default location of the PhysX 4.1 repo directory is *C:\NVIDIAGameWorks\PhysX*
-  * To specify an alternative location on your computer: define the environment variable **NVIDIAPhysX41SDK**. You can do this by running ```setx NVIDIAPhysX41SDK "C:\NVIDIAGameWorks\PhysX" /M``` (as *administrator*).
+* The default location of the PhysX 4.1.1 repo directory is *C:\NVIDIAGameWorks\PhysX*
+  * To specify an alternative location on your computer: define the environment variable **NVIDIAPhysX411SDK**. You can do this by running ```setx NVIDIAPhysX411SDK "C:\NVIDIAGameWorks\PhysX" /M``` (as *administrator*).
 
 # PhysX 3.4.2 vs 4.1.0
 Change log: https://github.com/NVIDIAGameWorks/PhysX/blob/4.1/physx/release_notes.html

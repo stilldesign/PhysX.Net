@@ -1,0 +1,9 @@
+<Project>
+
+  <PropertyGroup>
+		<TargetFramework>net5.0-windows</TargetFramework>
+		<PlatformTarget>x64</PlatformTarget>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>
