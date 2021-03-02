@@ -15,11 +15,14 @@ A zip of all relevant DLLs and samples - https://github.com/stilldesign/PhysX.Ne
 You must have `PhysX_64.dll`, `PhysXCommon_64.dll`, `PhysXCooking_64.dll`, `PhysXFoundation_64.dll` and `Ijwhost.dll` in the same directory as your executable.
 
 There is a helper `.targets` file which will add links of these to the root of your project. Each file has `Copy to Output Directory` set.
-1. Set `GeneratePathProperty="true"` on the PhysX.Net `<PackageReference />`.
+
+In your `.csproj` file:
+1. Set the `GeneratePathProperty="true"` attribute on the PhysX.Net `<PackageReference />` node.
+    * e.g. `<PackageReference Include="PhysX.Net" Version="3.0.0-alpha1" GeneratePathProperty="true" />`
 2. Add the follow to your `.csproj` file:
-```
+```xml
 <ImportGroup>
-	<Import Project="$(PkgPhysX_Net)\lib\RuntimeFiles.targets"/>
+    <Import Project="$(PkgPhysX_Net)\lib\RuntimeFiles.targets"/>
 </ImportGroup>
 ```
 
@@ -55,15 +58,3 @@ Development
 * Clone this repo
 * The default location of the PhysX 4.1.1 repo directory is *C:\NVIDIAGameWorks\PhysX*
   * To specify an alternative location on your computer: define the environment variable **NVIDIAPhysX411SDK**. You can do this by running ```setx NVIDIAPhysX411SDK "C:\NVIDIAGameWorks\PhysX" /M``` (as *administrator*).
-
-# PhysX 3.4.2 vs 4.1.0
-Change log: https://github.com/NVIDIAGameWorks/PhysX/blob/4.1/physx/release_notes.html
-
-The main changes are:
-* New solver for accuracy
-* ```RigidActor.CreateShape``` is removed
-  * Use ```RigidActorExt.CreateExclusiveShape``` instead (or create a simple C# extension method to provide backward compatibility)
-* Particles have been removed
-  * This is now provided by [FleX](https://github.com/NVIDIAGameWorks/FleX)
-* Cloth has been removed
-  * This is now provided by [NvCloth](https://github.com/NVIDIAGameWorks/NvCloth)
