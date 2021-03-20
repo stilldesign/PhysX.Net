@@ -246,7 +246,9 @@ namespace PhysX
 
 	public enum class QueryHitType
 	{
-
+		None = PxQueryHitType::eNONE,
+		Block = PxQueryHitType::eBLOCK,
+		Touch = PxQueryHitType::eTOUCH
 	};
 
 	public enum class SceneQueryUpdateMode
