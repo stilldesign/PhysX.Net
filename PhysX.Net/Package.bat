@@ -1,5 +1,5 @@
 
-cd C:\Development\PhysX.Net
+cd C:\Development\PhysX.Net\PhysX.Net
 C:
 
 md Package
@@ -18,7 +18,7 @@ cd ..\..\..
 msbuild PhysX.Net.sln /p:Configuration=Debug;Platform=x64 /t:Clean,Build
 msbuild PhysX.Net.sln /p:Configuration=Release;Platform=x64 /t:Clean,Build
 
-# Samples
+Rem Samples
 md "Package\Working\PhysX.Net 3.0.0 for NVIDIA PhysX 4.1.1\Samples"
 robocopy Samples "Package\Working\PhysX.Net 3.0.0 for NVIDIA PhysX 4.1.1\Samples" /E /XF *.suo *.vssscc *.cachefile *.user *.vspscc *.pdb *.vshost.exe* /XD obj Release
 md "Package\Working\PhysX.Net 3.0.0 for NVIDIA PhysX 4.1.1\Assemblies"
