@@ -44,17 +44,22 @@ Development
 
 # Building
 ## Dependencies
-* Visual Studio 2022
-* VC++ v143 toolset for desktop - needed to build PhysX itself. If you've built PhysX already, this could be ignored.
+* Visual Studio 2019
+* VC++ v142 toolset for desktop - needed to build PhysX itself. If you've built PhysX already, this could be ignored.
 
 ## Compiling
+
+Start by cloning this repo
+
+Running ```SetUp.ps1``` **AS ADMIN** will execute most of the following next steps, but it is still important to open the PhysX sln in visual studio and set all physx projects **Runtime Library** to **Multi-threaded Debug DLL (/MDd)**
+
 ### Compile PhysX
-* Clone the [PhysX repo](https://github.com/NVIDIAGameWorks/PhysX)
-* Run ```generate_projects.bat``` from the ```physx``` directory
+* You can use ```git submodule update --init``` to pull the latest version of PhysX attached to this project
+* Run ```generate_projects.bat``` from the ```PhysX/physx``` directory
 * Open the solution and select the **debug** configuration
 * You'll need to change all the PhysX projects to use **Multi-threaded Debug DLL** in order for them to be consumed by .NET
   * Select the projects in the solution explorer, right click, properties, C/C++, Code Generation and change **Runtime Library** to **Multi-threaded Debug DLL (/MDd)**
+
 ### Compile PhysX.Net
-* Clone this repo
 * The default location of the PhysX 4.1.2 repo directory is *C:\NVIDIAGameWorks\PhysX*
-  * To specify an alternative location on your computer: define the environment variable **NVIDIAPhysX411SDK**. You can do this by running ```setx NVIDIAPhysX411SDK "C:\NVIDIAGameWorks\PhysX" /M``` (as *administrator*).
+  * You may have to specify a location if it wasn't previously installed on your computer: define the environment variable **NVIDIAPhysX41SDK**. You can do this by running ```setx NVIDIAPhysX41SDK "C:\Path-To\NVIDIAGameWorks\PhysX" /M``` (*from an administrator powershell*).
