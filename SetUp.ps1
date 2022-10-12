@@ -1,25 +1,33 @@
 $projRoot = Get-Location
-git submodule update --init --recursive
 
-cd .\PhysX\physx
-.\generate_projects.bat vc16win64
 
-cd .\compiler\vc16win64\sdk_source_bin
+$skipPhysX = Read-Host -Prompt 'Skip PhysX Gen? (y/n)'
+if ($skipPhysX -ne 'y') {
+    
+    $fullPath = Join-Path -Path $projRoot -ChildPath "\PhysX"
+    if ($env:NVIDIAPhysX41SDK -ne $fullPath) {
+        Write-Output "Please run the Set-NvidiaEnv.ps1 script first.
+        You may have to restart your powershell session."
+    }
 
-.\PhysX.sln
-echo "Set all PhysX projects RuntimeLibrary to MultiThreadedDLL (/MDd), compile those projects and press Enter"
-Pause
+    Write-Output "Generating PhysX..."
+    git submodule update --init --recursive
+    Set-Location .\PhysX\physx
+    .\generate_projects.bat vc16win64
 
-$fullPath = Join-Path -Path $projRoot -ChildPath "\PhysX"
-setx NVIDIAPhysX41SDK $fullPath /M
+    Set-Location .\compiler\vc16win64\sdk_source_bin
 
-cd $projRoot\PhysX.Net
+    .\PhysX.sln
+    Write-Output "Set all PhysX projects RuntimeLibrary to MultiThreadedDLL (/MDd), compile those projects and press Enter"
+    Read-Host -Prompt 'Press Enter to continue'
+}
 
-refreshenv
+Set-Location $projRoot\PhysX.Net
 
 .\PhysX.Net.sln
-echo "Now compile PhysX.Net.sln then press Enter"
-Pause
+Read-Host -Prompt 'Now compile PhysX.Net.sln then press Enter'
+
 .\.nuget\NuGet.exe pack .\PhysX.Net.nuspec
 
-echo "You can use the following nupkg to ref this to your project"
+Write-Output "You can use the following nupkg to ref this to your project"
+Read-Host -Prompt 'Press Enter to continue'
