@@ -11,9 +11,11 @@ echo "Set all PhysX projects RuntimeLibrary to MultiThreadedDLL (/MDd), compile 
 Pause
 
 $fullPath = Join-Path -Path $projRoot -ChildPath "\PhysX"
-setx NVIDIAPhysX41SDK Get-Location + "\PhysX" /M
+setx NVIDIAPhysX41SDK $fullPath /M
 
 cd $projRoot\PhysX.Net
+
+refreshenv
 
 .\PhysX.Net.sln
 echo "Now compile PhysX.Net.sln then press Enter"
