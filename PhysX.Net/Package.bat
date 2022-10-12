@@ -1,6 +1,6 @@
 
 cd C:\Development\PhysX.Net\PhysX.Net
-C:
+
 
 md Package
 cd Package

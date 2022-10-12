@@ -1,0 +1,3 @@
+[submodule "PhysX"]
+	path = PhysX
+	url = git@github.com:NVIDIAGameWorks/PhysX.git
