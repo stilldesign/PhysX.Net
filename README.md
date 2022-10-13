@@ -1,6 +1,6 @@
 PhysX.Net
 =========
-A .NET wrapper for NVIDIA PhysX 4.1.1 written using C++/CLI.
+A .NET wrapper for NVIDIA PhysX 4.1.2 written using C++/CLI.
 
 Nuget
 -----
@@ -18,7 +18,7 @@ There is a helper `.targets` file which will add links of these to the root of y
 
 In your `.csproj` file:
 1. Set the `GeneratePathProperty="true"` attribute on the PhysX.Net `<PackageReference />` node.
-    * e.g. `<PackageReference Include="PhysX.Net" Version="3.0.0-alpha1" GeneratePathProperty="true" />`
+    * e.g. `<PackageReference Include="PhysX.Net" Version="4.0.1-alpha1" GeneratePathProperty="true" />`
 2. Add the follow to your `.csproj` file:
 ```xml
 <ImportGroup>
@@ -28,12 +28,12 @@ In your `.csproj` file:
 
 Development
 -----------
-### PhysX.Net 3.0.0-alpha1 for NVIDIA PhysX 4.1.1
-* Targets PhysX 4.1.1
+### PhysX.Net 4.0.1-alpha1 for NVIDIA PhysX 4.1.2
+* Targets PhysX 4.1.2
 * 64 bit version only
 * Dependencies
-	* .NET 5
-	* C runtime 2019 - https://aka.ms/vs/16/release/VC_redist.x64.exe
+	* .NET 6
+	* C runtime 2022 - https://aka.ms/vs/17/release/vc_redist.x64.exe
 * Remaining:
     * Vehicle sample and a few related classes
     * Attach/Detach shape from an actor
@@ -48,13 +48,21 @@ Development
 * VC++ v142 toolset for desktop - needed to build PhysX itself. If you've built PhysX already, this could be ignored.
 
 ## Compiling
-### Compile PhysX
-* Clone the [PhysX repo](https://github.com/NVIDIAGameWorks/PhysX)
-* Run ```generate_projects.bat``` from the ```physx``` directory
+
+Start by cloning this repo
+
+### Automated scripts
+Running ```Set-NvidiaEnv.exe``` will set up the Environment variable needed for you if you are generating the PhysX files through this project. This needs to be run first
+
+Running ```SetUp.exe``` **AS ADMIN** will execute most of the following next steps, but it is still important to open the PhysX sln in visual studio and set all physx projects **Runtime Library** to **Multi-threaded Debug DLL (/MDd)**
+
+### Compile PhysX Manually
+* You can use ```git submodule update --init``` to pull the latest version of PhysX attached to this project
+* Run ```generate_projects.bat``` from the ```PhysX/physx``` directory
 * Open the solution and select the **debug** configuration
 * You'll need to change all the PhysX projects to use **Multi-threaded Debug DLL** in order for them to be consumed by .NET
   * Select the projects in the solution explorer, right click, properties, C/C++, Code Generation and change **Runtime Library** to **Multi-threaded Debug DLL (/MDd)**
-### Compile PhysX.Net
-* Clone this repo
-* The default location of the PhysX 4.1.1 repo directory is *C:\NVIDIAGameWorks\PhysX*
-  * To specify an alternative location on your computer: define the environment variable **NVIDIAPhysX411SDK**. You can do this by running ```setx NVIDIAPhysX411SDK "C:\NVIDIAGameWorks\PhysX" /M``` (as *administrator*).
+
+### Compile PhysX.Net Manually
+* The default location of the PhysX 4.1.2 repo directory is *C:\NVIDIAGameWorks\PhysX*
+  * You may have to specify a location if it wasn't previously installed on your computer: define the environment variable **NVIDIAPhysX41SDK**. You can do this by running ```setx NVIDIAPhysX41SDK "C:\Path-To\NVIDIAGameWorks\PhysX" /M``` (*from an administrator powershell*).
