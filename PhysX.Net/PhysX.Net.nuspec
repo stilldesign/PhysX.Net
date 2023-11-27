@@ -2,9 +2,9 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 	<metadata>
 		<id>PhysX.Net</id>
-		<version>3.0.0-alpha1</version>
+		<version>5.0.0-alpha1</version>
 		<authors>StillDesign</authors>
-		<description>.NET wrapper for NVIDIA PhysX 4.1.1 (debug configuration)</description>
+		<description>.NET wrapper for NVIDIA PhysX 4.1.2 (debug configuration)</description>
 		<language>en-US</language>
 		<projectUrl>https://github.com/stilldesign/PhysX.Net</projectUrl>
 		<repository type="git" url="https://github.com/stilldesign/PhysX.Net" />
@@ -13,19 +13,19 @@
 			<frameworkAssembly assemblyName="System.Numerics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"  />
 		</frameworkAssemblies>
 		<references>
-			<group targetFramework="net50">
+			<group targetFramework="net60">
 				<reference file="PhysX.Net.dll" />
 			</group>
 		</references>
 		<dependencies>
-			<group targetFramework="net50" />
+			<group targetFramework="net60" />
 		</dependencies>
 	</metadata>
 	<files>
-		<file src="PhysX.Net\bin\x64\Debug\PhysX.Net.dll" target="lib\net50" />
-		<file src="PhysX.Net\bin\x64\Debug\PhysX.Net.pdb" target="lib\net50" />
+		<file src="PhysX.Net\bin\x64\Debug\PhysX.Net.dll" target="lib\net60" />
+		<file src="PhysX.Net\bin\x64\Debug\PhysX.Net.pdb" target="lib\net60" />
 		
-		<file src="PhysX.Net\bin\x64\Debug\PhysX.Net.dll" target="ref\net50" />
+		<file src="PhysX.Net\bin\x64\Debug\PhysX.Net.dll" target="ref\net60" />
 		
 		<!-- Dependencies -->
 		<!--

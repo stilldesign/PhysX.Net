@@ -1,6 +1,6 @@
 PhysX.Net
 =========
-A .NET wrapper for NVIDIA PhysX 4.1.1 written using C++/CLI.
+A .NET wrapper for NVIDIA PhysX 4.1.2 written using C++/CLI.
 
 Nuget
 -----
@@ -18,7 +18,7 @@ There is a helper `.targets` file which will add links of these to the root of y
 
 In your `.csproj` file:
 1. Set the `GeneratePathProperty="true"` attribute on the PhysX.Net `<PackageReference />` node.
-    * e.g. `<PackageReference Include="PhysX.Net" Version="3.0.0-alpha1" GeneratePathProperty="true" />`
+    * e.g. `<PackageReference Include="PhysX.Net" Version="5.0.0-alpha1" GeneratePathProperty="true" />`
 2. Add the follow to your `.csproj` file:
 ```xml
 <ImportGroup>
@@ -28,12 +28,12 @@ In your `.csproj` file:
 
 Development
 -----------
-### PhysX.Net 3.0.0-alpha1 for NVIDIA PhysX 4.1.1
-* Targets PhysX 4.1.1
+### PhysX.Net 5.0.0-alpha1 for NVIDIA PhysX 4.1.2
+* Targets PhysX 4.1.2
 * 64 bit version only
 * Dependencies
-	* .NET 5
-	* C runtime 2019 - https://aka.ms/vs/16/release/VC_redist.x64.exe
+	* .NET 6
+	* C runtime 2022 - https://aka.ms/vs/17/release/vc_redist.x64.exe
 * Remaining:
     * Vehicle sample and a few related classes
     * Attach/Detach shape from an actor
@@ -44,8 +44,8 @@ Development
 
 # Building
 ## Dependencies
-* Visual Studio 2019
-* VC++ v142 toolset for desktop - needed to build PhysX itself. If you've built PhysX already, this could be ignored.
+* Visual Studio 2022
+* VC++ v143 toolset for desktop - needed to build PhysX itself. If you've built PhysX already, this could be ignored.
 
 ## Compiling
 ### Compile PhysX
@@ -56,5 +56,5 @@ Development
   * Select the projects in the solution explorer, right click, properties, C/C++, Code Generation and change **Runtime Library** to **Multi-threaded Debug DLL (/MDd)**
 ### Compile PhysX.Net
 * Clone this repo
-* The default location of the PhysX 4.1.1 repo directory is *C:\NVIDIAGameWorks\PhysX*
+* The default location of the PhysX 4.1.2 repo directory is *C:\NVIDIAGameWorks\PhysX*
   * To specify an alternative location on your computer: define the environment variable **NVIDIAPhysX411SDK**. You can do this by running ```setx NVIDIAPhysX411SDK "C:\NVIDIAGameWorks\PhysX" /M``` (as *administrator*).
