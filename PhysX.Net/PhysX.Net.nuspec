@@ -2,30 +2,31 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 	<metadata>
 		<id>PhysX.Net</id>
-		<version>5.0.0-alpha1</version>
+		<version>5.0.1-alpha1</version>
 		<authors>StillDesign</authors>
 		<description>.NET wrapper for NVIDIA PhysX 4.1.2 (debug configuration)</description>
 		<language>en-US</language>
 		<projectUrl>https://github.com/stilldesign/PhysX.Net</projectUrl>
 		<repository type="git" url="https://github.com/stilldesign/PhysX.Net" />
 		<tags>nvidia physx wrapper physics .net c#</tags>
+		<readme>docs\README.md</readme>
 		<frameworkAssemblies>
 			<frameworkAssembly assemblyName="System.Numerics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"  />
 		</frameworkAssemblies>
 		<references>
-			<group targetFramework="net60">
+			<group targetFramework="net8.0">
 				<reference file="PhysX.Net.dll" />
 			</group>
 		</references>
 		<dependencies>
-			<group targetFramework="net60" />
+			<group targetFramework="net8.0" />
 		</dependencies>
 	</metadata>
 	<files>
-		<file src="PhysX.Net\bin\x64\Debug\PhysX.Net.dll" target="lib\net60" />
-		<file src="PhysX.Net\bin\x64\Debug\PhysX.Net.pdb" target="lib\net60" />
+		<file src="PhysX.Net\bin\x64\Debug\PhysX.Net.dll" target="lib\net8.0" />
+		<file src="PhysX.Net\bin\x64\Debug\PhysX.Net.pdb" target="lib\net8.0" />
 		
-		<file src="PhysX.Net\bin\x64\Debug\PhysX.Net.dll" target="ref\net60" />
+		<file src="PhysX.Net\bin\x64\Debug\PhysX.Net.dll" target="ref\net8.0" />
 		
 		<!-- Dependencies -->
 		<!--
@@ -42,5 +43,7 @@
 			See the README.md on how to use this in your csproj file.
 		-->
 		<file src="PhysX.Net\RuntimeFiles.targets" target="lib" />
+
+		<file src="..\README.md" target="docs\" />
 	</files>
 </package>

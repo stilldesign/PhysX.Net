@@ -32,7 +32,7 @@ using namespace System::Security::Permissions;
 // by using the '*' as shown below:
 
 // Versioning - http://semver.org/
-[assembly:AssemblyVersionAttribute("5.0.0")];
+[assembly:AssemblyVersionAttribute("5.0.1")];
 
 [assembly:ComVisible(false)];
 
