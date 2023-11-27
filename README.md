@@ -32,7 +32,7 @@ Development
 * Targets PhysX 4.1.2
 * 64 bit version only
 * Dependencies
-	* .NET 6
+	* .NET 8.0
 	* C runtime 2022 - https://aka.ms/vs/17/release/vc_redist.x64.exe
 * Remaining:
     * Vehicle sample and a few related classes
