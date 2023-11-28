@@ -57,4 +57,4 @@ Development
 ### Compile PhysX.Net
 * Clone this repo
 * The default location of the PhysX 4.1.2 repo directory is *C:\NVIDIAGameWorks\PhysX*
-  * To specify an alternative location on your computer: define the environment variable **NVIDIAPhysX41SDK**. You can do this by running ```setx NVIDIAPhysX411SDK "C:\NVIDIAGameWorks\PhysX" /M``` (as *administrator*).
+  * To specify an alternative location on your computer: define the environment variable **NVIDIAPhysX41SDK**. You can do this by running ```setx NVIDIAPhysX41SDK "C:\NVIDIAGameWorks\PhysX" /M``` (as *administrator*).
