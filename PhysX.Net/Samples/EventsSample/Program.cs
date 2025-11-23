@@ -1,7 +1,7 @@
 ﻿using System;
 
-namespace PhysX.Samples.EventsSample
-{
+namespace PhysX.Samples.EventsSample;
+
 	public class Program
 	{
 		[STAThread]
@@ -10,4 +10,3 @@ namespace PhysX.Samples.EventsSample
 			new EventsSample();
 		}
 	}
-}

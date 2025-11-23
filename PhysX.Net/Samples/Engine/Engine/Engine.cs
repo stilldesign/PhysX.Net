@@ -9,8 +9,8 @@ using SharpDX.Direct3D;
 using SharpDX.Direct3D11;
 using SharpDX.DXGI;
 
-namespace PhysX.Samples.Engine
-{
+namespace PhysX.Samples.Engine;
+
 	public delegate void UpdateEventHandler(TimeSpan elapsed);
 
 	public class Engine
@@ -396,4 +396,3 @@ namespace PhysX.Samples.Engine
 
 		public TimeSpan FrameTime { get; private set; }
 	}
-}

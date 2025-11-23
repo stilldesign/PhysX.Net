@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace PhysX.Test
-{
+namespace PhysX.Test;
+
 	[TestClass]
 	public class ObservableTest : Test
 	{
@@ -39,4 +39,3 @@ namespace PhysX.Test
 		//	}
 		//}
 	}
-}

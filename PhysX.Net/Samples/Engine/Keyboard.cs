@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
 
-namespace PhysX.Samples.Engine
-{
+namespace PhysX.Samples.Engine;
+
 	public class Keyboard
 	{
 		public event KeyEventHandler OnKeyDown, OnKeyUp;
@@ -48,4 +48,3 @@ namespace PhysX.Samples.Engine
 			}
 		}
 	}
-}

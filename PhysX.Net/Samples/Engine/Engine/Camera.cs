@@ -4,8 +4,8 @@ using System.Runtime.InteropServices;
 using System.Windows.Input;
 using SharpDX;
 
-namespace PhysX.Samples.Engine
-{
+namespace PhysX.Samples.Engine;
+
 	public class Camera
 	{
 		private Engine _engine;
@@ -128,4 +128,3 @@ namespace PhysX.Samples.Engine
 		[DllImport("user32.dll")]
 		public static extern bool GetCursorPos(out System.Drawing.Point pt);
 	}
-}

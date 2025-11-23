@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 
-namespace PhysX.Samples.EventsSample
-{
+namespace PhysX.Samples.EventsSample;
+
 	public class EventsSample : Sample
 	{
 		public List<Actor> Touched { get; set; }
@@ -98,4 +98,3 @@ namespace PhysX.Samples.EventsSample
 			}
 		}
 	}
-}

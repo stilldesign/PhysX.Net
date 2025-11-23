@@ -1,8 +1,8 @@
 ﻿using System.Numerics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace PhysX.Test.Geometry
-{
+namespace PhysX.Test.Geometry;
+
 	[TestClass]
 	public class GeometryQueryTest
 	{
@@ -39,4 +39,3 @@ namespace PhysX.Test.Geometry
 			Assert.AreEqual(new Bounds3(new Vector3(10.1f, 10.1f, 10.1f)), bounds);
 		}
 	}
-}

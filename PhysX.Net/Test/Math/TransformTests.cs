@@ -1,8 +1,8 @@
 ﻿using System.Numerics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace PhysX.Test
-{
+namespace PhysX.Test;
+
 	[TestClass]
 	public class TransformTests
 	{
@@ -62,4 +62,3 @@ namespace PhysX.Test
 			Assert.AreNotEqual(a.GetHashCode(), b.GetHashCode());
 		}
 	}
-}

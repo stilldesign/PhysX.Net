@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace PhysX.Test
-{
+namespace PhysX.Test;
+
 	[TestClass]
 	public class ShapeCreationAndDisposalTest : Test
 	{
@@ -26,4 +26,3 @@ namespace PhysX.Test
 			}
 		}
 	}
-}

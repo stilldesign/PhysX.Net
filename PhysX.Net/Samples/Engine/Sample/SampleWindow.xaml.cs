@@ -3,8 +3,8 @@ using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Input;
 
-namespace PhysX.Samples
-{
+namespace PhysX.Samples;
+
 	/// <summary>
 	/// Interaction logic for SampleWindow.xaml
 	/// </summary>
@@ -56,4 +56,3 @@ namespace PhysX.Samples
 			}
 		}
 	}
-}

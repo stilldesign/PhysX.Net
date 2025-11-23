@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Numerics;
 
-namespace PhysX.Samples.CollisionDisabledSample
-{
+namespace PhysX.Samples.CollisionDisabledSample;
+
 	public class CollisionDisabledSample : Sample
 	{
 		private Scene _scene;
@@ -65,4 +65,3 @@ namespace PhysX.Samples.CollisionDisabledSample
 
 		}
 	}
-}

@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace PhysX.Test.Controller
-{
+namespace PhysX.Test.Controller;
+
 	[TestClass]
 	public class ObstacleTest : Test
 	{
@@ -22,4 +22,3 @@ namespace PhysX.Test.Controller
 			}
 		}
 	}
-}

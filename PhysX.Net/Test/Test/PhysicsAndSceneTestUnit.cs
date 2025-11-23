@@ -1,5 +1,5 @@
-﻿namespace PhysX.Test
-{
+﻿namespace PhysX.Test;
+
 	public class PhysicsAndSceneTestUnit : System.IDisposable
 	{
 		public Foundation Foundation { get; set; }
@@ -22,4 +22,3 @@
 
 		#endregion
 	}
-}

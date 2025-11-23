@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace PhysX.Test
-{
+namespace PhysX.Test;
+
 	[TestClass]
 	public class BoxControllerTest : Test
 	{
@@ -34,4 +34,3 @@ namespace PhysX.Test
 			}
 		}
 	}
-}

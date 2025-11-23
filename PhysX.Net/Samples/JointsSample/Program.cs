@@ -1,7 +1,7 @@
 ﻿using System;
 
-namespace PhysX.Samples.JointsSample
-{
+namespace PhysX.Samples.JointsSample;
+
 	public class Program
 	{
 		[STAThread]
@@ -10,4 +10,3 @@ namespace PhysX.Samples.JointsSample
 			new JointsSample();
 		}
 	}
-}

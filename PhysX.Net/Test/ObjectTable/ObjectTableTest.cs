@@ -2,8 +2,8 @@
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace PhysX.Test
-{
+namespace PhysX.Test;
+
 	[TestClass]
 	public class ObjectTableTest : Test
 	{
@@ -306,4 +306,3 @@ namespace PhysX.Test
 
 		}
 	}
-}

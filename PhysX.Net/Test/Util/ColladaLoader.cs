@@ -5,8 +5,8 @@ using System.Xml;
 using System.Globalization;
 using System.Numerics;
 
-namespace PhysX.Test.Util
-{
+namespace PhysX.Test.Util;
+
 	/// <summary>A very basic COLLADA loader.</summary>
 	/// <remarks>
 	/// This basically loads the torus DAE file for use as a convex mesh.
@@ -60,4 +60,3 @@ namespace PhysX.Test.Util
 			}
 		}
 	}
-}

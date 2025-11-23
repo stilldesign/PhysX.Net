@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace PhysX.Test.Aggregate
-{
+namespace PhysX.Test.Aggregate;
+
 	[TestClass]
 	public class AggregateTests : Test
 	{
@@ -54,4 +54,3 @@ namespace PhysX.Test.Aggregate
 			}
 		}
 	}
-}

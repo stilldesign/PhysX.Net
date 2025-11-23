@@ -1,7 +1,7 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace PhysX.Test.Util
-{
+namespace PhysX.Test.Util;
+
 	public static class ArrayUtil
 	{
 		public static byte[] ToByteArray<T>(T[] array)
@@ -20,4 +20,3 @@ namespace PhysX.Test.Util
 			return bytes;
 		}
 	}
-}

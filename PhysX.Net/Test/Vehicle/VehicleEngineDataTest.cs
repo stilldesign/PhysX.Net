@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace PhysX.Test.Vehicle
-{
+namespace PhysX.Test.Vehicle;
+
 	[TestClass]
 	public class VehicleEngineDataTest : Test
 	{
@@ -26,4 +26,3 @@ namespace PhysX.Test.Vehicle
 			Assert.AreEqual(5, conversion.PeakTorque);
 		}
 	}
-}

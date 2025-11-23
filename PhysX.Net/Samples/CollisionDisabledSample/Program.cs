@@ -1,7 +1,7 @@
 ﻿using System;
 
-namespace PhysX.Samples.CollisionDisabledSample
-{
+namespace PhysX.Samples.CollisionDisabledSample;
+
 	class Program
 	{
 		[STAThread]
@@ -10,4 +10,3 @@ namespace PhysX.Samples.CollisionDisabledSample
 			new CollisionDisabledSample();
 		}
 	}
-}

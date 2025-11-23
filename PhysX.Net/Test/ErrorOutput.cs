@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Diagnostics;
 
-namespace PhysX.Test
-{
+namespace PhysX.Test;
+
 	public class ErrorLog : PhysX.ErrorCallback
 	{
 		private List<string> _errors;
@@ -55,4 +55,3 @@ namespace PhysX.Test
 			}
 		}
 	}
-}

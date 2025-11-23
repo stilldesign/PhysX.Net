@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Numerics;
 
-namespace PhysX.Test
-{
+namespace PhysX.Test;
+
 	public class TestGrid
 	{
 		public TestGrid(int rows, int columns)
@@ -63,4 +63,3 @@ namespace PhysX.Test
 		public Vector3[] Points { get; private set; }
 		public int[] Indices { get; private set; }
 	}
-}

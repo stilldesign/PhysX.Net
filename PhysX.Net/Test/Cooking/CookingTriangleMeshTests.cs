@@ -1,8 +1,8 @@
 ﻿using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace PhysX.Test.Cooking
-{
+namespace PhysX.Test.Cooking;
+
 	[TestClass]
 	public class CookingTriangleMeshTests : Test
 	{
@@ -31,4 +31,3 @@ namespace PhysX.Test.Cooking
 			}
 		}
 	}
-}

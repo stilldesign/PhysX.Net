@@ -2,8 +2,8 @@
 using System.Numerics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace PhysX.Test
-{
+namespace PhysX.Test;
+
 	[TestClass]
 	public class ShapeGeometryTest : Test
 	{
@@ -212,4 +212,3 @@ namespace PhysX.Test
 			Assert.AreEqual(GeometryType.Box, box.Type);
 		}
 	}
-}

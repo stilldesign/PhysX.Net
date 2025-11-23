@@ -2,8 +2,8 @@
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace PhysX.Test.Actor
-{
+namespace PhysX.Test.Actor;
+
 	[TestClass]
 	public class ActorTest : Test
 	{
@@ -76,4 +76,3 @@ namespace PhysX.Test.Actor
 			}
 		}
 	}
-}

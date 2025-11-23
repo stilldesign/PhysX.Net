@@ -1,7 +1,7 @@
 using SharpDX;
 
-namespace PhysX.Samples
-{
+namespace PhysX.Samples;
+
 	public static class Mathematics
 	{
 		public static Vector3 DirectionFromViewMatrix(Matrix viewMatrix)
@@ -9,4 +9,3 @@ namespace PhysX.Samples
 			return Vector3.Normalize(new Vector3(viewMatrix.M13, viewMatrix.M23, viewMatrix.M33));
 		}
 	}
-}

@@ -1,8 +1,8 @@
 ﻿using System.Numerics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace PhysX.Test.Constraint
-{
+namespace PhysX.Test.Constraint;
+
 	[TestClass]
 	public class ConstraintTest : Test
 	{
@@ -51,4 +51,3 @@ namespace PhysX.Test.Constraint
 			}
 		}
 	}
-}

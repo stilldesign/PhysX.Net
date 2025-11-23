@@ -1,7 +1,7 @@
 ﻿using System;
 
-namespace DoublePendulumSample
-{
+namespace DoublePendulumSample;
+
 	public class Program
 	{
 		[STAThread]
@@ -10,4 +10,3 @@ namespace DoublePendulumSample
 			new DoublePendulumSample();
 		}
 	}
-}

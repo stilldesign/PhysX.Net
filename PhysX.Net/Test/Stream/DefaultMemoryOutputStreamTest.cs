@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace PhysX.Test.Stream
-{
+namespace PhysX.Test.Stream;
+
 	[TestClass]
 	public class DefaultMemoryOutputStreamTest : Test
 	{
@@ -34,4 +34,3 @@ namespace PhysX.Test.Stream
 			}
 		}
 	}
-}

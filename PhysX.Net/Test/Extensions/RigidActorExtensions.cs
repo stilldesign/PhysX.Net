@@ -1,5 +1,5 @@
-﻿namespace PhysX.Test
-{
+﻿namespace PhysX.Test;
+
 	public static class RigidActorExtensions
 	{
 		/// <summary>
@@ -10,4 +10,3 @@
 			return RigidActorExt.CreateExclusiveShape(actor, geometry, material);
 		}
 	}
-}

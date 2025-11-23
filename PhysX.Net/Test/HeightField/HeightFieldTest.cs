@@ -1,8 +1,8 @@
 ﻿using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace PhysX.Test
-{
+namespace PhysX.Test;
+
 	[TestClass]
 	public class HeightFieldTest : Test
 	{
@@ -126,4 +126,3 @@ namespace PhysX.Test
 			}
 		}
 	}
-}

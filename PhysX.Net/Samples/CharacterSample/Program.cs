@@ -1,7 +1,7 @@
 ﻿using System;
 
-namespace PhysX.Samples.CharacterSample
-{
+namespace PhysX.Samples.CharacterSample;
+
 	class Program
 	{
 		[STAThread]
@@ -10,4 +10,3 @@ namespace PhysX.Samples.CharacterSample
 			new CharacterSample();
 		}
 	}
-}

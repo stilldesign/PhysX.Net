@@ -1,8 +1,8 @@
 ﻿using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace PhysX.Test
-{
+namespace PhysX.Test;
+
 	[TestClass]
 	public class TriangleMeshShapeTest : Test
 	{
@@ -45,4 +45,3 @@ namespace PhysX.Test
 			}
 		}
 	}
-}

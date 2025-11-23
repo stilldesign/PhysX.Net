@@ -1,5 +1,5 @@
-﻿namespace PhysX.Test
-{
+﻿namespace PhysX.Test;
+
 	public static class HeightFieldTestUtil
 	{
 		public static HeightFieldSample[] CreateSampleGrid(int rows, int columns, short height = 100)
@@ -25,4 +25,3 @@
 			return samples;
 		}
 	}
-}

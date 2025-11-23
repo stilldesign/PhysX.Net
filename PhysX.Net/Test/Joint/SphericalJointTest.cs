@@ -1,8 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Numerics;
 
-namespace PhysX.Test.Joint
-{
+namespace PhysX.Test.Joint;
+
 	[TestClass]
 	public class SphericalJointTest : Test
 	{
@@ -43,4 +43,3 @@ namespace PhysX.Test.Joint
 			}
 		}
 	}
-}

@@ -1,5 +1,5 @@
-﻿namespace PhysX.Samples.Engine
-{
+﻿namespace PhysX.Samples.Engine;
+
 	public class SampleFilterShader : SimulationFilterShader
 	{
 		public override FilterResult Filter(int attributes0, FilterData filterData0, int attributes1, FilterData filterData1)
@@ -12,4 +12,3 @@
 			};
 		}
 	}
-}

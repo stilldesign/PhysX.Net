@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace PhysX.Test.Cooking
-{
+namespace PhysX.Test.Cooking;
+
 	[TestClass]
 	public class CookingTests : Test
 	{
@@ -39,4 +39,3 @@ namespace PhysX.Test.Cooking
 			Assert.AreEqual(MeshMidPhase.BoundingVolumeHierarchy34, midphase34.Type);
 		}
 	}
-}

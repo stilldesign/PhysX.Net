@@ -2,8 +2,8 @@
 using System.Linq;
 using System.Windows.Input;
 
-namespace PhysX.Samples
-{
+namespace PhysX.Samples;
+
 	public abstract class Sample
 	{
 		// TODO: Refactor how the physics objects are created, they're too hidden away from the individual samples
@@ -73,4 +73,3 @@ namespace PhysX.Samples
 
 		public Scene Scene => Engine.Scene;
 	}
-}

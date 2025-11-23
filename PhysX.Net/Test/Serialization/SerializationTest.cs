@@ -1,8 +1,8 @@
 ﻿using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace PhysX.Test.Serialization
-{
+namespace PhysX.Test.Serialization;
+
 	[TestClass]
 	public class SerializationTest : Test
 	{
@@ -78,4 +78,3 @@ namespace PhysX.Test.Serialization
 		//    }
 		//}
 	}
-}

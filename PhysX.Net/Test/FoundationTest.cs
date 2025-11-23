@@ -2,8 +2,8 @@
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace PhysX.Test
-{
+namespace PhysX.Test;
+
 	[TestClass]
 	public class FoundationTest : Test
 	{
@@ -76,4 +76,3 @@ namespace PhysX.Test
 			}
 		}
 	}
-}

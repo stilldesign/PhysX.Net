@@ -1,7 +1,7 @@
 ﻿using SharpDX;
 
-namespace PhysX.Samples
-{
+namespace PhysX.Samples;
+
 	public class VertexGrid
 	{
 		private VertexGrid(Vector3[] points, int[] indices)
@@ -56,4 +56,3 @@ namespace PhysX.Samples
 		public Vector3[] Points { get; private set; }
 		public int[] Indices { get; private set; }
 	}
-}

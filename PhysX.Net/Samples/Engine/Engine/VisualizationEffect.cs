@@ -1,7 +1,7 @@
 ﻿using SharpDX.Direct3D11;
 
-namespace PhysX.Samples
-{
+namespace PhysX.Samples;
+
 	public class VisualizationEffect
 	{
 		public Effect Effect { get; set; }
@@ -12,4 +12,3 @@ namespace PhysX.Samples
 
 		public EffectPass RenderScenePass0 { get; set; }
 	}
-}

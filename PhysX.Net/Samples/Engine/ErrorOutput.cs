@@ -1,7 +1,7 @@
 using System;
 
-namespace PhysX.Samples
-{
+namespace PhysX.Samples;
+
 	public class ErrorOutput : ErrorCallback
 	{
 		public override void ReportError(ErrorCode errorCode, string message, string file, int lineNumber)
@@ -9,4 +9,3 @@ namespace PhysX.Samples
 			Console.WriteLine("PhysX: " + message);
 		}
 	}
-}

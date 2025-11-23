@@ -3,8 +3,8 @@ using System.IO;
 using System.Runtime.InteropServices;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace PhysX.Test
-{
+namespace PhysX.Test;
+
 	[TestClass]
 	public class StreamExtensionsTest : Test
 	{
@@ -44,4 +44,3 @@ namespace PhysX.Test
 			}
 		}
 	}
-}

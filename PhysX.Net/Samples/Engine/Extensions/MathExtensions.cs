@@ -1,5 +1,5 @@
-﻿namespace PhysX.Samples.Engine
-{
+﻿namespace PhysX.Samples.Engine;
+
 	public static class MathExtensions
 	{
 		public static SharpDX.Vector3 AsSharpDX(this System.Numerics.Vector3 vector3)
@@ -23,4 +23,3 @@
 		//	);
 		//}
 	}
-}

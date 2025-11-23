@@ -1,8 +1,8 @@
 ﻿using System.Numerics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace PhysX.Test.Controller
-{
+namespace PhysX.Test.Controller;
+
 	[TestClass]
 	public class CapsuleControllerDescTest : Test
 	{
@@ -48,4 +48,3 @@ namespace PhysX.Test.Controller
 			}
 		}
 	}
-}

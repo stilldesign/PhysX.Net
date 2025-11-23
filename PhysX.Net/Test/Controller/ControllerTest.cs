@@ -3,8 +3,8 @@ using System.Linq;
 using System.Numerics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace PhysX.Test.Controller
-{
+namespace PhysX.Test.Controller;
+
 	[TestClass]
 	public class ControllerTest : Test
 	{
@@ -51,4 +51,3 @@ namespace PhysX.Test.Controller
 			}
 		}
 	}
-}

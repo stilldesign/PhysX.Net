@@ -3,8 +3,8 @@ using System.IO;
 using System.Numerics;
 using PhysX.Samples.Engine;
 
-namespace PhysX.Samples.RigidBodiesSample
-{
+namespace PhysX.Samples.RigidBodiesSample;
+
 	public class RigidBodiesSample : Sample
 	{
 		public RigidBodiesSample()
@@ -259,4 +259,3 @@ namespace PhysX.Samples.RigidBodiesSample
 
 		}
 	}
-}

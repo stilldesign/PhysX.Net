@@ -1,7 +1,7 @@
 ﻿using System;
 
-namespace PhysX.Samples.VehicleSample
-{
+namespace PhysX.Samples.VehicleSample;
+
 	class Program
 	{
 		[STAThread]
@@ -10,4 +10,3 @@ namespace PhysX.Samples.VehicleSample
 			new VehicleSample();
 		}
 	}
-}

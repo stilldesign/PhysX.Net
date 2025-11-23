@@ -1,7 +1,7 @@
 ﻿using System;
 
-namespace PhysX.Samples.Engine.Util
-{
+namespace PhysX.Samples.Engine.Util;
+
 	public static class ArrayUtil
 	{
 		public static byte[] ToByteArray(int[] array)
@@ -37,4 +37,3 @@ namespace PhysX.Samples.Engine.Util
 		//	return bytes;
 		//}
 	}
-}

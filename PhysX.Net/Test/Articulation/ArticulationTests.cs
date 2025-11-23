@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace PhysX.Test.Articulation
-{
+namespace PhysX.Test.Articulation;
+
 	[TestClass]
 	public class ArticulationTests : Test
 	{
@@ -16,4 +16,3 @@ namespace PhysX.Test.Articulation
 			}
 		}
 	}
-}

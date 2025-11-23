@@ -1,7 +1,7 @@
 ﻿using System;
 
-namespace PhysX.Samples.RigidBodiesSample
-{
+namespace PhysX.Samples.RigidBodiesSample;
+
 	class Program
 	{
 		[STAThread]
@@ -10,4 +10,3 @@ namespace PhysX.Samples.RigidBodiesSample
 			new RigidBodiesSample();
 		}
 	}
-}

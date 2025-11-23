@@ -7,8 +7,8 @@ using System.Xml;
 using SharpDX.Direct3D11;
 using Buffer = SharpDX.Direct3D11.Buffer;
 
-namespace PhysX.Samples.Engine
-{
+namespace PhysX.Samples.Engine;
+
 	/// <summary>A very basic COLLADA loader.</summary>
 	/// <remarks>
 	/// This basically loads the torus DAE file for use as a convex mesh.
@@ -66,4 +66,3 @@ namespace PhysX.Samples.Engine
 			}
 		}
 	}
-}

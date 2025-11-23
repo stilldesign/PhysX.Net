@@ -1,8 +1,8 @@
 ﻿using System;
 using SharpDX;
 
-namespace PhysX.Samples
-{
+namespace PhysX.Samples;
+
 	public struct VertexPosition
 	{
 		public Vector3 Position;
@@ -299,4 +299,3 @@ namespace PhysX.Samples
 			}
 		}
 	}
-}

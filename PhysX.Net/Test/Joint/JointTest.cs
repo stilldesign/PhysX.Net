@@ -1,8 +1,8 @@
 ﻿using System.Numerics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace PhysX.Test.Joint
-{
+namespace PhysX.Test.Joint;
+
 	[TestClass]
 	public class JointTest : Test
 	{
@@ -29,4 +29,3 @@ namespace PhysX.Test.Joint
 			}
 		}
 	}
-}

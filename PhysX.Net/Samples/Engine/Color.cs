@@ -2,8 +2,8 @@
 using System.Runtime.InteropServices;
 using SharpDX;
 
-namespace PhysX.Samples
-{
+namespace PhysX.Samples;
+
 	[StructLayout(LayoutKind.Sequential)]
 	public struct Color
 	{
@@ -232,4 +232,3 @@ namespace PhysX.Samples
 		public float Blue { get; set; }
 		public float Alpha { get; set; }
 	}
-}

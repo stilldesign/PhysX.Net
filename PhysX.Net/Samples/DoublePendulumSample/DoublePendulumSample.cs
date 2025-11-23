@@ -5,8 +5,8 @@ using System.Windows.Input;
 using PhysX;
 using PhysX.Samples;
 
-namespace DoublePendulumSample
-{
+namespace DoublePendulumSample;
+
 	public class DoublePendulumSample : Sample
 	{
 		private RigidDynamic _sphereC;
@@ -83,4 +83,3 @@ namespace DoublePendulumSample
 			base.ProcessKeyboard(pressedKeys);
 		}
 	}
-}

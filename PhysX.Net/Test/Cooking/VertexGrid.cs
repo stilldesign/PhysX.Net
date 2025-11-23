@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Numerics;
 
-namespace PhysX.Test.Cooking
-{
+namespace PhysX.Test.Cooking;
+
 	public class VertexGrid
 	{
 		public VertexGrid(int rows, int columns)
@@ -63,4 +63,3 @@ namespace PhysX.Test.Cooking
 		public Vector3[] Points { get; private set; }
 		public int[] Indices { get; private set; }
 	}
-}

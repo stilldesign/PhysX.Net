@@ -3,8 +3,8 @@ using System.Reflection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PhysX.Test.Util;
 
-namespace PhysX.Test.Cooking
-{
+namespace PhysX.Test.Cooking;
+
 	[TestClass]
 	public class CookTest : Test
 	{
@@ -47,4 +47,3 @@ namespace PhysX.Test.Cooking
 			}
 		}
 	}
-}

@@ -3,8 +3,8 @@ using System.Diagnostics;
 using System.Numerics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace PhysX.Test
-{
+namespace PhysX.Test;
+
 	[TestClass]
 	[DeploymentItem("PhysX_64.dll")]
 	[DeploymentItem("PhysXCommon_64.dll")]
@@ -113,4 +113,3 @@ namespace PhysX.Test
 			Assert.IsFalse(physics.ErrorOutput.HasErrors, physics.ErrorOutput.LastError);
 		}
 	}
-}

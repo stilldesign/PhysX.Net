@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Numerics;
 
-namespace PhysX.Samples.JointsSample
-{
+namespace PhysX.Samples.JointsSample;
+
 	public class JointsSample : Sample
 	{
 		public JointsSample()
@@ -139,4 +139,3 @@ namespace PhysX.Samples.JointsSample
 
 		}
 	}
-}

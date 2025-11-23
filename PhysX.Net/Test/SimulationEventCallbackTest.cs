@@ -2,8 +2,8 @@
 using System.Numerics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace PhysX.Test
-{
+namespace PhysX.Test;
+
 	[TestClass]
 	public class SimulationEventCallbackTest : Test
 	{
@@ -50,4 +50,3 @@ namespace PhysX.Test
 			}
 		}
 	}
-}

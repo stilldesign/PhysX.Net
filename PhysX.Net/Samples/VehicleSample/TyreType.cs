@@ -1,5 +1,5 @@
-﻿namespace PhysX.Samples.VehicleSample
-{
+﻿namespace PhysX.Samples.VehicleSample;
+
 	public enum TyreType
 	{
 		Wets = 0,
@@ -7,4 +7,3 @@
 		Ice,
 		Mud
 	}
-}

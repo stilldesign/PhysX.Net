@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace PhysX.Test
-{
+namespace PhysX.Test;
+
 	[TestClass]
 	public class ActorSerialization : Test
 	{
@@ -35,4 +35,3 @@ namespace PhysX.Test
 			}
 		}
 	}
-}

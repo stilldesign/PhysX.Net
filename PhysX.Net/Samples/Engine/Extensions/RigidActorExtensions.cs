@@ -1,5 +1,5 @@
-﻿namespace PhysX.Samples
-{
+﻿namespace PhysX.Samples;
+
 	public static class RigidActorExtensions
 	{
 		/// <summary>
@@ -10,4 +10,3 @@
 			return RigidActorExt.CreateExclusiveShape(actor, geometry, material);
 		}
 	}
-}

@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace PhysX.Samples.CollisionDisabledSample
-{
+namespace PhysX.Samples.CollisionDisabledSample;
+
 	public class CollisionDisabledSimulationFilterCallback : PhysX.SimulationFilterCallback
 	{
 		public List<Tuple<RigidActor, RigidActor>> DisableCollisionBetweenActors { get; } = new List<Tuple<RigidActor, RigidActor>>();
@@ -33,4 +33,3 @@ namespace PhysX.Samples.CollisionDisabledSample
 			return null;
 		}
 	}
-}

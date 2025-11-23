@@ -1,8 +1,8 @@
 ﻿using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace PhysX.Test
-{
+namespace PhysX.Test;
+
 	[TestClass]
 	public class HeightFieldSimpleTests : Test
 	{
@@ -91,4 +91,3 @@ namespace PhysX.Test
 			Assert.AreEqual("PxHeightField", _heightField.AsSerializable().ConcreteTypeName);
 		}
 	}
-}

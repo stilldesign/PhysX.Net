@@ -1,7 +1,7 @@
 ﻿using System;
 
-namespace PhysX.Samples.CharacterSample
-{
+namespace PhysX.Samples.CharacterSample;
+
 	public class ControllerHitReport : UserControllerHitReport
 	{
 		public override void OnControllerHit(ControllersHit hit)
@@ -19,4 +19,3 @@ namespace PhysX.Samples.CharacterSample
 			
 		}
 	}
-}

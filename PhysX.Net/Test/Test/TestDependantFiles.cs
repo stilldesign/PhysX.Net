@@ -1,8 +1,8 @@
 ﻿using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace PhysX.Test
-{
+namespace PhysX.Test;
+
 	public static class TestDependantFiles
 	{
 		// Copy out the dependant DLL files needed for each test run
@@ -30,4 +30,3 @@ namespace PhysX.Test
 			}
 		}
 	}
-}

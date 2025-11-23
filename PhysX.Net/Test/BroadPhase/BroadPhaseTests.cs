@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace PhysX.Test.BroadPhase
-{
+namespace PhysX.Test.BroadPhase;
+
 	[TestClass]
 	public class BroadPhaseTests : Test
 	{
@@ -43,4 +43,3 @@ namespace PhysX.Test.BroadPhase
 			}
 		}
 	}
-}

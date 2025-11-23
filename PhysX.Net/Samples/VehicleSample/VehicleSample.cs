@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Numerics;
 
-namespace PhysX.Samples.VehicleSample
-{
+namespace PhysX.Samples.VehicleSample;
+
 	public class VehicleSample : Sample
 	{
 		protected override void LoadContent()
@@ -235,4 +235,3 @@ namespace PhysX.Samples.VehicleSample
 
 		}
 	}
-}

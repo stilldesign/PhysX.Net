@@ -4,8 +4,8 @@ using System.Linq;
 using System.Numerics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace PhysX.Test
-{
+namespace PhysX.Test;
+
 	[TestClass]
 	public class PhysicsTest : Test
 	{
@@ -143,4 +143,3 @@ namespace PhysX.Test
 			}
 		}
 	}
-}
