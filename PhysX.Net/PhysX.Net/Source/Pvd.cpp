@@ -55,7 +55,7 @@ void Pvd::Connect(System::String^ host, Nullable<int> port, Nullable<TimeSpan> t
 		throw gcnew ArgumentOutOfRangeException("Timeout cannot be less than zero", "timeout");
 
 	auto port_ = port.GetValueOrDefault(5425);
-	auto timeout_ = (int)timeout.GetValueOrDefault(TimeSpan::FromSeconds(10)).TotalMilliseconds;
+	auto timeout_ = (int)timeout.GetValueOrDefault(TimeSpan::FromSeconds(10.0)).TotalMilliseconds;
 	auto host_ = Util::ToUnmanagedString(host);
 
 	auto transport = PxDefaultPvdSocketTransportCreate(host_, port_, timeout_);

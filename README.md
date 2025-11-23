@@ -18,7 +18,7 @@ There is a helper `.targets` file which will add links of these to the root of y
 
 In your `.csproj` file:
 1. Set the `GeneratePathProperty="true"` attribute on the PhysX.Net `<PackageReference />` node.
-    * e.g. `<PackageReference Include="PhysX.Net" Version="6.0.0" GeneratePathProperty="true" />`
+    * e.g. `<PackageReference Include="PhysX.Net" Version="7.0.0" GeneratePathProperty="true" />`
 2. Add the follow to your `.csproj` file:
 ```xml
 <ImportGroup>
@@ -28,11 +28,11 @@ In your `.csproj` file:
 
 Development
 -----------
-### PhysX.Net 6.0.0 for NVIDIA PhysX 4.1.2
+### PhysX.Net 7.0.0 for NVIDIA PhysX 4.1.2
 * Targets PhysX 4.1.2.29873463
 * 64 bit version only
 * Dependencies
-	* .NET 9.0
+	* .NET 10.0
 	* C runtime 2022 - https://aka.ms/vs/17/release/vc_redist.x64.exe
 * Remaining:
     * Vehicle sample and a few related classes
@@ -44,8 +44,11 @@ Development
 
 # Building
 ## Dependencies
-* Visual Studio 2022
-* VC++ v143 toolset for desktop - needed to build PhysX itself. If you've built PhysX already, this could be ignored.
+* Visual Studio 2026
+  * Desktop development with C++
+  * .NET desktop development
+  * C++/CLI support
+* VC++ v145 toolset for desktop - needed to build PhysX itself. If you've built PhysX already, this could be ignored.
 
 ## Compiling
 ### Compile PhysX
