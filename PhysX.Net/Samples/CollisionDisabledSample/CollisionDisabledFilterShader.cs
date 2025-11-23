@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace PhysX.Samples.CollisionDisabledSample
+﻿namespace PhysX.Samples.CollisionDisabledSample
 {
 	public class CollisionDisabledFilterShader : SimulationFilterShader
 	{

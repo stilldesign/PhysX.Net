@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Numerics;
 using System.Reflection;
-using System.Windows;
 using System.Windows.Input;
 using SharpDX.D3DCompiler;
 using SharpDX.Direct3D;

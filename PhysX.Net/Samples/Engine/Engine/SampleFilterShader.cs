@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace PhysX.Samples.Engine
+﻿namespace PhysX.Samples.Engine
 {
 	public class SampleFilterShader : SimulationFilterShader
 	{

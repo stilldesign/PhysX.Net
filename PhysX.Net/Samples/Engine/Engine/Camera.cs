@@ -3,7 +3,6 @@ using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Input;
 using SharpDX;
-using SharpDX.Direct3D11;
 
 namespace PhysX.Samples.Engine
 {

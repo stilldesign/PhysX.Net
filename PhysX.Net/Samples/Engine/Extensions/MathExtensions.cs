@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace PhysX.Samples.Engine
+﻿namespace PhysX.Samples.Engine
 {
 	public static class MathExtensions
 	{

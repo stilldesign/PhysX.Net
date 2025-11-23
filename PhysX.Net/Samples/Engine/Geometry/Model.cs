@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
+﻿using System.Numerics;
 using Buffer = SharpDX.Direct3D11.Buffer;
 
 namespace PhysX.Samples.Engine

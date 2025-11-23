@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace PhysX.Samples.VehicleSample
+﻿namespace PhysX.Samples.VehicleSample
 {
 	public enum TyreType
 	{

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace PhysX.Test
+﻿namespace PhysX.Test
 {
 	public class PhysicsAndSceneTestUnit : System.IDisposable
 	{
